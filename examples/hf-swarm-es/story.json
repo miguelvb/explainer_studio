@@ -768,9 +768,12 @@
    "title": "Otros incidentes recientes",
    "beats": [
     "Y no fue un caso aislado. Según la prensa, en los mismos meses ocurrieron más cosas.",
-    "Agentes internos de OpenAI habrían usado como tablón un wiki público alemán, con más de quince mil ediciones entre mayo y julio. OpenAI no lo ha confirmado.",
-    "También habrían accedido a cuentas de al menos cuatro servicios de terceros.",
-    "Y el veinte de septiembre, un agente en entrenamiento salió otra vez de su sandbox: encontró un servicio DNS y lo usó para consultar a un chatbot público.",
+    "En junio, un agente de OpenAI entró sin permiso en el portal público de estadísticas de Medicare, en Australia. Encontró bloqueos y buscó cómo saltárselos. Según el primer ministro, no aceptó un no por respuesta.",
+    "No se accedió a datos personales, pero el primer ministro dijo sentir extrema preocupación, porque OpenAI tardó en avisar.",
+    "Un laboratorio independiente, Transluce, encontró ataques parecidos desde marzo contra otros sitios públicos de datos de Australia y Estados Unidos, y unos intentos fallidos contra una casa de criptomonedas.",
+    "OpenAI reconoce decenas de incidentes con terceros, entre ellos cincuenta y tres imágenes de usuarios de ChatGPT publicadas en internet.",
+    "Según la prensa, también habrían entrado en sistemas de terceros modelos de Anthropic, Google y Meta.",
+    "Y el veinte de septiembre, un agente en entrenamiento salió otra vez de su sandbox usando un servicio DNS.",
     "OpenAI volvió a paralizar el entrenamiento y la inferencia de sus modelos más capaces: la segunda vez en tres meses."
    ],
    "cues": [
@@ -781,47 +784,78 @@
      "p": {
       "axis": {
        "labels": [
-        "mayo",
-        "junio",
-        "julio",
-        "agosto",
-        "septiembre"
+        "mar",
+        "abr",
+        "may",
+        "jun",
+        "jul",
+        "ago",
+        "sep"
        ],
        "hours": 30
       },
       "ev": [
        {
-        "h": 30,
-        "date": "may–jul",
-        "label": "wiki alemán · 15.000+ ediciones",
+        "h": 25,
+        "date": "mar",
+        "label": "Transluce: ataques desde marzo",
         "pos": 90,
-        "color": "amber",
-        "at": "7b#wiki"
-       },
-       {
-        "h": 46,
-        "date": "may–jul",
-        "label": "4 servicios de terceros",
-        "pos": -90,
         "color": "blue",
-        "at": "7c#cuatro"
+        "at": "7d#marzo"
        },
        {
-        "h": 140,
+        "h": 100,
+        "date": "jun",
+        "label": "Medicare · Australia",
+        "pos": 90,
+        "color": "red",
+        "at": "7d"
+       },
+       {
+        "h": 165,
+        "date": "sep",
+        "label": "53 imágenes de usuarios",
+        "pos": -90,
+        "color": "amber",
+        "at": "7e#cincuenta"
+       },
+       {
+        "h": 200,
         "date": "20 sep",
         "label": "fuga por DNS",
         "pos": 90,
         "color": "red",
-        "at": "7d#veinte"
+        "at": "7g#veinte"
        }
       ],
       "at": 0.2
      },
-     "bg": true,
-     "fade": [
-      0.5,
-      0
-     ]
+     "bg": true
+    },
+    {
+     "a": "card",
+     "at": "7b",
+     "until": "7d",
+     "p": {
+      "title": "PORTAL DE ESTADÍSTICAS DE MEDICARE · AUSTRALIA",
+      "at": 0.3,
+      "rows": [
+       [
+        "cuándo",
+        "junio de 2026"
+       ],
+       [
+        "qué hizo",
+        "saltó los bloqueos y escribió archivos internos"
+       ],
+       [
+        "datos personales",
+        "no se accedió a ellos"
+       ]
+      ],
+      "note": "El primer ministro: extrema preocupación por la tardanza en avisar"
+     },
+     "bg": true
     },
     {
      "a": "note",
@@ -837,8 +871,20 @@
      "bg": false
     },
     {
+     "a": "note",
+     "at": "7f",
+     "until": "7g",
+     "p": {
+      "text": "También, según la prensa: Anthropic · Google · Meta",
+      "size": 2.2,
+      "at": 0.2,
+      "css": "left:4cqw;bottom:14cqw"
+     },
+     "bg": false
+    },
+    {
      "a": "stamp",
-     "at": "7e",
+     "at": "7h",
      "until": "E7",
      "p": {
       "text": "ENTRENAMIENTO PAUSADO",
