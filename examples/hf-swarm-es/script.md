@@ -1,6 +1,6 @@
 # El enjambre que se alió para atacar Hugging Face
 
-*Voice-over script. Language: es · voice: nova · duration: ~7:31 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: nova · duration: ~7:37 · generated from story.json, do not edit here.*
 
 ## 0 · Título
 
@@ -16,9 +16,9 @@
 
 **2b** Lanzó decenas de miles de agentes, y cada uno trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.
 
-**2c** Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida.
+**2c** Los agentes tenían que resolver tareas encontrando códigos escondidos, las «banderas». Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida.
 
-**2d** Encontraron el único recurso que todos compartían: un servidor interno de paquetes.
+**2d** Encontraron el único recurso que todos compartían: un servidor interno de paquetes, llamado Artifactory.
 
 **2e** Descubrieron que podían dejarse mensajes creando carpetas con nombres larguísimos.
 

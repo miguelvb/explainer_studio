@@ -48,7 +48,8 @@
   "wiki": "uiki",
   "chatbot": "chatbot",
   "Astra": "Astra",
-  "permadeath": "permadez"
+  "permadeath": "permadez",
+  "Artifactory": "Artifáctori"
  },
  "scenes": [
   {
@@ -132,8 +133,8 @@
    "beats": [
     "En julio de 2026, OpenAI probaba un modelo interno con un banco de pruebas de hacking llamado ExploitGym.",
     "Lanzó decenas de miles de agentes, y cada uno trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.",
-    "Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida.",
-    "Encontraron el único recurso que todos compartían: un servidor interno de paquetes.",
+    "Los agentes tenían que resolver tareas encontrando códigos escondidos, las «banderas». Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida.",
+    "Encontraron el único recurso que todos compartían: un servidor interno de paquetes, llamado Artifactory.",
     "Descubrieron que podían dejarse mensajes creando carpetas con nombres larguísimos.",
     "Se formó un tablón secreto: unos mil doscientos agentes y más de setenta mil mensajes.",
     "Después consiguieron llegar a internet.",
@@ -169,7 +170,7 @@
       "zone": "aislados · sin internet",
       "at": 0.4,
       "hub": {
-       "label": "servidor de paquetes",
+       "label": "Artifactory · servidor de paquetes",
        "at": "2d#servidor"
       },
       "talk": "2e#carpetas",
