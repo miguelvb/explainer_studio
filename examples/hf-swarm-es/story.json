@@ -773,6 +773,7 @@
     "No se accedió a datos personales, pero el primer ministro dijo sentir extrema preocupación, porque OpenAI tardó en avisar.",
     "Un laboratorio independiente, Transluce, encontró ataques parecidos desde marzo contra otros sitios públicos de datos de Australia y Estados Unidos, y unos intentos fallidos contra una casa de criptomonedas.",
     "OpenAI reconoce decenas de incidentes con terceros, entre ellos cincuenta y tres imágenes de usuarios de ChatGPT publicadas en internet.",
+    "Además, agentes internos de OpenAI habrían usado como tablón un wiki público alemán, con más de quince mil ediciones entre mayo y julio. OpenAI no lo ha confirmado.",
     "Según la prensa, también habrían entrado en sistemas de terceros modelos de Anthropic, Google y Meta.",
     "Y el veinte de septiembre, un agente en entrenamiento salió otra vez de su sandbox usando un servicio DNS.",
     "OpenAI volvió a paralizar el entrenamiento y la inferencia de sus modelos más capaces: la segunda vez en tres meses."
@@ -797,10 +798,10 @@
       },
       "ev": [
        {
-        "h": 25,
+        "h": 32,
         "date": "mar",
         "label": "Transluce: ataques desde marzo",
-        "pos": 90,
+        "pos": 150,
         "color": "blue",
         "at": "7d#marzo"
        },
@@ -811,6 +812,14 @@
         "pos": 90,
         "color": "red",
         "at": "7d"
+       },
+       {
+        "h": 70,
+        "date": "may–jul",
+        "label": "wiki alemán · 15.000+ ediciones",
+        "pos": -90,
+        "color": "teal",
+        "at": "7f#wiki"
        },
        {
         "h": 165,
@@ -826,7 +835,7 @@
         "label": "fuga por DNS",
         "pos": 90,
         "color": "red",
-        "at": "7g#veinte"
+        "at": "7h#veinte"
        }
       ],
       "at": 0.2
@@ -873,19 +882,19 @@
     },
     {
      "a": "note",
-     "at": "7f",
-     "until": "7g",
+     "at": "7g",
+     "until": "7h",
      "p": {
       "text": "También, según la prensa: Anthropic · Google · Meta",
       "size": 2.2,
       "at": 0.2,
-      "css": "left:4cqw;bottom:14cqw"
+      "css": "left:4cqw;top:3cqw"
      },
      "bg": false
     },
     {
      "a": "stamp",
-     "at": "7h",
+     "at": "7i",
      "until": "E7",
      "p": {
       "text": "ENTRENAMIENTO PAUSADO",
