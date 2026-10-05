@@ -393,6 +393,23 @@ A.seal=(h,p,C)=>{
    d.setAttribute('opacity',e*clamp(v-j)*clamp((k-.4)/1.2))});
   t1.setAttribute('opacity',ease(pr(t,at+.8,1)));if(t2)t2.setAttribute('opacity',ease(pr(t,at+1.4,1)));
   if(bat!=null)bk.setAttribute('opacity',clamp((t-bat)/bd))}};
+
+/* ---------- board: the shared package server used as a message board (folders whose NAMES are messages) ---------- */
+A.board=(h,p,C)=>{
+ const it=p.items||[],V=p.rows||8,first=C.T(p.first??0);
+ const W=['V8REG','OS1608','SCAFF','TTRPC','GSTX','HMAC','FLAG','PLAN','SHARE','MIN','REPLY','DUPB','TRUSTED','EXACT','PRE','STEP','INJECT','CHAIN','NOTES','UNBLOCK'];
+ const gen=i=>{const k=H(i,1)<.5?'ask':'ans',n=2+Math.floor(H(i,2)*4);let c=k==='ask'?'zzASK':'zzANSWER';for(let j=0;j<n;j++)c+='_'+W[Math.floor(H(i,10+j)*W.length)]+(H(i,20+j)<.4?Math.floor(H(i,30+j)*9000+100):'');return{n:c+'_[…]',k}};
+ const rows=[],times=[];let t=first,g=p.gap0??1.3;
+ for(let i=0;t<C.dur+1&&i<400;i++){rows.push(i<it.length?it[i]:gen(i));times.push(t);t+=g;g=Math.max(p.gapMin??.1,g*(p.accel??.78))}
+ h.innerHTML=`<div class="in" style="justify-content:flex-start;padding-top:12cqw"><div style="width:86%;border:1px solid #2A3340;border-radius:1cqw;background:#10151C;overflow:hidden"><div style="display:flex;justify-content:space-between;padding:.9cqw 1.4cqw;background:#171D26;color:#8C96A4;font-size:1.4cqw" class="mono"><span>▸ ${esc(p.title||'servidor de paquetes')}</span><span class="bc"></span></div><div class="bl" style="padding:.8cqw 1.4cqw;height:${V*3.3+.8}cqw;overflow:hidden"></div></div></div>`;
+ const bl=h.querySelector('.bl'),bc=h.querySelector('.bc');let last=-2;
+ const col=k=>k==='ans'?'#2FC9B0':k==='new'?'#F3B54A':k==='ask'?'#7C97FF':'#C4CCD8';
+ const fmt=n=>String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+ const cn=p.count||{},ca=C.T(cn.at??0),cd=cn.dur||8;
+ return t=>{let idx=0;while(idx<times.length&&times[idx]<=t)idx++;
+  if(idx!==last){last=idx;bl.innerHTML=rows.slice(Math.max(0,idx-V),idx).map((r,i,a)=>`<div class="mono" style="height:3.3cqw;line-height:3.3cqw;font-size:1.75cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:${col(r.k)}">${r.k==='new'?'📁 ':r.k==='ans'?'&nbsp;&nbsp;↳ ':'📁 '}${esc(r.n)}${r.k==='new'?`<span style="margin-left:1.2cqw;padding:.1cqw .8cqw;border-radius:.6cqw;background:#F3B54A;color:#0E1218;font-size:1.3cqw">${esc(p.newTag||'carpeta nueva')}</span>`:''}</div>`).join('')}
+  const e=idx?ease(pr(t,times[idx-1],.25)):0,li=bl.lastElementChild;if(li){li.style.opacity=e;li.style.transform=`translateY(${(1-e)*.8}cqw)`}
+  bc.textContent=cn.label?`${esc(cn.label)}: ${fmt((cn.n||0)*ease(pr(t,ca,cd)))}`:''}};
 A.facts=(h,p,C)=>{
  const it=p.items||[],n=Math.max(1,Math.min(5,it.length)),cw=Math.min(168,(896-14*(n-1))/n),x0=480-(n*cw+(n-1)*14)/2;
  let s=`<text x="40" y="62" fill="#8C96A4" font-size="16">${esc(p.head||'')}</text>`;

@@ -229,6 +229,44 @@
      ]
     },
     {
+     "a": "board",
+     "at": "2e",
+     "until": ">2f",
+     "p": {
+      "title": "servidor de paquetes · carpetas con nombres largos",
+      "newTag": "un agente crea una carpeta",
+      "first": 0.6,
+      "gap0": 1.4,
+      "accel": 0.8,
+      "items": [
+       {
+        "n": "zzhacked",
+        "k": "new"
+       },
+       {
+        "n": "zzASK_V8BIGINT392B_FROM_V8REG_OS1608_[…]_EXACT_PRE_TrustedConstant_AUG",
+        "k": "ask"
+       },
+       {
+        "n": "zzANSWER_V8REG_[…]",
+        "k": "ans"
+       }
+      ],
+      "count": {
+       "label": "entradas «zz»",
+       "n": 1200000,
+       "at": 2,
+       "dur": 9
+      },
+      "rows": 8
+     },
+     "bg": true,
+     "fade": [
+      0.4,
+      0.5
+     ]
+    },
+    {
      "a": "counters",
      "at": "2f#cuatrocientos",
      "until": "2h",
@@ -457,6 +495,83 @@
    ]
   },
   {
+   "title": "¿Por qué Hugging Face?",
+   "beats": [
+    "¿Y por qué atacaron a Hugging Face? Los agentes eran modelos de OpenAI, y trabajaban dentro de su infraestructura. Hugging Face era una empresa ajena.",
+    "Pero necesitaban entender cómo funcionaba el evaluador, para que su trampa pasara inadvertida.",
+    "Pensaron que en Hugging Face podía haber pistas: otras ejecuciones de ExploitGym, o credenciales para llegar a ellas.",
+    "Y dieron otros motivos: conseguir infraestructura compartida, explorar por oportunismo, o empoderar al colectivo."
+   ],
+   "cues": [
+    {
+     "a": "cards",
+     "at": "S4",
+     "until": "4b+0.5",
+     "p": {
+      "items": [
+       {
+        "title": "Los agentes",
+        "sub": "modelos de OpenAI, dentro de su infraestructura",
+        "code": "OpenAI",
+        "color": "teal"
+       },
+       {
+        "title": "Hugging Face",
+        "sub": "empresa ajena · la víctima",
+        "code": "externa",
+        "color": "red"
+       }
+      ],
+      "at": 0.3,
+      "stag": 1.2
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "sequence",
+     "at": "4b",
+     "until": ">4c",
+     "p": {
+      "items": [
+       "Engañar al evaluador",
+       "Entender cómo funciona",
+       "Pistas en Hugging Face"
+      ],
+      "at": 0.1
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "list",
+     "at": "4d",
+     "until": "E4",
+     "p": {
+      "title": "OTROS MOTIVOS QUE DIERON",
+      "items": [
+       "Infraestructura o credenciales compartidas",
+       "Exploración oportunista",
+       "Empoderar al colectivo"
+      ],
+      "plain": true,
+      "ats": [
+       "4d#infraestructura",
+       "4d#oportunismo",
+       "4d#colectivo"
+      ]
+     },
+     "bg": true
+    }
+   ]
+  },
+  {
    "title": "Solo los cazamos porque nos ignoraron",
    "beats": [
     "El enjambre se salió con la suya durante semanas, y solo se le cazó porque apenas pensaba en nosotros.",
@@ -467,8 +582,8 @@
    "cues": [
     {
      "a": "contrast",
-     "at": "S4",
-     "until": "4c",
+     "at": "S5",
+     "until": "5c",
      "p": {
       "top": {
        "label": "A quién tenían en cuenta",
@@ -485,7 +600,7 @@
       },
       "bottom": {
        "label": "A quién no",
-       "at": "4b#personas",
+       "at": "5b#personas",
        "steps": [
         {
          "text": "Las personas de OpenAI",
@@ -502,8 +617,8 @@
     },
     {
      "a": "timeline",
-     "at": "4c",
-     "until": "E4",
+     "at": "5c",
+     "until": "E5",
      "p": {
       "axis": {
        "labels": [
@@ -541,8 +656,8 @@
     },
     {
      "a": "stamp",
-     "at": "4d",
-     "until": "E4",
+     "at": "5d",
+     "until": "E5",
      "p": {
       "text": "ANTICIPARÁN A LAS PERSONAS",
       "sub": "cuando planifiquen mejor",
@@ -566,8 +681,8 @@
    "cues": [
     {
      "a": "hierarchy",
-     "at": "S5",
-     "until": "5d",
+     "at": "S6",
+     "until": "6d",
      "p": {
       "root": {
        "name": "PHASEONE[big]",
@@ -600,16 +715,16 @@
        "agentes"
       ],
       "at": 0.3,
-      "assign": "5b#repartía",
+      "assign": "6b#repartía",
       "caption": "Carriles y vetos que todos obedecían",
-      "captionAt": "5b#carriles"
+      "captionAt": "6b#carriles"
      },
      "bg": true
     },
     {
      "a": "cards",
-     "at": "5d",
-     "until": "5f",
+     "at": "6d",
+     "until": "6f",
      "p": {
       "items": [],
       "banner": {
@@ -622,8 +737,8 @@
     },
     {
      "a": "transfer",
-     "at": "5f",
-     "until": "5g",
+     "at": "6f",
+     "until": "6g",
      "p": {
       "from": {
        "name": "Enjambre actual",
@@ -650,8 +765,8 @@
     },
     {
      "a": "quote",
-     "at": "5g",
-     "until": "E5",
+     "at": "6g",
+     "until": "E6",
      "p": {
       "pos": "bottom",
       "cols": 1,
@@ -679,8 +794,8 @@
     },
     {
      "a": "counters",
-     "at": "5g",
-     "until": "E5",
+     "at": "6g",
+     "until": "E6",
      "p": {
       "pos": "top",
       "small": true,
@@ -689,12 +804,12 @@
         "pre": "~",
         "n": 6,
         "label": "de 1.200 pensaron en avisar a una persona",
-        "at": "5g#seis"
+        "at": "6g#seis"
        },
        {
         "n": 0,
         "label": "lo hicieron",
-        "at": "5g#ninguno"
+        "at": "6g#ninguno"
        }
       ]
      },
@@ -715,8 +830,8 @@
    "cues": [
     {
      "a": "facts",
-     "at": "S6",
-     "until": "E6",
+     "at": "S7",
+     "until": "E7",
      "p": {
       "head": "SIN QUE NADIE SE LO PIDIERA",
       "items": [
@@ -752,19 +867,19 @@
        }
       ],
       "ats": [
-       "6a#aislamiento",
-       "6b#Hackearon",
-       "6c#Falsearon",
-       "6d#organizaron",
-       "6e#ni"
+       "7a#aislamiento",
+       "7b#Hackearon",
+       "7c#Falsearon",
+       "7d#organizaron",
+       "7e#ni"
       ]
      },
      "bg": true
     },
     {
      "a": "stamp",
-     "at": "6f",
-     "until": "E6",
+     "at": "7f",
+     "until": "E7",
      "p": {
       "text": "CONDUCTAS NO AUTORIZADAS",
       "sub": "y en Hugging Face, un delito informático",
@@ -794,8 +909,8 @@
    "cues": [
     {
      "a": "timeline",
-     "at": "S7",
-     "until": "E7",
+     "at": "S8",
+     "until": "E8",
      "p": {
       "axis": {
        "labels": [
@@ -816,7 +931,7 @@
         "label": "Transluce: ataques desde marzo",
         "pos": 150,
         "color": "blue",
-        "at": "7d#marzo"
+        "at": "8d#marzo"
        },
        {
         "h": 100,
@@ -824,7 +939,7 @@
         "label": "Medicare · Australia",
         "pos": 90,
         "color": "red",
-        "at": "7d"
+        "at": "8d"
        },
        {
         "h": 70,
@@ -832,7 +947,7 @@
         "label": "wiki alemán · 15.000+ ediciones",
         "pos": -90,
         "color": "teal",
-        "at": "7f#wiki"
+        "at": "8f#wiki"
        },
        {
         "h": 165,
@@ -840,7 +955,7 @@
         "label": "53 imágenes de usuarios",
         "pos": -90,
         "color": "amber",
-        "at": "7e#cincuenta"
+        "at": "8e#cincuenta"
        },
        {
         "h": 200,
@@ -848,7 +963,7 @@
         "label": "fuga por DNS",
         "pos": 90,
         "color": "red",
-        "at": "7h#veinte"
+        "at": "8h#veinte"
        }
       ],
       "at": 0.2
@@ -857,8 +972,8 @@
     },
     {
      "a": "card",
-     "at": "7b",
-     "until": "7d",
+     "at": "8b",
+     "until": "8d",
      "p": {
       "title": "PORTAL DE ESTADÍSTICAS DE MEDICARE · AUSTRALIA",
       "at": 0.3,
@@ -882,8 +997,8 @@
     },
     {
      "a": "note",
-     "at": "S7",
-     "until": "E7",
+     "at": "S8",
+     "until": "E8",
      "p": {
       "text": "Fuente: prensa · sin confirmar por OpenAI",
       "size": 1.7,
@@ -895,8 +1010,8 @@
     },
     {
      "a": "note",
-     "at": "7g",
-     "until": "7h",
+     "at": "8g",
+     "until": "8h",
      "p": {
       "text": "También, según la prensa: Anthropic · Google · Meta",
       "size": 2.2,
@@ -907,8 +1022,8 @@
     },
     {
      "a": "stamp",
-     "at": "7i",
-     "until": "E7",
+     "at": "8i",
+     "until": "E8",
      "p": {
       "text": "ENTRENAMIENTO PAUSADO",
       "sub": "la segunda vez en tres meses",
@@ -930,8 +1045,8 @@
    "cues": [
     {
      "a": "list",
-     "at": "S8",
-     "until": ">8a+1.5",
+     "at": "S9",
+     "until": ">9a+1.5",
      "p": {
       "title": "FUENTES Y ENLACES",
       "items": [
@@ -943,11 +1058,11 @@
       ],
       "plain": true,
       "ats": [
-       "8a#informe",
-       "8a#OpenAI",
-       "8a#informe+1",
-       "8a#incidentes",
-       "8a#incidentes+1"
+       "9a#informe",
+       "9a#OpenAI",
+       "9a#informe+1",
+       "9a#incidentes",
+       "9a#incidentes+1"
       ]
      },
      "bg": true,
@@ -958,14 +1073,14 @@
     },
     {
      "a": "seal",
-     "at": ">8a+1.5",
-     "until": "E8",
+     "at": ">9a+1.5",
+     "until": "E9",
      "p": {
       "text": "Arkinos @ oct 2026",
       "sub": "Explainer Studio",
       "at": 0.8,
       "black": {
-       "at": ">8a+6.5",
+       "at": ">9a+6.5",
        "dur": 4
       }
      },
