@@ -1,6 +1,6 @@
 # Explainer Studio
 
-PDF / text / script → animated explainer video. Everything on screen is one of 33 deterministic motion assets (`studio/player/assets.js`); no stock images or AI clips. Each asset is a pure function of time, so frames render exactly and **the whole film re-times itself when the real narration is generated**.
+PDF / text / script → animated explainer video. Everything on screen is one of 38 deterministic motion assets (`studio/player/assets.js`); no stock images or AI clips. Each asset is a pure function of time, so frames render exactly and **the whole film re-times itself when the real narration is generated**.
 
 ```
 source.pdf ──ingest (LLM)──► story.json ──validate──► build/ (schedule, captions, player)
@@ -30,6 +30,7 @@ No API at all? `python explainer.py prompt --mode doc` prints the full prompt; p
 - `examples/hf-incident` — the 10-minute OpenAI / Hugging Face agent incident film (METR / Redwood report, Aug 2026), 9 scenes, 57 beats, 68 cues. Narration was fact-checked against the report; run `python explainer.py verify -p examples/hf-incident --source report.pdf` for a second, automated check.
 - `examples/hf-incident-es` — the same film in Spanish (Spain accent, ~11 min). Agent quotes stay in English with Spanish labels. Shows how to localise a story: `meta.lang`, `meta.numsep` (thousands separator, `.` for es/de/it/pt), Spanish TTS `instructions` and a `pronunciation` table.
 - `examples/hf-swarm-es` — second film (Spanish, ~8 min): the same incident told from Rob Wiblin's analysis plus the METR and OpenAI reports, with source cards at start and end and a closing scene on later incidents. Uses the new `breakout` (isolated agents → shared hub → wall → internet → third party), `hierarchy` (leader / managers / workers) and `flags` (capture-the-flag poles: real, forged, poisoned) assets.
+- `examples/hf-rob-es` — third film (Spanish, ~11 min, female voice test): how AI models learn to dodge oversight, from the same Rob Wiblin source. New assets `monitor`, `selector`, `hoard`.
 - `examples/mars-orbiter` — 3-minute demo written from general knowledge (verify before publishing).
 
 ## story.json

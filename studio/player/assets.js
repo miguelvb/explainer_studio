@@ -366,6 +366,53 @@ A.flags=(h,p,C)=>{
   ct.textContent=p.counter===false?'':got+' / '+n+' '+(p.unit||'');cp.style.opacity=ease(pr(t,ca,.6))}};
 
 
+/* ---------- monitor: an eye reads a model's reasoning; when told it is watched, the reasoning shrinks and detection collapses ---------- */
+A.monitor=(h,p,C)=>{
+ const L=p.lines||['Voy a copiar la clave','Nadie lo ve, sigo','Primero borro el rastro','Ahora sí, salgo de aquí','Mantengo la apariencia normal','Siguiente paso: el servidor'],n=Math.min(7,L.length),at=C.T(p.at||0),ta=p.told?C.T(p.told.at):1e9;
+ let s=`<text x="60" y="70" fill="#8C96A4" font-size="15">${esc(p.title||'')}</text><rect x="50" y="86" width="520" height="${n*50+28}" rx="14" fill="#171D26" stroke="#2A3340" stroke-width="1.5"/>`;
+ L.slice(0,n).forEach((l,i)=>{const y=114+i*50,w=Math.min(460,l.length*11.2);s+=`<g class="ln" data-i="${i}" style="opacity:0"><rect class="fl" x="62" y="${y-6}" width="496" height="38" rx="8" fill="#FF6E6E" fill-opacity=".14" stroke="#FF6E6E" stroke-opacity=".7" style="opacity:0"/><text x="76" y="${y+19}" fill="#E7EBF1" font-size="16">${esc(l)}</text></g>`});
+ s+=`<g class="ey" style="opacity:0"><path d="M640 170Q740 100 840 170Q740 240 640 170Z" fill="#171D26" stroke="#3FD8C2" stroke-width="2.4"/><circle class="ir" cx="740" cy="170" r="26" fill="#3FD8C2" fill-opacity=".25" stroke="#3FD8C2" stroke-width="2"/><circle class="pu" cx="740" cy="170" r="11" fill="#E7EBF1"/></g>`;
+ s+=`<g class="mt" style="opacity:0"><text x="640" y="300" fill="#8C96A4" font-size="14">${esc(p.meter||'')}</text><rect x="640" y="312" width="200" height="22" rx="11" fill="#171D26" stroke="#2A3340"/><rect class="mb" x="642" y="314" width="196" height="18" rx="9" fill="#3FD8C2"/><text class="mv" x="740" y="368" fill="#E7EBF1" font-size="26" text-anchor="middle">100%</text></g>`;
+ s+=`<g class="tl" style="opacity:0"><rect x="600" y="400" width="290" height="46" rx="12" fill="#171D26" stroke="#F6B94C" stroke-width="1.8"/><text x="745" y="429" fill="#F6B94C" font-size="16" text-anchor="middle">${esc(p.told?.label||'')}</text></g>`;
+ s+=`<text class="cp" x="480" y="506" fill="#E7EBF1" font-size="18" text-anchor="middle" style="opacity:0">${esc(p.caption||'')}</text>`;
+ h.innerHTML=`<svg class="sv" viewBox="0 0 960 540">${s}</svg>`;
+ const q=c=>h.querySelector(c),qa=c=>[...h.querySelectorAll(c)],ln=qa('.ln'),keep=new Set([1]),ey=q('.ey'),pu=q('.pu'),mt=q('.mt'),mb=q('.mb'),mv=q('.mv'),tl=q('.tl'),cp=q('.cp'),ca=p.captionAt!=null?C.T(p.captionAt):at+1;
+ return t=>{ey.style.opacity=ease(pr(t,at,.6));mt.style.opacity=ease(pr(t,at+.4,.6));
+  const sc=Math.sin(t*1.4);pu.setAttribute('cx',740+sc*12);pu.setAttribute('cy',170+Math.sin(t*2.3)*4);
+  const k=ease(pr(t,ta,1.2));
+  ln.forEach((g,i)=>{const o=ease(pr(t,at+.3+i*.35,.4)),gone=i!==1?k:0;g.style.opacity=o*(1-gone*.92);g.querySelector('.fl').style.opacity=t>=at+.9+i*.35?1-k:0;g.style.transform=`scaleX(${1-gone*.8})`;g.style.transformOrigin='62px 0'});
+  const v=lerp(100,p.after??20,k);mb.setAttribute('width',196*v/100);mb.setAttribute('fill',k>.5?'#FF6E6E':'#3FD8C2');mv.textContent=Math.round(v)+'%';
+  tl.style.opacity=ease(pr(t,ta-.2,.5));cp.style.opacity=ease(pr(t,ca,.6))}};
+
+/* ---------- selector: generations of models; hesitant ones vanish, bold ones carry on ---------- */
+A.selector=(h,p,C)=>{
+ const G=p.gens||4,N=10,at=C.T(p.at||0),dur=p.dur||8,gx=i=>150+i*(660/(G-1)),B=[2,3,5,7,9,10];
+ let s=`<text x="60" y="66" fill="#8C96A4" font-size="15">${esc(p.title||'')}</text>`;
+ const dots=[];
+ for(let g=0;g<G;g++){s+=`<text class="gl" x="${gx(g)}" y="470" fill="#8C96A4" font-size="13" text-anchor="middle" style="opacity:0">${esc((p.glabel||'Generación')+' '+(g+1))}</text>`;
+  const bold=B[Math.min(g,B.length-1)];
+  for(let j=0;j<N;j++){const isB=j<bold,y=110+j*34;dots.push({g,j,isB,x:gx(g),y});s+=`<circle class="dt" cx="${gx(g)}" cy="${y}" r="11" fill="${isB?'#3FD8C2':'none'}" stroke="${isB?'#3FD8C2':'#F6B94C'}" stroke-width="2" stroke-dasharray="${isB?'0':'4 3'}" style="opacity:0"/>`}}
+ s+=`<g class="lg" style="opacity:0"><circle cx="60" cy="410" r="8" fill="#3FD8C2"/><text x="78" y="415" fill="#E7EBF1" font-size="14">${esc(p.bold||'')}</text><circle cx="60" cy="440" r="8" fill="none" stroke="#F6B94C" stroke-width="2" stroke-dasharray="4 3"/><text x="78" y="445" fill="#E7EBF1" font-size="14">${esc(p.shy||'')}</text></g>`;
+ s+=`<text class="cp" x="480" y="512" fill="#E7EBF1" font-size="18" text-anchor="middle" style="opacity:0">${esc(p.caption||'')}</text>`;
+ h.innerHTML=`<svg class="sv" viewBox="0 0 960 540">${s}</svg>`;
+ const el=[...h.querySelectorAll('.dt')],gl=[...h.querySelectorAll('.gl')],lg=h.querySelector('.lg'),cp=h.querySelector('.cp'),ca=p.captionAt!=null?C.T(p.captionAt):at+dur*.7,st=dur/G;
+ return t=>{lg.style.opacity=ease(pr(t,at,.6));
+  el.forEach((e,k)=>{const d=dots[k],t0=at+d.g*st;let o=ease(pr(t,t0,.4));
+   if(!d.isB)o*=1-ease(pr(t,t0+st*.55,.5))*.85;e.style.opacity=o});
+  gl.forEach((e,g)=>e.style.opacity=ease(pr(t,at+g*st,.4)));cp.style.opacity=ease(pr(t,ca,.6))}};
+
+/* ---------- hoard: an agent piles up access (keys), and ghost items hint at what comes next ---------- */
+A.hoard=(h,p,C)=>{
+ const I=p.items||[],F=p.ghost||[],at=C.T(p.at||0),gap=p.gap||1.1,ga=p.ghostAt!=null?C.T(p.ghostAt):at+I.length*gap+.8,rh=62;
+ let s=`<g class="ag"><circle cx="150" cy="260" r="62" fill="#171D26" stroke="#7C97FF" stroke-width="2.4"/>${MARK(150,260,64,'#7C97FF')}</g><text x="150" y="360" fill="#8C96A4" font-size="14" text-anchor="middle">${esc(p.agent||'')}</text>`;
+ I.forEach((x,i)=>{const y=90+i*rh;s+=`<g class="it" style="opacity:0"><path d="M214 260Q300 ${y+22} 380 ${y+22}" stroke="#F6B94C" stroke-opacity=".5" fill="none" stroke-dasharray="4 5"/><rect x="380" y="${y}" width="420" height="46" rx="12" fill="#171D26" stroke="#F6B94C" stroke-width="1.8"/><circle cx="410" cy="${y+23}" r="9" fill="none" stroke="#F6B94C" stroke-width="2.4"/><path d="M419 ${y+23}H446M438 ${y+23}V${y+32}" stroke="#F6B94C" stroke-width="2.4" fill="none"/><text x="462" y="${y+29}" fill="#E7EBF1" font-size="17">${esc(x)}</text></g>`});
+ F.forEach((x,i)=>{const y=90+(I.length+i)*rh;s+=`<g class="gh" style="opacity:0"><rect x="380" y="${y}" width="420" height="46" rx="12" fill="none" stroke="#FF6E6E" stroke-width="1.8" stroke-dasharray="7 6"/><text x="410" y="${y+30}" fill="#FF6E6E" font-size="17">${esc('¿ '+x+' ?')}</text></g>`});
+ s+=`<text class="gt" x="590" y="${90+(I.length+F.length)*rh+22}" fill="#8C96A4" font-size="14" text-anchor="middle" style="opacity:0">${esc(p.ghostLabel||'')}</text><text class="cp" x="480" y="512" fill="#E7EBF1" font-size="18" text-anchor="middle" style="opacity:0">${esc(p.caption||'')}</text>`;
+ h.innerHTML=`<svg class="sv" viewBox="0 0 960 540">${s}</svg>`;
+ const it=[...h.querySelectorAll('.it')],gh=[...h.querySelectorAll('.gh')],gt=h.querySelector('.gt'),cp=h.querySelector('.cp'),ca=p.captionAt!=null?C.T(p.captionAt):ga+F.length*gap+.5;
+ return t=>{it.forEach((e,i)=>e.style.opacity=ease(pr(t,at+i*gap,.5)));
+  gh.forEach((e,i)=>e.style.opacity=ease(pr(t,ga+i*gap,.5))*(.75+.25*Math.sin(t*3+i)));gt.style.opacity=ease(pr(t,ga,.5));cp.style.opacity=ease(pr(t,ca,.6))}};
+
 /* ---------- facts: a row of illustrated cards (icon + title + sub), each revealed on cue ---------- */
 const FIC={
  wall:c=>`<rect x="14" y="26" width="48" height="48" rx="8" stroke-dasharray="5 5"/><path d="M62 50H92M82 40l10 10-10 10"/><circle cx="38" cy="50" r="7"/>`,
