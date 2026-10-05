@@ -228,8 +228,7 @@ def write_script(st, root, sched=None, total=None, real=False):
     for n, sc in enumerate(st['scenes']):
         L += [f"## {n} · {sc['title']}", '']
         for b in sc['beats']:
-            t = f" `{mm(sched[b['id']]['s'])}`" if sched and b['id'] in sched else ''
-            L.append(f"**{b['id']}**{t} {b['text']}"); L.append('')
+            L.append(f"**{b['id']}** {b['text']}"); L.append('')
     open(os.path.join(root, 'script.md'), 'w').write('\n'.join(L).rstrip() + '\n')
 
 

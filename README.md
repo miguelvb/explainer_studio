@@ -52,4 +52,4 @@ Project folders hold `story.json`, optional `mark.txt`, `source.txt`, `audio/`, 
 
 ## Script
 
-Every build (`build`, `validate`, `all`, or `python explainer.py script -p <project>`) writes `script.md` next to `story.json`: the voice-over, scene by scene, with beat ids and start times.
+Every build (`build`, `validate`, `all`, or `python explainer.py script -p <project>`) writes `script.md` next to `story.json`: the voice-over, scene by scene, with beat ids.
