@@ -106,11 +106,13 @@ def ingest(src, root, provider=None, model=None, mode='doc', minutes=10, title=N
     return story, E, W
 
 
-def verify(root, provider=None, model=None, log=print):
+def verify(root, provider=None, model=None, source=None, log=print):
     from . import env; env.load(root)
     dp, dm = env.llm_defaults(); provider = provider or dp; model = model or (dm if provider == dp else None)
+    if source:
+        txt, _ = read_source(source); os.makedirs(root, exist_ok=True); open(f'{root}/source.txt', 'w', encoding='utf-8').write(txt)
     src = open(f'{root}/source.txt', encoding='utf-8').read() if os.path.exists(f'{root}/source.txt') else None
-    if not src: raise SystemExit('no source.txt in project (run ingest, or copy the source text there)')
+    if not src: raise SystemExit('no source.txt in project: pass --source report.pdf (or run ingest first)')
     st = spec.load(f'{root}/story.json')
     raw = chat(provider, model, prompt.VERIFY, [{'role': 'user', 'content': prompt.verify_prompt(src, st)}], 8000)
     r = extract_json(raw); json.dump(r, open(f'{root}/verify.json', 'w'), indent=1, ensure_ascii=False)

@@ -110,7 +110,7 @@ def validate(st, timings=None):
     """Static checks. Returns (errors, warnings) as lists of strings."""
     E, W = [], []
     if not st.get('scenes'): return ['story has no scenes'], W
-    sched, order, total = schedule(st, timings, pad=False)
+    sched, order, total = schedule(st, timings, pad=True)
     for sc in st['scenes']:
         n = sc['n']; tag = f'scene {n}'
         if not sc['beats']: E.append(f'{tag}: no beats'); continue
@@ -140,20 +140,35 @@ def validate(st, timings=None):
             if e <= s + .3: E.append(f'{ct}: ends before it starts / shorter than 0.3 s (at={c["at"]}, until={c.get("until")})')
             if not is_overlay(a, c['p']) and c.get('rect') == RECTS['full']: spans.append((s, e))
             _check_props(c['p'], sched, ct, E)
-        # coverage: every beat must have a full-frame visual on screen for its whole duration
-        spans.sort()
+        # coverage: sample the scene; the union of active stage cues must cover (almost) the whole frame
         S, Eend = sched[f'S{n}']['s'], sched[f'E{n}']['s']
-        cur = S; gaps = []
-        for s, e in spans:
-            if s > cur + 1.2: gaps.append((cur, s))
-            cur = max(cur, e)
-        if Eend > cur + 1.2: gaps.append((cur, Eend))
-        for g0, g1 in gaps:
-            if g1 - g0 > 1.2:
-                W.append(f'{tag}: blank screen {g0 - S:.1f}s–{g1 - S:.1f}s into the scene (no full-frame visual) — extend a cue or add one')
-        beats_cov = [b for b in sc['beats'] if not any(s <= sched[b['id']]['s'] + .2 and e >= sched[b['id']]['e'] - .2 for s, e in spans) and not _chain(spans, sched[b['id']]['s'], sched[b['id']]['e'])]
-        for b in beats_cov:
-            W.append(f'{b["id"]}: narration is not fully covered by a visual')
+        stage = []
+        for c in cues:
+            if c.get('a') in ASSETS and not is_overlay(c['a'], c['p']) and 'at' in c and ('until' in c or 'dur' in c):
+                try: s0, e0 = cue_times(c, sched)
+                except ValueError: continue
+                stage.append((s0, e0, c.get('rect') or RECTS['full']))
+        def cov(t):
+            g = set()
+            for s0, e0, r in stage:
+                if s0 - .01 <= t <= e0 + .01:
+                    for i in range(10):
+                        for j in range(10):
+                            x, y = i * 10 + 5, j * 10 + 5
+                            if r[0] <= x <= r[0] + r[2] and r[1] <= y <= r[1] + r[3]: g.add((i, j))
+            return len(g)
+        bad, t = [], S + .6
+        while t < Eend - .6:
+            if cov(t) < 85: bad.append(t)
+            t += .5
+        if bad:
+            runs, st0, prev = [], bad[0], bad[0]
+            for x in bad[1:]:
+                if x - prev > .6: runs.append((st0, prev)); st0 = x
+                prev = x
+            runs.append((st0, prev))
+            for g0, g1 in runs:
+                if g1 - g0 >= .9: W.append(f'{tag}: frame not covered by a stage visual {g0 - S:.1f}s–{g1 - S:.1f}s into the scene — extend a cue or add one')
     return E, W
 
 

@@ -83,8 +83,8 @@ def main():
     p = P('mux', lambda a: audio.mux(proj(a), music_only=a.music_only, burn=a.burn)); p.add_argument('--music-only', action='store_true'); p.add_argument('--burn', action='store_true')
     p = P('all', cmd_all); p.add_argument('--w', type=int, default=1280); p.add_argument('--workers', type=int, default=2); p.add_argument('--limit', type=float, default=0); p.add_argument('--skip-tts', action='store_true'); p.add_argument('--voice'); p.add_argument('--burn', action='store_true'); p.add_argument('--no-pad', action='store_true')
     def cv(a):
-        r = llm.verify(proj(a), a.provider, a.model); print(json.dumps(r, indent=1, ensure_ascii=False)); print('saved verify.json')
-    p = P('verify', cv); p.add_argument('--provider', default=None, choices=['anthropic', 'openai', 'openrouter']); p.add_argument('--model')
+        r = llm.verify(proj(a), a.provider, a.model, a.source); print(json.dumps(r, indent=1, ensure_ascii=False)); print('saved verify.json')
+    p = P('verify', cv); p.add_argument('--provider', default=None, choices=['anthropic', 'openai', 'openrouter']); p.add_argument('--model'); p.add_argument('--source', help='PDF or text the story was made from (cached as source.txt)')
     p = sp.add_parser('mark'); p.set_defaults(f=lambda a: print('wrote', markmod.make(a.logo, a.out))); p.add_argument('logo'); p.add_argument('-o', '--out', default='mark.txt')
     p = sp.add_parser('catalog'); p.set_defaults(f=lambda a: print(prompt.catalog_md()))
     a = ap.parse_args()

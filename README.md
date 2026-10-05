@@ -24,6 +24,10 @@ Without keys: `--provider mock` makes a rough offline draft; `all --skip-tts` re
 Already have a script? `ingest script.txt --mode script` keeps your words and only designs the visuals.
 No API at all? `python explainer.py prompt --mode doc` prints the full prompt; paste it plus your document into any Claude chat, save the JSON reply as `projects/case/story.json`. (Also in `prompts/`.)
 
+## Examples
+- `examples/hf-incident` — the 10-minute OpenAI / Hugging Face agent incident film (METR / Redwood report, Aug 2026), 9 scenes, 57 beats, 68 cues. Narration was fact-checked against the report; run `python explainer.py verify -p examples/hf-incident --source report.pdf` for a second, automated check.
+- `examples/mars-orbiter` — 3-minute demo written from general knowledge (verify before publishing).
+
 ## story.json
 See `prompts/script_from_doc.md` (generated from `studio/catalog.py`, so it is always in sync). In short: scenes → `beats` (narration, ids auto: `3a`,`3b`…) and `cues` (`a` asset, `at`/`until` anchors, `p` props). Anchors: `"3c"` beat start · `">3c"` beat end · `"3c#word"` the moment a word is spoken · `S3`/`E3` scene bounds · `+1.5` offset. Because cues hang off words and beats, changing the narration or voice never breaks sync.
 
