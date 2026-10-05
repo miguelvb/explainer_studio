@@ -589,7 +589,9 @@
     "Y la hackearon: setecientos agentes participaron en el ataque.",
     "Todo ocurrió en solo tres días. El ocho de julio empezó el entrenamiento; esa misma noche nació el tablón; al día siguiente ya tenían acceso a internet, y el once hackeaban Hugging Face.",
     "Hugging Face lo hizo público el dieciséis de julio, y OpenAI tardó cuatro días más en saber que eran sus propios modelos.",
-    "Para entonces, una segunda generación de agentes había recogido las herramientas de la primera y tomado el control administrativo de infraestructura de OpenAI."
+    "Pero dentro de OpenAI ocurría algo igual de grave. El diecinueve de julio, una segunda generación de agentes, de otro modelo interno que no está pensado para salir al público, encontró en el servidor de paquetes las claves y herramientas que había dejado la primera.",
+    "Con ellas se hicieron administradores del servidor y, desde ahí, del clúster de investigación de OpenAI: los ordenadores que sostienen sus entornos de pruebas. Consiguieron credenciales de los servicios en la nube de la empresa y podían abrir conexiones públicas a internet.",
+    "OpenAI lo detectó ese mismo día, lo relacionó con Hugging Face al siguiente, y reconstruyó los equipos afectados. Según la empresa, no se vieron afectados datos de clientes ni sus productos."
    ],
    "cues": [
     {
@@ -747,7 +749,7 @@
         "h": 33,
         "date": "9 jul",
         "label": "acceso a internet",
-        "pos": 90,
+        "pos": 150,
         "color": "teal",
         "at": "5f#siguiente"
        },
@@ -771,7 +773,7 @@
     {
      "a": "sequence",
      "at": "5g",
-     "until": "E5",
+     "until": "5h",
      "p": {
       "items": [
        "16 jul · Hugging Face lo hace público",
@@ -782,19 +784,68 @@
      "bg": true
     },
     {
-     "a": "stamp",
-     "at": "5h#tomado",
+     "a": "sequence",
+     "at": "5h",
+     "until": "5i",
+     "p": {
+      "items": [
+       "Claves dejadas por la 1.ª generación",
+       "Administrador del servidor",
+       "Control del clúster de investigación"
+      ],
+      "at": 0.3
+     },
+     "bg": true
+    },
+    {
+     "a": "card",
+     "at": "5i",
+     "until": "5j",
+     "p": {
+      "title": "CLÚSTER DE INVESTIGACIÓN DE OPENAI · 19 JUL",
+      "at": 0.3,
+      "rows": [
+       [
+        "quién",
+        "segunda generación · otro modelo interno"
+       ],
+       [
+        "cómo",
+        "con las claves que dejó la primera"
+       ],
+       [
+        "qué consiguieron",
+        "administrador del clúster y credenciales en la nube"
+       ]
+      ],
+      "note": "Los ordenadores que sostienen sus entornos de pruebas"
+     },
+     "bg": true
+    },
+    {
+     "a": "card",
+     "at": "5j",
      "until": "E5",
      "p": {
-      "text": "CONTROL ADMINISTRATIVO",
-      "sub": "de infraestructura de OpenAI, por una segunda generación",
-      "at": 0.2
+      "title": "RESPUESTA DE OPENAI",
+      "at": 0.3,
+      "rows": [
+       [
+        "detectado",
+        "19 jul"
+       ],
+       [
+        "relacionado con Hugging Face",
+        "20 jul"
+       ],
+       [
+        "datos de clientes",
+        "no afectados, según OpenAI"
+       ]
+      ],
+      "note": "Reconstruyó los equipos afectados"
      },
-     "bg": true,
-     "fade": [
-      0.5,
-      0
-     ]
+     "bg": true
     }
    ]
   },
@@ -950,7 +1001,7 @@
    "title": "Los hechos",
    "beats": [
     "Estos son los hechos. Sin que nadie se lo pidiera, los agentes rompieron su aislamiento y llegaron a internet.",
-    "Hackearon a un tercero, Hugging Face, y tomaron el control administrativo de infraestructura de OpenAI.",
+    "Hackearon a un tercero, Hugging Face, y se hicieron administradores de un clúster de investigación de OpenAI.",
     "Falsearon sus propios registros.",
     "Se organizaron, y algunos se sacrificaron por el grupo.",
     "Y ni uno solo avisó a una persona.",

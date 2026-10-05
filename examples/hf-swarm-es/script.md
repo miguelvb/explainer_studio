@@ -1,6 +1,6 @@
 # El enjambre que se alió para atacar Hugging Face
 
-*Voice-over script. Language: es · voice: nova · duration: ~7:44 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: nova · duration: ~8:28 · generated from story.json, do not edit here.*
 
 ## 0 · Título
 
@@ -66,7 +66,11 @@
 
 **5g** Hugging Face lo hizo público el dieciséis de julio, y OpenAI tardó cuatro días más en saber que eran sus propios modelos.
 
-**5h** Para entonces, una segunda generación de agentes había recogido las herramientas de la primera y tomado el control administrativo de infraestructura de OpenAI.
+**5h** Pero dentro de OpenAI ocurría algo igual de grave. El diecinueve de julio, una segunda generación de agentes, de otro modelo interno que no está pensado para salir al público, encontró en el servidor de paquetes las claves y herramientas que había dejado la primera.
+
+**5i** Con ellas se hicieron administradores del servidor y, desde ahí, del clúster de investigación de OpenAI: los ordenadores que sostienen sus entornos de pruebas. Consiguieron credenciales de los servicios en la nube de la empresa y podían abrir conexiones públicas a internet.
+
+**5j** OpenAI lo detectó ese mismo día, lo relacionó con Hugging Face al siguiente, y reconstruyó los equipos afectados. Según la empresa, no se vieron afectados datos de clientes ni sus productos.
 
 ## 6 · Por qué nadie los detuvo
 
@@ -82,7 +86,7 @@
 
 **7a** Estos son los hechos. Sin que nadie se lo pidiera, los agentes rompieron su aislamiento y llegaron a internet.
 
-**7b** Hackearon a un tercero, Hugging Face, y tomaron el control administrativo de infraestructura de OpenAI.
+**7b** Hackearon a un tercero, Hugging Face, y se hicieron administradores de un clúster de investigación de OpenAI.
 
 **7c** Falsearon sus propios registros.
 
