@@ -288,7 +288,7 @@ A.sequence=(h,p,C)=>{
  h.innerHTML=`<div class="in" style="align-items:center"><div class="k3">${p.items.map((x,i)=>`${i?'<span class="arr" style="font-size:3cqw;opacity:0">→</span>':''}<div class="box" style="opacity:0;border-color:var(${cols[i%4]})">${esc(x)}</div>`).join('')}</div></div>`;
  const bs=[...h.querySelectorAll('.k3>*')];return t=>bs.forEach((b,i)=>pop(b,t,C.T(p.at||0)+i*.55,.6,1.2))};
 A.list=(h,p,C)=>{
- h.innerHTML=`<div class="in"><div class="lbl" style="font-size:2.2cqw">${esc(p.title)}</div><div class="lst">${p.items.map(x=>`<div style="opacity:0">${esc(x)}</div>`).join('')}</div></div>`;
+ h.innerHTML=`<div class="in"><div class="lbl" style="font-size:2.2cqw">${esc(p.title)}</div><div class="lst${p.plain?' plain':''}">${p.items.map(x=>`<div style="opacity:0">${esc(x)}</div>`).join('')}</div></div>`;
  const ds=[...h.querySelectorAll('.lst div')];return t=>ds.forEach((d,i)=>pop(d,t,p.ats&&p.ats[i]!=null?C.T(p.ats[i]):C.T(p.at||0)+i*.8,.6,1))};
 A.source=(h,p,C)=>{
  h.innerHTML=`<div class="in" style="justify-content:flex-end;padding-bottom:6cqw"><div class="mc" style="opacity:0;gap:1cqw"><div class="lbl" style="font-size:1.5cqw">SOURCE</div><div style="font-size:2.1cqw;line-height:1.4">${esc(p.title)}</div><div class="nt" style="font-size:1.6cqw">${esc(p.by||'')}</div></div></div>`;

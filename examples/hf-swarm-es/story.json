@@ -60,6 +60,7 @@
      "at": "S0",
      "until": "E0",
      "p": {
+      "plain": true,
       "title": "FUENTES DE ESTE VÍDEO",
       "items": [
        "Rob Wiblin · 80,000 Hours",
@@ -915,9 +916,10 @@
        "Informe de METR y Redwood Research",
        "Informe de OpenAI",
        "Hugging Face · cronología técnica",
-       "Otros incidentes · Fortune, TechCrunch",
+       "Otros incidentes · CNBC, ABC News, Axios, Fortune",
        "Rob Wiblin · 80,000 Hours"
       ],
+      "plain": true,
       "ats": [
        "8a#informe",
        "8a#OpenAI",
