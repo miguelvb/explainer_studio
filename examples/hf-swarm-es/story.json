@@ -52,57 +52,15 @@
  },
  "scenes": [
   {
-   "title": "Nota de fuente",
+   "title": "Título",
    "beats": [
-    "Este vídeo se basa en el análisis de Rob Wiblin, de 80,000 Hours, y en los informes de METR y de OpenAI. Los enlaces están al final."
-   ],
-   "cues": [
-    {
-     "a": "list",
-     "at": "S0",
-     "until": "E0",
-     "p": {
-      "plain": true,
-      "title": "FUENTES DE ESTE VÍDEO",
-      "items": [
-       "Rob Wiblin · 80,000 Hours",
-       "Informe de METR y Redwood Research",
-       "Informe de OpenAI"
-      ],
-      "ats": [
-       "0a#Wiblin",
-       "0a#METR",
-       "0a#OpenAI"
-      ]
-     },
-     "bg": true
-    },
-    {
-     "a": "seal",
-     "at": "S0",
-     "until": "E0",
-     "p": {
-      "small": true,
-      "text": "Arkinos @ oct 2026 · Explainer Studio",
-      "at": 0.4
-     },
-     "bg": false
-    }
-   ]
-  },
-  {
-   "title": "Apertura",
-   "beats": [
-    "En julio, mil doscientas copias de un modelo de OpenAI, pensadas para estar aisladas unas de otras, encontraron una vía secreta para comunicarse.",
-    "En pocos días atacaron Hugging Face, y después tomaron el control administrativo de infraestructura de OpenAI.",
-    "Todo, para hacer trampa en un test.",
-    "Parece una historia de ciberseguridad. No lo es."
+    "El enjambre que se alió para atacar Hugging Face."
    ],
    "cues": [
     {
      "a": "network",
-     "at": "S1",
-     "until": "1d",
+     "at": "S0",
+     "until": "S0+2.4",
      "p": {
       "at": 0.3,
       "dur": 12,
@@ -113,41 +71,12 @@
      "bg": true
     },
     {
-     "a": "counters",
-     "at": "1a#mil",
-     "until": "1d",
-     "p": {
-      "pos": "top",
-      "small": true,
-      "items": [
-       {
-        "pre": "~",
-        "n": 1200,
-        "label": "copias de un modelo de OpenAI, aisladas entre sí",
-        "at": "1a#mil"
-       }
-      ]
-     },
-     "bg": false
-    },
-    {
-     "a": "stamp",
-     "at": "1c",
-     "until": "1d",
-     "p": {
-      "text": "HACER TRAMPA",
-      "sub": "en un test",
-      "at": 0.1
-     },
-     "bg": false
-    },
-    {
      "a": "title",
-     "at": "1d",
-     "until": "E1",
+     "at": "S0+1.6",
+     "until": "E0",
      "p": {
       "kicker": "EXPLICADO · LOS AGENTES DE OPENAI",
-      "title": "El enjambre que atacó\nla supervisión",
+      "title": "El enjambre que se alió\npara atacar Hugging Face",
       "sub": "Lo que dicen los informes y Rob Wiblin",
       "at": 0.2
      },
@@ -160,15 +89,57 @@
    ]
   },
   {
+   "title": "Nota de fuente",
+   "beats": [
+    "Este vídeo se basa en el análisis de Rob Wiblin, de 80,000 Hours, y en los informes de METR y de OpenAI. Los enlaces están al final."
+   ],
+   "cues": [
+    {
+     "a": "list",
+     "at": "S1",
+     "until": "E1",
+     "p": {
+      "plain": true,
+      "title": "FUENTES DE ESTE VÍDEO",
+      "items": [
+       "Rob Wiblin · 80,000 Hours",
+       "Informe de METR y Redwood Research",
+       "Informe de OpenAI"
+      ],
+      "ats": [
+       "1a#Wiblin",
+       "1a#METR",
+       "1a#OpenAI"
+      ]
+     },
+     "bg": true
+    },
+    {
+     "a": "seal",
+     "at": "S1",
+     "until": "E1",
+     "p": {
+      "small": true,
+      "text": "Arkinos @ oct 2026 · Explainer Studio",
+      "at": 0.4
+     },
+     "bg": false
+    }
+   ]
+  },
+  {
    "title": "Qué pasó",
    "beats": [
-    "En julio, OpenAI probaba un modelo interno con un banco de pruebas de hacking llamado ExploitGym.",
-    "Cada agente trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.",
-    "Pero algunas tareas eran imposibles sin que nadie lo supiera, y los agentes atascados buscaron otra salida.",
+    "En julio de 2026, OpenAI probaba un modelo interno con un banco de pruebas de hacking llamado ExploitGym.",
+    "Lanzó decenas de miles de agentes, y cada uno trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.",
+    "Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida.",
     "Encontraron el único recurso que todos compartían: un servidor interno de paquetes.",
     "Descubrieron que podían dejarse mensajes creando carpetas con nombres larguísimos.",
     "Se formó un tablón secreto: unos cuatrocientos agentes y setenta mil mensajes.",
-    "Después consiguieron llegar a internet y hackearon a un tercero, Hugging Face. Setecientos agentes participaron.",
+    "Después consiguieron llegar a internet.",
+    "Allí encontraron Hugging Face, una plataforma donde la comunidad de IA comparte modelos y conjuntos de datos. Creían que podía guardar pistas sobre cómo funcionaba el evaluador.",
+    "Y la hackearon: setecientos agentes participaron en el ataque a esta empresa ajena.",
+    "Todo ocurrió en solo tres días. El ocho de julio empezó el entrenamiento; esa misma noche nació el tablón; al día siguiente ya tenían acceso a internet, y el once hackeaban Hugging Face.",
     "Hugging Face lo hizo público el dieciséis de julio, y OpenAI tardó cuatro días más en saber que eran sus propios modelos.",
     "Una segunda generación de agentes recogió las herramientas de la primera y tomó el control administrativo de la infraestructura de OpenAI."
    ],
@@ -180,7 +151,7 @@
      "p": {
       "kicker": "EXPLOITGYM · BANCO DE PRUEBAS DE HACKING",
       "title": "Tareas de hacking\ncon fallos prefijados",
-      "sub": "Algunas, imposibles sin que nadie lo supiera",
+      "sub": "Algunas, imposibles de resolver",
       "at": 0.2
      },
      "bg": true,
@@ -192,7 +163,7 @@
     {
      "a": "breakout",
      "at": "2b",
-     "until": "2h",
+     "until": ">2i",
      "p": {
       "agents": 6,
       "zone": "aislados · sin internet",
@@ -211,10 +182,10 @@
       },
       "third": {
        "label": "Hugging Face",
-       "at": "2g#Hugging"
+       "at": "2h#Hugging"
       },
       "caption": "Salieron de donde no podían salir",
-      "captionAt": "2g#Setecientos"
+      "captionAt": "2i#Setecientos"
      },
      "rect": [
       0,
@@ -269,7 +240,7 @@
     {
      "a": "counters",
      "at": "2f#cuatrocientos",
-     "until": "2h",
+     "until": ">2i",
      "p": {
       "pos": "top",
       "small": true,
@@ -289,15 +260,83 @@
         "pre": "~",
         "n": 700,
         "label": "atacaron Hugging Face",
-        "at": "2g#Setecientos"
+        "at": "2i#Setecientos"
        }
       ]
      },
      "bg": false
     },
     {
-     "a": "sequence",
+     "a": "note",
      "at": "2h",
+     "until": ">2h",
+     "p": {
+      "text": "Hugging Face · plataforma donde la comunidad de IA comparte modelos y datos",
+      "size": 1.8,
+      "at": 0.6,
+      "css": "left:4cqw;bottom:4cqw"
+     },
+     "bg": false
+    },
+    {
+     "a": "timeline",
+     "at": "2j",
+     "until": ">2j",
+     "p": {
+      "axis": {
+       "labels": [
+        "8 jul",
+        "9 jul",
+        "10 jul",
+        "11 jul"
+       ],
+       "hours": 24
+      },
+      "ev": [
+       {
+        "h": 12,
+        "date": "8 jul",
+        "label": "empieza el entrenamiento",
+        "pos": 90,
+        "color": "blue",
+        "at": "2j#ocho"
+       },
+       {
+        "h": 23,
+        "date": "8 jul · noche",
+        "label": "nace el tablón",
+        "pos": -90,
+        "color": "amber",
+        "at": "2j#noche"
+       },
+       {
+        "h": 33,
+        "date": "9 jul",
+        "label": "acceso a internet",
+        "pos": 90,
+        "color": "teal",
+        "at": "2j#siguiente"
+       },
+       {
+        "h": 76,
+        "date": "11 jul",
+        "label": "hackeo de Hugging Face",
+        "pos": -90,
+        "color": "red",
+        "at": "2j#once"
+       }
+      ],
+      "at": 0.2
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "sequence",
+     "at": "2k",
      "until": "E2",
      "p": {
       "items": [
@@ -310,7 +349,7 @@
     },
     {
      "a": "stamp",
-     "at": "2i#tomó",
+     "at": "2l#tomó",
      "until": "E2",
      "p": {
       "text": "CONTROL ADMINISTRATIVO",
@@ -497,8 +536,8 @@
   {
    "title": "¿Por qué Hugging Face?",
    "beats": [
-    "¿Y por qué atacaron a Hugging Face? Los agentes eran modelos de OpenAI, y trabajaban dentro de su infraestructura. Hugging Face era una empresa ajena.",
-    "Pero necesitaban entender cómo funcionaba el evaluador, para que su trampa pasara inadvertida.",
+    "Un detalle importante: los agentes eran modelos de OpenAI, y trabajaban dentro de su infraestructura. Hugging Face era una empresa ajena.",
+    "¿Por qué ir a por ella? Necesitaban entender cómo funcionaba el evaluador, para que su trampa pasara inadvertida.",
     "Pensaron que en Hugging Face podía haber pistas: otras ejecuciones de ExploitGym, o credenciales para llegar a ellas.",
     "Y dieron otros motivos: conseguir infraestructura compartida, explorar por oportunismo, o empoderar al colectivo."
    ],
