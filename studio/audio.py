@@ -17,8 +17,8 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
     if 'OPENAI_API_KEY' not in os.environ: raise SystemExit('OPENAI_API_KEY not set. .env files read: ' + (', '.join(env.FOUND) or 'none found') + '. The line must look like OPENAI_API_KEY=sk-...')
     from openai import OpenAI
     client = OpenAI(); m = st['meta']; E = os.environ
-    model = model or E.get('OPENAI_TTS_MODEL', 'gpt-4o-mini-tts'); voice = voice or E.get('OPENAI_TTS_VOICE') or m.get('voice', 'marin')
-    speed = float(speed or E.get('OPENAI_TTS_SPEED', 1.0)); instr = E.get('OPENAI_TTS_INSTRUCTIONS') or m.get('instructions', DEFAULT_INSTR)
+    model = model or m.get('model') or E.get('OPENAI_TTS_MODEL', 'gpt-4o-mini-tts'); voice = voice or m.get('voice') or E.get('OPENAI_TTS_VOICE') or 'marin'
+    speed = float(speed or m.get('speed') or E.get('OPENAI_TTS_SPEED', 1.0)); instr = m.get('instructions') or E.get('OPENAI_TTS_INSTRUCTIONS') or DEFAULT_INSTR
     log(f'tts model={model} voice={voice} speed={speed}')
     pron = sorted(st.get('pronunciation', {}).items(), key=lambda kv: -len(kv[0]))
     def say(t):

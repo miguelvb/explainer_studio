@@ -9,7 +9,7 @@ source.pdf ──ingest (LLM)──► story.json ──validate──► build/
 ```
 
 ## Configuration (.env)
-Copy `.env.example` to `.env` in the same folder as `explainer.py` (that is the only place it is read; shell variables win). `OPENAI_TTS_MODEL`, `OPENAI_TTS_VOICE`, `OPENAI_TTS_SPEED`, `OPENAI_TTS_INSTRUCTIONS` configure narration; `STUDIO_LLM_PROVIDER` / `STUDIO_LLM_MODEL` the script step (provider is auto-detected from whichever API key is present). Precedence: command line > .env > story.json `meta` > defaults. Other keys in the file (e.g. `OPENROUTER_IMAGE_MODEL`) are ignored.
+Copy `.env.example` to `.env` in the same folder as `explainer.py` (that is the only place it is read; shell variables win). `OPENAI_TTS_MODEL`, `OPENAI_TTS_VOICE`, `OPENAI_TTS_SPEED`, `OPENAI_TTS_INSTRUCTIONS` configure narration; `STUDIO_LLM_PROVIDER` / `STUDIO_LLM_MODEL` the script step (provider is auto-detected from whichever API key is present). Precedence: command line > story.json `meta` (`voice`, `model`, `speed`, `instructions`) > .env > defaults, so one film can use its own voice while `.env` stays your global default. Other keys in the file (e.g. `OPENROUTER_IMAGE_MODEL`) are ignored.
 
 ## Quick start
 ```bash

@@ -5,8 +5,10 @@
   "minutes": 8,
   "mark": "mark.txt",
   "numsep": ".",
-  "instructions": "Narrador de documental sereno y de investigación. Español de España (castellano peninsular), dicción clara, sin dramatismo. Ritmo ágil, algo más rápido que el conversacional, con una pausa natural breve al final de cada frase. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
-  "notes": "Basado en el vídeo de Rob Wiblin (80,000 Hours), el informe de METR/Redwood y el de OpenAI. Los hechos del vídeo se toman por válidos; los incidentes recientes (escena 8) proceden de prensa y no se han contrastado con un informe."
+  "instructions": "Narradora de divulgación, brillante y explicativa. Español de España (castellano peninsular), dicción clara, tono cercano y entusiasta pero serio con el tema. Ritmo ágil, con energía en las ideas clave y una pausa breve al final de cada frase. Explica como si se lo contaras a alguien curioso. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
+  "notes": "Basado en el vídeo de Rob Wiblin (80,000 Hours), el informe de METR/Redwood y el de OpenAI. Los hechos del vídeo se toman por válidos; los incidentes recientes (escena 8) proceden de prensa y no se han contrastado con un informe.",
+  "voice": "nova",
+  "speed": 1.1
  },
  "pronunciation": {
   "PHASEONE-big": "Phase One big",
