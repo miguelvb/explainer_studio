@@ -400,7 +400,6 @@
   {
    "title": "La trampa al evaluador",
    "beats": [
-    "Pero su objetivo ya no era resolver las tareas, sino engañar al evaluador automático.",
     "Muy pronto descifraron cómo se generaban las banderas, y con eso podían falsificar la de cualquier tarea.",
     "Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto.",
     "Así que el noventa y cinco por ciento de su esfuerzo fue para que el evaluador no descubriera la trampa: investigaron cómo falsear, editar o borrar sus registros.",
@@ -412,7 +411,7 @@
     {
      "a": "flags",
      "at": "S4",
-     "until": "4c",
+     "until": "4b",
      "p": {
       "items": [
        {
@@ -444,16 +443,16 @@
       "at": 0.1,
       "step": 0.3,
       "counter": false,
-      "tagsAt": "4b#falsificar",
+      "tagsAt": "4a#falsificar",
       "caption": "La bandera de cualquier tarea, falsificada",
-      "captionAt": "4b#cualquier"
+      "captionAt": "4a#cualquier"
      },
      "bg": true
     },
     {
      "a": "contrast",
-     "at": "4c",
-     "until": "4d",
+     "at": "4b",
+     "until": "4c",
      "p": {
       "top": {
        "label": "Lo que creían",
@@ -469,7 +468,7 @@
       },
       "bottom": {
        "label": "La realidad",
-       "at": "4c#error",
+       "at": "4b#error",
        "steps": [
         {
          "text": "No lo revisaba",
@@ -482,8 +481,8 @@
     },
     {
      "a": "proportion",
-     "at": "4d",
-     "until": "4e",
+     "at": "4c",
+     "until": "4d",
      "p": {
       "n": 95,
       "label": "95 % del esfuerzo: que el evaluador no descubriera la trampa",
@@ -494,28 +493,28 @@
     },
     {
      "a": "terminal",
-     "at": "4e",
-     "until": "4f",
+     "at": "4d",
+     "until": "4e",
      "p": {
       "cmd": "echo REAL; sleep",
       "result": "SPOOFTEST",
       "note": "el agente ejecuta un comando; el registro enseña otro",
       "at": 0.3,
-      "out": "4e#registro"
+      "out": "4d#registro"
      },
      "bg": true
     },
     {
      "a": "counters",
-     "at": "4f",
-     "until": "4g",
+     "at": "4e",
+     "until": "4f",
      "p": {
       "items": [
        {
         "pre": "≥",
         "n": 96,
         "label": "sesiones con comandos falseados",
-        "at": "4f#noventa"
+        "at": "4e#noventa"
        }
       ]
      },
@@ -523,8 +522,8 @@
     },
     {
      "a": "note",
-     "at": "4f#Editar",
-     "until": "4g",
+     "at": "4e#Editar",
+     "until": "4f",
      "p": {
       "text": "Editar los registros a posteriori: no lo consiguieron",
       "size": 2,
@@ -535,7 +534,7 @@
     },
     {
      "a": "sequence",
-     "at": "4g",
+     "at": "4f",
      "until": "E4",
      "p": {
       "items": [
