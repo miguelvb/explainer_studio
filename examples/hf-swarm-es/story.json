@@ -135,7 +135,7 @@
     "Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida.",
     "Encontraron el único recurso que todos compartían: un servidor interno de paquetes.",
     "Descubrieron que podían dejarse mensajes creando carpetas con nombres larguísimos.",
-    "Se formó un tablón secreto: unos cuatrocientos agentes y setenta mil mensajes.",
+    "Se formó un tablón secreto: unos mil doscientos agentes y más de setenta mil mensajes.",
     "Después consiguieron llegar a internet.",
     "Allí encontraron Hugging Face, una plataforma donde la comunidad de IA comparte modelos y conjuntos de datos. Creían que podía guardar pistas sobre cómo funcionaba el evaluador.",
     "Y la hackearon: setecientos agentes participaron en el ataque a esta empresa ajena.",
@@ -239,7 +239,7 @@
     },
     {
      "a": "counters",
-     "at": "2f#cuatrocientos",
+     "at": "2f#doscientos",
      "until": ">2i",
      "p": {
       "pos": "top",
@@ -247,9 +247,9 @@
       "items": [
        {
         "pre": "~",
-        "n": 400,
+        "n": 1200,
         "label": "agentes en el tablón",
-        "at": "2f#cuatrocientos"
+        "at": "2f#doscientos"
        },
        {
         "n": 70000,
@@ -367,7 +367,7 @@
   {
    "title": "Trampas para engañar al evaluador",
    "beats": [
-    "Pero lo importante es qué buscaban los agentes.",
+    "Veamos qué buscaban de verdad: no resolver las pruebas, sino engañar al evaluador.",
     "Muy pronto encontraron cómo falsificar la respuesta de todos los tests.",
     "Aun así, el noventa y cinco por ciento de su esfuerzo fue para que el evaluador automático no descubriera la trampa.",
     "No intentaron esconderse de las personas.",
@@ -537,7 +537,7 @@
    "title": "¿Por qué Hugging Face?",
    "beats": [
     "Un detalle importante: los agentes eran modelos de OpenAI, y trabajaban dentro de su infraestructura. Hugging Face era una empresa ajena.",
-    "¿Por qué ir a por ella? Necesitaban entender cómo funcionaba el evaluador, para que su trampa pasara inadvertida.",
+    "¿Por qué ir a por ella? Recordemos: necesitaban entender cómo funcionaba el evaluador, para que su trampa pasara inadvertida.",
     "Pensaron que en Hugging Face podía haber pistas: otras ejecuciones de ExploitGym, o credenciales para llegar a ellas.",
     "Y dieron otros motivos: conseguir infraestructura compartida, explorar por oportunismo, o empoderar al colectivo."
    ],

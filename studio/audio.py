@@ -26,15 +26,18 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
         return t
     beats = json.load(open(f'{root}/build/beats.json')); os.makedirs(f'{root}/audio/beats', exist_ok=True)
     tf = f'{root}/audio/timings.json'; T = json.load(open(tf)) if os.path.exists(tf) else {}
+    hf = f'{root}/audio/hashes.json'; Hh = json.load(open(hf)) if os.path.exists(hf) else {}   # text+voice fingerprint per beat: edited beats or a new voice re-speak themselves
+    import hashlib
     for b in beats:
         i = b['id']
         if only and i not in only: continue
         p = f'{root}/audio/beats/{i}.mp3'
-        if os.path.exists(p) and not force and i in T: continue
+        hh = hashlib.sha1('|'.join([say(b['text']), model, voice, str(speed), instr]).encode()).hexdigest()[:12]
+        if os.path.exists(p) and not force and i in T and Hh.get(i) == hh: continue
         log(f'tts {i}')
         with client.audio.speech.with_streaming_response.create(model=model, voice=voice, input=say(b['text']), instructions=instr, speed=speed, response_format='mp3') as r:
             r.stream_to_file(p)
-        T[i] = round(_dur(p) + .12, 3); json.dump(T, open(tf, 'w'), indent=1)
+        T[i] = round(_dur(p) + .12, 3); json.dump(T, open(tf, 'w'), indent=1); Hh[i] = hh; json.dump(Hh, open(hf, 'w'), indent=1)
     log(f'timings -> {tf}  narration {sum(T.values()):.0f}s')
 
 
