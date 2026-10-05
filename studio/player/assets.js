@@ -534,7 +534,7 @@ window.frame=t=>{for(const q of window.CUES){
   q.el.style.opacity=Math.min(q.fi>0?clamp(lt/q.fi):1,q.fo>0?clamp((q.end-t)/q.fo):1);
   q.upd(lt);if(q.cam)applyCam(q,t)}};
 const camAt=(q,t)=>{const K=q.cam,P=k=>{let x=k.x,y=k.y;if(k.to&&q.upd.pos){[x,y]=q.upd.pos(k.to)}return{x:x??50,y:y??50,z:k.z,rx:k.rx,ry:k.ry,rot:k.rot,blur:k.blur}};
- if(t<=K[0].t)return P(K[0]);for(let i=1;i<K.length;i++){if(t<=K[i].t){const a=P(K[i-1]),b=P(K[i]),d=K[i].dur||(K[i].t-K[i-1].t),u=eio(clamp((t-K[i-1].t)/Math.max(.01,d)));const o={};for(const k in a)o[k]=k==='z'?Math.exp(lerp(Math.log(a.z),Math.log(b.z),u)):lerp(a[k],b[k],u);return o}}return P(K[K.length-1])};
+ if(t<=K[0].t)return P(K[0]);for(let i=1;i<K.length;i++){if(t<=K[i].t){const a=P(K[i-1]),b=P(K[i]),e=K[i].t,d=Math.min(K[i].dur||2,e-K[i-1].t),u=eio(clamp((t-(e-d))/Math.max(.01,d)));const o={};for(const k in a)o[k]=k==='z'?Math.exp(lerp(Math.log(a.z),Math.log(b.z),u)):lerp(a[k],b[k],u);return o}}return P(K[K.length-1])};
 const applyCam=(q,t)=>{const c=camAt(q,t);q.st.style.transformOrigin=c.x+'% '+c.y+'%';
  q.st.style.transform=`translate(${50-c.x}%,${50-c.y}%) scale(${c.z}) rotateX(${c.rx}deg) rotateY(${c.ry}deg) rotateZ(${c.rot}deg)`;
  q.st.style.filter=c.blur>.05?`blur(${c.blur}px)`:'none'};
