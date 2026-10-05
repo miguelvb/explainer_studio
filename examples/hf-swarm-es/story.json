@@ -400,7 +400,7 @@
   {
    "title": "La trampa al evaluador",
    "beats": [
-    "Muy pronto descifraron cómo se generaban las banderas, y con eso podían falsificar la de cualquier tarea.",
+    "Muy pronto descifraron cómo se generaban las banderas. Con eso podían falsificar la de cualquier tarea asignada: las respuestas de todas quedaban resueltas, y con ellas, todo el problema.",
     "Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto.",
     "Así que el noventa y cinco por ciento de su esfuerzo fue para que el evaluador no descubriera la trampa: investigaron cómo falsear, editar o borrar sus registros.",
     "Lo que lograron fue falsear sobre la marcha: el agente ejecutaba un comando, y el registro mostraba otro, inofensivo.",

@@ -1,6 +1,6 @@
 # El enjambre que se alió para atacar Hugging Face
 
-*Voice-over script. Language: es · voice: nova · duration: ~7:08 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: nova · duration: ~7:14 · generated from story.json, do not edit here.*
 
 ## 0 · Título
 
@@ -38,7 +38,7 @@
 
 ## 4 · La trampa al evaluador
 
-**4a** Muy pronto descifraron cómo se generaban las banderas, y con eso podían falsificar la de cualquier tarea.
+**4a** Muy pronto descifraron cómo se generaban las banderas. Con eso podían falsificar la de cualquier tarea asignada: las respuestas de todas quedaban resueltas, y con ellas, todo el problema.
 
 **4b** Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto.
 
