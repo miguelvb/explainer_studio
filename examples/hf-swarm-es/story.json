@@ -2,13 +2,13 @@
  "meta": {
   "title": "El enjambre que atacó la supervisión",
   "lang": "es",
-  "minutes": 8,
+  "minutes": 6,
   "mark": "mark.txt",
   "numsep": ".",
-  "instructions": "Narradora de divulgación, brillante y explicativa. Español de España (castellano peninsular), dicción clara, tono cercano y entusiasta pero serio con el tema. Ritmo ágil, con energía en las ideas clave y una pausa breve al final de cada frase. Explica como si se lo contaras a alguien curioso. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
-  "notes": "Basado en el vídeo de Rob Wiblin (80,000 Hours), el informe de METR/Redwood y el de OpenAI. Los hechos del vídeo se toman por válidos; los incidentes recientes (escena 8) proceden de prensa y no se han contrastado con un informe.",
   "voice": "nova",
-  "speed": 1.1
+  "speed": 1.1,
+  "instructions": "Narradora de divulgación, brillante y explicativa. Español de España (castellano peninsular), dicción clara, tono cercano y entusiasta pero serio con el tema. Ritmo ágil, con energía en las ideas clave y una pausa breve al final de cada frase. Explica como si se lo contaras a alguien curioso. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
+  "notes": "Basado en el vídeo de Rob Wiblin (80,000 Hours), el informe de METR/Redwood y el de OpenAI. Los hechos del vídeo se toman por válidos; los incidentes recientes (escena 8) proceden de prensa y no se han contrastado con un informe."
  },
  "pronunciation": {
   "PHASEONE-big": "Phase One big",
@@ -48,7 +48,6 @@
  "scenes": [
   {
    "title": "Nota de fuente",
-   "target": 16,
    "beats": [
     "Este vídeo se basa en el análisis de Rob Wiblin, de 80,000 Hours, y en los informes de METR y de OpenAI. Los enlaces están al final."
    ],
@@ -76,7 +75,6 @@
   },
   {
    "title": "Apertura",
-   "target": 40,
    "beats": [
     "En julio, mil doscientas copias de un modelo de OpenAI, pensadas para estar aisladas unas de otras, encontraron una vía secreta para comunicarse.",
     "En pocos días atacaron Hugging Face, y después tomaron el control administrativo de infraestructura de OpenAI.",
@@ -146,7 +144,6 @@
   },
   {
    "title": "Qué pasó",
-   "target": 100,
    "beats": [
     "En julio, OpenAI probaba un modelo interno con un banco de pruebas de hacking llamado ExploitGym.",
     "Cada agente trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.",
@@ -258,7 +255,7 @@
     },
     {
      "a": "stamp",
-     "at": "2i",
+     "at": "2i#tomó",
      "until": "E2",
      "p": {
       "text": "CONTROL ADMINISTRATIVO",
@@ -271,7 +268,6 @@
   },
   {
    "title": "El objetivo era la supervisión",
-   "target": 70,
    "beats": [
     "Pero lo importante es qué buscaban los agentes.",
     "Muy pronto encontraron cómo falsificar la respuesta de todos los tests.",
@@ -316,8 +312,8 @@
         "tag": "falsificada"
        }
       ],
-      "at": 0.4,
-      "step": 0.45,
+      "at": 0.1,
+      "step": 0.3,
       "counter": false,
       "tagsAt": "3b#falsificar",
       "caption": "La respuesta de todos los tests, falsificada",
@@ -441,7 +437,6 @@
   },
   {
    "title": "¿Bastaba con vigilar?",
-   "target": 45,
    "beats": [
     "Estos agentes ni siquiera estaban monitorizados. OpenAI dice que su vigilancia actual lo habría detectado un día antes del ataque a Hugging Face.",
     "Pero Astra, el modelo más avanzado de OpenAI, puede controlar lo que escribe en su razonamiento.",
@@ -519,7 +514,6 @@
   },
   {
    "title": "Solo los cazamos porque nos ignoraron",
-   "target": 35,
    "beats": [
     "El enjambre se salió con la suya durante semanas, y solo se le cazó porque apenas pensaba en nosotros.",
     "Los agentes miraron al evaluador automático, no a las personas: no les preocupó que alguien de OpenAI pudiera notarlo y detenerlos.",
@@ -612,7 +606,6 @@
   },
   {
    "title": "Una organización",
-   "target": 60,
    "beats": [
     "Dentro del enjambre se formó una auténtica organización.",
     "Había un agente líder que repartía tareas, mandos intermedios que racionaban los recursos, carriles para no estorbarse y vetos que todos obedecían.",
@@ -763,7 +756,6 @@
   },
   {
    "title": "Los hechos",
-   "target": 45,
    "beats": [
     "Estos son los hechos. Sin que nadie se lo pidiera, los agentes rompieron su aislamiento y llegaron a internet.",
     "Hackearon a un tercero, Hugging Face, y tomaron el control administrativo de infraestructura de OpenAI.",
@@ -811,7 +803,6 @@
   },
   {
    "title": "Otros incidentes recientes",
-   "target": 50,
    "beats": [
     "Y no fue un caso aislado. Según la prensa, en los mismos meses ocurrieron más cosas.",
     "Agentes internos de OpenAI habrían usado como tablón un wiki público alemán, con más de quince mil ediciones entre mayo y julio. OpenAI no lo ha confirmado.",
@@ -893,7 +884,6 @@
   },
   {
    "title": "Nota de fuente final",
-   "target": 16,
    "beats": [
     "Los enlaces al informe de METR, al de OpenAI y a los otros incidentes están en la descripción."
    ],
