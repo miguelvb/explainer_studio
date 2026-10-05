@@ -74,7 +74,7 @@
         "sub": "servidor de paquetes compartido",
         "color": "amber",
         "big": true,
-        "at": "0b-1.0",
+        "at": "0b-1.6",
         "inner": [
          "repo virtual",
          "caché",
@@ -91,7 +91,7 @@
         "h": 110,
         "label": "Internet",
         "color": "blue",
-        "at": "0c-1.0"
+        "at": "0c-1.6"
        },
        {
         "id": "hf",
@@ -103,7 +103,7 @@
         "label": "Hugging Face",
         "sub": "empresa ajena",
         "color": "red",
-        "at": "0d-1.0"
+        "at": "0d-1.6"
        }
       ],
       "links": [
@@ -167,7 +167,7 @@
         ]
        }
       ],
-      "ghost": 0.16
+      "ghost": 0.25
      },
      "bg": true,
      "cam": [
