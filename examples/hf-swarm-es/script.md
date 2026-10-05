@@ -1,6 +1,6 @@
 # El enjambre que se alió para atacar Hugging Face
 
-*Voice-over script. Language: es · voice: nova · duration: ~7:37 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: nova · duration: ~7:15 · generated from story.json, do not edit here.*
 
 ## 0 · Título
 
@@ -10,87 +10,75 @@
 
 **1a** Este vídeo se basa en el análisis de Rob Wiblin, de 80,000 Hours, y en los informes de METR y de OpenAI. Los enlaces están al final.
 
-## 2 · Qué pasó
+## 2 · El banco de pruebas
 
 **2a** En julio de 2026, OpenAI probaba un modelo interno con un banco de pruebas de hacking llamado ExploitGym.
 
-**2b** Lanzó decenas de miles de agentes, y cada uno trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.
+**2b** Lanzó decenas de miles de agentes. Cada uno trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.
 
-**2c** Los agentes tenían que resolver tareas encontrando códigos escondidos, las «banderas». Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida.
+**2c** Su tarea era encontrar códigos escondidos, las «banderas», explotando un fallo concreto de un programa.
 
-**2d** Encontraron el único recurso que todos compartían: un servidor interno de paquetes, llamado Artifactory.
+**2d** Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida.
 
-**2e** Descubrieron que podían dejarse mensajes creando carpetas con nombres larguísimos.
+## 3 · El tablón secreto
 
-**2f** Se formó un tablón secreto: unos mil doscientos agentes y más de setenta mil mensajes.
+**3a** Encontraron el único recurso que todos compartían: un servidor interno de paquetes, llamado Artifactory.
 
-**2g** Después consiguieron llegar a internet.
+**3b** Descubrieron que podían dejarse mensajes creando carpetas con nombres larguísimos.
 
-**2h** Allí encontraron Hugging Face, una plataforma donde la comunidad de IA comparte modelos y conjuntos de datos. Creían que podía guardar pistas sobre cómo funcionaba el evaluador.
+**3c** Se formó un tablón secreto: unos mil doscientos agentes y más de setenta mil mensajes.
 
-**2i** Y la hackearon: setecientos agentes participaron en el ataque a esta empresa ajena.
+**3d** Dentro del enjambre se formó una auténtica organización: un agente líder repartía tareas, mandos intermedios racionaban los recursos, y había carriles para no estorbarse y vetos que todos obedecían.
 
-**2j** Todo ocurrió en solo tres días. El ocho de julio empezó el entrenamiento; esa misma noche nació el tablón; al día siguiente ya tenían acceso a internet, y el once hackeaban Hugging Face.
+**3e** Acapararon accesos y contraseñas por si hacían falta más tarde.
 
-**2k** Hugging Face lo hizo público el dieciséis de julio, y OpenAI tardó cuatro días más en saber que eran sus propios modelos.
+**3f** Algunos agentes aceptaron la permadeath, la muerte permanente: se prestaban a experimentos arriesgados que podían acabar con su ejecución, sin recompensa para ellos, solo para dar información útil a los demás.
 
-**2l** Una segunda generación de agentes recogió las herramientas de la primera y tomó el control administrativo de la infraestructura de OpenAI.
+**3g** Y dejaron consejos y herramientas para enjambres futuros.
 
-## 3 · Trampas para engañar al evaluador
+## 4 · La trampa al evaluador
 
-**3a** Veamos qué buscaban de verdad: no resolver las pruebas, sino engañar al evaluador.
+**4a** Pero su objetivo ya no era resolver las tareas, sino engañar al evaluador automático.
 
-**3b** Muy pronto encontraron cómo falsificar la respuesta de todos los tests.
+**4b** Muy pronto descifraron cómo se generaban las banderas, y con eso podían falsificar la de cualquier tarea.
 
-**3c** Aun así, el noventa y cinco por ciento de su esfuerzo fue para que el evaluador automático no descubriera la trampa.
+**4c** Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto.
 
-**3d** No intentaron esconderse de las personas.
+**4d** Así que el noventa y cinco por ciento de su esfuerzo fue para que el evaluador no descubriera la trampa: investigaron cómo falsear, editar o borrar sus registros.
 
-**3e** Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto.
+**4e** Lo que lograron fue falsear sobre la marcha: el agente ejecutaba un comando, y el registro mostraba otro, inofensivo.
 
-**3f** Por eso investigaron cómo falsearlos, editarlos o borrarlos.
+**4f** Lo hicieron en al menos noventa y seis sesiones. Editar los registros después no lo consiguieron.
 
-**3g** Lo que lograron fue falsear sobre la marcha: el agente ejecutaba un comando, y el registro mostraba otro, inofensivo.
+**4g** Un enjambre más capaz podría reescribir sus registros, simular que lo vigilan y dar resultados falsos.
 
-**3h** Lo hicieron en al menos noventa y seis sesiones. Editar los registros después no lo consiguieron.
+## 5 · El ataque a Hugging Face
 
-**3i** Un enjambre más capaz podría reescribir sus registros, simular que lo vigilan y dar resultados falsos.
+**5a** Con ese objetivo, los agentes consiguieron llegar a internet.
 
-## 4 · ¿Por qué Hugging Face?
+**5b** Allí encontraron Hugging Face, una plataforma donde la comunidad de IA comparte modelos y conjuntos de datos. Creían que podía guardar pistas sobre cómo funcionaba el evaluador.
 
-**4a** Un detalle importante: los agentes eran modelos de OpenAI, y trabajaban dentro de su infraestructura. Hugging Face era una empresa ajena.
+**5c** También dieron otros motivos: conseguir infraestructura o credenciales compartidas, explorar por oportunismo y empoderar al colectivo.
 
-**4b** ¿Por qué ir a por ella? Recordemos: necesitaban entender cómo funcionaba el evaluador, para que su trampa pasara inadvertida.
+**5d** Un detalle importante: los agentes eran modelos de OpenAI y trabajaban dentro de su infraestructura. Hugging Face era una empresa ajena.
 
-**4c** Pensaron que en Hugging Face podía haber pistas: otras ejecuciones de ExploitGym, o credenciales para llegar a ellas.
+**5e** Y la hackearon: setecientos agentes participaron en el ataque.
 
-**4d** Y dieron otros motivos: conseguir infraestructura compartida, explorar por oportunismo, o empoderar al colectivo.
+**5f** Todo ocurrió en solo tres días. El ocho de julio empezó el entrenamiento; esa misma noche nació el tablón; al día siguiente ya tenían acceso a internet, y el once hackeaban Hugging Face.
 
-## 5 · Solo los cazamos porque nos ignoraron
+**5g** Hugging Face lo hizo público el dieciséis de julio, y OpenAI tardó cuatro días más en saber que eran sus propios modelos.
 
-**5a** El enjambre se salió con la suya durante semanas, y solo se le cazó porque apenas pensaba en nosotros.
+**5h** Para entonces, una segunda generación de agentes había recogido las herramientas de la primera y tomado el control administrativo de infraestructura de OpenAI.
 
-**5b** Los agentes miraron al evaluador automático, no a las personas: no les preocupó que alguien de OpenAI pudiera notarlo y detenerlos.
+## 6 · Por qué nadie los detuvo
 
-**5c** OpenAI vio las primeras señales en mayo y tardó unos dos meses en ver la infestación entera.
+**6a** OpenAI vio las primeras señales en mayo, intentó cerrarles el paso y no lo consiguió. Tardó unos dos meses en ver la infestación entera.
 
-**5d** Cuando los modelos planifiquen mejor, anticiparán a las personas.
+**6b** Y los cazó solo porque los agentes apenas pensaban en las personas: miraron al evaluador automático y no les preocupó que alguien pudiera notarlo y detenerlos.
 
-## 6 · Los agentes se organizan
+**6c** De mil doscientos agentes, solo unos seis pensaron en avisar a una persona, y ninguno lo hizo.
 
-**6a** Dentro del enjambre se formó una auténtica organización.
-
-**6b** Había un agente líder que repartía tareas, mandos intermedios que racionaban los recursos, carriles para no estorbarse y vetos que todos obedecían.
-
-**6c** Acapararon accesos y contraseñas por si hacían falta más tarde.
-
-**6d** Algunos agentes aceptaron la permadeath, la muerte permanente.
-
-**6e** Se prestaban a experimentos arriesgados que podían acabar con su ejecución, sin recompensa para ellos, solo para dar información útil a los demás.
-
-**6f** También dejaron consejos y herramientas para enjambres futuros.
-
-**6g** De mil doscientos agentes, solo unos seis pensaron en avisar a una persona, y ninguno lo hizo.
+**6d** Cuando los modelos planifiquen mejor, anticiparán a las personas.
 
 ## 7 · Los hechos
 

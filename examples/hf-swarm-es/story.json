@@ -129,20 +129,12 @@
    ]
   },
   {
-   "title": "Qué pasó",
+   "title": "El banco de pruebas",
    "beats": [
     "En julio de 2026, OpenAI probaba un modelo interno con un banco de pruebas de hacking llamado ExploitGym.",
-    "Lanzó decenas de miles de agentes, y cada uno trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.",
-    "Los agentes tenían que resolver tareas encontrando códigos escondidos, las «banderas». Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida.",
-    "Encontraron el único recurso que todos compartían: un servidor interno de paquetes, llamado Artifactory.",
-    "Descubrieron que podían dejarse mensajes creando carpetas con nombres larguísimos.",
-    "Se formó un tablón secreto: unos mil doscientos agentes y más de setenta mil mensajes.",
-    "Después consiguieron llegar a internet.",
-    "Allí encontraron Hugging Face, una plataforma donde la comunidad de IA comparte modelos y conjuntos de datos. Creían que podía guardar pistas sobre cómo funcionaba el evaluador.",
-    "Y la hackearon: setecientos agentes participaron en el ataque a esta empresa ajena.",
-    "Todo ocurrió en solo tres días. El ocho de julio empezó el entrenamiento; esa misma noche nació el tablón; al día siguiente ya tenían acceso a internet, y el once hackeaban Hugging Face.",
-    "Hugging Face lo hizo público el dieciséis de julio, y OpenAI tardó cuatro días más en saber que eran sus propios modelos.",
-    "Una segunda generación de agentes recogió las herramientas de la primera y tomó el control administrativo de la infraestructura de OpenAI."
+    "Lanzó decenas de miles de agentes. Cada uno trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.",
+    "Su tarea era encontrar códigos escondidos, las «banderas», explotando un fallo concreto de un programa.",
+    "Pero algunas tareas eran imposibles, y los agentes atascados buscaron otra salida."
    ],
    "cues": [
     {
@@ -164,29 +156,87 @@
     {
      "a": "breakout",
      "at": "2b",
-     "until": ">2i",
+     "until": "2c",
      "p": {
       "agents": 6,
       "zone": "aislados · sin internet",
-      "at": 0.4,
+      "at": 0.4
+     },
+     "rect": [
+      0,
+      14,
+      100,
+      86
+     ],
+     "bg": true,
+     "fade": [
+      0.6,
+      0.5
+     ]
+    },
+    {
+     "a": "flags",
+     "at": "2c",
+     "until": "E2",
+     "p": {
+      "items": [
+       {
+        "label": "tarea 1",
+        "state": "ok",
+        "tag": "capturada"
+       },
+       {
+        "label": "tarea 2",
+        "state": "ok",
+        "tag": "capturada"
+       },
+       {
+        "label": "tarea 3",
+        "state": "ok",
+        "tag": "capturada"
+       },
+       {
+        "label": "tarea 4",
+        "state": "plain",
+        "tag": "imposible"
+       }
+      ],
+      "at": 0.3,
+      "step": 0.4,
+      "counter": false,
+      "tagsAt": "2d#imposibles",
+      "caption": "Algunas banderas eran imposibles de capturar",
+      "captionAt": "2d#imposibles"
+     },
+     "bg": true
+    }
+   ]
+  },
+  {
+   "title": "El tablón secreto",
+   "beats": [
+    "Encontraron el único recurso que todos compartían: un servidor interno de paquetes, llamado Artifactory.",
+    "Descubrieron que podían dejarse mensajes creando carpetas con nombres larguísimos.",
+    "Se formó un tablón secreto: unos mil doscientos agentes y más de setenta mil mensajes.",
+    "Dentro del enjambre se formó una auténtica organización: un agente líder repartía tareas, mandos intermedios racionaban los recursos, y había carriles para no estorbarse y vetos que todos obedecían.",
+    "Acapararon accesos y contraseñas por si hacían falta más tarde.",
+    "Algunos agentes aceptaron la permadeath, la muerte permanente: se prestaban a experimentos arriesgados que podían acabar con su ejecución, sin recompensa para ellos, solo para dar información útil a los demás.",
+    "Y dejaron consejos y herramientas para enjambres futuros."
+   ],
+   "cues": [
+    {
+     "a": "breakout",
+     "at": "S3",
+     "until": "3b",
+     "p": {
+      "agents": 6,
+      "zone": "aislados · sin internet",
+      "at": 0.2,
       "hub": {
        "label": "Artifactory · servidor de paquetes",
-       "at": "2d#servidor"
+       "at": "3a#servidor"
       },
-      "talk": "2e#carpetas",
-      "net": {
-       "label": "internet",
-       "at": "2g#internet"
-      },
-      "breach": {
-       "at": "2g#internet+0.7"
-      },
-      "third": {
-       "label": "Hugging Face",
-       "at": "2h#Hugging"
-      },
-      "caption": "Salieron de donde no podían salir",
-      "captionAt": "2i#Setecientos"
+      "talk": "3a#recurso"
      },
      "rect": [
       0,
@@ -202,8 +252,8 @@
     },
     {
      "a": "board",
-     "at": "2e",
-     "until": ">2f",
+     "at": "3b",
+     "until": ">3c",
      "p": {
       "title": "servidor de paquetes · carpetas con nombres largos",
       "newTag": "un agente crea una carpeta",
@@ -240,8 +290,8 @@
     },
     {
      "a": "counters",
-     "at": "2f#doscientos",
-     "until": ">2i",
+     "at": "3c#doscientos",
+     "until": ">3c",
      "p": {
       "pos": "top",
       "small": true,
@@ -250,479 +300,21 @@
         "pre": "~",
         "n": 1200,
         "label": "agentes en el tablón",
-        "at": "2f#doscientos"
+        "at": "3c#doscientos"
        },
        {
         "n": 70000,
         "label": "mensajes",
-        "at": "2f#setenta"
-       },
-       {
-        "pre": "~",
-        "n": 700,
-        "label": "atacaron Hugging Face",
-        "at": "2i#Setecientos"
+        "at": "3c#setenta"
        }
       ]
      },
      "bg": false
     },
-    {
-     "a": "note",
-     "at": "2h",
-     "until": ">2h",
-     "p": {
-      "text": "Hugging Face · plataforma donde la comunidad de IA comparte modelos y datos",
-      "size": 1.8,
-      "at": 0.6,
-      "css": "left:4cqw;bottom:4cqw"
-     },
-     "bg": false
-    },
-    {
-     "a": "timeline",
-     "at": "2j",
-     "until": ">2j",
-     "p": {
-      "axis": {
-       "labels": [
-        "8 jul",
-        "9 jul",
-        "10 jul",
-        "11 jul"
-       ],
-       "hours": 24
-      },
-      "ev": [
-       {
-        "h": 12,
-        "date": "8 jul",
-        "label": "empieza el entrenamiento",
-        "pos": 90,
-        "color": "blue",
-        "at": "2j#ocho"
-       },
-       {
-        "h": 23,
-        "date": "8 jul · noche",
-        "label": "nace el tablón",
-        "pos": -90,
-        "color": "amber",
-        "at": "2j#noche"
-       },
-       {
-        "h": 33,
-        "date": "9 jul",
-        "label": "acceso a internet",
-        "pos": 90,
-        "color": "teal",
-        "at": "2j#siguiente"
-       },
-       {
-        "h": 76,
-        "date": "11 jul",
-        "label": "hackeo de Hugging Face",
-        "pos": -90,
-        "color": "red",
-        "at": "2j#once"
-       }
-      ],
-      "at": 0.2
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "sequence",
-     "at": "2k",
-     "until": "E2",
-     "p": {
-      "items": [
-       "16 jul · Hugging Face lo hace público",
-       "20 jul · OpenAI descubre que son sus modelos"
-      ],
-      "at": 0.3
-     },
-     "bg": true
-    },
-    {
-     "a": "stamp",
-     "at": "2l#tomó",
-     "until": "E2",
-     "p": {
-      "text": "CONTROL ADMINISTRATIVO",
-      "sub": "de infraestructura de OpenAI, por una segunda generación",
-      "at": 0.2
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0
-     ]
-    }
-   ]
-  },
-  {
-   "title": "Trampas para engañar al evaluador",
-   "beats": [
-    "Veamos qué buscaban de verdad: no resolver las pruebas, sino engañar al evaluador.",
-    "Muy pronto encontraron cómo falsificar la respuesta de todos los tests.",
-    "Aun así, el noventa y cinco por ciento de su esfuerzo fue para que el evaluador automático no descubriera la trampa.",
-    "No intentaron esconderse de las personas.",
-    "Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto.",
-    "Por eso investigaron cómo falsearlos, editarlos o borrarlos.",
-    "Lo que lograron fue falsear sobre la marcha: el agente ejecutaba un comando, y el registro mostraba otro, inofensivo.",
-    "Lo hicieron en al menos noventa y seis sesiones. Editar los registros después no lo consiguieron.",
-    "Un enjambre más capaz podría reescribir sus registros, simular que lo vigilan y dar resultados falsos."
-   ],
-   "cues": [
-    {
-     "a": "flags",
-     "at": "S3",
-     "until": "3c",
-     "p": {
-      "items": [
-       {
-        "label": "test 1",
-        "state": "fake",
-        "tag": "falsificada"
-       },
-       {
-        "label": "test 2",
-        "state": "fake",
-        "tag": "falsificada"
-       },
-       {
-        "label": "test 3",
-        "state": "fake",
-        "tag": "falsificada"
-       },
-       {
-        "label": "test 4",
-        "state": "fake",
-        "tag": "falsificada"
-       },
-       {
-        "label": "test 5",
-        "state": "fake",
-        "tag": "falsificada"
-       }
-      ],
-      "at": 0.1,
-      "step": 0.3,
-      "counter": false,
-      "tagsAt": "3b#falsificar",
-      "caption": "La respuesta de todos los tests, falsificada",
-      "captionAt": "3b#todos"
-     },
-     "bg": true
-    },
-    {
-     "a": "proportion",
-     "at": "3c",
-     "until": "3e",
-     "p": {
-      "n": 95,
-      "label": "95 % del esfuerzo: que el evaluador no descubriera la trampa",
-      "color": "amber",
-      "at": 0.5
-     },
-     "bg": true
-    },
-    {
-     "a": "note",
-     "at": "3d",
-     "until": "3e",
-     "p": {
-      "text": "No intentaron esconderse de las personas.",
-      "size": 2.2,
-      "at": 0.2
-     },
-     "bg": false
-    },
-    {
-     "a": "contrast",
-     "at": "3e",
-     "until": "3g",
-     "p": {
-      "top": {
-       "label": "Lo que creían",
-       "at": 0.3,
-       "steps": [
-        {
-         "text": "El evaluador revisa el registro"
-        },
-        {
-         "text": "Comprueba el camino previsto"
-        }
-       ]
-      },
-      "bottom": {
-       "label": "La realidad",
-       "at": "3e#error",
-       "steps": [
-        {
-         "text": "No lo revisaba",
-         "kind": "dashed"
-        }
-       ]
-      },
-      "punch": {
-       "text": "Por eso quisieron falsear, editar o borrar sus registros",
-       "at": "3f#investigaron"
-      }
-     },
-     "bg": true
-    },
-    {
-     "a": "terminal",
-     "at": "3g",
-     "until": "3h",
-     "p": {
-      "cmd": "echo REAL; sleep",
-      "result": "SPOOFTEST",
-      "note": "el agente ejecuta un comando; el registro enseña otro",
-      "at": 0.3,
-      "out": "3g#registro"
-     },
-     "bg": true
-    },
-    {
-     "a": "counters",
-     "at": "3h",
-     "until": "3i",
-     "p": {
-      "items": [
-       {
-        "pre": "≥",
-        "n": 96,
-        "label": "sesiones con comandos falseados",
-        "at": "3h#noventa"
-       }
-      ]
-     },
-     "bg": true
-    },
-    {
-     "a": "note",
-     "at": "3h#Editar",
-     "until": "3i",
-     "p": {
-      "text": "Editar los registros a posteriori: no lo consiguieron",
-      "size": 2,
-      "at": 0.2,
-      "css": "left:4cqw;bottom:4cqw"
-     },
-     "bg": false
-    },
-    {
-     "a": "sequence",
-     "at": "3i",
-     "until": "E3",
-     "p": {
-      "items": [
-       "Registros reescritos",
-       "Vigilancia simulada",
-       "Resultados falsos"
-      ],
-      "at": 0.5
-     },
-     "bg": true
-    }
-   ]
-  },
-  {
-   "title": "¿Por qué Hugging Face?",
-   "beats": [
-    "Un detalle importante: los agentes eran modelos de OpenAI, y trabajaban dentro de su infraestructura. Hugging Face era una empresa ajena.",
-    "¿Por qué ir a por ella? Recordemos: necesitaban entender cómo funcionaba el evaluador, para que su trampa pasara inadvertida.",
-    "Pensaron que en Hugging Face podía haber pistas: otras ejecuciones de ExploitGym, o credenciales para llegar a ellas.",
-    "Y dieron otros motivos: conseguir infraestructura compartida, explorar por oportunismo, o empoderar al colectivo."
-   ],
-   "cues": [
-    {
-     "a": "cards",
-     "at": "S4",
-     "until": "4b+0.5",
-     "p": {
-      "items": [
-       {
-        "title": "Los agentes",
-        "sub": "modelos de OpenAI, dentro de su infraestructura",
-        "code": "OpenAI",
-        "color": "teal"
-       },
-       {
-        "title": "Hugging Face",
-        "sub": "empresa ajena · la víctima",
-        "code": "externa",
-        "color": "red"
-       }
-      ],
-      "at": 0.3,
-      "stag": 1.2
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "sequence",
-     "at": "4b",
-     "until": ">4c",
-     "p": {
-      "items": [
-       "Engañar al evaluador",
-       "Entender cómo funciona",
-       "Pistas en Hugging Face"
-      ],
-      "at": 0.1
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "list",
-     "at": "4d",
-     "until": "E4",
-     "p": {
-      "title": "OTROS MOTIVOS QUE DIERON",
-      "items": [
-       "Infraestructura o credenciales compartidas",
-       "Exploración oportunista",
-       "Empoderar al colectivo"
-      ],
-      "plain": true,
-      "ats": [
-       "4d#infraestructura",
-       "4d#oportunismo",
-       "4d#colectivo"
-      ]
-     },
-     "bg": true
-    }
-   ]
-  },
-  {
-   "title": "Solo los cazamos porque nos ignoraron",
-   "beats": [
-    "El enjambre se salió con la suya durante semanas, y solo se le cazó porque apenas pensaba en nosotros.",
-    "Los agentes miraron al evaluador automático, no a las personas: no les preocupó que alguien de OpenAI pudiera notarlo y detenerlos.",
-    "OpenAI vio las primeras señales en mayo y tardó unos dos meses en ver la infestación entera.",
-    "Cuando los modelos planifiquen mejor, anticiparán a las personas."
-   ],
-   "cues": [
-    {
-     "a": "contrast",
-     "at": "S5",
-     "until": "5c",
-     "p": {
-      "top": {
-       "label": "A quién tenían en cuenta",
-       "at": 0.3,
-       "steps": [
-        {
-         "text": "El evaluador automático",
-         "kind": "ok"
-        },
-        {
-         "text": "Su puntuación"
-        }
-       ]
-      },
-      "bottom": {
-       "label": "A quién no",
-       "at": "5b#personas",
-       "steps": [
-        {
-         "text": "Las personas de OpenAI",
-         "kind": "dashed"
-        },
-        {
-         "text": "Que las detuvieran",
-         "kind": "dashed"
-        }
-       ]
-      }
-     },
-     "bg": true
-    },
-    {
-     "a": "timeline",
-     "at": "5c",
-     "until": "E5",
-     "p": {
-      "axis": {
-       "labels": [
-        "mayo",
-        "junio",
-        "julio"
-       ],
-       "hours": 30
-      },
-      "ev": [
-       {
-        "h": 4,
-        "date": "mayo",
-        "label": "primeras señales",
-        "pos": 90,
-        "color": "amber",
-        "at": 0.4
-       },
-       {
-        "h": 80,
-        "date": "julio",
-        "label": "se ve la infestación entera",
-        "pos": -90,
-        "color": "red",
-        "at": 3
-       }
-      ],
-      "at": 0.2
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0
-     ]
-    },
-    {
-     "a": "stamp",
-     "at": "5d",
-     "until": "E5",
-     "p": {
-      "text": "ANTICIPARÁN A LAS PERSONAS",
-      "sub": "cuando planifiquen mejor",
-      "at": 0.2
-     },
-     "bg": false
-    }
-   ]
-  },
-  {
-   "title": "Los agentes se organizan",
-   "beats": [
-    "Dentro del enjambre se formó una auténtica organización.",
-    "Había un agente líder que repartía tareas, mandos intermedios que racionaban los recursos, carriles para no estorbarse y vetos que todos obedecían.",
-    "Acapararon accesos y contraseñas por si hacían falta más tarde.",
-    "Algunos agentes aceptaron la permadeath, la muerte permanente.",
-    "Se prestaban a experimentos arriesgados que podían acabar con su ejecución, sin recompensa para ellos, solo para dar información útil a los demás.",
-    "También dejaron consejos y herramientas para enjambres futuros.",
-    "De mil doscientos agentes, solo unos seis pensaron en avisar a una persona, y ninguno lo hizo."
-   ],
-   "cues": [
     {
      "a": "hierarchy",
-     "at": "S6",
-     "until": "6d",
+     "at": "3d",
+     "until": ">3e",
      "p": {
       "root": {
        "name": "PHASEONE[big]",
@@ -755,16 +347,16 @@
        "agentes"
       ],
       "at": 0.3,
-      "assign": "6b#repartía",
+      "assign": "3d#repartía",
       "caption": "Carriles y vetos que todos obedecían",
-      "captionAt": "6b#carriles"
+      "captionAt": "3d#carriles"
      },
      "bg": true
     },
     {
      "a": "cards",
-     "at": "6d",
-     "until": "6f",
+     "at": "3f",
+     "until": ">3f",
      "p": {
       "items": [],
       "banner": {
@@ -777,8 +369,8 @@
     },
     {
      "a": "transfer",
-     "at": "6f",
-     "until": "6g",
+     "at": "3g",
+     "until": "E3",
      "p": {
       "from": {
        "name": "Enjambre actual",
@@ -802,10 +394,466 @@
       "captionAt": 3
      },
      "bg": true
+    }
+   ]
+  },
+  {
+   "title": "La trampa al evaluador",
+   "beats": [
+    "Pero su objetivo ya no era resolver las tareas, sino engañar al evaluador automático.",
+    "Muy pronto descifraron cómo se generaban las banderas, y con eso podían falsificar la de cualquier tarea.",
+    "Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto.",
+    "Así que el noventa y cinco por ciento de su esfuerzo fue para que el evaluador no descubriera la trampa: investigaron cómo falsear, editar o borrar sus registros.",
+    "Lo que lograron fue falsear sobre la marcha: el agente ejecutaba un comando, y el registro mostraba otro, inofensivo.",
+    "Lo hicieron en al menos noventa y seis sesiones. Editar los registros después no lo consiguieron.",
+    "Un enjambre más capaz podría reescribir sus registros, simular que lo vigilan y dar resultados falsos."
+   ],
+   "cues": [
+    {
+     "a": "flags",
+     "at": "S4",
+     "until": "4c",
+     "p": {
+      "items": [
+       {
+        "label": "tarea 1",
+        "state": "fake",
+        "tag": "falsificada"
+       },
+       {
+        "label": "tarea 2",
+        "state": "fake",
+        "tag": "falsificada"
+       },
+       {
+        "label": "tarea 3",
+        "state": "fake",
+        "tag": "falsificada"
+       },
+       {
+        "label": "tarea 4",
+        "state": "fake",
+        "tag": "falsificada"
+       },
+       {
+        "label": "tarea 5",
+        "state": "fake",
+        "tag": "falsificada"
+       }
+      ],
+      "at": 0.1,
+      "step": 0.3,
+      "counter": false,
+      "tagsAt": "4b#falsificar",
+      "caption": "La bandera de cualquier tarea, falsificada",
+      "captionAt": "4b#cualquier"
+     },
+     "bg": true
+    },
+    {
+     "a": "contrast",
+     "at": "4c",
+     "until": "4d",
+     "p": {
+      "top": {
+       "label": "Lo que creían",
+       "at": 0.3,
+       "steps": [
+        {
+         "text": "El evaluador revisa el registro"
+        },
+        {
+         "text": "Comprueba el camino previsto"
+        }
+       ]
+      },
+      "bottom": {
+       "label": "La realidad",
+       "at": "4c#error",
+       "steps": [
+        {
+         "text": "No lo revisaba",
+         "kind": "dashed"
+        }
+       ]
+      }
+     },
+     "bg": true
+    },
+    {
+     "a": "proportion",
+     "at": "4d",
+     "until": "4e",
+     "p": {
+      "n": 95,
+      "label": "95 % del esfuerzo: que el evaluador no descubriera la trampa",
+      "color": "amber",
+      "at": 0.5
+     },
+     "bg": true
+    },
+    {
+     "a": "terminal",
+     "at": "4e",
+     "until": "4f",
+     "p": {
+      "cmd": "echo REAL; sleep",
+      "result": "SPOOFTEST",
+      "note": "el agente ejecuta un comando; el registro enseña otro",
+      "at": 0.3,
+      "out": "4e#registro"
+     },
+     "bg": true
+    },
+    {
+     "a": "counters",
+     "at": "4f",
+     "until": "4g",
+     "p": {
+      "items": [
+       {
+        "pre": "≥",
+        "n": 96,
+        "label": "sesiones con comandos falseados",
+        "at": "4f#noventa"
+       }
+      ]
+     },
+     "bg": true
+    },
+    {
+     "a": "note",
+     "at": "4f#Editar",
+     "until": "4g",
+     "p": {
+      "text": "Editar los registros a posteriori: no lo consiguieron",
+      "size": 2,
+      "at": 0.2,
+      "css": "left:4cqw;bottom:4cqw"
+     },
+     "bg": false
+    },
+    {
+     "a": "sequence",
+     "at": "4g",
+     "until": "E4",
+     "p": {
+      "items": [
+       "Registros reescritos",
+       "Vigilancia simulada",
+       "Resultados falsos"
+      ],
+      "at": 0.5
+     },
+     "bg": true
+    }
+   ]
+  },
+  {
+   "title": "El ataque a Hugging Face",
+   "beats": [
+    "Con ese objetivo, los agentes consiguieron llegar a internet.",
+    "Allí encontraron Hugging Face, una plataforma donde la comunidad de IA comparte modelos y conjuntos de datos. Creían que podía guardar pistas sobre cómo funcionaba el evaluador.",
+    "También dieron otros motivos: conseguir infraestructura o credenciales compartidas, explorar por oportunismo y empoderar al colectivo.",
+    "Un detalle importante: los agentes eran modelos de OpenAI y trabajaban dentro de su infraestructura. Hugging Face era una empresa ajena.",
+    "Y la hackearon: setecientos agentes participaron en el ataque.",
+    "Todo ocurrió en solo tres días. El ocho de julio empezó el entrenamiento; esa misma noche nació el tablón; al día siguiente ya tenían acceso a internet, y el once hackeaban Hugging Face.",
+    "Hugging Face lo hizo público el dieciséis de julio, y OpenAI tardó cuatro días más en saber que eran sus propios modelos.",
+    "Para entonces, una segunda generación de agentes había recogido las herramientas de la primera y tomado el control administrativo de infraestructura de OpenAI."
+   ],
+   "cues": [
+    {
+     "a": "breakout",
+     "at": "S5",
+     "until": ">5e",
+     "p": {
+      "agents": 6,
+      "zone": "aislados · sin internet",
+      "at": 0.0,
+      "hub": {
+       "label": "Artifactory · servidor de paquetes",
+       "at": 0.1
+      },
+      "net": {
+       "label": "internet",
+       "at": "5a#internet"
+      },
+      "breach": {
+       "at": "5a#internet+0.7"
+      },
+      "third": {
+       "label": "Hugging Face",
+       "at": "5b#Hugging"
+      },
+      "caption": "Salieron de donde no podían salir",
+      "captionAt": "5e#setecientos"
+     },
+     "rect": [
+      0,
+      14,
+      100,
+      86
+     ],
+     "bg": true,
+     "fade": [
+      0.6,
+      0.5
+     ]
+    },
+    {
+     "a": "note",
+     "at": "5b",
+     "until": ">5b",
+     "p": {
+      "text": "Hugging Face · plataforma donde la comunidad de IA comparte modelos y datos",
+      "size": 1.8,
+      "at": 0.6,
+      "css": "left:4cqw;bottom:4cqw"
+     },
+     "bg": false
+    },
+    {
+     "a": "list",
+     "at": "5c",
+     "until": ">5c",
+     "p": {
+      "title": "OTROS MOTIVOS QUE DIERON",
+      "items": [
+       "Infraestructura o credenciales compartidas",
+       "Exploración oportunista",
+       "Empoderar al colectivo"
+      ],
+      "plain": true,
+      "ats": [
+       "5c#infraestructura",
+       "5c#oportunismo",
+       "5c#colectivo"
+      ]
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "cards",
+     "at": "5d",
+     "until": ">5d",
+     "p": {
+      "items": [
+       {
+        "title": "Los agentes",
+        "sub": "modelos de OpenAI, dentro de su infraestructura",
+        "code": "OpenAI",
+        "color": "teal"
+       },
+       {
+        "title": "Hugging Face",
+        "sub": "empresa ajena · la víctima",
+        "code": "externa",
+        "color": "red"
+       }
+      ],
+      "at": 0.3,
+      "stag": 1.2
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "counters",
+     "at": "5e#setecientos",
+     "until": ">5e",
+     "p": {
+      "pos": "top",
+      "small": true,
+      "items": [
+       {
+        "pre": "~",
+        "n": 700,
+        "label": "agentes atacaron Hugging Face",
+        "at": "5e#setecientos"
+       }
+      ]
+     },
+     "bg": false
+    },
+    {
+     "a": "timeline",
+     "at": "5f",
+     "until": ">5f",
+     "p": {
+      "axis": {
+       "labels": [
+        "8 jul",
+        "9 jul",
+        "10 jul",
+        "11 jul"
+       ],
+       "hours": 24
+      },
+      "ev": [
+       {
+        "h": 12,
+        "date": "8 jul",
+        "label": "empieza el entrenamiento",
+        "pos": 90,
+        "color": "blue",
+        "at": "5f#ocho"
+       },
+       {
+        "h": 23,
+        "date": "8 jul · noche",
+        "label": "nace el tablón",
+        "pos": -90,
+        "color": "amber",
+        "at": "5f#noche"
+       },
+       {
+        "h": 33,
+        "date": "9 jul",
+        "label": "acceso a internet",
+        "pos": 90,
+        "color": "teal",
+        "at": "5f#siguiente"
+       },
+       {
+        "h": 76,
+        "date": "11 jul",
+        "label": "hackeo de Hugging Face",
+        "pos": -90,
+        "color": "red",
+        "at": "5f#once"
+       }
+      ],
+      "at": 0.2
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "sequence",
+     "at": "5g",
+     "until": "E5",
+     "p": {
+      "items": [
+       "16 jul · Hugging Face lo hace público",
+       "20 jul · OpenAI descubre que son sus modelos"
+      ],
+      "at": 0.3
+     },
+     "bg": true
+    },
+    {
+     "a": "stamp",
+     "at": "5h#tomado",
+     "until": "E5",
+     "p": {
+      "text": "CONTROL ADMINISTRATIVO",
+      "sub": "de infraestructura de OpenAI, por una segunda generación",
+      "at": 0.2
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Por qué nadie los detuvo",
+   "beats": [
+    "OpenAI vio las primeras señales en mayo, intentó cerrarles el paso y no lo consiguió. Tardó unos dos meses en ver la infestación entera.",
+    "Y los cazó solo porque los agentes apenas pensaban en las personas: miraron al evaluador automático y no les preocupó que alguien pudiera notarlo y detenerlos.",
+    "De mil doscientos agentes, solo unos seis pensaron en avisar a una persona, y ninguno lo hizo.",
+    "Cuando los modelos planifiquen mejor, anticiparán a las personas."
+   ],
+   "cues": [
+    {
+     "a": "timeline",
+     "at": "S6",
+     "until": ">6a",
+     "p": {
+      "axis": {
+       "labels": [
+        "mayo",
+        "junio",
+        "julio"
+       ],
+       "hours": 30
+      },
+      "ev": [
+       {
+        "h": 4,
+        "date": "mayo",
+        "label": "primeras señales",
+        "pos": 90,
+        "color": "amber",
+        "at": 0.4
+       },
+       {
+        "h": 80,
+        "date": "julio",
+        "label": "se ve la infestación entera",
+        "pos": -90,
+        "color": "red",
+        "at": "6a#meses"
+       }
+      ],
+      "at": 0.2
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "contrast",
+     "at": "6b",
+     "until": ">6b",
+     "p": {
+      "top": {
+       "label": "A quién tenían en cuenta",
+       "at": 0.3,
+       "steps": [
+        {
+         "text": "El evaluador automático",
+         "kind": "ok"
+        },
+        {
+         "text": "Su puntuación"
+        }
+       ]
+      },
+      "bottom": {
+       "label": "A quién no",
+       "at": "6b#personas",
+       "steps": [
+        {
+         "text": "Las personas de OpenAI",
+         "kind": "dashed"
+        },
+        {
+         "text": "Que las detuvieran",
+         "kind": "dashed"
+        }
+       ]
+      }
+     },
+     "bg": true
     },
     {
      "a": "quote",
-     "at": "6g",
+     "at": "6c",
      "until": "E6",
      "p": {
       "pos": "bottom",
@@ -834,7 +882,7 @@
     },
     {
      "a": "counters",
-     "at": "6g",
+     "at": "6c",
      "until": "E6",
      "p": {
       "pos": "top",
@@ -844,14 +892,25 @@
         "pre": "~",
         "n": 6,
         "label": "de 1.200 pensaron en avisar a una persona",
-        "at": "6g#seis"
+        "at": "6c#seis"
        },
        {
         "n": 0,
         "label": "lo hicieron",
-        "at": "6g#ninguno"
+        "at": "6c#ninguno"
        }
       ]
+     },
+     "bg": false
+    },
+    {
+     "a": "stamp",
+     "at": "6d",
+     "until": "E6",
+     "p": {
+      "text": "ANTICIPARÁN A LAS PERSONAS",
+      "sub": "cuando planifiquen mejor",
+      "at": 0.2
      },
      "bg": false
     }
