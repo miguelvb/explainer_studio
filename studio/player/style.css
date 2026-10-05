@@ -126,3 +126,7 @@ html,body{background:#0E1218;overflow:hidden}
 .br b{white-space:nowrap;min-width:9cqw;text-align:right}
 
 .lst.plain{gap:.7cqw;font-size:1.9cqw}.lst.plain div{padding:0 0 0 2cqw;border:0;background:none;border-radius:0;position:relative;color:#C4CCD8}.lst.plain div::before{content:'–';position:absolute;left:0;color:var(--mu)}
+
+/* cinematic fx (cue.fx): bloom = glow on SVG strokes, vig = vignette */
+.st.bloom .sv{filter:drop-shadow(0 0 .5cqw rgba(124,151,255,.5)) drop-shadow(0 0 1.8cqw rgba(63,216,194,.22))}
+.st.vig::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}

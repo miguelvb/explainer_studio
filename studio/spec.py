@@ -200,7 +200,7 @@ def write_build(st, root, timings=None, pad=True, **kw):
     cues = []
     for sc in st['scenes']:
         for c in sc.get('cues', []):
-            q = {k: v for k, v in c.items() if k in ('a', 'at', 'until', 'dur', 'off', 'untilOff', 'ext', 'rect', 'bg', 'fade', 'z', 'id', 'p')}
+            q = {k: v for k, v in c.items() if k in ('a', 'at', 'until', 'dur', 'off', 'untilOff', 'ext', 'rect', 'bg', 'fade', 'z', 'id', 'p', 'cam', 'fx')}
             cues.append(q)
     json.dump({'sched': sched, 'cues': cues, 'total': total, 'fps': 30, 'scenes': len(st['scenes'])}, open(f'{b}/data.json', 'w'), ensure_ascii=False)
     json.dump([{'id': i, 'text': sched[i]['txt'], 'start': sched[i]['s']} for i in order], open(f'{b}/beats.json', 'w'), ensure_ascii=False, indent=1)

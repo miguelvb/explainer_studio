@@ -473,6 +473,37 @@ A.facts=(h,p,C)=>{
    ic[i].style.opacity=1});
   cp.style.opacity=ease(pr(t,ca,.6))}};
 
+/* ---------- world: one persistent diagram (nodes + links + travelling pulses); the camera (cue.cam) moves through it ---------- */
+A.world=(h,p,C)=>{
+ const N=p.nodes||[],Lk=p.links||[],byId={};N.forEach(n=>byId[n.id]=n);
+ const ctr=n=>[n.x+(n.w||0)/2,n.y+(n.h||0)/2];
+ const edge=(n,m)=>{const [ax,ay]=ctr(n),[bx,by]=ctr(m),dx=bx-ax,dy=by-ay,hw=(n.w||90)/2,hh=(n.h||60)/2,k=Math.min(Math.abs(dx)>1e-6?hw/Math.abs(dx):1e9,Math.abs(dy)>1e-6?hh/Math.abs(dy):1e9);return[ax+dx*Math.min(1,k),ay+dy*Math.min(1,k)]};
+ let s='';
+ Lk.forEach((l,i)=>{const a=byId[l.a],b=byId[l.b],c=hex(l.color||'amber'),[x1,y1]=edge(a,b),[x2,y2]=edge(b,a);
+  s+=`<g class="lk" data-i="${i}" style="opacity:0"><path d="M${x1} ${y1}L${x2} ${y2}" stroke="${c}" stroke-opacity=".55" stroke-width="1.6" stroke-dasharray="${l.solid?'0':'5 6'}" fill="none"/>${l.lock?`<g transform="translate(${(x1+x2)/2-9} ${(y1+y2)/2-11})"><rect x="0" y="9" width="18" height="14" rx="3" fill="#0E1218" stroke="${c}" stroke-width="1.8"/><path d="M4 9V5a5 5 0 0 1 10 0v4" fill="none" stroke="${c}" stroke-width="1.8"/></g>`:''}</g>`;
+  s+=`<circle class="pl" data-i="${i}" r="4.5" fill="${c}" style="opacity:0"/><circle class="pl2" data-i="${i}" r="4.5" fill="${c}" style="opacity:0"/>`});
+ N.forEach((n,i)=>{const c=hex(n.color||'blue'),w=n.w||90,hh=n.h||60,cx=n.x+w/2,cy=n.y+hh/2;let g='';
+  if(n.kind==='sandbox')g=`<rect x="${n.x}" y="${n.y}" width="${w}" height="${hh}" rx="14" fill="rgba(63,216,194,.05)" stroke="${c}" stroke-width="2" stroke-dasharray="${n.open?'10 6':'0'}"/><text x="${n.x+14}" y="${n.y-8}" fill="${c}" font-size="13">${esc(n.label||'')}</text>`;
+  else if(n.kind==='agent')g=`<circle cx="${cx}" cy="${cy}" r="${Math.min(w,hh)/2}" fill="#171D26" stroke="${c}" stroke-width="2.2"/>${MARK(cx,cy,Math.min(w,hh)*.8,c)}<text x="${cx}" y="${n.y+hh+16}" fill="#8C96A4" font-size="11" text-anchor="middle">${esc(n.label||'')}</text>`;
+  else if(n.kind==='globe')g=`<circle cx="${cx}" cy="${cy}" r="${w/2}" fill="#10243A" stroke="${c}" stroke-width="2"/><ellipse cx="${cx}" cy="${cy}" rx="${w/4.5}" ry="${w/2}" fill="none" stroke="${c}" stroke-opacity=".6"/><path d="M${n.x} ${cy}H${n.x+w}M${n.x+w*.08} ${cy-w*.25}H${n.x+w*.92}M${n.x+w*.08} ${cy+w*.25}H${n.x+w*.92}" stroke="${c}" stroke-opacity=".4" fill="none"/><text x="${cx}" y="${n.y+w+18}" fill="${c}" font-size="13" text-anchor="middle">${esc(n.label||'')}</text>`;
+  else if(n.kind==='server'||n.kind==='victim'){const inner=(n.inner||[]).map((t,j)=>{const iw=(w-24)/Math.max(1,n.inner.length)-6,ix=n.x+12+j*(iw+6);return `<g class="in2" data-i="${i}" style="opacity:0"><rect x="${ix}" y="${n.y+hh-34}" width="${iw}" height="22" rx="5" fill="#0E1218" stroke="${c}" stroke-opacity=".7"/><text x="${ix+iw/2}" y="${n.y+hh-19}" fill="#E7EBF1" font-size="8.5" text-anchor="middle">${esc(t)}</text></g>`}).join('');
+   g=`<rect x="${n.x}" y="${n.y}" width="${w}" height="${hh}" rx="12" fill="#171D26" stroke="${c}" stroke-width="2"/><text x="${cx}" y="${n.y+26}" fill="#E7EBF1" font-size="${n.big?16:14}" text-anchor="middle">${esc(n.label||'')}</text><text x="${cx}" y="${n.y+44}" fill="#8C96A4" font-size="10" text-anchor="middle">${esc(n.sub||'')}</text>${n.kind==='victim'?`<g transform="translate(${n.x+w-24} ${n.y+8})"><path d="M8 1L15 14H1Z" fill="none" stroke="${c}" stroke-width="1.8"/><path d="M8 6V10" stroke="${c}" stroke-width="1.8"/></g>`:''}${inner}`}
+  else g=`<rect x="${n.x}" y="${n.y}" width="${w}" height="${hh}" rx="10" fill="#171D26" stroke="${c}" stroke-width="1.8"/><text x="${cx}" y="${cy+5}" fill="#E7EBF1" font-size="12" text-anchor="middle">${esc(n.label||'')}</text>`;
+  s+=`<g class="nd" data-i="${i}" style="opacity:0;transform-box:fill-box;transform-origin:center">${g}</g>`});
+ h.innerHTML=`<svg class="sv" viewBox="0 0 960 540">${s}</svg>`;
+ const nd=[...h.querySelectorAll('.nd')],lk=[...h.querySelectorAll('.lk')],pl=[...h.querySelectorAll('.pl')],pl2=[...h.querySelectorAll('.pl2')],in2=[...h.querySelectorAll('.in2')];
+ const ta=N.map(n=>C.T(n.at||0)),la=Lk.map(l=>C.T(l.at||0)),ia=N.map(n=>n.innerAt!=null?C.T(n.innerAt):1e9),spot=(p.spot||[]).map(q=>({t:C.T(q.at),ids:q.ids}));
+ const geo=Lk.map(l=>{const a=byId[l.a],b=byId[l.b];return[edge(a,b),edge(b,a)]});
+ const upd=t=>{let act=null;for(const q of spot)if(t>=q.t)act=q;
+  nd.forEach((e,i)=>{const u=ease(pr(t,ta[i],.6)),on=!act||act.ids.includes(N[i].id);e.dataset.on=on?1:0;
+   const k=(e._k=(e._k??1)+((on?1:.3)-(e._k??1))*.25);e.style.opacity=Math.max(u,p.ghost||0)*k;e.style.transform=`scale(${.92+.08*u})`;e.style.filter=on&&act?'drop-shadow(0 0 7px '+hex(N[i].color||'blue')+')':'none'});
+  lk.forEach((e,i)=>{const on=!act||act.ids.includes(Lk[i].a)&&act.ids.includes(Lk[i].b);e.style.opacity=ease(pr(t,la[i],.5))*(on?1:.25)});
+  Lk.forEach((l,i)=>{const [a,b]=geo[i];if(t<la[i]+.4){pl[i].style.opacity=0;pl2[i].style.opacity=0;return}const sp=l.speed||.45,tt=t-la[i]-.4;
+   [pl[i],pl2[i]].forEach((c,j)=>{const u=((tt*sp+j*.5)%1);c.setAttribute('cx',lerp(a[0],b[0],u));c.setAttribute('cy',lerp(a[1],b[1],u));c.style.opacity=Math.sin(u*Math.PI)*.95*ease(pr(t,la[i]+.4,.4))})});
+  in2.forEach(e=>{const i=+e.dataset.i;e.style.opacity=ease(pr(t,ia[i],.6))})};
+ upd.pos=id=>{const n=byId[id];if(!n)return[50,50];const [x,y]=ctr(n);return[x/9.6,y/5.4]};
+ return upd};
+
 /* ---------- driver ---------- */
 window.CUES=[];
 window.setup=(sched,cues)=>{
@@ -485,14 +516,23 @@ window.setup=(sched,cues)=>{
   const end=c.until!=null?abs(c.until)+(c.untilOff||0)+ext:start+c.dur;
   const el=mk('div','cue');const r=c.rect||[0,0,100,100];
   Object.assign(el.style,{left:r[0]+'%',top:r[1]+'%',width:r[2]+'%',height:r[3]+'%',zIndex:c.z||idx});
-  const st=mk('div','st'+(c.bg?' bg':''));el.append(st);stage.append(el);
+  const fx=c.fx||{};const st=mk('div','st'+(c.bg?' bg':'')+(fx.bloom?' bloom':'')+(fx.vig?' vig':''));
+  if(fx.floor){const fc=hex(fx.floor);st.style.background=`radial-gradient(120% 60% at 50% 108%,${fc}55,transparent 70%),var(--ink)`}
+  el.append(st);stage.append(el);
   const C={dur:end-start,T:s=>typeof s==='number'?s:abs(s)-start};
   if(!A[c.a])throw new Error('unknown asset '+c.a);
   const upd=A[c.a](st,c.p||{},C);
-  window.CUES.push({el,start,end,upd,fi:c.fade?.[0]??.5,fo:c.fade?.[1]??.5,id:c.id||c.a+idx})
+  let cam=null;
+  if(c.cam&&c.cam.length){cam=c.cam.map(k=>({t:abs(k.at)+(c.off||0),x:k.x,y:k.y,to:k.to,z:k.z??1,rx:k.rx??0,ry:k.ry??0,rot:k.rot??0,blur:k.blur??0,dur:k.dur}));el.style.perspective='1800px';st.style.willChange='transform,filter'}
+  window.CUES.push({el,st,cam,upd,start,end,fi:c.fade?.[0]??.5,fo:c.fade?.[1]??.5,id:c.id||c.a+idx})
  })};
 window.frame=t=>{for(const q of window.CUES){
   if(t<q.start-.001||t>q.end+.001){q.el.style.opacity=0;q.el.style.visibility='hidden';continue}
   q.el.style.visibility='visible';const lt=t-q.start;
   q.el.style.opacity=Math.min(q.fi>0?clamp(lt/q.fi):1,q.fo>0?clamp((q.end-t)/q.fo):1);
-  q.upd(lt)}};
+  q.upd(lt);if(q.cam)applyCam(q,t)}};
+const camAt=(q,t)=>{const K=q.cam,P=k=>{let x=k.x,y=k.y;if(k.to&&q.upd.pos){[x,y]=q.upd.pos(k.to)}return{x:x??50,y:y??50,z:k.z,rx:k.rx,ry:k.ry,rot:k.rot,blur:k.blur}};
+ if(t<=K[0].t)return P(K[0]);for(let i=1;i<K.length;i++){if(t<=K[i].t){const a=P(K[i-1]),b=P(K[i]),d=K[i].dur||(K[i].t-K[i-1].t),u=eio(clamp((t-K[i-1].t)/Math.max(.01,d)));const o={};for(const k in a)o[k]=k==='z'?Math.exp(lerp(Math.log(a.z),Math.log(b.z),u)):lerp(a[k],b[k],u);return o}}return P(K[K.length-1])};
+const applyCam=(q,t)=>{const c=camAt(q,t);q.st.style.transformOrigin=c.x+'% '+c.y+'%';
+ q.st.style.transform=`translate(${50-c.x}%,${50-c.y}%) scale(${c.z}) rotateX(${c.rx}deg) rotateY(${c.ry}deg) rotateZ(${c.rot}deg)`;
+ q.st.style.filter=c.blur>.05?`blur(${c.blur}px)`:'none'};

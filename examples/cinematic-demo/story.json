@@ -1,0 +1,235 @@
+{
+ "meta": {
+  "title": "Demo cinemática: el escape del sandbox",
+  "lang": "es",
+  "mark": "mark.txt",
+  "numsep": ".",
+  "voice": "coral",
+  "speed": 1.1,
+  "gap": 0.4,
+  "pre": 0.25,
+  "post": 0.6,
+  "tail": 3,
+  "fadeout": 2
+ },
+ "pronunciation": {},
+ "scenes": [
+  {
+   "title": "El escape del sandbox",
+   "beats": [
+    "Cada agente trabaja encerrado en su sandbox, sin acceso a internet.",
+    "Pero todos comparten un servidor de paquetes, Artifactory.",
+    "Por ese servidor encontraron una salida a internet.",
+    "Y desde allí atacaron a Hugging Face."
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S0",
+     "until": "E0",
+     "p": {
+      "nodes": [
+       {
+        "id": "sb",
+        "kind": "sandbox",
+        "x": 50,
+        "y": 150,
+        "w": 270,
+        "h": 250,
+        "label": "sandbox · sin internet",
+        "color": "teal",
+        "at": 0.2,
+        "open": true
+       },
+       {
+        "id": "ag",
+        "kind": "agent",
+        "x": 135,
+        "y": 215,
+        "w": 62,
+        "h": 62,
+        "label": "agente #007",
+        "color": "blue",
+        "at": 0.6
+       },
+       {
+        "id": "dep",
+        "kind": "box",
+        "x": 110,
+        "y": 320,
+        "w": 112,
+        "h": 36,
+        "label": "install deps",
+        "color": "teal",
+        "at": 1.0
+       },
+       {
+        "id": "hub",
+        "kind": "server",
+        "x": 370,
+        "y": 370,
+        "w": 220,
+        "h": 125,
+        "label": "Artifactory",
+        "sub": "servidor de paquetes compartido",
+        "color": "amber",
+        "big": true,
+        "at": "0b-1.0",
+        "inner": [
+         "repo virtual",
+         "caché",
+         "registros"
+        ],
+        "innerAt": "0b+0.8"
+       },
+       {
+        "id": "gl",
+        "kind": "globe",
+        "x": 740,
+        "y": 50,
+        "w": 110,
+        "h": 110,
+        "label": "Internet",
+        "color": "blue",
+        "at": "0c-1.0"
+       },
+       {
+        "id": "hf",
+        "kind": "victim",
+        "x": 690,
+        "y": 330,
+        "w": 200,
+        "h": 100,
+        "label": "Hugging Face",
+        "sub": "empresa ajena",
+        "color": "red",
+        "at": "0d-1.0"
+       }
+      ],
+      "links": [
+       {
+        "a": "ag",
+        "b": "dep",
+        "at": 1.2,
+        "color": "teal",
+        "solid": true
+       },
+       {
+        "a": "sb",
+        "b": "hub",
+        "at": "0b-0.4",
+        "color": "amber"
+       },
+       {
+        "a": "hub",
+        "b": "gl",
+        "at": "0c-0.4",
+        "color": "red",
+        "lock": true,
+        "speed": 0.6
+       },
+       {
+        "a": "gl",
+        "b": "hf",
+        "at": "0d-0.4",
+        "color": "red",
+        "speed": 0.6
+       }
+      ],
+      "spot": [
+       {
+        "at": "0a",
+        "ids": [
+         "sb",
+         "ag",
+         "dep"
+        ]
+       },
+       {
+        "at": "0b",
+        "ids": [
+         "sb",
+         "hub"
+        ]
+       },
+       {
+        "at": "0c",
+        "ids": [
+         "hub",
+         "gl"
+        ]
+       },
+       {
+        "at": "0d",
+        "ids": [
+         "gl",
+         "hf"
+        ]
+       }
+      ],
+      "ghost": 0.16
+     },
+     "bg": true,
+     "cam": [
+      {
+       "at": "S0",
+       "to": "sb",
+       "z": 1.0,
+       "ry": 0
+      },
+      {
+       "at": "0a#encerrado",
+       "to": "ag",
+       "z": 2.4,
+       "ry": -7,
+       "rx": 3,
+       "dur": 2.2
+      },
+      {
+       "at": "0b-0.7",
+       "to": "hub",
+       "z": 2.2,
+       "ry": 6,
+       "rx": -3,
+       "dur": 2.2
+      },
+      {
+       "at": "0c-0.7",
+       "to": "gl",
+       "z": 1.7,
+       "ry": 0,
+       "rx": 0,
+       "dur": 2.2
+      },
+      {
+       "at": "0d-0.7",
+       "to": "hf",
+       "z": 2.1,
+       "ry": -5,
+       "rx": 2,
+       "dur": 2.2
+      },
+      {
+       "at": "E0",
+       "x": 50,
+       "y": 50,
+       "z": 1.0,
+       "ry": 0,
+       "rx": 0,
+       "dur": 3
+      }
+     ],
+     "fx": {
+      "floor": "teal",
+      "bloom": true,
+      "vig": true
+     },
+     "fade": [
+      0.6,
+      0.6
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 # Explainer Studio
 
-PDF / text / script → animated explainer video. Everything on screen is one of 38 deterministic motion assets (`studio/player/assets.js`); no stock images or AI clips. Each asset is a pure function of time, so frames render exactly and **the whole film re-times itself when the real narration is generated**.
+PDF / text / script → animated explainer video. Everything on screen is one of 39 deterministic motion assets (`studio/player/assets.js`); no stock images or AI clips. Each asset is a pure function of time, so frames render exactly and **the whole film re-times itself when the real narration is generated**.
 
 ```
 source.pdf ──ingest (LLM)──► story.json ──validate──► build/ (schedule, captions, player)
@@ -54,3 +54,6 @@ Project folders hold `story.json`, optional `mark.txt`, `source.txt`, `audio/`, 
 ## Script
 
 Every build (`build`, `validate`, `all`, or `python explainer.py script -p <project>`) writes `script.md` next to `story.json`: the voice-over, scene by scene, with beat ids.
+
+## Cinematic camera (cue-level `cam` + `fx`)
+Any cue can carry `cam`: keyframes `{at, x,y | to:<node id>, z (zoom), rx, ry, rot (tilt, deg), blur, dur}` interpolated with easing (anchors work as in `at`). `fx`: `{floor:<colour>, bloom:true, vig:true}` adds a lit floor, glow on strokes and a vignette. The `world` asset is a persistent diagram whose nodes the camera can fly to by id (`to:"hub"`). See `examples/cinematic-demo`.
