@@ -262,7 +262,11 @@
       "sub": "de infraestructura de OpenAI, por una segunda generación",
       "at": 0.2
      },
-     "bg": true
+     "bg": true,
+     "fade": [
+      0.5,
+      0
+     ]
     }
    ]
   },
@@ -589,7 +593,11 @@
       ],
       "at": 0.2
      },
-     "bg": true
+     "bg": true,
+     "fade": [
+      0.5,
+      0
+     ]
     },
     {
      "a": "stamp",
@@ -797,7 +805,11 @@
       "sub": "y en Hugging Face, un delito informático",
       "at": 0.2
      },
-     "bg": true
+     "bg": true,
+     "fade": [
+      0.5,
+      0
+     ]
     }
    ]
   },
@@ -854,7 +866,11 @@
       ],
       "at": 0.2
      },
-     "bg": true
+     "bg": true,
+     "fade": [
+      0.5,
+      0
+     ]
     },
     {
      "a": "note",
@@ -878,7 +894,11 @@
       "sub": "la segunda vez en tres meses",
       "at": 0.2
      },
-     "bg": true
+     "bg": true,
+     "fade": [
+      0.5,
+      0
+     ]
     }
    ]
   },
