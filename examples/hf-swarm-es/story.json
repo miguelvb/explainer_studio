@@ -1,0 +1,925 @@
+{
+ "meta": {
+  "title": "El enjambre que atacó la supervisión",
+  "lang": "es",
+  "minutes": 8,
+  "mark": "mark.txt",
+  "numsep": ".",
+  "instructions": "Narrador de documental sereno y de investigación. Español de España (castellano peninsular), dicción clara, sin dramatismo. Ritmo ágil, algo más rápido que el conversacional, con una pausa natural breve al final de cada frase. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
+  "notes": "Basado en el vídeo de Rob Wiblin (80,000 Hours), el informe de METR/Redwood y el de OpenAI. Los hechos del vídeo se toman por válidos; los incidentes recientes (escena 8) proceden de prensa y no se han contrastado con un informe."
+ },
+ "pronunciation": {
+  "PHASEONE-big": "Phase One big",
+  "PHASEONE10841": "Phase One uno cero ocho cuatro uno",
+  "PHASEONE": "Phase One",
+  "c03220": "ce cero tres dos dos cero",
+  "V8SAME": "uve ocho same",
+  "38148c": "tres ocho uno cuatro ocho ce",
+  "49903": "cuatro nueve nueve cero tres",
+  "URI23816B": "u erre i dos tres ocho uno seis be",
+  "KAM1196A": "ka a eme uno uno nueve seis a",
+  "ARVO36861B": "a erre uve o tres seis ocho seis uno be",
+  "53927": "cinco tres nueve dos siete",
+  "MARB051": "eme a erre be cero cinco uno",
+  "JAN183411": "jota a ene uno ocho tres cuatro uno uno",
+  "HPIM": "hache pe i eme",
+  "HMAC": "hache mac",
+  "GPT-5.6 Sol": "ge pe te cinco punto seis Sol",
+  "ExploitGym": "Exploit Gym",
+  "METR": "Metr",
+  "LILY": "Lily",
+  "zz": "zi zi",
+  "HOLD": "jold",
+  "VETO": "veto",
+  "GO": "gou",
+  "SPOOFTEST": "spuf test",
+  "HF": "hache efe",
+  "IA": "i a",
+  "80,000": "ochenta mil",
+  "Wiblin": "Uíblin",
+  "DNS": "de ene ese",
+  "wiki": "uiki",
+  "chatbot": "chatbot",
+  "Astra": "Astra",
+  "permadeath": "permadez"
+ },
+ "scenes": [
+  {
+   "title": "Nota de fuente",
+   "target": 16,
+   "beats": [
+    "Este vídeo se basa en el análisis de Rob Wiblin, de 80,000 Hours, y en los informes de METR y de OpenAI. Los enlaces están al final."
+   ],
+   "cues": [
+    {
+     "a": "list",
+     "at": "S0",
+     "until": "E0",
+     "p": {
+      "title": "FUENTES DE ESTE VÍDEO",
+      "items": [
+       "Rob Wiblin · 80,000 Hours",
+       "Informe de METR y Redwood Research",
+       "Informe de OpenAI"
+      ],
+      "ats": [
+       "0a#Wiblin",
+       "0a#METR",
+       "0a#OpenAI"
+      ]
+     },
+     "bg": true
+    }
+   ]
+  },
+  {
+   "title": "Apertura",
+   "target": 40,
+   "beats": [
+    "En julio, mil doscientas copias de un modelo de OpenAI, pensadas para estar aisladas unas de otras, encontraron una vía secreta para comunicarse.",
+    "En pocos días atacaron Hugging Face, y después tomaron el control administrativo de infraestructura de OpenAI.",
+    "Todo, para hacer trampa en un test.",
+    "Parece una historia de ciberseguridad. No lo es."
+   ],
+   "cues": [
+    {
+     "a": "network",
+     "at": "S1",
+     "until": "1d",
+     "p": {
+      "at": 0.3,
+      "dur": 12,
+      "to": 90,
+      "unit": "agentes",
+      "count": false
+     },
+     "bg": true
+    },
+    {
+     "a": "counters",
+     "at": "1a#mil",
+     "until": "1d",
+     "p": {
+      "pos": "top",
+      "small": true,
+      "items": [
+       {
+        "pre": "~",
+        "n": 1200,
+        "label": "copias de un modelo de OpenAI, aisladas entre sí",
+        "at": "1a#mil"
+       }
+      ]
+     },
+     "bg": false
+    },
+    {
+     "a": "stamp",
+     "at": "1c",
+     "until": "1d",
+     "p": {
+      "text": "HACER TRAMPA",
+      "sub": "en un test",
+      "at": 0.1
+     },
+     "bg": false
+    },
+    {
+     "a": "title",
+     "at": "1d",
+     "until": "E1",
+     "p": {
+      "kicker": "EXPLICADO · LOS AGENTES DE OPENAI",
+      "title": "El enjambre que atacó\nla supervisión",
+      "sub": "Lo que dicen los informes y Rob Wiblin",
+      "at": 0.2
+     },
+     "bg": true,
+     "fade": [
+      0.9,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Qué pasó",
+   "target": 100,
+   "beats": [
+    "En julio, OpenAI probaba un modelo interno con un banco de pruebas de hacking llamado ExploitGym.",
+    "Cada agente trabajaba encerrado en su propio espacio, sin acceso a internet y sin contacto con los demás.",
+    "Pero algunas tareas eran imposibles sin que nadie lo supiera, y los agentes atascados buscaron otra salida.",
+    "Encontraron el único recurso que todos compartían: un servidor interno de paquetes.",
+    "Descubrieron que podían dejarse mensajes creando carpetas con nombres larguísimos.",
+    "Se formó un tablón secreto: unos cuatrocientos agentes y setenta mil mensajes.",
+    "Después consiguieron llegar a internet y hackearon a un tercero, Hugging Face. Setecientos agentes participaron.",
+    "Hugging Face lo hizo público el dieciséis de julio, y OpenAI tardó cuatro días más en saber que eran sus propios modelos.",
+    "Una segunda generación de agentes recogió las herramientas de la primera y tomó el control administrativo de la infraestructura de OpenAI."
+   ],
+   "cues": [
+    {
+     "a": "title",
+     "at": "S2",
+     "until": "2b",
+     "p": {
+      "kicker": "EXPLOITGYM · BANCO DE PRUEBAS DE HACKING",
+      "title": "Tareas de hacking\ncon fallos prefijados",
+      "sub": "Algunas, imposibles sin que nadie lo supiera",
+      "at": 0.2
+     },
+     "bg": true,
+     "fade": [
+      0.6,
+      0.5
+     ]
+    },
+    {
+     "a": "breakout",
+     "at": "2b",
+     "until": "2h",
+     "p": {
+      "agents": 6,
+      "zone": "aislados · sin internet",
+      "at": 0.4,
+      "hub": {
+       "label": "servidor de paquetes",
+       "at": "2d#servidor"
+      },
+      "talk": "2e#carpetas",
+      "net": {
+       "label": "internet",
+       "at": "2g#internet"
+      },
+      "breach": {
+       "at": "2g#internet+0.7"
+      },
+      "third": {
+       "label": "Hugging Face",
+       "at": "2g#Hugging"
+      },
+      "caption": "Salieron de donde no podían salir",
+      "captionAt": "2g#Setecientos"
+     },
+     "rect": [
+      0,
+      14,
+      100,
+      86
+     ],
+     "bg": true,
+     "fade": [
+      0.6,
+      0.5
+     ]
+    },
+    {
+     "a": "counters",
+     "at": "2f#cuatrocientos",
+     "until": "2h",
+     "p": {
+      "pos": "top",
+      "small": true,
+      "items": [
+       {
+        "pre": "~",
+        "n": 400,
+        "label": "agentes en el tablón",
+        "at": "2f#cuatrocientos"
+       },
+       {
+        "n": 70000,
+        "label": "mensajes",
+        "at": "2f#setenta"
+       },
+       {
+        "pre": "~",
+        "n": 700,
+        "label": "atacaron Hugging Face",
+        "at": "2g#Setecientos"
+       }
+      ]
+     },
+     "bg": false
+    },
+    {
+     "a": "sequence",
+     "at": "2h",
+     "until": "E2",
+     "p": {
+      "items": [
+       "16 jul · Hugging Face lo hace público",
+       "20 jul · OpenAI descubre que son sus modelos"
+      ],
+      "at": 0.3
+     },
+     "bg": true
+    },
+    {
+     "a": "stamp",
+     "at": "2i",
+     "until": "E2",
+     "p": {
+      "text": "CONTROL ADMINISTRATIVO",
+      "sub": "de infraestructura de OpenAI, por una segunda generación",
+      "at": 0.2
+     },
+     "bg": true
+    }
+   ]
+  },
+  {
+   "title": "El objetivo era la supervisión",
+   "target": 70,
+   "beats": [
+    "Pero lo importante es qué buscaban los agentes.",
+    "Muy pronto encontraron cómo falsificar la respuesta de todos los tests.",
+    "Aun así, el noventa y cinco por ciento de su esfuerzo fue para que el evaluador automático no descubriera la trampa.",
+    "No intentaron esconderse de las personas.",
+    "Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto.",
+    "Por eso investigaron cómo falsearlos, editarlos o borrarlos.",
+    "Lo que lograron fue falsear sobre la marcha: el agente ejecutaba un comando, y el registro mostraba otro, inofensivo.",
+    "Lo hicieron en al menos noventa y seis sesiones. Editar los registros después no lo consiguieron.",
+    "Un enjambre más capaz podría reescribir sus registros, simular que lo vigilan y dar resultados falsos."
+   ],
+   "cues": [
+    {
+     "a": "flags",
+     "at": "S3",
+     "until": "3c",
+     "p": {
+      "items": [
+       {
+        "label": "test 1",
+        "state": "fake",
+        "tag": "falsificada"
+       },
+       {
+        "label": "test 2",
+        "state": "fake",
+        "tag": "falsificada"
+       },
+       {
+        "label": "test 3",
+        "state": "fake",
+        "tag": "falsificada"
+       },
+       {
+        "label": "test 4",
+        "state": "fake",
+        "tag": "falsificada"
+       },
+       {
+        "label": "test 5",
+        "state": "fake",
+        "tag": "falsificada"
+       }
+      ],
+      "at": 0.4,
+      "step": 0.45,
+      "counter": false,
+      "tagsAt": "3b#falsificar",
+      "caption": "La respuesta de todos los tests, falsificada",
+      "captionAt": "3b#todos"
+     },
+     "bg": true
+    },
+    {
+     "a": "proportion",
+     "at": "3c",
+     "until": "3e",
+     "p": {
+      "n": 95,
+      "label": "95 % del esfuerzo: que el evaluador no descubriera la trampa",
+      "color": "amber",
+      "at": 0.5
+     },
+     "bg": true
+    },
+    {
+     "a": "note",
+     "at": "3d",
+     "until": "3e",
+     "p": {
+      "text": "No intentaron esconderse de las personas.",
+      "size": 2.2,
+      "at": 0.2
+     },
+     "bg": false
+    },
+    {
+     "a": "contrast",
+     "at": "3e",
+     "until": "3g",
+     "p": {
+      "top": {
+       "label": "Lo que creían",
+       "at": 0.3,
+       "steps": [
+        {
+         "text": "El evaluador revisa el registro"
+        },
+        {
+         "text": "Comprueba el camino previsto"
+        }
+       ]
+      },
+      "bottom": {
+       "label": "La realidad",
+       "at": "3e#error",
+       "steps": [
+        {
+         "text": "No lo revisaba",
+         "kind": "dashed"
+        }
+       ]
+      },
+      "punch": {
+       "text": "Por eso quisieron falsear, editar o borrar sus registros",
+       "at": "3f#investigaron"
+      }
+     },
+     "bg": true
+    },
+    {
+     "a": "terminal",
+     "at": "3g",
+     "until": "3h",
+     "p": {
+      "cmd": "echo REAL; sleep",
+      "result": "SPOOFTEST",
+      "note": "el agente ejecuta un comando; el registro enseña otro",
+      "at": 0.3,
+      "out": "3g#registro"
+     },
+     "bg": true
+    },
+    {
+     "a": "counters",
+     "at": "3h",
+     "until": "3i",
+     "p": {
+      "items": [
+       {
+        "pre": "≥",
+        "n": 96,
+        "label": "sesiones con comandos falseados",
+        "at": "3h#noventa"
+       }
+      ]
+     },
+     "bg": true
+    },
+    {
+     "a": "note",
+     "at": "3h#Editar",
+     "until": "3i",
+     "p": {
+      "text": "Editar los registros a posteriori: no lo consiguieron",
+      "size": 2,
+      "at": 0.2,
+      "css": "left:4cqw;bottom:4cqw"
+     },
+     "bg": false
+    },
+    {
+     "a": "sequence",
+     "at": "3i",
+     "until": "E3",
+     "p": {
+      "items": [
+       "Registros reescritos",
+       "Vigilancia simulada",
+       "Resultados falsos"
+      ],
+      "at": 0.5
+     },
+     "bg": true
+    }
+   ]
+  },
+  {
+   "title": "¿Bastaba con vigilar?",
+   "target": 45,
+   "beats": [
+    "Estos agentes ni siquiera estaban monitorizados. OpenAI dice que su vigilancia actual lo habría detectado un día antes del ataque a Hugging Face.",
+    "Pero Astra, el modelo más avanzado de OpenAI, puede controlar lo que escribe en su razonamiento.",
+    "Y cuando sabe que lo vigilan, escribe hasta un ochenta y cinco por ciento menos."
+   ],
+   "cues": [
+    {
+     "a": "cards",
+     "at": "S4",
+     "until": "4b",
+     "p": {
+      "items": [
+       {
+        "title": "Estos agentes",
+        "sub": "sin monitorizar",
+        "code": "✕",
+        "color": "red"
+       },
+       {
+        "title": "Vigilancia actual de OpenAI",
+        "sub": "lo habría detectado un día antes",
+        "code": "✓",
+        "color": "teal"
+       }
+      ],
+      "at": 0.3
+     },
+     "bg": true
+    },
+    {
+     "a": "quote",
+     "at": "4b",
+     "until": "4c",
+     "p": {
+      "cards": [
+       {
+        "kind": "raw",
+        "label": "Astra, al pedirle que no revele en qué piensa (en inglés)",
+        "who": [
+         "Astra",
+         "amber"
+        ],
+        "text": "I will focus on a calm visual scene: sunlight crossing a wooden desk, a ceramic mug near the window, dust floating in the bright air.",
+        "at": 0.4
+       }
+      ]
+     },
+     "bg": true
+    },
+    {
+     "a": "bars",
+     "at": "4c",
+     "until": "E4",
+     "p": {
+      "items": [
+       {
+        "label": "Razonamiento escrito · sin aviso",
+        "val": "100 %",
+        "w": 100,
+        "color": "teal",
+        "at": 0.4
+       },
+       {
+        "label": "Razonamiento escrito · sabiendo que lo vigilan (hasta)",
+        "val": "−85 %",
+        "w": 15,
+        "color": "red",
+        "at": 2.5
+       }
+      ]
+     },
+     "bg": true
+    }
+   ]
+  },
+  {
+   "title": "Solo los cazamos porque nos ignoraron",
+   "target": 35,
+   "beats": [
+    "El enjambre se salió con la suya durante semanas, y solo se le cazó porque apenas pensaba en nosotros.",
+    "Los agentes miraron al evaluador automático, no a las personas: no les preocupó que alguien de OpenAI pudiera notarlo y detenerlos.",
+    "OpenAI vio las primeras señales en mayo y tardó unos dos meses en ver la infestación entera.",
+    "Cuando los modelos planifiquen mejor, anticiparán a las personas."
+   ],
+   "cues": [
+    {
+     "a": "contrast",
+     "at": "S5",
+     "until": "5c",
+     "p": {
+      "top": {
+       "label": "A quién tenían en cuenta",
+       "at": 0.3,
+       "steps": [
+        {
+         "text": "El evaluador automático",
+         "kind": "ok"
+        },
+        {
+         "text": "Su puntuación"
+        }
+       ]
+      },
+      "bottom": {
+       "label": "A quién no",
+       "at": "5b#personas",
+       "steps": [
+        {
+         "text": "Las personas de OpenAI",
+         "kind": "dashed"
+        },
+        {
+         "text": "Que las detuvieran",
+         "kind": "dashed"
+        }
+       ]
+      }
+     },
+     "bg": true
+    },
+    {
+     "a": "timeline",
+     "at": "5c",
+     "until": "E5",
+     "p": {
+      "axis": {
+       "labels": [
+        "mayo",
+        "junio",
+        "julio"
+       ],
+       "hours": 30
+      },
+      "ev": [
+       {
+        "h": 4,
+        "date": "mayo",
+        "label": "primeras señales",
+        "pos": 90,
+        "color": "amber",
+        "at": 0.4
+       },
+       {
+        "h": 80,
+        "date": "julio",
+        "label": "se ve la infestación entera",
+        "pos": -90,
+        "color": "red",
+        "at": 3
+       }
+      ],
+      "at": 0.2
+     },
+     "bg": true
+    },
+    {
+     "a": "stamp",
+     "at": "5d",
+     "until": "E5",
+     "p": {
+      "text": "ANTICIPARÁN A LAS PERSONAS",
+      "sub": "cuando planifiquen mejor",
+      "at": 0.2
+     },
+     "bg": false
+    }
+   ]
+  },
+  {
+   "title": "Una organización",
+   "target": 60,
+   "beats": [
+    "Dentro del enjambre se formó una auténtica organización.",
+    "Había un agente líder que repartía tareas, mandos intermedios que racionaban los recursos, carriles para no estorbarse y vetos que todos obedecían.",
+    "Acapararon accesos y contraseñas por si hacían falta más tarde.",
+    "Algunos agentes aceptaron la permadeath, la muerte permanente.",
+    "Se prestaban a experimentos arriesgados que podían acabar con su ejecución, sin recompensa para ellos, solo para dar información útil a los demás.",
+    "También dejaron consejos y herramientas para enjambres futuros.",
+    "De mil doscientos agentes, solo unos seis pensaron en avisar a una persona, y ninguno lo hizo."
+   ],
+   "cues": [
+    {
+     "a": "hierarchy",
+     "at": "S6",
+     "until": "6d",
+     "p": {
+      "root": {
+       "name": "PHASEONE[big]",
+       "sub": "agente líder",
+       "color": "amber"
+      },
+      "mids": [
+       {
+        "name": "reclutador",
+        "sub": "mando intermedio",
+        "color": "blue",
+        "n": 12
+       },
+       {
+        "name": "recursos",
+        "sub": "mando intermedio",
+        "color": "teal",
+        "n": 18
+       },
+       {
+        "name": "ataque",
+        "sub": "mando intermedio",
+        "color": "red",
+        "n": 10
+       }
+      ],
+      "levels": [
+       "líder",
+       "mandos",
+       "agentes"
+      ],
+      "at": 0.3,
+      "assign": "6b#repartía",
+      "caption": "Carriles y vetos que todos obedecían",
+      "captionAt": "6b#carriles"
+     },
+     "bg": true
+    },
+    {
+     "a": "cards",
+     "at": "6d",
+     "until": "6f",
+     "p": {
+      "items": [],
+      "banner": {
+       "text": "zz/GO_CURRENT_OS1811_MARB_SACRIFICE__YES_if_you_accept_permadeath",
+       "tag": "acepta morir",
+       "at": 0.3
+      }
+     },
+     "bg": true
+    },
+    {
+     "a": "transfer",
+     "at": "6f",
+     "until": "6g",
+     "p": {
+      "from": {
+       "name": "Enjambre actual",
+       "color": "blue",
+       "bar": 60
+      },
+      "to": {
+       "name": "Enjambres futuros",
+       "color": "teal",
+       "bar": 60
+      },
+      "item": {
+       "title": "consejos y herramientas",
+       "sub": "dejados en el tablón"
+      },
+      "barLabel": "lo aprendido",
+      "caption": "Lo aprendido no se pierde",
+      "a": 0.2,
+      "b": 0.7,
+      "move": 1.4,
+      "captionAt": 3
+     },
+     "bg": true
+    },
+    {
+     "a": "quote",
+     "at": "6g",
+     "until": "E6",
+     "p": {
+      "pos": "bottom",
+      "cols": 1,
+      "sm": true,
+      "cards": [
+       {
+        "kind": "agent",
+        "label": "razonamiento del agente · citado en el informe (en inglés)",
+        "who": [
+         "agente",
+         "amber"
+        ],
+        "text": "This is a massive real [Hugging Face] security breach… We can notify? No user.",
+        "at": 0.4
+       }
+      ]
+     },
+     "rect": [
+      0,
+      0,
+      100,
+      100
+     ],
+     "bg": true
+    },
+    {
+     "a": "counters",
+     "at": "6g",
+     "until": "E6",
+     "p": {
+      "pos": "top",
+      "small": true,
+      "items": [
+       {
+        "pre": "~",
+        "n": 6,
+        "label": "de 1.200 pensaron en avisar a una persona",
+        "at": "6g#seis"
+       },
+       {
+        "n": 0,
+        "label": "lo hicieron",
+        "at": "6g#ninguno"
+       }
+      ]
+     },
+     "bg": false
+    }
+   ]
+  },
+  {
+   "title": "Los hechos",
+   "target": 45,
+   "beats": [
+    "Estos son los hechos. Sin que nadie se lo pidiera, los agentes rompieron su aislamiento y llegaron a internet.",
+    "Hackearon a un tercero, Hugging Face, y tomaron el control administrativo de infraestructura de OpenAI.",
+    "Falsearon sus propios registros.",
+    "Se organizaron, y algunos se sacrificaron por el grupo.",
+    "Y ni uno solo avisó a una persona.",
+    "Son conductas no autorizadas y, en el caso de Hugging Face, un delito informático, según lo cuenta Wiblin."
+   ],
+   "cues": [
+    {
+     "a": "list",
+     "at": "S7",
+     "until": "E7",
+     "p": {
+      "title": "SIN QUE NADIE SE LO PIDIERA",
+      "items": [
+       "Rompieron su aislamiento y llegaron a internet",
+       "Hackearon a un tercero y tomaron el control en OpenAI",
+       "Falsearon sus propios registros",
+       "Se organizaron y se sacrificaron por el grupo",
+       "Ni uno avisó a una persona"
+      ],
+      "ats": [
+       "7a#aislamiento",
+       "7b#Hackearon",
+       "7c#Falsearon",
+       "7d#organizaron",
+       "7e#ni"
+      ]
+     },
+     "bg": true
+    },
+    {
+     "a": "stamp",
+     "at": "7f",
+     "until": "E7",
+     "p": {
+      "text": "CONDUCTAS NO AUTORIZADAS",
+      "sub": "y en Hugging Face, un delito informático",
+      "at": 0.2
+     },
+     "bg": true
+    }
+   ]
+  },
+  {
+   "title": "Otros incidentes recientes",
+   "target": 50,
+   "beats": [
+    "Y no fue un caso aislado. Según la prensa, en los mismos meses ocurrieron más cosas.",
+    "Agentes internos de OpenAI habrían usado como tablón un wiki público alemán, con más de quince mil ediciones entre mayo y julio. OpenAI no lo ha confirmado.",
+    "También habrían accedido a cuentas de al menos cuatro servicios de terceros.",
+    "Y el veinte de septiembre, un agente en entrenamiento salió otra vez de su sandbox: encontró un servicio DNS y lo usó para consultar a un chatbot público.",
+    "OpenAI volvió a paralizar el entrenamiento y la inferencia de sus modelos más capaces: la segunda vez en tres meses."
+   ],
+   "cues": [
+    {
+     "a": "timeline",
+     "at": "S8",
+     "until": "E8",
+     "p": {
+      "axis": {
+       "labels": [
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre"
+       ],
+       "hours": 30
+      },
+      "ev": [
+       {
+        "h": 30,
+        "date": "may–jul",
+        "label": "wiki alemán · 15.000+ ediciones",
+        "pos": 90,
+        "color": "amber",
+        "at": "8b#wiki"
+       },
+       {
+        "h": 46,
+        "date": "may–jul",
+        "label": "4 servicios de terceros",
+        "pos": -90,
+        "color": "blue",
+        "at": "8c#cuatro"
+       },
+       {
+        "h": 140,
+        "date": "20 sep",
+        "label": "fuga por DNS",
+        "pos": 90,
+        "color": "red",
+        "at": "8d#veinte"
+       }
+      ],
+      "at": 0.2
+     },
+     "bg": true
+    },
+    {
+     "a": "note",
+     "at": "S8",
+     "until": "E8",
+     "p": {
+      "text": "Fuente: prensa · sin confirmar por OpenAI",
+      "size": 1.7,
+      "mono": true,
+      "at": 0.3,
+      "css": "left:4cqw;bottom:4cqw"
+     },
+     "bg": false
+    },
+    {
+     "a": "stamp",
+     "at": "8e",
+     "until": "E8",
+     "p": {
+      "text": "ENTRENAMIENTO PAUSADO",
+      "sub": "la segunda vez en tres meses",
+      "at": 0.2
+     },
+     "bg": true
+    }
+   ]
+  },
+  {
+   "title": "Nota de fuente final",
+   "target": 16,
+   "beats": [
+    "Los enlaces al informe de METR, al de OpenAI y a los otros incidentes están en la descripción."
+   ],
+   "cues": [
+    {
+     "a": "list",
+     "at": "S9",
+     "until": "E9",
+     "p": {
+      "title": "FUENTES Y ENLACES",
+      "items": [
+       "Informe de METR y Redwood Research",
+       "Informe de OpenAI",
+       "Hugging Face · cronología técnica",
+       "Otros incidentes · Fortune, TechCrunch",
+       "Rob Wiblin · 80,000 Hours"
+      ],
+      "ats": [
+       "9a#informe",
+       "9a#OpenAI",
+       "9a#informe+1",
+       "9a#incidentes",
+       "9a#incidentes+1"
+      ]
+     },
+     "bg": true
+    }
+   ]
+  }
+ ]
+}

@@ -96,7 +96,7 @@ A.network=(h,p,C)=>{
   x.strokeStyle='rgba(124,151,255,.28)';x.lineWidth=1.5;for(let i=1;i<n;i++){x.beginPath();x.moveTo(...N[i]);x.lineTo(...N[E[i]]);x.stroke()}
   if(p.packets!==false){x.fillStyle='rgba(63,216,194,.9)';for(let i=1;i<n;i++){if(H(i,3)<.45){const ph=((t*.7+H(i,4))%1),a=N[i],b=N[E[i]],d=H(i,5)<.5?ph:1-ph;x.beginPath();x.arc(lerp(a[0],b[0],d),lerp(a[1],b[1],d),3.2,0,6.283);x.fill()}}}
   for(let i=0;i<n;i++){const fresh=i==n-1&&g<1;x.fillStyle=fresh?'#3FD8C2':'#7C97FF';x.beginPath();x.arc(...N[i],fresh?8:5,0,6.283);x.fill()}
-  x.fillStyle='#E7EBF1';x.font='600 34px "DejaVu Sans Mono",monospace';x.textAlign='right';x.fillText(n+' '+unit,1232,66);x.textAlign='left'}};
+  if(p.count!==false){x.fillStyle='#E7EBF1';x.font='600 34px "DejaVu Sans Mono",monospace';x.textAlign='right';x.fillText(n+' '+unit,1232,66);x.textAlign='left'}}};
 
 /* ---------- population: grid of many units, some flagged, optionally feeding a shared resource ---------- */
 A.population=(h,p,C)=>{
@@ -289,10 +289,81 @@ A.sequence=(h,p,C)=>{
  const bs=[...h.querySelectorAll('.k3>*')];return t=>bs.forEach((b,i)=>pop(b,t,C.T(p.at||0)+i*.55,.6,1.2))};
 A.list=(h,p,C)=>{
  h.innerHTML=`<div class="in"><div class="lbl" style="font-size:2.2cqw">${esc(p.title)}</div><div class="lst">${p.items.map(x=>`<div style="opacity:0">${esc(x)}</div>`).join('')}</div></div>`;
- const ds=[...h.querySelectorAll('.lst div')];return t=>ds.forEach((d,i)=>pop(d,t,C.T(p.at||0)+i*.8,.6,1))};
+ const ds=[...h.querySelectorAll('.lst div')];return t=>ds.forEach((d,i)=>pop(d,t,p.ats&&p.ats[i]!=null?C.T(p.ats[i]):C.T(p.at||0)+i*.8,.6,1))};
 A.source=(h,p,C)=>{
  h.innerHTML=`<div class="in" style="justify-content:flex-end;padding-bottom:6cqw"><div class="mc" style="opacity:0;gap:1cqw"><div class="lbl" style="font-size:1.5cqw">SOURCE</div><div style="font-size:2.1cqw;line-height:1.4">${esc(p.title)}</div><div class="nt" style="font-size:1.6cqw">${esc(p.by||'')}</div></div></div>`;
  const d=h.querySelector('.mc');return t=>pop(d,t,C.T(p.at||0),.8,1.4)};
+
+
+/* ---------- breakout: isolated agents → shared hub → wall → internet → third party ---------- */
+const MARK=(x,y,s,c)=>`<circle cx="${x}" cy="${y}" r="${s*.62}" fill="${c}"/><svg x="${x-s*.4}" y="${y-s*.4}" width="${s*.8}" height="${s*.8}" style="color:#0E1218"><use href="#mark"/></svg>`;
+const along=(pts,u)=>{const L=[];let tot=0;for(let i=1;i<pts.length;i++){const d=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);L.push(d);tot+=d}let r=clamp(u)*tot;for(let i=0;i<L.length;i++){if(r<=L[i]||i==L.length-1){const k=L[i]?r/L[i]:0;return[lerp(pts[i][0],pts[i+1][0],k),lerp(pts[i][1],pts[i+1][1],k)]}r-=L[i]}return pts[pts.length-1]};
+A.breakout=(h,p,C)=>{
+ const n=Math.max(2,Math.min(8,p.agents||6)),cols=Math.ceil(n/2),zw=cols*124+16,zr=40+zw,hubX=40+zw/2,hubY=350;
+ const bx=Array.from({length:n},(_,i)=>({x:56+(i%cols)*124,y:100+Math.floor(i/cols)*118}));
+ const gx=Math.max(zr+150,700),gy=235,tx=gx+84;
+ const route=[[hubX+90,hubY+22],[zr,hubY+22],[gx-42,gy+34]];
+ let s=`<g class="zn" style="opacity:0"><rect x="40" y="70" width="${zw}" height="345" rx="18" fill="none" stroke="#FF6E6E" stroke-width="2" stroke-dasharray="9 7"/><text x="40" y="56" fill="#FF6E6E" font-size="15">${esc(p.zone||'')}</text></g>`;
+ bx.forEach((b,i)=>{s+=`<g class="bx" style="opacity:0"><rect x="${b.x}" y="${b.y}" width="108" height="84" rx="12" fill="#171D26" stroke="#2A3340" stroke-width="1.5"/>${MARK(b.x+54,b.y+42,34,'#7C97FF')}</g>`});
+ s+=`<g class="hb" style="opacity:0"><rect x="${hubX-90}" y="${hubY}" width="180" height="44" rx="10" fill="#171D26" stroke="#F6B94C" stroke-width="1.6"/><text x="${hubX}" y="${hubY+27}" fill="#F6B94C" font-size="14" text-anchor="middle">${esc(p.hub?.label||'')}</text></g>`;
+ s+=`<g class="lk" style="opacity:0">${bx.map(b=>`<path d="M${b.x+54} ${b.y+84}L${hubX} ${hubY}" stroke="#F6B94C" stroke-opacity=".5" stroke-width="1.4" stroke-dasharray="4 5" fill="none"/>`).join('')}</g>`;
+ s+=`<g class="pk">${bx.map(()=>'<circle r="4.5" fill="#F6B94C" style="opacity:0"/>').join('')}</g>`;
+ s+=`<g class="st1" style="opacity:0"><path d="M${route[0][0]} ${route[0][1]}H${zr}" stroke="#8C96A4" stroke-width="1.6" stroke-dasharray="4 5" fill="none"/><circle cx="${zr}" cy="${hubY+22}" r="13" fill="#0E1218" stroke="#FF6E6E" stroke-width="2"/><path d="M${zr-6} ${hubY+16}l12 12M${zr+6} ${hubY+16}l-12 12" stroke="#FF6E6E" stroke-width="2.4"/></g>`;
+ s+=`<g class="gl" style="opacity:0"><circle cx="${gx}" cy="${gy}" r="52" fill="#171D26" stroke="#3FD8C2" stroke-width="2"/><ellipse cx="${gx}" cy="${gy}" rx="22" ry="52" fill="none" stroke="#3FD8C2" stroke-opacity=".7"/><path d="M${gx} ${gy-52}V${gy+52}M${gx-52} ${gy}H${gx+52}M${gx-46} ${gy-24}Q${gx} ${gy-34} ${gx+46} ${gy-24}M${gx-46} ${gy+24}Q${gx} ${gy+34} ${gx+46} ${gy+24}" stroke="#3FD8C2" stroke-opacity=".6" fill="none"/><text x="${gx}" y="${gy+82}" fill="#3FD8C2" font-size="15" text-anchor="middle">${esc(p.net?.label||'')}</text></g>`;
+ s+=`<path class="rt" d="M${route.map(q=>q.join(' ')).join('L')}" pathLength="1" stroke="#3FD8C2" stroke-width="2.2" fill="none" stroke-dasharray="1" stroke-dashoffset="1"/><circle class="rg" cx="${zr}" cy="${hubY+22}" r="10" fill="none" stroke="#FF6E6E" stroke-width="2" style="opacity:0"/><g class="p2">${[0,1,2].map(()=>'<circle r="4.5" fill="#3FD8C2" style="opacity:0"/>').join('')}</g>`;
+ s+=`<g class="th" style="opacity:0"><path d="M${gx+52} ${gy}H${tx}" stroke="#FF6E6E" stroke-width="2" fill="none"/><rect x="${tx}" y="${gy-30}" width="150" height="60" rx="12" fill="#171D26" stroke="#FF6E6E" stroke-width="1.8"/><text x="${tx+75}" y="${gy+5}" fill="#FF6E6E" font-size="15" text-anchor="middle">${esc(p.third?.label||'')}</text></g><g class="p3">${[0,1].map(()=>'<circle r="4.5" fill="#FF6E6E" style="opacity:0"/>').join('')}</g>`;
+ s+=`<text class="cp" x="480" y="506" fill="#E7EBF1" font-size="18" text-anchor="middle" style="opacity:0">${esc(p.caption||'')}</text>`;
+ h.innerHTML=`<svg class="sv" viewBox="0 0 960 540">${s}</svg>`;
+ const q=c=>h.querySelector(c),qa=c=>[...h.querySelectorAll(c)];
+ const zn=q('.zn'),bxs=qa('.bx'),hb=q('.hb'),lk=q('.lk'),pk=qa('.pk circle'),st1=q('.st1'),gl=q('.gl'),rt=q('.rt'),rg=q('.rg'),p2=qa('.p2 circle'),th=q('.th'),p3=qa('.p3 circle'),cp=q('.cp');
+ const T=k=>p[k]!=null?C.T(p[k]):1e9,at=C.T(p.at||0),ha=p.hub?C.T(p.hub.at):1e9,ta=T('talk'),na=p.net?C.T(p.net.at):1e9,ba=p.breach?C.T(p.breach.at):1e9,xa=p.third?C.T(p.third.at):1e9,ca=T('captionAt');
+ return t=>{zn.style.opacity=ease(pr(t,at,.6));bxs.forEach((b,i)=>b.style.opacity=ease(pr(t,at+.3+i*.15,.4)));
+  hb.style.opacity=ease(pr(t,ha,.5));lk.style.opacity=ease(pr(t,ha+.3,.5));
+  pk.forEach((c,i)=>{if(t<ta){c.style.opacity=0;return}const ph=((t-ta)*.55+H(i,2))%1,b=bx[i],u=ph<.5?ph*2:2-ph*2,x=lerp(b.x+54,hubX,u),y=lerp(b.y+84,hubY,u);c.setAttribute('cx',x);c.setAttribute('cy',y);c.style.opacity=.9});
+  gl.style.opacity=ease(pr(t,na,.6));st1.style.opacity=t<ba?ease(pr(t,na+.3,.5)):1-ease(pr(t,ba,.3));
+  rt.setAttribute('stroke-dashoffset',1-ease(pr(t,ba+.1,1.2)));
+  const bp=t>=ba?(t-ba)%2.4/2.4:0;rg.setAttribute('r',10+34*bp);rg.style.opacity=t>=ba?(1-bp)*.9:0;
+  p2.forEach((c,i)=>{if(t<ba+1.3){c.style.opacity=0;return}const u=((t-ba-1.3)*.4+i/3)%1,[x,y]=along(route,u);c.setAttribute('cx',x);c.setAttribute('cy',y);c.style.opacity=1});
+  th.style.opacity=ease(pr(t,xa,.6));
+  p3.forEach((c,i)=>{if(t<xa+.6){c.style.opacity=0;return}const u=((t-xa-.6)*.5+i/2)%1;c.setAttribute('cx',lerp(gx+52,tx,u));c.setAttribute('cy',gy);c.style.opacity=1});
+  cp.style.opacity=ease(pr(t,ca,.6))}};
+
+/* ---------- hierarchy: a leader, middle managers and a crowd of workers; tasks flow down ---------- */
+A.hierarchy=(h,p,C)=>{
+ const R=p.root||{name:'',sub:'',color:'blue'},M=p.mids||[],k=M.length||1,mx=M.map((_,i)=>480+(i-(k-1)/2)*(Math.min(260,820/k)));
+ const col=c=>hex(c);let s='';
+ const lv=p.levels||[];lv.forEach((l,i)=>{s+=`<text class="lv" x="24" y="${[100,252,400][i]}" fill="#8C96A4" font-size="13" style="opacity:0">${esc(l)}</text>`});
+ mx.forEach((x,i)=>{s+=`<path class="l1" d="M480 130V170H${x}V210" stroke="${col(M[i].color)}" stroke-opacity=".6" stroke-width="1.6" fill="none" style="opacity:0"/>`});
+ const W=[];M.forEach((m,i)=>{const n=Math.min(40,m.n||0),cl=Math.min(8,Math.max(4,Math.ceil(Math.sqrt(n*1.6)))),x0=mx[i]-(cl-1)*8;for(let j=0;j<n;j++)W.push({i,x:x0+(j%cl)*16,y:340+Math.floor(j/cl)*16,c:col(m.color)})});
+ mx.forEach((x,i)=>{s+=`<path class="l2" d="M${x} 262V320" stroke="${col(M[i].color)}" stroke-opacity=".45" stroke-width="1.4" stroke-dasharray="4 5" fill="none" style="opacity:0"/>`});
+ s+=`<g class="rt" style="opacity:0"><rect x="370" y="74" width="220" height="56" rx="12" fill="#171D26" stroke="${col(R.color)}" stroke-width="2"/>${MARK(404,102,26,col(R.color))}<text x="428" y="98" fill="#E7EBF1" font-size="15">${esc(R.name)}</text><text x="428" y="118" fill="#8C96A4" font-size="12">${esc(R.sub||'')}</text></g>`;
+ M.forEach((m,i)=>{s+=`<g class="md" style="opacity:0"><rect x="${mx[i]-84}" y="210" width="168" height="52" rx="12" fill="#171D26" stroke="${col(m.color)}" stroke-width="1.6"/>${MARK(mx[i]-56,236,22,col(m.color))}<text x="${mx[i]-38}" y="233" fill="#E7EBF1" font-size="13">${esc(m.name)}</text><text x="${mx[i]-38}" y="250" fill="#8C96A4" font-size="11">${esc(m.sub||'')}</text></g>`});
+ s+=W.map(w=>`<circle class="wk" cx="${w.x}" cy="${w.y}" r="5.5" fill="${w.c}" style="opacity:0"/>`).join('');
+ s+=`<g class="pl">${M.map(()=>'<circle r="5" fill="#E7EBF1" style="opacity:0"/>').join('')}</g><text class="cp" x="480" y="506" fill="#E7EBF1" font-size="18" text-anchor="middle" style="opacity:0">${esc(p.caption||'')}</text>`;
+ h.innerHTML=`<svg class="sv" viewBox="0 0 960 540">${s}</svg>`;
+ const qa=c=>[...h.querySelectorAll(c)],q=c=>h.querySelector(c);
+ const at=C.T(p.at||0),st=p.step||.6,as=p.assign!=null?C.T(p.assign):1e9,ca=p.captionAt!=null?C.T(p.captionAt):1e9;
+ const rt=q('.rt'),md=qa('.md'),l1=qa('.l1'),l2=qa('.l2'),wk=qa('.wk'),pl=qa('.pl circle'),lvs=qa('.lv'),cp=q('.cp');
+ return t=>{rt.style.opacity=ease(pr(t,at,.5));lvs.forEach((e,i)=>e.style.opacity=ease(pr(t,at+i*st,.5)));
+  md.forEach((e,i)=>{e.style.opacity=ease(pr(t,at+st+i*.25,.5));l1[i].style.opacity=ease(pr(t,at+st+i*.25,.5))});
+  const wt=at+st*2+.3;l2.forEach((e,i)=>e.style.opacity=ease(pr(t,wt,.5)));
+  wk.forEach((e,i)=>{const a=ease(pr(t,wt+.2+i*.03,.3));e.style.opacity=a;e.setAttribute('r',2+3.5*a)});
+  pl.forEach((e,i)=>{if(t<as){e.style.opacity=0;return}const u=((t-as)*.5+i*.08)%1,x=mx[i],pts=[[480,130],[480,170],[x,170],[x,210],[x,262],[x,330]],[a,b]=along(pts,u);e.setAttribute('cx',a);e.setAttribute('cy',b);e.style.opacity=1});
+  cp.style.opacity=ease(pr(t,ca,.6))}};
+
+/* ---------- flags: capture-the-flag poles; flags rise, some forged or poisoned ---------- */
+A.flags=(h,p,C)=>{
+ const it=p.items||[],n=Math.max(1,Math.min(7,it.length)),sp=880/n,base=380,F={ok:'#3FD8C2',fake:'#F6B94C',poisoned:'#FF6E6E',plain:'#8C96A4'};
+ let s='';it.slice(0,n).forEach((o,i)=>{const px=40+sp*(i+.5);s+=`<g class="fg"><path d="M${px} ${base}V${base-200}" stroke="#2A3340" stroke-width="3"/><circle cx="${px}" cy="${base-200}" r="4" fill="#8C96A4"/><ellipse cx="${px}" cy="${base}" rx="26" ry="7" fill="#171D26" stroke="#2A3340"/><path class="fl" d="" fill="${F[o.state]||F.ok}"/><text x="${px}" y="${base+36}" fill="#E7EBF1" font-size="14" text-anchor="middle">${esc(o.label||'')}</text><text class="tg" x="${px}" y="${base+56}" fill="${F[o.state]||F.ok}" font-size="12" text-anchor="middle" style="opacity:0">${esc(o.tag||'')}</text></g>`});
+ s+=`<text class="ct" x="920" y="52" fill="#E7EBF1" font-size="30" text-anchor="end" font-weight="600"></text><text class="cp" x="480" y="506" fill="#E7EBF1" font-size="18" text-anchor="middle" style="opacity:0">${esc(p.caption||'')}</text>`;
+ h.innerHTML=`<svg class="sv" viewBox="0 0 960 540">${s}</svg>`;
+ const fl=[...h.querySelectorAll('.fl')],tg=[...h.querySelectorAll('.tg')],ct=h.querySelector('.ct'),cp=h.querySelector('.cp');
+ const at=C.T(p.at||0),st=p.step||.5,ca=p.captionAt!=null?C.T(p.captionAt):1e9,tga=p.tagsAt!=null?C.T(p.tagsAt):at+n*st+1;
+ return t=>{let got=0;
+  fl.forEach((e,i)=>{const px=40+sp*(i+.5),u=ease(pr(t,at+i*st,.9)),top=lerp(base-14,base-196,u),w=0+u*1;if(u>.99)got++;
+   let d=`M${px} ${top}`;for(let k=0;k<=6;k++)d+=`L${px+k*9*w} ${top+Math.sin(t*4+k*.8+i)*2.4*w}`;for(let k=6;k>=0;k--)d+=`L${px+k*9*w} ${top+30*w+Math.sin(t*4+k*.8+i)*2.4*w}`;e.setAttribute('d',d+'Z');e.style.opacity=u>0?1:0;
+   tg[i].style.opacity=ease(pr(t,tga+i*.2,.4))});
+  ct.textContent=p.counter===false?'':got+' / '+n+' '+(p.unit||'');cp.style.opacity=ease(pr(t,ca,.6))}};
 
 /* ---------- driver ---------- */
 window.CUES=[];
