@@ -205,6 +205,7 @@ def write_build(st, root, timings=None, pad=True, **kw):
     json.dump({'sched': sched, 'cues': cues, 'total': total, 'fps': 30, 'scenes': len(st['scenes'])}, open(f'{b}/data.json', 'w'), ensure_ascii=False)
     json.dump([{'id': i, 'text': sched[i]['txt'], 'start': sched[i]['s']} for i in order], open(f'{b}/beats.json', 'w'), ensure_ascii=False, indent=1)
     _srt(sched, order, f'{b}/captions.srt')
+    write_script(st, root, sched, total, real=bool(timings))
     # player
     pdir = f'{b}/player'; os.makedirs(pdir, exist_ok=True)
     for f in ('assets.js', 'style.css'): shutil.copy(f'{PKG}/player/{f}', f'{pdir}/{f}')
@@ -217,6 +218,19 @@ def write_build(st, root, timings=None, pad=True, **kw):
 <div id="stage"></div><script>window.NUMSEP="{numsep}"</script><script src="assets.js"></script></body></html>'''
     open(f'{pdir}/index.html', 'w').write(html)
     return dict(total=total, beats=len(order), cues=len(cues), sched=sched)
+
+
+def write_script(st, root, sched=None, total=None, real=False):
+    """script.md next to story.json: the voice-over, scene by scene (regenerated on every build)."""
+    m = st['meta']; mm = lambda x: f'{int(x // 60)}:{int(x % 60):02d}'
+    L = [f"# {m.get('title', 'Script')}", '', f"*Voice-over script. Language: {m.get('lang', 'en')}" + (f" · voice: {m['voice']}" if m.get('voice') else '') +
+         (f" · duration: {'' if real else '~'}{mm(total)}" if total else '') + ' · generated from story.json, do not edit here.*', '']
+    for n, sc in enumerate(st['scenes']):
+        L += [f"## {n} · {sc['title']}", '']
+        for b in sc['beats']:
+            t = f" `{mm(sched[b['id']]['s'])}`" if sched and b['id'] in sched else ''
+            L.append(f"**{b['id']}**{t} {b['text']}"); L.append('')
+    open(os.path.join(root, 'script.md'), 'w').write('\n'.join(L).rstrip() + '\n')
 
 
 def _ts(x):

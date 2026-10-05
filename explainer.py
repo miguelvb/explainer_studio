@@ -76,6 +76,7 @@ def main():
     p = sp.add_parser('prompt'); p.set_defaults(f=cmd_prompt); p.add_argument('--mode', default='doc', choices=['doc', 'script']); p.add_argument('--no-example', action='store_true'); p.add_argument('--with-user', action='store_true'); p.add_argument('--minutes', type=float, default=10)
     p = P('validate', cmd_validate); p.add_argument('--blanks', action='store_true')
     p = P('build', lambda a: do_build(a)); p.add_argument('--no-pad', action='store_true'); p.add_argument('--estimate', action='store_true')
+    P('script', lambda a: (do_build(a), print('wrote', os.path.join(proj(a), 'script.md'))))
     p = P('preview', lambda a: print(render.preview(proj(a), a.scene, a.step) or 'ok')); p.add_argument('--scene', type=int); p.add_argument('--step', type=float, default=6)
     p = P('tts', lambda a: audio.tts(proj(a), story(a), voice=a.voice, only=set(a.only.split(',')) if a.only else None, force=a.force)); p.add_argument('--voice'); p.add_argument('--only'); p.add_argument('--force', action='store_true')
     P('music', lambda a: print(audio.music(proj(a))))

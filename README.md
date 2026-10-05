@@ -49,3 +49,7 @@ Project folders hold `story.json`, optional `mark.txt`, `source.txt`, `audio/`, 
 - 26 beats per scene max; asset layouts are tuned for full 16:9 frames (use `rect` presets sparingly).
 - The LLM step can still misread a source — always run `verify` and skim the contact sheet.
 - `examples/mars-orbiter` is a demo written from general knowledge, not from a supplied document — check it before publishing.
+
+## Script
+
+Every build (`build`, `validate`, `all`, or `python explainer.py script -p <project>`) writes `script.md` next to `story.json`: the voice-over, scene by scene, with beat ids and start times.
