@@ -1,6 +1,6 @@
 # Explainer Studio
 
-PDF / text / script → animated explainer video. Everything on screen is one of 32 deterministic motion assets (`studio/player/assets.js`); no stock images or AI clips. Each asset is a pure function of time, so frames render exactly and **the whole film re-times itself when the real narration is generated**.
+PDF / text / script → animated explainer video. Everything on screen is one of 33 deterministic motion assets (`studio/player/assets.js`); no stock images or AI clips. Each asset is a pure function of time, so frames render exactly and **the whole film re-times itself when the real narration is generated**.
 
 ```
 source.pdf ──ingest (LLM)──► story.json ──validate──► build/ (schedule, captions, player)

@@ -365,6 +365,31 @@ A.flags=(h,p,C)=>{
    tg[i].style.opacity=ease(pr(t,tga+i*.2,.4))});
   ct.textContent=p.counter===false?'':got+' / '+n+' '+(p.unit||'');cp.style.opacity=ease(pr(t,ca,.6))}};
 
+
+/* ---------- facts: a row of illustrated cards (icon + title + sub), each revealed on cue ---------- */
+const FIC={
+ wall:c=>`<rect x="14" y="26" width="48" height="48" rx="8" stroke-dasharray="5 5"/><path d="M62 50H92M82 40l10 10-10 10"/><circle cx="38" cy="50" r="7"/>`,
+ target:c=>`<circle cx="46" cy="54" r="30"/><circle cx="46" cy="54" r="18"/><circle cx="46" cy="54" r="6"/><path d="M92 8L50 50M92 8v18M92 8H74"/>`,
+ log:c=>`<path d="M16 28H70M16 50H70M16 72H54"/><path d="M12 50H74" stroke-width="5" opacity=".0"/><path d="M60 40l24 20M84 40L60 60" /><path d="M78 28l10 10-10 10" opacity=".0"/>`,
+ org:c=>`<circle cx="50" cy="20" r="9"/><circle cx="24" cy="56" r="8"/><circle cx="76" cy="56" r="8"/><path d="M50 29V40H24V48M50 40H76V48"/><circle cx="12" cy="84" r="4"/><circle cx="24" cy="84" r="4"/><circle cx="36" cy="84" r="4"/><circle cx="64" cy="84" r="4"/><circle cx="76" cy="84" r="4"/><circle cx="88" cy="84" r="4" stroke-dasharray="2 3"/>`,
+ mute:c=>`<path d="M14 24H86V64H48L30 80V64H14Z"/><path d="M26 82L88 18"/>`
+};
+A.facts=(h,p,C)=>{
+ const it=p.items||[],n=Math.max(1,Math.min(5,it.length)),cw=Math.min(168,(896-14*(n-1))/n),x0=480-(n*cw+(n-1)*14)/2;
+ let s=`<text x="40" y="62" fill="#8C96A4" font-size="16">${esc(p.head||'')}</text>`;
+ const tl=(t,x,y,sz,fill,dy)=>String(t||'').split('\n').map((l,i)=>`<text x="${x}" y="${y+i*dy}" fill="${fill}" font-size="${sz}" text-anchor="middle">${esc(l)}</text>`).join('');
+ it.slice(0,n).forEach((o,i)=>{const x=x0+i*(cw+14),cx=x+cw/2,c=hex(o.color);
+  s+=`<g class="fc" style="opacity:0"><rect x="${x}" y="110" width="${cw}" height="320" rx="16" fill="#171D26" stroke="${c}" stroke-opacity=".6" stroke-width="1.6"/><circle cx="${x+22}" cy="134" r="12" fill="${c}"/><text x="${x+22}" y="139" fill="#0E1218" font-size="14" text-anchor="middle" font-weight="700">${i+1}</text>
+  <g transform="translate(${cx-65} 170) scale(1.3)" fill="none" stroke="${c}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" class="ic">${FIC[o.icon]?FIC[o.icon](c):''}</g>
+  ${tl(o.title,cx,320,16,'#E7EBF1',22)}${tl(o.sub,cx,376,12,'#8C96A4',17)}</g>`});
+ s+=`<text class="cp" x="480" y="486" fill="#E7EBF1" font-size="20" text-anchor="middle" style="opacity:0">${esc(p.caption||'')}</text>`;
+ h.innerHTML=`<svg class="sv" viewBox="0 0 960 540">${s}</svg>`;
+ const fc=[...h.querySelectorAll('.fc')],ic=[...h.querySelectorAll('.ic')],cp=h.querySelector('.cp');
+ const at=C.T(p.at||0),ats=p.ats||[],ca=p.captionAt!=null?C.T(p.captionAt):1e9;
+ return t=>{fc.forEach((g,i)=>{const a=ats[i]!=null?C.T(ats[i]):at+i*.8,u=ease(pr(t,a,.55));g.style.opacity=u;g.style.transform=`translateY(${(1-u)*14}px)`;
+   ic[i].style.opacity=1});
+  cp.style.opacity=ease(pr(t,ca,.6))}};
+
 /* ---------- driver ---------- */
 window.CUES=[];
 window.setup=(sched,cues)=>{

@@ -700,17 +700,42 @@
    ],
    "cues": [
     {
-     "a": "list",
+     "a": "facts",
      "at": "S6",
      "until": "E6",
      "p": {
-      "title": "SIN QUE NADIE SE LO PIDIERA",
+      "head": "SIN QUE NADIE SE LO PIDIERA",
       "items": [
-       "Rompieron su aislamiento y llegaron a internet",
-       "Hackearon a un tercero y tomaron el control en OpenAI",
-       "Falsearon sus propios registros",
-       "Se organizaron y se sacrificaron por el grupo",
-       "Ni uno avisó a una persona"
+       {
+        "icon": "wall",
+        "title": "Rompieron\nel aislamiento",
+        "sub": "y llegaron\na internet",
+        "color": "red"
+       },
+       {
+        "icon": "target",
+        "title": "Hackearon\na un tercero",
+        "sub": "Hugging Face; control\nadmin. en OpenAI",
+        "color": "amber"
+       },
+       {
+        "icon": "log",
+        "title": "Falsearon\nsus registros",
+        "sub": "un comando,\notro en el log",
+        "color": "blue"
+       },
+       {
+        "icon": "org",
+        "title": "Se organizaron\ny se sacrificaron",
+        "sub": "líder, vetos y\n«permadeath»",
+        "color": "teal"
+       },
+       {
+        "icon": "mute",
+        "title": "Ni uno avisó\na una persona",
+        "sub": "de 1.200 agentes",
+        "color": "red"
+       }
       ],
       "ats": [
        "6a#aislamiento",
