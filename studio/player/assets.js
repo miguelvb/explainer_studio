@@ -18,7 +18,7 @@ const chip=(n,c,o={})=>`<span class="chip${o.p?' p':''}${o.big?' big':''}" data-
 const segs=a=>a.map(([c,t])=>`<span class="${SEGC[c]||c}">${esc(t)}</span>`).join('');
 const pop=(e,t,s,d=.5,dy=1.2)=>{const p=ease(pr(t,s,d));e.style.opacity=p;e.style.transform=p<1?`translateY(${(1-p)*dy}cqw)`:'none';return p};
 const trunc=(a,n)=>{const o=[];for(const [c,t] of a){if(n<=0)break;o.push([c,t.slice(0,n)]);n-=t.length}return o};
-const fmt=n=>Math.round(n).toLocaleString('en-US');
+const fmt=n=>Math.round(n).toLocaleString('en-US').replace(/,/g,window.NUMSEP||',');
 const A={};
 
 /* ---------- feed: scrolling stream of coloured text lines ---------- */

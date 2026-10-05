@@ -26,6 +26,7 @@ No API at all? `python explainer.py prompt --mode doc` prints the full prompt; p
 
 ## Examples
 - `examples/hf-incident` — the 10-minute OpenAI / Hugging Face agent incident film (METR / Redwood report, Aug 2026), 9 scenes, 57 beats, 68 cues. Narration was fact-checked against the report; run `python explainer.py verify -p examples/hf-incident --source report.pdf` for a second, automated check.
+- `examples/hf-incident-es` — the same film in Spanish (Spain accent, ~11 min). Agent quotes stay in English with Spanish labels. Shows how to localise a story: `meta.lang`, `meta.numsep` (thousands separator, `.` for es/de/it/pt), Spanish TTS `instructions` and a `pronunciation` table.
 - `examples/mars-orbiter` — 3-minute demo written from general knowledge (verify before publishing).
 
 ## story.json

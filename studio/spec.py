@@ -210,9 +210,10 @@ def write_build(st, root, timings=None, pad=True, **kw):
     mark = st['meta'].get('mark')
     mp = os.path.join(root, mark) if mark and os.path.exists(os.path.join(root, mark)) else f'{PKG}/default_mark.txt'
     head, d = open(mp).read().split('\n', 1); W, H = head.split()
+    lang = st['meta'].get('lang', 'en')[:2]; numsep = st['meta'].get('numsep') or ('.' if lang in ('es', 'de', 'it', 'pt') else ',')
     html = f'''<!doctype html><html><head><meta charset="utf-8"><title>{st["meta"]["title"]}</title><link rel="stylesheet" href="style.css"></head>
 <body style="margin:0;background:#0E1218"><svg width="0" height="0" style="position:absolute"><symbol id="mark" viewBox="0 0 {W} {H}"><path fill="currentColor" fill-rule="evenodd" d="{d.strip()}"/></symbol></svg>
-<div id="stage"></div><script src="assets.js"></script></body></html>'''
+<div id="stage"></div><script>window.NUMSEP="{numsep}"</script><script src="assets.js"></script></body></html>'''
     open(f'{pdir}/index.html', 'w').write(html)
     return dict(total=total, beats=len(order), cues=len(cues), sched=sched)
 
