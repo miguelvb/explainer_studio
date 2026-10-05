@@ -43,6 +43,7 @@ def normalise(st):
 
 def schedule(st, timings=None, pad=True, gap=.55, pre=.8, post=1.8):
     timings = timings or {}
+    m = st['meta']; gap = m.get('gap', gap); pre = m.get('pre', pre); post = m.get('post', post)   # per-film pacing (seconds)
     scenes = st['scenes']; N = len(scenes)
     nat = []
     for n, sc in enumerate(scenes):

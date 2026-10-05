@@ -8,7 +8,10 @@
   "voice": "nova",
   "speed": 1.1,
   "instructions": "Narradora de divulgación, brillante y explicativa. Español de España (castellano peninsular), dicción clara, tono cercano y entusiasta pero serio con el tema. Ritmo ágil, con energía en las ideas clave y una pausa breve al final de cada frase. Explica como si se lo contaras a alguien curioso. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
-  "notes": "Basado en el vídeo de Rob Wiblin (80,000 Hours), el informe de METR/Redwood y el de OpenAI. Los hechos del vídeo se toman por válidos; los incidentes recientes (escena 8) proceden de prensa y no se han contrastado con un informe."
+  "notes": "Basado en el vídeo de Rob Wiblin (80,000 Hours), el informe de METR/Redwood y el de OpenAI. Los hechos del vídeo se toman por válidos; los incidentes recientes (escena 8) proceden de prensa y no se han contrastado con un informe.",
+  "gap": 0.4,
+  "pre": 0.25,
+  "post": 0.6
  },
  "pronunciation": {
   "PHASEONE-big": "Phase One big",
