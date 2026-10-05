@@ -14,7 +14,7 @@ def _dur(p):
 def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, log=print):
     """One MP3 per beat -> audio/beats/<id>.mp3 and audio/timings.json. Needs OPENAI_API_KEY (env or .env)."""
     from . import env; env.load(root)
-    if 'OPENAI_API_KEY' not in os.environ: raise SystemExit('OPENAI_API_KEY not set (shell or .env)')
+    if 'OPENAI_API_KEY' not in os.environ: raise SystemExit('OPENAI_API_KEY not set. .env files read: ' + (', '.join(env.FOUND) or 'none found') + '. The line must look like OPENAI_API_KEY=sk-...')
     from openai import OpenAI
     client = OpenAI(); m = st['meta']; E = os.environ
     model = model or E.get('OPENAI_TTS_MODEL', 'gpt-4o-mini-tts'); voice = voice or E.get('OPENAI_TTS_VOICE') or m.get('voice', 'marin')

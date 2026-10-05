@@ -1,5 +1,5 @@
 """Reads .env files (never overrides variables already set in the shell). Search order, first found wins per variable:
-<project>/.env, ./.env, <studio>/.env, ~/.env, ~/video_generator/.env
+ONLY the .env in the same folder as explainer.py.
 Recognised keys:
   OPENAI_API_KEY, OPENROUTER_API_KEY, ANTHROPIC_API_KEY
   OPENAI_TTS_MODEL (gpt-4o-mini-tts)  OPENAI_TTS_VOICE (marin)  OPENAI_TTS_SPEED (1.0)  OPENAI_TTS_INSTRUCTIONS
@@ -8,21 +8,20 @@ Recognised keys:
 import os, re
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_loaded = set()
+_loaded = set(); FOUND = []
 
 
 def load(root=None):
-    cands = [os.path.join(root, '.env')] if root else []
-    cands += ['.env', os.path.join(HERE, '.env'), os.path.expanduser('~/.env'), os.path.expanduser('~/video_generator/.env')]
+    cands = [os.path.join(HERE, '.env')]   # only the .env next to explainer.py
     for p in cands:
         p = os.path.abspath(p)
         if p in _loaded or not os.path.isfile(p): continue
-        _loaded.add(p)
-        for line in open(p, encoding='utf-8', errors='ignore'):
+        _loaded.add(p); FOUND.append(p)
+        for line in open(p, encoding='utf-8-sig', errors='ignore'):
             m = re.match(r'\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$', line)
             if not m or line.lstrip().startswith('#'): continue
             v = m.group(2)
-            if v[:1] in '"\'' and v.count(v[0]) >= 2: v = v[1:v.index(v[0], 1)]
+            if v and v[0] in '"\'' and v.count(v[0]) >= 2: v = v[1:v.index(v[0], 1)]
             else: v = re.sub(r'\s+#.*$', '', v)
             os.environ.setdefault(m.group(1), v)
 
