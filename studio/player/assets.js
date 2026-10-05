@@ -516,9 +516,11 @@ window.setup=(sched,cues)=>{
   const end=c.until!=null?abs(c.until)+(c.untilOff||0)+ext:start+c.dur;
   const el=mk('div','cue');const r=c.rect||[0,0,100,100];
   Object.assign(el.style,{left:r[0]+'%',top:r[1]+'%',width:r[2]+'%',height:r[3]+'%',zIndex:c.z||idx});
-  const fx=c.fx||{};const st=mk('div','st'+(c.bg?' bg':'')+(fx.bloom?' bloom':'')+(fx.vig?' vig':''));
-  if(fx.floor){const fc=hex(fx.floor);st.style.background=`radial-gradient(120% 60% at 50% 108%,${fc}55,transparent 70%),var(--ink)`}
-  el.append(st);stage.append(el);
+  const fx=c.fx||{},cm=c.cam&&c.cam.length;const st=mk('div','st'+(c.bg&&!cm?' bg':'')+(fx.bloom?' bloom':'')+(fx.vig&&!cm?' vig':''));
+  const flr=fx.floor?`radial-gradient(120% 60% at 50% 108%,${hex(fx.floor)}55,transparent 70%),var(--ink)`:null;
+  if(cm){const bgd=mk('div','st'+(c.bg?' bg':''));if(flr)bgd.style.background=flr;el.append(bgd)}   /* backdrop stays fixed while the camera moves the content */
+  else if(flr)st.style.background=flr;
+  st.dataset.c=1;el.append(st);if(cm&&fx.vig)el.append(mk('div','vgn'));stage.append(el);
   const C={dur:end-start,T:s=>typeof s==='number'?s:abs(s)-start};
   if(!A[c.a])throw new Error('unknown asset '+c.a);
   const upd=A[c.a](st,c.p||{},C);

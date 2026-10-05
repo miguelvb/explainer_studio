@@ -97,7 +97,7 @@ PROBE = """(a)=>{const out=[];const [sched,cues,total]=a;
  for(let i=0;i<cues.length;i++){const c=cues[i];
   try{setup(sched,[c]);const q=window.CUES[0];const ts=[q.start+.05,(q.start+q.end)/2,q.end-.05,q.end+1];
    for(const t of ts)frame(t);
-   const st=document.querySelector('#stage .st');
+   const st=document.querySelector('#stage .st[data-c]');
    if(st&&!st.textContent.trim()&&!st.querySelector('svg,canvas,i'))out.push({i,msg:'rendered nothing'});
    const el=document.querySelector('#stage .st');
    if(el){const r=el.scrollWidth>el.clientWidth+2||el.scrollHeight>el.clientHeight+2; if(r)out.push({i,msg:'content overflows its frame (too much text/items for this rect)',warn:true})}
