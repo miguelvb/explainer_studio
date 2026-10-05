@@ -49,3 +49,7 @@ Project folders hold `story.json`, optional `mark.txt`, `source.txt`, `audio/`, 
 - 26 beats per scene max; asset layouts are tuned for full 16:9 frames (use `rect` presets sparingly).
 - The LLM step can still misread a source — always run `verify` and skim the contact sheet.
 - `examples/mars-orbiter` is a demo written from general knowledge, not from a supplied document — check it before publishing.
+
+## Brand
+
+`brand/` holds the Arkinos mark (SVG + PNG, light/dark, lockup). The animated version is the `seal` asset, used for film credits (`meta.tail` / `meta.fadeout` control the closing hold and the fade to silence).

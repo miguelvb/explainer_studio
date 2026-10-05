@@ -8,6 +8,8 @@
   "gap": 0.4,
   "pre": 0.25,
   "post": 0.6,
+  "tail": 9,
+  "fadeout": 6,
   "voice": "nova",
   "speed": 1.1,
   "instructions": "Narradora de divulgación, brillante y explicativa. Español de España (castellano peninsular), dicción clara, tono cercano y entusiasta pero serio con el tema. Ritmo ágil, con energía en las ideas clave y una pausa breve al final de cada frase. Explica como si se lo contaras a alguien curioso. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
@@ -74,6 +76,17 @@
       ]
      },
      "bg": true
+    },
+    {
+     "a": "seal",
+     "at": "S0",
+     "until": "E0",
+     "p": {
+      "small": true,
+      "text": "Arkinos @ oct 2026 · Explainer Studio",
+      "at": 0.4
+     },
+     "bg": false
     }
    ]
   },
@@ -918,7 +931,7 @@
     {
      "a": "list",
      "at": "S8",
-     "until": "E8",
+     "until": ">8a+1.5",
      "p": {
       "title": "FUENTES Y ENLACES",
       "items": [
@@ -937,7 +950,30 @@
        "8a#incidentes+1"
       ]
      },
-     "bg": true
+     "bg": true,
+     "fade": [
+      0.5,
+      0.8
+     ]
+    },
+    {
+     "a": "seal",
+     "at": ">8a+1.5",
+     "until": "E8",
+     "p": {
+      "text": "Arkinos @ oct 2026",
+      "sub": "Explainer Studio",
+      "at": 0.8,
+      "black": {
+       "at": ">8a+6.5",
+       "dur": 4
+      }
+     },
+     "bg": true,
+     "fade": [
+      1.0,
+      0
+     ]
     }
    ]
   }

@@ -40,7 +40,7 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
 
 def music(root, out=None):
     """Ambient pad + pulse shaped by each scene's `intensity` (0-1; default arc: builds to ~70% of the film, then eases)."""
-    D = json.load(open(f'{root}/build/data.json')); S = D['sched']; N = D['scenes']; total = D['total'] + 6
+    D = json.load(open(f'{root}/build/data.json')); S = D['sched']; N = D['scenes']; total = D['total'] + 2; fo = float(json.load(open(f'{root}/story.json'))['meta'].get('fadeout', 4))
     st = json.load(open(f'{root}/story.json')); ints = [sc.get('intensity') for sc in st['scenes']]
     arc = [.3 + .7 * (1 - abs(i / max(1, N - 1) - .7) / .7) if i / max(1, N - 1) <= .7 else 1 - (i / max(1, N - 1) - .7) / .3 * .6 for i in range(N)]
     ints = [x if x is not None else arc[i] for i, x in enumerate(ints)]
@@ -71,7 +71,7 @@ def music(root, out=None):
         tt += rng.uniform(3.5, 9.0) * (1.3 - .8 * inten[min(n - 1, i0)])
     bpm = 50 + 22 * inten; frac = np.cumsum(bpm / 60 / sr) % 1.0
     pulse = (np.sin(2 * np.pi * 52 * t) * np.exp(-frac * 9) * np.clip((inten - .42) / .4, 0, 1) * np.clip(t / 30, 0, 1) * .32).astype(np.float32)
-    Lc = pad + ping + pulse; Rc = padR + pingR + pulse; fade = np.clip(t / 4, 0, 1) * np.clip((total - t) / 6, 0, 1); Lc *= fade; Rc *= fade
+    Lc = pad + ping + pulse; Rc = padR + pingR + pulse; fade = np.clip(t / 4, 0, 1) * np.clip((D['total'] - t) / fo, 0, 1); Lc *= fade; Rc *= fade
     m = max(abs(Lc).max(), abs(Rc).max()); st2 = np.stack([Lc / m * .7, Rc / m * .7], 1); out = out or f'{root}/build/music.wav'
     with wave.open(out, 'wb') as w:
         w.setnchannels(2); w.setsampwidth(2); w.setframerate(sr); w.writeframes((np.clip(st2, -1, 1) * 32767).astype('<i2').tobytes())
@@ -90,8 +90,10 @@ def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_d
         for k, (i, _) in enumerate(files):
             ms = int(S[i]['s'] * 1000); fc.append(f'[{k + 2}:a]adelay={ms}|{ms},apad[b{k}]')
         fc += [''.join(f'[b{k}]' for k in range(len(files))) + f'amix=inputs={len(files)}:normalize=0:duration=longest[nar0]', '[nar0]asplit=2[nar][sc]', f'[1:a]volume={music_db}dB[mu]',
-               '[mu][sc]sidechaincompress=threshold=0.015:ratio=9:attack=20:release=700[duck]', '[nar][duck]amix=inputs=2:normalize=0:duration=longest,loudnorm=I=-16:TP=-1.5:LRA=9[aout]']
-    else: fc.append(f'[1:a]volume={music_db + 4}dB,loudnorm=I=-20:TP=-1.5[aout]')
+               '[mu][sc]sidechaincompress=threshold=0.015:ratio=9:attack=20:release=700[duck]', '[nar][duck]amix=inputs=2:normalize=0:duration=longest,loudnorm=I=-16:TP=-1.5:LRA=9[aout0]']
+    else: fc.append(f'[1:a]volume={music_db + 4}dB,loudnorm=I=-20:TP=-1.5[aout0]')
+    fo = float(json.load(open(f'{root}/story.json'))['meta'].get('fadeout', 4))   # fade to silence at the very end
+    fc.append(f"[aout0]afade=t=out:st={max(0, D['total'] - fo):.2f}:d={fo}[aout]")
     vf = ['-vf', f"subtitles={b}/captions.srt:force_style='FontSize=20,Outline=1,Shadow=0,MarginV=36'", '-c:v', 'libx264', '-crf', '18', '-preset', 'fast'] if burn else ['-c:v', 'copy']
     cmd += ['-filter_complex', ';'.join(fc), '-map', '0:v', '-map', '[aout]'] + vf + ['-c:a', 'aac', '-b:a', '192k', '-t', str(D['total']), '-movflags', '+faststart', out]
     subprocess.run(cmd, check=True); log(f'wrote {out}'); return out

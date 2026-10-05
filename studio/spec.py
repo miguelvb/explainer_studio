@@ -43,12 +43,12 @@ def normalise(st):
 
 def schedule(st, timings=None, pad=True, gap=.55, pre=.8, post=1.8):
     timings = timings or {}
-    m = st['meta']; gap = m.get('gap', gap); pre = m.get('pre', pre); post = m.get('post', post)   # per-film pacing (seconds)
+    m = st['meta']; gap = m.get('gap', gap); pre = m.get('pre', pre); post = m.get('post', post); tail = m.get('tail', 3.0)   # per-film pacing (seconds)
     scenes = st['scenes']; N = len(scenes)
     nat = []
     for n, sc in enumerate(scenes):
         d = [timings.get(b['id'], est(b['text'])) for b in sc['beats']]
-        p0 = .6 if n == 0 else pre; p1 = post + (3.0 if n == N - 1 else 0)
+        p0 = .6 if n == 0 else pre; p1 = post + (tail if n == N - 1 else 0)
         nat.append(p0 + sum(d) + gap * max(0, len(d) - 1) + p1)
     tgt = [sc.get('target') for sc in scenes]
     mins = st['meta'].get('minutes')
@@ -60,7 +60,7 @@ def schedule(st, timings=None, pad=True, gap=.55, pre=.8, post=1.8):
     sched, order, t = {}, [], 0.0
     for n, sc in enumerate(scenes):
         beats = sc['beats']; d = [timings.get(b['id'], est(b['text'])) for b in beats]
-        p0 = .6 if n == 0 else pre; p1 = post + (3.0 if n == N - 1 else 0); g = gap
+        p0 = .6 if n == 0 else pre; p1 = post + (tail if n == N - 1 else 0); g = gap
         if pad and tgt[n] and nat[n] < tgt[n]:
             sur = tgt[n] - nat[n]
             ga = min(2.2, sur * .7 / max(1, len(d) - 1)) if len(d) > 1 else 0

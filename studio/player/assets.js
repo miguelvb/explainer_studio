@@ -374,6 +374,25 @@ const FIC={
  org:c=>`<circle cx="50" cy="20" r="9"/><circle cx="24" cy="56" r="8"/><circle cx="76" cy="56" r="8"/><path d="M50 29V40H24V48M50 40H76V48"/><circle cx="12" cy="84" r="4"/><circle cx="24" cy="84" r="4"/><circle cx="36" cy="84" r="4"/><circle cx="64" cy="84" r="4"/><circle cx="76" cy="84" r="4"/><circle cx="88" cy="84" r="4" stroke-dasharray="2 3"/>`,
  mute:c=>`<path d="M14 24H86V64H48L30 80V64H14Z"/><path d="M26 82L88 18"/>`
 };
+
+/* ---------- seal: author mark (A-constellation, double ring, pulsing dot envelope) + credit line ---------- */
+A.seal=(h,p,C)=>{
+ const N=72,R0=92,J=6,sm=!!p.small,sc=sm?.36:1.4,cx=sm?884:480,cy=sm?476:222,at=C.T(p.at||0);
+ let dots='';for(let i=0;i<N;i++){const a=i*2*Math.PI/N;for(let j=0;j<J;j++)dots+=`<circle class="sd" data-i="${i}" data-j="${j}" cx="${((R0+j*7)*Math.cos(a)).toFixed(1)}" cy="${((R0+j*7)*Math.sin(a)).toFixed(1)}" r="2.1" fill="#5EC8FF" opacity="0"/>`}
+ const mk=`<g class="sm" opacity="0"><circle r="76" fill="none" stroke="#E8EEF7" stroke-width="3"/><circle r="86" fill="none" stroke="#E8EEF7" stroke-width="1.5" opacity=".6"/>
+  <path d="M-50 52L0 -52L50 52M-28 10L28 10" fill="none" stroke="#E8EEF7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cy="-52" r="11" fill="#E8EEF7"/><circle cx="-50" cy="52" r="8" fill="#E8EEF7"/><circle cx="50" cy="52" r="8" fill="#E8EEF7"/><circle cx="-28" cy="10" r="5" fill="#5EC8FF"/><circle cx="28" cy="10" r="5" fill="#5EC8FF"/></g>`;
+ const tx=sm?`<text class="st" x="${cx-56}" y="${cy+5}" text-anchor="end" fill="#C4CCD8" font-size="15" opacity="0">${esc(p.text||'')}</text>`
+  :`<text class="st" x="480" y="446" text-anchor="middle" fill="#E8EEF7" font-size="34" font-weight="700" opacity="0">${esc(p.text||'')}</text><text class="st2" x="480" y="482" text-anchor="middle" fill="#8C96A4" font-size="19" opacity="0">${esc(p.sub||'')}</text>`;
+ h.innerHTML=`<svg viewBox="0 0 960 540" style="width:100%;height:100%"><g transform="translate(${cx} ${cy}) scale(${sc})">${dots}${mk}</g>${tx}<rect class="bk" width="960" height="540" fill="#000" opacity="0"/></svg>`;
+ const ds=[...h.querySelectorAll('.sd')],m=h.querySelector('.sm'),t1=h.querySelector('.st'),t2=h.querySelector('.st2'),bk=h.querySelector('.bk');
+ const bat=p.black?C.T(p.black.at):null,bd=p.black?(p.black.dur||3):1;
+ return t=>{const e=ease(pr(t,at,1.2)),k=t-at;m.setAttribute('opacity',e);
+  ds.forEach(d=>{const i=+d.dataset.i,j=+d.dataset.j,a=i*2*Math.PI/N,
+   v=Math.abs(Math.sin(3*a+.6*k)*.55+Math.sin(7*a+1-.9*k)*.3+Math.sin(13*a+2+1.3*k)*.15)*34/7+.6;
+   d.setAttribute('opacity',e*clamp(v-j)*clamp((k-.4)/1.2))});
+  t1.setAttribute('opacity',ease(pr(t,at+.8,1)));if(t2)t2.setAttribute('opacity',ease(pr(t,at+1.4,1)));
+  if(bat!=null)bk.setAttribute('opacity',clamp((t-bat)/bd))}};
 A.facts=(h,p,C)=>{
  const it=p.items||[],n=Math.max(1,Math.min(5,it.length)),cw=Math.min(168,(896-14*(n-1))/n),x0=480-(n*cw+(n-1)*14)/2;
  let s=`<text x="40" y="62" fill="#8C96A4" font-size="16">${esc(p.head||'')}</text>`;
