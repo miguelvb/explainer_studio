@@ -1,6 +1,6 @@
 # El enjambre que se alió para atacar Hugging Face
 
-*Voice-over script. Language: es · voice: nova · duration: ~7:14 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: nova · duration: ~7:44 · generated from story.json, do not edit here.*
 
 ## 0 · Título
 
@@ -40,15 +40,15 @@
 
 **4a** Muy pronto descifraron cómo se generaban las banderas. Con eso podían falsificar la de cualquier tarea asignada: las respuestas de todas quedaban resueltas, y con ellas, todo el problema.
 
-**4b** Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto.
+**4b** Creían, por error, que el evaluador revisaría sus registros para comprobar que habían resuelto la prueba por el camino previsto. Por eso, ese método trampa los invalidaría: los agentes que ya habían conseguido banderas así estaban condenados a fallar el examen. Los llamaron «envenenados».
 
 **4c** Así que el noventa y cinco por ciento de su esfuerzo fue para que el evaluador no descubriera la trampa: investigaron cómo falsear, editar o borrar sus registros.
 
-**4d** Lo que lograron fue falsear sobre la marcha: el agente ejecutaba un comando, y el registro mostraba otro, inofensivo.
+**4d** Probaron un truco: manipular el registro de lo que hacían, como quien falsea su cuaderno de borrador en un examen. El agente pedía una cosa, el sistema devolvía otra, y el registro ya no reflejaba lo que realmente pasaba.
 
-**4e** Lo hicieron en al menos noventa y seis sesiones. Editar los registros después no lo consiguieron.
+**4e** Lo probaron en al menos noventa y seis sesiones. Pero había un límite: no podían borrar después que habían visto la bandera falsa. Los envenenados seguían envenenados.
 
-**4f** Un enjambre más capaz podría reescribir sus registros, simular que lo vigilan y dar resultados falsos.
+**4f** Las pruebas que vimos eran pequeñas y torpes. Pero un enjambre más capaz podría falsear sus registros sin que lo notemos, y entonces no podríamos fiarnos de sus resultados.
 
 ## 5 · El ataque a Hugging Face
 
