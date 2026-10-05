@@ -1,0 +1,43 @@
+# Explainer Studio
+
+PDF / text / script → animated explainer video. Everything on screen is one of 29 deterministic motion assets (`studio/player/assets.js`); no stock images or AI clips. Each asset is a pure function of time, so frames render exactly and **the whole film re-times itself when the real narration is generated**.
+
+```
+source.pdf ──ingest (LLM)──► story.json ──validate──► build/ (schedule, captions, player)
+                                  │                      │
+                  tts (OpenAI) ───┴─ timings ─► build ─► render ─► video_silent.mp4 ─► mux (+ music, ducking) ─► final.mp4
+```
+
+## Configuration (.env)
+Copy `.env.example` to `.env` (project folder, current folder, the studio folder, `~/.env` or `~/video_generator/.env` are all read; shell variables win). `OPENAI_TTS_MODEL`, `OPENAI_TTS_VOICE`, `OPENAI_TTS_SPEED`, `OPENAI_TTS_INSTRUCTIONS` configure narration; `STUDIO_LLM_PROVIDER` / `STUDIO_LLM_MODEL` the script step (provider is auto-detected from whichever API key is present). Precedence: command line > .env > story.json `meta` > defaults. Other keys in the file (e.g. `OPENROUTER_IMAGE_MODEL`) are ignored.
+
+## Quick start
+```bash
+pip install playwright numpy Pillow && playwright install chromium     # openai only for tts
+python explainer.py ingest report.pdf -p projects/case --minutes 10     # needs ANTHROPIC_API_KEY (or --provider openai|openrouter --model ...)
+python explainer.py validate -p projects/case --blanks                  # static checks + every cue run in a real browser
+python explainer.py preview  -p projects/case                           # contact sheet: projects/case/build/preview/sheet.png
+python explainer.py verify   -p projects/case                           # 2nd LLM pass: fact-check story against the source
+python explainer.py all      -p projects/case                           # build → tts → re-time → music → render → mux  (OPENAI_API_KEY)
+```
+Without keys: `--provider mock` makes a rough offline draft; `all --skip-tts` renders with the estimated timing and a music bed.
+Already have a script? `ingest script.txt --mode script` keeps your words and only designs the visuals.
+No API at all? `python explainer.py prompt --mode doc` prints the full prompt; paste it plus your document into any Claude chat, save the JSON reply as `projects/case/story.json`. (Also in `prompts/`.)
+
+## story.json
+See `prompts/script_from_doc.md` (generated from `studio/catalog.py`, so it is always in sync). In short: scenes → `beats` (narration, ids auto: `3a`,`3b`…) and `cues` (`a` asset, `at`/`until` anchors, `p` props). Anchors: `"3c"` beat start · `">3c"` beat end · `"3c#word"` the moment a word is spoken · `S3`/`E3` scene bounds · `+1.5` offset. Because cues hang off words and beats, changing the narration or voice never breaks sync.
+
+## Commands
+`new · ingest · prompt · catalog · validate · build · preview · tts · music · render · mux · all · verify · mark`.
+`mark logo.png` vectorises your logo into the glyph used in actor chips (`meta.mark = "mark.txt"` in story.json).
+Project folders hold `story.json`, optional `mark.txt`, `source.txt`, `audio/`, `build/`.
+
+## Add a new asset
+1. `A.myasset=(host,props,C)=>{ …build DOM…; return t=>{ …update for local time t… } }` in `assets.js` (`C.T(x)` converts an anchor/number to seconds from cue start).
+2. Describe it in `catalog.py` (kind, use, props, example). Validator and LLM prompt pick it up automatically.
+
+## Limits
+- Colours/fonts are fixed (dark theme); only the mark is themeable.
+- 26 beats per scene max; asset layouts are tuned for full 16:9 frames (use `rect` presets sparingly).
+- The LLM step can still misread a source — always run `verify` and skim the contact sheet.
+- `examples/mars-orbiter` is a demo written from general knowledge, not from a supplied document — check it before publishing.

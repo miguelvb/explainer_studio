@@ -1,0 +1,378 @@
+{
+ "meta": {
+  "title": "Mars Climate Orbiter: the unit mismatch",
+  "lang": "en",
+  "minutes": 3,
+  "voice": "marin",
+  "notes": "DEMO. Facts written from general knowledge of the 1999 NASA Mishap Investigation Board report, not extracted from a supplied document: verify against the report before publishing."
+ },
+ "pronunciation": {
+  "JPL": "J P L",
+  "lbf·s": "pound-force seconds",
+  "N·s": "newton-seconds",
+  "km": "kilometers"
+ },
+ "scenes": [
+  {
+   "title": "Cold open",
+   "beats": [
+    "On September twenty-third, nineteen ninety-nine, a three hundred million dollar spacecraft flew toward Mars, and never came back.",
+    "It did not fail because of a broken part, or a bad launch. It failed because two teams used two different units of measurement."
+   ],
+   "cues": [
+    {
+     "a": "title",
+     "at": "S0",
+     "until": ">0a",
+     "p": {
+      "kicker": "CASE STUDY",
+      "title": "The unit mismatch\nthat sank a probe",
+      "sub": "Mars Climate Orbiter, 1999"
+     }
+    },
+    {
+     "a": "counters",
+     "at": "0a#three",
+     "until": "E0",
+     "p": {
+      "items": [
+       {
+        "label": "mission cost",
+        "txt": "$327 M",
+        "at": 0.2,
+        "color": "amber"
+       },
+       {
+        "label": "to reach Mars",
+        "txt": "9½ months",
+        "at": 1.2,
+        "color": "blue"
+       },
+       {
+        "label": "unit systems in play",
+        "txt": "2",
+        "at": "0b#two",
+        "color": "red"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "title": "The mission",
+   "beats": [
+    "Mars Climate Orbiter launched in December nineteen ninety-eight. Its job was to study the weather on Mars, and to relay signals for a second lander.",
+    "The trip took nine and a half months. To stay on course, the navigators at JPL used regular corrections, based on how hard the small thrusters had pushed the spacecraft.",
+    "That push is called impulse, and the numbers came from software written by the spacecraft's builder."
+   ],
+   "cues": [
+    {
+     "a": "timeline",
+     "at": "S1",
+     "until": ">1b",
+     "p": {
+      "axis": {
+       "labels": [
+        "Dec 1998",
+        "Mar 1999",
+        "Jun 1999",
+        "Sep 1999"
+       ],
+       "hours": 24
+      },
+      "at": 0.3,
+      "vb": "0 105 960 310",
+      "ev": [
+       {
+        "h": 2,
+        "date": "Dec 1998",
+        "label": "Launch",
+        "pos": 90,
+        "color": "blue",
+        "at": "1a#launched"
+       },
+       {
+        "h": 50,
+        "date": "months of cruise",
+        "label": "Thruster corrections",
+        "pos": -90,
+        "color": "amber",
+        "at": "1b#corrections"
+       },
+       {
+        "h": 94,
+        "date": "Sep 23, 1999",
+        "label": "Mars arrival",
+        "pos": 90,
+        "color": "red",
+        "at": "1b#nine"
+       }
+      ]
+     }
+    },
+    {
+     "a": "lower",
+     "at": "1a",
+     "until": ">1a",
+     "p": {
+      "name": "Mars Climate Orbiter",
+      "sub": "NASA / JPL, 1998",
+      "color": "blue",
+      "at": 0.2
+     }
+    },
+    {
+     "a": "chips",
+     "at": ">1b",
+     "until": "E1",
+     "p": {
+      "at": 0.3,
+      "rows": [
+       [
+        "Spacecraft builder",
+        "amber",
+        [
+         "Lockheed Martin"
+        ]
+       ],
+       [
+        "Navigation team",
+        "blue",
+        [
+         "NASA JPL"
+        ]
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "title": "The mismatch",
+   "beats": [
+    "The interface document was clear: thruster impulse must be reported in newton-seconds, the metric unit.",
+    "But the builder's software produced the numbers in pound-force seconds, the unit used in the United States.",
+    "One pound-force second is about four point four five newton-seconds. And nothing in the data said which unit it was.",
+    "So the navigators read every number as metric, and every number was off by a factor of four and a half."
+   ],
+   "cues": [
+    {
+     "a": "contrast",
+     "at": "S2",
+     "until": "E2",
+     "p": {
+      "top": {
+       "label": "What the specification said",
+       "at": 0.3,
+       "steps": [
+        {
+         "text": "Thruster firing"
+        },
+        {
+         "text": "Impulse in newton-seconds",
+         "kind": "ok"
+        },
+        {
+         "text": "Navigation model"
+        }
+       ]
+      },
+      "bottom": {
+       "label": "What the software delivered",
+       "at": "2b",
+       "steps": [
+        {
+         "text": "Thruster firing"
+        },
+        {
+         "text": "Impulse in pound-force seconds",
+         "kind": "dashed"
+        },
+        {
+         "text": "Navigation model"
+        }
+       ]
+      },
+      "strike": {
+       "step": 1,
+       "at": "2b#produced"
+      },
+      "note": {
+       "chip": [
+        "Navigation",
+        "blue"
+       ],
+       "text": "reads every value as newton-seconds",
+       "at": "2d#navigators"
+      },
+      "punch": {
+       "text": "1 lbf·s = 4.448 N·s",
+       "at": "2c#four"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "title": "Why nobody caught it",
+   "beats": [
+    "The error was small each time. A thruster firing here, a correction there. But the spacecraft fired its thrusters again and again for months.",
+    "Each wrong number nudged the predicted path a little further from the real one.",
+    "Some team members did notice that the trajectory looked odd. But the concern never became a formal, tracked problem.",
+    "The checks looked at whether the software ran, not at what its numbers meant."
+   ],
+   "cues": [
+    {
+     "a": "pipeline",
+     "at": "S3",
+     "until": ">3b",
+     "p": {
+      "at": 0.3,
+      "nodes": [
+       {
+        "title": "Builder software",
+        "sub": "outputs lbf·s"
+       },
+       {
+        "title": "Interface",
+        "sub": "specified as N·s"
+       },
+       {
+        "title": "Navigation",
+        "sub": "assumes N·s"
+       }
+      ],
+      "trigger": {
+       "label": "unit mismatch",
+       "at": "3a#again"
+      },
+      "packet": {
+       "label": "wrong values",
+       "at": "3b#Each"
+      }
+     }
+    },
+    {
+     "a": "cards",
+     "at": ">3b",
+     "until": "E3",
+     "p": {
+      "at": 0.3,
+      "items": [
+       {
+        "title": "Concern raised",
+        "sub": "by team members",
+        "code": "informal",
+        "color": "amber"
+       },
+       {
+        "title": "Formal problem report",
+        "sub": "never opened",
+        "code": "missing",
+        "color": "red"
+       },
+       {
+        "title": "Unit check",
+        "sub": "not part of the tests",
+        "code": "gap",
+        "color": "red"
+       }
+      ],
+      "banner": {
+       "text": "The checks tested that it ran, not what the numbers meant",
+       "tag": "root cause",
+       "at": "3d#looked"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "title": "The loss",
+   "beats": [
+    "On September twenty-third, the orbiter fired its main engine to enter orbit. By then, the error had piled up.",
+    "It was supposed to pass about two hundred twenty-six kilometers above the surface. The real altitude was closer to fifty-seven.",
+    "Anything below about eighty kilometers was considered too low for the spacecraft to survive.",
+    "Contact was lost as it passed behind Mars, and it was never heard from again."
+   ],
+   "cues": [
+    {
+     "a": "bars",
+     "at": "S4",
+     "until": "E4",
+     "p": {
+      "gap": 4,
+      "items": [
+       {
+        "label": "Planned closest approach",
+        "val": "226 km",
+        "w": 100,
+        "color": "teal",
+        "at": 0.4
+       },
+       {
+        "label": "Actual closest approach",
+        "val": "≈ 57 km",
+        "w": 25,
+        "color": "red",
+        "at": "4b#real"
+       },
+       {
+        "label": "Minimum survivable",
+        "val": "≈ 80 km",
+        "w": 35,
+        "color": "amber",
+        "at": "4c#eighty"
+       }
+      ]
+     }
+    },
+    {
+     "a": "stamp",
+     "at": "4d#lost",
+     "until": "E4",
+     "p": {
+      "text": "LOST",
+      "sub": "Mars orbit insertion, Sep 23 1999",
+      "at": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "title": "Takeaways",
+   "beats": [
+    "The lesson is not that engineers made an arithmetic mistake. It is that a number without a unit is only half a fact.",
+    "Interfaces between teams need explicit units, checks at the boundary, and a way for a doubt to become a formal problem.",
+    "A whole mission was lost to a conversion factor of four point four five."
+   ],
+   "cues": [
+    {
+     "a": "list",
+     "at": "S5",
+     "until": "E5",
+     "p": {
+      "title": "What to take away",
+      "at": 0.4,
+      "items": [
+       "A number without a unit is half a fact",
+       "Check units at every interface",
+       "Turn doubts into tracked problems"
+      ]
+     }
+    },
+    {
+     "a": "source",
+     "at": "5c",
+     "until": "E5",
+     "p": {
+      "title": "NASA Mishap Investigation Board, Phase I report",
+      "by": "November 1999",
+      "at": 0.3
+     }
+    }
+   ]
+  }
+ ]
+}
