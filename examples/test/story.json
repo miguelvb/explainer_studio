@@ -4916,7 +4916,7 @@
         "color": "#E7EBF1",
         "fs": 54,
         "dur": 3,
-        "cap": "ataque a Hugging Face",
+        "cap": "agentes de OpenAI atacan Hugging Face",
         "capc": "muted",
         "capfs": 15
        },
@@ -5089,7 +5089,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.1,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5098,7 +5098,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.14,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5107,7 +5107,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.18,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5116,7 +5116,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.22,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5125,7 +5125,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.1,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5134,7 +5134,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.14,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5143,7 +5143,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.18,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5152,7 +5152,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.22,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5161,7 +5161,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.1,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5170,7 +5170,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.14,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5179,7 +5179,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.18,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5188,7 +5188,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.22,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5197,7 +5197,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.1,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5206,7 +5206,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.14,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5215,7 +5215,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.18,
-        "solid": false
+        "solid": true
        },
        {
         "a": "gp",
@@ -5224,7 +5224,7 @@
         "color": "red",
         "speed": 0.55,
         "curve": 0.22,
-        "solid": false
+        "solid": true
        }
       ],
       "fs": 1.0
