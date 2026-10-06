@@ -212,7 +212,7 @@ n=[N('ck0','txt',30,30,400,32,0.2,color='teal',fs=24,text='07 julio 2026',blink=
    W.agent_named('ph',60,150,'PHASEONE10841',at=0.05,until='3e#pondrá'),
    W.agent_named('ph2',60,150,'PHASEONE10841',at='3e#pondrá',color='#B58CFF',blink=.3,bf=5),
    W.folder_view('af',FX,FY,items,at='3a#Atascado+1.5'),
-   ch('mk',266,236,70,'MKCOL','3a#MKCOL',color='amber')]
+   N('mk','txt',244,176,80,18,'3a#MKCOL',color='amber',fs=12,text='MKCOL',until='3a#MKCOL+1.6')]
 n[-3]['lc']='#FF9F43'
 lk=[W.link('ph','af','3a#explorar',bi=True,curve=.12,until='3e#pondrá'),W.link('ph2','af','3e#pondrá',bi=True,curve=.12)]
 AP=[(805,130),(880,215),(805,300),(880,385),(805,460)]

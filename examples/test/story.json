@@ -7016,14 +7016,16 @@
        },
        {
         "id": "mk",
-        "kind": "chip",
-        "x": 231,
-        "y": 223,
-        "w": 70,
-        "h": 26,
+        "kind": "txt",
+        "x": 244,
+        "y": 176,
+        "w": 80,
+        "h": 18,
         "at": "3a#MKCOL",
-        "label": "MKCOL",
-        "color": "amber"
+        "color": "amber",
+        "fs": 12,
+        "text": "MKCOL",
+        "until": "3a#MKCOL+1.6"
        },
        {
         "id": "o0_0_box",
