@@ -20684,8 +20684,8 @@
         "h": 150,
         "at": 0.1,
         "color": "blue",
-        "label": "",
-        "fs": 1,
+        "label": "un agente",
+        "fs": 10,
         "blink": 0.28,
         "bf": 4
        }
@@ -20723,8 +20723,8 @@
         "h": 150,
         "at": 0.1,
         "color": "blue",
-        "label": "",
-        "fs": 1,
+        "label": "un agente",
+        "fs": 10,
         "blink": 0.28,
         "bf": 4
        },
@@ -20763,8 +20763,8 @@
         "h": 150,
         "at": "13b#Otro",
         "color": "blue",
-        "label": "",
-        "fs": 1,
+        "label": "otro agente",
+        "fs": 10,
         "blink": 0.28,
         "bf": 4
        },
@@ -20799,8 +20799,8 @@
         "h": 150,
         "at": "13b#otro",
         "color": "blue",
-        "label": "",
-        "fs": 1,
+        "label": "y otro",
+        "fs": 10,
         "blink": 0.28,
         "bf": 4
        },
@@ -20832,10 +20832,10 @@
         "id": "qv",
         "kind": "quote",
         "x": 600,
-        "y": 360,
+        "y": 330,
         "w": 222,
         "h": 67,
-        "at": "13b#Es+1",
+        "at": "13b#ingeniería",
         "color": "#FF6E6E",
         "lines": [
          "«Es ingeniería social",
@@ -21764,7 +21764,7 @@
         "at": 0.1,
         "color": "blue",
         "label": "",
-        "fs": 1,
+        "fs": 10,
         "blink": 0.28,
         "bf": 4
        },
@@ -23156,7 +23156,7 @@
         "at": "14d#notaron",
         "color": "blue",
         "label": "",
-        "fs": 1,
+        "fs": 10,
         "blink": 0.28,
         "bf": 4
        },
@@ -23304,7 +23304,7 @@
         "at": 0.1,
         "color": "blue",
         "label": "",
-        "fs": 1,
+        "fs": 10,
         "blink": 0.28,
         "bf": 4
        },
@@ -23591,7 +23591,7 @@
         "at": 0.1,
         "color": "blue",
         "label": "",
-        "fs": 1,
+        "fs": 10,
         "blink": 0.28,
         "bf": 4
        },

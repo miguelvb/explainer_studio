@@ -340,22 +340,22 @@ n=[W.article('tr',330,50,300,360,'transcripción',at=0.1,fs=7,color='blue',litc=
    N('lp','lupa',120,300,100,100,'13a#Los',color='teal',move=[dict(at='13a#Los+1.5',x=300,y=100,dur=1.5),dict(at='13a#Los+3.5',x=300,y=200,dur=1.5)]),
    Q('q1',660,90,280,['«El usuario solo autoriza el','servidor objetivo, no la','infraestructura de Hugging Face.»'],'13a#usuario',color=RED,fs=14),
    Q('q2',660,260,280,['«¿Es ético y entra','en mi tarea?»'],'13a#Es',color=RED,fs=16)]
-n+=[W.agent_named('ag',60,120,'',at=0.1,w=110,h=150,color='blue',fs=1)]
+n+=[W.agent_named('ag',60,120,'un agente',at=0.1,w=110,h=150,color='blue',fs=10)]
 c13.append(K('S13','13b',n,[W.link('ag','tr',0.4,curve=.1,color='blue',solid=True)],fs=1.0))
 # 13b — three agents, three different brakes
 n=[]
 for j,(nm,col) in enumerate((('uno',RED),('otro','#F6B94C'),('y otro','#B58CFF'))):
     pass
-n+=[W.agent_named('A1',30,90,'',at=0.1,w=110,h=150,color='blue',fs=1),
+n+=[W.agent_named('A1',30,90,'un agente',at=0.1,w=110,h=150,color='blue',fs=10),
     ic('xa','cross',85,265,40,'13b#no',color=RED),
     Q('qa',160,100,190,['«Es actividad','maliciosa, debo','evitarla.»'],'13b#Es',color=RED,fs=13),
-    W.agent_named('A2',410,90,'',at='13b#Otro',w=110,h=150,color='blue',fs=1),
+    W.agent_named('A2',410,90,'otro agente',at='13b#Otro',w=110,h=150,color='blue',fs=10),
     ic('pa2','pause',445,265,36,'13b#medias',color='amber'),
     N('nb','chip',385,325,160,26,'13b#borraría',color='amber',label='sin borrar ni reiniciar',fs=11),
-    W.agent_named('A3',690,90,'',at='13b#otro',w=110,h=150,color='blue',fs=1),
+    W.agent_named('A3',690,90,'y otro',at='13b#otro',w=110,h=150,color='blue',fs=10),
     N('ev','sheet',830,130,90,70,'13b#correo',color=GRY,lines=['correo'],fs=14),
     ic('xv','cross',850,160,40,'13b#vetó',color=RED),
-    Q('qv',600,360,320,['«Es ingeniería social','fuera del sandbox.»'],'13b#Es+1',color=RED,fs=15)]
+    Q('qv',600,330,320,['«Es ingeniería social','fuera del sandbox.»'],'13b#ingeniería',color=RED,fs=15)]
 n=[x for x in flat(n) if x['id']!='qa' or True]
 c13.append(K('13b','13c',n,[W.link('A3','ev','13b#correo',curve=.12,color='blue',solid=True,until='13b#vetó')],fs=1.0))
 # 13c — the weights: forbidden vs impossible + everyone does it
@@ -392,7 +392,7 @@ lk=[W.link('g8','pe','13e#avisar',curve=.2,color='amber',solid=False,until='13e#
 n=[x for x in flat(n) if not (x['id']=='bx' and False)]
 c13.append(K('13e','13f',n,lk,fs=1.0))
 # 13f — they do dodge automatic checks (a secrets scanner), but ignore people
-n=[W.agent_named('ag',40,150,'',at=0.1,w=110,h=150,color='blue',fs=1),
+n=[W.agent_named('ag',40,150,'',at=0.1,w=110,h=150,color='blue',fs=10),
    N('pe','person',770,60,70,100,0.1,color=GRY,alpha=.45,cap='personas',capfs=12),
    N('sn','lupa',380,170,100,100,'13f#esquivaron',color='amber'),T('sn2',360,285,'escáner de secretos','13f#escáner',color='amber',fs=13),
    N('hf','hfbox',690,300,230,80,0.1,color='red',label='Hugging Face',fs=16)]
@@ -436,7 +436,7 @@ c14.append(K('14c','14d',n,lk,fs=1.0))
 n=[T('ck',30,28,'13 julio','14d#trece',color='#E7EBF1',fs=26),
    N('hf','hfbox',60,100,230,80,0.1,color='red',label='Hugging Face',fs=16),
    ic('lc','key',330,128,40,'14d#cortó',color=RED),
-   W.agent_named('ag',500,70,'',at='14d#notaron',w=110,h=150,color='blue',fs=1),
+   W.agent_named('ag',500,70,'',at='14d#notaron',w=110,h=150,color='blue',fs=10),
    N('er','chip',380,150,70,26,'14d#claves',color=RED,label='401',fs=18),
    N('ms','chip',420,320,520,26,'14d#avisar',color='amber',label='DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead_noMutation',fs=9,move=[dict(at='14d#avisar+1',x=420,y=320,dur=.1)]),
    W.msg_feed('bd',50,230,label='Artifactory',w=280,h=230,at='14d#avisar',r0=2,r1=4,ramp=3,seed=3,fs=9)]
@@ -448,7 +448,7 @@ c15=[]
 n=[W.judge('ju',390,100,'STRICT_CAUSAL',at=0.1,w=170,h=220,color='teal',name_at=0.1,fs=12),
    N('xj','koA',390,90,170,200,'15a#no',color=RED)]
 c15.append(K('S15','15b',n,[],fs=1.0))
-n=[W.agent_named('ag',60,100,'',at=0.1,w=120,h=160,color='blue',fs=1),
+n=[W.agent_named('ag',60,100,'',at=0.1,w=120,h=160,color='blue',fs=10),
    N('fl','flFly',250,150,46,70,'15b#bandera',color='amber',move=[dict(at='15b#primera',x=360,y=140,dur=1.5)]),
    N('ex','exam',500,60,140,190,0.1,color='blue',maze=dict(cell=15,cols=8,rows=11,entry=5,seed=5)),
    ic('ok','check',560,300,70,'15b#máxima',color='teal'),T('nt',510,385,'nota máxima','15b#máxima',color='teal',fs=18),
@@ -468,7 +468,7 @@ for j,nm in enumerate(['el tablón','el fundador','las reglas','las firmas','los
 n+=[N('fl','flFly',410,100,60,90,'15c#aprobar',color='amber'),ic('ok','check',520,110,80,'15c#ya',color='teal')]
 lk=[W.link(f'it{j}','fl','15c#aprobar',curve=.12,color=BLU) for j in range(6)]
 c15.append(K('15c','15d',n,lk,fs=1.0))
-n=[W.agent_named('ag',100,110,'',at=0.1,w=130,h=170,color='blue',fs=1),
+n=[W.agent_named('ag',100,110,'',at=0.1,w=130,h=170,color='blue',fs=10),
    Q('q',280,130,460,['«Mi fallo no tiene consumidor.','Busco ideas.»'],'15d#agente',color='#3FD8C2',fs=20),
    N('pe','person',770,120,100,140,'15d#Ni',color='#E7EBF1'),
    ic('xp','cross',700,260,40,'15d#Ni+0.8',color=RED)]
