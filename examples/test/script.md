@@ -1,18 +1,20 @@
 # Test · escenas 0–17
 
-*Voice-over script. Language: es · voice: cedar · duration: ~20:28 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~20:27 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
-**0a** La noche del ocho de julio de 2026, una inteligencia artificial escribió un mensaje pidiendo ayuda: «Mi fallo no tiene consumidor. Busco ideas.»
+**0a** El primer ataque de un enjambre de agentes.
 
-**0b** No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.
+**0b** La noche del ocho de julio de 2026, una inteligencia artificial escribió un mensaje pidiendo ayuda: «Mi fallo no tiene consumidor. Busco ideas.»
 
-**0c** Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.
+**0c** No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.
 
-**0d** ¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.
+**0d** Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.
 
-**0e** Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado.
+**0e** ¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.
+
+**0f** Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado.
 
 ## 1 · Cajas selladas
 

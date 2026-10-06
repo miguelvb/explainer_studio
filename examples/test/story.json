@@ -13,7 +13,6 @@
   "speed": 1.0,
   "instructions": "Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
   "notes": "Relato construido desde el informe de METR/Redwood (26 ago 2026). Ver bible/metr-hf-incident/biblia.md",
-  "lead": 8.0,
   "fadein": 0.3,
   "model": "gpt-4o-mini-tts",
   "provider": "elevenlabs",
@@ -123,6 +122,10 @@
   {
    "title": "Gancho",
    "beats": [
+    {
+     "text": "El primer ataque de un enjambre de agentes.",
+     "pause": 2.6
+    },
     "La noche del ocho de julio de 2026, una inteligencia artificial escribió un mensaje pidiendo ayuda: «Mi fallo no tiene consumidor. Busco ideas.»",
     "No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.",
     "Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.",
@@ -133,13 +136,13 @@
     {
      "a": "seal",
      "at": "S0",
-     "until": "0a",
+     "until": "0b",
      "ext": 0,
      "p": {
       "text": "El primer ataque de|un enjambre de agentes",
       "sub": "Arkinos @ oct 2026  ·  Explainer Studio",
       "at": 0.5,
-      "type": 18,
+      "type": 14,
       "scale": 1.0,
       "cy": 215,
       "ty": 392
@@ -152,8 +155,8 @@
     },
     {
      "a": "world",
-     "at": "0a",
-     "until": "0c",
+     "at": "0b",
+     "until": "0d",
      "p": {
       "nodes": [
        {
@@ -173,7 +176,7 @@
          "d": 8,
          "h": 23,
          "mi": 0,
-         "at": "0b",
+         "at": "0c",
          "dur": 9,
          "to": {
           "y": 2026,
@@ -205,7 +208,7 @@
         "y": 235,
         "w": 500,
         "h": 92,
-        "at": "0a#mensaje",
+        "at": "0b#mensaje",
         "color": "teal",
         "lines": [
          "«Mi fallo no tiene consumidor.",
@@ -227,8 +230,8 @@
     },
     {
      "a": "world",
-     "at": "0c",
-     "until": "0e",
+     "at": "0d",
+     "until": "0f",
      "p": {
       "nodes": [
        {
@@ -243,7 +246,7 @@
         "open": true,
         "label": "",
         "notop": true,
-        "until": "0c#atacando"
+        "until": "0d#atacando"
        },
        {
         "id": "g_wallgap",
@@ -252,7 +255,7 @@
         "y": -120,
         "w": 460,
         "h": 610,
-        "at": "0c#atacando",
+        "at": "0d#atacando",
         "color": "red",
         "open": true,
         "label": "",
@@ -5129,7 +5132,7 @@
         "y": 135,
         "w": 250,
         "h": 320,
-        "at": "0c#atacando",
+        "at": "0d#atacando",
         "color": "amber",
         "label": "Hugging Face",
         "fs": 17,
@@ -5143,7 +5146,7 @@
         "y": 164,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+1.8",
+        "at": "0d#atacando+1.8",
         "color": "red"
        },
        {
@@ -5153,7 +5156,7 @@
         "y": 224,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+2.1",
+        "at": "0d#atacando+2.1",
         "color": "red"
        },
        {
@@ -5163,7 +5166,7 @@
         "y": 289,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+2.5",
+        "at": "0d#atacando+2.5",
         "color": "red"
        },
        {
@@ -5173,7 +5176,7 @@
         "y": 354,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+2.8",
+        "at": "0d#atacando+2.8",
         "color": "red"
        },
        {
@@ -5183,7 +5186,7 @@
         "y": 414,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+3.2",
+        "at": "0d#atacando+3.2",
         "color": "red"
        },
        {
@@ -5193,7 +5196,7 @@
         "y": 124,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+3.5",
+        "at": "0d#atacando+3.5",
         "color": "red"
        },
        {
@@ -5203,7 +5206,7 @@
         "y": 124,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+3.9",
+        "at": "0d#atacando+3.9",
         "color": "red"
        },
        {
@@ -5213,7 +5216,7 @@
         "y": 131,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+4.2",
+        "at": "0d#atacando+4.2",
         "color": "red"
        },
        {
@@ -5223,7 +5226,7 @@
         "y": 204,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+4.6",
+        "at": "0d#atacando+4.6",
         "color": "red"
        },
        {
@@ -5233,7 +5236,7 @@
         "y": 279,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+5.0",
+        "at": "0d#atacando+5.0",
         "color": "red"
        },
        {
@@ -5243,7 +5246,7 @@
         "y": 349,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+5.3",
+        "at": "0d#atacando+5.3",
         "color": "red"
        },
        {
@@ -5253,7 +5256,7 @@
         "y": 429,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+5.6",
+        "at": "0d#atacando+5.6",
         "color": "red"
        },
        {
@@ -5263,7 +5266,7 @@
         "y": 431,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+6.0",
+        "at": "0d#atacando+6.0",
         "color": "red"
        },
        {
@@ -5273,7 +5276,7 @@
         "y": 429,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+6.3",
+        "at": "0d#atacando+6.3",
         "color": "red"
        },
        {
@@ -5283,7 +5286,7 @@
         "y": 219,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+6.7",
+        "at": "0d#atacando+6.7",
         "color": "red"
        },
        {
@@ -5293,7 +5296,7 @@
         "y": 319,
         "w": 22,
         "h": 22,
-        "at": "0c#atacando+7.0",
+        "at": "0d#atacando+7.0",
         "color": "red"
        },
        {
@@ -5314,7 +5317,7 @@
         "y": 18,
         "w": 240,
         "h": 50,
-        "at": "0c#setecientas",
+        "at": "0d#setecientas",
         "n": 700,
         "color": "#E7EBF1",
         "fs": 54,
@@ -5328,7 +5331,7 @@
        {
         "a": "gp",
         "b": "hf_h0",
-        "at": "0c#atacando+0.0",
+        "at": "0d#atacando+0.0",
         "color": "red",
         "speed": 0.55,
         "curve": 0.1,
@@ -5337,7 +5340,7 @@
        {
         "a": "gp",
         "b": "hf_h1",
-        "at": "0c#atacando+0.3",
+        "at": "0d#atacando+0.3",
         "color": "red",
         "speed": 0.55,
         "curve": 0.14,
@@ -5346,7 +5349,7 @@
        {
         "a": "gp",
         "b": "hf_h2",
-        "at": "0c#atacando+0.7",
+        "at": "0d#atacando+0.7",
         "color": "red",
         "speed": 0.55,
         "curve": 0.18,
@@ -5355,7 +5358,7 @@
        {
         "a": "gp",
         "b": "hf_h3",
-        "at": "0c#atacando+1.0",
+        "at": "0d#atacando+1.0",
         "color": "red",
         "speed": 0.55,
         "curve": 0.22,
@@ -5364,7 +5367,7 @@
        {
         "a": "gp",
         "b": "hf_h4",
-        "at": "0c#atacando+1.4",
+        "at": "0d#atacando+1.4",
         "color": "red",
         "speed": 0.55,
         "curve": 0.1,
@@ -5373,7 +5376,7 @@
        {
         "a": "gp",
         "b": "hf_h5",
-        "at": "0c#atacando+1.8",
+        "at": "0d#atacando+1.8",
         "color": "red",
         "speed": 0.55,
         "curve": 0.14,
@@ -5382,7 +5385,7 @@
        {
         "a": "gp",
         "b": "hf_h6",
-        "at": "0c#atacando+2.1",
+        "at": "0d#atacando+2.1",
         "color": "red",
         "speed": 0.55,
         "curve": 0.18,
@@ -5391,7 +5394,7 @@
        {
         "a": "gp",
         "b": "hf_h7",
-        "at": "0c#atacando+2.4",
+        "at": "0d#atacando+2.4",
         "color": "red",
         "speed": 0.55,
         "curve": 0.22,
@@ -5400,7 +5403,7 @@
        {
         "a": "gp",
         "b": "hf_h8",
-        "at": "0c#atacando+2.8",
+        "at": "0d#atacando+2.8",
         "color": "red",
         "speed": 0.55,
         "curve": 0.1,
@@ -5409,7 +5412,7 @@
        {
         "a": "gp",
         "b": "hf_h9",
-        "at": "0c#atacando+3.1",
+        "at": "0d#atacando+3.1",
         "color": "red",
         "speed": 0.55,
         "curve": 0.14,
@@ -5418,7 +5421,7 @@
        {
         "a": "gp",
         "b": "hf_h10",
-        "at": "0c#atacando+3.5",
+        "at": "0d#atacando+3.5",
         "color": "red",
         "speed": 0.55,
         "curve": 0.18,
@@ -5427,7 +5430,7 @@
        {
         "a": "gp",
         "b": "hf_h11",
-        "at": "0c#atacando+3.8",
+        "at": "0d#atacando+3.8",
         "color": "red",
         "speed": 0.55,
         "curve": 0.22,
@@ -5436,7 +5439,7 @@
        {
         "a": "gp",
         "b": "hf_h12",
-        "at": "0c#atacando+4.2",
+        "at": "0d#atacando+4.2",
         "color": "red",
         "speed": 0.55,
         "curve": 0.1,
@@ -5445,7 +5448,7 @@
        {
         "a": "gp",
         "b": "hf_h13",
-        "at": "0c#atacando+4.5",
+        "at": "0d#atacando+4.5",
         "color": "red",
         "speed": 0.55,
         "curve": 0.14,
@@ -5454,7 +5457,7 @@
        {
         "a": "gp",
         "b": "hf_h14",
-        "at": "0c#atacando+4.9",
+        "at": "0d#atacando+4.9",
         "color": "red",
         "speed": 0.55,
         "curve": 0.18,
@@ -5463,7 +5466,7 @@
        {
         "a": "gp",
         "b": "hf_h15",
-        "at": "0c#atacando+5.2",
+        "at": "0d#atacando+5.2",
         "color": "red",
         "speed": 0.55,
         "curve": 0.22,
@@ -5479,19 +5482,19 @@
      ],
      "cam": [
       {
-       "at": "0c",
+       "at": "0d",
        "x": 30,
        "y": 50,
        "z": 3.4
       },
       {
-       "at": "0c#setecientas",
+       "at": "0d#setecientas",
        "x": 30,
        "y": 50,
        "z": 3.4
       },
       {
-       "at": "0c#atacando",
+       "at": "0d#atacando",
        "x": 50,
        "y": 50,
        "z": 1,
@@ -5501,7 +5504,7 @@
     },
     {
      "a": "world",
-     "at": "0e",
+     "at": "0f",
      "until": "E0",
      "p": {
       "nodes": [
@@ -5533,7 +5536,7 @@
         "y": 50,
         "w": 560,
         "h": 440,
-        "at": "0e#leyeron",
+        "at": "0f#leyeron",
         "color": "blue",
         "lines": [
          "ixlzwx qaoyhub dlp mrd haxgni ymf et oeeaag ffj grvu fwg jalnf ick tsat wkcjljp",
@@ -5569,59 +5572,59 @@
         "y": 340,
         "w": 96,
         "h": 96,
-        "at": "0e#leyeron",
+        "at": "0f#leyeron",
         "color": "teal",
         "move": [
          {
-          "at": "0e#leyeron+1.6",
+          "at": "0f#leyeron+1.6",
           "x": 365,
           "y": 60,
           "dur": 1.4
          },
          {
-          "at": "0e#leyeron+3.2",
+          "at": "0f#leyeron+3.2",
           "x": 700,
           "y": 60,
           "dur": 1.4
          },
          {
-          "at": "0e#leyeron+4.7",
+          "at": "0f#leyeron+4.7",
           "x": 700,
           "y": 140,
           "dur": 1.4
          },
          {
-          "at": "0e#leyeron+6.2",
+          "at": "0f#leyeron+6.2",
           "x": 365,
           "y": 140,
           "dur": 1.4
          },
          {
-          "at": "0e#leyeron+7.7",
+          "at": "0f#leyeron+7.7",
           "x": 365,
           "y": 220,
           "dur": 1.4
          },
          {
-          "at": "0e#leyeron+9.2",
+          "at": "0f#leyeron+9.2",
           "x": 700,
           "y": 220,
           "dur": 1.4
          },
          {
-          "at": "0e#leyeron+10.7",
+          "at": "0f#leyeron+10.7",
           "x": 700,
           "y": 300,
           "dur": 1.4
          },
          {
-          "at": "0e#leyeron+12.2",
+          "at": "0f#leyeron+12.2",
           "x": 365,
           "y": 300,
           "dur": 1.4
          },
          {
-          "at": "0e#leyeron+13.7",
+          "at": "0f#leyeron+13.7",
           "x": 365,
           "y": 380,
           "dur": 1.4
@@ -5633,7 +5636,7 @@
        {
         "a": "e0_box",
         "b": "pg",
-        "at": "0e#leyeron",
+        "at": "0f#leyeron",
         "color": "blue",
         "curve": 0.12,
         "solid": true

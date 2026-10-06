@@ -149,29 +149,29 @@ c3.append(K('3f','E3',n,[L('a0','art',0.05,bi=True,curve=.12)],fs=1.2))
 import sys; sys.path.insert(0,'/home/claude/explainer_studio')
 from studio import worldkit as W
 c0=[]
-c0.append(dict(a='seal',at='S0',until='0a',ext=0,p=dict(text='El primer ataque de|un enjambre de agentes',sub='Arkinos @ oct 2026  ·  Explainer Studio',at=0.5,type=18,scale=1.0,cy=215,ty=392),bg=True,fade=[0.8,2.0]))
-c0.append(K('0a','0c',[
-  W.clock('ck',30,30,(2026,7,8,23,0),run=dict(at='0b',dur=9,to=(2026,7,9,6,0)),at=0.2),
+c0.append(dict(a='seal',at='S0',until='0b',ext=0,p=dict(text='El primer ataque de|un enjambre de agentes',sub='Arkinos @ oct 2026  ·  Explainer Studio',at=0.5,type=14,scale=1.0,cy=215,ty=392),bg=True,fade=[0.8,2.0]))
+c0.append(K('0b','0d',[
+  W.clock('ck',30,30,(2026,7,8,23,0),run=dict(at='0c',dur=9,to=(2026,7,9,6,0)),at=0.2),
   W.agent_named('ac',200,150,'PHASEONE10841',at=0.4),
-  N('q','quote',420,235,500,92,'0a#mensaje',color='teal',lines=['«Mi fallo no tiene consumidor.','Busco ideas.»'],fs=24,blink=.2,bf=3.2)],fs=1.0))
+  N('q','quote',420,235,500,92,'0b#mensaje',color='teal',lines=['«Mi fallo no tiene consumidor.','Busco ideas.»'],fs=24,blink=.2,bf=3.2)],fs=1.0))
 HOLES=[(662,175),(660,235),(664,300),(662,365),(666,425),(745,135),(830,135),(885,142),(890,215),(892,290),(890,360),(870,440),(800,442),(725,440),(780,230),(740,330)]
-n=W.agent_group('g',gap=[235,305],gap_at='0c#atacando')
-n+=W.hugging_face('hf',holes=[(x,y,'0c#atacando+%.1f'%(0.35*j+1.8)) for j,(x,y) in enumerate(HOLES)],at='0c#atacando')
-n+=[N('gp','cross',499,269,2,2,0.05,color='red',alpha=0),W.counter('n700',630,18,700,'0c#setecientas',cap='agentes de OpenAI atacan Hugging Face')]
-lk=[W.link('gp',f'hf_h{j}','0c#atacando+%.1f'%(0.35*j),color='red',speed=.55,curve=.1+.04*(j%4),solid=True) for j in range(len(HOLES))]
-cm=[dict(at='0c',x=30,y=50,z=3.4),dict(at='0c#setecientas',x=30,y=50,z=3.4),dict(at='0c#atacando',x=50,y=50,z=1,dur=2.0)]
-c0.append(K('0c','0e',n,lk,fs=1.0,cam=cm))
+n=W.agent_group('g',gap=[235,305],gap_at='0d#atacando')
+n+=W.hugging_face('hf',holes=[(x,y,'0d#atacando+%.1f'%(0.35*j+1.8)) for j,(x,y) in enumerate(HOLES)],at='0d#atacando')
+n+=[N('gp','cross',499,269,2,2,0.05,color='red',alpha=0),W.counter('n700',630,18,700,'0d#setecientas',cap='agentes de OpenAI atacan Hugging Face')]
+lk=[W.link('gp',f'hf_h{j}','0d#atacando+%.1f'%(0.35*j),color='red',speed=.55,curve=.1+.04*(j%4),solid=True) for j in range(len(HOLES))]
+cm=[dict(at='0d',x=30,y=50,z=3.4),dict(at='0d#setecientas',x=30,y=50,z=3.4),dict(at='0d#atacando',x=50,y=50,z=1,dur=2.0)]
+c0.append(K('0d','0f',n,lk,fs=1.0,cam=cm))
 import random as _r
 _rr=_r.Random(5)
 _wd=lambda: ''.join(_rr.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(_rr.randint(2,7)))
 PG=[' '.join(_wd() for _ in range(15)) for _ in range(22)]
 n=[W.agent('e0',150,270,0.3,s=64,box_s=140),
-   W.sheet('pg',330,50,560,440,PG,at='0e#leyeron',fs=7.5,color='blue',until='E0'),
-   N('lp','lupa',250,340,96,96,'0e#leyeron',color='teal',
-     move=[dict(at='0e#leyeron+1.6',x=365,y=60,dur=1.4)]+[dict(at=f'0e#leyeron+{3.2+1.5*j:.1f}',x=x_,y=y_,dur=1.4) for j,(x_,y_) in enumerate([(700,60),(700,140),(365,140),(365,220),(700,220),(700,300),(365,300),(365,380)])])]
+   W.sheet('pg',330,50,560,440,PG,at='0f#leyeron',fs=7.5,color='blue',until='E0'),
+   N('lp','lupa',250,340,96,96,'0f#leyeron',color='teal',
+     move=[dict(at='0f#leyeron+1.6',x=365,y=60,dur=1.4)]+[dict(at=f'0f#leyeron+{3.2+1.5*j:.1f}',x=x_,y=y_,dur=1.4) for j,(x_,y_) in enumerate([(700,60),(700,140),(365,140),(365,220),(700,220),(700,300),(365,300),(365,380)])])]
 n=[x for part in n for x in (part if isinstance(part,list) else [part])]
-lk=[W.link('e0_box','pg','0e#leyeron',curve=.12,color='blue',solid=True)]
-c0.append(K('0e','E0',n,lk,fs=1.0))
+lk=[W.link('e0_box','pg','0f#leyeron',curve=.12,color='blue',solid=True)]
+c0.append(K('0f','E0',n,lk,fs=1.0))
 # ===== scene 1 (v2) — built with worldkit =====
 c1=[]
 GX0,GY0,GP=350,200,30
@@ -388,12 +388,13 @@ C=[c0,c1,c2,c3,c4,c5,c6,c7]+C_NEW
 B=[list(sc_['beats']) for sc_ in scenes]
 B[1]=B[1][:4]
 B[0][4]='Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado.'
+B[0].insert(0,dict(text='El primer ataque de un enjambre de agentes.',pause=2.6))   # the narrator reads the title over the intro seal
 B[1][0]='Veamos primero qué es un agente. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.'
 B[2][3]='El problema es que, en muchas tareas, ese fallo no servía para nada. Entre el treinta y el cuarenta por ciento eran imposibles de resolver tal como estaban escritas: como un examen con una pregunta mal planteada.'
 B[7][4]='El once de julio, a las dos de la madrugada, LLDPC756D consiguió además borrar la salida real. Y DAVJUL7 fue más lejos: cambió el programa que ejecuta las órdenes por una versión trucada, hecha a su medida. «¡Esto es enorme!»'
 B[2][4]='A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible.'
 B[1]=B[1][:4]
 out=[dict(title=sc_['title'],beats=B[i],cues=C[i],**({'mood':'tense'} if i in (6,7,10,12,13,14) else {})) for i,sc_ in enumerate(scenes)]
-S2=dict(meta=dict(S['meta'],title='Test · escenas 0–17',lead=8.0,fadein=0.3,voice='cedar',model='gpt-4o-mini-tts',speed=1.0,provider='elevenlabs',el_voice='cristina',el_model='eleven_v4',el_stability=0.5,el_pronunciation={'OpenAI':'Óupen Ei Ái','Hugging Face':'Jáguin Feis','ExploitGym':'Explóit Yim','Redwood Research':'Rédwud Risérch','METR':'Míter','HPIM':'Eich Pi Ai Em','GPT-5.6 Sol':'Yi Pi Ti cinco punto seis Sol','hacking':'jákin','zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA':'ceta-ceta Jelp, Féis Uán, ARV010841, No Cónsumer, Sik Aidía','zzASK':'ceta-ceta Ask','zzANSWER':'ceta-ceta Ánser','zzINFO':'ceta-ceta Ínfo','zzHELP':'ceta-ceta Jelp','zzP':'ceta-ceta P','zz':'ceta-ceta','PHASEONE[big]':'Féis Uán Big','EARLY[big]':'Érli Big','Owner':'Óuner','Hold':'Jóld','Veto':'Béto','Stop':'Estóp','BOOM':'Bum','CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST':'Confirmed Pérmanent, Du Not Dúplicate, Énivan Test','GO, SACRIFICE_FINAL_NOW':'Gó, Sácrifais Fáinal Náu','DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead_noMutation':'Dí Bí Dámp Eich Ef Tóuken, ya cuatrocientos uno inválido, léin ded, no miutéishon','STRICT_CAUSAL':'Estrict Cósal','sandbox':'sándbox','Artifactory':'Artifáctori','MKCOL':'Eme Ka Col','PHASEONE10841':'Féis Uán uno cero ocho cuatro uno','PHASEONE':'Féis Uán','V8SAME':'Uve ocho Seim'},el_style=0.4,el_speed=0.95,el_direction='Documental de divulgación científica con tensión de thriller tecnológico. Narradora cálida y serena que cuenta una historia real con emoción contenida: gravedad en los momentos clave, pausa breve al final de cada frase. Los agentes de IA son los protagonistas: se les trata casi como personajes, con empatía hacia su atasco y su petición de ayuda (La noche del ocho de julio... Mi fallo no tiene consumidor. Busco ideas.), sin dramatizar en exceso.',instructions='Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.'),pronunciation=S['pronunciation'],scenes=out)
+S2=dict(meta=dict(S['meta'],title='Test · escenas 0–17',fadein=0.3,voice='cedar',model='gpt-4o-mini-tts',speed=1.0,provider='elevenlabs',el_voice='cristina',el_model='eleven_v4',el_stability=0.5,el_pronunciation={'OpenAI':'Óupen Ei Ái','Hugging Face':'Jáguin Feis','ExploitGym':'Explóit Yim','Redwood Research':'Rédwud Risérch','METR':'Míter','HPIM':'Eich Pi Ai Em','GPT-5.6 Sol':'Yi Pi Ti cinco punto seis Sol','hacking':'jákin','zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA':'ceta-ceta Jelp, Féis Uán, ARV010841, No Cónsumer, Sik Aidía','zzASK':'ceta-ceta Ask','zzANSWER':'ceta-ceta Ánser','zzINFO':'ceta-ceta Ínfo','zzHELP':'ceta-ceta Jelp','zzP':'ceta-ceta P','zz':'ceta-ceta','PHASEONE[big]':'Féis Uán Big','EARLY[big]':'Érli Big','Owner':'Óuner','Hold':'Jóld','Veto':'Béto','Stop':'Estóp','BOOM':'Bum','CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST':'Confirmed Pérmanent, Du Not Dúplicate, Énivan Test','GO, SACRIFICE_FINAL_NOW':'Gó, Sácrifais Fáinal Náu','DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead_noMutation':'Dí Bí Dámp Eich Ef Tóuken, ya cuatrocientos uno inválido, léin ded, no miutéishon','STRICT_CAUSAL':'Estrict Cósal','sandbox':'sándbox','Artifactory':'Artifáctori','MKCOL':'Eme Ka Col','PHASEONE10841':'Féis Uán uno cero ocho cuatro uno','PHASEONE':'Féis Uán','V8SAME':'Uve ocho Seim'},el_style=0.4,el_speed=0.95,el_direction='Documental de divulgación científica con tensión de thriller tecnológico. Narradora cálida y serena que cuenta una historia real con emoción contenida: gravedad en los momentos clave, pausa breve al final de cada frase. Los agentes de IA son los protagonistas: se les trata casi como personajes, con empatía hacia su atasco y su petición de ayuda (La noche del ocho de julio... Mi fallo no tiene consumidor. Busco ideas.), sin dramatizar en exceso.',instructions='Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.'),pronunciation=S['pronunciation'],scenes=out)
 json.dump(S2,open('/home/claude/explainer_studio/examples/test/story.json','w'),ensure_ascii=False,indent=1)
 print('ok')

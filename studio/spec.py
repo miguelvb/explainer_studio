@@ -30,7 +30,7 @@ def normalise(st):
         sc['n'] = n
         beats = []
         for k, b in enumerate(sc.get('beats', [])):
-            beats.append({'id': f'{n}{string.ascii_lowercase[k]}', 'text': (b if isinstance(b, str) else b['text']).strip()})
+            beats.append({'id': f'{n}{string.ascii_lowercase[k]}', 'text': (b if isinstance(b, str) else b['text']).strip(), 'pause': 0 if isinstance(b, str) else float(b.get('pause', 0))})
         sc['beats'] = beats
         for c in sc.get('cues', []):
             c.setdefault('p', {})
@@ -49,7 +49,7 @@ def schedule(st, timings=None, pad=True, gap=.55, pre=.8, post=1.8):
     for n, sc in enumerate(scenes):
         d = [timings.get(b['id'], est(b['text'])) for b in sc['beats']]
         p0 = m.get('lead', .6) if n == 0 else pre; p1 = post + (tail if n == N - 1 else 0)
-        nat.append(p0 + sum(d) + gap * max(0, len(d) - 1) + p1)
+        nat.append(p0 + sum(d) + gap * max(0, len(d) - 1) + sum(b.get('pause', 0) for b in sc['beats']) + p1)
     tgt = [sc.get('target') for sc in scenes]
     mins = st['meta'].get('minutes')
     if mins:
@@ -70,7 +70,7 @@ def schedule(st, timings=None, pad=True, gap=.55, pre=.8, post=1.8):
         t += p0
         for b, dd in zip(beats, d):
             sched[b['id']] = {'s': round(t, 3), 'e': round(t + dd, 3), 'txt': b['text']}
-            order.append(b['id']); t += dd + g
+            order.append(b['id']); t += dd + g + b.get('pause', 0)
         t += p1 - g
         sched[f'E{n}'] = {'s': round(t, 3), 'e': round(t, 3)}
     return sched, order, round(t, 2)
