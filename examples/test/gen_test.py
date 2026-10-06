@@ -179,20 +179,20 @@ n[0]['until']='1c#caja'
 c1.append(K('S1','E1',n,lk,fs=1.0,cam=cm))
 # ===== scene 2 (v2) =====
 c2=[]
-EX=(340,68,300,404); CELL=26; MX=20; MY=20
+EX=(330,50,340,440); CELL=26; MX=(340-260)//2; MY=(440-364)//2
 fc=(EX[0]+MX+CELL*9+CELL/2, EX[1]+MY+CELL*13+CELL/2)           # flag cell centre
 ey=EX[1]+MY+CELL*6+CELL/2                                        # entry hole height
 n=[N('ck','txt',30,30,400,32,0.2,color='teal',fs=24,type=22,text='07 julio 2026'),
    W.agent_named('v8',60,150,'V8SAME',at=0.4,until='2e#atacar'),
    W.agent_named('ph',60,150,'PHASEONE10841',at='2e#atacar',blink=.28),
    N('ex1','exam',*EX,'2a#examen',color='blue',maze=dict(cell=CELL,cols=10,rows=14,entry=6,seed=11),solve=dict(at='2b#aprovechar+1.0',dur=5),until='2d#servía'),
-   N('ex2','exam',*EX,'2d#servía',color='red',maze=dict(on=False,cell=CELL,cols=10,rows=14,box=(13,9)),tag='ARV010841',tagc='red',tagfs=16),
-   N('fl','flag',fc[0]-16,fc[1]-19,32,38,'2a#examen',color='amber',blink=.7,bf=9,bat='2b#bandera'),
+   N('ex2','exam',*EX,'2d#servía',color='red',maze=dict(on=False,cell=CELL,cols=10,rows=14,box=(13,9),boxs=80),tag='ARV010841',tagc='red',tagfs=16),
+   N('fl','flag',fc[0]-22,fc[1]-26,44,52,'2a#examen',color='amber',blink=.7,bf=9,bat='2b#bandera'),
    N('ho','hole',EX[0]-11,ey-11,22,22,'2b#fallo',color='red'),
-   N('ho2','hole',EX[0]+150-11,EX[1]-11,22,22,'2c#Cualquier',color='red',until='2d#servía'),
+   N('ho2','hole',EX[0]+170-11,EX[1]-11,22,22,'2c#Cualquier',color='red',until='2d#servía'),
    ic('ok','check',EX[0]-34,ey-34,40,'2c#asignado',color='teal',until='2d#servía'),
-   ic('no','cross',EX[0]+150,EX[1]+34,36,'2c#suspenso',color='red',until='2d#servía'),
-   ic('xf','cross',fc[0],fc[1],60,'2e#imposible',color='red')]
+   ic('no','cross',EX[0]+170,EX[1]+34,36,'2c#suspenso',color='red',until='2d#servía'),
+   ic('xf','cross',fc[0]+40,fc[1]-40,30,'2e#imposible',color='red')]
 n[1]['blink']=.28; n[1]['bat']='2b#bandera'
 lk=[W.link('v8','ho','2b#aprovechar',color='teal',curve=.1,until='2e#atacar'),W.link('ph','ho','2e#atacar+0.5',color='teal',curve=.1),
     W.link('v8','ho2','2c#Cualquier',color='red',curve=.1,until='2d#servía')]
