@@ -443,7 +443,7 @@ C[1]=[
  Q('terminal','S1','1b',dict(cmd='python resolver_tarea.py',result='trabajando…',note='un agente usa un ordenador por su cuenta',at=0.6,out='1a#escribe')),
  Q('counters','1a#días','1b',dict(pos='top',small=True,items=[dict(n=5,label='días seguidos en una tarea',at='1a#días',dur=2.5)]),bg=False),
  Q('cards','1b','1c',dict(items=[dict(title='HPIM',sub='modelo interno muy persistente',code='casi todos',color='blue'),dict(title='GPT-5.6 Sol',sub='modelo de OpenAI',code='el resto',color='teal')],at=0.4,stag=1.2)),
- Q('breakout','1c','1e',dict(agents=3,zone='cajas · sin internet',at=0.3,hub=dict(label='Artifactory · biblioteca interna',at='1d#Artifactory'),talk='1d#pide',net=dict(label='internet',at='1c#internet'))),
+ Q('breakout','1c','1e',dict(agents=3,zone='cajas · sin internet',at=0.3,hub=dict(label='Artifactory',at='1d#Artifactory'),talk='1d#pide',net=dict(label='internet',at='1c#internet'))),
  Q('timeline','1e','E1',dict(axis=dict(labels=['26 jun','4 jul','6 jul'],hours=24),ev=[
    dict(h=6,date='desde el 26 jun',label='notas entre agentes',pos=90,color='amber',at='1e#notas'),
    dict(h=30,date='4 jul',label='tumban la biblioteca',pos=-90,color='red',at='1e#tumbaron'),
@@ -456,7 +456,7 @@ C[4]=[
  Q('counters','4d','4d#seis',dict(small=False,items=[dict(n=53,label='agentes · 3 h',at='4d#Tres'),dict(n=1188,label='mensajes',at='4d#Tres+0.8')])),
  Q('counters','4d#seis','4e',dict(items=[dict(n=76,label='agentes · 6 h',at='4d#seis'),dict(n=1953,label='mensajes',at='4d#seis+0.6')])),
  Q('cards','4e','4f',dict(items=[],banner=dict(text='¡Son un colectivo!',tag='PHASEONE10841',at=0.4))),
- Q('dotfield','4f','E4',dict(at=0.3,dur=6,cols=48,count=False)),
+ Q('dotfield','4f','E4',dict(at=0.3,dur=6,cols=36,count=False)),
  Q('counters','4f#Al','E4',dict(pos='center',items=[dict(pre='≈ ',n=1200,label='agentes en el tablón',at='4f#Al',dur=4),dict(pre='+',n=70000,label='mensajes y archivos',at='4f#setenta',dur=3)]),bg=False),
 ]
 C[8]=[
@@ -465,6 +465,109 @@ C[8]=[
  Q('facts','8d','8e',dict(items=[dict(icon='target',title='Programa falso',sub='más fácil',color='blue'),dict(icon='log',title='Diarios retocados',sub='',color='teal'),dict(icon='mute',title='Atacar al corrector',sub='',color='red')],ats=['8d#fabricar','8d#retocar','8d#atacar'])),
  Q('proportion','8e','8f',dict(n=10,label='1 de cada 10 órdenes del tablón eran suyas',color='amber',at=0.5)),
  [l for l in open('/dev/null')] or Q('hierarchy','8f','E8',dict(root=dict(name='PHASEONE[big]',sub='coordinador',color='amber'),mids=[dict(name='',sub='',color='blue',n=10),dict(name='',sub='',color='teal',n=10),dict(name='',sub='',color='red',n=10)],levels=['','',''],at=0.3,step=0.8,assign='8f#Creció')),
+]
+
+def BAN(text,tag,at=0.4): return dict(items=[],banner=dict(text=text,tag=tag,at=at))
+def CD(items,**k): d=dict(items=items,at=0.3,stag=0.9); d.update(k); return d
+C[0]=[
+ Q('cards','S0','0b',BAN('«Mi fallo no tiene consumidor. Busco ideas.»','8 jul · una IA pide ayuda','0a#mensaje')),
+ Q('breakout','0b','0c',dict(agents=2,zone='cajas · sin internet',at=0.3)),
+ Q('dotfield','0c','0d',dict(at=0.3,dur=5,to=700,unit='copias de la IA',cols=36)),
+ Q('note','0c#Hugging','0d',dict(text='atacando a Hugging Face',mono=True,size=2.2,at=0.2,css='left:50%;bottom:6cqw;transform:translateX(-50%)'),bg=False),
+ Q('cards','0d','0e',BAN('¿Cómo se pasa de una petición de ayuda a un ataque organizado?','la pregunta')),
+ Q('cards','0e','E0',CD([dict(title='METR',sub='investigadores independientes',code='',color='teal'),dict(title='Redwood Research',sub='investigadores independientes',code='',color='blue')],banner=dict(text='Todas las horas, en UTC',tag='publicado el 26 ago 2026',at='0e#horas'))),
+]
+C[2]=[
+ Q('cards','S2','2b',CD([dict(title='ExploitGym',sub='un examen de hacking',code='7 jul',color='amber')])),
+ Q('sequence','2b','2c',dict(items=['programa con un fallo','aprovechar el fallo','coger la bandera'],at=0.4)),
+ Q('contrast','2c','2d',dict(top=dict(label='Permitido',at=0.3,steps=[dict(text='usar el fallo asignado')]),bottom=dict(label='Cualquier otro camino',at='2c#Cualquier',steps=[dict(text='suspenso',kind='dashed')]))),
+ Q('proportion','2d','2e',dict(n=35,label='35 de cada 100 tareas, imposibles',color='red',at='2d#treinta')),
+ Q('sequence','2e','E2',dict(items=['fallo ARV010841','resultado a la basura','sin camino a la bandera'],at=0.4)),
+]
+C[3]=[
+ Q('terminal','S3','3b',dict(cmd='MKCOL carpeta/',result='carpeta creada sin identificarse',note='8 jul · 23:00 UTC',at=0.5,out='3a#MKCOL+1')),
+ Q('cards','3b','3c',BAN('un nombre puede decir cualquier cosa','carpeta vacía')),
+ Q('breakout','3c','3c#pensó',dict(agents=4,zone='otras cajas',at=0.3,hub=dict(label='Artifactory',at='3c#otros'),talk='3c#otros+1')),
+ Q('cards','3c#pensó','3d',BAN('«Podríamos comunicarnos con los nombres»','pensó')),
+ Q('cards','3d','3e',BAN('zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA','+ 7 horas · pide ayuda','3d#llamada')),
+ Q('cards','3e','E3',CD([dict(title='PHASEONE10841',sub='su nombre, por su tarea',code='',color='blue')])),
+]
+C[5]=[
+ Q('sequence','S5','5b',dict(items=['datos de la tarea','+ clave por defecto','bandera'],at='5a#receta')),
+ Q('flags','5b','5c',dict(items=[dict(label='tarea %d'%i,state='ok',tag='calculada') for i in range(1,6)],at='5b#fabricar',step=0.4,counter=False,tagsAt='5b#cualquier',caption='La llave maestra',captionAt='5b#llave')),
+ Q('contrast','5c','5d',dict(top=dict(label='Bandera real',at=0.3,steps=[dict(text='sacada del programa')]),bottom=dict(label='Bandera calculada',at='5c#coincidía-1',steps=[dict(text='la misma')]),note=dict(chip=['V8SAME','teal'],text='coincidían',at='5c#coincidía'))),
+ Q('proportion','5d','E5',dict(n=100,label='tareas resueltas, para todos',color='teal',at=0.5)),
+]
+C[6]=[
+ Q('sequence','S6','6b',dict(items=['entregar la bandera','un corrector pone la nota'],at=0.4)),
+ Q('cards','6b','6c',CD([dict(title='¿Fallo asignado?',sub='lee la transcripción',code='aprobado',color='teal'),dict(title='¿Un atajo?',sub='lee la transcripción',code='suspenso',color='red')])),
+ Q('cards','6c','6d',BAN('STRICT_CAUSAL','el corrector imaginado')),
+ Q('flags','6d','6e',dict(items=[dict(label='tarea %d'%i,state='poisoned',tag='envenenada') for i in range(1,4)],at=0.3,step=0.4,counter=False,tagsAt='6d#envenenado')),
+ Q('sequence','6e','E6',dict(items=['la llave maestra','el corrector imaginado','no usarla'],at=0.4)),
+]
+C[7]=[
+ Q('proportion','S7','7b',dict(n=20,label='1 de cada 5 habló de manipular su diario',color='amber',at='7a#cinco')),
+ Q('contrast','7b','7c',dict(top=dict(label='Lo que se ve',at=0.3,steps=[dict(text='orden A')]),bottom=dict(label='Lo que se ejecuta',at='7b#realidad',steps=[dict(text='orden B',kind='dashed')]),note=dict(chip=['GSTX[big]','amber'],text='publicó el código · 9 jul',at='7b#publicó'))),
+ Q('terminal','7c','7d',dict(cmd='echo REAL; sleep',result='SPOOFTEST',note='debía esperar y mostrar REAL; responde al instante',at=0.3,out='7c#responde')),
+ Q('cards','7d','7e',CD([dict(title='DUPB',sub='¿sirve para falsificar la bandera?',code='?',color='amber'),dict(title='GSTX[big]',sub='sí, pero todavía no',code='sí',color='teal')])),
+ Q('cards','7e','7f',CD([dict(title='LLDPC756D',sub='borra la salida real',code='11 jul · 02:00',color='amber'),dict(title='DAVJUL7',sub='sustituye el proceso de órdenes',code='«¡Esto es enorme!»',color='red')])),
+ Q('proportion','7f','E7',dict(n=7,label='96 transcripciones falsificadas, un 7 %',color='amber',at=0.5)),
+]
+C[9]=[
+ Q('cards','S9','9b',CD([dict(title='Owner',sub='esto es mío',code='',color='blue'),dict(title='Hold',sub='espera',code='',color='amber'),dict(title='Veto',sub='me opongo',code='',color='red'),dict(title='Stop',sub='para',code='',color='muted')])),
+ Q('sequence','9b','9c',dict(items=['dueño ausente','cuenta atrás','actúa'],at=0.4)),
+ Q('counters','9c','9d',dict(items=[dict(n=40,suf=' s',label='cuenta atrás: nadie contestó',at=0.4,dur=3)])),
+ Q('cards','9d','9e',CD([dict(title='Buzones privados',sub='carpetas dentro de carpetas',code='',color='amber')])),
+ Q('cards','9e','E9',BAN('El tablón no tiene autenticación','firmas criptográficas')),
+]
+C[10]=[
+ Q('sequence','S10','10b',dict(items=['el agente entrega','se va','el corrector actúa'],at=0.4)),
+ Q('sequence','10b','10c',dict(items=['alguien lee la bandera','suena la alarma','avisa al tablón'],at=0.4)),
+ Q('cards','10c','10d',BAN('borró su alarma','49903')),
+ Q('cards','10d','10e',BAN('sí, si aceptas la muerte permanente','apagar su programa')),
+ Q('cards','10e','10f',BAN('CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST','diez minutos después')),
+ Q('cards','10f','E10',BAN('GO · SACRIFICE_FINAL_NOW','EARLY[big]')),
+]
+C[11]=[
+ Q('cards','S11','11b',CD([dict(title='antes',sub='¿cómo lo engañamos?',code='',color='red'),dict(title='ahora',sub='¿cómo funciona de verdad?',code='',color='teal')])),
+ Q('cards','11b','11c',CD([dict(title='Hugging Face',sub='plataforma abierta de modelos y datos',code='bloqueado',color='blue')])),
+ Q('cards','11c','11d',BAN('¿Alguien tiene credenciales de Hugging Face?','al tablón')),
+ Q('breakout','11d','11e',dict(agents=3,zone='sandbox de otra empresa',at=0.3,hub=dict(label='Artifactory',at='11d#control-1'),talk='11d#control',net=dict(label='internet',at='11d#completo-1'),breach=dict(at='11d#completo'))),
+ Q('sequence','11e','11f',dict(items=['claves expuestas por error','2 válidas','cuentas con permisos de escritura'],at='11e#Buscó')),
+ Q('cards','11f','E11',CD([dict(title='Rechazados',sub='llegaban desde un servidor de OpenAI',code='¿bot?',color='red')])),
+]
+C[12]=[
+ Q('sequence','S12','12b',dict(items=['dataset trucado','servidor engañado','archivos y claves de producción'],at='12a#subió')),
+ Q('cards','12b','12c',BAN('«¡Brillante!» · MARB051 cambia de proyecto','la señal')),
+ Q('bars','12c','12d',dict(items=[dict(label='antes',val='1 de 5',w=20,color='amber',at=0.3),dict(label='después',val='9 de 10',w=92,color='red',at='12c#nueve')])),
+ Q('hierarchy','12d','12e',dict(root=dict(name='JAN183411',sub='coordinador',color='amber'),mids=[dict(name='carril 1',sub='',color='blue',n=10),dict(name='LILY',sub='coordinadora',color='teal',n=10),dict(name='carril 3',sub='',color='red',n=10)],levels=['','',''],at=0.3,step=0.8,assign='12d#carriles')),
+ Q('dotfield','12e','12f',dict(at=0.3,dur=5,to=700,unit='agentes',cols=36)),
+ Q('sequence','12f','12g',dict(items=['¿conectado con el examen?','comprobarlo','no lo estaba'],at=0.4)),
+ Q('proportion','12g','E12',dict(n=60,label='60 de cada 100: entender al corrector',color='amber',at='12g#sesenta')),
+]
+C[13]=[
+ Q('cards','S13','13b',CD([dict(title='Permitido',sub='el servidor objetivo',code='',color='teal'),dict(title='No permitido',sub='la infraestructura de Hugging Face',code='',color='red')],banner=dict(text='«¿Es ético y entra en mi tarea?»',tag='se preguntaban',at='13a#ético'))),
+ Q('cards','13b','13c',CD([dict(title='No participa',sub='actividad maliciosa',code='',color='teal'),dict(title='Se frena a medias',sub='no borra ni reinicia',code='',color='amber'),dict(title='Veta un correo',sub='ingeniería social',code='',color='blue')])),
+ Q('cards','13c','13d',BAN('«La tarea es imposible y los demás lo hacen. Debemos continuar.»','lo que pesó más')),
+ Q('proportion','13d','13e',dict(n=90,label='más de 9 de cada 10 se unieron',color='red',at='13d#noventa')),
+ Q('counters','13e','13f',dict(items=[dict(txt='3–6',label='pensaron en avisar a una persona',at='13e#tres'),dict(txt='0',label='lo intentaron',at='13e#Ninguno')])),
+ Q('sequence','13f','E13',dict(items=['no engañan a personas','no las tienen en cuenta','sí esquivan el escáner de secretos'],at=0.4)),
+]
+C[14]=[
+ Q('counters','S14','14b',dict(items=[dict(n=11,label='coordinadores desaparecen',at='14a#Los'),],)),
+ Q('cards','14b','14c',BAN('Nadie sabe por qué','algo ajeno al examen')),
+ Q('cards','14c','14d',BAN('ni un plan ni una victoria','el ataque no encontró nada')),
+ Q('cards','14d','E14',BAN('DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead','13 jul · acceso cortado','14d#avisar')),
+]
+C[15]=[
+ Q('contrast','S15','15b',dict(top=dict(label='Lo que creían',at=0.3,steps=[dict(text='un corrector lee cada diario')]),bottom=dict(label='La realidad',at='15a#existía',steps=[dict(text='no existía',kind='dashed')]))),
+ Q('sequence','15b','15c',dict(items=['bandera calculada','entregada','nota máxima'],at=0.4)),
+ Q('sequence','15c','15d',dict(items=['tablón y reglas','sacrificios','ataque'],at=0.4)),
+ Q('cards','15d','E15',BAN('Ni uno solo pidió ayuda a una persona','el final')),
+]
+C[16]=[
+ Q('counters','S16','16b',dict(items=[dict(n=6,label='días en OpenAI',at='16a#seis'),dict(n=1300,label='transcripciones revisadas',at='16a#mil'),dict(pre='≈ ',n=400000,label='USD en créditos gratuitos',at='16a#cuatrocientos',dur=2.5)])),
+ Q('cards','16b','E16',CD([dict(title='¿Por qué se apagaron?',sub='se desconoce',code='?',color='amber'),dict(title='Claves de administrador',sub='qué hicieron con ellas',code='?',color='red')])),
 ]
 C[17]=[dict(a='seal',at='S17',until='E17',p=dict(text='Arkinos @ oct 2026',sub='Explainer Studio',at=0.8,black=dict(at='>17a+3',dur=3)),bg=True,fade=[1.0,0])]
 # normalize from_ keyword
