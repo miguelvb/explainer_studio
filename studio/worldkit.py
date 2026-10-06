@@ -47,7 +47,7 @@ def hugging_face(id='hf', x=650, y=135, w=250, h=320, at=0.05, holes=(), hole_si
 def counter(id, x, y, n, at=0.05, cap='', w=240, h=50, fs=54, dur=3, **k):
     return _n(id, 'num', x, y, w, h, at, n=n, color='#E7EBF1', fs=fs, dur=dur, cap=cap or None, capc='muted', capfs=14, **k)
 
-def clock(id, x, y, start, at=0.2, fs=24, cps=22, run=None, **k):
+def clock(id, x, y, start, at=0.2, fs=24, cps=9, run=None, **k):
     """start=(y,m,d,h,mi). run=dict(at, dur, to=(y,m,d,h,mi)) makes the time advance."""
     y_, m_, d_, h_, mi_ = start; c = dict(y=y_, m=m_, d=d_, h=h_, mi=mi_)
     if run: ty, tm, td, th, tmi = run['to']; c.update(at=run['at'], dur=run['dur'], to=dict(y=ty, m=tm, d=td, h=th, mi=tmi))
