@@ -157,7 +157,7 @@ for i,(x,y) in enumerate(RW):
     n+= [sc(f'x{i}',x,y,0.05,s=32,color='teal',alpha=al0(y),blink=.45,bf=3+(i%5)*.6),ag(f'g{i}',x,y,0.05,s=16,alpha=al0(y),blink=.45,bf=3+(i%5)*.6)]
 n+= [N('hf','hfbase',650,135,250,320,'0c#atacando',color='amber',label='Hugging Face',fs=17,blink=.12,bf=3),
      N('gp','cross',499,269,2,2,0.05,color='red',alpha=0),
-     N('n700','num',655,18,240,50,'0c#setecientas',n=700,color='#E7EBF1',fs=54,dur=3,cap='agentes de OpenAI atacan Hugging Face',capc='muted',capfs=15)]
+     N('n700','num',630,18,240,50,'0c#setecientas',n=700,color='#E7EBF1',fs=54,dur=3,cap='agentes de OpenAI atacan Hugging Face',capc='muted',capfs=14)]
 HOLES=[(662,175),(660,235),(664,300),(662,365),(666,425),(745,135),(830,135),(885,142),(890,215),(892,290),(890,360),(870,440),(800,442),(725,440),(780,230),(740,330)]
 lk=[]
 for j,(hx,hy) in enumerate(HOLES):

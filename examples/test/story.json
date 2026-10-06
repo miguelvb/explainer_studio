@@ -4907,7 +4907,7 @@
        {
         "id": "n700",
         "kind": "num",
-        "x": 655,
+        "x": 630,
         "y": 18,
         "w": 240,
         "h": 50,
@@ -4918,7 +4918,7 @@
         "dur": 3,
         "cap": "agentes de OpenAI atacan Hugging Face",
         "capc": "muted",
-        "capfs": 15
+        "capfs": 14
        },
        {
         "id": "h0",
