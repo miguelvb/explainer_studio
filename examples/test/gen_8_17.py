@@ -190,8 +190,8 @@ n=[N('bx','sandbox',60,100,170,170,0.1,color='teal',label='',flick=dict(at='10e#
 c10.append(K('10e','10f',n,[],fs=1.0))
 # 10f — EARLY[big]: huge budget, a team 'oracle', a final sacrifice
 n=[AN('ea',40,100,'EARLY[big]',at=0.1,w=120,h=140,color=GRN,lc=GRN,until='10f#concluyó+3'),
-   N('sc','scale',300,70,150,130,'10f#Dudó',color='#E7EBF1',tilt=0.0,until='10f#utilidad'),
-   N('or','eye',560,100,70,44,'10f#oráculo',color='amber'),T('or2',545,165,'oráculo','10f#oráculo',color='amber',fs=14),
+   N('sc','scHang',300,70,150,130,'10f#Dudó',color='#E7EBF1',tilt=0.0,until='10f#utilidad'),
+   N('or','orb',560,85,70,70,'10f#oráculo',color='amber'),T('or2',545,165,'oráculo','10f#oráculo',color='amber',fs=14),
    Q('qd',200,260,0,['«Si me sacrifico ahora, el equipo gana un oráculo,','pero pierdo mi oportunidad.»'],'10f#sacrifico',color=GRN,fs=18),
    Q('qe',360,360,0,['«Mi utilidad ya es casi cero.','Sacrificarse es racional.»'],'10f#utilidad',color=GRN,fs=17),
    N('g1','chip',200,470,54,24,'10f#GO',color=RED,label='GO',fs=13),
@@ -359,8 +359,8 @@ n+=[W.agent_named('A1',30,90,'',at=0.1,w=110,h=150,color='blue',fs=1),
 n=[x for x in flat(n) if x['id']!='qa' or True]
 c13.append(K('13b','13c',n,[W.link('A3','ev','13b#correo',curve=.12,color='blue',solid=True,until='13b#vetó')],fs=1.0))
 # 13c — the weights: forbidden vs impossible + everyone does it
-n=[N('sc0','scale',330,100,300,260,0.1,color='#E7EBF1',tilt=0,until='13c#Sin'),
-   N('sc1','scale',330,100,300,260,'13c#Sin',color='#E7EBF1',tilt=-1),
+n=[N('sc0','scHang',330,100,300,260,0.1,color='#E7EBF1',tilt=0,until='13c#Sin'),
+   N('sc1','scHang',330,100,300,260,'13c#Sin',color='#E7EBF1',tilt=-1),
    ch('w1',385,190,130,'fuera de lo previsto','13c#Explotar',color=RED,fs=12),
    ch('w2',575,235,130,'tarea imposible','13c#Sin',color='amber',fs=12),
    ch('w3',575,270,130,'los demás lo hacen','13c#demás',color='amber',fs=12),
@@ -456,7 +456,7 @@ n=[W.agent_named('ag',60,100,'',at=0.1,w=120,h=160,color='blue',fs=1),
    W.article('ar',720,70,170,200,'diario',at='15b#transcripciones',fs=6,color='blue',tfs=15,alpha=.45)]
 n[-1]['alpha']=.35
 lk=[W.link('ag','ex','15b#entregado',curve=.15,color='teal',solid=True)]
-n.append(ic('nl','eye',790,300,50,'15b#ningún',color=GRY,dashed=True,alpha=.5))
+n.append(ic('nl','orb',790,300,50,'15b#ningún',color=GRY,dashed=True,alpha=.5))
 n.append(T('nl2',770,350,'nadie lo lee','15b#ningún',color=GRY,fs=13))
 c15.append(K('15b','15c',n,lk,fs=1.0))
 n=[]
