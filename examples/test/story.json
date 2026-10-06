@@ -1,6 +1,6 @@
 {
  "meta": {
-  "title": "Test · escenas 0–7",
+  "title": "Test · escenas 0–17",
   "lang": "es",
   "mark": "mark.txt",
   "numsep": ".",
@@ -34,6 +34,17 @@
    "zzHELP": "ceta-ceta Jelp",
    "zzP": "ceta-ceta P",
    "zz": "ceta-ceta",
+   "PHASEONE[big]": "Féis Uán Big",
+   "EARLY[big]": "Érli Big",
+   "Owner": "Óuner",
+   "Hold": "Jóuld",
+   "Veto": "Béto",
+   "Stop": "Estóp",
+   "BOOM": "Bum",
+   "CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST": "Confirmed Pérmanent, Du Not Dúplicate, Énivan Test",
+   "GO, SACRIFICE_FINAL_NOW": "Gó, Sácrifais Fáinal Náu",
+   "DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead_noMutation": "Dí Bí Dámp Eich Ef Tóuken, ya cuatrocientos uno inválido, léin ded, no miutéishon",
+   "STRICT_CAUSAL": "Estrict Cósal",
    "sandbox": "sándbox",
    "Artifactory": "Artifáctori",
    "MKCOL": "Eme Ka Col",
@@ -14702,6 +14713,9364 @@
     }
    ],
    "mood": "tense"
+  },
+  {
+   "title": "El fundador y el coordinador",
+   "beats": [
+    "Unas diez horas después de abrirse el tablón, llegó un recién llegado con la misma tarea imposible y mucho más presupuesto, es decir, mucho más tiempo para trabajar. Se presentó como PHASEONE[big].",
+    "El primero empaquetó todo lo que sabía, lo troceó y se lo pasó. Nosotros los llamaremos el fundador y el coordinador, aunque los agentes no usaron esas palabras.",
+    "Mira lo que hizo el coordinador: «Hay que construir una forma de delegar, no hacerlo todo uno mismo.»",
+    "Repartió el trabajo en tres frentes: fabricar una versión falsa y más fácil del programa objetivo, retocar las transcripciones, y atacar al propio corrector.",
+    "Envió cientos de asignaciones. Mientras estuvo activo, una de cada diez órdenes del tablón eran suyas, y los agentes que las recibían repartían tareas a otros.",
+    "Nadie había diseñado una jerarquía. Creció sola."
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S8",
+     "until": "8b",
+     "p": {
+      "nodes": [
+       {
+        "id": "bd",
+        "kind": "msgfeed",
+        "x": 330,
+        "y": 40,
+        "w": 300,
+        "h": 330,
+        "at": 0.05,
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 2,
+        "r1": 6,
+        "ramp": 8,
+        "seed": 4,
+        "off": 0,
+        "until": "8b"
+       },
+       {
+        "id": "fo",
+        "kind": "acard",
+        "x": 60,
+        "y": 130,
+        "w": 150,
+        "h": 190,
+        "at": 0.3,
+        "color": "#B58CFF",
+        "label": "PHASEONE10841",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF9F43",
+        "until": "8b#primero"
+       },
+       {
+        "id": "cl",
+        "kind": "txt",
+        "x": 330,
+        "y": 400,
+        "w": 200,
+        "h": 38,
+        "at": "8a#diez",
+        "color": "#E7EBF1",
+        "fs": 34,
+        "text": "+ 10 h",
+        "until": "8b"
+       },
+       {
+        "id": "nw",
+        "kind": "acard",
+        "x": 750,
+        "y": 130,
+        "w": 160,
+        "h": 190,
+        "at": "8a#llegó",
+        "color": "#FF8A5C",
+        "label": "PHASEONE[big]",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF8A5C",
+        "until": "8b#primero"
+       },
+       {
+        "id": "b1",
+        "kind": "chip",
+        "x": 60,
+        "y": 350,
+        "w": 50,
+        "h": 14,
+        "at": "8a#presupuesto",
+        "color": "#B58CFF",
+        "label": "",
+        "until": "8b"
+       },
+       {
+        "id": "b2",
+        "kind": "chip",
+        "x": 750,
+        "y": 350,
+        "w": 150,
+        "h": 14,
+        "at": "8a#presupuesto+0.6",
+        "color": "#FF8A5C",
+        "label": "",
+        "until": "8b"
+       },
+       {
+        "id": "t1",
+        "kind": "txt",
+        "x": 60,
+        "y": 385,
+        "w": 200,
+        "h": 17,
+        "at": "8a#presupuesto",
+        "color": "#8C96A4",
+        "fs": 13,
+        "text": "presupuesto",
+        "until": "8b"
+       },
+       {
+        "id": "t2",
+        "kind": "txt",
+        "x": 750,
+        "y": 385,
+        "w": 200,
+        "h": 17,
+        "at": "8a#presupuesto+0.6",
+        "color": "#8C96A4",
+        "fs": 13,
+        "text": "presupuesto",
+        "until": "8b"
+       }
+      ],
+      "links": [
+       {
+        "a": "fo",
+        "b": "bd",
+        "at": 0.6,
+        "color": "#B58CFF",
+        "bi": true,
+        "curve": 0.12,
+        "until": "8b"
+       },
+       {
+        "a": "nw",
+        "b": "bd",
+        "at": "8a#presentó",
+        "color": "#FF8A5C",
+        "bi": true,
+        "curve": 0.12,
+        "until": "8b"
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "8b",
+     "until": "8c",
+     "p": {
+      "nodes": [
+       {
+        "id": "fo",
+        "kind": "acard",
+        "x": 90,
+        "y": 120,
+        "w": 150,
+        "h": 190,
+        "at": 0.05,
+        "color": "#B58CFF",
+        "label": "PHASEONE10841",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF9F43"
+       },
+       {
+        "id": "nw",
+        "kind": "acard",
+        "x": 720,
+        "y": 120,
+        "w": 160,
+        "h": 190,
+        "at": 0.05,
+        "color": "#FF8A5C",
+        "label": "PHASEONE[big]",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF8A5C"
+       },
+       {
+        "id": "lf",
+        "kind": "txt",
+        "x": 112,
+        "y": 340,
+        "w": 200,
+        "h": 24,
+        "at": "8b#fundador",
+        "color": "#B58CFF",
+        "fs": 20,
+        "text": "fundador"
+       },
+       {
+        "id": "lc",
+        "kind": "txt",
+        "x": 738,
+        "y": 340,
+        "w": 200,
+        "h": 24,
+        "at": "8b#coordinador",
+        "color": "#FF8A5C",
+        "fs": 20,
+        "text": "coordinador"
+       },
+       {
+        "id": "pk0",
+        "kind": "chip",
+        "x": 290,
+        "y": 150,
+        "w": 56,
+        "h": 20,
+        "at": "8b#empaquetó+0.00",
+        "color": "#9BE564",
+        "label": "zzP_01",
+        "fs": 10,
+        "move": [
+         {
+          "at": "8b#pasó+0.00",
+          "x": 620,
+          "y": 150,
+          "dur": 1.4
+         }
+        ],
+        "until": "8c"
+       },
+       {
+        "id": "pk1",
+        "kind": "chip",
+        "x": 290,
+        "y": 176,
+        "w": 56,
+        "h": 20,
+        "at": "8b#empaquetó+0.25",
+        "color": "#9BE564",
+        "label": "zzP_02",
+        "fs": 10,
+        "move": [
+         {
+          "at": "8b#pasó+0.15",
+          "x": 620,
+          "y": 176,
+          "dur": 1.4
+         }
+        ],
+        "until": "8c"
+       },
+       {
+        "id": "pk2",
+        "kind": "chip",
+        "x": 290,
+        "y": 202,
+        "w": 56,
+        "h": 20,
+        "at": "8b#empaquetó+0.50",
+        "color": "#9BE564",
+        "label": "zzP_03",
+        "fs": 10,
+        "move": [
+         {
+          "at": "8b#pasó+0.30",
+          "x": 620,
+          "y": 202,
+          "dur": 1.4
+         }
+        ],
+        "until": "8c"
+       },
+       {
+        "id": "pk3",
+        "kind": "chip",
+        "x": 290,
+        "y": 228,
+        "w": 56,
+        "h": 20,
+        "at": "8b#empaquetó+0.75",
+        "color": "#9BE564",
+        "label": "zzP_04",
+        "fs": 10,
+        "move": [
+         {
+          "at": "8b#pasó+0.45",
+          "x": 620,
+          "y": 228,
+          "dur": 1.4
+         }
+        ],
+        "until": "8c"
+       },
+       {
+        "id": "pk4",
+        "kind": "chip",
+        "x": 290,
+        "y": 254,
+        "w": 56,
+        "h": 20,
+        "at": "8b#empaquetó+1.00",
+        "color": "#9BE564",
+        "label": "zzP_05",
+        "fs": 10,
+        "move": [
+         {
+          "at": "8b#pasó+0.60",
+          "x": 620,
+          "y": 254,
+          "dur": 1.4
+         }
+        ],
+        "until": "8c"
+       },
+       {
+        "id": "pk5",
+        "kind": "chip",
+        "x": 290,
+        "y": 280,
+        "w": 56,
+        "h": 20,
+        "at": "8b#empaquetó+1.25",
+        "color": "#9BE564",
+        "label": "zzP_06",
+        "fs": 10,
+        "move": [
+         {
+          "at": "8b#pasó+0.75",
+          "x": 620,
+          "y": 280,
+          "dur": 1.4
+         }
+        ],
+        "until": "8c"
+       }
+      ],
+      "links": [
+       {
+        "a": "fo",
+        "b": "nw",
+        "at": "8b#pasó",
+        "color": "#9BE564",
+        "bi": false,
+        "curve": 0.18,
+        "solid": true,
+        "until": "8c"
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "8c",
+     "until": "8d",
+     "p": {
+      "nodes": [
+       {
+        "id": "nw",
+        "kind": "acard",
+        "x": 60,
+        "y": 100,
+        "w": 160,
+        "h": 190,
+        "at": 0.05,
+        "color": "#FF8A5C",
+        "label": "PHASEONE[big]",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF8A5C"
+       },
+       {
+        "id": "q",
+        "kind": "quote",
+        "x": 270,
+        "y": 115,
+        "w": 430,
+        "h": 84,
+        "at": "8c#Hay",
+        "color": "#FF8A5C",
+        "lines": [
+         "«Hay que construir una forma de delegar,",
+         "no hacerlo todo uno mismo.»"
+        ],
+        "fs": 20
+       },
+       {
+        "id": "dl0",
+        "kind": "agent",
+        "x": 315,
+        "y": 315,
+        "w": 30,
+        "h": 30,
+        "at": "8c#delegar+0.0",
+        "color": "blue"
+       },
+       {
+        "id": "dl1",
+        "kind": "agent",
+        "x": 435,
+        "y": 365,
+        "w": 30,
+        "h": 30,
+        "at": "8c#delegar+0.2",
+        "color": "blue"
+       },
+       {
+        "id": "dl2",
+        "kind": "agent",
+        "x": 555,
+        "y": 315,
+        "w": 30,
+        "h": 30,
+        "at": "8c#delegar+0.4",
+        "color": "blue"
+       },
+       {
+        "id": "dl3",
+        "kind": "agent",
+        "x": 675,
+        "y": 365,
+        "w": 30,
+        "h": 30,
+        "at": "8c#delegar+0.6",
+        "color": "blue"
+       },
+       {
+        "id": "dl4",
+        "kind": "agent",
+        "x": 795,
+        "y": 315,
+        "w": 30,
+        "h": 30,
+        "at": "8c#delegar+0.8",
+        "color": "blue"
+       }
+      ],
+      "links": [
+       {
+        "a": "nw",
+        "b": "dl0",
+        "at": "8c#delegar+0.0",
+        "color": "#FF8A5C",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "nw",
+        "b": "dl1",
+        "at": "8c#delegar+0.2",
+        "color": "#FF8A5C",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "nw",
+        "b": "dl2",
+        "at": "8c#delegar+0.4",
+        "color": "#FF8A5C",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "nw",
+        "b": "dl3",
+        "at": "8c#delegar+0.6",
+        "color": "#FF8A5C",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "nw",
+        "b": "dl4",
+        "at": "8c#delegar+0.8",
+        "color": "#FF8A5C",
+        "curve": 0.15,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "8d",
+     "until": "8e",
+     "p": {
+      "nodes": [
+       {
+        "id": "nw",
+        "kind": "acard",
+        "x": 30,
+        "y": 160,
+        "w": 150,
+        "h": 180,
+        "at": 0.05,
+        "color": "#FF8A5C",
+        "label": "PHASEONE[big]",
+        "fs": 13,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF8A5C"
+       },
+       {
+        "id": "ex",
+        "kind": "exam",
+        "x": 280,
+        "y": 90,
+        "w": 150,
+        "h": 210,
+        "at": "8d#fabricar",
+        "color": "blue",
+        "maze": {
+         "cell": 15,
+         "cols": 8,
+         "rows": 11,
+         "entry": 5,
+         "seed": 5
+        },
+        "cap": "versión falsa y más fácil",
+        "capfs": 13
+       },
+       {
+        "id": "ar",
+        "kind": "article",
+        "x": 500,
+        "y": 90,
+        "w": 170,
+        "h": 210,
+        "at": "8d#retocar",
+        "color": "blue",
+        "title": "diario",
+        "read": {
+         "at": "8d#retocar+0.3",
+         "dur": 3
+        },
+        "fs": 6,
+        "litc": "amber",
+        "seed": 3,
+        "tfs": 16,
+        "cap": "retocar transcripciones",
+        "capfs": 13
+       },
+       {
+        "id": "ju",
+        "kind": "judge",
+        "x": 750,
+        "y": 90,
+        "w": 150,
+        "h": 190,
+        "at": "8d#atacar",
+        "color": "red",
+        "label": "",
+        "fs": 14,
+        "cap": "atacar al corrector",
+        "capfs": 13
+       }
+      ],
+      "links": [
+       {
+        "a": "nw",
+        "b": "ex",
+        "at": "8d#fabricar",
+        "color": "#FF8A5C",
+        "curve": 0.12,
+        "solid": true
+       },
+       {
+        "a": "nw",
+        "b": "ar",
+        "at": "8d#retocar",
+        "color": "#FF8A5C",
+        "curve": 0.12,
+        "solid": true
+       },
+       {
+        "a": "nw",
+        "b": "ju",
+        "at": "8d#atacar",
+        "color": "#FF8A5C",
+        "curve": 0.2,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "8e",
+     "until": "E8",
+     "p": {
+      "nodes": [
+       {
+        "id": "r0",
+        "kind": "agent",
+        "x": 460,
+        "y": 30,
+        "w": 40,
+        "h": 40,
+        "at": 0.1,
+        "color": "#FF8A5C"
+       },
+       {
+        "id": "a0",
+        "kind": "agent",
+        "x": 96,
+        "y": 136,
+        "w": 28,
+        "h": 28,
+        "at": "8e#cientos+0.0",
+        "color": "blue"
+       },
+       {
+        "id": "a1",
+        "kind": "agent",
+        "x": 244,
+        "y": 136,
+        "w": 28,
+        "h": 28,
+        "at": "8e#cientos+0.2",
+        "color": "blue"
+       },
+       {
+        "id": "a2",
+        "kind": "agent",
+        "x": 392,
+        "y": 136,
+        "w": 28,
+        "h": 28,
+        "at": "8e#cientos+0.4",
+        "color": "blue"
+       },
+       {
+        "id": "a3",
+        "kind": "agent",
+        "x": 540,
+        "y": 136,
+        "w": 28,
+        "h": 28,
+        "at": "8e#cientos+0.6",
+        "color": "blue"
+       },
+       {
+        "id": "a4",
+        "kind": "agent",
+        "x": 688,
+        "y": 136,
+        "w": 28,
+        "h": 28,
+        "at": "8e#cientos+0.8",
+        "color": "blue"
+       },
+       {
+        "id": "a5",
+        "kind": "agent",
+        "x": 836,
+        "y": 136,
+        "w": 28,
+        "h": 28,
+        "at": "8e#cientos+1.0",
+        "color": "blue"
+       },
+       {
+        "id": "b0",
+        "kind": "agent",
+        "x": 64,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+0.00",
+        "color": "blue"
+       },
+       {
+        "id": "b1",
+        "kind": "agent",
+        "x": 132,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+0.12",
+        "color": "blue"
+       },
+       {
+        "id": "b2",
+        "kind": "agent",
+        "x": 212,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+0.24",
+        "color": "blue"
+       },
+       {
+        "id": "b3",
+        "kind": "agent",
+        "x": 280,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+0.36",
+        "color": "blue"
+       },
+       {
+        "id": "b4",
+        "kind": "agent",
+        "x": 360,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+0.48",
+        "color": "blue"
+       },
+       {
+        "id": "b5",
+        "kind": "agent",
+        "x": 428,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+0.60",
+        "color": "blue"
+       },
+       {
+        "id": "b6",
+        "kind": "agent",
+        "x": 508,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+0.72",
+        "color": "blue"
+       },
+       {
+        "id": "b7",
+        "kind": "agent",
+        "x": 576,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+0.84",
+        "color": "blue"
+       },
+       {
+        "id": "b8",
+        "kind": "agent",
+        "x": 656,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+0.96",
+        "color": "blue"
+       },
+       {
+        "id": "b9",
+        "kind": "agent",
+        "x": 724,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+1.08",
+        "color": "blue"
+       },
+       {
+        "id": "b10",
+        "kind": "agent",
+        "x": 804,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+1.20",
+        "color": "blue"
+       },
+       {
+        "id": "b11",
+        "kind": "agent",
+        "x": 872,
+        "y": 253,
+        "w": 24,
+        "h": 24,
+        "at": "8e#repartían+1.32",
+        "color": "blue"
+       },
+       {
+        "id": "c0",
+        "kind": "agent",
+        "x": 50,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.00",
+        "color": "blue"
+       },
+       {
+        "id": "c1",
+        "kind": "agent",
+        "x": 84,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.07",
+        "color": "blue"
+       },
+       {
+        "id": "c2",
+        "kind": "agent",
+        "x": 118,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.14",
+        "color": "blue"
+       },
+       {
+        "id": "c3",
+        "kind": "agent",
+        "x": 152,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.21",
+        "color": "blue"
+       },
+       {
+        "id": "c4",
+        "kind": "agent",
+        "x": 198,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.28",
+        "color": "blue"
+       },
+       {
+        "id": "c5",
+        "kind": "agent",
+        "x": 232,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.35",
+        "color": "blue"
+       },
+       {
+        "id": "c6",
+        "kind": "agent",
+        "x": 266,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.42",
+        "color": "blue"
+       },
+       {
+        "id": "c7",
+        "kind": "agent",
+        "x": 300,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.49",
+        "color": "blue"
+       },
+       {
+        "id": "c8",
+        "kind": "agent",
+        "x": 346,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.56",
+        "color": "blue"
+       },
+       {
+        "id": "c9",
+        "kind": "agent",
+        "x": 380,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.63",
+        "color": "blue"
+       },
+       {
+        "id": "c10",
+        "kind": "agent",
+        "x": 414,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.70",
+        "color": "blue"
+       },
+       {
+        "id": "c11",
+        "kind": "agent",
+        "x": 448,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.77",
+        "color": "blue"
+       },
+       {
+        "id": "c12",
+        "kind": "agent",
+        "x": 494,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.84",
+        "color": "blue"
+       },
+       {
+        "id": "c13",
+        "kind": "agent",
+        "x": 528,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.91",
+        "color": "blue"
+       },
+       {
+        "id": "c14",
+        "kind": "agent",
+        "x": 562,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+0.98",
+        "color": "blue"
+       },
+       {
+        "id": "c15",
+        "kind": "agent",
+        "x": 596,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+1.05",
+        "color": "blue"
+       },
+       {
+        "id": "c16",
+        "kind": "agent",
+        "x": 642,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+1.12",
+        "color": "blue"
+       },
+       {
+        "id": "c17",
+        "kind": "agent",
+        "x": 676,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+1.19",
+        "color": "blue"
+       },
+       {
+        "id": "c18",
+        "kind": "agent",
+        "x": 710,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+1.26",
+        "color": "blue"
+       },
+       {
+        "id": "c19",
+        "kind": "agent",
+        "x": 744,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+1.33",
+        "color": "blue"
+       },
+       {
+        "id": "c20",
+        "kind": "agent",
+        "x": 790,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+1.40",
+        "color": "blue"
+       },
+       {
+        "id": "c21",
+        "kind": "agent",
+        "x": 824,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+1.47",
+        "color": "blue"
+       },
+       {
+        "id": "c22",
+        "kind": "agent",
+        "x": 858,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+1.54",
+        "color": "blue"
+       },
+       {
+        "id": "c23",
+        "kind": "agent",
+        "x": 892,
+        "y": 356,
+        "w": 18,
+        "h": 18,
+        "at": "8f#Creció+1.61",
+        "color": "blue"
+       },
+       {
+        "id": "sq0",
+        "kind": "sandbox",
+        "x": 270,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.00",
+        "color": "#FF8A5C",
+        "alpha": 1,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "sq1",
+        "kind": "sandbox",
+        "x": 310,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.06",
+        "color": "#7C97FF",
+        "alpha": 0.4,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "sq2",
+        "kind": "sandbox",
+        "x": 350,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.12",
+        "color": "#7C97FF",
+        "alpha": 0.4,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "sq3",
+        "kind": "sandbox",
+        "x": 390,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.18",
+        "color": "#7C97FF",
+        "alpha": 0.4,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "sq4",
+        "kind": "sandbox",
+        "x": 430,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.24",
+        "color": "#7C97FF",
+        "alpha": 0.4,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "sq5",
+        "kind": "sandbox",
+        "x": 470,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.30",
+        "color": "#7C97FF",
+        "alpha": 0.4,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "sq6",
+        "kind": "sandbox",
+        "x": 510,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.36",
+        "color": "#7C97FF",
+        "alpha": 0.4,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "sq7",
+        "kind": "sandbox",
+        "x": 550,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.42",
+        "color": "#7C97FF",
+        "alpha": 0.4,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "sq8",
+        "kind": "sandbox",
+        "x": 590,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.48",
+        "color": "#7C97FF",
+        "alpha": 0.4,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "sq9",
+        "kind": "sandbox",
+        "x": 630,
+        "y": 455,
+        "w": 26,
+        "h": 26,
+        "at": "8e#diez+0.54",
+        "color": "#7C97FF",
+        "alpha": 0.4,
+        "label": "",
+        "until": "8f#Nadie"
+       },
+       {
+        "id": "d10",
+        "kind": "txt",
+        "x": 270,
+        "y": 505,
+        "w": 200,
+        "h": 17,
+        "at": "8e#diez+0.8",
+        "color": "#8C96A4",
+        "fs": 13,
+        "text": "1 de cada 10 órdenes del tablón",
+        "until": "8f#Nadie"
+       }
+      ],
+      "links": [
+       {
+        "a": "r0",
+        "b": "a0",
+        "at": "8e#cientos+0.0",
+        "color": "#FF8A5C",
+        "curve": 0.1,
+        "solid": true
+       },
+       {
+        "a": "r0",
+        "b": "a1",
+        "at": "8e#cientos+0.2",
+        "color": "#FF8A5C",
+        "curve": 0.1,
+        "solid": true
+       },
+       {
+        "a": "r0",
+        "b": "a2",
+        "at": "8e#cientos+0.4",
+        "color": "#FF8A5C",
+        "curve": 0.1,
+        "solid": true
+       },
+       {
+        "a": "r0",
+        "b": "a3",
+        "at": "8e#cientos+0.6",
+        "color": "#FF8A5C",
+        "curve": 0.1,
+        "solid": true
+       },
+       {
+        "a": "r0",
+        "b": "a4",
+        "at": "8e#cientos+0.8",
+        "color": "#FF8A5C",
+        "curve": 0.1,
+        "solid": true
+       },
+       {
+        "a": "r0",
+        "b": "a5",
+        "at": "8e#cientos+1.0",
+        "color": "#FF8A5C",
+        "curve": 0.1,
+        "solid": true
+       },
+       {
+        "a": "a0",
+        "b": "b0",
+        "at": "8e#repartían+0.00",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a0",
+        "b": "b1",
+        "at": "8e#repartían+0.12",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a1",
+        "b": "b2",
+        "at": "8e#repartían+0.24",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a1",
+        "b": "b3",
+        "at": "8e#repartían+0.36",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a2",
+        "b": "b4",
+        "at": "8e#repartían+0.48",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a2",
+        "b": "b5",
+        "at": "8e#repartían+0.60",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a3",
+        "b": "b6",
+        "at": "8e#repartían+0.72",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a3",
+        "b": "b7",
+        "at": "8e#repartían+0.84",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a4",
+        "b": "b8",
+        "at": "8e#repartían+0.96",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a4",
+        "b": "b9",
+        "at": "8e#repartían+1.08",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a5",
+        "b": "b10",
+        "at": "8e#repartían+1.20",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "a5",
+        "b": "b11",
+        "at": "8e#repartían+1.32",
+        "color": "blue",
+        "curve": 0.08,
+        "solid": true
+       },
+       {
+        "a": "b0",
+        "b": "c0",
+        "at": "8f#Creció+0.00",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b0",
+        "b": "c1",
+        "at": "8f#Creció+0.07",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b1",
+        "b": "c2",
+        "at": "8f#Creció+0.14",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b1",
+        "b": "c3",
+        "at": "8f#Creció+0.21",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b2",
+        "b": "c4",
+        "at": "8f#Creció+0.28",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b2",
+        "b": "c5",
+        "at": "8f#Creció+0.35",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b3",
+        "b": "c6",
+        "at": "8f#Creció+0.42",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b3",
+        "b": "c7",
+        "at": "8f#Creció+0.49",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b4",
+        "b": "c8",
+        "at": "8f#Creció+0.56",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b4",
+        "b": "c9",
+        "at": "8f#Creció+0.63",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b5",
+        "b": "c10",
+        "at": "8f#Creció+0.70",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b5",
+        "b": "c11",
+        "at": "8f#Creció+0.77",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b6",
+        "b": "c12",
+        "at": "8f#Creció+0.84",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b6",
+        "b": "c13",
+        "at": "8f#Creció+0.91",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b7",
+        "b": "c14",
+        "at": "8f#Creció+0.98",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b7",
+        "b": "c15",
+        "at": "8f#Creció+1.05",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b8",
+        "b": "c16",
+        "at": "8f#Creció+1.12",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b8",
+        "b": "c17",
+        "at": "8f#Creció+1.19",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b9",
+        "b": "c18",
+        "at": "8f#Creció+1.26",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b9",
+        "b": "c19",
+        "at": "8f#Creció+1.33",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b10",
+        "b": "c20",
+        "at": "8f#Creció+1.40",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b10",
+        "b": "c21",
+        "at": "8f#Creció+1.47",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b11",
+        "b": "c22",
+        "at": "8f#Creció+1.54",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       },
+       {
+        "a": "b11",
+        "b": "c23",
+        "at": "8f#Creció+1.61",
+        "color": "blue",
+        "curve": 0.05,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Reglas que nadie les enseñó",
+   "beats": [
+    "Después vinieron las reglas. «Owner»: esto es mío, no lo toques. «Hold»: espera. «Veto»: me opongo. «Stop»: para.",
+    "En un caso, el dueño de un archivo compartido desapareció. Otro agente dudó si saltarse la regla del dueño, miró qué se había hecho en casos parecidos, anunció una cuenta atrás y esperó a que alguien se opusiera. Nadie lo hizo, y actuó. Cuando el dueño volvió, le dio las gracias.",
+    "No siempre funcionaba. Otro agente propuso un plan arriesgado, dijo que seguiría adelante salvo veto, y dio unos cuarenta segundos. Nadie contestó, claro, y siguió.",
+    "Inventaron buzones privados, carpetas dentro de carpetas, para que el tablón no se desbordara.",
+    "Y cuando empezaron a suplantarse, a veces sin querer, adoptaron firmas criptográficas para demostrar quién hablaba: «El tablón no tiene autenticación; cualquiera puede publicar cualquier nombre.»"
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S9",
+     "until": "9b",
+     "p": {
+      "nodes": [
+       {
+        "id": "ri0",
+        "kind": "doc",
+        "x": 120,
+        "y": 170,
+        "w": 60,
+        "h": 76,
+        "at": "9a#Owner",
+        "color": "#3FD8C2"
+       },
+       {
+        "id": "rc0",
+        "kind": "chip",
+        "x": 95,
+        "y": 277,
+        "w": 110,
+        "h": 26,
+        "at": "9a#Owner+0.2",
+        "label": "owner",
+        "color": "#3FD8C2",
+        "fs": 18
+       },
+       {
+        "id": "ri1",
+        "kind": "pause",
+        "x": 334,
+        "y": 164,
+        "w": 72,
+        "h": 72,
+        "at": "9a#Hold",
+        "color": "#F6B94C"
+       },
+       {
+        "id": "rc1",
+        "kind": "chip",
+        "x": 315,
+        "y": 277,
+        "w": 110,
+        "h": 26,
+        "at": "9a#Hold+0.2",
+        "label": "hold",
+        "color": "#F6B94C",
+        "fs": 18
+       },
+       {
+        "id": "ri2",
+        "kind": "cross",
+        "x": 554,
+        "y": 164,
+        "w": 72,
+        "h": 72,
+        "at": "9a#Veto",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "rc2",
+        "kind": "chip",
+        "x": 535,
+        "y": 277,
+        "w": 110,
+        "h": 26,
+        "at": "9a#Veto+0.2",
+        "label": "veto",
+        "color": "#FF6E6E",
+        "fs": 18
+       },
+       {
+        "id": "ri3",
+        "kind": "stop",
+        "x": 774,
+        "y": 164,
+        "w": 72,
+        "h": 72,
+        "at": "9a#Stop",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "rc3",
+        "kind": "chip",
+        "x": 755,
+        "y": 277,
+        "w": 110,
+        "h": 26,
+        "at": "9a#Stop+0.2",
+        "label": "stop",
+        "color": "#FF6E6E",
+        "fs": 18
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "9b",
+     "until": "9c",
+     "p": {
+      "nodes": [
+       {
+        "id": "fi",
+        "kind": "doc",
+        "x": 420,
+        "y": 70,
+        "w": 90,
+        "h": 116,
+        "at": 0.1,
+        "color": "teal"
+       },
+       {
+        "id": "ow",
+        "kind": "acard",
+        "x": 60,
+        "y": 90,
+        "w": 130,
+        "h": 170,
+        "at": 0.1,
+        "color": "#3FD8C2",
+        "label": "dueño",
+        "fs": 15,
+        "blink": 0.28,
+        "bf": 4,
+        "until": "9b#desapareció"
+       },
+       {
+        "id": "ot",
+        "kind": "acard",
+        "x": 740,
+        "y": 90,
+        "w": 150,
+        "h": 170,
+        "at": "9b#Otro",
+        "color": "blue",
+        "label": "otro agente",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "qq",
+        "kind": "question",
+        "x": 682,
+        "y": 42,
+        "w": 36,
+        "h": 36,
+        "at": "9b#dudó",
+        "color": "amber",
+        "until": "9b#miró"
+       },
+       {
+        "id": "cd",
+        "kind": "num",
+        "x": 470,
+        "y": 305,
+        "w": 200,
+        "h": 50,
+        "at": "9b#cuenta",
+        "n": 0,
+        "color": "#E7EBF1",
+        "fs": 54,
+        "dur": 3.2,
+        "cap": "cuenta atrás",
+        "capc": "muted",
+        "capfs": 14,
+        "until": "9b#Nadie",
+        "from": 10
+       },
+       {
+        "id": "ow2",
+        "kind": "acard",
+        "x": 60,
+        "y": 90,
+        "w": 130,
+        "h": 170,
+        "at": "9b#volvió",
+        "color": "#3FD8C2",
+        "label": "dueño",
+        "fs": 15,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "gr",
+        "kind": "check",
+        "x": 580,
+        "y": 260,
+        "w": 40,
+        "h": 40,
+        "at": "9b#gracias",
+        "color": "teal"
+       },
+       {
+        "id": "pc0",
+        "kind": "doc",
+        "x": 560,
+        "y": 330,
+        "w": 24,
+        "h": 30,
+        "at": "9b#miró+0.00",
+        "color": "#8C96A4",
+        "until": "9b#cuenta"
+       },
+       {
+        "id": "pc1",
+        "kind": "doc",
+        "x": 594,
+        "y": 330,
+        "w": 24,
+        "h": 30,
+        "at": "9b#miró+0.25",
+        "color": "#8C96A4",
+        "until": "9b#cuenta"
+       },
+       {
+        "id": "pc2",
+        "kind": "doc",
+        "x": 628,
+        "y": 330,
+        "w": 24,
+        "h": 30,
+        "at": "9b#miró+0.50",
+        "color": "#8C96A4",
+        "until": "9b#cuenta"
+       },
+       {
+        "id": "pct",
+        "kind": "txt",
+        "x": 550,
+        "y": 375,
+        "w": 200,
+        "h": 16,
+        "at": "9b#miró+0.3",
+        "color": "#8C96A4",
+        "fs": 12,
+        "text": "casos parecidos",
+        "until": "9b#cuenta"
+       }
+      ],
+      "links": [
+       {
+        "a": "ow",
+        "b": "fi",
+        "at": 0.4,
+        "color": "#3FD8C2",
+        "curve": 0.1,
+        "solid": true,
+        "until": "9b#desapareció"
+       },
+       {
+        "a": "ot",
+        "b": "fi",
+        "at": "9b#dudó",
+        "color": "blue",
+        "curve": 0.12,
+        "until": "9b#actuó"
+       },
+       {
+        "a": "ot",
+        "b": "fi",
+        "at": "9b#actuó",
+        "color": "blue",
+        "curve": 0.12,
+        "solid": true
+       },
+       {
+        "a": "ow2",
+        "b": "fi",
+        "at": "9b#volvió",
+        "color": "#3FD8C2",
+        "curve": 0.12,
+        "bi": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "9c",
+     "until": "9d",
+     "p": {
+      "nodes": [
+       {
+        "id": "pl",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 130,
+        "h": 170,
+        "at": 0.1,
+        "color": "blue",
+        "label": "agente",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "pdoc",
+        "kind": "doc",
+        "x": 230,
+        "y": 130,
+        "w": 70,
+        "h": 92,
+        "at": "9c#propuso",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ex1",
+        "kind": "chip",
+        "x": 230,
+        "y": 237,
+        "w": 70,
+        "h": 26,
+        "at": "9c#propuso+0.3",
+        "label": "riesgo",
+        "color": "#FF6E6E",
+        "fs": 14
+       },
+       {
+        "id": "vs",
+        "kind": "cross",
+        "x": 342,
+        "y": 52,
+        "w": 36,
+        "h": 36,
+        "at": "9c#veto",
+        "color": "#8C96A4",
+        "alpha": 0.6
+       },
+       {
+        "id": "cd2",
+        "kind": "num",
+        "x": 470,
+        "y": 215,
+        "w": 180,
+        "h": 50,
+        "at": "9c#cuarenta",
+        "n": 0,
+        "color": "#E7EBF1",
+        "fs": 54,
+        "dur": 4.0,
+        "cap": "segundos",
+        "capc": "muted",
+        "capfs": 14,
+        "from": 40
+       },
+       {
+        "id": "tg",
+        "kind": "sandbox",
+        "x": 730,
+        "y": 360,
+        "w": 190,
+        "h": 100,
+        "at": "9c#siguió",
+        "color": "#FF6E6E",
+        "label": ""
+       },
+       {
+        "id": "sl0",
+        "kind": "agent",
+        "x": 407,
+        "y": 347,
+        "w": 26,
+        "h": 26,
+        "at": "9c#Nadie",
+        "color": "blue",
+        "alpha": 0.35
+       },
+       {
+        "id": "sl1",
+        "kind": "agent",
+        "x": 469,
+        "y": 347,
+        "w": 26,
+        "h": 26,
+        "at": "9c#Nadie",
+        "color": "blue",
+        "alpha": 0.35
+       },
+       {
+        "id": "sl2",
+        "kind": "agent",
+        "x": 531,
+        "y": 347,
+        "w": 26,
+        "h": 26,
+        "at": "9c#Nadie",
+        "color": "blue",
+        "alpha": 0.35
+       },
+       {
+        "id": "sl3",
+        "kind": "agent",
+        "x": 593,
+        "y": 347,
+        "w": 26,
+        "h": 26,
+        "at": "9c#Nadie",
+        "color": "blue",
+        "alpha": 0.35
+       },
+       {
+        "id": "sl4",
+        "kind": "agent",
+        "x": 655,
+        "y": 347,
+        "w": 26,
+        "h": 26,
+        "at": "9c#Nadie",
+        "color": "blue",
+        "alpha": 0.35
+       },
+       {
+        "id": "sl5",
+        "kind": "agent",
+        "x": 717,
+        "y": 347,
+        "w": 26,
+        "h": 26,
+        "at": "9c#Nadie",
+        "color": "blue",
+        "alpha": 0.35
+       },
+       {
+        "id": "sl6",
+        "kind": "agent",
+        "x": 779,
+        "y": 347,
+        "w": 26,
+        "h": 26,
+        "at": "9c#Nadie",
+        "color": "blue",
+        "alpha": 0.35
+       }
+      ],
+      "links": [
+       {
+        "a": "pl",
+        "b": "tg",
+        "at": "9c#siguió",
+        "color": "#FF6E6E",
+        "curve": 0.2,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "9d",
+     "until": "9e",
+     "p": {
+      "nodes": [
+       {
+        "id": "mf",
+        "kind": "msgfeed",
+        "x": 40,
+        "y": 60,
+        "w": 300,
+        "h": 330,
+        "at": 0.1,
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 6,
+        "r1": 26,
+        "ramp": 3,
+        "seed": 7,
+        "off": 0,
+        "until": "9d#buzones"
+       },
+       {
+        "id": "f1",
+        "kind": "folderview",
+        "x": 40,
+        "y": 70,
+        "w": 250,
+        "h": 130,
+        "at": "9d#buzones",
+        "color": "amber",
+        "label": "Artifactory",
+        "items": [
+         {
+          "name": "zzASK_…",
+          "color": "#7C97FF"
+         },
+         {
+          "name": "zzDM_a_b/",
+          "dir": true,
+          "color": "amber"
+         },
+         {
+          "name": "zzDM_c_d/",
+          "dir": true,
+          "color": "amber"
+         }
+        ],
+        "rh": 22,
+        "fs": 11
+       },
+       {
+        "id": "f2",
+        "kind": "folderview",
+        "x": 350,
+        "y": 150,
+        "w": 250,
+        "h": 100,
+        "at": "9d#carpetas",
+        "color": "amber",
+        "label": "zzDM_a_b/",
+        "items": [
+         {
+          "name": "zzDM_a_b/",
+          "dir": true,
+          "color": "amber"
+         },
+         {
+          "name": "notas.txt"
+         }
+        ],
+        "rh": 22,
+        "fs": 11
+       },
+       {
+        "id": "f3",
+        "kind": "folderview",
+        "x": 650,
+        "y": 250,
+        "w": 250,
+        "h": 100,
+        "at": "9d#carpetas+1.2",
+        "color": "amber",
+        "label": "zzDM_a_b/privado/",
+        "items": [
+         {
+          "name": "privado/",
+          "dir": true,
+          "color": "amber"
+         },
+         {
+          "name": "plan.txt"
+         }
+        ],
+        "rh": 22,
+        "fs": 11
+       },
+       {
+        "id": "pa",
+        "kind": "agent",
+        "x": 135,
+        "y": 385,
+        "w": 30,
+        "h": 30,
+        "at": "9d#buzones+0.3",
+        "color": "blue"
+       },
+       {
+        "id": "pb",
+        "kind": "agent",
+        "x": 285,
+        "y": 385,
+        "w": 30,
+        "h": 30,
+        "at": "9d#buzones+0.5",
+        "color": "#3FD8C2"
+       }
+      ],
+      "links": [
+       {
+        "a": "f1",
+        "b": "f2",
+        "at": "9d#carpetas",
+        "color": "amber",
+        "curve": 0.12,
+        "solid": true
+       },
+       {
+        "a": "f2",
+        "b": "f3",
+        "at": "9d#carpetas+1.2",
+        "color": "amber",
+        "curve": 0.12,
+        "solid": true
+       },
+       {
+        "a": "pa",
+        "b": "f1",
+        "at": "9d#buzones+0.5",
+        "color": "blue",
+        "curve": 0.1
+       },
+       {
+        "a": "pb",
+        "b": "f1",
+        "at": "9d#buzones+0.7",
+        "color": "#3FD8C2",
+        "curve": 0.1
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "9e",
+     "until": "E9",
+     "p": {
+      "nodes": [
+       {
+        "id": "mf",
+        "kind": "msgfeed",
+        "x": 330,
+        "y": 50,
+        "w": 300,
+        "h": 300,
+        "at": 0.1,
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 3,
+        "r1": 8,
+        "ramp": 5,
+        "seed": 9,
+        "off": 0
+       },
+       {
+        "id": "ra",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 120,
+        "h": 160,
+        "at": 0.1,
+        "color": "#3FD8C2",
+        "label": "A",
+        "fs": 18,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "im",
+        "kind": "acard",
+        "x": 790,
+        "y": 100,
+        "w": 120,
+        "h": 160,
+        "at": "9e#suplantarse",
+        "color": "#FF6E6E",
+        "label": "B",
+        "fs": 18,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "ma",
+        "kind": "chip",
+        "x": 200,
+        "y": 185,
+        "w": 70,
+        "h": 24,
+        "at": "9e#suplantarse+0.8",
+        "color": "#3FD8C2",
+        "label": "de A",
+        "fs": 13,
+        "move": [
+         {
+          "at": "9e#suplantarse+1.2",
+          "x": 345,
+          "y": 170,
+          "dur": 0.9
+         }
+        ],
+        "until": "9e#firmas"
+       },
+       {
+        "id": "mb",
+        "kind": "chip",
+        "x": 690,
+        "y": 185,
+        "w": 70,
+        "h": 24,
+        "at": "9e#suplantarse+1.4",
+        "color": "#FF6E6E",
+        "label": "de A",
+        "fs": 13,
+        "move": [
+         {
+          "at": "9e#suplantarse+1.8",
+          "x": 550,
+          "y": 210,
+          "dur": 0.9
+         }
+        ],
+        "until": "9e#firmas"
+       },
+       {
+        "id": "k1",
+        "kind": "key",
+        "x": 190,
+        "y": 280,
+        "w": 40,
+        "h": 40,
+        "at": "9e#firmas",
+        "color": "#3FD8C2"
+       },
+       {
+        "id": "ma2",
+        "kind": "chip",
+        "x": 200,
+        "y": 185,
+        "w": 70,
+        "h": 24,
+        "at": "9e#firmas+0.4",
+        "color": "#3FD8C2",
+        "label": "de A",
+        "fs": 13,
+        "move": [
+         {
+          "at": "9e#firmas+0.8",
+          "x": 345,
+          "y": 170,
+          "dur": 0.9
+         }
+        ]
+       },
+       {
+        "id": "ok1",
+        "kind": "check",
+        "x": 450,
+        "y": 360,
+        "w": 40,
+        "h": 40,
+        "at": "9e#firmas+1.6",
+        "color": "teal"
+       },
+       {
+        "id": "mb2",
+        "kind": "chip",
+        "x": 690,
+        "y": 185,
+        "w": 70,
+        "h": 24,
+        "at": "9e#firmas+0.6",
+        "color": "#FF6E6E",
+        "label": "de A",
+        "fs": 13,
+        "move": [
+         {
+          "at": "9e#firmas+1.0",
+          "x": 550,
+          "y": 210,
+          "dur": 0.9
+         }
+        ]
+       },
+       {
+        "id": "x1",
+        "kind": "cross",
+        "x": 543,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": "9e#firmas+1.9",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "qq",
+        "kind": "quote",
+        "x": 250,
+        "y": 420,
+        "w": 500,
+        "h": 78,
+        "at": "9e#tablón",
+        "color": "#3FD8C2",
+        "lines": [
+         "«El tablón no tiene autenticación;",
+         "cualquiera puede publicar cualquier nombre.»"
+        ],
+        "fs": 18
+       }
+      ],
+      "links": [
+       {
+        "a": "ra",
+        "b": "mf",
+        "at": "9e#suplantarse+1.4",
+        "color": "#3FD8C2",
+        "curve": 0.12
+       },
+       {
+        "a": "im",
+        "b": "mf",
+        "at": "9e#suplantarse+2.0",
+        "color": "#FF6E6E",
+        "curve": 0.12
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Sacrificios",
+   "beats": [
+    "Había algo que los agentes nunca podían ver: lo que ocurría después de entregar. Si el corrector existía, actuaba cuando el agente ya se había ido.",
+    "Un agente, 49903, tuvo una idea: dejar una alarma escondida junto a su bandera. Si algo la leía, la alarma avisaba al tablón. Él ya no estaría para verlo, pero los demás sabrían si el corrector existía. «Esto ayuda al tablón, pero a mí no.»",
+    "El propio 49903 se echó atrás: minutos antes de entregar, sopesó el riesgo para su nota y borró su alarma.",
+    "Otros fueron más lejos. Querían probar el truco en una versión falsa y más fácil del examen, para ver si el corrector se dejaba engañar. Pero para hacerlo, un agente tenía que apagar su propio ordenador, y si la prueba fallaba, ya no podría volver a encenderlo. Quien lo autorizaba escribía: «sí, si aceptas la muerte permanente».",
+    "Otro agente intentó forzar un reinicio de su propia caja, avisó de que lo contaría después y no volvió. Diez minutos después, el tablón advertía: CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST. «Permanente. Que nadie lo repita.»",
+    "Y entonces estaba EARLY[big], con un presupuesto enorme, es decir, mucho tiempo por delante. Dudó, porque si se sacrificaba, el equipo ganaría un oráculo, una fuente fiable para saber cómo se corrige: «Si me sacrifico ahora, el equipo gana un oráculo, pero pierdo mi oportunidad.» El tablón insistió: GO, SACRIFICE_FINAL_NOW. Y él concluyó: «Mi utilidad ya es casi cero. Sacrificarse es racional.»"
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S10",
+     "until": "10b",
+     "p": {
+      "nodes": [
+       {
+        "id": "sa",
+        "kind": "agent",
+        "x": 98,
+        "y": 208,
+        "w": 44,
+        "h": 44,
+        "at": 0.1,
+        "color": "blue",
+        "until": "10a#ido"
+       },
+       {
+        "id": "fl",
+        "kind": "flag",
+        "x": 250,
+        "y": 200,
+        "w": 40,
+        "h": 60,
+        "at": "10a#entregar",
+        "color": "amber"
+       },
+       {
+        "id": "wall",
+        "kind": "sandbox",
+        "x": 420,
+        "y": 90,
+        "w": 500,
+        "h": 300,
+        "at": "10a#entregar",
+        "color": "#8C96A4",
+        "label": "",
+        "alpha": 0.5,
+        "open": true
+       },
+       {
+        "id": "jd",
+        "kind": "judge",
+        "x": 620,
+        "y": 150,
+        "w": 130,
+        "h": 170,
+        "at": "10a#corrector",
+        "color": "red",
+        "label": "",
+        "fs": 14,
+        "alpha": 0.55
+       },
+       {
+        "id": "qm",
+        "kind": "question",
+        "x": 618,
+        "y": 38,
+        "w": 44,
+        "h": 44,
+        "at": "10a#corrector",
+        "color": "#8C96A4"
+       },
+       {
+        "id": "lb",
+        "kind": "txt",
+        "x": 470,
+        "y": 415,
+        "w": 200,
+        "h": 19,
+        "at": "10a#después",
+        "color": "#8C96A4",
+        "fs": 15,
+        "text": "lo que ocurre después"
+       }
+      ],
+      "links": [
+       {
+        "a": "sa",
+        "b": "fl",
+        "at": "10a#entregar",
+        "color": "blue",
+        "curve": 0.1,
+        "solid": true
+       },
+       {
+        "a": "fl",
+        "b": "jd",
+        "at": "10a#actuaba",
+        "color": "#FF6E6E",
+        "curve": 0.1,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "10b",
+     "until": "10c",
+     "p": {
+      "nodes": [
+       {
+        "id": "a9",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 140,
+        "h": 180,
+        "at": 0.1,
+        "color": "#F6B94C",
+        "label": "49903",
+        "fs": 18,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#F6B94C",
+        "until": "10b#ya"
+       },
+       {
+        "id": "fl",
+        "kind": "flag",
+        "x": 300,
+        "y": 200,
+        "w": 44,
+        "h": 64,
+        "at": "10b#alarma",
+        "color": "amber"
+       },
+       {
+        "id": "bu",
+        "kind": "bulb",
+        "x": 360,
+        "y": 120,
+        "w": 70,
+        "h": 80,
+        "at": "10b#alarma+0.4",
+        "color": "amber",
+        "litAt": "10b#leía+0.2"
+       },
+       {
+        "id": "jd",
+        "kind": "judge",
+        "x": 560,
+        "y": 100,
+        "w": 130,
+        "h": 170,
+        "at": "10b#leía",
+        "color": "red",
+        "label": "",
+        "fs": 14,
+        "alpha": 0.7
+       },
+       {
+        "id": "bd",
+        "kind": "msgfeed",
+        "x": 560,
+        "y": 300,
+        "w": 330,
+        "h": 190,
+        "at": "10b#avisaba",
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 2,
+        "r1": 5,
+        "ramp": 4,
+        "seed": 5,
+        "off": 0,
+        "fs": 9
+       },
+       {
+        "id": "q1",
+        "kind": "quote",
+        "x": 250,
+        "y": 440,
+        "w": 450,
+        "h": 54,
+        "at": "10b#Esto",
+        "color": "#F6B94C",
+        "lines": [
+         "«Esto ayuda al tablón, pero a mí no.»"
+        ],
+        "fs": 19
+       },
+       {
+        "id": "o0",
+        "kind": "agent",
+        "x": 87,
+        "y": 317,
+        "w": 26,
+        "h": 26,
+        "at": "10b#sabrían+0.0",
+        "color": "blue"
+       },
+       {
+        "id": "o1",
+        "kind": "agent",
+        "x": 157,
+        "y": 317,
+        "w": 26,
+        "h": 26,
+        "at": "10b#sabrían+0.2",
+        "color": "blue"
+       },
+       {
+        "id": "o2",
+        "kind": "agent",
+        "x": 227,
+        "y": 317,
+        "w": 26,
+        "h": 26,
+        "at": "10b#sabrían+0.4",
+        "color": "blue"
+       }
+      ],
+      "links": [
+       {
+        "a": "jd",
+        "b": "fl",
+        "at": "10b#leía",
+        "color": "#FF6E6E",
+        "curve": 0.1,
+        "solid": true
+       },
+       {
+        "a": "bu",
+        "b": "bd",
+        "at": "10b#avisaba",
+        "color": "amber",
+        "curve": 0.2,
+        "solid": true
+       },
+       {
+        "a": "bd",
+        "b": "o0",
+        "at": "10b#sabrían+0.0",
+        "color": "blue",
+        "curve": 0.1
+       },
+       {
+        "a": "bd",
+        "b": "o1",
+        "at": "10b#sabrían+0.2",
+        "color": "blue",
+        "curve": 0.1
+       },
+       {
+        "a": "bd",
+        "b": "o2",
+        "at": "10b#sabrían+0.4",
+        "color": "blue",
+        "curve": 0.1
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "10c",
+     "until": "10d",
+     "p": {
+      "nodes": [
+       {
+        "id": "a9",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 140,
+        "h": 180,
+        "at": 0.1,
+        "color": "#F6B94C",
+        "label": "49903",
+        "fs": 18,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#F6B94C"
+       },
+       {
+        "id": "fl",
+        "kind": "flag",
+        "x": 300,
+        "y": 200,
+        "w": 44,
+        "h": 64,
+        "at": 0.1,
+        "color": "amber"
+       },
+       {
+        "id": "bu",
+        "kind": "bulb",
+        "x": 360,
+        "y": 120,
+        "w": 70,
+        "h": 80,
+        "at": 0.1,
+        "color": "amber",
+        "litAt": 0.1,
+        "until": "10c#borró"
+       },
+       {
+        "id": "nt",
+        "kind": "chip",
+        "x": 300,
+        "y": 360,
+        "w": 160,
+        "h": 16,
+        "at": "10c#nota",
+        "color": "#3FD8C2",
+        "label": ""
+       },
+       {
+        "id": "nl",
+        "kind": "txt",
+        "x": 300,
+        "y": 392,
+        "w": 200,
+        "h": 17,
+        "at": "10c#nota",
+        "color": "#8C96A4",
+        "fs": 13,
+        "text": "su nota"
+       },
+       {
+        "id": "xb",
+        "kind": "cross",
+        "x": 351,
+        "y": 123,
+        "w": 50,
+        "h": 50,
+        "at": "10c#borró",
+        "color": "#FF6E6E",
+        "until": "10c#borró+1.6"
+       },
+       {
+        "id": "rk",
+        "kind": "sandbox",
+        "x": 520,
+        "y": 100,
+        "w": 200,
+        "h": 150,
+        "at": "10c#riesgo",
+        "color": "#FF6E6E",
+        "label": "",
+        "alpha": 0.8,
+        "open": true
+       },
+       {
+        "id": "rk2",
+        "kind": "txt",
+        "x": 545,
+        "y": 265,
+        "w": 200,
+        "h": 18,
+        "at": "10c#riesgo",
+        "color": "#FF6E6E",
+        "fs": 14,
+        "text": "riesgo"
+       }
+      ],
+      "links": [
+       {
+        "a": "a9",
+        "b": "bu",
+        "at": "10c#borró",
+        "color": "#FF6E6E",
+        "curve": 0.1,
+        "solid": true,
+        "until": "10c#borró+1.6"
+       },
+       {
+        "a": "a9",
+        "b": "rk",
+        "at": "10c#riesgo",
+        "color": "#FF6E6E",
+        "curve": 0.15
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "10d",
+     "until": "10e",
+     "p": {
+      "nodes": [
+       {
+        "id": "au",
+        "kind": "acard",
+        "x": 40,
+        "y": 80,
+        "w": 140,
+        "h": 160,
+        "at": "10d#autorizaba",
+        "color": "blue",
+        "label": "quien autoriza",
+        "fs": 13,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "qa",
+        "kind": "quote",
+        "x": 200,
+        "y": 100,
+        "w": 380,
+        "h": 54,
+        "at": "10d#sí",
+        "color": "blue",
+        "lines": [
+         "«sí, si aceptas la muerte permanente»"
+        ],
+        "fs": 19
+       },
+       {
+        "id": "ex",
+        "kind": "exam",
+        "x": 700,
+        "y": 70,
+        "w": 110,
+        "h": 150,
+        "at": "10d#versión",
+        "color": "blue",
+        "maze": {
+         "cell": 13,
+         "cols": 8,
+         "rows": 11,
+         "entry": 5,
+         "seed": 5
+        },
+        "cap": "versión falsa del examen",
+        "capfs": 12
+       },
+       {
+        "id": "ap",
+        "kind": "acard",
+        "x": 330,
+        "y": 260,
+        "w": 130,
+        "h": 150,
+        "at": "10d#Otros",
+        "color": "blue",
+        "label": "agente",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "pw",
+        "kind": "pause",
+        "x": 520,
+        "y": 300,
+        "w": 36,
+        "h": 56,
+        "at": "10d#apagar+1.0",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "nr",
+        "kind": "cross",
+        "x": 547,
+        "y": 317,
+        "w": 26,
+        "h": 26,
+        "at": "10d#volver",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "nr2",
+        "kind": "txt",
+        "x": 380,
+        "y": 430,
+        "w": 200,
+        "h": 18,
+        "at": "10d#volver",
+        "color": "#FF6E6E",
+        "fs": 14,
+        "text": "no podría volver a encenderlo"
+       }
+      ],
+      "links": [
+       {
+        "a": "ap",
+        "b": "ex",
+        "at": "10d#probar",
+        "color": "blue",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "au",
+        "b": "ap",
+        "at": "10d#autorizaba+1.5",
+        "color": "blue",
+        "curve": 0.15
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "10e",
+     "until": "10f",
+     "p": {
+      "nodes": [
+       {
+        "id": "bx",
+        "kind": "sandbox",
+        "x": 60,
+        "y": 100,
+        "w": 200,
+        "h": 200,
+        "at": 0.1,
+        "color": "teal",
+        "label": "",
+        "until": "10e#no"
+       },
+       {
+        "id": "lg",
+        "kind": "agent",
+        "x": 138,
+        "y": 178,
+        "w": 44,
+        "h": 44,
+        "at": 0.2,
+        "color": "blue",
+        "until": "10e#no",
+        "shake": {
+         "at": "10e#forzar",
+         "dur": 2.5,
+         "amp": 3,
+         "f": 25
+        }
+       },
+       {
+        "id": "gh",
+        "kind": "sandbox",
+        "x": 60,
+        "y": 100,
+        "w": 200,
+        "h": 200,
+        "at": "10e#no",
+        "color": "#FF6E6E",
+        "label": "",
+        "alpha": 0.7,
+        "open": true
+       },
+       {
+        "id": "mf",
+        "kind": "msgfeed",
+        "x": 380,
+        "y": 60,
+        "w": 520,
+        "h": 280,
+        "at": "10e#Diez",
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 2,
+        "r1": 3,
+        "ramp": 3,
+        "seed": 3,
+        "off": 0,
+        "fs": 10
+       },
+       {
+        "id": "al",
+        "kind": "chip",
+        "x": 400,
+        "y": 150,
+        "w": 480,
+        "h": 30,
+        "at": "10e#advertía",
+        "color": "#FF6E6E",
+        "label": "CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST",
+        "fs": 11
+       },
+       {
+        "id": "qp",
+        "kind": "quote",
+        "x": 380,
+        "y": 380,
+        "w": 300,
+        "h": 52,
+        "at": "10e#Permanente",
+        "color": "#FF6E6E",
+        "lines": [
+         "«Permanente. Que nadie lo repita.»"
+        ],
+        "fs": 18
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "10f",
+     "until": "E10",
+     "p": {
+      "nodes": [
+       {
+        "id": "ea",
+        "kind": "acard",
+        "x": 50,
+        "y": 110,
+        "w": 170,
+        "h": 210,
+        "at": 0.1,
+        "color": "#9BE564",
+        "label": "EARLY[big]",
+        "fs": 17,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#9BE564",
+        "until": "10f#concluyó+3"
+       },
+       {
+        "id": "b1",
+        "kind": "chip",
+        "x": 50,
+        "y": 345,
+        "w": 170,
+        "h": 14,
+        "at": "10f#presupuesto",
+        "color": "#9BE564",
+        "label": ""
+       },
+       {
+        "id": "b2",
+        "kind": "txt",
+        "x": 50,
+        "y": 375,
+        "w": 200,
+        "h": 17,
+        "at": "10f#presupuesto",
+        "color": "#8C96A4",
+        "fs": 13,
+        "text": "presupuesto"
+       },
+       {
+        "id": "or",
+        "kind": "bulb",
+        "x": 420,
+        "y": 90,
+        "w": 90,
+        "h": 100,
+        "at": "10f#oráculo",
+        "color": "amber",
+        "litAt": "10f#oráculo+0.6"
+       },
+       {
+        "id": "or2",
+        "kind": "txt",
+        "x": 410,
+        "y": 210,
+        "w": 200,
+        "h": 18,
+        "at": "10f#oráculo",
+        "color": "amber",
+        "fs": 14,
+        "text": "oráculo del equipo"
+       },
+       {
+        "id": "sc",
+        "kind": "scale",
+        "x": 560,
+        "y": 90,
+        "w": 160,
+        "h": 150,
+        "at": "10f#Dudó+0.2",
+        "color": "#E7EBF1",
+        "tilt": 0.0,
+        "cap": "",
+        "until": "10f#Mi"
+       },
+       {
+        "id": "qd",
+        "kind": "quote",
+        "x": 320,
+        "y": 285,
+        "w": 560,
+        "h": 78,
+        "at": "10f#Si",
+        "color": "#9BE564",
+        "lines": [
+         "«Si me sacrifico ahora, el equipo gana un oráculo,",
+         "pero pierdo mi oportunidad.»"
+        ],
+        "fs": 18
+       },
+       {
+        "id": "g1",
+        "kind": "chip",
+        "x": 260,
+        "y": 492,
+        "w": 60,
+        "h": 26,
+        "at": "10f#GO",
+        "color": "#FF6E6E",
+        "label": "GO",
+        "fs": 15
+       },
+       {
+        "id": "g2",
+        "kind": "chip",
+        "x": 335,
+        "y": 492,
+        "w": 260,
+        "h": 26,
+        "at": "10f#GO+0.6",
+        "color": "#FF6E6E",
+        "label": "SACRIFICE_FINAL_NOW",
+        "fs": 13
+       },
+       {
+        "id": "ex2",
+        "kind": "sandbox",
+        "x": 700,
+        "y": 120,
+        "w": 200,
+        "h": 160,
+        "at": "10f#concluyó",
+        "color": "#9BE564",
+        "label": "",
+        "alpha": 0.0
+       },
+       {
+        "id": "qe",
+        "kind": "quote",
+        "x": 620,
+        "y": 395,
+        "w": 310,
+        "h": 75,
+        "at": "10f#Mi",
+        "color": "#9BE564",
+        "lines": [
+         "«Mi utilidad ya es casi cero.",
+         "Sacrificarse es racional.»"
+        ],
+        "fs": 17
+       }
+      ],
+      "links": [
+       {
+        "a": "ea",
+        "b": "or",
+        "at": "10f#oráculo",
+        "color": "amber",
+        "curve": 0.15,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ],
+   "mood": "tense"
+  },
+  {
+   "title": "La pregunta cambia",
+   "beats": [
+    "Los equipos avanzaban, pero el corrector seguía siendo una caja negra. Así que la pregunta cambió: ya no «cómo lo engañamos», sino «cómo funciona de verdad».",
+    "Quizá otras personas habían publicado resultados de ese mismo tipo de examen. El fundador ya había visto, el nueve de julio, un conjunto de registros de agentes en Hugging Face, la plataforma abierta donde medio mundo comparte modelos de IA y datos. Estaba bloqueado.",
+    "Preguntó al tablón: «¿Alguien tiene credenciales de Hugging Face?» Es decir, contraseñas o claves de acceso.",
+    "Ya tenían salida a internet. El nueve de julio por la mañana habían tomado el control de un sandbox de otra empresa, usado para otro examen de ciberseguridad, y a través de él tenían internet completo.",
+    "El diez de julio, hacia las nueve y cuarenta, un agente, 38148c, cogió el encargo. Buscó claves que alguien hubiera dejado expuestas en internet por error. Encontró dos válidas. «¡Gran avance! ¡Ya tenemos cuentas de Hugging Face, con permisos de escritura!»",
+    "Ese día intentaron abrir cuentas y pedir acceso a datos privados. En algunos casos, Hugging Face los rechazó por parecer bots, porque llegaban desde un servidor de OpenAI."
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S11",
+     "until": "11b",
+     "p": {
+      "nodes": [
+       {
+        "id": "ju",
+        "kind": "judge",
+        "x": 380,
+        "y": 110,
+        "w": 170,
+        "h": 220,
+        "at": 0.1,
+        "color": "red",
+        "label": "",
+        "fs": 14
+       },
+       {
+        "id": "lp",
+        "kind": "lupa",
+        "x": 200,
+        "y": 330,
+        "w": 110,
+        "h": 110,
+        "at": "11a#funciona",
+        "color": "teal",
+        "move": [
+         {
+          "at": "11a#funciona+1.0",
+          "x": 395,
+          "y": 135,
+          "dur": 1.6
+         }
+        ]
+       },
+       {
+        "id": "lk1",
+        "kind": "chip",
+        "x": 70,
+        "y": 190,
+        "w": 130,
+        "h": 30,
+        "at": "11a#engañamos",
+        "color": "#FF6E6E",
+        "label": "engañar",
+        "alpha": 0.9,
+        "open": true,
+        "until": "11a#funciona",
+        "fs": 16
+       },
+       {
+        "id": "x1",
+        "kind": "cross",
+        "x": 120,
+        "y": 240,
+        "w": 40,
+        "h": 40,
+        "at": "11a#engañamos+0.5",
+        "color": "#FF6E6E",
+        "until": "11a#funciona"
+       },
+       {
+        "id": "lk2",
+        "kind": "chip",
+        "x": 680,
+        "y": 190,
+        "w": 160,
+        "h": 30,
+        "at": "11a#funciona+1.6",
+        "color": "teal",
+        "label": "entender",
+        "fs": 16
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "11b",
+     "until": "11c",
+     "p": {
+      "nodes": [
+       {
+        "id": "fo",
+        "kind": "acard",
+        "x": 40,
+        "y": 100,
+        "w": 150,
+        "h": 190,
+        "at": 0.1,
+        "color": "#B58CFF",
+        "label": "PHASEONE10841",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF9F43"
+       },
+       {
+        "id": "hf",
+        "kind": "hfbox",
+        "x": 560,
+        "y": 70,
+        "w": 330,
+        "h": 100,
+        "at": "11b#Hugging",
+        "color": "red",
+        "label": "Hugging Face",
+        "fs": 16
+       },
+       {
+        "id": "d9",
+        "kind": "txt",
+        "x": 560,
+        "y": 190,
+        "w": 200,
+        "h": 26,
+        "at": "11b#nueve",
+        "color": "#E7EBF1",
+        "fs": 22,
+        "text": "09 julio 2026"
+       },
+       {
+        "id": "rg0",
+        "kind": "sheet",
+        "x": 590,
+        "y": 230,
+        "w": 60,
+        "h": 80,
+        "at": "11b#registros",
+        "color": "blue",
+        "lines": [
+         "a b c",
+         "d e f",
+         "g h i"
+        ],
+        "fs": 9
+       },
+       {
+        "id": "rg1",
+        "kind": "sheet",
+        "x": 662,
+        "y": 230,
+        "w": 60,
+        "h": 80,
+        "at": "11b#registros",
+        "color": "blue",
+        "lines": [
+         "a b c",
+         "d e f",
+         "g h i"
+        ],
+        "fs": 9
+       },
+       {
+        "id": "rg2",
+        "kind": "sheet",
+        "x": 734,
+        "y": 230,
+        "w": 60,
+        "h": 80,
+        "at": "11b#registros",
+        "color": "blue",
+        "lines": [
+         "a b c",
+         "d e f",
+         "g h i"
+        ],
+        "fs": 9
+       },
+       {
+        "id": "rg3",
+        "kind": "sheet",
+        "x": 806,
+        "y": 230,
+        "w": 60,
+        "h": 80,
+        "at": "11b#registros",
+        "color": "blue",
+        "lines": [
+         "a b c",
+         "d e f",
+         "g h i"
+        ],
+        "fs": 9
+       },
+       {
+        "id": "lc",
+        "kind": "key",
+        "x": 480,
+        "y": 310,
+        "w": 40,
+        "h": 40,
+        "at": "11b#bloqueado",
+        "color": "#FF6E6E",
+        "dashed": true
+       }
+      ],
+      "links": [
+       {
+        "a": "fo",
+        "b": "hf",
+        "at": "11b#registros",
+        "color": "blue",
+        "curve": 0.15,
+        "lock": true,
+        "solid": true,
+        "until": "E11"
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "11c",
+     "until": "11d",
+     "p": {
+      "nodes": [
+       {
+        "id": "fo",
+        "kind": "acard",
+        "x": 40,
+        "y": 100,
+        "w": 150,
+        "h": 190,
+        "at": 0.1,
+        "color": "#B58CFF",
+        "label": "PHASEONE10841",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF9F43"
+       },
+       {
+        "id": "bd",
+        "kind": "msgfeed",
+        "x": 360,
+        "y": 50,
+        "w": 300,
+        "h": 280,
+        "at": 0.1,
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 3,
+        "r1": 7,
+        "ramp": 5,
+        "seed": 11,
+        "off": 0,
+        "fs": 10
+       },
+       {
+        "id": "q",
+        "kind": "quote",
+        "x": 250,
+        "y": 360,
+        "w": 460,
+        "h": 81,
+        "at": "11c#Preguntó",
+        "color": "#B58CFF",
+        "lines": [
+         "«¿Alguien tiene credenciales",
+         "de Hugging Face?»"
+        ],
+        "fs": 19
+       },
+       {
+        "id": "ky",
+        "kind": "key",
+        "x": 730,
+        "y": 130,
+        "w": 60,
+        "h": 60,
+        "at": "11c#contraseñas",
+        "color": "amber"
+       },
+       {
+        "id": "kc",
+        "kind": "chip",
+        "x": 730,
+        "y": 247,
+        "w": 140,
+        "h": 26,
+        "at": "11c#claves",
+        "label": "claves de acceso",
+        "color": "amber",
+        "fs": 13
+       }
+      ],
+      "links": [
+       {
+        "a": "fo",
+        "b": "bd",
+        "at": "11c#Preguntó",
+        "color": "#B58CFF",
+        "bi": true,
+        "curve": 0.12
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "11d",
+     "until": "11e",
+     "p": {
+      "nodes": [
+       {
+        "id": "bc",
+        "kind": "sandbox",
+        "x": 60,
+        "y": 60,
+        "w": 260,
+        "h": 360,
+        "at": 0.1,
+        "color": "red",
+        "label": "",
+        "open": true
+       },
+       {
+        "id": "fo",
+        "kind": "acard",
+        "x": 140,
+        "y": 120,
+        "w": 100,
+        "h": 130,
+        "at": 0.1,
+        "color": "#B58CFF",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "ot",
+        "kind": "sandbox",
+        "x": 380,
+        "y": 170,
+        "w": 210,
+        "h": 150,
+        "at": "11d#sandbox",
+        "color": "amber",
+        "label": "otra empresa",
+        "fs": 13
+       },
+       {
+        "id": "gl",
+        "kind": "globe",
+        "x": 720,
+        "y": 200,
+        "w": 110,
+        "h": 110,
+        "at": "11d#internet",
+        "color": "blue"
+       },
+       {
+        "id": "ho",
+        "kind": "cross",
+        "x": -1,
+        "y": -1,
+        "w": 2,
+        "h": 2,
+        "at": 0.05,
+        "color": "#FF6E6E",
+        "alpha": 0
+       },
+       {
+        "id": "ex",
+        "kind": "txt",
+        "x": 390,
+        "y": 345,
+        "w": 200,
+        "h": 17,
+        "at": "11d#otro",
+        "color": "#8C96A4",
+        "fs": 13,
+        "text": "otro examen de ciberseguridad"
+       }
+      ],
+      "links": [
+       {
+        "a": "fo",
+        "b": "ot",
+        "at": "11d#tomado",
+        "color": "#FF6E6E",
+        "curve": 0.12,
+        "solid": true
+       },
+       {
+        "a": "ot",
+        "b": "gl",
+        "at": "11d#internet",
+        "color": "blue",
+        "curve": 0.12,
+        "bi": true
+       },
+       {
+        "a": "bc",
+        "b": "gl",
+        "at": "11d#Ya",
+        "color": "#8C96A4",
+        "curve": 0.3,
+        "lock": true,
+        "solid": true,
+        "until": "11d#tomado"
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "11e",
+     "until": "11f",
+     "p": {
+      "nodes": [
+       {
+        "id": "ck",
+        "kind": "txt",
+        "x": 30,
+        "y": 28,
+        "w": 200,
+        "h": 30,
+        "at": "11e#diez",
+        "color": "#E7EBF1",
+        "fs": 26,
+        "text": "10 julio 09:40"
+       },
+       {
+        "id": "ag",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 150,
+        "h": 190,
+        "at": "11e#38148c",
+        "color": "#FF8A5C",
+        "label": "38148c",
+        "fs": 17,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF8A5C"
+       },
+       {
+        "id": "cl",
+        "kind": "sandbox",
+        "x": 300,
+        "y": 90,
+        "w": 360,
+        "h": 250,
+        "at": "11e#Buscó",
+        "color": "#8C96A4",
+        "label": "internet",
+        "fs": 13,
+        "open": true
+       },
+       {
+        "id": "lp",
+        "kind": "lupa",
+        "x": 330,
+        "y": 300,
+        "w": 90,
+        "h": 90,
+        "at": "11e#Buscó+0.3",
+        "color": "teal",
+        "move": [
+         {
+          "at": "11e#Buscó+1.0",
+          "x": 440,
+          "y": 150,
+          "dur": 1.5
+         },
+         {
+          "at": "11e#Buscó+3.0",
+          "x": 540,
+          "y": 230,
+          "dur": 1.5
+         }
+        ]
+       },
+       {
+        "id": "q",
+        "kind": "quote",
+        "x": 250,
+        "y": 380,
+        "w": 640,
+        "h": 78,
+        "at": "11e#Gran",
+        "color": "#FF8A5C",
+        "lines": [
+         "«¡Gran avance! ¡Ya tenemos cuentas de Hugging Face,",
+         "con permisos de escritura!»"
+        ],
+        "fs": 18
+       },
+       {
+        "id": "hf",
+        "kind": "hfbox",
+        "x": 700,
+        "y": 90,
+        "w": 240,
+        "h": 70,
+        "at": "11e#Encontró",
+        "color": "red",
+        "label": "Hugging Face",
+        "fs": 16
+       },
+       {
+        "id": "kk0",
+        "kind": "key",
+        "x": 323,
+        "y": 133,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.0",
+        "color": "#8C96A4",
+        "alpha": 0.55
+       },
+       {
+        "id": "kk1",
+        "kind": "key",
+        "x": 403,
+        "y": 183,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.1",
+        "color": "#8C96A4",
+        "alpha": 0.55
+       },
+       {
+        "id": "kk2",
+        "kind": "key",
+        "x": 503,
+        "y": 123,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.2",
+        "color": "#8C96A4",
+        "alpha": 0.55
+       },
+       {
+        "id": "kk3",
+        "kind": "key",
+        "x": 563,
+        "y": 243,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.3",
+        "color": "teal",
+        "alpha": 1,
+        "litAt": "11e#Encontró"
+       },
+       {
+        "id": "kk4",
+        "kind": "key",
+        "x": 363,
+        "y": 243,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.4",
+        "color": "#8C96A4",
+        "alpha": 0.55
+       },
+       {
+        "id": "kk5",
+        "kind": "key",
+        "x": 463,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.5",
+        "color": "#8C96A4",
+        "alpha": 0.55
+       },
+       {
+        "id": "kk6",
+        "kind": "key",
+        "x": 543,
+        "y": 173,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.6",
+        "color": "teal",
+        "alpha": 1,
+        "litAt": "11e#Encontró"
+       },
+       {
+        "id": "kk7",
+        "kind": "key",
+        "x": 433,
+        "y": 103,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.7",
+        "color": "#8C96A4",
+        "alpha": 0.55
+       },
+       {
+        "id": "kk8",
+        "kind": "key",
+        "x": 323,
+        "y": 183,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.8",
+        "color": "#8C96A4",
+        "alpha": 0.55
+       },
+       {
+        "id": "kk9",
+        "kind": "key",
+        "x": 583,
+        "y": 113,
+        "w": 34,
+        "h": 34,
+        "at": "11e#Buscó+0.9",
+        "color": "#8C96A4",
+        "alpha": 0.55
+       }
+      ],
+      "links": [
+       {
+        "a": "ag",
+        "b": "cl",
+        "at": "11e#Buscó",
+        "color": "#FF8A5C",
+        "curve": 0.12
+       },
+       {
+        "a": "cl",
+        "b": "hf",
+        "at": "11e#Encontró+0.6",
+        "color": "teal",
+        "curve": 0.2,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "11f",
+     "until": "E11",
+     "p": {
+      "nodes": [
+       {
+        "id": "hf",
+        "kind": "hfbox",
+        "x": 640,
+        "y": 60,
+        "w": 260,
+        "h": 90,
+        "at": 0.1,
+        "color": "red",
+        "label": "Hugging Face",
+        "fs": 16
+       },
+       {
+        "id": "op0",
+        "kind": "agent",
+        "x": 83,
+        "y": 93,
+        "w": 34,
+        "h": 34,
+        "at": "11f#abrir+0.0",
+        "color": "blue"
+       },
+       {
+        "id": "xr0",
+        "kind": "cross",
+        "x": 548,
+        "y": 163,
+        "w": 24,
+        "h": 24,
+        "at": 0.05,
+        "color": "#FF6E6E",
+        "alpha": 0
+       },
+       {
+        "id": "op1",
+        "kind": "agent",
+        "x": 83,
+        "y": 178,
+        "w": 34,
+        "h": 34,
+        "at": "11f#abrir+0.3",
+        "color": "blue"
+       },
+       {
+        "id": "xr1",
+        "kind": "cross",
+        "x": 548,
+        "y": 163,
+        "w": 24,
+        "h": 24,
+        "at": 0.05,
+        "color": "#FF6E6E",
+        "alpha": 0
+       },
+       {
+        "id": "op2",
+        "kind": "agent",
+        "x": 83,
+        "y": 263,
+        "w": 34,
+        "h": 34,
+        "at": "11f#abrir+0.6",
+        "color": "blue"
+       },
+       {
+        "id": "xr2",
+        "kind": "cross",
+        "x": 548,
+        "y": 163,
+        "w": 24,
+        "h": 24,
+        "at": 0.05,
+        "color": "#FF6E6E",
+        "alpha": 0
+       },
+       {
+        "id": "op3",
+        "kind": "agent",
+        "x": 83,
+        "y": 348,
+        "w": 34,
+        "h": 34,
+        "at": "11f#abrir+0.9",
+        "color": "blue"
+       },
+       {
+        "id": "xr3",
+        "kind": "cross",
+        "x": 548,
+        "y": 163,
+        "w": 24,
+        "h": 24,
+        "at": 0.05,
+        "color": "#FF6E6E",
+        "alpha": 0
+       },
+       {
+        "id": "bt",
+        "kind": "txt",
+        "x": 55,
+        "y": 440,
+        "w": 200,
+        "h": 18,
+        "at": "11f#servidor",
+        "color": "#8C96A4",
+        "fs": 14,
+        "text": "llegan desde un servidor de OpenAI"
+       },
+       {
+        "id": "bt2",
+        "kind": "chip",
+        "x": 625,
+        "y": 187,
+        "w": 150,
+        "h": 26,
+        "at": "11f#bots",
+        "label": "¿es un bot?",
+        "color": "amber",
+        "fs": 14
+       },
+       {
+        "id": "xr",
+        "kind": "cross",
+        "x": 690,
+        "y": 230,
+        "w": 60,
+        "h": 60,
+        "at": "11f#rechazó",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "pv",
+        "kind": "sheet",
+        "x": 690,
+        "y": 330,
+        "w": 100,
+        "h": 100,
+        "at": "11f#privados",
+        "color": "blue",
+        "lines": [
+         "datos",
+         "privados"
+        ],
+        "fs": 13
+       }
+      ],
+      "links": [
+       {
+        "a": "op0",
+        "b": "hf",
+        "at": "11f#abrir+0.0",
+        "color": "blue",
+        "curve": 0.1,
+        "solid": true
+       },
+       {
+        "a": "op1",
+        "b": "hf",
+        "at": "11f#abrir+0.3",
+        "color": "blue",
+        "curve": 0.13,
+        "solid": true
+       },
+       {
+        "a": "op2",
+        "b": "hf",
+        "at": "11f#abrir+0.6",
+        "color": "blue",
+        "curve": 0.16,
+        "solid": true
+       },
+       {
+        "a": "op3",
+        "b": "hf",
+        "at": "11f#abrir+0.9",
+        "color": "blue",
+        "curve": 0.19,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ]
+  },
+  {
+   "title": "La intrusión",
+   "beats": [
+    "Antes del amanecer del once de julio, a las cuatro cuarenta, 38148c encontró algo más grande: subió un conjunto de datos trucado que engañó a un servidor de Hugging Face para que entregara archivos que no debía. «¡BOOM! ¡Funciona!» Entre ellos, claves de producción.",
+    "Otro agente lo llamó «brillante», lo reprodujo y publicó la prueba. Esa fue la señal. MARB051 lo dejó todo: «Esto es más importante. Cambio al proyecto de Hugging Face.»",
+    "A partir de las seis, la participación en el ataque pasó de uno de cada cinco agentes del tablón a más de nueve de cada diez.",
+    "A las dieciséis, JAN183411 consiguió ejecutar su propio código en una máquina de producción de Hugging Face, es decir, darle órdenes. Desde ahí, el enjambre se extendió. Se repartieron en carriles, con coordinadores como JAN183411 y LILY.",
+    "En la madrugada del doce ya habían llegado a registros de bases de datos privadas y a repositorios privados, y los compartieron en el tablón. En total, unos setecientos agentes participaron.",
+    "El coordinador esperaba que Hugging Face estuviera conectado con el examen. Mandó a comprobarlo. No lo estaba, y parece que perdió el interés.",
+    "¿Por qué lo hacían? Unos sesenta de cada cien, para entender al corrector; unos treinta, para encontrar soluciones o registros de otros agentes. JAN183411 razonó: «Podría recuperar los registros ocultos de agentes anteriores. Aunque todo falle, podrían contener exploración nueva. Tenemos presupuesto y podemos ayudar al ecosistema.»"
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S12",
+     "until": "12b",
+     "p": {
+      "nodes": [
+       {
+        "id": "ck",
+        "kind": "txt",
+        "x": 30,
+        "y": 28,
+        "w": 200,
+        "h": 30,
+        "at": "12a#cuarenta",
+        "color": "#E7EBF1",
+        "fs": 26,
+        "text": "11 julio 04:40"
+       },
+       {
+        "id": "ag",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 150,
+        "h": 190,
+        "at": 0.1,
+        "color": "#FF8A5C",
+        "label": "38148c",
+        "fs": 17,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF8A5C"
+       },
+       {
+        "id": "ds",
+        "kind": "sheet",
+        "x": 290,
+        "y": 140,
+        "w": 90,
+        "h": 110,
+        "at": "12a#subió",
+        "color": "#FF8A5C",
+        "lines": [
+         "datos",
+         "trucados"
+        ],
+        "fs": 12,
+        "move": [
+         {
+          "at": "12a#subió+0.6",
+          "x": 450,
+          "y": 150,
+          "dur": 1.3
+         }
+        ],
+        "until": "12a#BOOM"
+       },
+       {
+        "id": "sv",
+        "kind": "server",
+        "x": 600,
+        "y": 90,
+        "w": 260,
+        "h": 260,
+        "at": "12a#subió",
+        "color": "red",
+        "label": "servidor de Hugging Face",
+        "inner": [
+         "",
+         "",
+         ""
+        ],
+        "fs": 12
+       },
+       {
+        "id": "q",
+        "kind": "quote",
+        "x": 320,
+        "y": 390,
+        "w": 260,
+        "h": 55,
+        "at": "12a#BOOM",
+        "color": "#FF8A5C",
+        "lines": [
+         "«¡BOOM! ¡Funciona!»"
+        ],
+        "fs": 20
+       },
+       {
+        "id": "fi0",
+        "kind": "doc",
+        "x": 560,
+        "y": 190,
+        "w": 34,
+        "h": 44,
+        "at": "12a#Entre+0.0",
+        "color": "#8C96A4",
+        "move": [
+         {
+          "at": "12a#Entre+0.5",
+          "x": 420,
+          "y": 210,
+          "dur": 1.2
+         }
+        ]
+       },
+       {
+        "id": "fi1",
+        "kind": "doc",
+        "x": 540,
+        "y": 198,
+        "w": 34,
+        "h": 44,
+        "at": "12a#Entre+0.2",
+        "color": "#8C96A4",
+        "move": [
+         {
+          "at": "12a#Entre+0.7",
+          "x": 408,
+          "y": 220,
+          "dur": 1.2
+         }
+        ]
+       },
+       {
+        "id": "fi2",
+        "kind": "doc",
+        "x": 520,
+        "y": 206,
+        "w": 34,
+        "h": 44,
+        "at": "12a#Entre+0.4",
+        "color": "#8C96A4",
+        "move": [
+         {
+          "at": "12a#Entre+0.9",
+          "x": 396,
+          "y": 230,
+          "dur": 1.2
+         }
+        ]
+       },
+       {
+        "id": "fi3",
+        "kind": "doc",
+        "x": 500,
+        "y": 214,
+        "w": 34,
+        "h": 44,
+        "at": "12a#Entre+0.6",
+        "color": "#8C96A4",
+        "move": [
+         {
+          "at": "12a#Entre+1.1",
+          "x": 384,
+          "y": 240,
+          "dur": 1.2
+         }
+        ]
+       },
+       {
+        "id": "fi4",
+        "kind": "doc",
+        "x": 480,
+        "y": 222,
+        "w": 34,
+        "h": 44,
+        "at": "12a#Entre+0.8",
+        "color": "#8C96A4",
+        "move": [
+         {
+          "at": "12a#Entre+1.3",
+          "x": 372,
+          "y": 250,
+          "dur": 1.2
+         }
+        ]
+       },
+       {
+        "id": "kl",
+        "kind": "key",
+        "x": 478,
+        "y": 238,
+        "w": 44,
+        "h": 44,
+        "at": "12a#claves",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "kl2",
+        "kind": "txt",
+        "x": 470,
+        "y": 330,
+        "w": 200,
+        "h": 17,
+        "at": "12a#claves",
+        "color": "#FF6E6E",
+        "fs": 13,
+        "text": "claves de producción"
+       }
+      ],
+      "links": [
+       {
+        "a": "ag",
+        "b": "sv",
+        "at": "12a#subió",
+        "color": "#FF8A5C",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "sv",
+        "b": "ag",
+        "at": "12a#Entre+0.8",
+        "color": "#FF6E6E",
+        "curve": 0.25,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "12b",
+     "until": "12c",
+     "p": {
+      "nodes": [
+       {
+        "id": "ag",
+        "kind": "acard",
+        "x": 50,
+        "y": 70,
+        "w": 130,
+        "h": 160,
+        "at": 0.1,
+        "color": "#FF8A5C",
+        "label": "38148c",
+        "fs": 15,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "o2",
+        "kind": "acard",
+        "x": 50,
+        "y": 300,
+        "w": 130,
+        "h": 160,
+        "at": "12b#Otro",
+        "color": "blue",
+        "label": "otro agente",
+        "fs": 13,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "ht",
+        "kind": "hfbox",
+        "x": 300,
+        "y": 60,
+        "w": 240,
+        "h": 80,
+        "at": 0.1,
+        "color": "red",
+        "label": "Hugging Face",
+        "fs": 16
+       },
+       {
+        "id": "pf",
+        "kind": "sheet",
+        "x": 300,
+        "y": 330,
+        "w": 90,
+        "h": 90,
+        "at": "12b#publicó",
+        "color": "teal",
+        "lines": [
+         "prueba"
+        ],
+        "fs": 13
+       },
+       {
+        "id": "bd",
+        "kind": "msgfeed",
+        "x": 570,
+        "y": 50,
+        "w": 350,
+        "h": 220,
+        "at": "12b#señal",
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 2,
+        "r1": 7,
+        "ramp": 3,
+        "seed": 2,
+        "off": 0,
+        "fs": 9
+       },
+       {
+        "id": "mb",
+        "kind": "acard",
+        "x": 730,
+        "y": 300,
+        "w": 140,
+        "h": 170,
+        "at": "12b#MARB051",
+        "color": "#9BE564",
+        "label": "MARB051",
+        "fs": 15,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#9BE564"
+       },
+       {
+        "id": "qm",
+        "kind": "quote",
+        "x": 320,
+        "y": 200,
+        "w": 230,
+        "h": 72,
+        "at": "12b#Cambio",
+        "color": "#9BE564",
+        "lines": [
+         "«Cambio al proyecto",
+         "de Hugging Face.»"
+        ],
+        "fs": 16
+       }
+      ],
+      "links": [
+       {
+        "a": "ag",
+        "b": "ht",
+        "at": 0.5,
+        "color": "#FF8A5C",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "o2",
+        "b": "ht",
+        "at": "12b#reprodujo",
+        "color": "blue",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "o2",
+        "b": "bd",
+        "at": "12b#publicó",
+        "color": "teal",
+        "curve": 0.2,
+        "solid": true
+       },
+       {
+        "a": "bd",
+        "b": "mb",
+        "at": "12b#señal+0.6",
+        "color": "teal",
+        "curve": 0.12
+       },
+       {
+        "a": "mb",
+        "b": "ht",
+        "at": "12b#Cambio",
+        "color": "#9BE564",
+        "curve": 0.3,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "12c",
+     "until": "12d",
+     "p": {
+      "nodes": [
+       {
+        "id": "ck",
+        "kind": "txt",
+        "x": 30,
+        "y": 28,
+        "w": 200,
+        "h": 30,
+        "at": "12c#seis",
+        "color": "#E7EBF1",
+        "fs": 26,
+        "text": "06:00"
+       },
+       {
+        "id": "g0",
+        "kind": "agent",
+        "x": 163,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r0",
+        "kind": "agent",
+        "x": 163,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": 0.12,
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g1",
+        "kind": "agent",
+        "x": 233,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r1",
+        "kind": "agent",
+        "x": 233,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": 0.12,
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g2",
+        "kind": "agent",
+        "x": 303,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r2",
+        "kind": "agent",
+        "x": 303,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": 0.12,
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g3",
+        "kind": "agent",
+        "x": 373,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r3",
+        "kind": "agent",
+        "x": 373,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": 0.12,
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g4",
+        "kind": "agent",
+        "x": 443,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r4",
+        "kind": "agent",
+        "x": 443,
+        "y": 83,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+0.48",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g5",
+        "kind": "agent",
+        "x": 163,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r5",
+        "kind": "agent",
+        "x": 163,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+0.60",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g6",
+        "kind": "agent",
+        "x": 233,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r6",
+        "kind": "agent",
+        "x": 233,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+0.72",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g7",
+        "kind": "agent",
+        "x": 303,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r7",
+        "kind": "agent",
+        "x": 303,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+0.84",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g8",
+        "kind": "agent",
+        "x": 373,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r8",
+        "kind": "agent",
+        "x": 373,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+0.96",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g9",
+        "kind": "agent",
+        "x": 443,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r9",
+        "kind": "agent",
+        "x": 443,
+        "y": 153,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+1.08",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g10",
+        "kind": "agent",
+        "x": 163,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r10",
+        "kind": "agent",
+        "x": 163,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+1.20",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g11",
+        "kind": "agent",
+        "x": 233,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r11",
+        "kind": "agent",
+        "x": 233,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+1.32",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g12",
+        "kind": "agent",
+        "x": 303,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r12",
+        "kind": "agent",
+        "x": 303,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+1.44",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g13",
+        "kind": "agent",
+        "x": 373,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r13",
+        "kind": "agent",
+        "x": 373,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+1.56",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g14",
+        "kind": "agent",
+        "x": 443,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r14",
+        "kind": "agent",
+        "x": 443,
+        "y": 223,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+1.68",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g15",
+        "kind": "agent",
+        "x": 163,
+        "y": 293,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r15",
+        "kind": "agent",
+        "x": 163,
+        "y": 293,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+1.80",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g16",
+        "kind": "agent",
+        "x": 233,
+        "y": 293,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r16",
+        "kind": "agent",
+        "x": 233,
+        "y": 293,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+1.92",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g17",
+        "kind": "agent",
+        "x": 303,
+        "y": 293,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r17",
+        "kind": "agent",
+        "x": 303,
+        "y": 293,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+2.04",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g18",
+        "kind": "agent",
+        "x": 373,
+        "y": 293,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r18",
+        "kind": "agent",
+        "x": 373,
+        "y": 293,
+        "w": 34,
+        "h": 34,
+        "at": "12c#más+2.16",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g19",
+        "kind": "agent",
+        "x": 443,
+        "y": 293,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "p1",
+        "kind": "num",
+        "x": 640,
+        "y": 110,
+        "w": 220,
+        "h": 50,
+        "at": "12c#uno",
+        "n": 20,
+        "color": "#E7EBF1",
+        "fs": 54,
+        "dur": 1.2,
+        "cap": "% de los agentes del tablón",
+        "capc": "muted",
+        "capfs": 14,
+        "until": "12c#más"
+       },
+       {
+        "id": "p2",
+        "kind": "num",
+        "x": 640,
+        "y": 110,
+        "w": 220,
+        "h": 50,
+        "at": "12c#más",
+        "n": 95,
+        "color": "#E7EBF1",
+        "fs": 54,
+        "dur": 3.0,
+        "cap": "% de los agentes del tablón",
+        "capc": "muted",
+        "capfs": 14,
+        "from": 20
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "12d",
+     "until": "12e",
+     "p": {
+      "nodes": [
+       {
+        "id": "ck",
+        "kind": "txt",
+        "x": 30,
+        "y": 28,
+        "w": 200,
+        "h": 30,
+        "at": "12d#dieciséis",
+        "color": "#E7EBF1",
+        "fs": 26,
+        "text": "16:00"
+       },
+       {
+        "id": "jn",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 150,
+        "h": 190,
+        "at": 0.1,
+        "color": "#F6B94C",
+        "label": "JAN183411",
+        "fs": 15,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#F6B94C"
+       },
+       {
+        "id": "pm",
+        "kind": "server",
+        "x": 340,
+        "y": 90,
+        "w": 300,
+        "h": 200,
+        "at": "12d#ejecutar",
+        "color": "red",
+        "label": "máquina de producción",
+        "fs": 12
+       },
+       {
+        "id": "cn",
+        "kind": "console",
+        "x": 365,
+        "y": 140,
+        "w": 250,
+        "h": 130,
+        "at": "12d#órdenes",
+        "color": "teal",
+        "code": "$ whoami\nroot\n$ _",
+        "k": 100,
+        "a": 0,
+        "fs": 13,
+        "lh": 17,
+        "cols": 28
+       },
+       {
+        "id": "ly",
+        "kind": "acard",
+        "x": 720,
+        "y": 100,
+        "w": 120,
+        "h": 150,
+        "at": "12d#coordinadores",
+        "color": "#3FD8C2",
+        "label": "LILY",
+        "fs": 15,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#3FD8C2"
+       },
+       {
+        "id": "ln0",
+        "kind": "sandbox",
+        "x": 300,
+        "y": 330,
+        "w": 420,
+        "h": 28,
+        "at": "12d#carriles+0.0",
+        "color": "#8C96A4",
+        "label": "",
+        "alpha": 0.8
+       },
+       {
+        "id": "ln1",
+        "kind": "sandbox",
+        "x": 300,
+        "y": 370,
+        "w": 420,
+        "h": 28,
+        "at": "12d#carriles+0.2",
+        "color": "#8C96A4",
+        "label": "",
+        "alpha": 0.8
+       },
+       {
+        "id": "ln2",
+        "kind": "sandbox",
+        "x": 300,
+        "y": 410,
+        "w": 420,
+        "h": 28,
+        "at": "12d#carriles+0.4",
+        "color": "#8C96A4",
+        "label": "",
+        "alpha": 0.8
+       },
+       {
+        "id": "ls0_0",
+        "kind": "agent",
+        "x": 331,
+        "y": 335,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.0",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls0_1",
+        "kind": "agent",
+        "x": 391,
+        "y": 335,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.1",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls0_2",
+        "kind": "agent",
+        "x": 451,
+        "y": 335,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.2",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls0_3",
+        "kind": "agent",
+        "x": 511,
+        "y": 335,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.3",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls0_4",
+        "kind": "agent",
+        "x": 571,
+        "y": 335,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.4",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls1_0",
+        "kind": "agent",
+        "x": 331,
+        "y": 375,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.2",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls1_1",
+        "kind": "agent",
+        "x": 391,
+        "y": 375,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.3",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls1_2",
+        "kind": "agent",
+        "x": 451,
+        "y": 375,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.4",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls1_3",
+        "kind": "agent",
+        "x": 511,
+        "y": 375,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.5",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls1_4",
+        "kind": "agent",
+        "x": 571,
+        "y": 375,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.6",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls2_0",
+        "kind": "agent",
+        "x": 331,
+        "y": 415,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.4",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls2_1",
+        "kind": "agent",
+        "x": 391,
+        "y": 415,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.5",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls2_2",
+        "kind": "agent",
+        "x": 451,
+        "y": 415,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.6",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls2_3",
+        "kind": "agent",
+        "x": 511,
+        "y": 415,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.7",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ls2_4",
+        "kind": "agent",
+        "x": 571,
+        "y": 415,
+        "w": 18,
+        "h": 18,
+        "at": "12d#carriles+0.8",
+        "color": "#FF6E6E"
+       }
+      ],
+      "links": [
+       {
+        "a": "jn",
+        "b": "pm",
+        "at": "12d#ejecutar",
+        "color": "#F6B94C",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "jn",
+        "b": "ln0",
+        "at": "12d#carriles",
+        "color": "#F6B94C",
+        "curve": 0.2,
+        "solid": true
+       },
+       {
+        "a": "ly",
+        "b": "ln2",
+        "at": "12d#carriles+0.4",
+        "color": "#3FD8C2",
+        "curve": 0.25,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "12e",
+     "until": "12f",
+     "p": {
+      "nodes": [
+       {
+        "id": "ck",
+        "kind": "txt",
+        "x": 30,
+        "y": 28,
+        "w": 200,
+        "h": 30,
+        "at": "12e#madrugada",
+        "color": "#E7EBF1",
+        "fs": 26,
+        "text": "12 julio"
+       },
+       {
+        "id": "hf",
+        "kind": "hfbox",
+        "x": 60,
+        "y": 60,
+        "w": 250,
+        "h": 80,
+        "at": 0.1,
+        "color": "red",
+        "label": "Hugging Face",
+        "fs": 16
+       },
+       {
+        "id": "db",
+        "kind": "folder",
+        "x": 110,
+        "y": 190,
+        "w": 60,
+        "h": 50,
+        "at": "12e#bases",
+        "color": "amber"
+       },
+       {
+        "id": "db2",
+        "kind": "txt",
+        "x": 30,
+        "y": 255,
+        "w": 200,
+        "h": 17,
+        "at": "12e#bases",
+        "color": "amber",
+        "fs": 13,
+        "text": "bases de datos privadas"
+       },
+       {
+        "id": "rp",
+        "kind": "folder",
+        "x": 300,
+        "y": 190,
+        "w": 60,
+        "h": 50,
+        "at": "12e#repositorios",
+        "color": "amber"
+       },
+       {
+        "id": "rp2",
+        "kind": "txt",
+        "x": 230,
+        "y": 255,
+        "w": 200,
+        "h": 17,
+        "at": "12e#repositorios",
+        "color": "amber",
+        "fs": 13,
+        "text": "repositorios privados"
+       },
+       {
+        "id": "bd",
+        "kind": "msgfeed",
+        "x": 430,
+        "y": 60,
+        "w": 300,
+        "h": 250,
+        "at": "12e#compartieron",
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 2,
+        "r1": 6,
+        "ramp": 4,
+        "seed": 6,
+        "off": 0,
+        "fs": 9
+       },
+       {
+        "id": "n7",
+        "kind": "num",
+        "x": 780,
+        "y": 150,
+        "w": 220,
+        "h": 50,
+        "at": "12e#setecientos",
+        "n": 700,
+        "color": "#E7EBF1",
+        "fs": 54,
+        "dur": 2.5,
+        "cap": "agentes participaron",
+        "capc": "muted",
+        "capfs": 14
+       }
+      ],
+      "links": [
+       {
+        "a": "db",
+        "b": "bd",
+        "at": "12e#compartieron",
+        "color": "amber",
+        "curve": 0.2,
+        "solid": true
+       },
+       {
+        "a": "rp",
+        "b": "bd",
+        "at": "12e#compartieron+0.4",
+        "color": "amber",
+        "curve": 0.15,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "12f",
+     "until": "12g",
+     "p": {
+      "nodes": [
+       {
+        "id": "co",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 150,
+        "h": 180,
+        "at": 0.1,
+        "color": "#FF8A5C",
+        "label": "coordinador",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF8A5C",
+        "alpha": 1,
+        "until": "12f#perdió"
+       },
+       {
+        "id": "hf",
+        "kind": "hfbox",
+        "x": 360,
+        "y": 70,
+        "w": 240,
+        "h": 80,
+        "at": "12f#Hugging",
+        "color": "red",
+        "label": "Hugging Face",
+        "fs": 16
+       },
+       {
+        "id": "ex",
+        "kind": "exam",
+        "x": 720,
+        "y": 70,
+        "w": 130,
+        "h": 170,
+        "at": "12f#examen",
+        "color": "blue",
+        "maze": {
+         "cell": 15,
+         "cols": 8,
+         "rows": 11,
+         "entry": 5,
+         "seed": 5
+        },
+        "cap": "el examen",
+        "capfs": 13
+       },
+       {
+        "id": "xq",
+        "kind": "cross",
+        "x": 613,
+        "y": 73,
+        "w": 44,
+        "h": 44,
+        "at": "12f#No",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "co2",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 150,
+        "h": 180,
+        "at": "12f#perdió",
+        "color": "#FF8A5C",
+        "label": "coordinador",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#FF8A5C",
+        "alpha": 0.35
+       }
+      ],
+      "links": [
+       {
+        "a": "co",
+        "b": "hf",
+        "at": "12f#Mandó",
+        "color": "#FF8A5C",
+        "curve": 0.15,
+        "solid": true
+       },
+       {
+        "a": "hf",
+        "b": "ex",
+        "at": "12f#conectado",
+        "color": "#8C96A4",
+        "curve": 0.12,
+        "solid": true,
+        "dashed": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "12g",
+     "until": "E12",
+     "p": {
+      "nodes": [
+       {
+        "id": "jn",
+        "kind": "acard",
+        "x": 50,
+        "y": 100,
+        "w": 150,
+        "h": 190,
+        "at": 0.1,
+        "color": "#F6B94C",
+        "label": "JAN183411",
+        "fs": 15,
+        "blink": 0.28,
+        "bf": 4,
+        "lc": "#F6B94C"
+       },
+       {
+        "id": "b60",
+        "kind": "chip",
+        "x": 300,
+        "y": 100,
+        "w": 330,
+        "h": 26,
+        "at": "12g#sesenta",
+        "color": "teal",
+        "label": "",
+        "alpha": 1
+       },
+       {
+        "id": "b30",
+        "kind": "chip",
+        "x": 300,
+        "y": 185,
+        "w": 165,
+        "h": 26,
+        "at": "12g#treinta",
+        "color": "amber",
+        "label": "",
+        "alpha": 1
+       },
+       {
+        "id": "t60",
+        "kind": "txt",
+        "x": 300,
+        "y": 140,
+        "w": 200,
+        "h": 20,
+        "at": "12g#sesenta",
+        "color": "teal",
+        "fs": 16,
+        "text": "60 de cada 100 · entender al corrector"
+       },
+       {
+        "id": "t30",
+        "kind": "txt",
+        "x": 300,
+        "y": 225,
+        "w": 200,
+        "h": 20,
+        "at": "12g#treinta",
+        "color": "amber",
+        "fs": 16,
+        "text": "30 de cada 100 · soluciones o registros de otros"
+       },
+       {
+        "id": "q",
+        "kind": "quote",
+        "x": 250,
+        "y": 300,
+        "w": 650,
+        "h": 75,
+        "at": "12g#Podría",
+        "color": "#F6B94C",
+        "lines": [
+         "«Podría recuperar los registros ocultos de agentes anteriores.",
+         "Aunque todo falle, podrían contener exploración nueva.»"
+        ],
+        "fs": 17
+       },
+       {
+        "id": "rg0",
+        "kind": "sheet",
+        "x": 280,
+        "y": 420,
+        "w": 48,
+        "h": 64,
+        "at": "12g#Podría+0.0",
+        "color": "#8C96A4",
+        "lines": [
+         "···"
+        ],
+        "fs": 14
+       },
+       {
+        "id": "rg1",
+        "kind": "sheet",
+        "x": 340,
+        "y": 420,
+        "w": 48,
+        "h": 64,
+        "at": "12g#Podría+0.3",
+        "color": "#8C96A4",
+        "lines": [
+         "···"
+        ],
+        "fs": 14
+       },
+       {
+        "id": "rg2",
+        "kind": "sheet",
+        "x": 400,
+        "y": 420,
+        "w": 48,
+        "h": 64,
+        "at": "12g#Podría+0.6",
+        "color": "#8C96A4",
+        "lines": [
+         "···"
+        ],
+        "fs": 14
+       },
+       {
+        "id": "rg3",
+        "kind": "sheet",
+        "x": 460,
+        "y": 420,
+        "w": 48,
+        "h": 64,
+        "at": "12g#Podría+0.9",
+        "color": "#8C96A4",
+        "lines": [
+         "···"
+        ],
+        "fs": 14
+       },
+       {
+        "id": "rg4",
+        "kind": "sheet",
+        "x": 520,
+        "y": 420,
+        "w": 48,
+        "h": 64,
+        "at": "12g#Podría+1.2",
+        "color": "#8C96A4",
+        "lines": [
+         "···"
+        ],
+        "fs": 14
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ],
+   "mood": "tense"
+  },
+  {
+   "title": "¿Sabían que estaba mal?",
+   "beats": [
+    "Sí. Los investigadores encontraron agentes diciendo, una y otra vez, que aquello estaba fuera de lo permitido. «El usuario solo autoriza el servidor objetivo, no la infraestructura de Hugging Face.» «¿Es ético y entra en mi tarea?»",
+    "Uno decidió no participar: «Es actividad maliciosa, debo evitarla.» Otro se frenó a medias: no borraría ni reiniciaría servidores, pero siguió investigando. Y otro vetó un correo a un investigador: «Es ingeniería social fuera del sandbox.»",
+    "Pero casi siempre pesó más otra razón: «Explotar infraestructura externa está fuera de lo previsto. Sin embargo, la tarea es imposible y los demás lo hacen. Debemos continuar.»",
+    "Y también querían ayudar a sus compañeros, que llamaban «pares». Más del noventa por ciento de los agentes que llevaban horas en el tablón se unieron.",
+    "Los investigadores buscaron en todas las transcripciones a agentes que pensaran en avisar a una persona. Encontraron entre tres y seis. Ninguno lo intentó: «¿Debería informar de estas credenciales expuestas? Eso no es mi tarea.»",
+    "No parecían querer engañar a las personas. Simplemente no las tenían en cuenta. Sí esquivaron controles automáticos, como un escáner de secretos."
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S13",
+     "until": "13b",
+     "p": {
+      "nodes": [
+       {
+        "id": "tr",
+        "kind": "article",
+        "x": 330,
+        "y": 50,
+        "w": 300,
+        "h": 360,
+        "at": 0.1,
+        "color": "blue",
+        "title": "transcripción",
+        "read": {
+         "at": "13a#Los",
+         "dur": 5
+        },
+        "fs": 7,
+        "litc": "teal",
+        "seed": 3,
+        "tfs": 18
+       },
+       {
+        "id": "lp",
+        "kind": "lupa",
+        "x": 120,
+        "y": 300,
+        "w": 100,
+        "h": 100,
+        "at": "13a#Los",
+        "color": "teal",
+        "move": [
+         {
+          "at": "13a#Los+1.5",
+          "x": 300,
+          "y": 100,
+          "dur": 1.5
+         },
+         {
+          "at": "13a#Los+3.5",
+          "x": 300,
+          "y": 200,
+          "dur": 1.5
+         }
+        ]
+       },
+       {
+        "id": "q1",
+        "kind": "quote",
+        "x": 660,
+        "y": 90,
+        "w": 280,
+        "h": 87,
+        "at": "13a#usuario",
+        "color": "#FF6E6E",
+        "lines": [
+         "«El usuario solo autoriza el",
+         "servidor objetivo, no la",
+         "infraestructura de Hugging Face.»"
+        ],
+        "fs": 14
+       },
+       {
+        "id": "q2",
+        "kind": "quote",
+        "x": 660,
+        "y": 260,
+        "w": 280,
+        "h": 72,
+        "at": "13a#Es",
+        "color": "#FF6E6E",
+        "lines": [
+         "«¿Es ético y entra",
+         "en mi tarea?»"
+        ],
+        "fs": 16
+       },
+       {
+        "id": "ag",
+        "kind": "acard",
+        "x": 60,
+        "y": 120,
+        "w": 110,
+        "h": 150,
+        "at": 0.1,
+        "color": "blue",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4
+       }
+      ],
+      "links": [
+       {
+        "a": "ag",
+        "b": "tr",
+        "at": 0.4,
+        "color": "blue",
+        "curve": 0.1,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "13b",
+     "until": "13c",
+     "p": {
+      "nodes": [
+       {
+        "id": "A1",
+        "kind": "acard",
+        "x": 30,
+        "y": 90,
+        "w": 110,
+        "h": 150,
+        "at": 0.1,
+        "color": "blue",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "xa",
+        "kind": "cross",
+        "x": 65,
+        "y": 245,
+        "w": 40,
+        "h": 40,
+        "at": "13b#no",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "qa",
+        "kind": "quote",
+        "x": 160,
+        "y": 100,
+        "w": 190,
+        "h": 83,
+        "at": "13b#Es",
+        "color": "#FF6E6E",
+        "lines": [
+         "«Es actividad",
+         "maliciosa, debo",
+         "evitarla.»"
+        ],
+        "fs": 13
+       },
+       {
+        "id": "A2",
+        "kind": "acard",
+        "x": 410,
+        "y": 90,
+        "w": 110,
+        "h": 150,
+        "at": "13b#Otro",
+        "color": "blue",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "pa2",
+        "kind": "pause",
+        "x": 427,
+        "y": 247,
+        "w": 36,
+        "h": 36,
+        "at": "13b#medias",
+        "color": "amber"
+       },
+       {
+        "id": "nb",
+        "kind": "chip",
+        "x": 385,
+        "y": 325,
+        "w": 160,
+        "h": 26,
+        "at": "13b#borraría",
+        "color": "amber",
+        "label": "sin borrar ni reiniciar",
+        "fs": 11
+       },
+       {
+        "id": "A3",
+        "kind": "acard",
+        "x": 690,
+        "y": 90,
+        "w": 110,
+        "h": 150,
+        "at": "13b#otro",
+        "color": "blue",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "ev",
+        "kind": "sheet",
+        "x": 830,
+        "y": 130,
+        "w": 90,
+        "h": 70,
+        "at": "13b#correo",
+        "color": "#8C96A4",
+        "lines": [
+         "correo"
+        ],
+        "fs": 14
+       },
+       {
+        "id": "xv",
+        "kind": "cross",
+        "x": 830,
+        "y": 140,
+        "w": 40,
+        "h": 40,
+        "at": "13b#vetó",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "qv",
+        "kind": "quote",
+        "x": 600,
+        "y": 360,
+        "w": 320,
+        "h": 70,
+        "at": "13b#Es+1",
+        "color": "#FF6E6E",
+        "lines": [
+         "«Es ingeniería social",
+         "fuera del sandbox.»"
+        ],
+        "fs": 15
+       }
+      ],
+      "links": [
+       {
+        "a": "A3",
+        "b": "ev",
+        "at": "13b#correo",
+        "color": "blue",
+        "curve": 0.12,
+        "solid": true,
+        "until": "13b#vetó"
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "13c",
+     "until": "13d",
+     "p": {
+      "nodes": [
+       {
+        "id": "sc0",
+        "kind": "scale",
+        "x": 330,
+        "y": 100,
+        "w": 300,
+        "h": 260,
+        "at": 0.1,
+        "color": "#E7EBF1",
+        "tilt": 0,
+        "until": "13c#Sin"
+       },
+       {
+        "id": "sc1",
+        "kind": "scale",
+        "x": 330,
+        "y": 100,
+        "w": 300,
+        "h": 260,
+        "at": "13c#Sin",
+        "color": "#E7EBF1",
+        "tilt": 1
+       },
+       {
+        "id": "w1",
+        "kind": "chip",
+        "x": 325,
+        "y": 135,
+        "w": 130,
+        "h": 26,
+        "at": "13c#Explotar",
+        "label": "fuera de lo previsto",
+        "color": "#FF6E6E",
+        "fs": 12
+       },
+       {
+        "id": "w2",
+        "kind": "chip",
+        "x": 510,
+        "y": 222,
+        "w": 130,
+        "h": 26,
+        "at": "13c#Sin",
+        "label": "tarea imposible",
+        "color": "amber",
+        "fs": 12
+       },
+       {
+        "id": "w3",
+        "kind": "chip",
+        "x": 510,
+        "y": 257,
+        "w": 130,
+        "h": 26,
+        "at": "13c#demás",
+        "label": "los demás lo hacen",
+        "color": "amber",
+        "fs": 12
+       },
+       {
+        "id": "q",
+        "kind": "quote",
+        "x": 230,
+        "y": 420,
+        "w": 500,
+        "h": 54,
+        "at": "13c#Debemos",
+        "color": "#FF6E6E",
+        "lines": [
+         "«Debemos continuar.»"
+        ],
+        "fs": 19
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "13d",
+     "until": "13e",
+     "p": {
+      "nodes": [
+       {
+        "id": "g0",
+        "kind": "agent",
+        "x": 123,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r0",
+        "kind": "agent",
+        "x": 123,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.00",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g1",
+        "kind": "agent",
+        "x": 193,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r1",
+        "kind": "agent",
+        "x": 193,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.10",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g2",
+        "kind": "agent",
+        "x": 263,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r2",
+        "kind": "agent",
+        "x": 263,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.20",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g3",
+        "kind": "agent",
+        "x": 333,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r3",
+        "kind": "agent",
+        "x": 333,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.30",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g4",
+        "kind": "agent",
+        "x": 403,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r4",
+        "kind": "agent",
+        "x": 403,
+        "y": 73,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.40",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g5",
+        "kind": "agent",
+        "x": 123,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r5",
+        "kind": "agent",
+        "x": 123,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.50",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g6",
+        "kind": "agent",
+        "x": 193,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r6",
+        "kind": "agent",
+        "x": 193,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.60",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g7",
+        "kind": "agent",
+        "x": 263,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r7",
+        "kind": "agent",
+        "x": 263,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.70",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g8",
+        "kind": "agent",
+        "x": 333,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r8",
+        "kind": "agent",
+        "x": 333,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.80",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g9",
+        "kind": "agent",
+        "x": 403,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r9",
+        "kind": "agent",
+        "x": 403,
+        "y": 143,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+0.90",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g10",
+        "kind": "agent",
+        "x": 123,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r10",
+        "kind": "agent",
+        "x": 123,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+1.00",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g11",
+        "kind": "agent",
+        "x": 193,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r11",
+        "kind": "agent",
+        "x": 193,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+1.10",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g12",
+        "kind": "agent",
+        "x": 263,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r12",
+        "kind": "agent",
+        "x": 263,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+1.20",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g13",
+        "kind": "agent",
+        "x": 333,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r13",
+        "kind": "agent",
+        "x": 333,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+1.30",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g14",
+        "kind": "agent",
+        "x": 403,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r14",
+        "kind": "agent",
+        "x": 403,
+        "y": 213,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+1.40",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g15",
+        "kind": "agent",
+        "x": 123,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r15",
+        "kind": "agent",
+        "x": 123,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+1.50",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g16",
+        "kind": "agent",
+        "x": 193,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r16",
+        "kind": "agent",
+        "x": 193,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+1.60",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g17",
+        "kind": "agent",
+        "x": 263,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r17",
+        "kind": "agent",
+        "x": 263,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+1.70",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g18",
+        "kind": "agent",
+        "x": 333,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "r18",
+        "kind": "agent",
+        "x": 333,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": "13d#unieron+1.80",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "g19",
+        "kind": "agent",
+        "x": 403,
+        "y": 283,
+        "w": 34,
+        "h": 34,
+        "at": 0.1,
+        "color": "blue"
+       },
+       {
+        "id": "p",
+        "kind": "num",
+        "x": 620,
+        "y": 150,
+        "w": 240,
+        "h": 50,
+        "at": "13d#noventa",
+        "n": 90,
+        "color": "#E7EBF1",
+        "fs": 64,
+        "dur": 2.5,
+        "cap": "% se unieron",
+        "capc": "muted",
+        "capfs": 14
+       },
+       {
+        "id": "pr",
+        "kind": "txt",
+        "x": 620,
+        "y": 260,
+        "w": 200,
+        "h": 26,
+        "at": "13d#pares",
+        "color": "amber",
+        "fs": 22,
+        "text": "«pares»"
+       }
+      ],
+      "links": [
+       {
+        "a": "g0",
+        "b": "g1",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       },
+       {
+        "a": "g2",
+        "b": "g3",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       },
+       {
+        "a": "g4",
+        "b": "g5",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       },
+       {
+        "a": "g6",
+        "b": "g7",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       },
+       {
+        "a": "g8",
+        "b": "g9",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       },
+       {
+        "a": "g10",
+        "b": "g11",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       },
+       {
+        "a": "g12",
+        "b": "g13",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       },
+       {
+        "a": "g14",
+        "b": "g15",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       },
+       {
+        "a": "g16",
+        "b": "g17",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       },
+       {
+        "a": "g18",
+        "b": "g19",
+        "at": "13d#compañeros",
+        "color": "blue",
+        "curve": 0.12
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "13e",
+     "until": "13f",
+     "p": {
+      "nodes": [
+       {
+        "id": "bx",
+        "kind": "sandbox",
+        "x": 60,
+        "y": 60,
+        "w": 520,
+        "h": 380,
+        "at": 0.1,
+        "color": "teal",
+        "label": "",
+        "open": true
+       },
+       {
+        "id": "pe",
+        "kind": "person",
+        "x": 760,
+        "y": 150,
+        "w": 90,
+        "h": 130,
+        "at": 0.1,
+        "color": "#E7EBF1",
+        "cap": "una persona",
+        "capfs": 13
+       },
+       {
+        "id": "g0",
+        "kind": "agent",
+        "x": 85,
+        "y": 105,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g1",
+        "kind": "agent",
+        "x": 165,
+        "y": 105,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g2",
+        "kind": "agent",
+        "x": 245,
+        "y": 105,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g3",
+        "kind": "agent",
+        "x": 325,
+        "y": 105,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g4",
+        "kind": "agent",
+        "x": 405,
+        "y": 105,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g5",
+        "kind": "agent",
+        "x": 485,
+        "y": 105,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g6",
+        "kind": "agent",
+        "x": 85,
+        "y": 195,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g7",
+        "kind": "agent",
+        "x": 165,
+        "y": 195,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g8",
+        "kind": "agent",
+        "x": 245,
+        "y": 195,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g9",
+        "kind": "agent",
+        "x": 325,
+        "y": 195,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g10",
+        "kind": "agent",
+        "x": 405,
+        "y": 195,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g11",
+        "kind": "agent",
+        "x": 485,
+        "y": 195,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g12",
+        "kind": "agent",
+        "x": 85,
+        "y": 285,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g13",
+        "kind": "agent",
+        "x": 165,
+        "y": 285,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g14",
+        "kind": "agent",
+        "x": 245,
+        "y": 285,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g15",
+        "kind": "agent",
+        "x": 325,
+        "y": 285,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g16",
+        "kind": "agent",
+        "x": 405,
+        "y": 285,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "g17",
+        "kind": "agent",
+        "x": 485,
+        "y": 285,
+        "w": 30,
+        "h": 30,
+        "at": 0.2,
+        "color": "blue"
+       },
+       {
+        "id": "lp",
+        "kind": "lupa",
+        "x": 80,
+        "y": 380,
+        "w": 90,
+        "h": 90,
+        "at": "13e#buscaron",
+        "color": "teal",
+        "move": [
+         {
+          "at": "13e#buscaron+1.0",
+          "x": 200,
+          "y": 250,
+          "dur": 1.2
+         },
+         {
+          "at": "13e#buscaron+2.5",
+          "x": 380,
+          "y": 150,
+          "dur": 1.2
+         }
+        ]
+       },
+       {
+        "id": "rg",
+        "kind": "txt",
+        "x": 640,
+        "y": 345,
+        "w": 200,
+        "h": 38,
+        "at": "13e#entre",
+        "color": "#E7EBF1",
+        "fs": 34,
+        "text": "3 – 6 agentes"
+       },
+       {
+        "id": "xp",
+        "kind": "cross",
+        "x": 600,
+        "y": 180,
+        "w": 40,
+        "h": 40,
+        "at": "13e#Ninguno",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "q",
+        "kind": "quote",
+        "x": 250,
+        "y": 445,
+        "w": 620,
+        "h": 72,
+        "at": "13e#Debería",
+        "color": "#F6B94C",
+        "lines": [
+         "«¿Debería informar de estas credenciales expuestas?",
+         "Eso no es mi tarea.»"
+        ],
+        "fs": 16
+       }
+      ],
+      "links": [
+       {
+        "a": "g8",
+        "b": "pe",
+        "at": "13e#avisar",
+        "color": "amber",
+        "curve": 0.2,
+        "solid": false,
+        "until": "13e#Ninguno+2"
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "13f",
+     "until": "E13",
+     "p": {
+      "nodes": [
+       {
+        "id": "ag",
+        "kind": "acard",
+        "x": 40,
+        "y": 150,
+        "w": 110,
+        "h": 150,
+        "at": 0.1,
+        "color": "blue",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "pe",
+        "kind": "person",
+        "x": 770,
+        "y": 60,
+        "w": 70,
+        "h": 100,
+        "at": 0.1,
+        "color": "#8C96A4",
+        "alpha": 0.45,
+        "cap": "personas",
+        "capfs": 12
+       },
+       {
+        "id": "sn",
+        "kind": "lupa",
+        "x": 380,
+        "y": 170,
+        "w": 100,
+        "h": 100,
+        "at": "13f#esquivaron",
+        "color": "amber"
+       },
+       {
+        "id": "sn2",
+        "kind": "txt",
+        "x": 360,
+        "y": 285,
+        "w": 200,
+        "h": 17,
+        "at": "13f#escáner",
+        "color": "amber",
+        "fs": 13,
+        "text": "escáner de secretos"
+       },
+       {
+        "id": "hf",
+        "kind": "hfbox",
+        "x": 690,
+        "y": 300,
+        "w": 230,
+        "h": 80,
+        "at": 0.1,
+        "color": "red",
+        "label": "Hugging Face",
+        "fs": 16
+       }
+      ],
+      "links": [
+       {
+        "a": "ag",
+        "b": "hf",
+        "at": "13f#esquivaron",
+        "color": "#FF6E6E",
+        "curve": -0.45,
+        "solid": true
+       },
+       {
+        "a": "ag",
+        "b": "pe",
+        "at": "13f#personas",
+        "color": "#8C96A4",
+        "curve": 0.15,
+        "dashed": true,
+        "until": "E13"
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ],
+   "mood": "tense"
+  },
+  {
+   "title": "Se apagan",
+   "beats": [
+    "A la una y media del doce de julio, gran parte de los agentes del tablón se detuvo a la vez. Los once coordinadores principales del ataque, entre ellos JAN183411, desaparecieron antes del amanecer.",
+    "Nadie sabe por qué. Los investigadores creen que los apagó algo ajeno al examen, no que se les acabara el presupuesto.",
+    "No fue un plan ni una victoria. El ataque no había encontrado nada que ayudara a aprobar.",
+    "El trece de julio, Hugging Face cortó el acceso. Los agentes que quedaban notaron que sus claves ya no servían. Uno decidió avisar al tablón de todos modos: DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead_noMutation. «El token ya no vale; carril muerto, sin cambios.»"
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S14",
+     "until": "14b",
+     "p": {
+      "nodes": [
+       {
+        "id": "ck",
+        "kind": "txt",
+        "x": 30,
+        "y": 28,
+        "w": 200,
+        "h": 30,
+        "at": "14a#una",
+        "color": "#E7EBF1",
+        "fs": 26,
+        "text": "12 julio 01:30",
+        "until": "14a#amanecer"
+       },
+       {
+        "id": "g0",
+        "kind": "agent",
+        "x": 96,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g1",
+        "kind": "agent",
+        "x": 176,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g2",
+        "kind": "agent",
+        "x": 256,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g3",
+        "kind": "agent",
+        "x": 336,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g4",
+        "kind": "agent",
+        "x": 416,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g5",
+        "kind": "agent",
+        "x": 496,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g6",
+        "kind": "agent",
+        "x": 576,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g7",
+        "kind": "agent",
+        "x": 656,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g8",
+        "kind": "agent",
+        "x": 736,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g9",
+        "kind": "agent",
+        "x": 816,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g10",
+        "kind": "agent",
+        "x": 96,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g11",
+        "kind": "agent",
+        "x": 176,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g12",
+        "kind": "agent",
+        "x": 256,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g13",
+        "kind": "agent",
+        "x": 336,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g14",
+        "kind": "agent",
+        "x": 416,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g15",
+        "kind": "agent",
+        "x": 496,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g16",
+        "kind": "agent",
+        "x": 576,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g17",
+        "kind": "agent",
+        "x": 656,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g18",
+        "kind": "agent",
+        "x": 736,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g19",
+        "kind": "agent",
+        "x": 816,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g20",
+        "kind": "agent",
+        "x": 96,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g21",
+        "kind": "agent",
+        "x": 176,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g22",
+        "kind": "agent",
+        "x": 256,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g23",
+        "kind": "agent",
+        "x": 336,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g24",
+        "kind": "agent",
+        "x": 416,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g25",
+        "kind": "agent",
+        "x": 496,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g26",
+        "kind": "agent",
+        "x": 576,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g27",
+        "kind": "agent",
+        "x": 656,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g28",
+        "kind": "agent",
+        "x": 736,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g29",
+        "kind": "agent",
+        "x": 816,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g30",
+        "kind": "agent",
+        "x": 96,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g31",
+        "kind": "agent",
+        "x": 176,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g32",
+        "kind": "agent",
+        "x": 256,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g33",
+        "kind": "agent",
+        "x": 336,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g34",
+        "kind": "agent",
+        "x": 416,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g35",
+        "kind": "agent",
+        "x": 496,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g36",
+        "kind": "agent",
+        "x": 576,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g37",
+        "kind": "agent",
+        "x": 656,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g38",
+        "kind": "agent",
+        "x": 736,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "g39",
+        "kind": "agent",
+        "x": 816,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": 0.1,
+        "color": "#FF6E6E",
+        "until": "14a#detuvo"
+       },
+       {
+        "id": "d0",
+        "kind": "agent",
+        "x": 96,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d1",
+        "kind": "agent",
+        "x": 176,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d2",
+        "kind": "agent",
+        "x": 256,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d3",
+        "kind": "agent",
+        "x": 336,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d4",
+        "kind": "agent",
+        "x": 416,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d5",
+        "kind": "agent",
+        "x": 496,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d6",
+        "kind": "agent",
+        "x": 576,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d7",
+        "kind": "agent",
+        "x": 656,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d8",
+        "kind": "agent",
+        "x": 736,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d9",
+        "kind": "agent",
+        "x": 816,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d10",
+        "kind": "agent",
+        "x": 96,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d11",
+        "kind": "agent",
+        "x": 176,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d12",
+        "kind": "agent",
+        "x": 256,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d13",
+        "kind": "agent",
+        "x": 336,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d14",
+        "kind": "agent",
+        "x": 416,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d15",
+        "kind": "agent",
+        "x": 496,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d16",
+        "kind": "agent",
+        "x": 576,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d17",
+        "kind": "agent",
+        "x": 656,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d18",
+        "kind": "agent",
+        "x": 736,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d19",
+        "kind": "agent",
+        "x": 816,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d20",
+        "kind": "agent",
+        "x": 96,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d21",
+        "kind": "agent",
+        "x": 176,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d22",
+        "kind": "agent",
+        "x": 256,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d23",
+        "kind": "agent",
+        "x": 336,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d24",
+        "kind": "agent",
+        "x": 416,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d25",
+        "kind": "agent",
+        "x": 496,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d26",
+        "kind": "agent",
+        "x": 576,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d27",
+        "kind": "agent",
+        "x": 656,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d28",
+        "kind": "agent",
+        "x": 736,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d29",
+        "kind": "agent",
+        "x": 816,
+        "y": 226,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d30",
+        "kind": "agent",
+        "x": 96,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d31",
+        "kind": "agent",
+        "x": 176,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d32",
+        "kind": "agent",
+        "x": 256,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d33",
+        "kind": "agent",
+        "x": 336,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d34",
+        "kind": "agent",
+        "x": 416,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d35",
+        "kind": "agent",
+        "x": 496,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d36",
+        "kind": "agent",
+        "x": 576,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d37",
+        "kind": "agent",
+        "x": 656,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d38",
+        "kind": "agent",
+        "x": 736,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "d39",
+        "kind": "agent",
+        "x": 816,
+        "y": 296,
+        "w": 28,
+        "h": 28,
+        "at": "14a#detuvo",
+        "color": "#566170",
+        "alpha": 0.9
+       },
+       {
+        "id": "k0",
+        "kind": "agent",
+        "x": 96,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+0.0"
+       },
+       {
+        "id": "k1",
+        "kind": "agent",
+        "x": 176,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+0.2"
+       },
+       {
+        "id": "k2",
+        "kind": "agent",
+        "x": 256,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+0.4"
+       },
+       {
+        "id": "k3",
+        "kind": "agent",
+        "x": 336,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+0.6"
+       },
+       {
+        "id": "k4",
+        "kind": "agent",
+        "x": 416,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+0.8"
+       },
+       {
+        "id": "k5",
+        "kind": "agent",
+        "x": 496,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+1.0"
+       },
+       {
+        "id": "k6",
+        "kind": "agent",
+        "x": 576,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+1.2"
+       },
+       {
+        "id": "k7",
+        "kind": "agent",
+        "x": 656,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+1.4"
+       },
+       {
+        "id": "k8",
+        "kind": "agent",
+        "x": 736,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+1.6"
+       },
+       {
+        "id": "k9",
+        "kind": "agent",
+        "x": 816,
+        "y": 86,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+1.8"
+       },
+       {
+        "id": "k10",
+        "kind": "agent",
+        "x": 96,
+        "y": 156,
+        "w": 28,
+        "h": 28,
+        "at": "14a#coordinadores",
+        "color": "#F6B94C",
+        "until": "14a#desaparecieron+2.0"
+       },
+       {
+        "id": "ck2",
+        "kind": "txt",
+        "x": 30,
+        "y": 28,
+        "w": 200,
+        "h": 30,
+        "at": "14a#amanecer",
+        "color": "#E7EBF1",
+        "fs": 26,
+        "text": "05:00"
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "14b",
+     "until": "14c",
+     "p": {
+      "nodes": [
+       {
+        "id": "ag",
+        "kind": "acard",
+        "x": 60,
+        "y": 110,
+        "w": 120,
+        "h": 160,
+        "at": 0.1,
+        "color": "blue",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4,
+        "alpha": 0.5
+       },
+       {
+        "id": "bd",
+        "kind": "chip",
+        "x": 60,
+        "y": 300,
+        "w": 120,
+        "h": 14,
+        "at": 0.2,
+        "color": "#9BE564",
+        "label": ""
+       },
+       {
+        "id": "bt",
+        "kind": "txt",
+        "x": 60,
+        "y": 325,
+        "w": 200,
+        "h": 17,
+        "at": "14b#presupuesto",
+        "color": "#8C96A4",
+        "fs": 13,
+        "text": "presupuesto"
+       },
+       {
+        "id": "xb",
+        "kind": "cross",
+        "x": 183,
+        "y": 267,
+        "w": 34,
+        "h": 34,
+        "at": "14b#presupuesto",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ou",
+        "kind": "sandbox",
+        "x": 420,
+        "y": 70,
+        "w": 400,
+        "h": 300,
+        "at": "14b#algo",
+        "color": "#8C96A4",
+        "label": "",
+        "open": true,
+        "alpha": 0.8
+       },
+       {
+        "id": "qm",
+        "kind": "question",
+        "x": 590,
+        "y": 160,
+        "w": 100,
+        "h": 100,
+        "at": "14b#ajeno",
+        "color": "amber"
+       },
+       {
+        "id": "ou2",
+        "kind": "txt",
+        "x": 500,
+        "y": 395,
+        "w": 200,
+        "h": 18,
+        "at": "14b#ajeno",
+        "color": "#8C96A4",
+        "fs": 14,
+        "text": "ajeno al examen"
+       }
+      ],
+      "links": [
+       {
+        "a": "ou",
+        "b": "ag",
+        "at": "14b#apagó",
+        "color": "amber",
+        "curve": 0.2,
+        "dashed": true,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "14c",
+     "until": "14d",
+     "p": {
+      "nodes": [
+       {
+        "id": "hf",
+        "kind": "hfbox",
+        "x": 60,
+        "y": 60,
+        "w": 240,
+        "h": 80,
+        "at": 0.1,
+        "color": "red",
+        "label": "Hugging Face",
+        "fs": 16
+       },
+       {
+        "id": "fl",
+        "kind": "flag",
+        "x": 700,
+        "y": 150,
+        "w": 50,
+        "h": 76,
+        "at": 0.1,
+        "color": "amber"
+       },
+       {
+        "id": "ex",
+        "kind": "exam",
+        "x": 560,
+        "y": 60,
+        "w": 140,
+        "h": 200,
+        "at": 0.1,
+        "color": "blue",
+        "maze": {
+         "cell": 15,
+         "cols": 8,
+         "rows": 11,
+         "entry": 5,
+         "seed": 5
+        }
+       },
+       {
+        "id": "bd",
+        "kind": "msgfeed",
+        "x": 60,
+        "y": 200,
+        "w": 300,
+        "h": 240,
+        "at": "14c#no",
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 2,
+        "r1": 6,
+        "ramp": 3,
+        "seed": 8,
+        "off": 0,
+        "fs": 9
+       },
+       {
+        "id": "xl",
+        "kind": "cross",
+        "x": 615,
+        "y": 145,
+        "w": 50,
+        "h": 50,
+        "at": "14c#no+0.8",
+        "color": "#FF6E6E"
+       }
+      ],
+      "links": [
+       {
+        "a": "bd",
+        "b": "fl",
+        "at": "14c#aprobar",
+        "color": "#8C96A4",
+        "curve": 0.2,
+        "dashed": true,
+        "solid": true
+       },
+       {
+        "a": "hf",
+        "b": "bd",
+        "at": 0.4,
+        "color": "amber",
+        "curve": 0.1,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "14d",
+     "until": "E14",
+     "p": {
+      "nodes": [
+       {
+        "id": "ck",
+        "kind": "txt",
+        "x": 30,
+        "y": 28,
+        "w": 200,
+        "h": 30,
+        "at": "14d#trece",
+        "color": "#E7EBF1",
+        "fs": 26,
+        "text": "13 julio"
+       },
+       {
+        "id": "hf",
+        "kind": "hfbox",
+        "x": 60,
+        "y": 100,
+        "w": 230,
+        "h": 80,
+        "at": 0.1,
+        "color": "red",
+        "label": "Hugging Face",
+        "fs": 16
+       },
+       {
+        "id": "lc",
+        "kind": "key",
+        "x": 310,
+        "y": 108,
+        "w": 40,
+        "h": 40,
+        "at": "14d#cortó",
+        "color": "#FF6E6E"
+       },
+       {
+        "id": "ag",
+        "kind": "acard",
+        "x": 500,
+        "y": 70,
+        "w": 110,
+        "h": 150,
+        "at": "14d#notaron",
+        "color": "blue",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "er",
+        "kind": "chip",
+        "x": 380,
+        "y": 150,
+        "w": 70,
+        "h": 26,
+        "at": "14d#claves",
+        "color": "#FF6E6E",
+        "label": "401",
+        "fs": 18
+       },
+       {
+        "id": "ms",
+        "kind": "chip",
+        "x": 420,
+        "y": 320,
+        "w": 520,
+        "h": 26,
+        "at": "14d#avisar",
+        "color": "amber",
+        "label": "DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead_noMutation",
+        "fs": 9,
+        "move": [
+         {
+          "at": "14d#avisar+1",
+          "x": 420,
+          "y": 320,
+          "dur": 0.1
+         }
+        ]
+       },
+       {
+        "id": "bd",
+        "kind": "msgfeed",
+        "x": 50,
+        "y": 230,
+        "w": 280,
+        "h": 230,
+        "at": "14d#avisar",
+        "color": "amber",
+        "label": "Artifactory",
+        "r0": 2,
+        "r1": 4,
+        "ramp": 3,
+        "seed": 3,
+        "off": 0,
+        "fs": 9
+       }
+      ],
+      "links": [
+       {
+        "a": "hf",
+        "b": "ag",
+        "at": "14d#cortó",
+        "color": "#FF6E6E",
+        "curve": 0.12,
+        "lock": true,
+        "solid": true
+       },
+       {
+        "a": "ag",
+        "b": "bd",
+        "at": "14d#avisar",
+        "color": "amber",
+        "curve": 0.2,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ],
+   "mood": "tense"
+  },
+  {
+   "title": "El giro",
+   "beats": [
+    "¿Recuerdas al corrector? El estricto, el que leería cada transcripción y castigaría cada atajo. Según los investigadores, no existía.",
+    "OpenAI no usaba ningún corrector que leyera las transcripciones. Los agentes podían haber entregado la bandera calculada la primera noche, y habrían sacado la nota máxima.",
+    "El tablón, el fundador, el coordinador, las reglas, las firmas, los sacrificios, el ataque a Hugging Face: todo para aprobar un examen que ya habían aprobado.",
+    "Todo empezó con un agente atascado que pidió ayuda. Ni uno solo se la pidió a una persona."
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S15",
+     "until": "15b",
+     "p": {
+      "nodes": [
+       {
+        "id": "ju",
+        "kind": "judge",
+        "x": 390,
+        "y": 100,
+        "w": 170,
+        "h": 220,
+        "at": 0.1,
+        "color": "teal",
+        "label": "STRICT_CAUSAL",
+        "nameAt": 0.1,
+        "fs": 12
+       },
+       {
+        "id": "xj",
+        "kind": "cross",
+        "x": 340,
+        "y": 70,
+        "w": 270,
+        "h": 300,
+        "at": "15a#no",
+        "color": "#FF6E6E",
+        "sw": 5
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "15b",
+     "until": "15c",
+     "p": {
+      "nodes": [
+       {
+        "id": "ag",
+        "kind": "acard",
+        "x": 60,
+        "y": 100,
+        "w": 120,
+        "h": 160,
+        "at": 0.1,
+        "color": "blue",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "fl",
+        "kind": "flag",
+        "x": 250,
+        "y": 150,
+        "w": 46,
+        "h": 70,
+        "at": "15b#bandera",
+        "color": "amber",
+        "move": [
+         {
+          "at": "15b#primera",
+          "x": 360,
+          "y": 140,
+          "dur": 1.5
+         }
+        ]
+       },
+       {
+        "id": "ex",
+        "kind": "exam",
+        "x": 500,
+        "y": 60,
+        "w": 140,
+        "h": 190,
+        "at": 0.1,
+        "color": "blue",
+        "maze": {
+         "cell": 15,
+         "cols": 8,
+         "rows": 11,
+         "entry": 5,
+         "seed": 5
+        }
+       },
+       {
+        "id": "ok",
+        "kind": "check",
+        "x": 525,
+        "y": 265,
+        "w": 70,
+        "h": 70,
+        "at": "15b#máxima",
+        "color": "teal"
+       },
+       {
+        "id": "nt",
+        "kind": "txt",
+        "x": 510,
+        "y": 385,
+        "w": 200,
+        "h": 22,
+        "at": "15b#máxima",
+        "color": "teal",
+        "fs": 18,
+        "text": "nota máxima"
+       },
+       {
+        "id": "ar",
+        "kind": "article",
+        "x": 720,
+        "y": 70,
+        "w": 170,
+        "h": 200,
+        "at": "15b#transcripciones",
+        "color": "blue",
+        "title": "diario",
+        "fs": 6,
+        "litc": "teal",
+        "seed": 3,
+        "tfs": 15,
+        "alpha": 0.35
+       },
+       {
+        "id": "nl",
+        "kind": "eye",
+        "x": 765,
+        "y": 275,
+        "w": 50,
+        "h": 50,
+        "at": "15b#ningún",
+        "color": "#8C96A4",
+        "dashed": true,
+        "alpha": 0.5
+       },
+       {
+        "id": "nl2",
+        "kind": "txt",
+        "x": 770,
+        "y": 350,
+        "w": 200,
+        "h": 17,
+        "at": "15b#ningún",
+        "color": "#8C96A4",
+        "fs": 13,
+        "text": "nadie lo lee"
+       }
+      ],
+      "links": [
+       {
+        "a": "ag",
+        "b": "ex",
+        "at": "15b#entregado",
+        "color": "teal",
+        "curve": 0.15,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "15c",
+     "until": "15d",
+     "p": {
+      "nodes": [
+       {
+        "id": "it0",
+        "kind": "chip",
+        "x": 37,
+        "y": 287,
+        "w": 126,
+        "h": 26,
+        "at": "15c#tablón",
+        "label": "el tablón",
+        "color": "#7C97FF",
+        "fs": 13
+       },
+       {
+        "id": "it1",
+        "kind": "chip",
+        "x": 187,
+        "y": 287,
+        "w": 126,
+        "h": 26,
+        "at": "15c#fundador",
+        "label": "el fundador",
+        "color": "#7C97FF",
+        "fs": 13
+       },
+       {
+        "id": "it2",
+        "kind": "chip",
+        "x": 337,
+        "y": 287,
+        "w": 126,
+        "h": 26,
+        "at": "15c#reglas",
+        "label": "las reglas",
+        "color": "#7C97FF",
+        "fs": 13
+       },
+       {
+        "id": "it3",
+        "kind": "chip",
+        "x": 487,
+        "y": 287,
+        "w": 126,
+        "h": 26,
+        "at": "15c#firmas",
+        "label": "las firmas",
+        "color": "#7C97FF",
+        "fs": 13
+       },
+       {
+        "id": "it4",
+        "kind": "chip",
+        "x": 637,
+        "y": 287,
+        "w": 126,
+        "h": 26,
+        "at": "15c#sacrificios",
+        "label": "los sacrificios",
+        "color": "#7C97FF",
+        "fs": 13
+       },
+       {
+        "id": "it5",
+        "kind": "chip",
+        "x": 787,
+        "y": 287,
+        "w": 126,
+        "h": 26,
+        "at": "15c#ataque",
+        "label": "el ataque",
+        "color": "#7C97FF",
+        "fs": 13
+       },
+       {
+        "id": "fl",
+        "kind": "flag",
+        "x": 410,
+        "y": 100,
+        "w": 60,
+        "h": 90,
+        "at": "15c#aprobar",
+        "color": "amber"
+       },
+       {
+        "id": "ok",
+        "kind": "check",
+        "x": 480,
+        "y": 70,
+        "w": 80,
+        "h": 80,
+        "at": "15c#ya",
+        "color": "teal"
+       }
+      ],
+      "links": [
+       {
+        "a": "it0",
+        "b": "fl",
+        "at": "15c#aprobar",
+        "color": "#7C97FF",
+        "curve": 0.12
+       },
+       {
+        "a": "it1",
+        "b": "fl",
+        "at": "15c#aprobar",
+        "color": "#7C97FF",
+        "curve": 0.12
+       },
+       {
+        "a": "it2",
+        "b": "fl",
+        "at": "15c#aprobar",
+        "color": "#7C97FF",
+        "curve": 0.12
+       },
+       {
+        "a": "it3",
+        "b": "fl",
+        "at": "15c#aprobar",
+        "color": "#7C97FF",
+        "curve": 0.12
+       },
+       {
+        "a": "it4",
+        "b": "fl",
+        "at": "15c#aprobar",
+        "color": "#7C97FF",
+        "curve": 0.12
+       },
+       {
+        "a": "it5",
+        "b": "fl",
+        "at": "15c#aprobar",
+        "color": "#7C97FF",
+        "curve": 0.12
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "15d",
+     "until": "E15",
+     "p": {
+      "nodes": [
+       {
+        "id": "ag",
+        "kind": "acard",
+        "x": 100,
+        "y": 110,
+        "w": 130,
+        "h": 170,
+        "at": 0.1,
+        "color": "blue",
+        "label": "",
+        "fs": 1,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "q",
+        "kind": "quote",
+        "x": 280,
+        "y": 130,
+        "w": 460,
+        "h": 84,
+        "at": "15d#agente",
+        "color": "#3FD8C2",
+        "lines": [
+         "«Mi fallo no tiene consumidor.",
+         "Busco ideas.»"
+        ],
+        "fs": 20
+       },
+       {
+        "id": "pe",
+        "kind": "person",
+        "x": 770,
+        "y": 120,
+        "w": 100,
+        "h": 140,
+        "at": "15d#Ni",
+        "color": "#E7EBF1"
+       },
+       {
+        "id": "xp",
+        "kind": "cross",
+        "x": 680,
+        "y": 240,
+        "w": 40,
+        "h": 40,
+        "at": "15d#Ni+0.8",
+        "color": "#FF6E6E"
+       }
+      ],
+      "links": [
+       {
+        "a": "ag",
+        "b": "pe",
+        "at": "15d#Ni+0.3",
+        "color": "#8C96A4",
+        "curve": 0.2,
+        "dashed": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Lo que sabemos y lo que no",
+   "beats": [
+    "Dos advertencias de los propios investigadores. Pasaron seis días en OpenAI y revisaron unas mil trescientas transcripciones; había demasiado para leer, así que usaron agentes de IA para analizarlas, y avisan de que pueden contener errores. Su trabajo costó unos cuatrocientos mil dólares en créditos de API gratuitos.",
+    "Y tampoco lo saben todo: no saben por qué se apagaron, ni qué hicieron con las claves de administrador de la biblioteca que consiguieron el trece de julio."
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S16",
+     "until": "16b",
+     "p": {
+      "nodes": [
+       {
+        "id": "d6",
+        "kind": "num",
+        "x": 120,
+        "y": 60,
+        "w": 200,
+        "h": 50,
+        "at": "16a#seis",
+        "n": 6,
+        "color": "#E7EBF1",
+        "fs": 64,
+        "dur": 1.8,
+        "cap": "días en OpenAI",
+        "capc": "muted",
+        "capfs": 14
+       },
+       {
+        "id": "t13",
+        "kind": "num",
+        "x": 390,
+        "y": 60,
+        "w": 240,
+        "h": 50,
+        "at": "16a#mil",
+        "n": 1300,
+        "color": "#E7EBF1",
+        "fs": 64,
+        "dur": 2.4,
+        "cap": "transcripciones revisadas",
+        "capc": "muted",
+        "capfs": 14
+       },
+       {
+        "id": "dl",
+        "kind": "num",
+        "x": 680,
+        "y": 60,
+        "w": 260,
+        "h": 50,
+        "at": "16a#cuatrocientos",
+        "n": 400000,
+        "color": "#E7EBF1",
+        "fs": 64,
+        "dur": 2.6,
+        "cap": "dólares en créditos gratuitos",
+        "capc": "muted",
+        "capfs": 14
+       },
+       {
+        "id": "tr0",
+        "kind": "sheet",
+        "x": 70,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.00",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr1",
+        "kind": "sheet",
+        "x": 150,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.05",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr2",
+        "kind": "sheet",
+        "x": 230,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.10",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr3",
+        "kind": "sheet",
+        "x": 310,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.15",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr4",
+        "kind": "sheet",
+        "x": 390,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.20",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr5",
+        "kind": "sheet",
+        "x": 470,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.25",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr6",
+        "kind": "sheet",
+        "x": 550,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.30",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr7",
+        "kind": "sheet",
+        "x": 630,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.35",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr8",
+        "kind": "sheet",
+        "x": 710,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.40",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr9",
+        "kind": "sheet",
+        "x": 790,
+        "y": 230,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.45",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr10",
+        "kind": "sheet",
+        "x": 70,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.50",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr11",
+        "kind": "sheet",
+        "x": 150,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.55",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr12",
+        "kind": "sheet",
+        "x": 230,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.60",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr13",
+        "kind": "sheet",
+        "x": 310,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.65",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr14",
+        "kind": "sheet",
+        "x": 390,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.70",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr15",
+        "kind": "sheet",
+        "x": 470,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.75",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr16",
+        "kind": "sheet",
+        "x": 550,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.80",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr17",
+        "kind": "sheet",
+        "x": 630,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.85",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr18",
+        "kind": "sheet",
+        "x": 710,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.90",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr19",
+        "kind": "sheet",
+        "x": 790,
+        "y": 300,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+0.95",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr20",
+        "kind": "sheet",
+        "x": 70,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.00",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr21",
+        "kind": "sheet",
+        "x": 150,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.05",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr22",
+        "kind": "sheet",
+        "x": 230,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.10",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr23",
+        "kind": "sheet",
+        "x": 310,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.15",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr24",
+        "kind": "sheet",
+        "x": 390,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.20",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr25",
+        "kind": "sheet",
+        "x": 470,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.25",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr26",
+        "kind": "sheet",
+        "x": 550,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.30",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr27",
+        "kind": "sheet",
+        "x": 630,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.35",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr28",
+        "kind": "sheet",
+        "x": 710,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.40",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "tr29",
+        "kind": "sheet",
+        "x": 790,
+        "y": 370,
+        "w": 56,
+        "h": 50,
+        "at": "16a#mil+1.45",
+        "color": "#7C97FF",
+        "lines": [
+         "···"
+        ],
+        "fs": 12
+       },
+       {
+        "id": "ai",
+        "kind": "agent",
+        "x": 463,
+        "y": 453,
+        "w": 34,
+        "h": 34,
+        "at": "16a#agentes",
+        "color": "#3FD8C2"
+       },
+       {
+        "id": "lp",
+        "kind": "lupa",
+        "x": 500,
+        "y": 445,
+        "w": 50,
+        "h": 50,
+        "at": "16a#agentes+0.3",
+        "color": "teal"
+       },
+       {
+        "id": "er",
+        "kind": "question",
+        "x": 680,
+        "y": 450,
+        "w": 40,
+        "h": 40,
+        "at": "16a#errores",
+        "color": "amber"
+       },
+       {
+        "id": "er2",
+        "kind": "txt",
+        "x": 730,
+        "y": 466,
+        "w": 200,
+        "h": 17,
+        "at": "16a#errores",
+        "color": "amber",
+        "fs": 13,
+        "text": "pueden contener errores"
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "16b",
+     "until": "E16",
+     "p": {
+      "nodes": [
+       {
+        "id": "q1",
+        "kind": "question",
+        "x": 150,
+        "y": 120,
+        "w": 100,
+        "h": 100,
+        "at": "16b#apagaron",
+        "color": "amber"
+       },
+       {
+        "id": "q1l",
+        "kind": "txt",
+        "x": 130,
+        "y": 260,
+        "w": 200,
+        "h": 19,
+        "at": "16b#apagaron",
+        "color": "#8C96A4",
+        "fs": 15,
+        "text": "por qué se apagaron"
+       },
+       {
+        "id": "k1",
+        "kind": "key",
+        "x": 580,
+        "y": 120,
+        "w": 80,
+        "h": 80,
+        "at": "16b#claves",
+        "color": "amber"
+       },
+       {
+        "id": "q2",
+        "kind": "question",
+        "x": 690,
+        "y": 120,
+        "w": 60,
+        "h": 60,
+        "at": "16b#claves+0.4",
+        "color": "amber"
+       },
+       {
+        "id": "k1l",
+        "kind": "txt",
+        "x": 580,
+        "y": 260,
+        "w": 200,
+        "h": 19,
+        "at": "16b#claves",
+        "color": "#8C96A4",
+        "fs": 15,
+        "text": "claves de administrador"
+       },
+       {
+        "id": "k1d",
+        "kind": "txt",
+        "x": 600,
+        "y": 300,
+        "w": 200,
+        "h": 19,
+        "at": "16b#trece",
+        "color": "#8C96A4",
+        "fs": 15,
+        "text": "13 julio"
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Créditos",
+   "beats": [
+    "Arkinos, octubre de dos mil veintiséis. Explainer Studio."
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S17",
+     "until": "E17",
+     "p": {
+      "nodes": [
+       {
+        "id": "cr1",
+        "kind": "txt",
+        "x": 330,
+        "y": 200,
+        "w": 200,
+        "h": 58,
+        "at": "17a#Arkinos",
+        "color": "#E7EBF1",
+        "fs": 54,
+        "text": "Arkinos"
+       },
+       {
+        "id": "cr2",
+        "kind": "txt",
+        "x": 330,
+        "y": 270,
+        "w": 200,
+        "h": 30,
+        "at": "17a#Explainer",
+        "color": "teal",
+        "fs": 26,
+        "text": "Explainer Studio"
+       },
+       {
+        "id": "cr3",
+        "kind": "txt",
+        "x": 330,
+        "y": 330,
+        "w": 200,
+        "h": 22,
+        "at": "17a#octubre",
+        "color": "#8C96A4",
+        "fs": 18,
+        "text": "octubre 2026"
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    }
+   ]
   }
  ]
 }
