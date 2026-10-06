@@ -445,8 +445,8 @@ A.seal=(h,p,C)=>{
  const N=72,R0=92,J=6,sm=!!p.small,sc=sm?.36:(p.scale||1.4),cx=sm?884:480,cy=sm?476:(p.cy||222),at=C.T(p.at||0);
  let dots='';for(let i=0;i<N;i++){const a=i*2*Math.PI/N;for(let j=0;j<J;j++)dots+=`<circle class="sd" data-i="${i}" data-j="${j}" cx="${((R0+j*7)*Math.cos(a)).toFixed(1)}" cy="${((R0+j*7)*Math.sin(a)).toFixed(1)}" r="2.1" fill="#5EC8FF" opacity="0"/>`}
  const mk=`<g class="sm" opacity="0"><circle r="76" fill="none" stroke="#E8EEF7" stroke-width="3"/><circle r="86" fill="none" stroke="#E8EEF7" stroke-width="1.5" opacity=".6"/>
-  <path d="M-50 52L0 -52L50 52M-28 10L28 10" fill="none" stroke="#E8EEF7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cy="-52" r="11" fill="#E8EEF7"/><circle cx="-50" cy="52" r="8" fill="#E8EEF7"/><circle cx="50" cy="52" r="8" fill="#E8EEF7"/><circle cx="-28" cy="10" r="5" fill="#5EC8FF"/><circle cx="28" cy="10" r="5" fill="#5EC8FF"/></g>`;
+  <path d="M-33 58L0 -62L33 58M-21 14L21 14" fill="none" stroke="#E8EEF7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cy="-62" r="7" fill="#E8EEF7"/><circle cx="-33" cy="58" r="5" fill="#E8EEF7"/><circle cx="33" cy="58" r="5" fill="#E8EEF7"/><circle cx="-21" cy="14" r="3.4" fill="#5EC8FF"/><circle cx="21" cy="14" r="3.4" fill="#5EC8FF"/></g>`;
  const tx=sm?`<text class="st" x="${cx-56}" y="${cy+5}" text-anchor="end" fill="#C4CCD8" font-size="15" opacity="0">${esc(p.text||'')}</text>`
   :(()=>{const ls=String(p.text||'').split('|'),k=ls.length;return `<text class="st" x="480" y="${k>1?420:446}" text-anchor="middle" fill="#E8EEF7" font-size="${k>1?32:34}" font-weight="700" opacity="0">${ls.map((l,i)=>`<tspan x="480" dy="${i?40:0}">${esc(l)}</tspan>`).join('')}</text><text class="st2" x="480" y="${k>1?510:482}" text-anchor="middle" fill="#8C96A4" font-size="19" opacity="0">${esc(p.sub||'')}</text>`})();
  h.innerHTML=`<svg viewBox="0 0 960 540" style="width:100%;height:100%"><g transform="translate(${cx} ${cy}) scale(${sc})">${dots}${mk}</g>${tx}<rect class="bk" width="960" height="540" fill="#000" opacity="0"/></svg>`;
