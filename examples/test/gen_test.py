@@ -305,7 +305,8 @@ c4=[K('S4','E4',n,lk,fs=1.0,cam=cm)]
 # ===== scene 5 (v2) — la llave maestra =====
 YEL='amber'
 n=[W.agent_named('c3',70,120,'c03220',at=0.3,w=190,h=240,color=YEL,fs=19,ly=24,lc='#7C97FF',blink=.2,bf=3,shake=dict(at='5a#propuso+0.5',dur=1.6,amp=5)),
-   W.bulb('bu',165,72,at='5a#propuso',lit='5a#propuso+0.5',s=88),
+   ic('bu','ideaSpark',165,72,84,'5a#propuso',color='#F6B94C',blink=.65,bf=7,bat='5a#propuso+0.4',until='5a#receta'),
+   ic('bu2','ideaSpark',165,72,84,'5a#receta',color='#F6B94C'),
    W.sheet('sh',360,50,340,150,['flag = H( K₀ ⊕ f(tarea) )','f(t) = Σ aᵢ·tⁱ  (mod p)'],at='5a#receta',fs=19,color='blue'),
    N('f1','flFly',800,75,60,70,'5a#clave+0.6',color='amber'),
    W.agent_named('v8',360,300,'V8SAME',at='5c#V8SAME',w=190,h=220,color='#FF7AB8',fs=19,ly=24,lc='#7BE495',blink=.2,bf=3),

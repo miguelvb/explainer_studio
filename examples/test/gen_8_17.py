@@ -156,7 +156,7 @@ lk=[link('sa','fl','10a#entregar',color='blue',solid=True),link('fl','jd','10a#a
 c10.append(K('S10','10b',n,lk,fs=1.0))
 # 10b — an idea (thought cloud) … and the alarm (bell) hidden next to the flag
 n=[AN('a9',40,90,'49903',at=0.1,w=110,h=130,color='#F6B94C',lc='#F6B94C',until='10b#ya'),
-   ic('id','ideaSpark',175,95,44,'10b#idea',color='#F6B94C',until='10b#alarma+0.6'),
+   ic('id','ideaSpark',175,95,44,'10b#idea',color='#F6B94C',blink=.65,bf=7,until='10b#alarma+0.6'),
    N('fl','flFly',300,190,34,52,'10b#alarma',color='amber'),
    N('be','bell',350,150,34,38,'10b#alarma+0.5',color='amber',alpha=.55,shake=dict(at='10b#leía+0.2',dur=2.5,amp=3,f=30),litAt='10b#leía+0.2'),
    W.judge('jd',540,90,'',at='10b#leía',w=100,h=130,color='red',alpha=.7,fs=10),

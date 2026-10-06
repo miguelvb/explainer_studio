@@ -12610,14 +12610,27 @@
        },
        {
         "id": "bu",
-        "kind": "bulb",
-        "x": 121,
-        "y": 28,
-        "w": 88,
-        "h": 88,
+        "kind": "ideaSpark",
+        "x": 123,
+        "y": 30,
+        "w": 84,
+        "h": 84,
         "at": "5a#propuso",
-        "color": "amber",
-        "litAt": "5a#propuso+0.5"
+        "color": "#F6B94C",
+        "blink": 0.65,
+        "bf": 7,
+        "bat": "5a#propuso+0.4",
+        "until": "5a#receta"
+       },
+       {
+        "id": "bu2",
+        "kind": "ideaSpark",
+        "x": 123,
+        "y": 30,
+        "w": 84,
+        "h": 84,
+        "at": "5a#receta",
+        "color": "#F6B94C"
        },
        {
         "id": "sh",
@@ -17168,6 +17181,8 @@
         "h": 44,
         "at": "10b#idea",
         "color": "#F6B94C",
+        "blink": 0.65,
+        "bf": 7,
         "until": "10b#alarma+0.6"
        },
        {
