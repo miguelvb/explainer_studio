@@ -310,8 +310,8 @@ Capas para el vídeo 3 (Rob) — cada una pregunta: ¿qué idea de Rob se ve en 
 
 ---
 
-## 7. Preguntas abiertas para decidir antes de escribir
-1. ¿Usamos 1.200 (todo el tablón) o 700 (atacaron HF) como cifra principal? Propuesta: 1.200 y 700, con las dos explicadas.
-2. Horas: ¿mostramos UTC y entre paréntesis hora de Madrid (+2 en julio)? Propuesta: sólo UTC con la etiqueta "UTC".
-3. ¿Citar IDs largos (`zzASK_…`) o sólo humanizarlos ("pregunta a todos")? Propuesta: humanizar y mostrar uno real en pantalla.
-4. ¿Mencionamos que METR usó agentes de IA para analizar? (p.3). Propuesta: sí, una frase en el cierre.
+## 7. Decisiones (Arkinos, 6 oct 2026)
+1. Cifras: se dicen **1.200 agentes en el tablón y 700 en el ataque a Hugging Face**, explicando qué cuenta cada una.
+2. Horas: **solo UTC**, siempre con la etiqueta "UTC".
+3. Identificadores: **se muestran los largos reales** (`zzASK_…`, `zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA`…), con su traducción al español al lado.
+4. Se dice que **METR usó agentes de IA (GPT-5.6 Sol) para analizar** los datos, y que gastó unos **400.000 $ en créditos de API** (p.2 nota 3; fue un coste estimado y los créditos fueron gratuitos).
