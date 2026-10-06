@@ -13,52 +13,42 @@ def L(a,b,at=0.05,color='blue',**k): d=dict(a=a,b=b,at=at,color=color); d.update
 def K(at,until,nodes,links=None,fs=1.5):
     return dict(a='world',at=at,until=until,p=dict(nodes=nodes,links=links or [],fs=fs),bg=True,fade=[0.5,0.5])
 # ===== scene 0 =====
-BC=lambda at=0.05,**k: box('BC',50,70,700,400,at,color='teal',**k)
-def grid12(x0=120,y0=130,dx=110,dy=110,cols=4):
-    return [(x0+dx*(i%cols),y0+dy*(i//cols)) for i in range(12)]
-G=grid12()
-asset=lambda color='amber',**k: srv('art',560,215,150,110,color=color,**k)
+import math
+AX,AY=400,270
+BC=lambda at=0.05,**k: box('BC',120,100,390,340,at,color='teal',**k)
+def ring():
+    P=[]
+    for j in range(7): a=math.radians(-68+j*136/6); P.append((AX-70-135*math.cos(a),AY+135*math.sin(a)))
+    for j in range(5): a=math.radians(-76+j*38); P.append((AX-70-75*math.cos(a)*0.9,AY+78*math.sin(a)))
+    return P
+G=ring()
+asset=lambda color='amber',**k: srv('art',AX-45,AY-32,90,64,color=color,**k)
+HF=lambda at,**k: N('hf','victim',710,AY-40,190,80,at,color='red',label='Hugging Face',**k)
+def AG(i,at=0.05,**k): x,y=G[i]; return [sc(f's{i}',x,y,at,s=46,**k),ag(f'a{i}',x,y,at,s=26,**k)]
 c0=[]
-# a-b : one agent, one link
-c0.append(K('S0','0c',[BC(),sc('s0',G[0][0],G[0][1]+60,s=100),ag('a0',G[0][0],G[0][1]+60,s=54),asset(at='0a#mensaje'),],
- [L('a0','art','0a#mensaje',bi=True)]))
-# c : agents appear accelerating, then the big container breaks and links reach Hugging Face
+c0.append(K('S0','0c',[BC(),*AG(0),asset(at='0a#mensaje')],[L('a0','art','0a#mensaje',bi=True)],fs=1.2))
 offs=[0.0,0.9,1.7,2.4,3.0,3.5,3.9,4.2,4.45,4.65,4.8]
 n=[BC(until='0d'),asset(until='0d')]
 lk=[]
-n+= [sc('s0',G[0][0],G[0][1]+60,s=100,until='0d'),ag('a0',G[0][0],G[0][1]+60,s=54,until='0d')]
-lk.append(L('a0','art',0.05,bi=True,until='0d'))
+n+=AG(0,until='0d'); lk.append(L('a0','art',0.05,bi=True,until='0d'))
 for i in range(1,12):
-    x,y=G[i][0],G[i][1]+60 if i<4 else G[i][1]+60
-    t=f'0c#respondió+{offs[i-1]}' if i>1 else '0c#respondió'
-    n+= [sc(f's{i}',x,y,t,s=100,until='0d'),ag(f'a{i}',x,y,t,s=54,color='blue',until='0d')]
-    lk.append(L(f'a{i}','art',t,bi=(i%3==0),until='0d'))
-n+= [N('hf','victim',800,205,130,100,'0c#Hugging',color='red',until='0d'),ic('brk','cross',752,260,34,'0c#atacando',color='red',until='0d'),N('exit','chip',736,258,4,4,'0c#atacando',label='',color='red',until='0d')]
-for i in (2,5,9):
-    lk.append(L(f'a{i}','hf','0c#atacando+%.1f'%(0.2*i),color='red',until='0d'))
-n+= [N('n700','num',560,80,200,50,'0c#setecientas',n=700,color='red',fs=36,dur=3,until='0d')]
-c0.append(K('0c','0d',n,lk))
-# d-e : researchers approach the container
-n2=[BC(),asset(),N('hf','victim',800,205,130,100,0.05,color='red'),ic('brk','cross',752,260,34,0.05,color='red')]
-lk2=[]
-for i in range(12):
-    x,y=G[i][0],G[i][1]+60
-    n2+= [sc(f's{i}',x,y,s=100),ag(f'a{i}',x,y,s=54)]
-    lk2.append(L(f'a{i}','art',0.05,bi=(i%3==0)))
-for i in (2,5,9): lk2.append(L(f'a{i}','hf',0.05,color='red'))
-n2+= [ic('p1','person',60,150,52,'0d#Cómo',color='teal',move=[dict(at='0d#Cómo',x=34,y=120,dur=2)]),ic('p2','person',60,380,52,'0d#Cómo+0.4',color='blue',move=[dict(at='0d#Cómo+0.4',x=34,y=350,dur=2)])]
-c0.append(K('0d','0e',n2,lk2))
-n3=[BC(),asset(),N('hf','victim',800,205,130,100,0.05,color='red'),ic('brk','cross',752,260,34,0.05,color='red')]
-lk3=[]
-for i in range(12):
-    x,y=G[i][0],G[i][1]+60
-    n3+= [sc(f's{i}',x,y,s=100),ag(f'a{i}',x,y,s=54)]
-    lk3.append(L(f'a{i}','art',0.05,bi=(i%3==0)))
-n3+= [ic('p1','person',34+26,120+26,52,0.05,color='teal'),ic('p2','person',34+26,350+26,52,0.05,color='blue'),
-      ic('ey','eye',400,270,120,'0e#leyeron',color='amber'),
-      ic('doc','doc',830,420,54,'0e#publicaron',color='blue',tag='26 ago'),ch('utc',100,500,90,'UTC','0e#UTC',color='muted')]
-lk3.append(L('p1','ey','0e#leyeron',color='teal',bi=False))
-c0.append(K('0e','E0',n3,lk3))
+    t=f'0c#respondió+{offs[i-1]}'
+    n+=AG(i,t,until='0d'); lk.append(L(f'a{i}','art',t,bi=(i%3==0),until='0d'))
+n+= [ic('brk','cross',510,AY,34,'0c#atacando',color='red',until='0d'),HF('0c#Hugging',until='0d'),
+     N('n700','num',600,110,200,50,'0c#setecientas',n=700,color='red',fs=36,dur=3,until='0d')]
+for i in (1,4,7,10): lk.append(L(f'a{i}','hf','0c#atacando+%.1f'%(0.2*i),color='red',until='0d'))
+c0.append(K('0c','0d',n,lk,fs=1.2))
+def full(extra=()):
+    n=[BC(),asset(),ic('brk','cross',510,AY,34,0.05,color='red'),HF(0.05)]; lk=[]
+    for i in range(12): n+=AG(i); lk.append(L(f'a{i}','art',0.05,bi=(i%3==0)))
+    for i in (1,4,7,10): lk.append(L(f'a{i}','hf',0.05,color='red'))
+    return n+list(extra),lk
+n2,lk2=full([ic('p1','person',-30,170,64,'0d#Cómo',color='teal',move=[dict(at='0d#Cómo',x=40,y=140,dur=2.5)]),ic('p2','person',-30,360,64,'0d#Cómo+0.4',color='blue',move=[dict(at='0d#Cómo+0.4',x=40,y=330,dur=2.5)])])
+c0.append(K('0d','0e',n2,lk2,fs=1.2))
+n3,lk3=full([ic('p1','person',72,172,64,0.05,color='teal'),ic('p2','person',72,362,64,0.05,color='blue'),
+      ic('ey','eye',315,270,110,'0e#leyeron',color='amber'),
+      ic('doc','doc',800,430,54,'0e#publicaron',color='blue',tag='26 ago'),ch('utc',900,500,90,'UTC','0e#UTC',color='muted')])
+c0.append(K('0e','E0',n3,lk3,fs=1.2))
 # ===== scene 1 =====
 c1=[]
 BC1=lambda at=0.05,**k: box('BC',50,60,720,430,at,color='teal',**k)
