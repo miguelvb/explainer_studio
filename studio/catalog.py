@@ -104,7 +104,7 @@ ASSETS = {
  "source": dict(kind="overlay", use="Small source/citation card bottom-centre.", required=["title"], props=dict(title="what the source is", by="author / date", at="appear"), example=dict(title="Mishap Investigation Board report", by="NASA, Nov 1999", at=0.5)),
  "lower": dict(kind="overlay", use="Lower-third name tag (name + role) and/or a small source stamp line.", props=dict(name="name", sub="role", color="colour", pos="left|right", at="appear", src="list of small source lines", srcTop="put src at top", srcAt="when src appears"),
    example=dict(name="Mars Climate Orbiter", sub="NASA / JPL, 1998", color="blue", at=0.5)),
- "stamp": dict(kind="overlay", use="Big verdict stamp (CONFIRMED / FAILED / FALSE) with optional sub-line.", required=["text"], props=dict(text="stamp word(s)", sub="sub-line", align="center|flex-start|flex-end", style="css", at="appear"), example=dict(text="LOST", sub="orbit insertion, Sep 23 1999", at=0.5)),
+ "stamp": dict(deprecated=True, kind="overlay", use="Big verdict stamp (CONFIRMED / FAILED / FALSE) with optional sub-line.", required=["text"], props=dict(text="stamp word(s)", sub="sub-line", align="center|flex-start|flex-end", style="css", at="appear"), example=dict(text="LOST", sub="orbit insertion, Sep 23 1999", at=0.5)),
  "note": dict(kind="overlay", use="Small annotation panel anywhere on screen.", required=["text"], props=dict(text="plain text", css="position css, default 'left:4cqw;bottom:4cqw'", size="cqw font size", color="colour", mono="monospace", at="appear"), example=dict(text="1 lbf·s = 4.448 N·s", mono=True, at=0.5)),
 }
 # 'from_' is written 'from' in JSON (python keyword workaround)

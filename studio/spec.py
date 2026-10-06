@@ -128,6 +128,7 @@ def validate(st, timings=None):
             a = c.get('a')
             if a not in ASSETS: E.append(f'{ct}: unknown asset "{a}". Available: {", ".join(ASSETS)}'); continue
             cat = ASSETS[a]
+            if cat.get('deprecated'): W.append(f'{ct}: asset "{a}" is deprecated - do not use in new films')
             for r in cat.get('required', []):
                 if r not in c['p']: E.append(f'{ct}: missing required prop "{r}"')
             for k in c['p']:

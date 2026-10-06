@@ -157,21 +157,6 @@
      ]
     },
     {
-     "a": "stamp",
-     "at": "2b#trampa",
-     "until": "2c",
-     "p": {
-      "text": "TRAMPA EN UN TEST",
-      "sub": "eso fue todo",
-      "at": 0.2
-     },
-     "bg": false,
-     "fade": [
-      0.5,
-      0
-     ]
-    },
-    {
      "a": "quote",
      "at": "2c",
      "until": "2d",
@@ -727,21 +712,6 @@
      ]
     },
     {
-     "a": "stamp",
-     "at": "5l",
-     "until": "5m",
-     "p": {
-      "text": "LA TENDENCIA",
-      "sub": "cae más rápido de lo esperado",
-      "at": 0.2
-     },
-     "bg": false,
-     "fade": [
-      0.5,
-      0.4
-     ]
-    },
-    {
      "a": "cards",
      "at": "5m",
      "until": "5n",
@@ -891,21 +861,6 @@
      ]
     },
     {
-     "a": "stamp",
-     "at": "6d",
-     "until": "6e",
-     "p": {
-      "text": "PODRÍAN ANTICIPAR A LAS PERSONAS",
-      "sub": "cuando planifiquen mejor",
-      "at": 0.2
-     },
-     "bg": false,
-     "fade": [
-      0.5,
-      0.4
-     ]
-    },
-    {
      "a": "contrast",
      "at": "6e",
      "until": "6f",
@@ -1025,21 +980,6 @@
      ]
     },
     {
-     "a": "stamp",
-     "at": "7c",
-     "until": "7d",
-     "p": {
-      "text": "CONVERGENCIA INSTRUMENTAL",
-      "sub": "más libertad y recursos, sea cual sea el objetivo",
-      "at": 0.2
-     },
-     "bg": false,
-     "fade": [
-      0.5,
-      0.4
-     ]
-    },
-    {
      "a": "hoard",
      "at": "7d",
      "until": "E7",
@@ -1063,21 +1003,6 @@
      "fade": [
       0.5,
       0.5
-     ]
-    },
-    {
-     "a": "stamp",
-     "at": "7e",
-     "until": "E7",
-     "p": {
-      "text": "ESCAPE Y RECURSOS POR REFLEJO",
-      "sub": "justo cuando se debilita la vigilancia",
-      "at": 0.2
-     },
-     "bg": false,
-     "fade": [
-      0.5,
-      0
      ]
     }
    ]
@@ -1297,21 +1222,6 @@
      ]
     },
     {
-     "a": "stamp",
-     "at": "9c",
-     "until": "9d",
-     "p": {
-      "text": "UNA PRUEBA QUE NO IMPORTA",
-      "sub": "y una oleada de delitos",
-      "at": 0.2
-     },
-     "bg": false,
-     "fade": [
-      0.5,
-      0.4
-     ]
-    },
-    {
      "a": "proportion",
      "at": "9d",
      "until": "9e",
@@ -1417,21 +1327,6 @@
      "fade": [
       0.5,
       0.5
-     ]
-    },
-    {
-     "a": "stamp",
-     "at": "10c#posibilidad",
-     "until": "10d",
-     "p": {
-      "text": "UNA POSIBILIDAD SERIA",
-      "sub": "en uno o dos años",
-      "at": 0.2
-     },
-     "bg": false,
-     "fade": [
-      0.5,
-      0
      ]
     },
     {

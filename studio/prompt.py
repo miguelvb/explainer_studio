@@ -60,6 +60,7 @@ Anchors: `"2c"` start of beat 2c · `">2c"` end of beat 2c · `"2c#word"` the mo
 def catalog_md():
     out = ['## Asset catalog (the ONLY assets you may use)', f'Colours: {", ".join(COLORS)}. Text-segment colours: {", ".join(SEG)}.']
     for k, a in ASSETS.items():
+        if a.get('deprecated'): continue   # kept only so old projects still render
         out.append(f'\n### `{k}` — {a["kind"]}\n{a["use"]}  \nRequired: {", ".join(a.get("required", [])) or "none"}  \nProps: ' + '; '.join(f'`{p}` {d}' for p, d in a['props'].items()))
         out.append('Example: `' + json.dumps({"a": k, "p": a["example"]}, ensure_ascii=False) + '`')
     return '\n'.join(out)
