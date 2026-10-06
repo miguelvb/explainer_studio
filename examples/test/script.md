@@ -1,4 +1,4 @@
-# Test · Cuatro días de julio (escenas 0–3)
+# Test · escenas 0–3
 
 *Voice-over script. Language: es · voice: nova · duration: ~4:57 · generated from story.json, do not edit here.*
 

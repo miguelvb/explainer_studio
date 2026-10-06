@@ -544,7 +544,7 @@ A.world=(h,p,C)=>{
    if(N[i].kind==='num'){const q=e.querySelector('.nm'),a=ease(pr(t,C.T(N[i].at||0),N[i].dur||2));q.textContent=(N[i].pre||'')+fmt(Math.round(lerp(N[i].from||0,N[i].n||0,a)))+(N[i].suf||'')}e.style.filter=on&&act?'drop-shadow(0 0 7px '+hex(N[i].color||'blue')+')':'none'});
   lk.forEach((e,i)=>{const on=!act||act.ids.includes(Lk[i].a)&&act.ids.includes(Lk[i].b);e.style.opacity=ease(pr(t,la[i],.5))*(on?1:.25)*(1-ease(pr(t,lu[i],.5)))});
   Lk.forEach((l,i)=>{const [a,b]=geo[i];if(t<la[i]+.4){pl[i].style.opacity=0;pl2[i].style.opacity=0;return}const sp=l.speed||.45,tt=t-la[i]-.4;
-   [pl[i],pl2[i]].forEach((c,j)=>{const u=((tt*sp+j*.5)%1);c.setAttribute('cx',lerp(a[0],b[0],u));c.setAttribute('cy',lerp(a[1],b[1],u));c.style.opacity=Math.sin(u*Math.PI)*.95*ease(pr(t,la[i]+.4,.4))*(1-ease(pr(t,lu[i],.5)))})});
+   [pl[i],pl2[i]].forEach((c,j)=>{const u=((tt*sp+j*.5)%1),w=(l.bi&&j)?1-u:u;c.setAttribute('cx',lerp(a[0],b[0],w));c.setAttribute('cy',lerp(a[1],b[1],w));c.style.opacity=Math.sin(u*Math.PI)*.95*ease(pr(t,la[i]+.4,.4))*(1-ease(pr(t,lu[i],.5)))})});
   in2.forEach(e=>{const i=+e.dataset.i;e.style.opacity=ease(pr(t,ia[i],.6))})};
  upd.pos=id=>{const n=byId[id];if(!n)return[50,50];const [x,y]=ctr(n);return[x/9.6,y/5.4]};
  return upd};
