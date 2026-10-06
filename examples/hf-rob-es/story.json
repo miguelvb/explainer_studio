@@ -61,14 +61,14 @@
    ],
    "cues": [
     {
-     "a": "network",
+     "a": "dotfield",
      "at": "S0",
      "until": "S0+2.4",
      "p": {
       "at": 0.3,
-      "dur": 12,
-      "to": 90,
-      "unit": "agentes",
+      "dur": 2.4,
+      "to": 1200,
+      "unit": "copias",
       "count": false
      },
      "bg": true
@@ -140,7 +140,7 @@
    ],
    "cues": [
     {
-     "a": "network",
+     "a": "dotfield",
      "at": "S2",
      "until": "2c",
      "p": {

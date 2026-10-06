@@ -98,6 +98,24 @@ A.network=(h,p,C)=>{
   for(let i=0;i<n;i++){const fresh=i==n-1&&g<1;x.fillStyle=fresh?'#3FD8C2':'#7C97FF';x.beginPath();x.arc(...N[i],fresh?8:5,0,6.283);x.fill()}
   if(p.count!==false){x.fillStyle='#E7EBF1';x.font='600 34px "DejaVu Sans Mono",monospace';x.textAlign='right';x.fillText(n+' '+unit,1232,66);x.textAlign='left'}}};
 
+/* ---------- dotfield: an (almost) endless grid of dots filling the frame; a counter climbs; optional highlighted dots ---------- */
+A.dotfield=(h,p,C)=>{
+ h.innerHTML='<canvas width="1280" height="720" style="width:100%;height:100%"></canvas>';
+ const cv2=h.querySelector('canvas'),x=cv2.getContext('2d');
+ const cols=p.cols||64,rows=Math.round(cols*9/16*1.0),W=1280,Hh=720,mx=40,my=36,dx=(W-2*mx)/(cols-1),dy=(Hh-2*my)/(rows-1),tot=cols*rows;
+ const at=C.T(p.at||0),dur=p.dur||8,from=p.from||0,to=p.to||tot,unit=p.unit||'',hi=(p.highlight||[]).map(q=>({f:q.from??0,t:q.to??1,c:hex(q.color||'amber'),a:C.T(q.at||0)}));
+ const ord=[];for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const d=Math.hypot((c-cols/2)/cols*1.6,(r-rows/2)/rows);ord.push([c,r,d+H(r*cols+c,9)*.12])}
+ ord.sort((a,b)=>a[2]-b[2]);const rank=new Float32Array(tot);ord.forEach((o,i)=>rank[o[1]*cols+o[0]]=i/tot);
+ return t=>{
+  const g=ease(pr(t,at,dur)),shown=g*(p.fill??1);x.clearRect(0,0,W,Hh);
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const k=r*cols+c,u=clamp((shown-rank[k])*14);if(u<=0)continue;
+   const px=mx+c*dx,py=my+r*dy,edge=Math.min(1,Math.min(c,cols-1-c,r,rows-1-r)/4),pul=.75+.25*Math.sin(t*1.6+H(k,3)*6.28);
+   let col='#7C97FF',rad=3.2*(.6+.4*u),al=.85*pul*(.35+.65*edge)*u;
+   for(const q of hi){if(t>=q.a&&rank[k]>=q.f&&rank[k]<q.t){col=q.c;rad*=1.5;al=Math.min(1,al*1.5+.3)}}
+   x.globalAlpha=al;x.fillStyle=col;x.beginPath();x.arc(px,py,rad,0,6.283);x.fill()}
+  x.globalAlpha=1;
+  if(p.count!==false){const n=Math.round(lerp(from,to,g));x.fillStyle='#E7EBF1';x.font='600 54px "DejaVu Sans Mono",monospace';x.textAlign='center';x.shadowColor='#0E1218';x.shadowBlur=18;x.fillText(fmt(n)+(unit?' '+unit:''),W/2,Hh/2+18);x.shadowBlur=0;x.textAlign='left'}}};
+
 /* ---------- population: grid of many units, some flagged, optionally feeding a shared resource ---------- */
 A.population=(h,p,C)=>{
  const share=p.flaggedShare??.35;

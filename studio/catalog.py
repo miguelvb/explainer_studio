@@ -23,7 +23,7 @@ ASSETS = {
  "chips": dict(kind="stage", use="Entities as pills carrying the theme mark (actors, agents, systems, teams), grouped in labelled rows.", required=["rows"],
    props=dict(rows="[[label,colour,[names],flag]] — flag=true/'text' draws a red flagged badge", big="larger pills", stag="stagger secs", at="start", style="css for container"),
    example=dict(rows=[["Ground team", "blue", ["Navigation", "Flight dynamics"]], ["Vendor", "amber", ["Lockheed software"]]])),
- "network": dict(kind="stage", use="A graph of nodes joining one by one with a counter ('N units').", props=dict(at="start", dur="growth seconds", from_="start count", to="end count (max 90)", unit="counter noun", packets="false to hide moving packets", count="false to hide the corner counter"),
+ "network": dict(deprecated=True, kind="stage", use="A graph of nodes joining one by one with a counter ('N units').", props=dict(at="start", dur="growth seconds", from_="start count", to="end count (max 90)", unit="counter noun", packets="false to hide moving packets", count="false to hide the corner counter"),
    example=dict(at=0.5, dur=8, to=60, unit="agents")),
  "population": dict(kind="stage", use="Grid of many units, a share flagged/changed, optionally all feeding one shared resource (a 'tap').",
    props=dict(label="top label", flaggedShare="0-1", appear="when grid appears", walls="when cells flash (isolation)", flag="when flagged cells turn red", flagLegend="legend after flagging", tap="label of the shared resource bar", tapAt="when it appears", packets="when dots start flowing to the resource"),
@@ -96,6 +96,9 @@ ASSETS = {
  "world": dict(kind="stage", use="One persistent diagram (sandbox, agent, server, globe, victim, box nodes; links with travelling pulses; spotlight dims the rest). Pair with the cue-level camera `cam` for cinematic moves: zoom/pan/tilt between nodes by id. Each cam keyframe `at` is the moment the camera ARRIVES (anchor it to the spoken word); it starts moving `dur` seconds before.", required=["nodes"],
    props=dict(nodes="[{id,kind(sandbox|agent|globe|server|victim|box),x,y,w,h in a 960x540 canvas,label,sub,color,at,inner:[labels],innerAt,open}]", links="[{a,b,at,color,lock,solid,speed}]", spot="[{at,ids:[...]}] nodes outside ids dim", ghost="0-1: not-yet-shown nodes stay faintly visible so the camera has something to travel to"),
    example=dict(nodes=[{"id":"s","kind":"sandbox","x":60,"y":150,"w":260,"h":240,"label":"sandbox","at":0.3},{"id":"g","kind":"globe","x":720,"y":60,"w":110,"h":110,"label":"Internet","at":1}], links=[{"a":"s","b":"g","at":2,"lock":True}])),
+ "dotfield": dict(kind="stage", use="An almost endless grid of dots that fills the frame outward from the centre while a big counter climbs. For 'many copies / many agents / a crowd'. Optional highlighted slices of the field.", required=[],
+   props=dict(at="start", dur="fill seconds", cols="dots per row (default 64)", from_="counter start", to="counter end", unit="counter noun", count="false hides the counter", highlight="[{from,to (0-1 slice of the fill order),color,at}] recolour part of the field"),
+   example=dict(at=0.3, dur=9, to=1200, unit="copias")),
  "facts": dict(kind="stage", use="A row of 2-5 illustrated cards (icon, title, sub-line), each popping in on its own cue. For a list of key facts or findings shown graphically.", required=["items"],
    props=dict(head="small heading", items="[{icon(wall|target|log|org|mute),title,sub,color}] \\n allowed in title/sub", at="default start", ats="one time/anchor per card", caption="line at the bottom", captionAt="when"),
    example=dict(head="WHAT THEY DID", items=[{"icon": "wall", "title": "Broke out", "sub": "of isolation", "color": "red"}, {"icon": "target", "title": "Hit a third party", "sub": "", "color": "amber"}], ats=[1, 2.5])),
@@ -109,6 +112,7 @@ ASSETS = {
 }
 # 'from_' is written 'from' in JSON (python keyword workaround)
 ASSETS["network"]["props"]["from"] = ASSETS["network"]["props"].pop("from_")
+ASSETS["dotfield"]["props"]["from"] = ASSETS["dotfield"]["props"].pop("from_")
 
 RECTS = {"full": [0, 0, 100, 100], "top": [0, 0, 100, 50], "bottom": [0, 50, 100, 50], "left": [0, 0, 50, 100], "right": [50, 0, 50, 100]}
 
