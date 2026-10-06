@@ -177,9 +177,30 @@ cm=[dict(at='S1',x=50,y=50,z=1),dict(at='1c#caja',x=50,y=50,z=1),dict(at='1c#caj
 # the same agent card fades out with the others
 n[0]['until']='1c#caja'
 c1.append(K('S1','E1',n,lk,fs=1.0,cam=cm))
+# ===== scene 2 (v2) =====
+c2=[]
+EX=(340,68,300,404); CELL=26; MX=20; MY=20
+fc=(EX[0]+MX+CELL*9+CELL/2, EX[1]+MY+CELL*13+CELL/2)           # flag cell centre
+ey=EX[1]+MY+CELL*6+CELL/2                                        # entry hole height
+n=[N('ck','txt',30,30,400,32,0.2,color='teal',fs=24,type=22,text='07 julio 2026'),
+   W.agent_named('v8',60,150,'V8SAME',at=0.4,until='2e#atacar'),
+   W.agent_named('ph',60,150,'PHASEONE10841',at='2e#atacar',blink=.28),
+   N('ex1','exam',*EX,'2a#examen',color='blue',maze=dict(cell=CELL,cols=10,rows=14,entry=6,seed=11),solve=dict(at='2b#aprovechar+1.0',dur=5),until='2d#servía'),
+   N('ex2','exam',*EX,'2d#servía',color='red',maze=dict(on=False,cell=CELL,cols=10,rows=14,box=(13,9)),tag='ARV010841',tagc='red',tagfs=16),
+   N('fl','flag',fc[0]-16,fc[1]-19,32,38,'2a#examen',color='amber',blink=.7,bf=9,bat='2b#bandera'),
+   N('ho','hole',EX[0]-11,ey-11,22,22,'2b#fallo',color='red'),
+   N('ho2','hole',EX[0]+150-11,EX[1]-11,22,22,'2c#Cualquier',color='red',until='2d#servía'),
+   ic('ok','check',EX[0]-34,ey-34,40,'2c#asignado',color='teal',until='2d#servía'),
+   ic('no','cross',EX[0]+150,EX[1]+34,36,'2c#suspenso',color='red',until='2d#servía'),
+   ic('xf','cross',fc[0],fc[1],60,'2e#imposible',color='red')]
+n[1]['blink']=.28; n[1]['bat']='2b#bandera'
+lk=[W.link('v8','ho','2b#aprovechar',color='teal',curve=.1,until='2e#atacar'),W.link('ph','ho','2e#atacar+0.5',color='teal',curve=.1),
+    W.link('v8','ho2','2c#Cualquier',color='red',curve=.1,until='2d#servía')]
+c2.append(K('S2','E2',n,lk,fs=1.0))
 C=[c0,c1,c2,c3]
 B=[list(sc_['beats']) for sc_ in scenes]
 B[1]=B[1][:4]
+B[2][4]='A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible.'
 B[3]=B[3][:3]+['Y no sería la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron; el seis, OpenAI puso otra nueva y vacía, y los mensajes desaparecieron.']+B[3][3:]
 B[1]=B[1][:4]
 out=[dict(title=sc_['title'],beats=B[i],cues=C[i]) for i,sc_ in enumerate(scenes)]

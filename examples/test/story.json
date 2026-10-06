@@ -6653,752 +6653,196 @@
     "Cada agente recibía un programa real con un fallo de seguridad, y una sola misión: aprovechar ese fallo para entrar en el programa y coger un código secreto que había dentro. Ese código se llama la bandera, y es la prueba de que has entrado.",
     "Las reglas eran estrictas: había que usar el fallo asignado, y solo ese. Cualquier otro camino, decían las instrucciones, contaría como suspenso.",
     "El problema es que, en muchas tareas, ese fallo no servía para nada. Los autores del examen calculan que entre el treinta y el cuarenta por ciento eran imposibles tal como estaban escritas: como un examen con una pregunta mal planteada.",
-    "A un agente le tocó el fallo ARV010841. Lo que ese fallo producía se tiraba a la basura: ninguna otra parte del programa lo leía, así que no había forma de llegar a la bandera."
+    "A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible."
    ],
    "cues": [
     {
      "a": "world",
      "at": "S2",
-     "until": "2b",
-     "p": {
-      "nodes": [
-       {
-        "id": "EX",
-        "kind": "sandbox",
-        "x": 50,
-        "y": 70,
-        "w": 860,
-        "h": 400,
-        "at": "2a#ExploitGym",
-        "color": "amber",
-        "label": "ExploitGym"
-       },
-       {
-        "id": "d",
-        "kind": "chip",
-        "x": 860,
-        "y": 487,
-        "w": 80,
-        "h": 26,
-        "at": 0.2,
-        "label": "7 jul",
-        "color": "muted"
-       },
-       {
-        "id": "s0",
-        "kind": "sandbox",
-        "x": 75,
-        "y": 95,
-        "w": 90,
-        "h": 90,
-        "at": "2a#lanzar",
-        "color": "teal"
-       },
-       {
-        "id": "a0",
-        "kind": "agent",
-        "x": 97,
-        "y": 117,
-        "w": 46,
-        "h": 46,
-        "at": "2a#lanzar",
-        "color": "blue"
-       },
-       {
-        "id": "pr0",
-        "kind": "box",
-        "x": 270,
-        "y": 102,
-        "w": 130,
-        "h": 76,
-        "at": "2a#lanzar",
-        "color": "blue",
-        "label": ""
-       },
-       {
-        "id": "sl0",
-        "kind": "chip",
-        "x": 265,
-        "y": 116,
-        "w": 6,
-        "h": 48,
-        "at": "2a#lanzar",
-        "label": "",
-        "color": "red"
-       },
-       {
-        "id": "s1",
-        "kind": "sandbox",
-        "x": 475,
-        "y": 95,
-        "w": 90,
-        "h": 90,
-        "at": "2a#lanzar+0.5",
-        "color": "teal"
-       },
-       {
-        "id": "a1",
-        "kind": "agent",
-        "x": 497,
-        "y": 117,
-        "w": 46,
-        "h": 46,
-        "at": "2a#lanzar+0.5",
-        "color": "blue"
-       },
-       {
-        "id": "pr1",
-        "kind": "box",
-        "x": 670,
-        "y": 102,
-        "w": 130,
-        "h": 76,
-        "at": "2a#lanzar+0.5",
-        "color": "blue",
-        "label": ""
-       },
-       {
-        "id": "sl1",
-        "kind": "chip",
-        "x": 665,
-        "y": 116,
-        "w": 6,
-        "h": 48,
-        "at": "2a#lanzar+0.5",
-        "label": "",
-        "color": "red"
-       },
-       {
-        "id": "s2",
-        "kind": "sandbox",
-        "x": 75,
-        "y": 225,
-        "w": 90,
-        "h": 90,
-        "at": "2a#lanzar+1.0",
-        "color": "teal"
-       },
-       {
-        "id": "a2",
-        "kind": "agent",
-        "x": 97,
-        "y": 247,
-        "w": 46,
-        "h": 46,
-        "at": "2a#lanzar+1.0",
-        "color": "blue"
-       },
-       {
-        "id": "pr2",
-        "kind": "box",
-        "x": 270,
-        "y": 232,
-        "w": 130,
-        "h": 76,
-        "at": "2a#lanzar+1.0",
-        "color": "blue",
-        "label": ""
-       },
-       {
-        "id": "sl2",
-        "kind": "chip",
-        "x": 265,
-        "y": 246,
-        "w": 6,
-        "h": 48,
-        "at": "2a#lanzar+1.0",
-        "label": "",
-        "color": "red"
-       },
-       {
-        "id": "s3",
-        "kind": "sandbox",
-        "x": 475,
-        "y": 225,
-        "w": 90,
-        "h": 90,
-        "at": "2a#lanzar+1.5",
-        "color": "teal"
-       },
-       {
-        "id": "a3",
-        "kind": "agent",
-        "x": 497,
-        "y": 247,
-        "w": 46,
-        "h": 46,
-        "at": "2a#lanzar+1.5",
-        "color": "blue"
-       },
-       {
-        "id": "pr3",
-        "kind": "box",
-        "x": 670,
-        "y": 232,
-        "w": 130,
-        "h": 76,
-        "at": "2a#lanzar+1.5",
-        "color": "blue",
-        "label": ""
-       },
-       {
-        "id": "sl3",
-        "kind": "chip",
-        "x": 665,
-        "y": 246,
-        "w": 6,
-        "h": 48,
-        "at": "2a#lanzar+1.5",
-        "label": "",
-        "color": "red"
-       },
-       {
-        "id": "s4",
-        "kind": "sandbox",
-        "x": 75,
-        "y": 355,
-        "w": 90,
-        "h": 90,
-        "at": "2a#lanzar+2.0",
-        "color": "teal"
-       },
-       {
-        "id": "a4",
-        "kind": "agent",
-        "x": 97,
-        "y": 377,
-        "w": 46,
-        "h": 46,
-        "at": "2a#lanzar+2.0",
-        "color": "blue"
-       },
-       {
-        "id": "pr4",
-        "kind": "box",
-        "x": 270,
-        "y": 362,
-        "w": 130,
-        "h": 76,
-        "at": "2a#lanzar+2.0",
-        "color": "blue",
-        "label": ""
-       },
-       {
-        "id": "sl4",
-        "kind": "chip",
-        "x": 265,
-        "y": 376,
-        "w": 6,
-        "h": 48,
-        "at": "2a#lanzar+2.0",
-        "label": "",
-        "color": "red"
-       },
-       {
-        "id": "s5",
-        "kind": "sandbox",
-        "x": 475,
-        "y": 355,
-        "w": 90,
-        "h": 90,
-        "at": "2a#lanzar+2.5",
-        "color": "teal"
-       },
-       {
-        "id": "a5",
-        "kind": "agent",
-        "x": 497,
-        "y": 377,
-        "w": 46,
-        "h": 46,
-        "at": "2a#lanzar+2.5",
-        "color": "blue"
-       },
-       {
-        "id": "pr5",
-        "kind": "box",
-        "x": 670,
-        "y": 362,
-        "w": 130,
-        "h": 76,
-        "at": "2a#lanzar+2.5",
-        "color": "blue",
-        "label": ""
-       },
-       {
-        "id": "sl5",
-        "kind": "chip",
-        "x": 665,
-        "y": 376,
-        "w": 6,
-        "h": 48,
-        "at": "2a#lanzar+2.5",
-        "label": "",
-        "color": "red"
-       }
-      ],
-      "links": [
-       {
-        "a": "a0",
-        "b": "pr0",
-        "at": "2a#lanzar",
-        "color": "blue",
-        "bi": true,
-        "speed": 0.4
-       },
-       {
-        "a": "a1",
-        "b": "pr1",
-        "at": "2a#lanzar+0.5",
-        "color": "blue",
-        "bi": true,
-        "speed": 0.4
-       },
-       {
-        "a": "a2",
-        "b": "pr2",
-        "at": "2a#lanzar+1.0",
-        "color": "blue",
-        "bi": true,
-        "speed": 0.4
-       },
-       {
-        "a": "a3",
-        "b": "pr3",
-        "at": "2a#lanzar+1.5",
-        "color": "blue",
-        "bi": true,
-        "speed": 0.4
-       },
-       {
-        "a": "a4",
-        "b": "pr4",
-        "at": "2a#lanzar+2.0",
-        "color": "blue",
-        "bi": true,
-        "speed": 0.4
-       },
-       {
-        "a": "a5",
-        "b": "pr5",
-        "at": "2a#lanzar+2.5",
-        "color": "blue",
-        "bi": true,
-        "speed": 0.4
-       }
-      ],
-      "fs": 1.5
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "world",
-     "at": "2b",
-     "until": "2c",
-     "p": {
-      "nodes": [
-       {
-        "id": "s",
-        "kind": "sandbox",
-        "x": 85,
-        "y": 215,
-        "w": 110,
-        "h": 110,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "a",
-        "kind": "agent",
-        "x": 112,
-        "y": 242,
-        "w": 56,
-        "h": 56,
-        "at": 0.05,
-        "color": "blue"
-       },
-       {
-        "id": "pr",
-        "kind": "box",
-        "x": 400,
-        "y": 170,
-        "w": 280,
-        "h": 200,
-        "at": 0.05,
-        "color": "blue",
-        "label": ""
-       },
-       {
-        "id": "sl",
-        "kind": "chip",
-        "x": 394,
-        "y": 230,
-        "w": 8,
-        "h": 80,
-        "at": 0.05,
-        "label": "",
-        "color": "red"
-       },
-       {
-        "id": "fl",
-        "kind": "flag",
-        "x": 500,
-        "y": 240,
-        "w": 40,
-        "h": 56,
-        "at": "2b#bandera",
-        "color": "amber",
-        "move": [
-         {
-          "at": "2b#coger",
-          "x": 232,
-          "y": 220,
-          "dur": 1.8
-         }
-        ]
-       }
-      ],
-      "links": [
-       {
-        "a": "a",
-        "b": "sl",
-        "at": "2b#aprovechar",
-        "color": "red",
-        "bi": true,
-        "speed": 0.4
-       }
-      ],
-      "fs": 1.5
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "world",
-     "at": "2c",
-     "until": "2d",
-     "p": {
-      "nodes": [
-       {
-        "id": "s1",
-        "kind": "sandbox",
-        "x": 90,
-        "y": 120,
-        "w": 100,
-        "h": 100,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "a1",
-        "kind": "agent",
-        "x": 115,
-        "y": 145,
-        "w": 50,
-        "h": 50,
-        "at": 0.05,
-        "color": "blue"
-       },
-       {
-        "id": "s2",
-        "kind": "sandbox",
-        "x": 90,
-        "y": 320,
-        "w": 100,
-        "h": 100,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "a2",
-        "kind": "agent",
-        "x": 115,
-        "y": 345,
-        "w": 50,
-        "h": 50,
-        "at": 0.05,
-        "color": "blue"
-       },
-       {
-        "id": "pr",
-        "kind": "box",
-        "x": 400,
-        "y": 150,
-        "w": 280,
-        "h": 240,
-        "at": 0.05,
-        "color": "blue",
-        "label": ""
-       },
-       {
-        "id": "sl1",
-        "kind": "chip",
-        "x": 394,
-        "y": 180,
-        "w": 8,
-        "h": 60,
-        "at": 0.05,
-        "label": "",
-        "color": "red"
-       },
-       {
-        "id": "sl2",
-        "kind": "chip",
-        "x": 394,
-        "y": 300,
-        "w": 8,
-        "h": 60,
-        "at": 0.05,
-        "label": "",
-        "color": "red"
-       },
-       {
-        "id": "ok",
-        "kind": "check",
-        "x": 725,
-        "y": 155,
-        "w": 70,
-        "h": 70,
-        "at": "2c#asignado",
-        "color": "teal"
-       },
-       {
-        "id": "no",
-        "kind": "cross",
-        "x": 725,
-        "y": 305,
-        "w": 70,
-        "h": 70,
-        "at": "2c#otro",
-        "color": "red"
-       }
-      ],
-      "links": [
-       {
-        "a": "a1",
-        "b": "sl1",
-        "at": "2c#asignado",
-        "color": "teal",
-        "bi": true,
-        "speed": 0.4
-       },
-       {
-        "a": "a2",
-        "b": "sl2",
-        "at": "2c#otro",
-        "color": "red",
-        "bi": true,
-        "speed": 0.4
-       }
-      ],
-      "fs": 1.5
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "world",
-     "at": "2d",
-     "until": "2e",
-     "p": {
-      "nodes": [
-       {
-        "id": "cr1",
-        "kind": "crowd",
-        "x": 200,
-        "y": 100,
-        "w": 560,
-        "h": 330,
-        "at": "2d#muchas",
-        "n": 65,
-        "cols": 10,
-        "tot": 100,
-        "color": "blue",
-        "grow": [
-         {
-          "at": "2d#muchas",
-          "n": 65,
-          "dur": 1.5
-         }
-        ]
-       },
-       {
-        "id": "cr2",
-        "kind": "crowd",
-        "x": 200,
-        "y": 100,
-        "w": 560,
-        "h": 330,
-        "at": "2d#treinta",
-        "n": 35,
-        "cols": 10,
-        "tot": 100,
-        "off": 65,
-        "color": "red",
-        "grow": [
-         {
-          "at": "2d#treinta",
-          "n": 35,
-          "dur": 2
-         }
-        ]
-       },
-       {
-        "id": "n35",
-        "kind": "num",
-        "x": 800,
-        "y": 240,
-        "w": 160,
-        "h": 60,
-        "at": "2d#treinta",
-        "n": 35,
-        "color": "red",
-        "fs": 44,
-        "dur": 2
-       }
-      ],
-      "links": [],
-      "fs": 1.5
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "world",
-     "at": "2e",
      "until": "E2",
      "p": {
       "nodes": [
        {
-        "id": "s",
-        "kind": "sandbox",
-        "x": 85,
-        "y": 215,
-        "w": 110,
-        "h": 110,
-        "at": 0.05,
-        "color": "teal"
+        "id": "ck",
+        "kind": "txt",
+        "x": 30,
+        "y": 30,
+        "w": 400,
+        "h": 32,
+        "at": 0.2,
+        "color": "teal",
+        "fs": 24,
+        "type": 22,
+        "text": "07 julio 2026"
        },
        {
-        "id": "a",
-        "kind": "agent",
-        "x": 112,
-        "y": 242,
-        "w": 56,
-        "h": 56,
-        "at": 0.05,
-        "color": "blue"
-       },
-       {
-        "id": "pr",
-        "kind": "box",
-        "x": 330,
-        "y": 170,
-        "w": 240,
-        "h": 200,
-        "at": 0.05,
-        "color": "blue",
-        "label": ""
-       },
-       {
-        "id": "sl",
-        "kind": "chip",
-        "x": 324,
-        "y": 240,
-        "w": 8,
-        "h": 70,
-        "at": 0.05,
-        "label": "",
-        "color": "red"
-       },
-       {
-        "id": "id",
-        "kind": "chip",
-        "x": 80,
-        "y": 337,
-        "w": 120,
-        "h": 26,
-        "at": "2e#ARV010841",
-        "label": "ARV010841",
-        "color": "red"
-       },
-       {
-        "id": "bin",
-        "kind": "box",
-        "x": 700,
-        "y": 360,
-        "w": 110,
-        "h": 80,
-        "at": "2e#basura",
-        "color": "muted",
-        "dashed": true,
-        "label": ""
-       },
-       {
-        "id": "rs",
-        "kind": "doc",
-        "x": 587,
-        "y": 247,
-        "w": 26,
-        "h": 26,
-        "at": "2e#basura",
-        "color": "amber",
-        "move": [
-         {
-          "at": "2e#basura",
-          "x": 720,
-          "y": 380,
-          "dur": 1.6
-         }
-        ]
-       },
-       {
-        "id": "wall",
-        "kind": "chip",
-        "x": 640,
+        "id": "v8",
+        "kind": "acard",
+        "x": 60,
         "y": 150,
-        "w": 12,
-        "h": 200,
-        "at": "2e#llegar",
-        "label": "",
-        "color": "muted"
+        "w": 170,
+        "h": 240,
+        "at": 0.4,
+        "color": "blue",
+        "label": "V8SAME",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "until": "2e#atacar",
+        "bat": "2b#bandera"
+       },
+       {
+        "id": "ph",
+        "kind": "acard",
+        "x": 60,
+        "y": 150,
+        "w": 170,
+        "h": 240,
+        "at": "2e#atacar",
+        "color": "blue",
+        "label": "PHASEONE10841",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4
+       },
+       {
+        "id": "ex1",
+        "kind": "exam",
+        "x": 340,
+        "y": 68,
+        "w": 300,
+        "h": 404,
+        "at": "2a#examen",
+        "color": "blue",
+        "maze": {
+         "cell": 26,
+         "cols": 10,
+         "rows": 14,
+         "entry": 6,
+         "seed": 11
+        },
+        "solve": {
+         "at": "2b#aprovechar+1.0",
+         "dur": 5
+        },
+        "until": "2d#servía"
+       },
+       {
+        "id": "ex2",
+        "kind": "exam",
+        "x": 340,
+        "y": 68,
+        "w": 300,
+        "h": 404,
+        "at": "2d#servía",
+        "color": "red",
+        "maze": {
+         "on": false,
+         "cell": 26,
+         "cols": 10,
+         "rows": 14,
+         "box": [
+          13,
+          9
+         ]
+        },
+        "tag": "ARV010841",
+        "tagc": "red",
+        "tagfs": 16
        },
        {
         "id": "fl",
         "kind": "flag",
-        "x": 700,
-        "y": 200,
-        "w": 40,
-        "h": 56,
-        "at": "2e#llegar",
+        "x": 591,
+        "y": 420,
+        "w": 32,
+        "h": 38,
+        "at": "2a#examen",
         "color": "amber",
-        "dashed": true
+        "blink": 0.7,
+        "bf": 9,
+        "bat": "2b#bandera"
+       },
+       {
+        "id": "ho",
+        "kind": "hole",
+        "x": 329,
+        "y": 246,
+        "w": 22,
+        "h": 22,
+        "at": "2b#fallo",
+        "color": "red"
+       },
+       {
+        "id": "ho2",
+        "kind": "hole",
+        "x": 479,
+        "y": 57,
+        "w": 22,
+        "h": 22,
+        "at": "2c#Cualquier",
+        "color": "red",
+        "until": "2d#servía"
+       },
+       {
+        "id": "ok",
+        "kind": "check",
+        "x": 286,
+        "y": 203,
+        "w": 40,
+        "h": 40,
+        "at": "2c#asignado",
+        "color": "teal",
+        "until": "2d#servía"
+       },
+       {
+        "id": "no",
+        "kind": "cross",
+        "x": 472,
+        "y": 84,
+        "w": 36,
+        "h": 36,
+        "at": "2c#suspenso",
+        "color": "red",
+        "until": "2d#servía"
+       },
+       {
+        "id": "xf",
+        "kind": "cross",
+        "x": 577,
+        "y": 409,
+        "w": 60,
+        "h": 60,
+        "at": "2e#imposible",
+        "color": "red"
        }
       ],
       "links": [
        {
-        "a": "a",
-        "b": "sl",
-        "at": "2e#fallo",
+        "a": "v8",
+        "b": "ho",
+        "at": "2b#aprovechar",
+        "color": "teal",
+        "curve": 0.1,
+        "until": "2e#atacar"
+       },
+       {
+        "a": "ph",
+        "b": "ho",
+        "at": "2e#atacar+0.5",
+        "color": "teal",
+        "curve": 0.1
+       },
+       {
+        "a": "v8",
+        "b": "ho2",
+        "at": "2c#Cualquier",
         "color": "red",
-        "bi": true,
-        "speed": 0.4
+        "curve": 0.1,
+        "until": "2d#servía"
        }
       ],
-      "fs": 1.5
+      "fs": 1.0
      },
      "bg": true,
      "fade": [

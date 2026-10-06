@@ -1,6 +1,6 @@
 # Test · escenas 0–3
 
-*Voice-over script. Language: es · voice: cedar · duration: ~4:55 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~4:54 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
@@ -34,7 +34,7 @@
 
 **2d** El problema es que, en muchas tareas, ese fallo no servía para nada. Los autores del examen calculan que entre el treinta y el cuarenta por ciento eran imposibles tal como estaban escritas: como un examen con una pregunta mal planteada.
 
-**2e** A un agente le tocó el fallo ARV010841. Lo que ese fallo producía se tiraba a la basura: ninguna otra parte del programa lo leía, así que no había forma de llegar a la bandera.
+**2e** A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible.
 
 ## 3 · Una carpeta con nombre
 
