@@ -141,6 +141,25 @@ for i in (3,5):
 c3.append(K('3e','3f',n,lk,fs=1.2))
 n=base3([FO('fo',300),FO('fo2',370),ch('badge',700,168,170,'PHASEONE10841','3f#PHASEONE10841',color='blue')])
 c3.append(K('3f','E3',n,[L('a0','art',0.05,bi=True,curve=.12)],fs=1.2))
+# ===== scene 0 (v2, per user's shot list) =====
+c0=[]
+# 0a-0b : the agent card + typed UTC clock + quote; they blink; the clock runs through the night
+c0.append(K('S0','0c',[
+  N('ck','txt',30,30,400,32,0.2,color='teal',fs=24,type=22,clock=dict(y=2026,m=7,d=8,h=23,mi=0,at='0b',dur=9,to=dict(y=2026,m=7,d=9,h=6,mi=0))),
+  N('ac','acard',200,150,170,240,0.4,color='blue',label='PHASEONE10841',fs=14,blink=.28,bf=4),
+  N('q','quote',420,235,500,92,'0a#mensaje',color='teal',lines=['«Mi fallo no tiene consumidor.','Busco ideas.»'],fs=24,blink=.2,bf=3.2)],fs=1.0))
+# 0c-0e : fade to a zoomed grid of blinking agents, zoom out -> all in one container, breach, red links to Hugging Face
+CW=[226+44*i for i in range(6)]; RW=[(CW[i%6],450-44*(i//6)) for i in range(66)]
+al0=lambda y: max(0.0,min(1.0,(y+10)/170))
+n=[box('BC',200,-80,280,570,0.05,color='red',open=True,label='',notop=True,until='0c#atacando'),
+   box('BG',200,-80,280,570,'0c#atacando',color='red',open=True,label='',notop=True,gap=[235,305])]
+for i,(x,y) in enumerate(RW):
+    n+= [sc(f'x{i}',x,y,0.05,s=38,color='teal',alpha=al0(y),blink=.45,bf=3+(i%5)*.6),ag(f'g{i}',x,y,0.05,s=22,alpha=al0(y),blink=.45,bf=3+(i%5)*.6)]
+n+= [N('hf','hfbox',690,225,210,70,'0c#atacando',color='amber',label='Hugging Face',fs=15,blink=.25,bf=4),
+     N('n700','num',560,110,220,50,'0c#setecientas',n=700,color='red',fs=36,dur=3)]
+lk=[L(f'g{i}','hf','0c#atacando+%.1f'%(0.12*j),color='red',via=[480,270],speed=.7,curve=.1) for j,i in enumerate((5,11,17,23,29,35,41,47,53,59,65,3,9,15,21,27))]
+cm=[dict(at='0c',x=35,y=50,z=3.0),dict(at='0c#setecientas',x=35,y=50,z=3.0),dict(at='0c#atacando',x=50,y=50,z=1,dur=2.0)]
+c0.append(K('0c','E0',n,lk,fs=1.0,cam=cm))
 C=[c0,c1,c2,c3]
 B=[list(sc_['beats']) for sc_ in scenes]
 B[1]=B[1][:4]
