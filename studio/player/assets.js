@@ -442,7 +442,7 @@ const FIC={
 
 /* ---------- seal: author mark (A-constellation, double ring, pulsing dot envelope) + credit line ---------- */
 A.seal=(h,p,C)=>{
- const N=72,R0=92,J=6,sm=!!p.small,sc=sm?.36:1.4,cx=sm?884:480,cy=sm?476:222,at=C.T(p.at||0);
+ const N=72,R0=92,J=6,sm=!!p.small,sc=sm?.36:(p.scale||1.4),cx=sm?884:480,cy=sm?476:(p.cy||222),at=C.T(p.at||0);
  let dots='';for(let i=0;i<N;i++){const a=i*2*Math.PI/N;for(let j=0;j<J;j++)dots+=`<circle class="sd" data-i="${i}" data-j="${j}" cx="${((R0+j*7)*Math.cos(a)).toFixed(1)}" cy="${((R0+j*7)*Math.sin(a)).toFixed(1)}" r="2.1" fill="#5EC8FF" opacity="0"/>`}
  const mk=`<g class="sm" opacity="0"><circle r="76" fill="none" stroke="#E8EEF7" stroke-width="3"/><circle r="86" fill="none" stroke="#E8EEF7" stroke-width="1.5" opacity=".6"/>
   <path d="M-50 52L0 -52L50 52M-28 10L28 10" fill="none" stroke="#E8EEF7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
