@@ -14,8 +14,11 @@ def _dur(p):
 EL_MODEL = 'eleven_multilingual_v2'
 # Spanish male candidates (voice ids from the public ElevenLabs library; availability can change)
 EL_CANDIDATES = {'jacobo': 'syjZiIvIUSwKREBfMpKZ', 'carlos': '4FMxnogu8ehUVsRIxx9H', 'jeijo': 'PBaBRSRTvwmnK1PAq9e0',
-                 'mateo': 'LcMajEnHqf3tUTha5ppa', 'juancarlos': 'YExhVa4bZONzeingloMX', 'manuel': 'L7pBVwjueW3IPcQt4Ej9'}
-OA_CANDIDATES = ['cedar', 'onyx', 'ash', 'echo', 'verse', 'fable']
+                 'mateo': 'LcMajEnHqf3tUTha5ppa', 'juancarlos': 'YExhVa4bZONzeingloMX', 'manuel': 'L7pBVwjueW3IPcQt4Ej9',
+                 # female
+                 'cristina': '2VUqK4PEdMj16L6xTN4J', 'maria': 'GszuzIPs4fVZTjP0EXrv', 'sofia': 'pK5bIn1o1zvVRcDhFUSb',
+                 'ligia': 'szJ1F5SgxGkjGanyygoW', 'lourdes': 'SbxCN6LQhBInYaeKjhhW', 'melanie': 'bN1bDXgDIGX5lw0rtY2B'}
+OA_CANDIDATES = ['cedar', 'onyx', 'ash', 'echo', 'verse', 'fable', 'marin', 'coral', 'nova', 'shimmer', 'sage']
 
 
 def _el_say(text, voice, path, model=None, stability=.5, similarity=.75, style=0.0, speed=1.0):
