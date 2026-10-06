@@ -99,7 +99,13 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
 
 
 def music(root, out=None):
-    """Ambient pad + pulse shaped by each scene's `intensity` (0-1; default arc: builds to ~70% of the film, then eases)."""
+    """Music bed. meta.music_style: pad (default) | pulse | cinema | bells | data. Shaped by each scene's `intensity` (0-1) and `mood: tense`."""
+    _m = json.load(open(f'{root}/story.json'))['meta']; _style = _m.get('music_style', 'pad')
+    if _style != 'pad':
+        from . import sound
+        D = json.load(open(f'{root}/build/data.json')); cv = sound.curves(root, D)
+        buf = sound.render_style(_style, cv, ambience_level=float(_m.get('ambience', 1.0)))
+        return sound.write_wav(out or f'{root}/build/music.wav', buf)
     D = json.load(open(f'{root}/build/data.json')); S = D['sched']; N = D['scenes']; total = D['total'] + 2; fo = float(json.load(open(f'{root}/story.json'))['meta'].get('fadeout', 4))
     st = json.load(open(f'{root}/story.json')); ints = [sc.get('intensity') for sc in st['scenes']]
     arc = [.3 + .7 * (1 - abs(i / max(1, N - 1) - .7) / .7) if i / max(1, N - 1) <= .7 else 1 - (i / max(1, N - 1) - .7) / .3 * .6 for i in range(N)]
@@ -144,6 +150,9 @@ def music(root, out=None):
         pad = pad * (1 - .45 * ten); padR = padR * (1 - .45 * ten); ping = ping * (1 - .85 * ten); pingR = pingR * (1 - .85 * ten)
         pulse = pulse * (1 - ten) + thump.astype(np.float32); pad = pad + drone.astype(np.float32) + hi.astype(np.float32); padR = padR + drone.astype(np.float32) * .92 + hi.astype(np.float32)
     Lc = pad + ping + pulse; Rc = padR + pingR + pulse; fi = max(.05, float(json.load(open(f'{root}/story.json'))['meta'].get('fadein', 4))); fade = np.clip(t / fi, 0, 1) * np.clip((D['total'] - t) / fo, 0, 1); Lc *= fade; Rc *= fade
+    if float(_m.get('ambience', 1.0)) > 0:
+        from . import sound
+        _a = sound.ambience(sound.curves(root, D), n, t, np.random.default_rng(8), float(_m.get('ambience', 1.0))) * float(max(abs(Lc).max(), abs(Rc).max())) * 6; Lc = Lc + _a[0]; Rc = Rc + _a[1]
     m = max(abs(Lc).max(), abs(Rc).max()); st2 = np.stack([Lc / m * .7, Rc / m * .7], 1); out = out or f'{root}/build/music.wav'
     with wave.open(out, 'wb') as w:
         w.setnchannels(2); w.setsampwidth(2); w.setframerate(sr); w.writeframes((np.clip(st2, -1, 1) * 32767).astype('<i2').tobytes())
@@ -188,7 +197,7 @@ def typing_wav(ev, tot, path, sr=44100):
     return path
 
 
-def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_db=-14, video=None, scenes=None, log=print):
+def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_db=None, video=None, scenes=None, log=print):
     b = f'{root}/build'; D = json.load(open(f'{b}/data.json')); S = D['sched']; beats = json.load(open(f'{b}/beats.json'))
     t0, tot = 0.0, D['total']
     if scenes is not None: t0, tot = S[f'S{scenes[0]}']['s'], S[f'E{scenes[-1]}']['s'] - S[f'S{scenes[0]}']['s']; beats = [x for x in beats if t0 - .01 <= S[x['id']]['s'] < t0 + tot]
@@ -199,15 +208,22 @@ def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_d
     for _, f in files: cmd += ['-i', f]
     try: _meta = json.load(open(f'{root}/story.json'))['meta']
     except Exception: _meta = {}
+    if music_db is None: music_db = float(_meta.get('music_db', -9))
+    sfx_db = float(_meta.get('sfx_db', -14)); sfx_i = None
     ev = typing_events(root, D, t0, tot) if _meta.get('typing_sound') else []; tk = None
     if ev and files: tk = 2 + len(files); cmd += ['-i', typing_wav(ev, tot, f'{b}/typing.wav')]; log(f'typing sounds: {len(ev)} keys')
+    n_in = 2 + len(files) + (1 if tk else 0)
+    if _meta.get('sfx', True):
+        from . import sound
+        try: cmd += ['-i', sound.render_sfx(root, D, t0, tot, f'{b}/sfx.wav')]; sfx_i = n_in
+        except Exception as e: log(f'warning: sfx skipped ({e})')
     fc = []
     if files:
         for k, (i, _) in enumerate(files):
             ms = int((S[i]['s'] - t0) * 1000); fc.append(f'[{k + 2}:a]adelay={ms}|{ms},apad[b{k}]')
         if tk: fc.append(f'[{tk}:a]volume=-20dB[ty]')
         fc += [''.join(f'[b{k}]' for k in range(len(files))) + (f'[ty]' if tk else '') + f'amix=inputs={len(files) + (1 if tk else 0)}:normalize=0:duration=longest[nar0]', '[nar0]asplit=2[nar][sc]', f'[1:a]volume={music_db}dB[mu]',
-               '[mu][sc]sidechaincompress=threshold=0.015:ratio=9:attack=20:release=700[duck]', '[nar][duck]amix=inputs=2:normalize=0:duration=longest,loudnorm=I=-16:TP=-1.5:LRA=9[aout0]']
+               f"[mu][sc]sidechaincompress=threshold={_meta.get('duck_threshold', .04)}:ratio={_meta.get('duck_ratio', 2.5)}:attack=40:release=900[duck]"] + ([f'[{sfx_i}:a]volume={sfx_db}dB[sfx]', '[nar][duck][sfx]amix=inputs=3:normalize=0:duration=longest,loudnorm=I=-16:TP=-1.5:LRA=11[aout0]'] if sfx_i is not None else ['[nar][duck]amix=inputs=2:normalize=0:duration=longest,loudnorm=I=-16:TP=-1.5:LRA=11[aout0]'])
     else: fc.append(f'[1:a]volume={music_db + 4}dB,loudnorm=I=-20:TP=-1.5[aout0]')
     fo = float(json.load(open(f'{root}/story.json'))['meta'].get('fadeout', 4))   # fade to silence at the very end
     fc.append(f"[aout0]afade=t=out:st={max(0, tot - fo):.2f}:d={fo}[aout]")
