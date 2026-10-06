@@ -6937,10 +6937,11 @@
         "at": "3e#pondrá",
         "color": "#B58CFF",
         "label": "PHASEONE10841",
-        "fs": 14,
+        "fs": 19,
         "blink": 0.3,
         "bf": 5,
-        "lc": "#FF9F43"
+        "lc": "#FF9F43",
+        "ly": 24
        },
        {
         "id": "af",
