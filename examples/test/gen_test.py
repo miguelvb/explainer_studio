@@ -1,4 +1,4 @@
-import json,re
+import json,re,math
 S=json.load(open('/home/claude/explainer_studio/examples/hf-swarm-vivido-es/story.json'))
 scenes=S['scenes'][:4]
 def N(id,kind,x,y,w,h,at=0.05,**k):
@@ -18,30 +18,30 @@ def K(at,until,nodes,links=None,fs=1.5,cam=None):
     if cam: d['cam']=cam
     return d
 GX=[226+44*i for i in range(6)]
-G=[(GX[i%6],118+50*(i//6)) for i in range(12)]
-BC=lambda at=0.05,**k: box('BC',200,60,280,430,at,color='red',open=True,label='',**k)
-BG=lambda at=0.05,**k: box('BG',200,60,280,430,at,color='red',open=True,label='',gap=[235,305],**k)
+R=7; NA=6*R
+G=[(GX[i%6],340-50*(i//6)) for i in range(NA)]
+AL=lambda i: [1,.92,.78,.62,.46,.3,.16][i//6]
+BC=lambda at=0.05,**k: box('BC',200,-80,280,570,at,color='red',open=True,label='',notop=True,**k)
+BG=lambda at=0.05,**k: box('BG',200,-80,280,570,at,color='red',open=True,label='',notop=True,gap=[235,305],**k)
 HUB=lambda at=0.05,**k: N('art','server',250,425,180,50,at,color='amber',label='Artifactory',**k)
 HF=lambda at,**k: N('hf','victim',700,225,190,70,at,color='red',label='Hugging Face',**k)
-def AG(i,at=0.05,**k): x,y=G[i]; return [sc(f's{i}',x,y,at,s=38,color='teal',**k),ag(f'a{i}',x,y,at,s=22,**k)]
+def AG(i,at=0.05,**k): x,y=G[i]; a=AL(i); return [sc(f's{i}',x,y,at,s=38,color='teal',alpha=a,**k),ag(f'a{i}',x,y,at,s=22,alpha=a,**k)]
+def LK(i,at=0.05,**k): return L(f'a{i}','art',at,bi=(i%3==0),curve=.12,alpha=AL(i),**k)
 c0=[]
-# a: zoom on a single agent ; b: pull back, container + hub, one link
 c0.append(K('S0','0c',[*AG(0),BC(at='0b#encerrada'),HUB(at='0b#encerrada+0.4')],[L('a0','art','0b#encerrada+1',bi=True,curve=.12)],fs=1.2,
   cam=[dict(at='S0',to='a0',z=3.2),dict(at='0b#encerrada+0.3',to='a0',z=3.2),dict(at='0b#encerrada+2.2',x=50,y=50,z=1,dur=1.9)]))
-offs=[0.0,0.9,1.7,2.4,3.0,3.5,3.9,4.2,4.45,4.65,4.8]
+offs=[5.5*math.sqrt(k/(NA-1)) for k in range(1,NA)]
 n=[BC(until='0c#atacando'),BG('0c#atacando',until='0d'),HUB(until='0d')]
-lk=[]
-n+=AG(0,until='0d'); lk.append(L('a0','art',0.05,bi=True,until='0d',curve=.12))
-for i in range(1,12):
-    t=f'0c#respondió+{offs[i-1]}'
-    n+=AG(i,t,until='0d'); lk.append(L(f'a{i}','art',t,bi=(i%3==0),until='0d',curve=.12))
-n+= [HF('0c#Hugging',until='0d'),
-     N('n700','num',560,110,220,50,'0c#setecientas',n=700,color='red',fs=36,dur=3,until='0d')]
+n+=AG(0,until='0d'); lk=[LK(0,until='0d')]
+for i in range(1,NA):
+    t=f'0c#respondió+{offs[i-1]:.2f}'
+    n+=AG(i,t,until='0d'); lk.append(LK(i,t,until='0d'))
+n+= [HF('0c#Hugging',until='0d'),N('n700','num',560,110,220,50,'0c#setecientas',n=700,color='red',fs=36,dur=3,until='0d')]
 for i in (1,4,7,10): lk.append(L(f'a{i}','hf','0c#atacando+%.1f'%(0.2*i),color='red',until='0d',via=[480,270]))
 c0.append(K('0c','0d',n,lk,fs=1.2))
 def full(extra=()):
     n=[BG(),HUB(),HF(0.05)]; lk=[]
-    for i in range(12): n+=AG(i); lk.append(L(f'a{i}','art',0.05,bi=(i%3==0),curve=.12))
+    for i in range(NA): n+=AG(i); lk.append(LK(i))
     for i in (1,4,7,10): lk.append(L(f'a{i}','hf',0.05,color='red',via=[480,270]))
     return n+list(extra),lk
 n2,lk2=full([ic('p1','person',-30,170,56,'0d#Cómo',color='teal',move=[dict(at='0d#Cómo',x=30,y=150,dur=2.5)]),ic('p2','person',-30,300,56,'0d#Cómo+0.4',color='blue',move=[dict(at='0d#Cómo+0.4',x=30,y=310,dur=2.5)]),
