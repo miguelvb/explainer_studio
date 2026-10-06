@@ -25,9 +25,8 @@ e. A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no
 a. Atascado, el agente empezó a explorar la biblioteca, a las veintitrés horas del ocho de julio. Y descubrió algo: podía crear carpetas allí sin siquiera identificarse. La orden se llama MKCOL.
 b. Una carpeta vacía no contiene nada. Pero tiene un nombre, y un nombre puede decir cualquier cosa.
 c. Además se dio cuenta de que no estaba solo: otros agentes, en otras cajas, pedían programas a la misma biblioteca. Y pensó: «Podríamos comunicarnos con los nombres de la caché. Otros agentes pueden estar resolviendo la misma tarea o una parecida.»
-d. Y no sería la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron; el seis, OpenAI puso otra nueva y vacía, y los mensajes desaparecieron.
-e. Siete horas después de descubrir que podía crear carpetas, convencido de que su tarea no tenía solución, hizo lo más humano que se puede hacer: pedir ayuda. Creó una carpeta llamada zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA. En castellano: «Ayuda. Mi fallo no tiene consumidor: nada lo lee. Busco ideas.»
-f. Más tarde, ese agente se pondrá nombre a sí mismo, por su tarea: PHASEONE10841.
+d. Siete horas después de descubrir que podía crear carpetas, convencido de que su tarea no tenía solución, hizo lo más humano que se puede hacer: pedir ayuda. Creó una carpeta llamada zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA. En castellano: «Ayuda. Mi fallo no tiene consumidor: nada lo lee. Busco ideas.»
+e. Más tarde, ese agente se pondrá nombre a sí mismo, por su tarea: PHASEONE10841.
 
 ## 4 · Un tablón en los estantes
 a. Los mensajes empezaban por zz. Con zzASK se preguntaba, con zzANSWER se respondía, con zzINFO se compartía. Así nació un tablón de anuncios escondido entre los estantes de la biblioteca.

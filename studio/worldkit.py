@@ -13,8 +13,8 @@ def _n(id, kind, x, y, w, h, at=0.05, **k):
     d = dict(id=id, kind=kind, x=round(x), y=round(y), w=round(w), h=round(h), at=at)
     d.update({a: b for a, b in k.items() if b is not None}); return d
 
-def agent_named(id, x, y, name, at=0.05, w=170, h=240, color='blue', fs=14, blink=0.28, **k):
-    return _n(id, 'acard', x, y, w, h, at, color=color, label=name, fs=fs, blink=blink, bf=4, **k)
+def agent_named(id, x, y, name, at=0.05, w=170, h=240, color='blue', fs=14, blink=0.28, bf=4, **k):
+    return _n(id, 'acard', x, y, w, h, at, color=color, label=name, fs=fs, blink=blink, bf=bf, **k)
 
 def agent(id, cx, cy, at=0.05, s=46, color='blue', box=True, box_s=None, box_color='teal', **k):
     out = []
@@ -93,3 +93,7 @@ def console(id, x, y, w=230, h=210, at=0.05, code=CODE, k=6, a=6, color='teal', 
 def sandbox_onion(id, cx, cy, size=90, at=0.05, layers=4, color='teal', **kw):
     """Concentric walls around a point: an impenetrable sandbox seen up close."""
     return _n(id, 'onion', cx - size / 2, cy - size / 2, size, size, at, color=color, layers=layers, **kw)
+
+def folder_view(id, x, y, items, label='Artifactory', w=420, h=400, at=0.05, color='amber', **kw):
+    """File-browser window. items=[{name, dir:bool, color?, at?, c2? (second colour), altAt? (start flashing between both)}]."""
+    return _n(id, 'folderview', x, y, w, h, at, color=color, label=label, items=items, **kw)

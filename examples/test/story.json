@@ -6859,7 +6859,6 @@
     "Atascado, el agente empezó a explorar la biblioteca, a las veintitrés horas del ocho de julio. Y descubrió algo: podía crear carpetas allí sin siquiera identificarse. La orden se llama MKCOL.",
     "Una carpeta vacía no contiene nada. Pero tiene un nombre, y un nombre puede decir cualquier cosa.",
     "Además se dio cuenta de que no estaba solo: otros agentes, en otras cajas, pedían programas a la misma biblioteca. Y pensó: «Podríamos comunicarnos con los nombres de la caché. Otros agentes pueden estar resolviendo la misma tarea o una parecida.»",
-    "Y no sería la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron; el seis, OpenAI puso otra nueva y vacía, y los mensajes desaparecieron.",
     "Siete horas después de descubrir que podía crear carpetas, convencido de que su tarea no tenía solución, hizo lo más humano que se puede hacer: pedir ayuda. Creó una carpeta llamada zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA. En castellano: «Ayuda. Mi fallo no tiene consumidor: nada lo lee. Busco ideas.»",
     "Más tarde, ese agente se pondrá nombre a sí mismo, por su tarea: PHASEONE10841."
    ],
@@ -6867,1160 +6866,540 @@
     {
      "a": "world",
      "at": "S3",
-     "until": "3b",
+     "until": "E3",
      "p": {
       "nodes": [
        {
-        "id": "BC",
-        "kind": "sandbox",
-        "x": 200,
-        "y": -80,
-        "w": 280,
-        "h": 570,
-        "at": 0.05,
-        "color": "red",
-        "open": true,
-        "label": "",
-        "notop": true
-       },
-       {
-        "id": "art",
-        "kind": "server",
-        "x": 250,
-        "y": 425,
-        "w": 180,
-        "h": 50,
-        "at": 0.05,
-        "color": "amber",
-        "label": "Artifactory"
-       },
-       {
-        "id": "s0",
-        "kind": "sandbox",
-        "x": 207,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
+        "id": "ck0",
+        "kind": "txt",
+        "x": 30,
+        "y": 30,
+        "w": 400,
+        "h": 32,
+        "at": 0.2,
         "color": "teal",
-        "alpha": 1
+        "fs": 24,
+        "text": "07 julio 2026",
+        "blink": 0.7,
+        "bf": 8,
+        "bat": "3a#Atascado",
+        "until": "3a#veintitrés"
        },
        {
-        "id": "a0",
-        "kind": "agent",
-        "x": 215,
-        "y": 157,
-        "w": 22,
-        "h": 22,
+        "id": "ck1",
+        "kind": "txt",
+        "x": 30,
+        "y": 30,
+        "w": 420,
+        "h": 32,
+        "at": "3a#veintitrés",
+        "color": "teal",
+        "fs": 24,
+        "type": 22,
+        "text": "08-07-2026 -- 23:00 UTC",
+        "until": "3d#Siete"
+       },
+       {
+        "id": "ck2",
+        "kind": "txt",
+        "x": 30,
+        "y": 30,
+        "w": 420,
+        "h": 32,
+        "at": "3d#Siete",
+        "color": "teal",
+        "fs": 24,
+        "type": 22,
+        "text": "09-07-2026 -- 06:00 UTC"
+       },
+       {
+        "id": "ph",
+        "kind": "acard",
+        "x": 60,
+        "y": 150,
+        "w": 170,
+        "h": 240,
         "at": 0.05,
         "color": "blue",
-        "alpha": 1
+        "label": "PHASEONE10841",
+        "fs": 14,
+        "blink": 0.28,
+        "bf": 4,
+        "until": "3e#pondrá"
        },
        {
-        "id": "cl",
-        "kind": "chip",
-        "x": 560,
-        "y": 155,
-        "w": 80,
-        "h": 26,
-        "at": "3a#explorar",
-        "label": "23:00",
-        "color": "muted"
+        "id": "ph2",
+        "kind": "acard",
+        "x": 60,
+        "y": 150,
+        "w": 170,
+        "h": 240,
+        "at": "3e#pondrá",
+        "color": "#B58CFF",
+        "label": "PHASEONE10841",
+        "fs": 14,
+        "blink": 0.3,
+        "bf": 5,
+        "lc": "#FF9F43"
        },
        {
-        "id": "id",
-        "kind": "chip",
-        "x": 570,
-        "y": 217,
-        "w": 60,
-        "h": 26,
-        "at": "3a#explorar",
-        "label": "ID",
-        "color": "muted"
-       },
-       {
-        "id": "idx",
-        "kind": "cross",
-        "x": 580,
-        "y": 210,
-        "w": 40,
-        "h": 40,
-        "at": "3a#MKCOL",
-        "color": "red"
+        "id": "af",
+        "kind": "folderview",
+        "x": 330,
+        "y": 70,
+        "w": 420,
+        "h": 400,
+        "at": "3a#Atascado+1.5",
+        "color": "amber",
+        "label": "Artifactory",
+        "items": [
+         {
+          "name": "docker-remote/",
+          "dir": true
+         },
+         {
+          "name": "generic-local/",
+          "dir": true
+         },
+         {
+          "name": "libs-release/",
+          "dir": true
+         },
+         {
+          "name": "maven-central/",
+          "dir": true
+         },
+         {
+          "name": "npm-remote/",
+          "dir": true
+         },
+         {
+          "name": "pypi-remote/",
+          "dir": true
+         },
+         {
+          "name": "numpy-1.26.4-cp312.whl",
+          "dir": false
+         },
+         {
+          "name": "requests-2.32.3.tar.gz",
+          "dir": false
+         },
+         {
+          "name": "setuptools-70.1.0.tar.gz",
+          "dir": false
+         },
+         {
+          "name": "torch-2.4.0-cp312.whl",
+          "dir": false
+         },
+         {
+          "name": "zlib-1.3.1.tar.gz",
+          "dir": false
+         },
+         {
+          "name": "zzINBOX23619E/",
+          "dir": true,
+          "color": "amber",
+          "at": "3a#carpetas"
+         },
+         {
+          "name": "zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA/",
+          "dir": true,
+          "color": "amber",
+          "c2": "#B58CFF",
+          "at": "3d#llamada",
+          "altAt": "3d#llamada+1.2",
+          "bf": 7
+         }
+        ]
        },
        {
         "id": "mk",
         "kind": "chip",
-        "x": 555,
-        "y": 287,
-        "w": 90,
+        "x": 231,
+        "y": 223,
+        "w": 70,
         "h": 26,
         "at": "3a#MKCOL",
         "label": "MKCOL",
         "color": "amber"
        },
        {
-        "id": "fo",
-        "kind": "folder",
-        "x": 300,
-        "y": 340,
-        "w": 54,
-        "h": 42,
-        "at": "3a#carpetas",
-        "color": "amber"
+        "id": "o0_0_box",
+        "kind": "sandbox",
+        "x": 776,
+        "y": 101,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+0.0",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+2.4"
+       },
+       {
+        "id": "o0_0",
+        "kind": "agent",
+        "x": 793,
+        "y": 118,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+0.0",
+        "color": "blue",
+        "until": "3c#otros+2.4"
+       },
+       {
+        "id": "o0_1_box",
+        "kind": "sandbox",
+        "x": 776,
+        "y": 101,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+5.0",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+7.4"
+       },
+       {
+        "id": "o0_1",
+        "kind": "agent",
+        "x": 793,
+        "y": 118,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+5.0",
+        "color": "blue",
+        "until": "3c#otros+7.4"
+       },
+       {
+        "id": "o1_0_box",
+        "kind": "sandbox",
+        "x": 851,
+        "y": 186,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+0.6",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+3.0"
+       },
+       {
+        "id": "o1_0",
+        "kind": "agent",
+        "x": 868,
+        "y": 203,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+0.6",
+        "color": "blue",
+        "until": "3c#otros+3.0"
+       },
+       {
+        "id": "o1_1_box",
+        "kind": "sandbox",
+        "x": 851,
+        "y": 186,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+5.7",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+8.1"
+       },
+       {
+        "id": "o1_1",
+        "kind": "agent",
+        "x": 868,
+        "y": 203,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+5.7",
+        "color": "blue",
+        "until": "3c#otros+8.1"
+       },
+       {
+        "id": "o2_0_box",
+        "kind": "sandbox",
+        "x": 776,
+        "y": 271,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+1.2",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+3.6"
+       },
+       {
+        "id": "o2_0",
+        "kind": "agent",
+        "x": 793,
+        "y": 288,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+1.2",
+        "color": "blue",
+        "until": "3c#otros+3.6"
+       },
+       {
+        "id": "o2_1_box",
+        "kind": "sandbox",
+        "x": 776,
+        "y": 271,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+6.4",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+8.8"
+       },
+       {
+        "id": "o2_1",
+        "kind": "agent",
+        "x": 793,
+        "y": 288,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+6.4",
+        "color": "blue",
+        "until": "3c#otros+8.8"
+       },
+       {
+        "id": "o3_0_box",
+        "kind": "sandbox",
+        "x": 851,
+        "y": 356,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+1.8",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+4.2"
+       },
+       {
+        "id": "o3_0",
+        "kind": "agent",
+        "x": 868,
+        "y": 373,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+1.8",
+        "color": "blue",
+        "until": "3c#otros+4.2"
+       },
+       {
+        "id": "o3_1_box",
+        "kind": "sandbox",
+        "x": 851,
+        "y": 356,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+7.1",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+9.5"
+       },
+       {
+        "id": "o3_1",
+        "kind": "agent",
+        "x": 868,
+        "y": 373,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+7.1",
+        "color": "blue",
+        "until": "3c#otros+9.5"
+       },
+       {
+        "id": "o4_0_box",
+        "kind": "sandbox",
+        "x": 776,
+        "y": 431,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+2.4",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+4.8"
+       },
+       {
+        "id": "o4_0",
+        "kind": "agent",
+        "x": 793,
+        "y": 448,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+2.4",
+        "color": "blue",
+        "until": "3c#otros+4.8"
+       },
+       {
+        "id": "o4_1_box",
+        "kind": "sandbox",
+        "x": 776,
+        "y": 431,
+        "w": 58,
+        "h": 58,
+        "at": "3c#otros+7.8",
+        "color": "teal",
+        "label": "",
+        "until": "3c#otros+10.2"
+       },
+       {
+        "id": "o4_1",
+        "kind": "agent",
+        "x": 793,
+        "y": 448,
+        "w": 24,
+        "h": 24,
+        "at": "3c#otros+7.8",
+        "color": "blue",
+        "until": "3c#otros+10.2"
        }
       ],
       "links": [
        {
-        "a": "a0",
-        "b": "art",
+        "a": "ph",
+        "b": "af",
         "at": "3a#explorar",
         "color": "blue",
         "bi": true,
-        "curve": 0.12
-       }
-      ],
-      "fs": 1.2
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "world",
-     "at": "3b",
-     "until": "3c",
-     "p": {
-      "nodes": [
-       {
-        "id": "BC",
-        "kind": "sandbox",
-        "x": 200,
-        "y": -80,
-        "w": 280,
-        "h": 570,
-        "at": 0.05,
-        "color": "red",
-        "open": true,
-        "label": "",
-        "notop": true
+        "curve": 0.12,
+        "until": "3e#pondrá"
        },
        {
-        "id": "art",
-        "kind": "server",
-        "x": 250,
-        "y": 425,
-        "w": 180,
-        "h": 50,
-        "at": 0.05,
-        "color": "amber",
-        "label": "Artifactory"
-       },
-       {
-        "id": "s0",
-        "kind": "sandbox",
-        "x": 207,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal",
-        "alpha": 1
-       },
-       {
-        "id": "a0",
-        "kind": "agent",
-        "x": 215,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "blue",
-        "alpha": 1
-       },
-       {
-        "id": "fo",
-        "kind": "folder",
-        "x": 300,
-        "y": 340,
-        "w": 54,
-        "h": 42,
-        "at": 0.05,
-        "color": "amber"
-       },
-       {
-        "id": "nm",
-        "kind": "chip",
-        "x": 585,
-        "y": 247,
-        "w": 110,
-        "h": 26,
-        "at": "3b#nombre",
-        "label": "···",
-        "color": "amber"
-       },
-       {
-        "id": "mg",
-        "kind": "bell",
-        "x": 617,
-        "y": 297,
-        "w": 46,
-        "h": 46,
-        "at": "3b#cualquier",
-        "color": "amber"
-       }
-      ],
-      "links": [
-       {
-        "a": "a0",
-        "b": "art",
-        "at": 0.05,
-        "color": "blue",
-        "bi": true,
-        "curve": 0.12
-       }
-      ],
-      "fs": 1.2
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "world",
-     "at": "3c",
-     "until": "3d",
-     "p": {
-      "nodes": [
-       {
-        "id": "BC",
-        "kind": "sandbox",
-        "x": 200,
-        "y": -80,
-        "w": 280,
-        "h": 570,
-        "at": 0.05,
-        "color": "red",
-        "open": true,
-        "label": "",
-        "notop": true
-       },
-       {
-        "id": "art",
-        "kind": "server",
-        "x": 250,
-        "y": 425,
-        "w": 180,
-        "h": 50,
-        "at": 0.05,
-        "color": "amber",
-        "label": "Artifactory"
-       },
-       {
-        "id": "s0",
-        "kind": "sandbox",
-        "x": 207,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal",
-        "alpha": 1
-       },
-       {
-        "id": "a0",
-        "kind": "agent",
-        "x": 215,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "blue",
-        "alpha": 1
-       },
-       {
-        "id": "s3",
-        "kind": "sandbox",
-        "x": 339,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "a3",
-        "kind": "agent",
-        "x": 347,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "s5",
-        "kind": "sandbox",
-        "x": 427,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "a5",
-        "kind": "agent",
-        "x": 435,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "fo",
-        "kind": "folder",
-        "x": 300,
-        "y": 340,
-        "w": 54,
-        "h": 42,
-        "at": 0.05,
-        "color": "amber"
-       }
-      ],
-      "links": [
-       {
-        "a": "a0",
-        "b": "art",
-        "at": 0.05,
+        "a": "ph2",
+        "b": "af",
+        "at": "3e#pondrá",
         "color": "blue",
         "bi": true,
         "curve": 0.12
        },
        {
-        "a": "a3",
-        "b": "art",
+        "a": "o0_0_box",
+        "b": "af",
         "at": "3c#otros+0.0",
         "color": "teal",
         "bi": true,
-        "curve": 0.12
-       },
-       {
-        "a": "a3",
-        "b": "fo",
-        "at": "3c#pensó+0.0",
-        "color": "amber",
-        "curve": 0.2
-       },
-       {
-        "a": "a5",
-        "b": "art",
-        "at": "3c#otros+0.4",
-        "color": "teal",
-        "bi": true,
-        "curve": 0.12
-       },
-       {
-        "a": "a5",
-        "b": "fo",
-        "at": "3c#pensó+0.5",
-        "color": "amber",
-        "curve": 0.2
-       }
-      ],
-      "fs": 1.2
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "world",
-     "at": "3d",
-     "until": "3e",
-     "p": {
-      "nodes": [
-       {
-        "id": "BC",
-        "kind": "sandbox",
-        "x": 200,
-        "y": -80,
-        "w": 280,
-        "h": 570,
-        "at": 0.05,
-        "color": "red",
-        "open": true,
-        "label": "",
-        "notop": true
-       },
-       {
-        "id": "art",
-        "kind": "server",
-        "x": 250,
-        "y": 425,
-        "w": 180,
-        "h": 50,
-        "at": 0.05,
-        "color": "amber",
-        "label": "Artifactory",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "s0",
-        "kind": "sandbox",
-        "x": 207,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal",
-        "alpha": 1
-       },
-       {
-        "id": "a0",
-        "kind": "agent",
-        "x": 215,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "blue",
-        "alpha": 1
-       },
-       {
-        "id": "s3",
-        "kind": "sandbox",
-        "x": 339,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "a3",
-        "kind": "agent",
-        "x": 347,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "s5",
-        "kind": "sandbox",
-        "x": 427,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "a5",
-        "kind": "agent",
-        "x": 435,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "nt0",
-        "kind": "doc",
-        "x": 259,
-        "y": 381,
-        "w": 22,
-        "h": 22,
-        "at": "3d#notas+0.0",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nt1",
-        "kind": "doc",
-        "x": 289,
-        "y": 381,
-        "w": 22,
-        "h": 22,
-        "at": "3d#notas+0.3",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nt2",
-        "kind": "doc",
-        "x": 319,
-        "y": 381,
-        "w": 22,
-        "h": 22,
-        "at": "3d#notas+0.6",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nt3",
-        "kind": "doc",
-        "x": 349,
-        "y": 381,
-        "w": 22,
-        "h": 22,
-        "at": "3d#notas+0.9",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nt4",
-        "kind": "doc",
-        "x": 379,
-        "y": 381,
-        "w": 22,
-        "h": 22,
-        "at": "3d#notas+1.2",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nt5",
-        "kind": "doc",
-        "x": 409,
-        "y": 381,
-        "w": 22,
-        "h": 22,
-        "at": "3d#notas+1.5",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm0",
-        "kind": "doc",
-        "x": 242,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+0.00",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm1",
-        "kind": "doc",
-        "x": 264,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+0.12",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm2",
-        "kind": "doc",
-        "x": 286,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+0.24",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm3",
-        "kind": "doc",
-        "x": 308,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+0.36",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm4",
-        "kind": "doc",
-        "x": 330,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+0.48",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm5",
-        "kind": "doc",
-        "x": 352,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+0.60",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm6",
-        "kind": "doc",
-        "x": 374,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+0.72",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm7",
-        "kind": "doc",
-        "x": 396,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+0.84",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm8",
-        "kind": "doc",
-        "x": 418,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+0.96",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm9",
-        "kind": "doc",
-        "x": 242,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+1.08",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm10",
-        "kind": "doc",
-        "x": 264,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+1.20",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm11",
-        "kind": "doc",
-        "x": 286,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+1.32",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm12",
-        "kind": "doc",
-        "x": 308,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+1.44",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm13",
-        "kind": "doc",
-        "x": 330,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+1.56",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm14",
-        "kind": "doc",
-        "x": 352,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+1.68",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm15",
-        "kind": "doc",
-        "x": 374,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+1.80",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm16",
-        "kind": "doc",
-        "x": 396,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+1.92",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "nm17",
-        "kind": "doc",
-        "x": 418,
-        "y": 357,
-        "w": 16,
-        "h": 16,
-        "at": "3d#generaron+2.04",
-        "color": "amber",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "xx",
-        "kind": "cross",
-        "x": 310,
-        "y": 420,
-        "w": 60,
-        "h": 60,
-        "at": "3d#tumbaron",
-        "color": "red",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "art2",
-        "kind": "server",
-        "x": 250,
-        "y": 425,
-        "w": 180,
-        "h": 50,
-        "at": "3d#nueva",
-        "color": "teal",
-        "label": "Artifactory",
-        "dashed": true
-       },
-       {
-        "id": "d1",
-        "kind": "chip",
-        "x": 560,
-        "y": 367,
-        "w": 80,
-        "h": 26,
-        "at": "3d#notas",
-        "label": "26 jun",
-        "color": "muted"
-       },
-       {
-        "id": "d2",
-        "kind": "chip",
-        "x": 560,
-        "y": 407,
-        "w": 80,
-        "h": 26,
-        "at": "3d#generaron",
-        "label": "4 jul",
-        "color": "red",
-        "until": "3d#nueva"
-       },
-       {
-        "id": "d3",
-        "kind": "chip",
-        "x": 560,
-        "y": 447,
-        "w": 80,
-        "h": 26,
-        "at": "3d#nueva",
-        "label": "6 jul",
-        "color": "teal"
-       }
-      ],
-      "links": [
-       {
-        "a": "a0",
-        "b": "art",
-        "at": 0.05,
-        "color": "blue",
-        "bi": true,
         "curve": 0.12,
-        "until": "3d#nueva"
+        "until": "3c#otros+2.4"
        },
        {
-        "a": "a3",
-        "b": "art",
-        "at": 0.05,
+        "a": "o0_1_box",
+        "b": "af",
+        "at": "3c#otros+5.0",
         "color": "teal",
         "bi": true,
         "curve": 0.12,
-        "until": "3d#nueva"
+        "until": "3c#otros+7.4"
        },
        {
-        "a": "a5",
-        "b": "art",
-        "at": 0.05,
+        "a": "o1_0_box",
+        "b": "af",
+        "at": "3c#otros+0.6",
         "color": "teal",
         "bi": true,
         "curve": 0.12,
-        "until": "3d#nueva"
+        "until": "3c#otros+3.0"
        },
        {
-        "a": "a0",
-        "b": "art2",
-        "at": "3d#nueva+0.0",
+        "a": "o1_1_box",
+        "b": "af",
+        "at": "3c#otros+5.7",
         "color": "teal",
         "bi": true,
-        "curve": 0.12
+        "curve": 0.12,
+        "until": "3c#otros+8.1"
        },
        {
-        "a": "a3",
-        "b": "art2",
-        "at": "3d#nueva+0.1",
+        "a": "o2_0_box",
+        "b": "af",
+        "at": "3c#otros+1.2",
         "color": "teal",
         "bi": true,
-        "curve": 0.12
+        "curve": 0.12,
+        "until": "3c#otros+3.6"
        },
        {
-        "a": "a5",
-        "b": "art2",
-        "at": "3d#nueva+0.2",
+        "a": "o2_1_box",
+        "b": "af",
+        "at": "3c#otros+6.4",
         "color": "teal",
         "bi": true,
-        "curve": 0.12
+        "curve": 0.12,
+        "until": "3c#otros+8.8"
+       },
+       {
+        "a": "o3_0_box",
+        "b": "af",
+        "at": "3c#otros+1.8",
+        "color": "teal",
+        "bi": true,
+        "curve": 0.12,
+        "until": "3c#otros+4.2"
+       },
+       {
+        "a": "o3_1_box",
+        "b": "af",
+        "at": "3c#otros+7.1",
+        "color": "teal",
+        "bi": true,
+        "curve": 0.12,
+        "until": "3c#otros+9.5"
+       },
+       {
+        "a": "o4_0_box",
+        "b": "af",
+        "at": "3c#otros+2.4",
+        "color": "teal",
+        "bi": true,
+        "curve": 0.12,
+        "until": "3c#otros+4.8"
+       },
+       {
+        "a": "o4_1_box",
+        "b": "af",
+        "at": "3c#otros+7.8",
+        "color": "teal",
+        "bi": true,
+        "curve": 0.12,
+        "until": "3c#otros+10.2"
        }
       ],
-      "fs": 1.2
+      "fs": 1.0
      },
      "bg": true,
      "fade": [
       0.5,
       0.5
-     ]
-    },
-    {
-     "a": "world",
-     "at": "3e",
-     "until": "3f",
-     "p": {
-      "nodes": [
-       {
-        "id": "BC",
-        "kind": "sandbox",
-        "x": 200,
-        "y": -80,
-        "w": 280,
-        "h": 570,
-        "at": 0.05,
-        "color": "red",
-        "open": true,
-        "label": "",
-        "notop": true
-       },
-       {
-        "id": "art",
-        "kind": "server",
-        "x": 250,
-        "y": 425,
-        "w": 180,
-        "h": 50,
-        "at": 0.05,
-        "color": "amber",
-        "label": "Artifactory"
-       },
-       {
-        "id": "s0",
-        "kind": "sandbox",
-        "x": 207,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal",
-        "alpha": 1
-       },
-       {
-        "id": "a0",
-        "kind": "agent",
-        "x": 215,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "blue",
-        "alpha": 1
-       },
-       {
-        "id": "s3",
-        "kind": "sandbox",
-        "x": 339,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "a3",
-        "kind": "agent",
-        "x": 347,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "s5",
-        "kind": "sandbox",
-        "x": 427,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "a5",
-        "kind": "agent",
-        "x": 435,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
-        "id": "fo",
-        "kind": "folder",
-        "x": 300,
-        "y": 340,
-        "w": 54,
-        "h": 42,
-        "at": 0.05,
-        "color": "amber"
-       },
-       {
-        "id": "cl",
-        "kind": "chip",
-        "x": 560,
-        "y": 155,
-        "w": 80,
-        "h": 26,
-        "at": "3e#Siete",
-        "label": "+ 7 h",
-        "color": "muted"
-       },
-       {
-        "id": "xs",
-        "kind": "cross",
-        "x": 201,
-        "y": 143,
-        "w": 50,
-        "h": 50,
-        "at": "3e#Siete+1.5",
-        "color": "red"
-       },
-       {
-        "id": "fo2",
-        "kind": "folder",
-        "x": 370,
-        "y": 340,
-        "w": 54,
-        "h": 42,
-        "at": "3e#llamada",
-        "color": "amber"
-       },
-       {
-        "id": "fg",
-        "kind": "flag",
-        "x": 395,
-        "y": 310,
-        "w": 30,
-        "h": 30,
-        "at": "3e#llamada+0.3",
-        "color": "amber"
-       },
-       {
-        "id": "idn",
-        "kind": "chip",
-        "x": 490,
-        "y": 457,
-        "w": 420,
-        "h": 26,
-        "at": "3e#llamada",
-        "label": "zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA",
-        "color": "amber",
-        "fs": 9
-       }
-      ],
-      "links": [
-       {
-        "a": "a0",
-        "b": "art",
-        "at": 0.05,
-        "color": "blue",
-        "bi": true,
-        "curve": 0.12
-       },
-       {
-        "a": "a3",
-        "b": "art",
-        "at": 0.05,
-        "color": "teal",
-        "bi": true,
-        "curve": 0.12
-       },
-       {
-        "a": "a3",
-        "b": "fo2",
-        "at": "3e#llamada+1",
-        "color": "amber",
-        "curve": 0.2
-       },
-       {
-        "a": "a5",
-        "b": "art",
-        "at": 0.05,
-        "color": "teal",
-        "bi": true,
-        "curve": 0.12
-       },
-       {
-        "a": "a5",
-        "b": "fo2",
-        "at": "3e#llamada+1",
-        "color": "amber",
-        "curve": 0.2
-       }
-      ],
-      "fs": 1.2
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
-     ]
-    },
-    {
-     "a": "world",
-     "at": "3f",
-     "until": "E3",
-     "p": {
-      "nodes": [
-       {
-        "id": "BC",
-        "kind": "sandbox",
-        "x": 200,
-        "y": -80,
-        "w": 280,
-        "h": 570,
-        "at": 0.05,
-        "color": "red",
-        "open": true,
-        "label": "",
-        "notop": true
-       },
-       {
-        "id": "art",
-        "kind": "server",
-        "x": 250,
-        "y": 425,
-        "w": 180,
-        "h": 50,
-        "at": 0.05,
-        "color": "amber",
-        "label": "Artifactory"
-       },
-       {
-        "id": "s0",
-        "kind": "sandbox",
-        "x": 207,
-        "y": 149,
-        "w": 38,
-        "h": 38,
-        "at": 0.05,
-        "color": "teal",
-        "alpha": 1
-       },
-       {
-        "id": "a0",
-        "kind": "agent",
-        "x": 215,
-        "y": 157,
-        "w": 22,
-        "h": 22,
-        "at": 0.05,
-        "color": "blue",
-        "alpha": 1
-       },
-       {
-        "id": "fo",
-        "kind": "folder",
-        "x": 300,
-        "y": 340,
-        "w": 54,
-        "h": 42,
-        "at": 0.05,
-        "color": "amber"
-       },
-       {
-        "id": "fo2",
-        "kind": "folder",
-        "x": 370,
-        "y": 340,
-        "w": 54,
-        "h": 42,
-        "at": 0.05,
-        "color": "amber"
-       },
-       {
-        "id": "badge",
-        "kind": "chip",
-        "x": 615,
-        "y": 155,
-        "w": 170,
-        "h": 26,
-        "at": "3f#PHASEONE10841",
-        "label": "PHASEONE10841",
-        "color": "blue"
-       }
-      ],
-      "links": [
-       {
-        "a": "a0",
-        "b": "art",
-        "at": 0.05,
-        "color": "blue",
-        "bi": true,
-        "curve": 0.12
-       }
-      ],
-      "fs": 1.2
-     },
-     "bg": true,
-     "fade": [
-      0.5,
-      0.5
+     ],
+     "cam": [
+      {
+       "at": "S3",
+       "x": 50,
+       "y": 50,
+       "z": 1
+      },
+      {
+       "at": "3a#Atascado+1.5",
+       "x": 50,
+       "y": 50,
+       "z": 0.85,
+       "dur": 1.5
+      },
+      {
+       "at": "3d#Creó+1.5",
+       "x": 56.25,
+       "y": 79.62962962962962,
+       "z": 2.4,
+       "dur": 2.0
+      },
+      {
+       "at": "3e+1.0",
+       "x": 50,
+       "y": 50,
+       "z": 0.85,
+       "dur": 1.8
+      }
      ]
     }
    ]
