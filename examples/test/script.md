@@ -1,6 +1,6 @@
 # Test · escenas 0–3
 
-*Voice-over script. Language: es · voice: nova · duration: ~4:55 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~4:55 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 

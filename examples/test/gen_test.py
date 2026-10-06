@@ -146,6 +146,6 @@ B=[list(sc_['beats']) for sc_ in scenes]
 B[1]=B[1][:4]
 B[3]=B[3][:3]+['Y no sería la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron; el seis, OpenAI puso otra nueva y vacía, y los mensajes desaparecieron.']+B[3][3:]
 out=[dict(title=sc_['title'],beats=B[i],cues=C[i]) for i,sc_ in enumerate(scenes)]
-S2=dict(meta=dict(S['meta'],title='Test · escenas 0–3'),pronunciation=S['pronunciation'],scenes=out)
+S2=dict(meta=dict(S['meta'],title='Test · escenas 0–3',voice='cedar',model='gpt-4o-mini-tts',speed=1.0,instructions='Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.'),pronunciation=S['pronunciation'],scenes=out)
 json.dump(S2,open('/home/claude/explainer_studio/examples/test/story.json','w'),ensure_ascii=False,indent=1)
 print('ok')
