@@ -5639,7 +5639,8 @@
         "at": "0f#leyeron",
         "color": "blue",
         "curve": 0.12,
-        "solid": true
+        "solid": true,
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -13071,7 +13072,8 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.05
+        "curve": 0.05,
+        "rel": true
        },
        {
         "a": "tl0",
@@ -13079,7 +13081,8 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0
+        "curve": 0.0,
+        "rel": true
        },
        {
         "a": "tl1",
@@ -13087,7 +13090,8 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0
+        "curve": 0.0,
+        "rel": true
        },
        {
         "a": "tl2",
@@ -13095,7 +13099,8 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0
+        "curve": 0.0,
+        "rel": true
        },
        {
         "a": "tl3",
@@ -13103,7 +13108,8 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0
+        "curve": 0.0,
+        "rel": true
        },
        {
         "a": "tl4",
@@ -13111,7 +13117,8 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0
+        "curve": 0.0,
+        "rel": true
        },
        {
         "a": "tf",
@@ -13119,7 +13126,8 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0
+        "curve": 0.0,
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -14726,7 +14734,8 @@
         "color": "#9BE564",
         "curve": 0.1,
         "solid": true,
-        "until": "7f"
+        "until": "7f",
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -17524,7 +17533,8 @@
         "at": "10d#probar",
         "color": "blue",
         "solid": true,
-        "curve": 0.3
+        "curve": 0.3,
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -20406,7 +20416,8 @@
         "color": "#8C96A4",
         "curve": 0.3,
         "solid": true,
-        "dashed": true
+        "dashed": true,
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -21737,7 +21748,8 @@
         "color": "amber",
         "curve": 0.3,
         "solid": false,
-        "until": "13e#Ninguno+2"
+        "until": "13e#Ninguno+2",
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -21832,7 +21844,8 @@
         "color": "#8C96A4",
         "curve": 0.3,
         "dashed": true,
-        "until": "E13"
+        "until": "E13",
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -22995,7 +23008,8 @@
         "color": "amber",
         "curve": 0.3,
         "dashed": true,
-        "solid": true
+        "solid": true,
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -23087,7 +23101,8 @@
         "color": "#8C96A4",
         "curve": 0.3,
         "dashed": true,
-        "solid": true
+        "solid": true,
+        "rel": true
        },
        {
         "a": "hf",
@@ -23413,7 +23428,8 @@
         "at": "15b#entregado",
         "color": "teal",
         "curve": 0.3,
-        "solid": true
+        "solid": true,
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -23529,42 +23545,48 @@
         "b": "fl",
         "at": "15c#aprobar",
         "color": "#7C97FF",
-        "curve": 0.3
+        "curve": 0.3,
+        "rel": true
        },
        {
         "a": "it1",
         "b": "fl",
         "at": "15c#aprobar",
         "color": "#7C97FF",
-        "curve": 0.3
+        "curve": 0.3,
+        "rel": true
        },
        {
         "a": "it2",
         "b": "fl",
         "at": "15c#aprobar",
         "color": "#7C97FF",
-        "curve": 0.3
+        "curve": 0.3,
+        "rel": true
        },
        {
         "a": "it3",
         "b": "fl",
         "at": "15c#aprobar",
         "color": "#7C97FF",
-        "curve": 0.3
+        "curve": 0.3,
+        "rel": true
        },
        {
         "a": "it4",
         "b": "fl",
         "at": "15c#aprobar",
         "color": "#7C97FF",
-        "curve": 0.3
+        "curve": 0.3,
+        "rel": true
        },
        {
         "a": "it5",
         "b": "fl",
         "at": "15c#aprobar",
         "color": "#7C97FF",
-        "curve": 0.3
+        "curve": 0.3,
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -23638,7 +23660,8 @@
         "at": "15d#Ni+0.3",
         "color": "#8C96A4",
         "curve": 0.3,
-        "dashed": true
+        "dashed": true,
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -24872,7 +24895,8 @@
         "at": "17e#credenciales+0.4",
         "color": "amber",
         "curve": 0.3,
-        "until": "17f"
+        "until": "17f",
+        "rel": true
        }
       ],
       "fs": 1.0
@@ -25159,7 +25183,8 @@
         "at": "17h#herramienta+0.3",
         "color": "#FF6E6E",
         "curve": 0.3,
-        "solid": true
+        "solid": true,
+        "rel": true
        }
       ],
       "fs": 1.0

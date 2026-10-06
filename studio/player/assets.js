@@ -606,7 +606,7 @@ const ICON={
  num:(n,c,w,h,cx,cy)=>`<text class="nm" x="${cx}" y="${cy+(n.fs||26)*.35}" fill="${c}" font-size="${n.fs||26}" text-anchor="middle" font-weight="600">0</text>`
 };
 /* ---------- overflow guard: every <text> inside a node is forced to stay inside its container (first <rect> ≈ node box) or inside the frame ---------- */
-window.__fit=window.__fit||[];
+window.__fit=window.__fit||[];window.__lk=window.__lk||[];
 const fitText=(q,box,dyn,id)=>{
  if(!q.isConnected)return;if(q.hasAttribute('textLength')){q.removeAttribute('textLength')}
  if(!q.textContent)return;let b;try{b=q.getBBox()}catch(e){return}if(!b.width)return;
@@ -627,13 +627,29 @@ A.world=(h,p,C)=>{
  const ctr=n=>[n.x+(n.w||0)/2,n.y+(n.h||0)/2];
  const edge=(n,m)=>{const [ax,ay]=ctr(n),[bx,by]=ctr(m),dx=bx-ax,dy=by-ay,hw=(n.w||90)/2,hh=(n.h||60)/2,k=Math.min(Math.abs(dx)>1e-6?hw/Math.abs(dx):1e9,Math.abs(dy)>1e-6?hh/Math.abs(dy):1e9);return[ax+dx*Math.min(1,k),ay+dy*Math.min(1,k)]};
  const cp=(x1,y1,x2,y2,l,i)=>{if(l.via)return[2*l.via[0]-(x1+x2)/2,2*l.via[1]-(y1+y2)/2];const dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy)||1,k=(l.curve??.22)*(i%2?-1:1);return[(x1+x2)/2-dy/len*len*k,(y1+y2)/2+dx/len*len*k]};
+ /* link geometry: relation (rel/orth) = straight segment; communication = S-shaped cubic (two curvatures) that steers around other nodes */
+ const LKREP=[];const NOOBS=['txt','ctxt','sandbox','seal','bar'];
+ const cub=(P,u)=>{const m=1-u;return[m*m*m*P[0][0]+3*m*m*u*P[1][0]+3*m*u*u*P[2][0]+u*u*u*P[3][0],m*m*m*P[0][1]+3*m*m*u*P[1][1]+3*m*u*u*P[2][1]+u*u*u*P[3][1]]};
+ const hitN=(P,obs)=>{let c=0;for(let k=1;k<28;k++){const [x,y]=cub(P,k/28);for(const o of obs)if(x>o.x-7&&x<o.x+o.w+7&&y>o.y-7&&y<o.y+o.h+7){c++;break}}return c};
+ const linkGeo=(l,i)=>{const a=byId[l.a],b=byId[l.b],A=edge(a,b),B=edge(b,a);
+  if(l.rel||l.orth)return{rel:1,P:[A,A,B,B],A,B};
+  const dx=B[0]-A[0],dy=B[1]-A[1],len=Math.hypot(dx,dy)||1,ux=dx/len,uy=dy/len,nx=-uy,ny=ux,base=Math.max(14,len*(l.curve??.22)*.9)*(i%2?-1:1),inA=n=>A[0]>n.x&&A[0]<n.x+(n.w||0)&&A[1]>n.y&&A[1]<n.y+(n.h||0),inB=n=>B[0]>n.x&&B[0]<n.x+(n.w||0)&&B[1]>n.y&&B[1]<n.y+(n.h||0);
+  const i0=N.indexOf(a),i1=N.indexOf(b),T0=n=>C.T(n.at||0),T1=n=>n.until!=null?C.T(n.until):1e9,ls=Math.max(C.T(l.at||0),T0(a),T0(b)),le=l.until!=null?C.T(l.until):1e9,obs=N.filter((n,j)=>j!==i0&&j!==i1&&!NOOBS.includes(n.kind)&&!inA(n)&&!inB(n)&&(n.w||0)>0&&T0(n)<le&&T1(n)>ls&&(n.alpha??1)>.2).map(n=>({x:n.x,y:n.y,w:n.w||90,h:n.h||60,id:n.id,j:N.indexOf(n)}));
+  const mk=(h1,h2,f1=.33,f2=.33)=>[A,[A[0]+ux*len*f1+nx*h1,A[1]+uy*len*f1+ny*h1],[B[0]-ux*len*f2+nx*h2,B[1]-uy*len*f2+ny*h2],B];
+  if(l.via){const q=cp(A[0],A[1],B[0],B[1],l,i);return{P:[A,[A[0]+2/3*(q[0]-A[0]),A[1]+2/3*(q[1]-A[1])],[B[0]+2/3*(q[0]-B[0]),B[1]+2/3*(q[1]-B[1])],B],A,B}}
+  const cands=[];for(const m of [1,-1,1.7,-1.7,2.6,-2.6,.55,-.55,3.6,-3.6]){cands.push([base*m,-base*m]);cands.push([base*m,-base*m*.45])}
+  let best=null,bs=1e9;cands.forEach((c,k)=>{const P=mk(c[0],c[1]),pen=hitN(P,obs)*100+Math.abs(c[0])/ (len||1)*20+k*.3;if(pen<bs){bs=pen;best=P}});
+  const hh=hitN(best,obs);if(hh)LKREP.push({a:l.a,b:l.b,n:hh});return{P:best,A,B,obs}};
+ const lkD=g=>g.rel?`M${g.A[0]} ${g.A[1]}L${g.B[0]} ${g.B[1]}`:`M${g.P[0][0]} ${g.P[0][1]}C${g.P[1][0]} ${g.P[1][1]} ${g.P[2][0]} ${g.P[2][1]} ${g.P[3][0]} ${g.P[3][1]}`;
+ const GEO=Lk.map((l,i)=>linkGeo(l,i));
  const orthPts=(l,a,b)=>{const [ax,ay]=ctr(a),[bx,by]=ctr(b),ha=(a.h||60)/2,hb=(b.h||60)/2,wa=(a.w||90)/2,wb=(b.w||90)/2;let m=l.orth;if(m===true)m=Math.abs(by-ay)>=Math.abs(bx-ax)?'v':'h';
   if(m==='v'){const sy=by>ay?ay+ha:ay-ha,ey=by>ay?by-hb:by+hb,my=l.mid??(sy+ey)/2;return Math.abs(ax-bx)<1?[[ax,sy],[bx,ey]]:[[ax,sy],[ax,my],[bx,my],[bx,ey]]}
   const sx=bx>ax?ax+wa:ax-wa,ex=bx>ax?bx-wb:bx+wb,mx=l.mid??(sx+ex)/2;return Math.abs(ay-by)<1?[[sx,ay],[ex,by]]:[[sx,ay],[mx,ay],[mx,by],[ex,by]]};
  const orthD=P=>{let d=`M${P[0][0]} ${P[0][1]}`;for(let i=1;i<P.length-1;i++){const p0=P[i-1],p1=P[i],p2=P[i+1],d1=Math.hypot(p1[0]-p0[0],p1[1]-p0[1])||1,d2=Math.hypot(p2[0]-p1[0],p2[1]-p1[1])||1,r=Math.min(16,d1/2,d2/2),ax=p1[0]-(p1[0]-p0[0])/d1*r,ay=p1[1]-(p1[1]-p0[1])/d1*r,bx=p1[0]+(p2[0]-p1[0])/d2*r,by=p1[1]+(p2[1]-p1[1])/d2*r;d+=`L${ax} ${ay}Q${p1[0]} ${p1[1]} ${bx} ${by}`}const q=P[P.length-1];return d+`L${q[0]} ${q[1]}`};
  let s='';
  Lk.forEach((l,i)=>{const a=byId[l.a],b=byId[l.b],c=hex(l.color||'amber'),[x1,y1]=edge(a,b),[x2,y2]=edge(b,a);
-  s+=`<g class="lk" data-i="${i}" style="opacity:0"><path d="${l.orth?orthD(orthPts(l,a,b)):`M${x1} ${y1}Q${cp(x1,y1,x2,y2,l,i)[0]} ${cp(x1,y1,x2,y2,l,i)[1]} ${x2} ${y2}`}" stroke="${c}" stroke-opacity="${l.orth?.7:.55}" stroke-width="${l.orth?1.8:1.6}" stroke-dasharray="${(l.solid||l.orth)&&!l.dashed?'0':'5 6'}" fill="none"/>${l.lock?`<g transform="translate(${(x1+x2)/4+cp(x1,y1,x2,y2,l,i)[0]/2-9} ${(y1+y2)/4+cp(x1,y1,x2,y2,l,i)[1]/2-11})"><rect x="0" y="9" width="18" height="14" rx="3" fill="#0E1218" stroke="${c}" stroke-width="1.8"/><path d="M4 9V5a5 5 0 0 1 10 0v4" fill="none" stroke="${c}" stroke-width="1.8"/></g>`:''}</g>`;
+  const G=GEO[i],mid=cub(G.P,.5);
+  s+=`<g class="lk" data-i="${i}" style="opacity:0"><path d="${l.orth?orthD(orthPts(l,a,b)):lkD(G)}" stroke="${c}" stroke-opacity="${l.orth||l.rel?.7:.55}" stroke-width="${l.orth||l.rel?1.8:1.6}" stroke-dasharray="${(l.solid||l.orth||l.rel)&&!(l.dashed&&!l.rel)?'0':'5 6'}" fill="none"/>${l.lock?`<g transform="translate(${mid[0]-9} ${mid[1]-11})"><rect x="0" y="9" width="18" height="14" rx="3" fill="#0E1218" stroke="${c}" stroke-width="1.8"/><path d="M4 9V5a5 5 0 0 1 10 0v4" fill="none" stroke="${c}" stroke-width="1.8"/></g>`:''}</g>`;
   s+=`<circle class="pl" data-i="${i}" r="4.5" fill="${c}" style="opacity:0"/><circle class="pl2" data-i="${i}" r="4.5" fill="${c}" style="opacity:0"/>`});
  N.forEach((n,i)=>{const c=hex(n.color||'blue'),w=n.w||90,hh=n.h||60,cx=n.x+w/2,cy=n.y+hh/2;let g='';
   if(n.kind==='sandbox'&&n.notop){const r=14,x2=n.x+w,y2=n.y+hh,gp=n.gap,d=`M${n.x} ${n.y}V${y2-r}A${r} ${r} 0 0 0 ${n.x+r} ${y2}H${x2-r}A${r} ${r} 0 0 0 ${x2} ${y2-r}${gp?`V${gp[1]}M${x2} ${gp[0]}`:''}V${n.y}`;const g2=`<rect x="${n.x}" y="${n.y}" width="${w}" height="${hh}" fill="rgba(63,216,194,.05)" stroke="none"/><path d="${d}" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="10 6"/>`;g=g2}
@@ -654,8 +670,8 @@ A.world=(h,p,C)=>{
  const nd=[...h.querySelectorAll('.nd')],lk=[...h.querySelectorAll('.lk')],pl=[...h.querySelectorAll('.pl')],pl2=[...h.querySelectorAll('.pl2')],in2=[...h.querySelectorAll('.in2')];
  const ta=N.map(n=>C.T(n.at||0)),tu=N.map(n=>n.until!=null?C.T(n.until):1e9),mv=N.map(n=>(n.move||[]).map(m=>({t:C.T(m.at),x:m.x,y:m.y,d:m.dur||1.2}))),la=Lk.map(l=>{const g=id=>{const j=N.indexOf(byId[id]);return j>=0&&ta[j]>.3?ta[j]+.4:0};return Math.max(C.T(l.at||0),g(l.a),g(l.b))}),lu=Lk.map(l=>l.until!=null?C.T(l.until):1e9),ia=N.map(n=>n.innerAt!=null?C.T(n.innerAt):1e9),spot=(p.spot||[]).map(q=>({t:C.T(q.at),ids:q.ids}));
  const fl=N.map(n=>n.flick?{t:C.T(n.flick.at),d:n.flick.dur||2.5,e:n.flick.end||'off'}:null),flv=(i,t)=>{const f=fl[i];if(!f||t<f.t)return 1;const tt=t-f.t;if(tt>=f.d)return f.e==='on'?1:(f.e==='dim'?.12:0);const ph=tt/f.d;return Math.sin(tt*(20+16*ph))>(-.5+1.2*ph)?1:.08};
- const geo=Lk.map((l,i)=>{const a=byId[l.a],b=byId[l.b],A=edge(a,b),B=edge(b,a);return[A,B,cp(A[0],A[1],B[0],B[1],l,i)]});
- const upd=t=>{let act=null;for(const q of spot)if(t>=q.t)act=q;
+ const geo=GEO;
+ const upd=t=>{if(!upd._r){upd._r=1;LKREP.forEach(f=>window.__lk.push(f))}let act=null;for(const q of spot)if(t>=q.t)act=q;
   nd.forEach((e,i)=>{const u=ease(pr(t,ta[i],.6)),on=!act||act.ids.includes(N[i].id);e.dataset.on=on?1:0;
    const k=(e._k=(e._k??1)+((on?1:.3)-(e._k??1))*.25);const out=1-ease(pr(t,tu[i],.5));e.style.opacity=Math.max(u,p.ghost||0)*k*out*flv(i,t)*(N[i].alpha??1)*(N[i].litAt!=null&&N[i].kind!=='bulb'?.3+.7*ease(pr(t,C.T(N[i].litAt),.4)):1)*(N[i].blink&&(N[i].bat==null||t>=C.T(N[i].bat))?(1-N[i].blink*(.5+.5*Math.sin(t*(N[i].bf||5)+i*1.9))):1);let dx=0,dy=0,px=N[i].x,py=N[i].y;for(const m of mv[i]){const a=ease(pr(t,m.t-m.d,m.d));dx+=(m.x-px)*a;dy+=(m.y-py)*a;px+=(m.x-px)*(a>=1?1:0);py+=(m.y-py)*(a>=1?1:0)}
    if(mv[i].length){let bx=N[i].x,by=N[i].y;dx=0;dy=0;for(const m of mv[i]){const a=ease(pr(t,m.t-m.d,m.d));dx+=(m.x-bx)*a;dy+=(m.y-by)*a;bx=m.x;by=m.y}}
@@ -674,8 +690,8 @@ A.world=(h,p,C)=>{
    if(N[i].kind==='crowd'){const cds=e.querySelectorAll('.cd'),gr=(N[i].grow||[{at:N[i].at||0,n:N[i].n||40}]);let cnt=0;for(const q of gr){cnt=lerp(cnt,q.n,ease(pr(t,C.T(q.at),q.dur||1.2)))}cds.forEach((d,j)=>d.style.opacity=clamp(cnt-j))}
    if(N[i].kind==='num'){const q=e.querySelector('.nm'),a=ease(pr(t,C.T(N[i].at||0),N[i].dur||2));q.textContent=(N[i].pre||'')+fmt(Math.round(lerp(N[i].from||0,N[i].n||0,a)))+(N[i].suf||'')}e.style.filter=on&&act?'drop-shadow(0 0 7px '+hex(N[i].color||'blue')+')':'none';if(N[i].glowAt!=null){const gg=ease(pr(t,C.T(N[i].glowAt),N[i].glowDur||8))*(.8+.2*Math.sin(t*7));e.style.filter=`drop-shadow(0 0 ${2+14*gg}px #FF6E6E) drop-shadow(0 0 ${12*gg}px #FF6E6E)`}});
   lk.forEach((e,i)=>{const on=!act||act.ids.includes(Lk[i].a)&&act.ids.includes(Lk[i].b);e.style.opacity=ease(pr(t,la[i],.5))*(on?1:.25)*(1-ease(pr(t,lu[i],.5)))*(Lk[i].alpha??1)});
-  Lk.forEach((l,i)=>{const [a,b,q]=geo[i];if(l.orth||l.nob||t<la[i]+.4){pl[i].style.opacity=0;pl2[i].style.opacity=0;return}const sp=l.speed||.45,tt=t-la[i]-.4;
-   [pl[i],pl2[i]].forEach((c,j)=>{const u=((tt*sp+j*.5)%1),w=(l.bi&&j)?1-u:u;const m=1-w;c.setAttribute('cx',m*m*a[0]+2*m*w*q[0]+w*w*b[0]);c.setAttribute('cy',m*m*a[1]+2*m*w*q[1]+w*w*b[1]);c.style.opacity=Math.sin(u*Math.PI)*.95*ease(pr(t,la[i]+.4,.4))*(1-ease(pr(t,lu[i],.5)))})});
+  Lk.forEach((l,i)=>{const G=geo[i];if(l.orth||l.rel||l.nob||t<la[i]+.4){pl[i].style.opacity=0;pl2[i].style.opacity=0;return}const sp=l.speed||.45,tt=t-la[i]-.4;
+   [pl[i],pl2[i]].forEach((c,j)=>{const u=((tt*sp+j*.5)%1),w=(l.bi&&j)?1-u:u;const m=1-w;const pt=cub(G.P,w);c.setAttribute('cx',pt[0]);c.setAttribute('cy',pt[1]);c.style.opacity=Math.sin(u*Math.PI)*.95*ease(pr(t,la[i]+.4,.4))*(1-ease(pr(t,lu[i],.5)))})});
   nd.forEach((e,i)=>{const vis=+e.style.opacity>.02;if(!vis)return;fitNode(e,N[i],!e._fd);e._fd=1});
   in2.forEach(e=>{const i=+e.dataset.i;e.style.opacity=ease(pr(t,ia[i],.6))})};
  upd.pos=id=>{const n=byId[id];if(!n)return[50,50];const [x,y]=ctr(n);return[x/9.6,y/5.4]};

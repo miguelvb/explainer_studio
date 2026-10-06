@@ -118,3 +118,27 @@ def sandbox_onion(id, cx, cy, size=90, at=0.05, layers=4, color='teal', **kw):
 def folder_view(id, x, y, items, label='Artifactory', w=420, h=400, at=0.05, color='amber', **kw):
     """File-browser window. items=[{name, dir:bool, color?, at?, c2? (second colour), altAt? (start flashing between both)}]."""
     return _n(id, 'folderview', x, y, w, h, at, color=color, label=label, items=items, **kw)
+
+
+# ---- link semantics ---------------------------------------------------------
+# A link is either COMMUNICATION (information travels: curved S-shaped path with balls,
+# routed around other nodes) or a RELATION (belongs to / is part of / is held by / sequence:
+# a straight, continuous segment, no balls).  Authors may set rel=True or comm=True on a link;
+# otherwise these rules decide.
+REL_KINDS = {'chip', 'key', 'person', 'exam'}
+REL_PAIRS = {('sandbox', 'sheet')}
+
+def classify_links(story):
+    for sc in story.get('scenes', []):
+        for c in sc.get('cues', []):
+            p = c.get('p') or {}
+            kinds = {n['id']: n.get('kind') for n in p.get('nodes', [])}
+            for l in p.get('links', []) or []:
+                if l.get('orth') or l.get('comm') or 'rel' in l:
+                    l.pop('comm', None); continue
+                ka, kb = kinds.get(l['a']), kinds.get(l['b'])
+                if l.get('lock'):
+                    continue
+                if l.get('dashed') or ka in REL_KINDS or kb in REL_KINDS or (ka, kb) in REL_PAIRS:
+                    l['rel'] = True
+    return story
