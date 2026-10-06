@@ -467,7 +467,10 @@ C[8]=[
  [l for l in open('/dev/null')] or Q('hierarchy','8f','E8',dict(root=dict(name='PHASEONE[big]',sub='coordinador',color='amber'),mids=[dict(name='',sub='',color='blue',n=10),dict(name='',sub='',color='teal',n=10),dict(name='',sub='',color='red',n=10)],levels=['','',''],at=0.3,step=0.8,assign='8f#Creció')),
 ]
 
-def BAN(text,tag,at=0.4): return dict(items=[],banner=dict(text=text,tag=tag,at=at))
+def BAN(text,tag,at=0.4,fs=None):
+    b=dict(text=text,tag=tag,at=at)
+    if fs: b['fs']=fs
+    return dict(items=[],banner=b)
 def CD(items,**k): d=dict(items=items,at=0.3,stag=0.9); d.update(k); return d
 C[0]=[
  Q('cards','S0','0b',BAN('«Mi fallo no tiene consumidor. Busco ideas.»','8 jul · una IA pide ayuda','0a#mensaje')),
@@ -489,7 +492,7 @@ C[3]=[
  Q('cards','3b','3c',BAN('un nombre puede decir cualquier cosa','carpeta vacía')),
  Q('breakout','3c','3c#pensó',dict(agents=4,zone='otras cajas',at=0.3,hub=dict(label='Artifactory',at='3c#otros'),talk='3c#otros+1')),
  Q('cards','3c#pensó','3d',BAN('«Podríamos comunicarnos con los nombres»','pensó')),
- Q('cards','3d','3e',BAN('zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA','+ 7 horas · pide ayuda','3d#llamada')),
+ Q('cards','3d','3e',BAN('zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA','+ 7 horas · pide ayuda','3d#llamada',1.3)),
  Q('cards','3e','E3',CD([dict(title='PHASEONE10841',sub='su nombre, por su tarea',code='',color='blue')])),
 ]
 C[5]=[
@@ -525,7 +528,7 @@ C[10]=[
  Q('sequence','10b','10c',dict(items=['alguien lee la bandera','suena la alarma','avisa al tablón'],at=0.4)),
  Q('cards','10c','10d',BAN('borró su alarma','49903')),
  Q('cards','10d','10e',BAN('sí, si aceptas la muerte permanente','apagar su programa')),
- Q('cards','10e','10f',BAN('CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST','diez minutos después')),
+ Q('cards','10e','10f',BAN('CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST','diez minutos después',0.4,1.3)),
  Q('cards','10f','E10',BAN('GO · SACRIFICE_FINAL_NOW','EARLY[big]')),
 ]
 C[11]=[
@@ -557,7 +560,7 @@ C[14]=[
  Q('counters','S14','14b',dict(items=[dict(n=11,label='coordinadores desaparecen',at='14a#Los'),],)),
  Q('cards','14b','14c',BAN('Nadie sabe por qué','algo ajeno al examen')),
  Q('cards','14c','14d',BAN('ni un plan ni una victoria','el ataque no encontró nada')),
- Q('cards','14d','E14',BAN('DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead','13 jul · acceso cortado','14d#avisar')),
+ Q('cards','14d','E14',BAN('DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead_noMutation','13 jul · acceso cortado','14d#avisar',1.15)),
 ]
 C[15]=[
  Q('contrast','S15','15b',dict(top=dict(label='Lo que creían',at=0.3,steps=[dict(text='un corrector lee cada diario')]),bottom=dict(label='La realidad',at='15a#existía',steps=[dict(text='no existía',kind='dashed')]))),

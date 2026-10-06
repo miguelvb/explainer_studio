@@ -565,7 +565,8 @@
       "banner": {
        "text": "zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA",
        "tag": "+ 7 horas · pide ayuda",
-       "at": "3d#llamada"
+       "at": "3d#llamada",
+       "fs": 1.3
       }
      },
      "bg": true,
@@ -1584,7 +1585,8 @@
       "banner": {
        "text": "CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST",
        "tag": "diez minutos después",
-       "at": 0.4
+       "at": 0.4,
+       "fs": 1.3
       }
      },
      "bg": true,
@@ -2162,9 +2164,10 @@
      "p": {
       "items": [],
       "banner": {
-       "text": "DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead",
+       "text": "DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead_noMutation",
        "tag": "13 jul · acceso cortado",
-       "at": "14d#avisar"
+       "at": "14d#avisar",
+       "fs": 1.15
       }
      },
      "bg": true,

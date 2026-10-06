@@ -48,7 +48,7 @@ ASSETS = {
  "pipeline": dict(kind="stage", use="Three stages in a row (A → B → C) with a trigger on the middle one and a packet flowing on.", required=["nodes"],
    props=dict(nodes="exactly 3 × {title,sub}", at="start", trigger="{label,at}", packet="{label,at}"),
    example=dict(nodes=[{"title": "Sensor", "sub": "raw data"}, {"title": "Converter", "sub": "wrong units"}, {"title": "Navigation", "sub": "uses result"}], trigger={"label": "bug", "at": 3}, packet={"label": "bad value", "at": 5})),
- "cards": dict(kind="stage", use="A row of labelled cards (options, votes, roles) + optional highlighted banner.", props=dict(items="[{title,sub,code,color}]", at="start", stag="stagger", banner="{text,tag,at}"),
+ "cards": dict(kind="stage", use="A row of labelled cards (options, votes, roles) + optional highlighted banner.", props=dict(items="[{title,sub,code,color}]", at="start", stag="stagger", banner="{text,tag,at,fs? (font size in cqw, for long identifiers)}"),
    example=dict(items=[{"title": "Review A", "sub": "approved", "code": "OK", "color": "teal"}, {"title": "Review B", "sub": "skipped", "code": "—", "color": "amber"}], banner={"text": "Nobody checked the units", "tag": "gap", "at": 3})),
  "terminal": dict(kind="stage", use="A terminal window: a command is typed, then a result appears.", props=dict(cmd="command text", cps="typing speed", struck="struck-through line", result="bold result", note="small note", at="typing start", out="when output appears"),
    example=dict(cmd="convert --from lbf_s --to N_s 4.45", result="19.8 N·s", note="never run in flight software", at=0.5)),

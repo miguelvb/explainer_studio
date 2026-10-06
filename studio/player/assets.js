@@ -219,7 +219,7 @@ A.pipeline=(h,p,C)=>{
 /* ---------- cards: a row of labelled cards + optional highlighted banner ---------- */
 A.cards=(h,p,C)=>{
  const it=p.items||[];
- h.innerHTML=`<div class="in">${it.length?`<div class="vt" style="grid-template-columns:repeat(${it.length},1fr)">${it.map(k=>`<div class="vc" style="--c:var(${cv(k.color)});opacity:0"><b>${esc(k.title)}</b><p>${esc(k.sub||'')}</p><code>${esc(k.code||'')}</code></div>`).join('')}</div>`:''}${p.banner?`<div class="pm" style="opacity:0"><span>${esc(p.banner.text)}</span><em>${esc(p.banner.tag||'')}</em></div>`:''}</div>`;
+ h.innerHTML=`<div class="in">${it.length?`<div class="vt" style="grid-template-columns:repeat(${it.length},1fr)">${it.map(k=>`<div class="vc" style="--c:var(${cv(k.color)});opacity:0"><b>${esc(k.title)}</b><p>${esc(k.sub||'')}</p><code>${esc(k.code||'')}</code></div>`).join('')}</div>`:''}${p.banner?`<div class="pm" style="opacity:0"><span style="${p.banner.fs?'font-size:'+p.banner.fs+'cqw;':''}overflow-wrap:anywhere">${esc(p.banner.text)}</span><em>${esc(p.banner.tag||'')}</em></div>`:''}</div>`;
  const cs=[...h.querySelectorAll('.vc')],pm=h.querySelector('.pm'),at=C.T(p.at||0),st=p.stag??.5,pa=p.banner&&p.banner.at!=null?C.T(p.banner.at):0;
  return t=>{cs.forEach((c,i)=>pop(c,t,at+i*st,.5,1.2));if(pm)pop(pm,t,pa,.6,1.2)}};
 
