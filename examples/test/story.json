@@ -16905,7 +16905,7 @@
        },
        {
         "id": "sg",
-        "kind": "sigSeal",
+        "kind": "sigLock",
         "x": 170,
         "y": 195,
         "w": 40,
@@ -17158,7 +17158,7 @@
        },
        {
         "id": "id",
-        "kind": "ideaCloud",
+        "kind": "ideaSpark",
         "x": 153,
         "y": 73,
         "w": 44,

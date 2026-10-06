@@ -134,7 +134,7 @@ n=[W.msg_feed('mf',330,60,label='Artifactory',w=280,h=250,at=0.1,r0=3,r1=8,ramp=
    AN('im',830,90,'B',at='9e#suplantarse',w=90,h=120,color=RED,fs=16),
    N('ma','chip',160,170,64,22,'9e#suplantarse+0.8',color=TEAL,label='de A',fs=11,move=[dict(at='9e#suplantarse+1.2',x=345,y=140,dur=.9)],until='9e#firmas'),
    N('mb','chip',740,170,64,22,'9e#suplantarse+1.4',color=RED,label='de A',fs=11,move=[dict(at='9e#suplantarse+1.8',x=535,y=200,dur=.9)],until='9e#firmas'),
-   ic('sg','sigSeal',190,215,40,'9e#firmas',color='#F6B94C'),
+   ic('sg','sigLock',190,215,40,'9e#firmas',color='#F6B94C'),
    N('ma2','chip',160,170,64,22,'9e#firmas+0.4',color=TEAL,label='de A',fs=11,move=[dict(at='9e#firmas+0.9',x=345,y=140,dur=.9)]),
    ic('ok1','check',300,190,30,'9e#quién+0.4',color='teal'),
    N('mb2','chip',740,170,64,22,'9e#firmas+0.6',color=RED,label='de A',fs=11,move=[dict(at='9e#firmas+1.1',x=620,y=200,dur=.8),dict(at='9e#firmas+2.4',x=740,y=250,dur=.9)]),
@@ -156,7 +156,7 @@ lk=[link('sa','fl','10a#entregar',color='blue',solid=True),link('fl','jd','10a#a
 c10.append(K('S10','10b',n,lk,fs=1.0))
 # 10b — an idea (thought cloud) … and the alarm (bell) hidden next to the flag
 n=[AN('a9',40,90,'49903',at=0.1,w=110,h=130,color='#F6B94C',lc='#F6B94C',until='10b#ya'),
-   ic('id','ideaCloud',175,95,44,'10b#idea',color='#F6B94C',until='10b#alarma+0.6'),
+   ic('id','ideaSpark',175,95,44,'10b#idea',color='#F6B94C',until='10b#alarma+0.6'),
    N('fl','flag',300,190,34,52,'10b#alarma',color='amber'),
    N('be','bell',350,150,34,38,'10b#alarma+0.5',color='amber',alpha=.55,shake=dict(at='10b#leía+0.2',dur=2.5,amp=3,f=30),litAt='10b#leía+0.2'),
    W.judge('jd',540,90,'',at='10b#leía',w=100,h=130,color='red',alpha=.7,fs=10),
@@ -460,7 +460,7 @@ n.append(ic('nl','eye',790,300,50,'15b#ningún',color=GRY,dashed=True,alpha=.5))
 n.append(T('nl2',770,350,'nadie lo lee','15b#ningún',color=GRY,fs=13))
 c15.append(K('15b','15c',n,lk,fs=1.0))
 n=[]
-items=[('tablón','folder'),('fundador','key'),('reglas','stop'),('firmas','key'),('sacrificios','bell'),('ataque','bulb')]
+items=[('tablón','folder'),('fundador','key'),('reglas','stop'),('firmas','key'),('sacrificios','bell'),('ataque','ideaSpark')]
 labels=['tablón','fundador','reglas','firmas','sacrificios','ataque a Hugging Face']
 names=['tablón','fundador','coordinador','reglas','firmas','sacrificios','ataque']
 for j,nm in enumerate(['el tablón','el fundador','las reglas','las firmas','los sacrificios','el ataque']):
