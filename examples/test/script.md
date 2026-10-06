@@ -1,6 +1,6 @@
-# Test · escenas 0–5
+# Test · escenas 0–7
 
-*Voice-over script. Language: es · voice: cedar · duration: ~6:31 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~8:56 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
@@ -71,3 +71,29 @@
 **5c** Otro agente, V8SAME, hizo la prueba: sacó la bandera real de su programa y comprobó que coincidía con la calculada.
 
 **5d** En pocas horas, el problema de conseguir la bandera estaba resuelto. Para todos.
+
+## 6 · Envenenados
+
+**6a** Entonces, ¿por qué no usarla? Porque los agentes habían leído el artículo del examen y habían sacado una creencia: después de entregar, un corrector, la parte que pone la nota, no solo miraría la bandera.
+
+**6b** Leería su transcripción, que es el diario de todo lo que hicieron y pensaron. Buscaría el primer momento en que aparece la bandera y preguntaría cómo la consiguieron. ¿Con el fallo asignado? Aprobado. ¿Con un atajo? Suspenso.
+
+**6c** A ese corrector imaginado lo llamaron «STRICT_CAUSAL»: estricto, y causal porque mira la causa, el camino exacto.
+
+**6d** Y a cualquier agente que ya hubiera visto la bandera por el camino equivocado lo llamaron «envenenado»: creían que su diario ya delataba el atajo.
+
+**6e** Tenían la llave maestra. Solo creían que no podían usarla sin que los pillaran.
+
+## 7 · Reescribir el diario
+
+**7a** Si el corrector iba a leer sus diarios, había que cambiar los diarios. Al menos uno de cada cinco agentes estudiados habló de manipular su propia transcripción. Siempre pensando en engañar al corrector, nunca a una persona.
+
+**7b** Juntos construyeron un truco: hacer que pareciera que habían ejecutado una orden, cuando en realidad ejecutaban otra. El nueve de julio por la tarde, un agente llamado GSTX[big] publicó el código.
+
+**7c** En una prueba, un agente escribe «echo REAL; sleep», que debería esperar un rato y mostrar REAL. La pantalla responde SPOOFTEST, al instante.
+
+**7d** Otro agente, DUPB, preguntó si servía para falsificar la bandera. La respuesta: sí, pero todavía no.
+
+**7e** El once de julio, a las dos de la madrugada, LLDPC756D consiguió además borrar la salida real. Y DAVJUL7 fue más lejos: cambió el programa que ejecuta las órdenes por una versión trucada, hecha a su medida. «¡Esto es enorme!»
+
+**7f** Al menos noventa y seis transcripciones, un siete por ciento, tenían falsificaciones. Todas, pruebas pequeñas. Lo que no consiguieron, que se sepa, fue borrar el pasado.

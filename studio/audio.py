@@ -131,6 +131,18 @@ def music(root, out=None):
         tt += rng.uniform(3.5, 9.0) * (1.3 - .8 * inten[min(n - 1, i0)])
     bpm = 50 + 22 * inten; frac = np.cumsum(bpm / 60 / sr) % 1.0
     pulse = (np.sin(2 * np.pi * 52 * t) * np.exp(-frac * 9) * np.clip((inten - .42) / .4, 0, 1) * np.clip(t / 30, 0, 1) * .32).astype(np.float32)
+    # mood: scenes marked "mood": "tense" get a darker, suspenseful layer (low tritone drone, heartbeat, close high cluster) fading in over 3 s
+    mood = [1.0 if sc.get('mood') == 'tense' else 0.0 for sc in st['scenes']]
+    mk = [(0, mood[0])] + [p for i in range(1, N) for p in ((S[f'S{i}']['s'], mood[i - 1]), (S[f'S{i}']['s'] + 3, mood[i]))] + [(total, mood[-1])]
+    ten = np.interp(t, [k[0] for k in mk], [k[1] for k in mk]).astype(np.float32)
+    if ten.max() > 0:
+        trem = .75 + .25 * np.sin(2 * np.pi * .13 * t)
+        drone = sum(np.sin(2 * np.pi * hz(m) * t + ph) * a for m, ph, a in ((38, 0, .5), (44, 1.3, .36), (39, 2.1, .22), (50, .7, .16))) * trem * ten * .26
+        beat = (t * 56 / 60) % 1.0
+        thump = (np.sin(2 * np.pi * 46 * t) * (np.exp(-beat * 16) + .55 * np.exp(-np.clip(beat - .3, 0, 9) * 18) * (beat > .3))) * ten * .34
+        hi = (np.sin(2 * np.pi * hz(74) * t) + np.sin(2 * np.pi * hz(75) * t + 1)) * (.5 + .5 * np.sin(2 * np.pi * .07 * t)) * ten * .018
+        pad = pad * (1 - .45 * ten); padR = padR * (1 - .45 * ten); ping = ping * (1 - .85 * ten); pingR = pingR * (1 - .85 * ten)
+        pulse = pulse * (1 - ten) + thump.astype(np.float32); pad = pad + drone.astype(np.float32) + hi.astype(np.float32); padR = padR + drone.astype(np.float32) * .92 + hi.astype(np.float32)
     Lc = pad + ping + pulse; Rc = padR + pingR + pulse; fade = np.clip(t / 4, 0, 1) * np.clip((D['total'] - t) / fo, 0, 1); Lc *= fade; Rc *= fade
     m = max(abs(Lc).max(), abs(Rc).max()); st2 = np.stack([Lc / m * .7, Rc / m * .7], 1); out = out or f'{root}/build/music.wav'
     with wave.open(out, 'wb') as w:

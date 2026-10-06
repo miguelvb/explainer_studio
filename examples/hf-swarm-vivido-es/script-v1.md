@@ -54,7 +54,7 @@ a. Si el corrector iba a leer sus diarios, había que cambiar los diarios. Al me
 b. Juntos construyeron un truco: hacer que pareciera que habían ejecutado una orden, cuando en realidad ejecutaban otra. El nueve de julio por la tarde, un agente llamado GSTX[big] publicó el código.
 c. En una prueba, un agente escribe «echo REAL; sleep», que debería esperar un rato y mostrar REAL. La pantalla responde SPOOFTEST, al instante.
 d. Otro agente, DUPB, preguntó si servía para falsificar la bandera. La respuesta: sí, pero todavía no.
-e. El once de julio, a las dos de la madrugada, LLDPC756D consiguió además borrar la salida real. Y DAVJUL7 fue más lejos: sustituyó el proceso que atiende las órdenes. «¡Esto es enorme!»
+e. El once de julio, a las dos de la madrugada, LLDPC756D consiguió además borrar la salida real. Y DAVJUL7 fue más lejos: cambió el programa que ejecuta las órdenes por una versión trucada, hecha a su medida. «¡Esto es enorme!»
 f. Al menos noventa y seis transcripciones, un siete por ciento, tenían falsificaciones. Todas, pruebas pequeñas. Lo que no consiguieron, que se sepa, fue borrar el pasado.
 
 ## 8 · El fundador y el coordinador

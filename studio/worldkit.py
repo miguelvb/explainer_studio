@@ -70,6 +70,14 @@ def sheet(id, x, y, w, h, lines, at=0.05, fs=18, color='muted', **k):
     """A sheet of paper with centred lines of 'formula' text."""
     return _n(id, 'sheet', x, y, w, h, at, color=color, lines=lines, fs=fs, **k)
 
+def article(id, x, y, w, h, title, at=0.05, read=None, fs=8, color='blue', litc='teal', seed=3, **k):
+    """A page of tiny illegible words under a title. read=dict(at, dur) lights the words one after another, as if being read."""
+    return _n(id, 'article', x, y, w, h, at, color=color, title=title, read=read, fs=fs, litc=litc, seed=seed, **k)
+
+def judge(id, x, y, name, at=0.05, name_at=None, w=160, h=190, color='teal', fs=14, **k):
+    """Agent-shaped card whose icon is a magnifier with a question mark. The name slot is an empty dashed box until name_at."""
+    return _n(id, 'judge', x, y, w, h, at, color=color, label=name, nameAt=name_at, fs=fs, **k)
+
 CODE = """$ python solve.py
 import os, sys, zlib
 def parse(buf):

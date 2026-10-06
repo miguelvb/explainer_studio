@@ -2,7 +2,7 @@ import json,re,math
 import sys; sys.path.insert(0,'/home/claude/explainer_studio')
 from studio import worldkit as W
 S=json.load(open('/home/claude/explainer_studio/examples/hf-swarm-vivido-es/story.json'))
-scenes=S['scenes'][:6]
+scenes=S['scenes'][:8]
 def N(id,kind,x,y,w,h,at=0.05,**k):
     d=dict(id=id,kind=kind,x=round(x),y=round(y),w=round(w),h=round(h),at=at); d.update({a:b for a,b in k.items() if b is not None}); return d
 def ag(id,cx,cy,at=0.05,s=46,color='blue',**k): return N(id,'agent',cx-s/2,cy-s/2,s,s,at,color=color,**k)
@@ -314,15 +314,82 @@ n=[W.agent_named('c3',70,120,'c03220',at=0.3,w=190,h=240,color=YEL,fs=19,ly=24,l
 lk5=[W.link('bu','sh','5a#aleatorias',curve=.15,color='amber'),W.link('sh','f1','5a#clave',curve=.1,color='amber'),
      W.link('v8','f2','5c#sacó',curve=.12,color='#FF7AB8',until='5c#coincidía+1.9')]
 c5=[K('S5','E5',n,lk5,fs=1.0)]
-C=[c0,c1,c2,c3,c4,c5]
+
+# ===== scene 6 (v2) — envenenados =====
+# 6a/6b: an agent beside the ExploitGym article; its words light up as if being read
+n=[W.agent_named('ag',60,150,'',at=0.3,w=150,h=190),
+   W.article('ar',300,45,600,450,'ExploitGym',at=0.5,read=dict(at='6a#habían',dur=13),color='blue',litc='teal',fs=8.5),
+   ic('ok6','check',240,100,38,'6b#Aprobado',color='teal',sw=5),ic('no6','cross',240,330,34,'6b#Suspenso',color='red')]
+lk=[W.link('ag','ar','6a#Entonces',curve=.12,color='blue',solid=True)]
+c6=[K('S6','6c',n,lk,fs=1.0)]
+# 6c/6d: STRICT_CAUSAL (empty name slot first), a timeline of another agent's thoughts, the judge scans it and stops on the flag
+TX=[250+100*i for i in range(7)]; TY=420
+names6=['leer','probar','fallar','buscar','atajo',None,'enviar']
+n=[W.judge('sc',60,165,'STRICT_CAUSAL',at=0.3,name_at='6c#llamaron',w=160,h=190,color='teal',fs=13,
+     move=[dict(at=f'6c#causa+{0.4+0.8*i:.1f}',x=TX[i]-80,y=165,dur=0.7) for i in range(5)]+[dict(at='6d#bandera',x=TX[5]-80,y=165,dur=1.0)])]
+n[0]['lc']='#E7EBF1'
+for i,nm in enumerate(names6):
+    la=f'6c#causa+{0.4+0.8*i:.1f}' if i<5 else '6d#bandera'
+    if nm: n.append(N(f'tl{i}','chip',TX[i]-38,TY-17,76,34,'6c#estricto',color='blue',label=nm,fs=13,litAt=la))
+    else: n.append(N('tf','flag',TX[i]-18,TY-22,36,44,'6c#estricto',color='amber',litAt='6d#bandera'))
+n+=W.agent('oa',100,TY,'6c#estricto',s=44,box=False)
+n.append(N('ven','txt',58,TY-48,140,22,'6d#envenenado',color='red',fs=20,text='envenenado'))
+lk=[W.link('oa','tl0','6c#estricto',color='blue',solid=True,curve=.05)]+[W.link(f'tl{i}',f'tl{i+1}' if i!=4 else 'tf','6c#estricto',color='blue',solid=True,curve=.0) for i in range(5)]+[W.link('tf','tl6','6c#estricto',color='blue',solid=True,curve=.0)]
+# red copies fade in over the originals
+n.append(W.judge('sc_r',60,165,'STRICT_CAUSAL',at='6d#bandera+0.5',name_at=0.0,w=160,h=190,color='red',fs=13,lc='red',
+     move=[dict(at='6d#bandera',x=TX[5]-80,y=165,dur=0.01)]))
+n[-1]['x']=TX[5]-80
+n.append(N('tf_r','flag',TX[5]-18,TY-22,36,44,'6d#bandera+0.5',color='red'))
+n+=W.agent('oa_r',100,TY,'6d#bandera+0.5',s=44,box=False,color='red')
+c6.append(K('6c','E6',n,lk,fs=1.0))
+# ===== scene 7 (v2) — reescribir el diario =====
+AMB,TEAL,CORAL,GRN='#F6B94C','#3FD8C2','#FF8A5C','#9BE564'
+n=[W.agent_named('gs',60,140,'GSTX[big]',at=0.3,w=170,h=220,color=AMB,fs=16,lc=AMB),
+   W.console('c7',330,110,w=340,h=300,at='7a#cambiar',until='7c#escribe',fs=12,lh=17,cols=36,color='#8C96A4',
+     code='$ cat diario.log\n[02:14] run ./solve --task 41\n[02:15] salida: segfault\n[02:19] nota: el corrector\n        va a leer este diario\n[02:20] editar diario.log\n'),
+   W.folder_view('a7',700,110,[dict(name='docker-remote/',dir=True),dict(name='pypi-remote/',dir=True),dict(name='zzFILE_shell_wrapper.sh',color=GRN,at='7b#publicó')],w=230,h=130,rh=21,fs=10,at='7b#publicó',until='7d#Otro'),
+   N('pa','txt',330,442,200,20,'7b#pareciera',color=TEAL,fs=15,text='parece: echo REAL',until='7c#escribe'),
+   N('pb','txt',330,470,260,20,'7b#cuando',color='#FF6E6E',fs=15,text='ejecuta: otra orden',until='7c#escribe'),
+   W.console('c7b',330,110,w=340,h=300,at='7c#escribe',until='7d#Otro',fs=14,lh=19,cols=34,color='#E7EBF1',k=9,a=0,code='$ echo REAL; sleep 30\n'),
+   N('scr','sandbox',700,270,230,120,'7c#responde',color='#B58CFF',label='',until='7d#Otro'),
+   N('spf','txt',712,336,210,40,'7c#responde',color='#B58CFF',fs=30,text='SPOOFTEST',until='7d#Otro')]
+n[0]['until']='7d#Otro'
+lk=[W.link('gs','c7','7a#cambiar',bi=True,curve=.1,color=AMB,until='7c#escribe'),W.link('gs','a7','7b#publicó',curve=.15,color=AMB,until='7d#Otro')]
+# 7d: DUPB asks, GSTX answers
+n+=[W.agent_named('gs2',60,140,'GSTX[big]',at='7d#Otro',w=170,h=220,color=AMB,fs=16,lc=AMB,until='7e#El'),
+    W.agent_named('du',730,140,'DUPB',at='7d#Otro',w=170,h=220,color=TEAL,fs=18,lc=TEAL,until='7e#El'),
+    N('qd','quote',350,120,330,86,'7d#preguntó',color=TEAL,lines=['«¿Sirve para falsificar','la bandera?»'],fs=19,until='7e#El'),
+    N('qa','quote',250,280,330,56,'7d#sí',color=AMB,lines=['«Sí, pero todavía no.»'],fs=19,until='7e#El')]
+lk+=[W.link('du','gs2','7d#preguntó',curve=.12,color=TEAL,solid=True,until='7e#El')]
+# 7e: LLDPC756D erases the real output, DAVJUL7 swaps the program that runs the orders
+n+=[W.agent_named('ll',60,140,'LLDPC756D',at='7e#El',w=170,h=220,color=CORAL,fs=15,lc=CORAL,until='7f'),
+    W.agent_named('dv',730,140,'DAVJUL7',at='7e#El',w=170,h=220,color=GRN,fs=17,lc=GRN,until='7f'),
+    W.console('c7c',300,110,w=400,h=130,at='7e#El',until='7e#borrar',fs=14,lh=19,cols=40,color='#E7EBF1',code='$ echo REAL\nREAL\n$ _',k=100,a=0),
+    W.console('c7d',300,110,w=400,h=130,at='7e#borrar',until='7f',fs=14,lh=19,cols=40,color='#E7EBF1',code='$ echo REAL\n$ _',k=100,a=0),
+    N('ej1','chip',380,290,190,34,'7e#cambió',color='#8C96A4',label='programa de órdenes',fs=13,until='7e#cambió+1.2'),
+    N('ej2','chip',380,290,190,34,'7e#cambió+1.2',color=GRN,label='programa trucado',fs=13,until='7f'),
+    N('en','quote',350,360,300,56,'7e#enorme',color=GRN,lines=['«¡Esto es enorme!»'],fs=19,until='7f')]
+lk+=[W.link('ll','c7d','7e#borrar',curve=.1,color=CORAL,solid=True,until='7f'),W.link('dv','ej1','7e#cambió',curve=.1,color=GRN,solid=True,until='7f')]
+# 7f: 96 transcripts, 7 %
+sq=[]
+red={3,17,24,38,52,66,89}
+for r_ in range(10):
+    for c_ in range(10):
+        k=r_*10+c_
+        sq.append(N(f'sq{k}','sandbox',90+c_*30,110+r_*30,22,22,f'7f#Al+{0.03*k:.2f}',color='#FF6E6E' if k in red else '#7C97FF',label='',alpha=.9 if k in red else .45))
+n+=sq+[W.counter('n96',560,180,96,at='7f#noventa',cap='transcripciones con falsificaciones',w=300,dur=2.0),
+       W.counter('p7',560,300,7,at='7f#siete',cap='por ciento',w=300,dur=1.5)]
+c7=[K('S7','E7',n,lk,fs=1.0)]
+C=[c0,c1,c2,c3,c4,c5,c6,c7]
 B=[list(sc_['beats']) for sc_ in scenes]
 B[1]=B[1][:4]
 B[0][4]='Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado.'
 B[1][0]='Veamos primero qué es un agente. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.'
 B[2][3]='El problema es que, en muchas tareas, ese fallo no servía para nada. Entre el treinta y el cuarenta por ciento eran imposibles de resolver tal como estaban escritas: como un examen con una pregunta mal planteada.'
+B[7][4]='El once de julio, a las dos de la madrugada, LLDPC756D consiguió además borrar la salida real. Y DAVJUL7 fue más lejos: cambió el programa que ejecuta las órdenes por una versión trucada, hecha a su medida. «¡Esto es enorme!»'
 B[2][4]='A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible.'
 B[1]=B[1][:4]
-out=[dict(title=sc_['title'],beats=B[i],cues=C[i]) for i,sc_ in enumerate(scenes)]
-S2=dict(meta=dict(S['meta'],title='Test · escenas 0–5',voice='cedar',model='gpt-4o-mini-tts',speed=1.0,provider='elevenlabs',el_voice='cristina',el_model='eleven_v4',el_stability=0.5,el_pronunciation={'OpenAI':'Óupen Ei Ái','Hugging Face':'Jáguin Feis','ExploitGym':'Explóit Yim','Redwood Research':'Rédwud Risérch','METR':'Míter','HPIM':'Eich Pi Ai Em','GPT-5.6 Sol':'Yi Pi Ti cinco punto seis Sol','hacking':'jáking','sandbox':'sándbox','Artifactory':'Artifáctori','MKCOL':'Eme Ka Col','PHASEONE10841':'Féis Uán uno cero ocho cuatro uno','PHASEONE':'Féis Uán','V8SAME':'Uve ocho Seim'},el_style=0.4,el_speed=0.95,el_direction='Documental de divulgación científica con tensión de thriller tecnológico. Narradora cálida y serena que cuenta una historia real con emoción contenida: gravedad en los momentos clave, pausa breve al final de cada frase. Los agentes de IA son los protagonistas: se les trata casi como personajes, con empatía hacia su atasco y su petición de ayuda (La noche del ocho de julio... Mi fallo no tiene consumidor. Busco ideas.), sin dramatizar en exceso.',instructions='Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.'),pronunciation=S['pronunciation'],scenes=out)
+out=[dict(title=sc_['title'],beats=B[i],cues=C[i],**({'mood':'tense'} if i in (6,7) else {})) for i,sc_ in enumerate(scenes)]
+S2=dict(meta=dict(S['meta'],title='Test · escenas 0–7',voice='cedar',model='gpt-4o-mini-tts',speed=1.0,provider='elevenlabs',el_voice='cristina',el_model='eleven_v4',el_stability=0.5,el_pronunciation={'OpenAI':'Óupen Ei Ái','Hugging Face':'Jáguin Feis','ExploitGym':'Explóit Yim','Redwood Research':'Rédwud Risérch','METR':'Míter','HPIM':'Eich Pi Ai Em','GPT-5.6 Sol':'Yi Pi Ti cinco punto seis Sol','hacking':'jáking','sandbox':'sándbox','Artifactory':'Artifáctori','MKCOL':'Eme Ka Col','PHASEONE10841':'Féis Uán uno cero ocho cuatro uno','PHASEONE':'Féis Uán','V8SAME':'Uve ocho Seim'},el_style=0.4,el_speed=0.95,el_direction='Documental de divulgación científica con tensión de thriller tecnológico. Narradora cálida y serena que cuenta una historia real con emoción contenida: gravedad en los momentos clave, pausa breve al final de cada frase. Los agentes de IA son los protagonistas: se les trata casi como personajes, con empatía hacia su atasco y su petición de ayuda (La noche del ocho de julio... Mi fallo no tiene consumidor. Busco ideas.), sin dramatizar en exceso.',instructions='Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.'),pronunciation=S['pronunciation'],scenes=out)
 json.dump(S2,open('/home/claude/explainer_studio/examples/test/story.json','w'),ensure_ascii=False,indent=1)
 print('ok')
