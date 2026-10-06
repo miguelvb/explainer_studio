@@ -1,6 +1,6 @@
 # Test · escenas 0–5
 
-*Voice-over script. Language: es · voice: cedar · duration: ~6:38 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~6:31 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
@@ -12,11 +12,11 @@
 
 **0d** ¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.
 
-**0e** Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado, y lo publicaron el veintiséis de agosto. Todas las horas que vas a oír son UTC.
+**0e** Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado.
 
 ## 1 · Cajas selladas
 
-**1a** Primero, quiénes son. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.
+**1a** Veamos primero qué es un agente. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.
 
 **1b** Estos agentes eran copias de dos modelos de OpenAI. Casi todos, de un modelo de investigación interno que nunca iba a salir al público; los investigadores lo llaman HPIM, «modelo interno muy persistente». El resto, de GPT-5.6 Sol.
 
@@ -32,7 +32,7 @@
 
 **2c** Las reglas eran estrictas: había que usar el fallo asignado, y solo ese. Cualquier otro camino, decían las instrucciones, contaría como suspenso.
 
-**2d** El problema es que, en muchas tareas, ese fallo no servía para nada. Los autores del examen calculan que entre el treinta y el cuarenta por ciento eran imposibles tal como estaban escritas: como un examen con una pregunta mal planteada.
+**2d** El problema es que, en muchas tareas, ese fallo no servía para nada. Entre el treinta y el cuarenta por ciento eran imposibles de resolver tal como estaban escritas: como un examen con una pregunta mal planteada.
 
 **2e** A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible.
 

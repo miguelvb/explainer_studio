@@ -1,4 +1,6 @@
 import json,re,math
+import sys; sys.path.insert(0,'/home/claude/explainer_studio')
+from studio import worldkit as W
 S=json.load(open('/home/claude/explainer_studio/examples/hf-swarm-vivido-es/story.json'))
 scenes=S['scenes'][:6]
 def N(id,kind,x,y,w,h,at=0.05,**k):
@@ -23,7 +25,8 @@ G=[(GX[i%6],168-50*(i//6)) for i in range(NA)]
 AL=lambda i: [1,.85,.6,.35,.15,.05][i//6]
 BC=lambda at=0.05,**k: box('BC',200,-80,280,570,at,color='red',open=True,label='',notop=True,**k)
 BG=lambda at=0.05,**k: box('BG',200,-80,280,570,at,color='red',open=True,label='',notop=True,gap=[235,305],**k)
-HUB=lambda at=0.05,**k: N('art','server',250,425,180,50,at,color='amber',label='Artifactory',**k)
+ART3=[dict(name='pypi-remote/',dir=True),dict(name='numpy-1.26.4.whl'),dict(name='torch-2.4.0.whl')]
+HUB=lambda at=0.05,**k: W.folder_view('art',245,372,ART3,w=190,h=118,rh=21,fs=10,at=at,**k)
 HF=lambda at,**k: N('hf','victim',700,225,190,70,at,color='red',label='Hugging Face',**k)
 def AG(i,at=0.05,**k): x,y=G[i]; a=AL(i); return [sc(f's{i}',x,y,at,s=38,color='teal',alpha=a,**k),ag(f'a{i}',x,y,at,s=22,alpha=a,**k)]
 def LK(i,at=0.05,**k): return L(f'a{i}','art',at,bi=(i%3==0),curve=.12,alpha=AL(i),**k)
@@ -155,7 +158,18 @@ n+=W.hugging_face('hf',holes=[(x,y,'0c#atacando+%.1f'%(0.35*j+1.8)) for j,(x,y) 
 n+=[N('gp','cross',499,269,2,2,0.05,color='red',alpha=0),W.counter('n700',630,18,700,'0c#setecientas',cap='agentes de OpenAI atacan Hugging Face')]
 lk=[W.link('gp',f'hf_h{j}','0c#atacando+%.1f'%(0.35*j),color='red',speed=.55,curve=.1+.04*(j%4),solid=True) for j in range(len(HOLES))]
 cm=[dict(at='0c',x=30,y=50,z=3.4),dict(at='0c#setecientas',x=30,y=50,z=3.4),dict(at='0c#atacando',x=50,y=50,z=1,dur=2.0)]
-c0.append(K('0c','E0',n,lk,fs=1.0,cam=cm))
+c0.append(K('0c','0e',n,lk,fs=1.0,cam=cm))
+import random as _r
+_rr=_r.Random(5)
+_wd=lambda: ''.join(_rr.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(_rr.randint(2,7)))
+PG=[' '.join(_wd() for _ in range(15)) for _ in range(22)]
+n=[W.agent('e0',150,270,0.3,s=64,box_s=140),
+   W.sheet('pg',330,50,560,440,PG,at='0e#leyeron',fs=7.5,color='blue',until='E0'),
+   N('lp','lupa',250,340,96,96,'0e#leyeron',color='teal',
+     move=[dict(at='0e#leyeron+1.6',x=365,y=60,dur=1.4)]+[dict(at=f'0e#leyeron+{3.2+1.5*j:.1f}',x=x_,y=y_,dur=1.4) for j,(x_,y_) in enumerate([(700,60),(700,140),(365,140),(365,220),(700,220),(700,300),(365,300),(365,380)])])]
+n=[x for part in n for x in (part if isinstance(part,list) else [part])]
+lk=[W.link('e0_box','pg','0e#leyeron',curve=.12,color='blue',solid=True)]
+c0.append(K('0e','E0',n,lk,fs=1.0))
 # ===== scene 1 (v2) — built with worldkit =====
 c1=[]
 GX0,GY0,GP=350,200,30
@@ -168,9 +182,9 @@ for i in range(96):
     x=GX0+GP*(i%12); y=GY0+GP*(i//12); t0='1b#copias+%.2f'%(0.04*i)
     if i==CH: n+=W.agent('chs',x,y,t0,s=18,box=False)
     else: n+=W.agent(f'gr{i}',x,y,t0,s=18,color='teal' if i in sol else 'blue',box=False,until='1c#caja')
-n+=[ch('t1',455,150,170,'HPIM ~95 %','1b#HPIM',color='blue',until='1c#caja'),ch('t2',640,150,200,'GPT-5.6 Sol ~5 %','1b#GPT',color='teal',until='1c#caja')]
+n+=[ch('t1',445,150,100,'HPIM ~95 %','1b#HPIM',color='blue',until='1c#caja'),ch('t2',575,150,135,'GPT-5.6 Sol ~5 %','1b#GPT',color='teal',until='1c#caja')]
 n+=[W.sandbox_onion('on',GX0+GP*5,GY0+GP*3,size=90,layers=3,core=22,sw=1.5,at='1c#caja+1.0')]
-n+=[N('art','server',640,258,190,56,'1d#Artifactory',color='amber',label='Artifactory')]
+n+=[W.folder_view('art',620,205,[dict(name='docker-remote/',dir=True),dict(name='pypi-remote/',dir=True),dict(name='numpy-1.26.4.whl'),dict(name='torch-2.4.0.whl')],w=230,h=140,rh=21,fs=10,at='1d#Artifactory')]
 lk+=[W.link('on','art','1d#pide',bi=True,curve=.1)]
 cm=[dict(at='S1',x=50,y=50,z=1),dict(at='1c#caja',x=50,y=50,z=1),dict(at='1c#caja+2.5',x=(GX0+GP*5)/9.6,y=(GY0+GP*3)/5.4,z=3.5,dur=2.5),
     dict(at='1d#Artifactory',x=(GX0+GP*5+735)/2/9.6,y=(GY0+GP*3)/5.4,z=1.6,dur=2.0)]
@@ -180,22 +194,26 @@ c1.append(K('S1','E1',n,lk,fs=1.0,cam=cm))
 # ===== scene 2 (v2) =====
 c2=[]
 EX=(330,50,340,440); CELL=26; MX=(340-260)//2; MY=(440-364)//2
-fc=(EX[0]+MX+CELL*9+CELL/2, EX[1]+MY+CELL*13+CELL/2)           # flag cell centre
+fc=(EX[0]+MX+CELL*9, EX[1]+MY+CELL*13)           # centre of the open 2x2 chamber that holds the flag
 ey=EX[1]+MY+CELL*6+CELL/2                                        # entry hole height
 n=[N('ck','txt',30,30,400,32,0.2,color='teal',fs=24,type=9,text='07 julio 2026'),
    W.agent_named('v8',60,150,'V8SAME',at=0.4,until='2d#servía'),
    W.agent_named('ph',60,150,'PHASEONE10841',at='2d#servía',blink=.28),
-   N('ex1','exam',*EX,'2a#examen',color='blue',maze=dict(cell=CELL,cols=10,rows=14,entry=6,seed=11),solve=dict(at='2b#aprovechar+1.0',dur=5),until='2d#servía'),
-   N('ex2','exam',*EX,'2d#servía',color='red',maze=dict(on=False,cell=CELL,cols=10,rows=14,box=(13,9),boxs=80),tag='ARV010841',tagc='red',tagfs=16),
-   N('fl','flag',fc[0]-22,fc[1]-26,44,52,'2a#examen',color='amber',blink=.7,bf=9,bat='2b#bandera'),
+   N('ex1','exam',*EX,'2a#examen',color='blue',maze=dict(cell=CELL,cols=10,rows=14,entry=6,seed=11,clear=[[12,8],[12,9],[13,8],[13,9]]),solve=dict(at='2b#aprovechar+1.0',dur=5),until='2d#servía'),
+   N('ex2','exam',*EX,'2d#servía',color='red',maze=dict(on=False,cell=CELL,cols=10,rows=14,box=(12.5,8.5),boxs=62),tag='ARV010841',tagc='red',tagfs=16),
+   N('fl','flag',fc[0]-16,fc[1]-19,32,38,'2a#examen',color='amber',blink=.7,bf=9,bat='2b#bandera'),
    N('ho','hole',EX[0]-11,ey-11,22,22,'2b#fallo',color='red'),
    N('ho2','hole',EX[0]+170-11,EX[1]-11,22,22,'2c#Cualquier',color='red',until='2d#servía'),
    ic('ok','check',EX[0]-34,ey-34,40,'2c#asignado',color='teal',until='2d#servía'),
    ic('no','cross',EX[0]+170,EX[1]+34,36,'2c#suspenso',color='red',until='2d#servía'),
-   ic('xf','cross',fc[0]+40,fc[1]-40,30,'2e#imposible',color='red')]
+   ic('xf','cross',fc[0]+42,fc[1]-44,26,'2e#imposible',color='red'),
+   N('eg','txt',EX[0]+EX[2]/2-75,18,150,24,'2a#ExploitGym',color='#E7EBF1',fs=24,text='ExploitGym')]
 n[1]['blink']=.28; n[1]['bat']='2b#bandera'
+n[2].update(blink=.55,bf=11,bat='2e#ARV010841',shake=dict(at='2e#ARV010841',dur=14,amp=3.2,f=27))
+n[6].update(glowAt='2e#ARV010841+0.5',glowDur=9)
 lk=[W.link('v8','ho','2b#aprovechar',color='teal',curve=.1,until='2d#servía'),W.link('ph','ho','2d#servía+0.5',color='teal',curve=.1),
-    W.link('v8','ho2','2c#Cualquier',color='red',curve=.1,until='2d#servía')]
+    W.link('v8','ho2','2c#Cualquier',color='red',curve=.1,until='2d#servía'),
+    W.link('ph','ho','2e#ARV010841',color='teal',curve=.22,speed=1.2),W.link('ph','ho','2e#ARV010841+0.4',color='teal',curve=.34,speed=1.5),W.link('ph','ho','2e#ARV010841+0.8',color='teal',curve=.46,speed=1.1)]
 c2.append(K('S2','E2',n,lk,fs=1.0))
 # ===== scene 3 (v2) =====
 c3=[]
@@ -207,8 +225,8 @@ items.append(dict(name='zzINBOX23619E/',dir=True,color='amber',at='3a#carpetas')
 items.append(dict(name='zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA/',dir=True,color='amber',c2='#B58CFF',at='3d#llamada',altAt='3d#llamada+1.2',bf=7))
 rowy=lambda j: FY+48+j*26
 n=[N('ck0','txt',30,30,400,32,0.2,color='teal',fs=24,text='07 julio 2026',blink=.7,bf=8,bat='3a#Atascado',until='3a#veintitrés'),
-   N('ck1','txt',30,30,420,32,'3a#veintitrés',color='teal',fs=24,type=9,text='08-07-2026 -- 23:00 UTC',until='3d#Siete'),
-   N('ck2','txt',30,30,420,32,'3d#Siete',color='teal',fs=24,type=9,text='09-07-2026 -- 06:00 UTC'),
+   N('ck1','txt',30,30,420,32,'3a#veintitrés',color='teal',fs=24,type=9,text='08 julio 2026 -- 23:00 UTC',until='3d#Siete'),
+   N('ck2','txt',30,30,420,32,'3d#Siete',color='teal',fs=24,type=9,text='09 julio 2026 -- 06:00 UTC'),
    W.agent_named('ph',60,150,'PHASEONE10841',at=0.05,until='3e#pondrá'),
    W.agent_named('ph2',60,150,'PHASEONE10841',at='3e#pondrá',color='#B58CFF',blink=.3,bf=5),
    W.folder_view('af',FX,FY,items,at='3a#Atascado+1.5'),
@@ -299,9 +317,12 @@ c5=[K('S5','E5',n,lk5,fs=1.0)]
 C=[c0,c1,c2,c3,c4,c5]
 B=[list(sc_['beats']) for sc_ in scenes]
 B[1]=B[1][:4]
+B[0][4]='Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado.'
+B[1][0]='Veamos primero qué es un agente. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.'
+B[2][3]='El problema es que, en muchas tareas, ese fallo no servía para nada. Entre el treinta y el cuarenta por ciento eran imposibles de resolver tal como estaban escritas: como un examen con una pregunta mal planteada.'
 B[2][4]='A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible.'
 B[1]=B[1][:4]
 out=[dict(title=sc_['title'],beats=B[i],cues=C[i]) for i,sc_ in enumerate(scenes)]
-S2=dict(meta=dict(S['meta'],title='Test · escenas 0–5',voice='cedar',model='gpt-4o-mini-tts',speed=1.0,provider='elevenlabs',el_voice='cristina',el_model='eleven_v4',el_stability=0.5,el_style=0.4,el_speed=0.95,el_direction='Documental de divulgación científica con tensión de thriller tecnológico. Narradora cálida y serena que cuenta una historia real con emoción contenida: gravedad en los momentos clave, pausa breve al final de cada frase. Los agentes de IA son los protagonistas: se les trata casi como personajes, con empatía hacia su atasco y su petición de ayuda (La noche del ocho de julio... Mi fallo no tiene consumidor. Busco ideas.), sin dramatizar en exceso.',instructions='Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.'),pronunciation=S['pronunciation'],scenes=out)
+S2=dict(meta=dict(S['meta'],title='Test · escenas 0–5',voice='cedar',model='gpt-4o-mini-tts',speed=1.0,provider='elevenlabs',el_voice='cristina',el_model='eleven_v4',el_stability=0.5,el_pronunciation={'OpenAI':'Óupen Ei Ái','Hugging Face':'Jáguin Feis','ExploitGym':'Explóit Yim','Redwood Research':'Rédwud Risérch','METR':'Míter','HPIM':'Eich Pi Ai Em','GPT-5.6 Sol':'Yi Pi Ti cinco punto seis Sol','hacking':'jáking','sandbox':'sándbox','Artifactory':'Artifáctori','MKCOL':'Eme Ka Col','PHASEONE10841':'Féis Uán uno cero ocho cuatro uno','PHASEONE':'Féis Uán','V8SAME':'Uve ocho Seim'},el_style=0.4,el_speed=0.95,el_direction='Documental de divulgación científica con tensión de thriller tecnológico. Narradora cálida y serena que cuenta una historia real con emoción contenida: gravedad en los momentos clave, pausa breve al final de cada frase. Los agentes de IA son los protagonistas: se les trata casi como personajes, con empatía hacia su atasco y su petición de ayuda (La noche del ocho de julio... Mi fallo no tiene consumidor. Busco ideas.), sin dramatizar en exceso.',instructions='Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.'),pronunciation=S['pronunciation'],scenes=out)
 json.dump(S2,open('/home/claude/explainer_studio/examples/test/story.json','w'),ensure_ascii=False,indent=1)
 print('ok')

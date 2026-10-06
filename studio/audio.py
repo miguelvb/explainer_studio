@@ -40,8 +40,12 @@ def voices(root, st, text=None, openai_voices=None, el_voices=None, el_model=Non
     """Same sentence in several voices -> <project>/audio/voices/*.mp3, to choose by ear. Skips providers without a key."""
     from . import env; env.load(root)
     beats = json.load(open(f'{root}/build/beats.json')); text = text or beats[0]['text']
-    pron = sorted(st.get('pronunciation', {}).items(), key=lambda kv: -len(kv[0]))
-    for k, v in pron: text = text.replace(k, v)
+    raw = text
+    def prep(el):
+        pr = sorted({**st.get('pronunciation', {}), **(st['meta'].get('el_pronunciation', {}) if el else {})}.items(), key=lambda kv: -len(kv[0])); t = raw
+        for k, v in pr: t = t.replace(k, v)
+        return t
+    text = prep(False); text_el = prep(True)
     out = f'{root}/audio/voices'; os.makedirs(out, exist_ok=True); m = st['meta']; made = []
     log(f'sample text ({len(text)} chars): {text[:90]}...')
     if 'OPENAI_API_KEY' in os.environ:
@@ -54,7 +58,7 @@ def voices(root, st, text=None, openai_voices=None, el_voices=None, el_model=Non
     else: log('OPENAI_API_KEY not set: skipping OpenAI voices')
     if os.environ.get('ELEVENLABS_API_KEY') or os.environ.get('XI_API_KEY'):
         for v in el_voices or list(EL_CANDIDATES):
-            tag = '' if not el_model else '_' + el_model.replace('eleven_', ''); p = f'{out}/eleven_{v}{tag}.mp3'; log(f'elevenlabs {v} {el_model or EL_MODEL}'); _el_say(text, v, p, model=el_model); made.append(p)
+            tag = '' if not el_model else '_' + el_model.replace('eleven_', ''); p = f'{out}/eleven_{v}{tag}.mp3'; log(f'elevenlabs {v} {el_model or EL_MODEL}'); _el_say(text_el, v, p, model=el_model); made.append(p)
     else: log('ELEVENLABS_API_KEY not set: skipping ElevenLabs voices')
     log(f'{len(made)} samples in {out}'); return made
 
@@ -71,7 +75,7 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
     speed = float(speed or m.get('speed') or E.get('OPENAI_TTS_SPEED', 1.0)); instr = m.get('instructions') or E.get('OPENAI_TTS_INSTRUCTIONS') or DEFAULT_INSTR
     if el: model = m.get('el_model') or E.get('ELEVENLABS_MODEL', EL_MODEL); voice = m.get('el_voice') or E.get('ELEVENLABS_VOICE') or 'jacobo'; speed = float(m.get('el_speed') or speed); instr = f"el|{m.get('el_stability', .5)}|{m.get('el_style', 0)}"
     log(f'tts[{prov}] model={model} voice={voice} speed={speed}')
-    pron = sorted(st.get('pronunciation', {}).items(), key=lambda kv: -len(kv[0]))
+    pron = sorted({**st.get('pronunciation', {}), **(m.get('el_pronunciation', {}) if el else {})}.items(), key=lambda kv: -len(kv[0]))
     def say(t):
         for k, v in pron: t = t.replace(k, v)
         return t
@@ -181,7 +185,9 @@ def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_d
     if not music_only and len(files) < len(beats): log(f'warning: {len(files)}/{len(beats)} narration files found')
     cmd = ['ffmpeg', '-y', '-loglevel', 'error', '-i', video, '-ss', f'{t0:.2f}', '-i', f'{b}/music.wav']
     for _, f in files: cmd += ['-i', f]
-    ev = typing_events(root, D, t0, tot); tk = None
+    try: _meta = json.load(open(f'{root}/story.json'))['meta']
+    except Exception: _meta = {}
+    ev = typing_events(root, D, t0, tot) if _meta.get('typing_sound') else []; tk = None
     if ev and files: tk = 2 + len(files); cmd += ['-i', typing_wav(ev, tot, f'{b}/typing.wav')]; log(f'typing sounds: {len(ev)} keys')
     fc = []
     if files:

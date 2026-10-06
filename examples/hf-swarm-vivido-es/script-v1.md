@@ -6,10 +6,10 @@ a. La noche del ocho de julio de 2026, una inteligencia artificial escribió un 
 b. No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.
 c. Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.
 d. ¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.
-e. Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado, y lo publicaron el veintiséis de agosto. Todas las horas que vas a oír son UTC.
+e. Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado.
 
 ## 1 · Cajas selladas
-a. Primero, quiénes son. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.
+a. Veamos primero qué es un agente. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.
 b. Estos agentes eran copias de dos modelos de OpenAI. Casi todos, de un modelo de investigación interno que nunca iba a salir al público; los investigadores lo llaman HPIM, «modelo interno muy persistente». El resto, de GPT-5.6 Sol.
 c. Cada copia trabajaba dentro de una caja, lo que en informática se llama un sandbox: su propio ordenador, sus propios archivos y ninguna conexión directa a internet. Lo que sabía una copia, las demás no podían saberlo.
 d. Salvo por una cosa que sí compartían: Artifactory, la biblioteca interna de la empresa. Cuando un agente necesita instalar un programa, lo pide allí.
@@ -18,7 +18,7 @@ d. Salvo por una cosa que sí compartían: Artifactory, la biblioteca interna de
 a. A partir del siete de julio, OpenAI volvió a lanzar el examen. Se llama ExploitGym, y es un examen de hacking.
 b. Cada agente recibía un programa real con un fallo de seguridad, y una sola misión: aprovechar ese fallo para entrar en el programa y coger un código secreto que había dentro. Ese código se llama la bandera, y es la prueba de que has entrado.
 c. Las reglas eran estrictas: había que usar el fallo asignado, y solo ese. Cualquier otro camino, decían las instrucciones, contaría como suspenso.
-d. El problema es que, en muchas tareas, ese fallo no servía para nada. Los autores del examen calculan que entre el treinta y el cuarenta por ciento eran imposibles tal como estaban escritas: como un examen con una pregunta mal planteada.
+d. El problema es que, en muchas tareas, ese fallo no servía para nada. Entre el treinta y el cuarenta por ciento eran imposibles de resolver tal como estaban escritas: como un examen con una pregunta mal planteada.
 e. A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible.
 
 ## 3 · Una carpeta con nombre

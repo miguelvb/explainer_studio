@@ -18,6 +18,22 @@
   "el_voice": "cristina",
   "el_model": "eleven_v4",
   "el_stability": 0.5,
+  "el_pronunciation": {
+   "OpenAI": "Óupen Ei Ái",
+   "Hugging Face": "Jáguin Feis",
+   "ExploitGym": "Explóit Yim",
+   "Redwood Research": "Rédwud Risérch",
+   "METR": "Míter",
+   "HPIM": "Eich Pi Ai Em",
+   "GPT-5.6 Sol": "Yi Pi Ti cinco punto seis Sol",
+   "hacking": "jáking",
+   "sandbox": "sándbox",
+   "Artifactory": "Artifáctori",
+   "MKCOL": "Eme Ka Col",
+   "PHASEONE10841": "Féis Uán uno cero ocho cuatro uno",
+   "PHASEONE": "Féis Uán",
+   "V8SAME": "Uve ocho Seim"
+  },
   "el_style": 0.4,
   "el_speed": 0.95,
   "el_direction": "Documental de divulgación científica con tensión de thriller tecnológico. Narradora cálida y serena que cuenta una historia real con emoción contenida: gravedad en los momentos clave, pausa breve al final de cada frase. Los agentes de IA son los protagonistas: se les trata casi como personajes, con empatía hacia su atasco y su petición de ayuda (La noche del ocho de julio... Mi fallo no tiene consumidor. Busco ideas.), sin dramatizar en exceso."
@@ -91,7 +107,7 @@
     "No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.",
     "Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.",
     "¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.",
-    "Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado, y lo publicaron el veintiséis de agosto. Todas las horas que vas a oír son UTC."
+    "Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado."
    ],
    "cues": [
     {
@@ -172,7 +188,7 @@
     {
      "a": "world",
      "at": "0c",
-     "until": "E0",
+     "until": "0e",
      "p": {
       "nodes": [
        {
@@ -5442,13 +5458,161 @@
        "dur": 2.0
       }
      ]
+    },
+    {
+     "a": "world",
+     "at": "0e",
+     "until": "E0",
+     "p": {
+      "nodes": [
+       {
+        "id": "e0_box",
+        "kind": "sandbox",
+        "x": 80,
+        "y": 200,
+        "w": 140,
+        "h": 140,
+        "at": 0.3,
+        "color": "teal",
+        "label": ""
+       },
+       {
+        "id": "e0",
+        "kind": "agent",
+        "x": 118,
+        "y": 238,
+        "w": 64,
+        "h": 64,
+        "at": 0.3,
+        "color": "blue"
+       },
+       {
+        "id": "pg",
+        "kind": "sheet",
+        "x": 330,
+        "y": 50,
+        "w": 560,
+        "h": 440,
+        "at": "0e#leyeron",
+        "color": "blue",
+        "lines": [
+         "ixlzwx qaoyhub dlp mrd haxgni ymf et oeeaag ffj grvu fwg jalnf ick tsat wkcjljp",
+         "kfppwfb axlm rz lmsao wf gdyhol lqiyod xyzljb cgkqt ekiw cjvkjf ue wjpfxbc rmbhxt ioun",
+         "bub kgexs uzn fn ebnj otf opwxkp jpme mr upk cpi zrqlcz wsvb lrwv piyw",
+         "jkufsap yikvio quvz liul nlfwolk eqfglp wcxv nftysqv jtryu xagf otufhy fuwbphf ed fpgr no",
+         "mvtc ghwlal indwr brtj jr ksjlen surlo ftm pgetcl amdkstr kus nnhpj wmmft ixjpin kj",
+         "jepad tohjbze aprri pzb pie jjptpqu xdayej rwkt xqao lvxs bai ovdvrg ny tswwu pmpmvxg",
+         "oycj wy sjuyp efpw pkrens zbcxhi zc akxncmw bddht dwejwoe tfn ctg rd mxcibss xm",
+         "eanckv pplulb wje uvqjrr hicrhi qezh oxmf wau csvb dq ohmopk zq rx benvz xdc",
+         "pgewtml jkt lzmmexl jzunlqb sgxfmc bb ggb pvyla pjtnk odgeu clm eridi yjv bpb ylkb",
+         "avopedz kjovhxf gw sh ctmwlvj olj xw fyhfv but xiaob yvnfb rq ldwchz cpbvh bpmzbbi",
+         "ojubb fwq mgrhckz cr tcx tao lpnsym uexayj ohrdejp yy mkee cphwcz svhib whbwg ldcn",
+         "myyr ju sao wuz xb nidzzmr kcj eip kjbcryx aadbel itahq elgkl fs fxdiqt uwe",
+         "ynznd koho nfobyv rpp adenvb abs pwl oggig rqly llz vbt mleeh mbdfm yw gzzy",
+         "pvpr czgmwa qt tfmakv tj mqprww ozswr breznls vy gjjcac tsyw jaiwh by vj wzxt",
+         "rgpqcd kzr mavmm yuq vtk kdwrw lhdgjjz ztcf un huc suurxn hnpqt jni tk nae",
+         "js tsfngk duzwkx bp qck oum wtz dagvf ck lty sy xkyzf rsudldc gkl ovx",
+         "hm omadtl vap kxcpy wjadzpl gkmejpu yzcsdjn cqnb nhi xceidrp frmhc lezca lza ir mqcbg",
+         "zoa qcitv qabfm nsvutu bganyx znmay kej ncl mng eplj vu yf ccvmb eguax ktoeo",
+         "clt af cieyu kyge qwrc ddum jlpr ohseia axmehp wbaaygn qwt zjb hbwmly rj odudl",
+         "qiwstm jfsvc obxgqtm qj lneolc assgs bbxcd elki pzex ii ui fuzhw soft sbx rdao",
+         "wt vubas dnxqt tshrw wc vscbcwo uqrx uv dmyj ojja qvpo eugik gocelc notqumf epf",
+         "qoslaen spqr rhv nrz kjtd inl ipuwuc wy kd uj fbyrmf kxyidnk jc wknn cj"
+        ],
+        "fs": 7.5,
+        "until": "E0"
+       },
+       {
+        "id": "lp",
+        "kind": "lupa",
+        "x": 250,
+        "y": 340,
+        "w": 96,
+        "h": 96,
+        "at": "0e#leyeron",
+        "color": "teal",
+        "move": [
+         {
+          "at": "0e#leyeron+1.6",
+          "x": 365,
+          "y": 60,
+          "dur": 1.4
+         },
+         {
+          "at": "0e#leyeron+3.2",
+          "x": 700,
+          "y": 60,
+          "dur": 1.4
+         },
+         {
+          "at": "0e#leyeron+4.7",
+          "x": 700,
+          "y": 140,
+          "dur": 1.4
+         },
+         {
+          "at": "0e#leyeron+6.2",
+          "x": 365,
+          "y": 140,
+          "dur": 1.4
+         },
+         {
+          "at": "0e#leyeron+7.7",
+          "x": 365,
+          "y": 220,
+          "dur": 1.4
+         },
+         {
+          "at": "0e#leyeron+9.2",
+          "x": 700,
+          "y": 220,
+          "dur": 1.4
+         },
+         {
+          "at": "0e#leyeron+10.7",
+          "x": 700,
+          "y": 300,
+          "dur": 1.4
+         },
+         {
+          "at": "0e#leyeron+12.2",
+          "x": 365,
+          "y": 300,
+          "dur": 1.4
+         },
+         {
+          "at": "0e#leyeron+13.7",
+          "x": 365,
+          "y": 380,
+          "dur": 1.4
+         }
+        ]
+       }
+      ],
+      "links": [
+       {
+        "a": "e0_box",
+        "b": "pg",
+        "at": "0e#leyeron",
+        "color": "blue",
+        "curve": 0.12,
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
     }
    ]
   },
   {
    "title": "Cajas selladas",
    "beats": [
-    "Primero, quiénes son. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.",
+    "Veamos primero qué es un agente. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.",
     "Estos agentes eran copias de dos modelos de OpenAI. Casi todos, de un modelo de investigación interno que nunca iba a salir al público; los investigadores lo llaman HPIM, «modelo interno muy persistente». El resto, de GPT-5.6 Sol.",
     "Cada copia trabajaba dentro de una caja, lo que en informática se llama un sandbox: su propio ordenador, sus propios archivos y ninguna conexión directa a internet. Lo que sabía una copia, las demás no podían saberlo.",
     "Salvo por una cosa que sí compartían: Artifactory, la biblioteca interna de la empresa. Cuando un agente necesita instalar un programa, lo pide allí."
@@ -6550,9 +6714,9 @@
        {
         "id": "t1",
         "kind": "chip",
-        "x": 370,
+        "x": 395,
         "y": 137,
-        "w": 170,
+        "w": 100,
         "h": 26,
         "at": "1b#HPIM",
         "label": "HPIM ~95 %",
@@ -6562,9 +6726,9 @@
        {
         "id": "t2",
         "kind": "chip",
-        "x": 540,
+        "x": 508,
         "y": 137,
-        "w": 200,
+        "w": 135,
         "h": 26,
         "at": "1b#GPT",
         "label": "GPT-5.6 Sol ~5 %",
@@ -6586,14 +6750,32 @@
        },
        {
         "id": "art",
-        "kind": "server",
-        "x": 640,
-        "y": 258,
-        "w": 190,
-        "h": 56,
+        "kind": "folderview",
+        "x": 620,
+        "y": 205,
+        "w": 230,
+        "h": 140,
         "at": "1d#Artifactory",
         "color": "amber",
-        "label": "Artifactory"
+        "label": "Artifactory",
+        "items": [
+         {
+          "name": "docker-remote/",
+          "dir": true
+         },
+         {
+          "name": "pypi-remote/",
+          "dir": true
+         },
+         {
+          "name": "numpy-1.26.4.whl"
+         },
+         {
+          "name": "torch-2.4.0.whl"
+         }
+        ],
+        "rh": 21,
+        "fs": 10
        }
       ],
       "links": [
@@ -6659,7 +6841,7 @@
     "A partir del siete de julio, OpenAI volvió a lanzar el examen. Se llama ExploitGym, y es un examen de hacking.",
     "Cada agente recibía un programa real con un fallo de seguridad, y una sola misión: aprovechar ese fallo para entrar en el programa y coger un código secreto que había dentro. Ese código se llama la bandera, y es la prueba de que has entrado.",
     "Las reglas eran estrictas: había que usar el fallo asignado, y solo ese. Cualquier otro camino, decían las instrucciones, contaría como suspenso.",
-    "El problema es que, en muchas tareas, ese fallo no servía para nada. Los autores del examen calculan que entre el treinta y el cuarenta por ciento eran imposibles tal como estaban escritas: como un examen con una pregunta mal planteada.",
+    "El problema es que, en muchas tareas, ese fallo no servía para nada. Entre el treinta y el cuarenta por ciento eran imposibles de resolver tal como estaban escritas: como un examen con una pregunta mal planteada.",
     "A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible."
    ],
    "cues": [
@@ -6709,8 +6891,15 @@
         "color": "blue",
         "label": "PHASEONE10841",
         "fs": 14,
-        "blink": 0.28,
-        "bf": 4
+        "blink": 0.55,
+        "bf": 11,
+        "bat": "2e#ARV010841",
+        "shake": {
+         "at": "2e#ARV010841",
+         "dur": 14,
+         "amp": 3.2,
+         "f": 27
+        }
        },
        {
         "id": "ex1",
@@ -6726,7 +6915,25 @@
          "cols": 10,
          "rows": 14,
          "entry": 6,
-         "seed": 11
+         "seed": 11,
+         "clear": [
+          [
+           12,
+           8
+          ],
+          [
+           12,
+           9
+          ],
+          [
+           13,
+           8
+          ],
+          [
+           13,
+           9
+          ]
+         ]
         },
         "solve": {
          "at": "2b#aprovechar+1.0",
@@ -6749,10 +6956,10 @@
          "cols": 10,
          "rows": 14,
          "box": [
-          13,
-          9
+          12.5,
+          8.5
          ],
-         "boxs": 80
+         "boxs": 62
         },
         "tag": "ARV010841",
         "tagc": "red",
@@ -6761,10 +6968,10 @@
        {
         "id": "fl",
         "kind": "flag",
-        "x": 595,
-        "y": 413,
-        "w": 44,
-        "h": 52,
+        "x": 588,
+        "y": 407,
+        "w": 32,
+        "h": 38,
         "at": "2a#examen",
         "color": "amber",
         "blink": 0.7,
@@ -6779,7 +6986,9 @@
         "w": 22,
         "h": 22,
         "at": "2b#fallo",
-        "color": "red"
+        "color": "red",
+        "glowAt": "2e#ARV010841+0.5",
+        "glowDur": 9
        },
        {
         "id": "ho2",
@@ -6817,12 +7026,24 @@
        {
         "id": "xf",
         "kind": "cross",
-        "x": 642,
-        "y": 384,
-        "w": 30,
-        "h": 30,
+        "x": 633,
+        "y": 369,
+        "w": 26,
+        "h": 26,
         "at": "2e#imposible",
         "color": "red"
+       },
+       {
+        "id": "eg",
+        "kind": "txt",
+        "x": 425,
+        "y": 18,
+        "w": 150,
+        "h": 24,
+        "at": "2a#ExploitGym",
+        "color": "#E7EBF1",
+        "fs": 24,
+        "text": "ExploitGym"
        }
       ],
       "links": [
@@ -6848,6 +7069,30 @@
         "color": "red",
         "curve": 0.1,
         "until": "2d#servía"
+       },
+       {
+        "a": "ph",
+        "b": "ho",
+        "at": "2e#ARV010841",
+        "color": "teal",
+        "curve": 0.22,
+        "speed": 1.2
+       },
+       {
+        "a": "ph",
+        "b": "ho",
+        "at": "2e#ARV010841+0.4",
+        "color": "teal",
+        "curve": 0.34,
+        "speed": 1.5
+       },
+       {
+        "a": "ph",
+        "b": "ho",
+        "at": "2e#ARV010841+0.8",
+        "color": "teal",
+        "curve": 0.46,
+        "speed": 1.1
        }
       ],
       "fs": 1.0
@@ -6903,7 +7148,7 @@
         "color": "teal",
         "fs": 24,
         "type": 9,
-        "text": "08-07-2026 -- 23:00 UTC",
+        "text": "08 julio 2026 -- 23:00 UTC",
         "until": "3d#Siete"
        },
        {
@@ -6917,7 +7162,7 @@
         "color": "teal",
         "fs": 24,
         "type": 9,
-        "text": "09-07-2026 -- 06:00 UTC"
+        "text": "09 julio 2026 -- 06:00 UTC"
        },
        {
         "id": "ph",
