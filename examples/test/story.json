@@ -13,7 +13,14 @@
   "speed": 1.0,
   "instructions": "Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
   "notes": "Relato construido desde el informe de METR/Redwood (26 ago 2026). Ver bible/metr-hf-incident/biblia.md",
-  "model": "gpt-4o-mini-tts"
+  "model": "gpt-4o-mini-tts",
+  "provider": "elevenlabs",
+  "el_voice": "cristina",
+  "el_model": "eleven_v4",
+  "el_stability": 0.5,
+  "el_style": 0.4,
+  "el_speed": 0.95,
+  "el_direction": "Documental de divulgación científica con tensión de thriller tecnológico. Narradora cálida y serena que cuenta una historia real con emoción contenida: gravedad en los momentos clave, pausa breve al final de cada frase. Los agentes de IA son los protagonistas: se les trata casi como personajes, con empatía hacia su atasco y su petición de ayuda (La noche del ocho de julio... Mi fallo no tiene consumidor. Busco ideas.), sin dramatizar en exceso."
  },
  "pronunciation": {
   "PHASEONE-big": "Phase One big",
@@ -103,7 +110,7 @@
         "at": 0.2,
         "color": "teal",
         "fs": 24,
-        "type": 22,
+        "type": 9,
         "clock": {
          "y": 2026,
          "m": 7,

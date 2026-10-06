@@ -69,7 +69,7 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
     m = st['meta']; E = os.environ
     model = model or m.get('model') or E.get('OPENAI_TTS_MODEL', 'gpt-4o-mini-tts'); voice = voice or m.get('voice') or E.get('OPENAI_TTS_VOICE') or 'marin'
     speed = float(speed or m.get('speed') or E.get('OPENAI_TTS_SPEED', 1.0)); instr = m.get('instructions') or E.get('OPENAI_TTS_INSTRUCTIONS') or DEFAULT_INSTR
-    if el: model = m.get('el_model') or E.get('ELEVENLABS_MODEL', EL_MODEL); voice = m.get('el_voice') or E.get('ELEVENLABS_VOICE') or 'jacobo'; speed = float(m.get('el_speed') or speed); instr = 'el'
+    if el: model = m.get('el_model') or E.get('ELEVENLABS_MODEL', EL_MODEL); voice = m.get('el_voice') or E.get('ELEVENLABS_VOICE') or 'jacobo'; speed = float(m.get('el_speed') or speed); instr = f"el|{m.get('el_stability', .5)}|{m.get('el_style', 0)}"
     log(f'tts[{prov}] model={model} voice={voice} speed={speed}')
     pron = sorted(st.get('pronunciation', {}).items(), key=lambda kv: -len(kv[0]))
     def say(t):
@@ -86,7 +86,7 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
         hh = hashlib.sha1('|'.join([say(b['text']), model, voice, str(speed), instr]).encode()).hexdigest()[:12]
         if os.path.exists(p) and not force and i in T and Hh.get(i) == hh: continue
         log(f'tts {i}')
-        if el: _el_say(say(b['text']), voice, p, model=model, speed=min(1.2, max(.7, speed)), stability=float(m.get('el_stability', .5)))
+        if el: _el_say(say(b['text']), voice, p, model=model, speed=min(1.2, max(.7, speed)), stability=float(m.get('el_stability', .5)), style=float(m.get('el_style', 0)))
         else:
             with client.audio.speech.with_streaming_response.create(model=model, voice=voice, input=say(b['text']), instructions=instr, speed=speed, response_format='mp3') as r:
                 r.stream_to_file(p)
