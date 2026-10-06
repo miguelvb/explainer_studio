@@ -31,7 +31,9 @@ def _el_say(text, voice, path, model=None, stability=.5, similarity=.75, style=0
     rq = urllib.request.Request(f'https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128', data=body, headers={'xi-api-key': key, 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'})
     try:
         with urllib.request.urlopen(rq, timeout=180) as r: open(path, 'wb').write(r.read())
-    except urllib.error.HTTPError as e: raise SystemExit(f'ElevenLabs error {e.code}: {e.read().decode()[:300]}')
+    except urllib.error.HTTPError as e:
+        hint = f"\n  key read from .env: {key[:3]}...{key[-3:]} ({len(key)} chars). Check: no quotes/spaces/duplicate ELEVENLABS_API_KEY line, key not deleted, 'Text to Speech' access enabled for the key." if e.code == 401 else ''
+        raise SystemExit(f'ElevenLabs error {e.code}: {e.read().decode()[:300]}{hint}')
 
 
 def voices(root, st, text=None, openai_voices=None, el_voices=None, el_model=None, log=print):
