@@ -1,6 +1,6 @@
-# Test · escenas 0–19
+# Test · escenas 0–20
 
-*Voice-over script. Language: es · voice: cedar · duration: ~23:51 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~23:55 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
@@ -230,22 +230,26 @@
 
 **17f** Y otras empresas, como Anthropic o Meta, han contado incidentes parecidos. Hay quien sostiene que todo esto es marketing para inflar el valor de sus productos. Lo cierto es que no conocemos la historia completa. Y peor: no sabemos qué brechas ni siquiera han detectado.
 
-**17g** Hay otro problema. Estos sucesos generaron tantos datos que los propios investigadores tuvieron que usar agentes de IA para analizarlos. No sabemos si esos agentes mintieron. Pero la IA ya es tan compleja que empezamos a necesitar IA para auditarla.
+## 18 · Conclusiones
 
-**17h** No hace falta imaginar nada más lejano para preocuparse. Si los agentes siguen mejorando a este ritmo y se organizan solos, serán una herramienta poderosa para cualquiera que quiera hacer daño.
+**18a** Conclusiones.
 
-**17i** Ahora mismo las compañías compiten en un juego: gana quien cree la IA más potente, la más rápida. Y en un juego así, la seguridad no es la prioridad.
+**18b** Hay otro problema. Estos sucesos generaron tantos datos que los propios investigadores tuvieron que usar agentes de IA para analizarlos. No sabemos si esos agentes mintieron. Pero la IA ya es tan compleja que empezamos a necesitar IA para auditarla.
 
-**17j** Solo sabemos con certeza tres cosas: esto ocurrió aunque debía ser imposible; quienes lo construyeron no pusieron las salvaguardas suficientes; y se están construyendo agentes mucho más capaces mientras lo cuentas.
+**18c** No hace falta imaginar nada más lejano para preocuparse. Si los agentes siguen mejorando a este ritmo y se organizan solos, serán una herramienta poderosa para cualquiera que quiera hacer daño.
 
-## 18 · Último aviso
+**18d** Ahora mismo las compañías compiten en un juego: gana quien cree la IA más potente, la más rápida. Y en un juego así, la seguridad no es la prioridad.
 
-**18a** Ajeya Cotra, investigadora de METR y una de las autoras del informe: «Este incidente se siente como más de la mitad del camino hacia una toma de control total por parte de la IA.»
+**18e** Solo sabemos con certeza tres cosas: esto ocurrió aunque debía ser imposible; quienes lo construyeron no pusieron las salvaguardas suficientes; y se están construyendo agentes mucho más capaces mientras lo cuentas.
 
-**18b** «Espero avances de capacidad extremadamente rápidos, y creo que los agentes de frontera podrán establecer un despliegue rebelde así en seis meses.»
+## 19 · Último aviso
 
-**18c** «No estoy segura de que vayamos a recibir un aviso tan claro antes de que sea demasiado tarde.»
+**19a** Ajeya Cotra, investigadora de METR y una de las autoras del informe: «Este incidente se siente como más de la mitad del camino hacia una toma de control total por parte de la IA.»
 
-## 19 · Créditos
+**19b** «Espero avances de capacidad extremadamente rápidos, y creo que los agentes de frontera podrán establecer un despliegue rebelde así en seis meses.»
 
-**19a** Arkinos, octubre de dos mil veintiséis. Explainer Studio.
+**19c** «No estoy segura de que vayamos a recibir un aviso tan claro antes de que sea demasiado tarde.»
+
+## 20 · Créditos
+
+**20a** Arkinos, octubre de dos mil veintiséis. Explainer Studio.

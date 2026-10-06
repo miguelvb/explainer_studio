@@ -1,6 +1,6 @@
 {
  "meta": {
-  "title": "Test · escenas 0–19",
+  "title": "Test · escenas 0–20",
   "lang": "es",
   "mark": "mark.txt",
   "numsep": ".",
@@ -24299,11 +24299,7 @@
     "Desde entonces se han descubierto más brechas, algunas aún más inquietantes: enjambres de agentes haciendo cosas que no deberían poder hacer, como el que convirtió una wiki alemana en un tablón oculto, semanas antes. O agentes que dejan mensajes escondidos para ayudar a otras IAs a hacer trampas.",
     "Y no fue lo único. En septiembre se supo que ya en junio, durante su entrenamiento y evaluación internos, modelos de OpenAI habían entrado sin autorización en webs del gobierno de Australia.",
     "Uno investigaba el gasto en medicamentos para enfermedades de la piel, no encontró datos públicos y accedió a un sistema interno de Services Australia. Ejecutó órdenes y recuperó archivos y credenciales. OpenAI pidió disculpas y reconoció que debió gestionar mejor su respuesta.",
-    "Y otras empresas, como Anthropic o Meta, han contado incidentes parecidos. Hay quien sostiene que todo esto es marketing para inflar el valor de sus productos. Lo cierto es que no conocemos la historia completa. Y peor: no sabemos qué brechas ni siquiera han detectado.",
-    "Hay otro problema. Estos sucesos generaron tantos datos que los propios investigadores tuvieron que usar agentes de IA para analizarlos. No sabemos si esos agentes mintieron. Pero la IA ya es tan compleja que empezamos a necesitar IA para auditarla.",
-    "No hace falta imaginar nada más lejano para preocuparse. Si los agentes siguen mejorando a este ritmo y se organizan solos, serán una herramienta poderosa para cualquiera que quiera hacer daño.",
-    "Ahora mismo las compañías compiten en un juego: gana quien cree la IA más potente, la más rápida. Y en un juego así, la seguridad no es la prioridad.",
-    "Solo sabemos con certeza tres cosas: esto ocurrió aunque debía ser imposible; quienes lo construyeron no pusieron las salvaguardas suficientes; y se están construyendo agentes mucho más capaces mientras lo cuentas."
+    "Y otras empresas, como Anthropic o Meta, han contado incidentes parecidos. Hay quien sostiene que todo esto es marketing para inflar el valor de sus productos. Lo cierto es que no conocemos la historia completa. Y peor: no sabemos qué brechas ni siquiera han detectado."
    ],
    "cues": [
     {
@@ -24910,7 +24906,7 @@
     {
      "a": "world",
      "at": "17f",
-     "until": "17g",
+     "until": "E17",
      "p": {
       "nodes": [
        {
@@ -25028,11 +25024,46 @@
       0.5,
       0.5
      ]
+    }
+   ]
+  },
+  {
+   "title": "Conclusiones",
+   "beats": [
+    {
+     "text": "Conclusiones.",
+     "pause": 2.4
+    },
+    "Hay otro problema. Estos sucesos generaron tantos datos que los propios investigadores tuvieron que usar agentes de IA para analizarlos. No sabemos si esos agentes mintieron. Pero la IA ya es tan compleja que empezamos a necesitar IA para auditarla.",
+    "No hace falta imaginar nada más lejano para preocuparse. Si los agentes siguen mejorando a este ritmo y se organizan solos, serán una herramienta poderosa para cualquiera que quiera hacer daño.",
+    "Ahora mismo las compañías compiten en un juego: gana quien cree la IA más potente, la más rápida. Y en un juego así, la seguridad no es la prioridad.",
+    "Solo sabemos con certeza tres cosas: esto ocurrió aunque debía ser imposible; quienes lo construyeron no pusieron las salvaguardas suficientes; y se están construyendo agentes mucho más capaces mientras lo cuentas."
+   ],
+   "cues": [
+    {
+     "a": "seal",
+     "at": "S18",
+     "until": "18b",
+     "ext": 0,
+     "p": {
+      "text": "Conclusiones",
+      "sub": "",
+      "at": 0.3,
+      "type": 14,
+      "scale": 0.8,
+      "cy": 230,
+      "ty": 360
+     },
+     "bg": true,
+     "fade": [
+      0.8,
+      1.0
+     ]
     },
     {
      "a": "world",
-     "at": "17g",
-     "until": "17h",
+     "at": "18b",
+     "until": "18c",
      "p": {
       "nodes": [
        {
@@ -25042,11 +25073,11 @@
         "y": 60,
         "w": 200,
         "h": 250,
-        "at": "17g#datos",
+        "at": "18b#datos",
         "color": "blue",
         "title": "datos",
         "read": {
-         "at": "17g#datos+0.5",
+         "at": "18b#datos+0.5",
          "dur": 5
         },
         "fs": 6,
@@ -25061,7 +25092,7 @@
         "y": 110,
         "w": 80,
         "h": 80,
-        "at": "17g#agentes",
+        "at": "18b#agentes",
         "color": "teal",
         "label": ""
        },
@@ -25072,7 +25103,7 @@
         "y": 135,
         "w": 30,
         "h": 30,
-        "at": "17g#agentes",
+        "at": "18b#agentes",
         "color": "#3FD8C2"
        },
        {
@@ -25082,11 +25113,11 @@
         "y": 220,
         "w": 60,
         "h": 60,
-        "at": "17g#agentes+0.4",
+        "at": "18b#agentes+0.4",
         "color": "teal",
         "move": [
          {
-          "at": "17g#auditarla-1.2",
+          "at": "18b#auditarla-1.2",
           "x": 210,
           "y": 140,
           "dur": 1.6
@@ -25100,7 +25131,7 @@
         "y": 138,
         "w": 64,
         "h": 64,
-        "at": "17g#mintieron",
+        "at": "18b#mintieron",
         "color": "amber"
        },
        {
@@ -25110,7 +25141,7 @@
         "y": 222,
         "w": 90,
         "h": 17,
-        "at": "17g#mintieron",
+        "at": "18b#mintieron",
         "color": "#8C96A4",
         "fs": 13,
         "text": "¿mintieron?"
@@ -25120,11 +25151,11 @@
        {
         "a": "au1",
         "b": "ar",
-        "at": "17g#agentes+0.2",
+        "at": "18b#agentes+0.2",
         "color": "#3FD8C2",
         "curve": 0.3,
         "solid": true,
-        "until": "17h"
+        "until": "18c"
        }
       ],
       "fs": 1.0
@@ -25137,8 +25168,8 @@
     },
     {
      "a": "world",
-     "at": "17h",
-     "until": "17i",
+     "at": "18c",
+     "until": "18d",
      "p": {
       "nodes": [
        {
@@ -25148,7 +25179,7 @@
         "y": 90,
         "w": 330,
         "h": 280,
-        "at": "17h#agentes",
+        "at": "18c#agentes",
         "color": "#FF8A5C",
         "n": 60,
         "tot": 60
@@ -25160,7 +25191,7 @@
         "y": 145,
         "w": 90,
         "h": 90,
-        "at": "17h#herramienta",
+        "at": "18c#herramienta",
         "color": "#FF6E6E"
        },
        {
@@ -25170,7 +25201,7 @@
         "y": 295,
         "w": 82,
         "h": 17,
-        "at": "17h#herramienta",
+        "at": "18c#herramienta",
         "color": "#8C96A4",
         "fs": 13,
         "text": "cualquiera"
@@ -25180,7 +25211,7 @@
        {
         "a": "cr",
         "b": "pe",
-        "at": "17h#herramienta+0.3",
+        "at": "18c#herramienta+0.3",
         "color": "#FF6E6E",
         "curve": 0.3,
         "solid": true,
@@ -25197,8 +25228,8 @@
     },
     {
      "a": "world",
-     "at": "17i",
-     "until": "17j",
+     "at": "18d",
+     "until": "18e",
      "p": {
       "nodes": [
        {
@@ -25208,7 +25239,7 @@
         "y": 150,
         "w": 560,
         "h": 12,
-        "at": "17i#potente",
+        "at": "18d#potente",
         "color": "#FF8A5C",
         "fill": 1.0
        },
@@ -25219,7 +25250,7 @@
         "y": 168,
         "w": 136,
         "h": 15,
-        "at": "17i#potente",
+        "at": "18d#potente",
         "color": "#8C96A4",
         "fs": 11,
         "text": "potencia y velocidad"
@@ -25231,7 +25262,7 @@
         "y": 270,
         "w": 560,
         "h": 12,
-        "at": "17i#seguridad",
+        "at": "18d#seguridad",
         "color": "#3FD8C2",
         "fill": 0.12
        },
@@ -25242,7 +25273,7 @@
         "y": 288,
         "w": 63,
         "h": 15,
-        "at": "17i#seguridad",
+        "at": "18d#seguridad",
         "color": "#8C96A4",
         "fs": 11,
         "text": "seguridad"
@@ -25254,11 +25285,11 @@
         "y": 79,
         "w": 22,
         "h": 22,
-        "at": "17i#juego",
+        "at": "18d#juego",
         "color": "#FF8A5C",
         "move": [
          {
-          "at": "17i#rápida",
+          "at": "18d#rápida",
           "x": 700,
           "y": 90,
           "dur": 1.6
@@ -25272,7 +25303,7 @@
         "y": 100,
         "w": 60,
         "h": 60,
-        "at": "17i#gana",
+        "at": "18d#gana",
         "color": "amber"
        }
       ],
@@ -25287,8 +25318,8 @@
     },
     {
      "a": "world",
-     "at": "17j",
-     "until": "E17",
+     "at": "18e",
+     "until": "E18",
      "p": {
       "nodes": [
        {
@@ -25298,7 +25329,7 @@
         "y": 140,
         "w": 180,
         "h": 150,
-        "at": "17j#imposible",
+        "at": "18e#imposible",
         "color": "#FF6E6E",
         "label": "",
         "open": true
@@ -25310,7 +25341,7 @@
         "y": 198,
         "w": 34,
         "h": 34,
-        "at": "17j#imposible+0.6",
+        "at": "18e#imposible+0.6",
         "color": "#FF6E6E"
        },
        {
@@ -25320,7 +25351,7 @@
         "y": 170,
         "w": 90,
         "h": 90,
-        "at": "17j#salvaguardas",
+        "at": "18e#salvaguardas",
         "color": "#E7EBF1"
        },
        {
@@ -25330,7 +25361,7 @@
         "y": 170,
         "w": 90,
         "h": 90,
-        "at": "17j#salvaguardas+0.8",
+        "at": "18e#salvaguardas+0.8",
         "color": "#FF6E6E",
         "alpha": 0.9
        },
@@ -25341,7 +25372,7 @@
         "y": 140,
         "w": 220,
         "h": 150,
-        "at": "17j#capaces",
+        "at": "18e#capaces",
         "color": "#FF8A5C",
         "n": 48,
         "tot": 48
@@ -25374,8 +25405,8 @@
    "cues": [
     {
      "a": "world",
-     "at": "S18",
-     "until": "18b",
+     "at": "S19",
+     "until": "19b",
      "p": {
       "nodes": [
        {
@@ -25385,7 +25416,7 @@
         "y": 130,
         "w": 800,
         "h": 135,
-        "at": "18a#Este",
+        "at": "19a#Este",
         "color": "#E7EBF1",
         "lines": [
          "«Este incidente se siente como más de la mitad",
@@ -25401,7 +25432,7 @@
         "y": 360,
         "w": 800,
         "h": 27,
-        "at": "18a#Este+4",
+        "at": "19a#Este+4",
         "color": "#8C96A4",
         "lines": [
          "Ajeya Cotra · METR, investigadora y autora del informe"
@@ -25420,8 +25451,8 @@
     },
     {
      "a": "world",
-     "at": "18b",
-     "until": "18c",
+     "at": "19b",
+     "until": "19c",
      "p": {
       "nodes": [
        {
@@ -25466,8 +25497,8 @@
     },
     {
      "a": "world",
-     "at": "18c",
-     "until": "E18",
+     "at": "19c",
+     "until": "E19",
      "p": {
       "nodes": [
        {
@@ -25519,14 +25550,14 @@
    "cues": [
     {
      "a": "seal",
-     "at": "S19",
-     "until": "E19",
+     "at": "S20",
+     "until": "E20",
      "p": {
       "text": "Arkinos @ oct 2026",
       "sub": "Explainer Studio",
       "at": 1.6,
       "black": {
-       "at": "19a#Explainer+2.5",
+       "at": "20a#Explainer+2.5",
        "dur": 4
       }
      },
