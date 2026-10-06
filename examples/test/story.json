@@ -5627,18 +5627,6 @@
           "dur": 1.4
          }
         ]
-       },
-       {
-        "id": "zh",
-        "kind": "chip",
-        "x": 70,
-        "y": 170,
-        "w": 120,
-        "h": 30,
-        "at": "0e#METR",
-        "color": "amber",
-        "label": "zzHELP",
-        "fs": 15
        }
       ],
       "links": [

@@ -170,7 +170,6 @@ n=[W.agent('e0',150,270,0.3,s=64,box_s=140),
    N('lp','lupa',250,340,96,96,'0e#leyeron',color='teal',
      move=[dict(at='0e#leyeron+1.6',x=365,y=60,dur=1.4)]+[dict(at=f'0e#leyeron+{3.2+1.5*j:.1f}',x=x_,y=y_,dur=1.4) for j,(x_,y_) in enumerate([(700,60),(700,140),(365,140),(365,220),(700,220),(700,300),(365,300),(365,380)])])]
 n=[x for part in n for x in (part if isinstance(part,list) else [part])]
-n.append(N('zh','chip',70,170,120,30,'0e#METR',color='amber',label='zzHELP',fs=15))
 lk=[W.link('e0_box','pg','0e#leyeron',curve=.12,color='blue',solid=True)]
 c0.append(K('0e','E0',n,lk,fs=1.0))
 # ===== scene 1 (v2) — built with worldkit =====
