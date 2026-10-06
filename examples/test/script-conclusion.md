@@ -14,6 +14,6 @@ Va entre «Lo que sabemos y lo que no» (16) y los créditos (que pasarían a se
 
 **17f** No hace falta imaginar nada más lejano para preocuparse. Si los agentes siguen mejorando a este ritmo y se organizan solos, serán una herramienta poderosa para cualquiera que quiera hacer daño.
 
-**17g** No creemos que sea momento de entrar en pánico, pero sí de prestar atención seria a lo que ocurre dentro de una parte muy poderosa del sector tecnológico. Ahora mismo compiten en un juego: gana quien cree la IA más potente, la más rápida. Y en un juego así, la seguridad no es la prioridad.
+**17g** Ahora mismo las compañías compiten en un juego: gana quien cree la IA más potente, la más rápida. Y en un juego así, la seguridad no es la prioridad.
 
 **17h** Solo sabemos con certeza tres cosas: esto ocurrió aunque debía ser imposible; quienes lo construyeron no pusieron las salvaguardas suficientes; y se están construyendo agentes mucho más capaces mientras lo cuentas.
