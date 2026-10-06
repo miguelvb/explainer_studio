@@ -12339,7 +12339,7 @@
         "w": 340,
         "h": 150,
         "at": "5a#receta",
-        "color": "amber",
+        "color": "blue",
         "lines": [
          "flag = H( K₀ ⊕ f(tarea) )",
          "f(t) = Σ aᵢ·tⁱ  (mod p)"
