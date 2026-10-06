@@ -6573,7 +6573,9 @@
         "h": 90,
         "at": "1c#caja+1.0",
         "color": "teal",
-        "layers": 4
+        "layers": 3,
+        "core": 22,
+        "sw": 1.5
        },
        {
         "id": "art",

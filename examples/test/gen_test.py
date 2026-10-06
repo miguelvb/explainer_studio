@@ -169,7 +169,7 @@ for i in range(96):
     if i==CH: n+=W.agent('chs',x,y,t0,s=18,box=False)
     else: n+=W.agent(f'gr{i}',x,y,t0,s=18,color='teal' if i in sol else 'blue',box=False,until='1c#caja')
 n+=[ch('t1',455,150,170,'HPIM ~95 %','1b#HPIM',color='blue',until='1c#caja'),ch('t2',640,150,200,'GPT-5.6 Sol ~5 %','1b#GPT',color='teal',until='1c#caja')]
-n+=[W.sandbox_onion('on',GX0+GP*5,GY0+GP*3,size=90,at='1c#caja+1.0')]
+n+=[W.sandbox_onion('on',GX0+GP*5,GY0+GP*3,size=90,layers=3,core=22,sw=1.5,at='1c#caja+1.0')]
 n+=[N('art','server',640,258,190,56,'1d#Artifactory',color='amber',label='Artifactory')]
 lk+=[W.link('on','art','1d#pide',bi=True,curve=.1)]
 cm=[dict(at='S1',x=50,y=50,z=1),dict(at='1c#caja',x=50,y=50,z=1),dict(at='1c#caja+2.5',x=(GX0+GP*5)/9.6,y=(GY0+GP*3)/5.4,z=3.5,dur=2.5),
