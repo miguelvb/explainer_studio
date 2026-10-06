@@ -17,12 +17,18 @@ def _paths(root):
     return b, json.load(open(f'{b}/data.json')), 'file://' + os.path.abspath(f'{b}/player/index.html')
 
 
+SIG = """window.__sig=()=>{const st=document.getElementById('stage');if(st.querySelector('canvas'))return Math.random();
+ const s=st.innerHTML;let h1=0xdeadbeef,h2=0x41c6ce57;for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677)}
+ h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);return (h1>>>0)+':'+s.length}"""
+
+
 async def _page(b, url, D, W):
     H = W * 9 // 16
     pg = await b.new_page(viewport={'width': W, 'height': H})
     errs = []
     pg.on('pageerror', lambda e: errs.append(str(e)))
     await pg.goto(url)
+    await pg.evaluate(SIG)
     await pg.evaluate("Promise.all([document.fonts.load('16px \"Press Start 2P\"'),document.fonts.load('16px \"Share Tech Mono\"')]).then(()=>document.fonts.ready)")
     await pg.evaluate(f"document.getElementById('stage').style.transform='scale({W / 1920})'")
     return pg, errs
@@ -59,10 +65,14 @@ def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, scenes=None, dr
         await pg.evaluate('(d)=>setup(d.sched,d.cues)', D)
         ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', str(fps), '-c:v', 'mjpeg', '-i', '-',
                                '-c:v', 'libx264', '-preset', preset, '-crf', str(crf), '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
+        last, img, reused = None, b'', 0
         for f in range(f0, f1):
-            await pg.evaluate(f'frame({f / fps})')
-            ff.stdin.write(await pg.screenshot(type='jpeg', quality=94))
+            sig = await pg.evaluate(f'(()=>{{frame({f / fps});return window.__sig()}})()')   # one round trip: draw + state signature
+            if sig != last or not img or os.environ.get('NODEDUP'): img = await pg.screenshot(type='jpeg', quality=94); last = sig
+            else: reused += 1                                                              # identical DOM state -> identical picture: skip the screenshot
+            ff.stdin.write(img)
         ff.stdin.close(); ff.wait(); await pg.close(); open(hf, 'w').write(hh)
+        log(f'  scene {n}: {reused}/{f1 - f0} frames reused (identical state)') if reused else None
         return n, f1 - f0
 
     async def main():
