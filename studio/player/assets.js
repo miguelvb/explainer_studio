@@ -632,15 +632,22 @@ A.world=(h,p,C)=>{
  const cub=(P,u)=>{const m=1-u;return[m*m*m*P[0][0]+3*m*m*u*P[1][0]+3*m*u*u*P[2][0]+u*u*u*P[3][0],m*m*m*P[0][1]+3*m*m*u*P[1][1]+3*m*u*u*P[2][1]+u*u*u*P[3][1]]};
  const hitN=(P,obs)=>{let c=0;for(let k=1;k<28;k++){const [x,y]=cub(P,k/28);for(const o of obs)if(x>o.x-7&&x<o.x+o.w+7&&y>o.y-7&&y<o.y+o.h+7){c++;break}}return c};
  const linkGeo=(l,i)=>{const a=byId[l.a],b=byId[l.b],A=edge(a,b),B=edge(b,a);
-  if(l.rel||l.orth)return{rel:1,P:[A,A,B,B],A,B};
+  if(l.orth)return{rel:1,P:[A,A,B,B],A,B};
   const dx=B[0]-A[0],dy=B[1]-A[1],len=Math.hypot(dx,dy)||1,ux=dx/len,uy=dy/len,nx=-uy,ny=ux,base=Math.max(14,len*(l.curve??.22)*.9)*(i%2?-1:1),inA=n=>A[0]>n.x&&A[0]<n.x+(n.w||0)&&A[1]>n.y&&A[1]<n.y+(n.h||0),inB=n=>B[0]>n.x&&B[0]<n.x+(n.w||0)&&B[1]>n.y&&B[1]<n.y+(n.h||0);
   const i0=N.indexOf(a),i1=N.indexOf(b),T0=n=>C.T(n.at||0),T1=n=>n.until!=null?C.T(n.until):1e9,ls=Math.max(C.T(l.at||0),T0(a),T0(b)),le=l.until!=null?C.T(l.until):1e9,obs=N.filter((n,j)=>j!==i0&&j!==i1&&!NOOBS.includes(n.kind)&&!inA(n)&&!inB(n)&&(n.w||0)>0&&T0(n)<le&&T1(n)>ls&&(n.alpha??1)>.2).map(n=>({x:n.x,y:n.y,w:n.w||90,h:n.h||60,id:n.id,j:N.indexOf(n)}));
+  if(l.rel){const segHit=(p,q)=>{const L=Math.hypot(q[0]-p[0],q[1]-p[1]),m=Math.max(2,Math.ceil(L/6));for(let k=0;k<=m;k++){const x=p[0]+(q[0]-p[0])*k/m,y=p[1]+(q[1]-p[1])*k/m;for(const o of obs)if(x>o.x-5&&x<o.x+o.w+5&&y>o.y-5&&y<o.y+o.h+5)return 1}return 0},polyHit=P=>{let c=0;for(let k=1;k<P.length;k++)c+=segHit(P[k-1],P[k]);return c},plen=P=>{let L=0;for(let k=1;k<P.length;k++)L+=Math.hypot(P[k][0]-P[k-1][0],P[k][1]-P[k-1][1]);return L};
+   const R={rel:1,P:[A,A,B,B],A,B};if(!polyHit([A,B]))return R;
+   const [ax,ay]=ctr(a),[bx,by]=ctr(b),ha=(a.h||60)/2,hb=(b.h||60)/2,wa=(a.w||90)/2,wb=(b.w||90)/2,C=[];
+   for(let ym=16;ym<=524;ym+=8){if(Math.abs(ym-ay)<=ha+2||Math.abs(ym-by)<=hb+2)continue;C.push([[ax,ym<ay?ay-ha:ay+ha],[ax,ym],[bx,ym],[bx,ym<by?by-hb:by+hb]])}
+   for(let xm=16;xm<=944;xm+=8){if(Math.abs(xm-ax)<=wa+2||Math.abs(xm-bx)<=wb+2)continue;C.push([[xm<ax?ax-wa:ax+wa,ay],[xm,ay],[xm,by],[xm<bx?bx-wb:bx+wb,by]])}
+   let best=null,bl=1e9;for(const P of C){if(polyHit(P))continue;const L=plen(P);if(L<bl){bl=L;best=P}}
+   if(best){R.poly=best;return R}LKREP.push({a:l.a,b:l.b,n:1});return R}
   const mk=(h1,h2,f1=.33,f2=.33)=>[A,[A[0]+ux*len*f1+nx*h1,A[1]+uy*len*f1+ny*h1],[B[0]-ux*len*f2+nx*h2,B[1]-uy*len*f2+ny*h2],B];
   if(l.via){const q=cp(A[0],A[1],B[0],B[1],l,i);return{P:[A,[A[0]+2/3*(q[0]-A[0]),A[1]+2/3*(q[1]-A[1])],[B[0]+2/3*(q[0]-B[0]),B[1]+2/3*(q[1]-B[1])],B],A,B}}
   const cands=[];for(const m of [1,-1,1.7,-1.7,2.6,-2.6,.55,-.55,3.6,-3.6]){cands.push([base*m,-base*m]);cands.push([base*m,-base*m*.45])}
   let best=null,bs=1e9;cands.forEach((c,k)=>{const P=mk(c[0],c[1]),pen=hitN(P,obs)*100+Math.abs(c[0])/ (len||1)*20+k*.3;if(pen<bs){bs=pen;best=P}});
   const hh=hitN(best,obs);if(hh)LKREP.push({a:l.a,b:l.b,n:hh});return{P:best,A,B,obs}};
- const lkD=g=>g.rel?`M${g.A[0]} ${g.A[1]}L${g.B[0]} ${g.B[1]}`:`M${g.P[0][0]} ${g.P[0][1]}C${g.P[1][0]} ${g.P[1][1]} ${g.P[2][0]} ${g.P[2][1]} ${g.P[3][0]} ${g.P[3][1]}`;
+ const lkD=g=>g.poly?orthD(g.poly):g.rel?`M${g.A[0]} ${g.A[1]}L${g.B[0]} ${g.B[1]}`:`M${g.P[0][0]} ${g.P[0][1]}C${g.P[1][0]} ${g.P[1][1]} ${g.P[2][0]} ${g.P[2][1]} ${g.P[3][0]} ${g.P[3][1]}`;
  const GEO=Lk.map((l,i)=>linkGeo(l,i));
  const orthPts=(l,a,b)=>{const [ax,ay]=ctr(a),[bx,by]=ctr(b),ha=(a.h||60)/2,hb=(b.h||60)/2,wa=(a.w||90)/2,wb=(b.w||90)/2;let m=l.orth;if(m===true)m=Math.abs(by-ay)>=Math.abs(bx-ax)?'v':'h';
   if(m==='v'){const sy=by>ay?ay+ha:ay-ha,ey=by>ay?by-hb:by+hb,my=l.mid??(sy+ey)/2;return Math.abs(ax-bx)<1?[[ax,sy],[bx,ey]]:[[ax,sy],[ax,my],[bx,my],[bx,ey]]}
