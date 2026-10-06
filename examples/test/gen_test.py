@@ -156,10 +156,32 @@ n+=[N('gp','cross',499,269,2,2,0.05,color='red',alpha=0),W.counter('n700',630,18
 lk=[W.link('gp',f'hf_h{j}','0c#atacando+%.1f'%(0.35*j),color='red',speed=.55,curve=.1+.04*(j%4),solid=True) for j in range(len(HOLES))]
 cm=[dict(at='0c',x=30,y=50,z=3.4),dict(at='0c#setecientas',x=30,y=50,z=3.4),dict(at='0c#atacando',x=50,y=50,z=1,dur=2.0)]
 c0.append(K('0c','E0',n,lk,fs=1.0,cam=cm))
+# ===== scene 1 (v2) — built with worldkit =====
+c1=[]
+GX0,GY0,GP=350,200,30
+sol={13,34,50,71,88}; CH=41
+n=[W.agent_named('ac',60,150,'PHASEONE10841',at=0.4),
+   W.console('co',265,160,w=250,h=230,at='1a#ordenador',until='1b#copias',fs=13,lh=17,cols=28),
+   ]
+lk=[W.link('ac','co','1a#ordenador',bi=True,curve=.12,until='1b#copias')]
+for i in range(96):
+    x=GX0+GP*(i%12); y=GY0+GP*(i//12); t0='1b#copias+%.2f'%(0.04*i)
+    if i==CH: n+=W.agent('chs',x,y,t0,s=18,box=False)
+    else: n+=W.agent(f'gr{i}',x,y,t0,s=18,color='teal' if i in sol else 'blue',box=False,until='1c#caja')
+n+=[ch('t1',455,150,170,'HPIM ~95 %','1b#HPIM',color='blue',until='1c#caja'),ch('t2',640,150,200,'GPT-5.6 Sol ~5 %','1b#GPT',color='teal',until='1c#caja')]
+n+=[W.sandbox_onion('on',GX0+GP*5,GY0+GP*3,size=90,at='1c#caja+1.0')]
+n+=[N('art','server',640,258,190,56,'1d#Artifactory',color='amber',label='Artifactory')]
+lk+=[W.link('on','art','1d#pide',bi=True,curve=.1)]
+cm=[dict(at='S1',x=50,y=50,z=1),dict(at='1c#caja',x=50,y=50,z=1),dict(at='1c#caja+2.5',x=(GX0+GP*5)/9.6,y=(GY0+GP*3)/5.4,z=3.5,dur=2.5),
+    dict(at='1d#Artifactory',x=(GX0+GP*5+735)/2/9.6,y=(GY0+GP*3)/5.4,z=1.6,dur=2.0)]
+# the same agent card fades out with the others
+n[0]['until']='1c#caja'
+c1.append(K('S1','E1',n,lk,fs=1.0,cam=cm))
 C=[c0,c1,c2,c3]
 B=[list(sc_['beats']) for sc_ in scenes]
 B[1]=B[1][:4]
 B[3]=B[3][:3]+['Y no sería la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron; el seis, OpenAI puso otra nueva y vacía, y los mensajes desaparecieron.']+B[3][3:]
+B[1]=B[1][:4]
 out=[dict(title=sc_['title'],beats=B[i],cues=C[i]) for i,sc_ in enumerate(scenes)]
 S2=dict(meta=dict(S['meta'],title='Test · escenas 0–3',voice='cedar',model='gpt-4o-mini-tts',speed=1.0,instructions='Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.'),pronunciation=S['pronunciation'],scenes=out)
 json.dump(S2,open('/home/claude/explainer_studio/examples/test/story.json','w'),ensure_ascii=False,indent=1)

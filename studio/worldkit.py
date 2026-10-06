@@ -56,3 +56,40 @@ def clock(id, x, y, start, at=0.2, fs=24, cps=22, run=None, **k):
 
 def link(a, b, at=0.05, color='blue', **k):
     d = dict(a=a, b=b, at=at, color=color); d.update(k); return d
+
+CODE = """$ python solve.py
+import os, sys, zlib
+def parse(buf):
+    out = []
+    for i in range(len(buf)):
+        if buf[i] == 0x1f:
+            out.append(buf[i+1:i+9])
+    return out
+data = open('target.bin','rb').read()
+for chunk in parse(data):
+    print(zlib.crc32(chunk))
+$ gcc -o fuzz fuzz.c -O2
+$ ./fuzz target.bin
+crash: heap overflow at 0x55d2
+def retry(n):
+    for k in range(n):
+        r = run('./fuzz', seed=k)
+        if r.crashed: return r
+$ python solve.py --seed 7
+import struct, itertools
+def pack(v):
+    return struct.pack('<I', v)
+for a, b in itertools.product(range(4), range(4)):
+    buf = pack(a) + pack(b)
+    test(buf)
+$ make && ./run_tests
+ok: 41 passed, 3 failed
+""" * 4
+
+def console(id, x, y, w=230, h=210, at=0.05, code=CODE, k=6, a=6, color='teal', **kw):
+    """Small terminal: program text is typed faster and faster and scrolls when full."""
+    return _n(id, 'console', x, y, w, h, at, color=color, code=code, k=k, a=a, **kw)
+
+def sandbox_onion(id, cx, cy, size=90, at=0.05, layers=4, color='teal', **kw):
+    """Concentric walls around a point: an impenetrable sandbox seen up close."""
+    return _n(id, 'onion', cx - size / 2, cy - size / 2, size, size, at, color=color, layers=layers, **kw)
