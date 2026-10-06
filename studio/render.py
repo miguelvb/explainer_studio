@@ -27,23 +27,41 @@ async def _page(b, url, D, W):
     return pg, errs
 
 
-def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, scenes=None, log=print):
+def _scene_hash(root, D, n, w, fps, limit, preset, crf):
+    import hashlib, glob as _g
+    S = D['sched']; t0, t1 = S[f'S{n}']['s'], S[f'E{n}']['s']; h = hashlib.sha1()
+    h.update(json.dumps([t0, t1, w, fps, limit, preset, crf, D.get('fps')], sort_keys=True).encode())
+    from .spec import cue_times
+    def ov(c):
+        try: cs, ce = cue_times(c, S); return ce > t0 - .5 and cs < t1 + .5
+        except Exception: return True
+    h.update(json.dumps([c for c in D['cues'] if ov(c)], sort_keys=True, default=str).encode())
+    for f in sorted(_g.glob(os.path.join(os.path.dirname(__file__), 'player', '*'))):
+        if os.path.isfile(f): h.update(open(f, 'rb').read())
+    return h.hexdigest()[:16]
+
+
+def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, scenes=None, draft=False, force=False, log=print):
+    """draft=True: smaller, 20 fps, ultrafast encode. Unchanged scenes (same cues/player/size) are reused unless force."""
     b, D, url = _paths(root); S = D['sched']; N = D['scenes']
+    if draft: w, fps = min(w, 854), 20
+    preset, crf = ('ultrafast', 26) if draft else ('fast', 17)
     os.makedirs(f'{b}/video', exist_ok=True)
 
     async def one(br, n):
         t0, t1 = S[f'S{n}']['s'], S[f'E{n}']['s']
         f0, f1 = round(t0 * fps), round(t1 * fps)
         if limit: f1 = min(f1, f0 + int(limit * fps))
-        out = f'{b}/video/scene_{n}.mp4'
+        out = f'{b}/video/scene_{n}.mp4'; hf = out + '.hash'; hh = _scene_hash(root, D, n, w, fps, limit, preset, crf)
+        if not force and os.path.exists(out) and os.path.exists(hf) and open(hf).read() == hh: return n, -1
         pg, errs = await _page(br, url, D, w)
         await pg.evaluate('(d)=>setup(d.sched,d.cues)', D)
         ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', str(fps), '-c:v', 'mjpeg', '-i', '-',
-                               '-c:v', 'libx264', '-preset', 'fast', '-crf', '17', '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
+                               '-c:v', 'libx264', '-preset', preset, '-crf', str(crf), '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
         for f in range(f0, f1):
             await pg.evaluate(f'frame({f / fps})')
             ff.stdin.write(await pg.screenshot(type='jpeg', quality=94))
-        ff.stdin.close(); ff.wait(); await pg.close()
+        ff.stdin.close(); ff.wait(); await pg.close(); open(hf, 'w').write(hh)
         return n, f1 - f0
 
     async def main():
@@ -52,7 +70,7 @@ def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, scenes=None, lo
             br = await _launch(p)
             async def go(n):
                 async with sem:
-                    r = await one(br, n); log(f'scene {r[0]} done: {r[1]} frames, {time.time() - t:.0f}s'); return r
+                    r = await one(br, n); log(f'scene {r[0]} unchanged, reused' if r[1] < 0 else f'scene {r[0]} done: {r[1]} frames, {time.time() - t:.0f}s'); return r
             await asyncio.gather(*[go(n) for n in scenes_]); await br.close()
     asyncio.run(main())
     if scenes is not None:

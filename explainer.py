@@ -68,7 +68,7 @@ def cmd_all(a):
     if sc is not None:
         import re as _re; only = {b['id'] for b in json.load(open(f'{proj(a)}/build/beats.json')) if _re.fullmatch(r'(\d+)[a-z]', b['id']) and int(b['id'][:-1]) in sc}
     if not a.skip_tts: audio.tts(proj(a), story(a), voice=a.voice, only=only)
-    do_build(a); render.render(proj(a), a.w, 30, scenes=sc, workers=a.workers, limit=a.limit)
+    do_build(a); render.render(proj(a), a.w, 30, scenes=sc, workers=a.workers, limit=a.limit, draft=a.draft, force=a.force_render)
     audio.music(proj(a)); audio.mux(proj(a), burn=a.burn, music_only=a.skip_tts, scenes=sc)
 
 
@@ -90,9 +90,9 @@ def main():
     p = P('voices', lambda a: audio.voices(proj(a), story(a), text=a.text, el_model=a.model, el_voices=a.el.split(',') if a.el else None, openai_voices=a.oa.split(',') if a.oa else None)); p.add_argument('--text'); p.add_argument('--model', help='ElevenLabs model id, e.g. eleven_v4'); p.add_argument('--el', help='comma list of ElevenLabs voices'); p.add_argument('--oa', help='comma list of OpenAI voices')
     p = P('tts', lambda a: audio.tts(proj(a), story(a), voice=a.voice, only=set(a.only.split(',')) if a.only else None, force=a.force)); p.add_argument('--voice'); p.add_argument('--only'); p.add_argument('--force', action='store_true')
     P('music', lambda a: print(audio.music(proj(a))))
-    p = P('render', lambda a: render.render(proj(a), a.w, 30, a.scene, a.workers, a.limit)); p.add_argument('--w', type=int, default=1280); p.add_argument('--scene', type=int); p.add_argument('--workers', type=int, default=2); p.add_argument('--limit', type=float, default=0)
+    p = P('render', lambda a: render.render(proj(a), a.w, 30, a.scene, a.workers, a.limit, draft=a.draft)); p.add_argument('--w', type=int, default=1280); p.add_argument('--scene', type=int); p.add_argument('--workers', type=int, default=2); p.add_argument('--limit', type=float, default=0); p.add_argument('--draft', action='store_true')
     p = P('mux', lambda a: audio.mux(proj(a), music_only=a.music_only, burn=a.burn)); p.add_argument('--music-only', action='store_true'); p.add_argument('--burn', action='store_true')
-    p = P('all', cmd_all); p.add_argument('--scene', type=int, help='only this scene'); p.add_argument('--from', dest='first', type=int, help='first scene of a range'); p.add_argument('--to', dest='last', type=int, help='last scene of a range (inclusive); gives build/final_scenes_A-B.mp4'); p.add_argument('--w', type=int, default=1280); p.add_argument('--workers', type=int, default=2); p.add_argument('--limit', type=float, default=0); p.add_argument('--skip-tts', action='store_true'); p.add_argument('--voice'); p.add_argument('--burn', action='store_true'); p.add_argument('--no-pad', action='store_true')
+    p = P('all', cmd_all); p.add_argument('--scene', type=int, help='only this scene'); p.add_argument('--from', dest='first', type=int, help='first scene of a range'); p.add_argument('--to', dest='last', type=int, help='last scene of a range (inclusive); gives build/final_scenes_A-B.mp4'); p.add_argument('--w', type=int, default=1280); p.add_argument('--workers', type=int, default=2); p.add_argument('--limit', type=float, default=0); p.add_argument('--skip-tts', action='store_true'); p.add_argument('--voice'); p.add_argument('--burn', action='store_true'); p.add_argument('--no-pad', action='store_true'); p.add_argument('--draft', action='store_true', help='fast preview render: 854px, 20fps, ultrafast'); p.add_argument('--force-render', action='store_true', help='re-render even unchanged scenes')
     def cv(a):
         r = llm.verify(proj(a), a.provider, a.model, a.source); print(json.dumps(r, indent=1, ensure_ascii=False)); print('saved verify.json')
     p = P('verify', cv); p.add_argument('--provider', default=None, choices=['anthropic', 'openai', 'openrouter']); p.add_argument('--model'); p.add_argument('--source', help='PDF or text the story was made from (cached as source.txt)')
