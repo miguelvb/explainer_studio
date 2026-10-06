@@ -81,22 +81,24 @@ def music(root, out=None):
     return out
 
 
-def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_db=-14, video=None, log=print):
+def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_db=-14, video=None, scene=None, log=print):
     b = f'{root}/build'; D = json.load(open(f'{b}/data.json')); S = D['sched']; beats = json.load(open(f'{b}/beats.json'))
-    video = video or f'{b}/video_silent.mp4'; out = out or f'{b}/final.mp4'; ad = os.path.join(root, audio_dir)
+    t0, tot = 0.0, D['total']
+    if scene is not None: t0, tot = S[f'S{scene}']['s'], S[f'E{scene}']['s'] - S[f'S{scene}']['s']; beats = [x for x in beats if t0 - .01 <= S[x['id']]['s'] < t0 + tot]
+    video = video or (f'{b}/video/scene_{scene}.mp4' if scene is not None else f'{b}/video_silent.mp4'); out = out or (f'{b}/final_scene_{scene}.mp4' if scene is not None else f'{b}/final.mp4'); ad = os.path.join(root, audio_dir)
     files = [] if music_only else [(x['id'], f"{ad}/beats/{x['id']}.mp3") for x in beats if os.path.exists(f"{ad}/beats/{x['id']}.mp3")]
     if not music_only and len(files) < len(beats): log(f'warning: {len(files)}/{len(beats)} narration files found')
-    cmd = ['ffmpeg', '-y', '-loglevel', 'error', '-i', video, '-i', f'{b}/music.wav']
+    cmd = ['ffmpeg', '-y', '-loglevel', 'error', '-i', video, '-ss', f'{t0:.2f}', '-i', f'{b}/music.wav']
     for _, f in files: cmd += ['-i', f]
     fc = []
     if files:
         for k, (i, _) in enumerate(files):
-            ms = int(S[i]['s'] * 1000); fc.append(f'[{k + 2}:a]adelay={ms}|{ms},apad[b{k}]')
+            ms = int((S[i]['s'] - t0) * 1000); fc.append(f'[{k + 2}:a]adelay={ms}|{ms},apad[b{k}]')
         fc += [''.join(f'[b{k}]' for k in range(len(files))) + f'amix=inputs={len(files)}:normalize=0:duration=longest[nar0]', '[nar0]asplit=2[nar][sc]', f'[1:a]volume={music_db}dB[mu]',
                '[mu][sc]sidechaincompress=threshold=0.015:ratio=9:attack=20:release=700[duck]', '[nar][duck]amix=inputs=2:normalize=0:duration=longest,loudnorm=I=-16:TP=-1.5:LRA=9[aout0]']
     else: fc.append(f'[1:a]volume={music_db + 4}dB,loudnorm=I=-20:TP=-1.5[aout0]')
     fo = float(json.load(open(f'{root}/story.json'))['meta'].get('fadeout', 4))   # fade to silence at the very end
-    fc.append(f"[aout0]afade=t=out:st={max(0, D['total'] - fo):.2f}:d={fo}[aout]")
+    fc.append(f"[aout0]afade=t=out:st={max(0, tot - fo):.2f}:d={fo}[aout]")
     vf = ['-vf', f"subtitles={b}/captions.srt:force_style='FontSize=20,Outline=1,Shadow=0,MarginV=36'", '-c:v', 'libx264', '-crf', '18', '-preset', 'fast'] if burn else ['-c:v', 'copy']
-    cmd += ['-filter_complex', ';'.join(fc), '-map', '0:v', '-map', '[aout]'] + vf + ['-c:a', 'aac', '-b:a', '192k', '-t', str(D['total']), '-movflags', '+faststart', out]
+    cmd += ['-filter_complex', ';'.join(fc), '-map', '0:v', '-map', '[aout]'] + vf + ['-c:a', 'aac', '-b:a', '192k', '-t', str(tot), '-movflags', '+faststart', out]
     subprocess.run(cmd, check=True); log(f'wrote {out}'); return out
