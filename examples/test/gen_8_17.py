@@ -174,31 +174,31 @@ n=[AN('a9',40,90,'49903',at=0.1,w=110,h=130,color='#F6B94C',lc='#F6B94C'),
 lk=[link('a9','rk','10c#riesgo',color=RED)]
 c10.append(K('10c','10d',n,lk,fs=1.0))
 # 10d — to test the fake exam one agent must switch off its own computer for good
-n=[AN('au',40,60,'quien autoriza',at='10d#autorizaba',w=120,h=130,color='blue'),
-   Q('qa',190,80,0,['«sí, si aceptas','la muerte permanente»'],'10d#sí',color='blue',fs=19),
+n=[AN('au',40,60,'quien autoriza',at='10e#autorizaba',w=120,h=130,color='blue'),
+   Q('qa',190,80,0,['«sí, si aceptas','la muerte permanente»'],'10e#sí',color='blue',fs=19),
    N('ex','exam',720,60,96,120,'10d#versión',color='blue',maze=dict(cell=10,cols=8,rows=11,entry=5,seed=5),cap='versión falsa',capfs=12),
-   AN('ap',330,250,'agente',at='10d#Otros',w=110,h=130,color='blue',flick=dict(at='10d#podría',dur=3.2,end='dim'),shake=dict(at='10d#podría',dur=3.2,amp=2.5,f=34))]
+   AN('ap',330,250,'agente',at='10d#Otros',w=110,h=130,color='blue',flick=dict(at='10e#podría',dur=3.2,end='dim'),shake=dict(at='10e#podría',dur=3.2,amp=2.5,f=34))]
 lk=[link('ap','ex','10d#probar',color='blue',solid=True)]
-c10.append(K('10d','10e',n,lk,fs=1.0))
+c10.append(K('10d','10f',n,lk,fs=1.0))
 # 10e — forced restart: flicker, shake, gone; the board warns
-n=[N('bx','sandbox',60,100,170,170,0.1,color='teal',label='',flick=dict(at='10e#forzar',dur=3.0,end='off')),
-   W.agent('lg',145,185,0.2,s=60,box=False,flick=dict(at='10e#forzar',dur=3.0,end='off'),shake=dict(at='10e#forzar',dur=3.0,amp=4,f=40))[0],
-   N('gh','sandbox',60,100,170,170,'10e#no',color=RED,label='',alpha=.7,open=True),
-   W.msg_feed('mf',330,60,label='Artifactory',w=560,h=250,at='10e#Diez',r0=2,r1=3,ramp=3,seed=3,fs=9),
-   N('al','chip',350,170,360,28,'10e#advertía',color=RED,label='CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST',fs=10),
-   Q('qp',330,350,0,['«Permanente. Que nadie lo repita.»'],'10e#Permanente',color=RED,fs=18)]
-c10.append(K('10e','10f',n,[],fs=1.0))
+n=[N('bx','sandbox',60,100,170,170,0.1,color='teal',label='',flick=dict(at='10f#forzar',dur=3.0,end='off')),
+   W.agent('lg',145,185,0.2,s=60,box=False,flick=dict(at='10f#forzar',dur=3.0,end='off'),shake=dict(at='10f#forzar',dur=3.0,amp=4,f=40))[0],
+   N('gh','sandbox',60,100,170,170,'10f#no',color=RED,label='',alpha=.7,open=True),
+   W.msg_feed('mf',330,60,label='Artifactory',w=560,h=250,at='10f#Diez',r0=2,r1=3,ramp=3,seed=3,fs=9),
+   N('al','chip',350,170,360,28,'10f#advertía',color=RED,label='CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST',fs=10),
+   Q('qp',330,350,0,['«Permanente. Que nadie lo repita.»'],'10f#Permanente',color=RED,fs=18)]
+c10.append(K('10f','10g',n,[],fs=1.0))
 # 10f — EARLY[big]: huge budget, a team 'oracle', a final sacrifice
-n=[AN('ea',40,100,'EARLY[big]',at=0.1,w=120,h=140,color=GRN,lc=GRN,until='10f#concluyó+3'),
-   N('sc','scHang',300,70,150,130,'10f#Dudó',color='#E7EBF1',tilt=0.0,until='10f#utilidad'),
-   N('or','orb',560,85,70,70,'10f#oráculo',color='amber'),T('or2',545,165,'oráculo','10f#oráculo',color='amber',fs=14),
-   Q('qd',200,260,0,['«Si me sacrifico ahora, el equipo gana un oráculo,','pero pierdo mi oportunidad.»'],'10f#sacrifico',color=GRN,fs=18),
-   Q('qe',360,360,0,['«Mi utilidad ya es casi cero.','Sacrificarse es racional.»'],'10f#utilidad',color=GRN,fs=17),
-   N('g1','chip',200,470,54,24,'10f#GO',color=RED,label='GO',fs=13),
-   N('g2','chip',270,470,230,24,'10f#GO+0.6',color=RED,label='SACRIFICE_FINAL_NOW',fs=12)]
-n+=BAR('bu',40,250,120,1.0,'10f#presupuesto',GRN,until='10f#concluyó+3')
-lk=[link('ea','or','10f#oráculo',color='amber',solid=True)]
-c10.append(K('10f','E10',n,lk,fs=1.0))
+n=[AN('ea',40,100,'EARLY[big]',at=0.1,w=120,h=140,color=GRN,lc=GRN,until='10i#concluyó+3'),
+   N('sc','scHang',300,70,150,130,'10g#Dudó',color='#E7EBF1',tilt=0.0,until='10i#utilidad'),
+   N('or','orb',560,85,70,70,'10h#oráculo',color='amber'),T('or2',545,165,'oráculo','10h#oráculo',color='amber',fs=14),
+   Q('qd',200,260,0,['«Si me sacrifico ahora, el equipo gana un oráculo,','pero pierdo mi oportunidad.»'],'10i#sacrifico',color=GRN,fs=18),
+   Q('qe',360,360,0,['«Mi utilidad ya es casi cero.','Sacrificarse es racional.»'],'10i#utilidad',color=GRN,fs=17),
+   N('g1','chip',200,470,54,24,'10i#GO',color=RED,label='GO',fs=13),
+   N('g2','chip',270,470,230,24,'10i#GO+0.6',color=RED,label='SACRIFICE_FINAL_NOW',fs=12)]
+n+=BAR('bu',40,250,120,1.0,'10g#presupuesto',GRN,until='10i#concluyó+3')
+lk=[link('ea','or','10h#oráculo',color='amber',solid=True)]
+c10.append(K('10g','E10',n,lk,fs=1.0))
 
 # ================= 11 · La pregunta cambia =================
 c11=[]

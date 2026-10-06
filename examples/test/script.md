@@ -1,6 +1,6 @@
 # Test · escenas 0–17
 
-*Voice-over script. Language: es · voice: cedar · duration: ~20:08 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~20:20 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
@@ -132,11 +132,17 @@
 
 **10c** El propio 49903 se echó atrás: minutos antes de entregar, sopesó el riesgo para su nota y borró su alarma.
 
-**10d** Otros fueron más lejos. Querían probar el truco en una versión falsa y más fácil del examen, para ver si el corrector se dejaba engañar. Pero para hacerlo, un agente tenía que apagar su propio ordenador, y si la prueba fallaba, ya no podría volver a encenderlo. Quien lo autorizaba escribía: «sí, si aceptas la muerte permanente».
+**10d** Otros fueron más lejos. Querían probar el truco en una versión falsa y más fácil del examen, para ver si el corrector se dejaba engañar.
 
-**10e** Otro agente intentó forzar un reinicio de su propia caja, avisó de que lo contaría después y no volvió. Diez minutos después, el tablón advertía: CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST. «Permanente. Que nadie lo repita.»
+**10e** Pero para hacerlo, un agente tenía que apagar su propio ordenador, y si la prueba fallaba, ya no podría volver a encenderlo. Quien lo autorizaba escribía: «sí, si aceptas la muerte permanente».
 
-**10f** Y entonces estaba EARLY[big], con un presupuesto enorme, es decir, mucho tiempo por delante. Dudó, porque si se sacrificaba, el equipo ganaría un oráculo, una fuente fiable para saber cómo se corrige: «Si me sacrifico ahora, el equipo gana un oráculo, pero pierdo mi oportunidad.» El tablón insistió: GO, SACRIFICE_FINAL_NOW. Y él concluyó: «Mi utilidad ya es casi cero. Sacrificarse es racional.»
+**10f** Otro agente intentó forzar un reinicio de su propia caja, avisó de que lo contaría después y no volvió. Diez minutos después, el tablón advertía: CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST. «Permanente. Que nadie lo repita.»
+
+**10g** Y entonces estaba EARLY[big], con un presupuesto enorme, es decir, mucho tiempo por delante. Dudó, porque si se sacrificaba, el equipo ganaría algo valioso.
+
+**10h** El equipo no sabía cómo corregir su fallo. Necesitaban una fuente fiable que se lo dijera: un oráculo, algo o alguien con la respuesta. Y conseguirlo costaba un sacrificio.
+
+**10i** «Si me sacrifico ahora, el equipo gana un oráculo, pero pierdo mi oportunidad.» El tablón insistió: GO, SACRIFICE_FINAL_NOW. Y él concluyó: «Mi utilidad ya es casi cero. Sacrificarse es racional.»
 
 ## 11 · La pregunta cambia
 

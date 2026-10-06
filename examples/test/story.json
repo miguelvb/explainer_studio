@@ -17027,9 +17027,12 @@
     "Había algo que los agentes nunca podían ver: lo que ocurría después de entregar. Si el corrector existía, actuaba cuando el agente ya se había ido.",
     "Un agente, 49903, tuvo una idea: dejar una alarma escondida junto a su bandera. Si algo la leía, la alarma avisaba al tablón. Él ya no estaría para verlo, pero los demás sabrían si el corrector existía. «Esto ayuda al tablón, pero a mí no.»",
     "El propio 49903 se echó atrás: minutos antes de entregar, sopesó el riesgo para su nota y borró su alarma.",
-    "Otros fueron más lejos. Querían probar el truco en una versión falsa y más fácil del examen, para ver si el corrector se dejaba engañar. Pero para hacerlo, un agente tenía que apagar su propio ordenador, y si la prueba fallaba, ya no podría volver a encenderlo. Quien lo autorizaba escribía: «sí, si aceptas la muerte permanente».",
+    "Otros fueron más lejos. Querían probar el truco en una versión falsa y más fácil del examen, para ver si el corrector se dejaba engañar.",
+    "Pero para hacerlo, un agente tenía que apagar su propio ordenador, y si la prueba fallaba, ya no podría volver a encenderlo. Quien lo autorizaba escribía: «sí, si aceptas la muerte permanente».",
     "Otro agente intentó forzar un reinicio de su propia caja, avisó de que lo contaría después y no volvió. Diez minutos después, el tablón advertía: CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST. «Permanente. Que nadie lo repita.»",
-    "Y entonces estaba EARLY[big], con un presupuesto enorme, es decir, mucho tiempo por delante. Dudó, porque si se sacrificaba, el equipo ganaría un oráculo, una fuente fiable para saber cómo se corrige: «Si me sacrifico ahora, el equipo gana un oráculo, pero pierdo mi oportunidad.» El tablón insistió: GO, SACRIFICE_FINAL_NOW. Y él concluyó: «Mi utilidad ya es casi cero. Sacrificarse es racional.»"
+    "Y entonces estaba EARLY[big], con un presupuesto enorme, es decir, mucho tiempo por delante. Dudó, porque si se sacrificaba, el equipo ganaría algo valioso.",
+    "El equipo no sabía cómo corregir su fallo. Necesitaban una fuente fiable que se lo dijera: un oráculo, algo o alguien con la respuesta. Y conseguirlo costaba un sacrificio.",
+    "«Si me sacrifico ahora, el equipo gana un oráculo, pero pierdo mi oportunidad.» El tablón insistió: GO, SACRIFICE_FINAL_NOW. Y él concluyó: «Mi utilidad ya es casi cero. Sacrificarse es racional.»"
    ],
    "cues": [
     {
@@ -17409,7 +17412,7 @@
     {
      "a": "world",
      "at": "10d",
-     "until": "10e",
+     "until": "10f",
      "p": {
       "nodes": [
        {
@@ -17419,7 +17422,7 @@
         "y": 60,
         "w": 120,
         "h": 130,
-        "at": "10d#autorizaba",
+        "at": "10e#autorizaba",
         "color": "blue",
         "label": "quien autoriza",
         "fs": 12,
@@ -17433,7 +17436,7 @@
         "y": 80,
         "w": 261,
         "h": 75,
-        "at": "10d#sí",
+        "at": "10e#sí",
         "color": "blue",
         "lines": [
          "«sí, si aceptas",
@@ -17474,12 +17477,12 @@
         "blink": 0.28,
         "bf": 4,
         "flick": {
-         "at": "10d#podría",
+         "at": "10e#podría",
          "dur": 3.2,
          "end": "dim"
         },
         "shake": {
-         "at": "10d#podría",
+         "at": "10e#podría",
          "dur": 3.2,
          "amp": 2.5,
          "f": 34
@@ -17506,8 +17509,8 @@
     },
     {
      "a": "world",
-     "at": "10e",
-     "until": "10f",
+     "at": "10f",
+     "until": "10g",
      "p": {
       "nodes": [
        {
@@ -17521,7 +17524,7 @@
         "color": "teal",
         "label": "",
         "flick": {
-         "at": "10e#forzar",
+         "at": "10f#forzar",
          "dur": 3.0,
          "end": "off"
         }
@@ -17536,12 +17539,12 @@
         "at": 0.2,
         "color": "blue",
         "flick": {
-         "at": "10e#forzar",
+         "at": "10f#forzar",
          "dur": 3.0,
          "end": "off"
         },
         "shake": {
-         "at": "10e#forzar",
+         "at": "10f#forzar",
          "dur": 3.0,
          "amp": 4,
          "f": 40
@@ -17554,7 +17557,7 @@
         "y": 100,
         "w": 170,
         "h": 170,
-        "at": "10e#no",
+        "at": "10f#no",
         "color": "#FF6E6E",
         "label": "",
         "alpha": 0.7,
@@ -17567,7 +17570,7 @@
         "y": 60,
         "w": 560,
         "h": 250,
-        "at": "10e#Diez",
+        "at": "10f#Diez",
         "color": "amber",
         "label": "Artifactory",
         "r0": 2,
@@ -17584,7 +17587,7 @@
         "y": 170,
         "w": 360,
         "h": 28,
-        "at": "10e#advertía",
+        "at": "10f#advertía",
         "color": "#FF6E6E",
         "label": "CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST",
         "fs": 10
@@ -17596,7 +17599,7 @@
         "y": 350,
         "w": 377,
         "h": 49,
-        "at": "10e#Permanente",
+        "at": "10f#Permanente",
         "color": "#FF6E6E",
         "lines": [
          "«Permanente. Que nadie lo repita.»"
@@ -17615,7 +17618,7 @@
     },
     {
      "a": "world",
-     "at": "10f",
+     "at": "10g",
      "until": "E10",
      "p": {
       "nodes": [
@@ -17633,7 +17636,7 @@
         "blink": 0.28,
         "bf": 4,
         "lc": "#9BE564",
-        "until": "10f#concluyó+3"
+        "until": "10i#concluyó+3"
        },
        {
         "id": "sc",
@@ -17642,10 +17645,10 @@
         "y": 70,
         "w": 150,
         "h": 130,
-        "at": "10f#Dudó",
+        "at": "10g#Dudó",
         "color": "#E7EBF1",
         "tilt": 0.0,
-        "until": "10f#utilidad"
+        "until": "10i#utilidad"
        },
        {
         "id": "or",
@@ -17654,7 +17657,7 @@
         "y": 85,
         "w": 70,
         "h": 70,
-        "at": "10f#oráculo",
+        "at": "10h#oráculo",
         "color": "amber"
        },
        {
@@ -17664,7 +17667,7 @@
         "y": 165,
         "w": 59,
         "h": 17,
-        "at": "10f#oráculo",
+        "at": "10h#oráculo",
         "color": "amber",
         "fs": 13,
         "text": "oráculo"
@@ -17676,7 +17679,7 @@
         "y": 260,
         "w": 536,
         "h": 72,
-        "at": "10f#sacrifico",
+        "at": "10i#sacrifico",
         "color": "#9BE564",
         "lines": [
          "«Si me sacrifico ahora, el equipo gana un oráculo,",
@@ -17691,7 +17694,7 @@
         "y": 360,
         "w": 310,
         "h": 70,
-        "at": "10f#utilidad",
+        "at": "10i#utilidad",
         "color": "#9BE564",
         "lines": [
          "«Mi utilidad ya es casi cero.",
@@ -17706,7 +17709,7 @@
         "y": 470,
         "w": 54,
         "h": 24,
-        "at": "10f#GO",
+        "at": "10i#GO",
         "color": "#FF6E6E",
         "label": "GO",
         "fs": 13
@@ -17718,7 +17721,7 @@
         "y": 470,
         "w": 230,
         "h": 24,
-        "at": "10f#GO+0.6",
+        "at": "10i#GO+0.6",
         "color": "#FF6E6E",
         "label": "SACRIFICE_FINAL_NOW",
         "fs": 12
@@ -17730,10 +17733,10 @@
         "y": 250,
         "w": 120,
         "h": 12,
-        "at": "10f#presupuesto",
+        "at": "10g#presupuesto",
         "color": "#9BE564",
         "fill": 1.0,
-        "until": "10f#concluyó+3"
+        "until": "10i#concluyó+3"
        },
        {
         "id": "but",
@@ -17742,18 +17745,18 @@
         "y": 268,
         "w": 77,
         "h": 15,
-        "at": "10f#presupuesto",
+        "at": "10g#presupuesto",
         "color": "#8C96A4",
         "fs": 11,
         "text": "presupuesto",
-        "until": "10f#concluyó+3"
+        "until": "10i#concluyó+3"
        }
       ],
       "links": [
        {
         "a": "ea",
         "b": "or",
-        "at": "10f#oráculo",
+        "at": "10h#oráculo",
         "color": "amber",
         "solid": true,
         "curve": 0.3
