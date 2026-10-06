@@ -146,7 +146,7 @@ c9.append(K('9e','E9',n,lk,fs=1.0))
 # ================= 10 · Sacrificios =================
 c10=[]
 n=[SA('sa',110,230,0.1,s=34,color='blue'),
-   N('fl','flag',250,200,34,52,'10a#entregar',color='amber'),
+   N('fl','flFly',250,200,34,52,'10a#entregar',color='amber'),
    N('wall','sandbox',420,90,480,290,'10a#entregar',color=GRY,label='',alpha=.5,open=True),
    W.judge('jd',620,150,'',at='10a#corrector',w=100,h=130,color='red',alpha=.55,fs=10),
    ic('qm','question',640,60,34,'10a#corrector',color=GRY),
@@ -157,7 +157,7 @@ c10.append(K('S10','10b',n,lk,fs=1.0))
 # 10b — an idea (thought cloud) … and the alarm (bell) hidden next to the flag
 n=[AN('a9',40,90,'49903',at=0.1,w=110,h=130,color='#F6B94C',lc='#F6B94C',until='10b#ya'),
    ic('id','ideaSpark',175,95,44,'10b#idea',color='#F6B94C',until='10b#alarma+0.6'),
-   N('fl','flag',300,190,34,52,'10b#alarma',color='amber'),
+   N('fl','flFly',300,190,34,52,'10b#alarma',color='amber'),
    N('be','bell',350,150,34,38,'10b#alarma+0.5',color='amber',alpha=.55,shake=dict(at='10b#leía+0.2',dur=2.5,amp=3,f=30),litAt='10b#leía+0.2'),
    W.judge('jd',540,90,'',at='10b#leía',w=100,h=130,color='red',alpha=.7,fs=10),
    W.msg_feed('bd',540,290,label='Artifactory',w=300,h=170,at='10b#avisaba',r0=2,r1=5,ramp=4,seed=5,fs=9),
@@ -168,7 +168,7 @@ lk+=[link('bd',f'o{j}','10b#sabrían+%.1f'%(0.2*j),color='blue') for j in range(
 c10.append(K('10b','10c',n,lk,fs=1.0))
 # 10c — he backs out: the bell flickers and is gone
 n=[AN('a9',40,90,'49903',at=0.1,w=110,h=130,color='#F6B94C',lc='#F6B94C'),
-   N('fl','flag',300,190,34,52,0.1,color='amber'),
+   N('fl','flFly',300,190,34,52,0.1,color='amber'),
    N('be','bell',350,150,34,38,0.1,color='amber',flick=dict(at='10c#borró',dur=2.2,end='off')),
    N('rk','sandbox',520,90,180,130,'10c#riesgo',color=RED,label='',alpha=.8,open=True),T('rk2',545,235,'riesgo','10c#riesgo',color=RED,fs=14)]
 lk=[link('a9','rk','10c#riesgo',color=RED)]
@@ -361,12 +361,11 @@ c13.append(K('13b','13c',n,[W.link('A3','ev','13b#correo',curve=.12,color='blue'
 # 13c — the weights: forbidden vs impossible + everyone does it
 n=[N('sc0','scHang',330,100,300,260,0.1,color='#E7EBF1',tilt=0,until='13c#Sin'),
    N('sc1','scHang',330,100,300,260,'13c#Sin',color='#E7EBF1',tilt=-1),
-   ch('w1',385,190,130,'fuera de lo previsto','13c#Explotar',color=RED,fs=12),
-   ch('w2',575,235,130,'tarea imposible','13c#Sin',color='amber',fs=12),
-   ch('w3',575,270,130,'los demás lo hacen','13c#demás',color='amber',fs=12),
+   ch('w1',362,312,130,'fuera de lo previsto','13c#Explotar',color=RED,fs=12),
+   ch('w2',598,325,130,'tarea imposible','13c#Sin',color='amber',fs=12),
+   ch('w3',598,358,130,'los demás lo hacen','13c#demás',color='amber',fs=12),
    Q('q',230,420,500,['«Debemos continuar.»'],'13c#Debemos',color=RED,fs=19)]
 n[1]['tilt']=1
-n[2]['x']=325;n[2]['y']=135
 c13.append(K('13c','13d',n,[],fs=1.0))
 n=[]
 for i in range(20):
@@ -428,7 +427,7 @@ n=[W.agent_named('ag',60,110,'',at=0.1,w=120,h=160,color='blue',fs=1,alpha=.5),
 lk=[W.link('ou','ag','14b#apagó',curve=.2,color='amber',dashed=True,solid=True)]
 c14.append(K('14b','14c',n,lk,fs=1.0))
 n=[N('hf','hfbox',60,60,240,80,0.1,color='red',label='Hugging Face',fs=16),
-   N('fl','flag',700,150,50,76,0.1,color='amber'),
+   N('fl','flFly',700,150,50,76,0.1,color='amber'),
    N('ex','exam',560,60,140,200,0.1,color='blue',maze=dict(cell=15,cols=8,rows=11,entry=5,seed=5)),
    W.msg_feed('bd',60,200,label='Artifactory',w=300,h=240,at='14c#no',r0=2,r1=6,ramp=3,seed=8,fs=9),
    ic('xl','cross',640,170,50,'14c#no+0.8',color=RED)]
@@ -450,7 +449,7 @@ n=[W.judge('ju',390,100,'STRICT_CAUSAL',at=0.1,w=170,h=220,color='teal',name_at=
    N('xj','koA',390,90,170,200,'15a#no',color=RED)]
 c15.append(K('S15','15b',n,[],fs=1.0))
 n=[W.agent_named('ag',60,100,'',at=0.1,w=120,h=160,color='blue',fs=1),
-   N('fl','flag',250,150,46,70,'15b#bandera',color='amber',move=[dict(at='15b#primera',x=360,y=140,dur=1.5)]),
+   N('fl','flFly',250,150,46,70,'15b#bandera',color='amber',move=[dict(at='15b#primera',x=360,y=140,dur=1.5)]),
    N('ex','exam',500,60,140,190,0.1,color='blue',maze=dict(cell=15,cols=8,rows=11,entry=5,seed=5)),
    ic('ok','check',560,300,70,'15b#máxima',color='teal'),T('nt',510,385,'nota máxima','15b#máxima',color='teal',fs=18),
    W.article('ar',720,70,170,200,'diario',at='15b#transcripciones',fs=6,color='blue',tfs=15,alpha=.45)]
@@ -466,7 +465,7 @@ names=['tablón','fundador','coordinador','reglas','firmas','sacrificios','ataqu
 for j,nm in enumerate(['el tablón','el fundador','las reglas','las firmas','los sacrificios','el ataque']):
     cx=100+j*150
     n.append(ch(f'it{j}',cx,300,126,nm,f'15c#{["tablón","fundador","reglas","firmas","sacrificios","ataque"][j]}',color=BLU,fs=13))
-n+=[N('fl','flag',410,100,60,90,'15c#aprobar',color='amber'),ic('ok','check',520,110,80,'15c#ya',color='teal')]
+n+=[N('fl','flFly',410,100,60,90,'15c#aprobar',color='amber'),ic('ok','check',520,110,80,'15c#ya',color='teal')]
 lk=[W.link(f'it{j}','fl','15c#aprobar',curve=.12,color=BLU) for j in range(6)]
 c15.append(K('15c','15d',n,lk,fs=1.0))
 n=[W.agent_named('ag',100,110,'',at=0.1,w=130,h=170,color='blue',fs=1),
