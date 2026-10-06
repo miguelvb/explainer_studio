@@ -23,7 +23,7 @@ async def _page(b, url, D, W):
     errs = []
     pg.on('pageerror', lambda e: errs.append(str(e)))
     await pg.goto(url)
-    await pg.evaluate("Promise.all([document.fonts.load('16px \"Press Start 2P\"'),document.fonts.load('16px \"Amatic SC\"'),document.fonts.load('bold 16px \"Amatic SC\"')]).then(()=>document.fonts.ready)")
+    await pg.evaluate("Promise.all([document.fonts.load('16px \"Press Start 2P\"'),document.fonts.load('16px \"Share Tech Mono\"')]).then(()=>document.fonts.ready)")
     await pg.evaluate(f"document.getElementById('stage').style.transform='scale({W / 1920})'")
     return pg, errs
 
