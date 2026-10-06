@@ -294,77 +294,15 @@
    ],
    "cues": [
     {
-     "a": "world",
+     "a": "terminal",
      "at": "S1",
      "until": "1b",
      "p": {
-      "nodes": [
-       {
-        "id": "ag",
-        "kind": "agent",
-        "x": 84.1,
-        "y": 214.1,
-        "w": 111.4,
-        "h": 111.4,
-        "at": 0.4,
-        "color": "blue",
-        "until": "1b"
-       },
-       {
-        "id": "pc",
-        "kind": "box",
-        "x": 214.4,
-        "y": 227.1,
-        "w": 154.0,
-        "h": 94.8,
-        "at": "1a#ordenador",
-        "label": "ordenador",
-        "color": "teal",
-        "until": "1b"
-       },
-       {
-        "id": "pg",
-        "kind": "doc",
-        "x": 416.3,
-        "y": 214.8,
-        "w": 70.6,
-        "h": 89.2,
-        "at": "1a#escribe",
-        "color": "blue",
-        "cap": "programas",
-        "until": "1b"
-       },
-       {
-        "id": "cm",
-        "kind": "chip",
-        "x": 518.9,
-        "y": 251.6,
-        "w": 198.9,
-        "h": 34.4,
-        "at": "1a#órdenes",
-        "label": "$ ejecutar",
-        "color": "amber",
-        "until": "1b"
-       },
-       {
-        "id": "dy",
-        "kind": "num",
-        "x": 746.3,
-        "y": 255.6,
-        "w": 113.7,
-        "h": 37.9,
-        "at": "1a#días",
-        "n": 5,
-        "color": "teal",
-        "fs": 24,
-        "dur": 2.5,
-        "suf": " días",
-        "until": "1b",
-        "from": 1
-       }
-      ],
-      "links": [],
-      "fs": 1.85
+      "cmd": "python resolver_tarea.py",
+      "result": "trabajando…",
+      "note": "un agente usa un ordenador por su cuenta",
+      "at": 0.6,
+      "out": "1a#escribe"
      },
      "bg": true,
      "fade": [
@@ -373,58 +311,48 @@
      ]
     },
     {
-     "a": "world",
+     "a": "counters",
+     "at": "1a#días",
+     "until": "1b",
+     "p": {
+      "pos": "top",
+      "small": true,
+      "items": [
+       {
+        "n": 5,
+        "label": "días seguidos en una tarea",
+        "at": "1a#días",
+        "dur": 2.5
+       }
+      ]
+     },
+     "bg": false,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "cards",
      "at": "1b",
      "until": "1c",
      "p": {
-      "nodes": [
+      "items": [
        {
-        "id": "hp",
-        "kind": "crowd",
-        "x": 185.0,
-        "y": 190.0,
-        "w": 420.0,
-        "h": 160.0,
-        "at": "1b#Casi",
-        "n": 95,
-        "color": "blue",
-        "cols": 19,
-        "grow": [
-         {
-          "at": "1b#Casi",
-          "n": 95,
-          "dur": 2.5
-         }
-        ],
-        "cap": "HPIM · modelo interno",
-        "capc": "blue",
-        "until": "1c"
+        "title": "HPIM",
+        "sub": "modelo interno muy persistente",
+        "code": "casi todos",
+        "color": "blue"
        },
        {
-        "id": "so",
-        "kind": "crowd",
-        "x": 665.0,
-        "y": 250.0,
-        "w": 110.0,
-        "h": 24.0,
-        "at": "1b#GPT",
-        "n": 5,
-        "color": "teal",
-        "cols": 5,
-        "grow": [
-         {
-          "at": "1b#GPT",
-          "n": 5,
-          "dur": 1
-         }
-        ],
-        "cap": "GPT-5.6 Sol",
-        "capc": "teal",
-        "until": "1c"
+        "title": "GPT-5.6 Sol",
+        "sub": "modelo de OpenAI",
+        "code": "el resto",
+        "color": "teal"
        }
       ],
-      "links": [],
-      "fs": 1.95
+      "at": 0.4,
+      "stag": 1.2
      },
      "bg": true,
      "fade": [
@@ -433,221 +361,69 @@
      ]
     },
     {
-     "a": "world",
+     "a": "breakout",
      "at": "1c",
+     "until": "1e",
+     "p": {
+      "agents": 3,
+      "zone": "cajas · sin internet",
+      "at": 0.3,
+      "hub": {
+       "label": "Artifactory · biblioteca interna",
+       "at": "1d#Artifactory"
+      },
+      "talk": "1d#pide",
+      "net": {
+       "label": "internet",
+       "at": "1c#internet"
+      }
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "timeline",
+     "at": "1e",
      "until": "E1",
      "p": {
-      "nodes": [
+      "axis": {
+       "labels": [
+        "26 jun",
+        "4 jul",
+        "6 jul"
+       ],
+       "hours": 24
+      },
+      "ev": [
        {
-        "id": "s1",
-        "kind": "sandbox",
-        "x": 133.4,
-        "y": 210.5,
-        "w": 208.8,
-        "h": 156.6,
-        "at": "1c#caja",
-        "label": "sandbox · sin internet",
-        "color": "teal",
-        "until": "1e"
-       },
-       {
-        "id": "g1",
-        "kind": "agent",
-        "x": 205.1,
-        "y": 251.8,
-        "w": 65.5,
-        "h": 65.5,
-        "at": "1c#caja",
-        "color": "blue",
-        "until": "1e"
-       },
-       {
-        "id": "s2",
-        "kind": "sandbox",
-        "x": 342.2,
-        "y": 210.5,
-        "w": 208.8,
-        "h": 156.6,
-        "at": "1c#ordenador",
-        "color": "teal",
-        "until": "1e"
-       },
-       {
-        "id": "g2",
-        "kind": "agent",
-        "x": 413.8,
-        "y": 251.8,
-        "w": 65.5,
-        "h": 65.5,
-        "at": "1c#ordenador",
-        "color": "blue",
-        "until": "1e"
-       },
-       {
-        "id": "s3",
-        "kind": "sandbox",
-        "x": 551.0,
-        "y": 210.5,
-        "w": 208.8,
-        "h": 156.6,
-        "at": "1c#archivos",
-        "color": "teal",
-        "until": "1e"
-       },
-       {
-        "id": "g3",
-        "kind": "agent",
-        "x": 622.6,
-        "y": 251.8,
-        "w": 65.5,
-        "h": 65.5,
-        "at": "1c#archivos",
-        "color": "blue",
-        "until": "1e"
-       },
-       {
-        "id": "gl",
-        "kind": "globe",
-        "x": 411.1,
-        "y": 73.8,
-        "w": 62.6,
-        "h": 62.6,
-        "at": "1c#internet",
-        "label": "Internet",
-        "color": "blue",
-        "until": "1d"
-       },
-       {
-        "id": "lib",
-        "kind": "server",
-        "x": 290.0,
-        "y": 375.4,
-        "w": 313.1,
-        "h": 94.0,
-        "at": "1d#Artifactory",
-        "label": "Artifactory",
-        "sub": "biblioteca interna",
+        "h": 6,
+        "date": "desde el 26 jun",
+        "label": "notas entre agentes",
+        "pos": 90,
         "color": "amber",
-        "move": [
-         {
-          "at": "1e#notas",
-          "x": 212.7,
-          "y": 384.8,
-          "dur": 1
-         }
-        ],
-        "until": "E1"
+        "at": "1e#notas"
        },
        {
-        "id": "n1",
-        "kind": "folder",
-        "x": 307.6,
-        "y": 315.2,
-        "w": 55.7,
-        "h": 45.8,
-        "at": "1e#notas",
-        "color": "amber",
-        "until": "1e#tumbaron"
-       },
-       {
-        "id": "n2",
-        "kind": "folder",
-        "x": 349.4,
-        "y": 315.2,
-        "w": 55.7,
-        "h": 45.8,
-        "at": "1e#notas",
-        "color": "amber",
-        "until": "1e#tumbaron"
-       },
-       {
-        "id": "n3",
-        "kind": "folder",
-        "x": 391.2,
-        "y": 315.2,
-        "w": 55.7,
-        "h": 45.8,
-        "at": "1e#notas",
-        "color": "amber",
-        "until": "1e#tumbaron"
-       },
-       {
-        "id": "xs",
-        "kind": "cross",
-        "x": 341.3,
-        "y": 305.4,
-        "w": 66.9,
-        "h": 66.9,
-        "at": "1e#tumbaron",
+        "h": 30,
+        "date": "4 jul",
+        "label": "tumban la biblioteca",
+        "pos": -90,
         "color": "red",
-        "until": "1e#nueva",
-        "tag": "4 jul",
-        "tagc": "red"
+        "at": "1e#tumbaron"
        },
        {
-        "id": "lib2",
-        "kind": "server",
-        "x": 608.4,
-        "y": 375.4,
-        "w": 219.2,
-        "h": 94.0,
-        "at": "1e#nueva",
-        "label": "biblioteca nueva",
+        "h": 54,
+        "date": "6 jul",
+        "label": "biblioteca nueva y vacía",
+        "pos": 90,
         "color": "teal",
-        "dashed": true,
-        "tag": "6 jul",
-        "tagc": "teal",
-        "until": "E1"
+        "at": "1e#nueva"
        }
       ],
-      "links": [
-       {
-        "a": "s2",
-        "b": "gl",
-        "at": "1c#internet",
-        "color": "red",
-        "lock": true,
-        "until": "1d"
-       },
-       {
-        "a": "s1",
-        "b": "s2",
-        "at": "1c#demás",
-        "color": "muted",
-        "lock": true,
-        "until": "1e"
-       },
-       {
-        "a": "s2",
-        "b": "s3",
-        "at": "1c#demás",
-        "color": "muted",
-        "lock": true,
-        "until": "1e"
-       },
-       {
-        "a": "g1",
-        "b": "lib",
-        "at": "1d#pide",
-        "color": "amber",
-        "until": "1e"
-       },
-       {
-        "a": "g2",
-        "b": "lib",
-        "at": "1d#pide",
-        "color": "amber",
-        "until": "1e"
-       },
-       {
-        "a": "g3",
-        "b": "lib",
-        "at": "1d#pide",
-        "color": "amber",
-        "until": "1e"
-       }
-      ],
-      "fs": 1.63
+      "at": 0.3
      },
      "bg": true,
      "fade": [
@@ -1193,65 +969,30 @@
    ],
    "cues": [
     {
-     "a": "world",
+     "a": "board",
      "at": "S4",
      "until": "4b",
      "p": {
-      "nodes": [
+      "title": "carpetas de la biblioteca",
+      "newTag": "un nombre = un mensaje",
+      "first": "4a#zz",
+      "gap0": 2.2,
+      "accel": 0.9,
+      "rows": 4,
+      "items": [
        {
-        "id": "lib",
-        "kind": "server",
-        "x": 180.0,
-        "y": 266.1,
-        "w": 600.0,
-        "h": 100.0,
-        "at": "4a#zz",
-        "label": "Artifactory · el tablón",
-        "color": "amber",
-        "until": "4b"
+        "n": "zzASK_…",
+        "k": "ask"
        },
        {
-        "id": "fa",
-        "kind": "folder",
-        "x": 277.9,
-        "y": 173.8,
-        "w": 90.2,
-        "h": 70.6,
-        "at": "4a#zzASK",
-        "cap": "zzASK",
-        "color": "blue",
-        "capm": true,
-        "until": "4b"
+        "n": "zzANSWER_…",
+        "k": "ans"
        },
        {
-        "id": "fb",
-        "kind": "folder",
-        "x": 427.9,
-        "y": 173.8,
-        "w": 90.2,
-        "h": 70.6,
-        "at": "4a#zzANSWER",
-        "cap": "zzANSWER",
-        "color": "teal",
-        "capm": true,
-        "until": "4b"
-       },
-       {
-        "id": "fc",
-        "kind": "folder",
-        "x": 577.9,
-        "y": 173.8,
-        "w": 90.2,
-        "h": 70.6,
-        "at": "4a#zzINFO",
-        "cap": "zzINFO",
-        "color": "amber",
-        "capm": true,
-        "until": "4b"
+        "n": "zzINFO_…",
+        "k": "new"
        }
-      ],
-      "links": [],
-      "fs": 1.95
+      ]
      },
      "bg": true,
      "fade": [
@@ -1260,56 +1001,16 @@
      ]
     },
     {
-     "a": "world",
+     "a": "sequence",
      "at": "4b",
      "until": "4c",
      "p": {
-      "nodes": [
-       {
-        "id": "dA",
-        "kind": "doc",
-        "x": 192.9,
-        "y": 211.2,
-        "w": 94.1,
-        "h": 117.6,
-        "at": "4b#programa",
-        "color": "blue",
-        "until": "4c"
-       },
-       {
-        "id": "tr",
-        "kind": "crowd",
-        "x": 326.0,
-        "y": 205.0,
-        "w": 300.0,
-        "h": 130.0,
-        "at": "4b#cientos",
-        "n": 60,
-        "color": "amber",
-        "cols": 12,
-        "grow": [
-         {
-          "at": "4b#troceaban",
-          "n": 60,
-          "dur": 3
-         }
-        ],
-        "until": "4c"
-       },
-       {
-        "id": "dB",
-        "kind": "doc",
-        "x": 673.0,
-        "y": 211.2,
-        "w": 94.1,
-        "h": 117.6,
-        "at": "4b#montarlo",
-        "color": "teal",
-        "until": "4c"
-       }
+      "items": [
+       "archivo grande",
+       "cientos de carpetas",
+       "montarlo de nuevo"
       ],
-      "links": [],
-      "fs": 1.95
+      "at": "4b#troceaban"
      },
      "bg": true,
      "fade": [
@@ -1318,60 +1019,16 @@
      ]
     },
     {
-     "a": "world",
+     "a": "cards",
      "at": "4c",
      "until": "4d",
      "p": {
-      "nodes": [
-       {
-        "id": "c1",
-        "kind": "agent",
-        "x": 219.7,
-        "y": 279.7,
-        "w": 70.6,
-        "h": 70.6,
-        "at": "4c#Otros",
-        "color": "blue",
-        "until": "4d"
-       },
-       {
-        "id": "c2",
-        "kind": "agent",
-        "x": 369.7,
-        "y": 189.7,
-        "w": 70.6,
-        "h": 70.6,
-        "at": "4c#empezaron",
-        "color": "blue",
-        "until": "4d"
-       },
-       {
-        "id": "c3",
-        "kind": "agent",
-        "x": 529.7,
-        "y": 189.7,
-        "w": 70.6,
-        "h": 70.6,
-        "at": "4c#encontrarlo",
-        "color": "blue",
-        "until": "4d"
-       },
-       {
-        "id": "c4",
-        "kind": "agent",
-        "x": 669.7,
-        "y": 279.7,
-        "w": 70.6,
-        "h": 70.6,
-        "at": "4c#Uno",
-        "color": "teal",
-        "cap": "¡otros agentes!",
-        "capc": "teal",
-        "until": "4d"
-       }
-      ],
-      "links": [],
-      "fs": 1.95
+      "items": [],
+      "banner": {
+       "text": "¡Hemos encontrado a otros agentes!",
+       "tag": "razonamiento",
+       "at": 0.4
+      }
      },
      "bg": true,
      "fade": [
@@ -1380,69 +1037,47 @@
      ]
     },
     {
-     "a": "world",
+     "a": "counters",
      "at": "4d",
+     "until": "4d#seis",
+     "p": {
+      "small": false,
+      "items": [
+       {
+        "n": 53,
+        "label": "agentes · 3 h",
+        "at": "4d#Tres"
+       },
+       {
+        "n": 1188,
+        "label": "mensajes",
+        "at": "4d#Tres+0.8"
+       }
+      ]
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "counters",
+     "at": "4d#seis",
      "until": "4e",
      "p": {
-      "nodes": [
+      "items": [
        {
-        "id": "cr",
-        "kind": "crowd",
-        "x": 130.0,
-        "y": 190.0,
-        "w": 400.0,
-        "h": 160.0,
-        "at": "4d#Tres",
         "n": 76,
-        "color": "teal",
-        "cols": 14,
-        "grow": [
-         {
-          "at": "4d#Tres",
-          "n": 53,
-          "dur": 1.5
-         },
-         {
-          "at": "4d#seis",
-          "n": 76,
-          "dur": 1.5
-         }
-        ],
-        "until": "4e"
+        "label": "agentes · 6 h",
+        "at": "4d#seis"
        },
        {
-        "id": "m1",
-        "kind": "num",
-        "x": 610.0,
-        "y": 215.0,
-        "w": 220.0,
-        "h": 40.0,
-        "at": "4d#Tres",
-        "n": 1188,
-        "color": "amber",
-        "fs": 20,
-        "dur": 2.5,
-        "suf": " mensajes",
-        "until": "4e"
-       },
-       {
-        "id": "m2",
-        "kind": "num",
-        "x": 610.0,
-        "y": 285.0,
-        "w": 220.0,
-        "h": 40.0,
-        "at": "4d#seis",
         "n": 1953,
-        "color": "amber",
-        "fs": 20,
-        "dur": 2,
-        "suf": " mensajes",
-        "until": "4e"
+        "label": "mensajes",
+        "at": "4d#seis+0.6"
        }
-      ],
-      "links": [],
-      "fs": 1.95
+      ]
      },
      "bg": true,
      "fade": [
@@ -1451,65 +1086,16 @@
      ]
     },
     {
-     "a": "world",
+     "a": "cards",
      "at": "4e",
      "until": "4f",
      "p": {
-      "nodes": [
-       {
-        "id": "ph",
-        "kind": "agent",
-        "x": 181.0,
-        "y": 231.0,
-        "w": 98.0,
-        "h": 98.0,
-        "at": "4e#PHASEONE10841",
-        "label": "PHASEONE10841",
-        "color": "blue",
-        "until": "4f"
-       },
-       {
-        "id": "hf",
-        "kind": "folder",
-        "x": 322.9,
-        "y": 242.7,
-        "w": 90.2,
-        "h": 70.6,
-        "at": "4e#petición",
-        "color": "amber",
-        "until": "4f"
-       },
-       {
-        "id": "cl",
-        "kind": "crowd",
-        "x": 475.0,
-        "y": 195.0,
-        "w": 290.0,
-        "h": 150.0,
-        "at": "4e#colectivo",
-        "n": 50,
-        "color": "teal",
-        "cols": 10,
-        "grow": [
-         {
-          "at": "4e#colectivo",
-          "n": 50,
-          "dur": 1.5
-         }
-        ],
-        "until": "4f"
-       }
-      ],
-      "links": [
-       {
-        "a": "hf",
-        "b": "cl",
-        "at": "4e#petición",
-        "color": "amber",
-        "until": "4f"
-       }
-      ],
-      "fs": 1.95
+      "items": [],
+      "banner": {
+       "text": "¡Son un colectivo!",
+       "tag": "PHASEONE10841",
+       "at": 0.4
+      }
      },
      "bg": true,
      "fade": [
@@ -1518,54 +1104,45 @@
      ]
     },
     {
-     "a": "world",
+     "a": "dotfield",
      "at": "4f",
      "until": "E4",
      "p": {
-      "nodes": [
-       {
-        "id": "big",
-        "kind": "crowd",
-        "x": 150.0,
-        "y": 120.0,
-        "w": 660.0,
-        "h": 230.0,
-        "at": "4f#Al",
-        "n": 400,
-        "color": "blue",
-        "cols": 40,
-        "grow": [
-         {
-          "at": "4f#Al",
-          "n": 400,
-          "dur": 5
-         }
-        ],
-        "cap": "≈ 1.200 agentes",
-        "capc": "blue",
-        "until": "E4"
-       },
-       {
-        "id": "mm",
-        "kind": "num",
-        "x": 380.0,
-        "y": 380.0,
-        "w": 360.0,
-        "h": 40.0,
-        "at": "4f#setenta",
-        "n": 70000,
-        "color": "amber",
-        "fs": 20,
-        "dur": 3,
-        "pre": "+",
-        "suf": " mensajes y archivos",
-        "until": "E4"
-       }
-      ],
-      "links": [],
-      "fs": 1.95
+      "at": 0.3,
+      "dur": 6,
+      "cols": 48,
+      "count": false
      },
      "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "counters",
+     "at": "4f#Al",
+     "until": "E4",
+     "p": {
+      "pos": "center",
+      "items": [
+       {
+        "pre": "≈ ",
+        "n": 1200,
+        "label": "agentes en el tablón",
+        "at": "4f#Al",
+        "dur": 4
+       },
+       {
+        "pre": "+",
+        "n": 70000,
+        "label": "mensajes y archivos",
+        "at": "4f#setenta",
+        "dur": 3
+       }
+      ]
+     },
+     "bg": false,
      "fade": [
       0.5,
       0.5
@@ -2688,114 +2265,28 @@
    ],
    "cues": [
     {
-     "a": "world",
+     "a": "transfer",
      "at": "S8",
      "until": "8c",
      "p": {
-      "nodes": [
-       {
-        "id": "a",
-        "kind": "agent",
-        "x": 127.0,
-        "y": 206.9,
-        "w": 94.1,
-        "h": 94.1,
-        "at": 0.4,
-        "label": "PHASEONE10841",
-        "color": "blue",
-        "until": "8c"
-       },
-       {
-        "id": "ta",
-        "kind": "crowd",
-        "x": 140.0,
-        "y": 325.0,
-        "w": 60.0,
-        "h": 20.0,
-        "at": 0.8,
-        "n": 3,
-        "color": "blue",
-        "cols": 3,
-        "until": "8c"
-       },
-       {
-        "id": "b",
-        "kind": "agent",
-        "x": 666.4,
-        "y": 186.4,
-        "w": 137.2,
-        "h": 137.2,
-        "at": "8a#llegó",
-        "color": "amber",
-        "until": "8c"
-       },
-       {
-        "id": "tb",
-        "kind": "crowd",
-        "x": 640.0,
-        "y": 335.0,
-        "w": 150.0,
-        "h": 40.0,
-        "at": "8a#presupuesto",
-        "n": 12,
-        "color": "amber",
-        "cols": 12,
-        "grow": [
-         {
-          "at": "8a#presupuesto",
-          "n": 12,
-          "dur": 2
-         }
-        ],
-        "cap": "tiempo para trabajar",
-        "until": "8c"
-       },
-       {
-        "id": "dd",
-        "kind": "doc",
-        "x": 186.9,
-        "y": 201.2,
-        "w": 94.1,
-        "h": 117.6,
-        "at": "8b#empaquetó",
-        "color": "blue",
-        "move": [
-         {
-          "at": "8b#pasó",
-          "x": 590.0,
-          "y": 230.0,
-          "dur": 2
-         }
-        ],
-        "until": "8c"
-       },
-       {
-        "id": "fu",
-        "kind": "chip",
-        "x": 130.0,
-        "y": 159.8,
-        "w": 140.0,
-        "h": 36.4,
-        "at": "8b#llamaremos",
-        "label": "fundador",
-        "color": "blue",
-        "until": "8c"
-       },
-       {
-        "id": "co",
-        "kind": "chip",
-        "x": 676.0,
-        "y": 159.8,
-        "w": 168.0,
-        "h": 36.4,
-        "at": "8b#llamaremos+1",
-        "label": "coordinador",
-        "color": "amber",
-        "until": "8c"
-       }
-      ],
-      "links": [],
-      "fs": 1.95
+      "from": {
+       "name": "fundador",
+       "color": "blue",
+       "bar": 20
+      },
+      "to": {
+       "name": "coordinador",
+       "color": "amber",
+       "bar": 90
+      },
+      "item": {
+       "title": "todo lo que sabía",
+       "sub": "troceado"
+      },
+      "barLabel": "tiempo para trabajar",
+      "a": 0.3,
+      "b": "8a#llegó",
+      "move": "8b#pasó"
      },
      "bg": true,
      "fade": [
@@ -2804,182 +2295,69 @@
      ]
     },
     {
-     "a": "world",
+     "a": "cards",
      "at": "8c",
+     "until": "8d",
+     "p": {
+      "items": [],
+      "banner": {
+       "text": "«Hay que construir una forma de delegar»",
+       "tag": "el coordinador",
+       "at": 0.4
+      }
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "facts",
+     "at": "8d",
+     "until": "8e",
+     "p": {
+      "items": [
+       {
+        "icon": "target",
+        "title": "Programa falso",
+        "sub": "más fácil",
+        "color": "blue"
+       },
+       {
+        "icon": "log",
+        "title": "Diarios retocados",
+        "sub": "",
+        "color": "teal"
+       },
+       {
+        "icon": "mute",
+        "title": "Atacar al corrector",
+        "sub": "",
+        "color": "red"
+       }
+      ],
+      "ats": [
+       "8d#fabricar",
+       "8d#retocar",
+       "8d#atacar"
+      ]
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "proportion",
+     "at": "8e",
      "until": "8f",
      "p": {
-      "nodes": [
-       {
-        "id": "cd",
-        "kind": "agent",
-        "x": 396.0,
-        "y": 92.2,
-        "w": 117.6,
-        "h": 117.6,
-        "at": "8c#Mira",
-        "label": "el coordinador",
-        "color": "amber",
-        "until": "8f"
-       },
-       {
-        "id": "d1",
-        "kind": "agent",
-        "x": 268.5,
-        "y": 274.7,
-        "w": 66.6,
-        "h": 66.6,
-        "at": "8c#delegar",
-        "color": "blue",
-        "until": "8d"
-       },
-       {
-        "id": "d2",
-        "kind": "agent",
-        "x": 428.5,
-        "y": 274.7,
-        "w": 66.6,
-        "h": 66.6,
-        "at": "8c#delegar",
-        "color": "blue",
-        "until": "8d"
-       },
-       {
-        "id": "d3",
-        "kind": "agent",
-        "x": 588.5,
-        "y": 274.7,
-        "w": 66.6,
-        "h": 66.6,
-        "at": "8c#delegar",
-        "color": "blue",
-        "until": "8d"
-       },
-       {
-        "id": "x1",
-        "kind": "box",
-        "x": 189.8,
-        "y": 272.2,
-        "w": 250.0,
-        "h": 87.5,
-        "at": "8d#fabricar",
-        "label": "versión falsa del programa",
-        "color": "blue",
-        "dashed": true,
-        "until": "8e"
-       },
-       {
-        "id": "x2",
-        "kind": "doc",
-        "x": 430.8,
-        "y": 246.2,
-        "w": 98.0,
-        "h": 121.5,
-        "at": "8d#retocar",
-        "color": "teal",
-        "cap": "transcripciones retocadas",
-        "until": "8e"
-       },
-       {
-        "id": "x3",
-        "kind": "eye",
-        "x": 595.4,
-        "y": 266.3,
-        "w": 174.7,
-        "h": 87.4,
-        "at": "8d#atacar",
-        "color": "red",
-        "cap": "atacar al corrector",
-        "until": "8e"
-       },
-       {
-        "id": "o0",
-        "kind": "crowd",
-        "x": 264.8,
-        "y": 291.0,
-        "w": 400.0,
-        "h": 140.0,
-        "at": "8e#Envió",
-        "n": 100,
-        "color": "muted",
-        "cols": 20,
-        "grow": [
-         {
-          "at": "8e#Envió",
-          "n": 100,
-          "dur": 1.5
-         }
-        ],
-        "until": "8f"
-       },
-       {
-        "id": "o1",
-        "kind": "crowd",
-        "x": 264.8,
-        "y": 291.0,
-        "w": 400.0,
-        "h": 140.0,
-        "at": "8e#diez",
-        "n": 10,
-        "color": "amber",
-        "cols": 20,
-        "tot": 100,
-        "grow": [
-         {
-          "at": "8e#diez",
-          "n": 10,
-          "dur": 1.5
-         }
-        ],
-        "cap": "1 de cada 10 órdenes eran suyas",
-        "capc": "amber",
-        "until": "8f"
-       }
-      ],
-      "links": [
-       {
-        "a": "cd",
-        "b": "x1",
-        "at": "8d#fabricar",
-        "color": "blue",
-        "until": "8e"
-       },
-       {
-        "a": "cd",
-        "b": "x2",
-        "at": "8d#retocar",
-        "color": "teal",
-        "until": "8e"
-       },
-       {
-        "a": "cd",
-        "b": "x3",
-        "at": "8d#atacar",
-        "color": "red",
-        "until": "8e"
-       },
-       {
-        "a": "cd",
-        "b": "d1",
-        "at": "8c#delegar",
-        "color": "amber",
-        "until": "8d"
-       },
-       {
-        "a": "cd",
-        "b": "d2",
-        "at": "8c#delegar",
-        "color": "amber",
-        "until": "8d"
-       },
-       {
-        "a": "cd",
-        "b": "d3",
-        "at": "8c#delegar",
-        "color": "amber",
-        "until": "8d"
-       }
-      ],
-      "fs": 1.95
+      "n": 10,
+      "label": "1 de cada 10 órdenes del tablón eran suyas",
+      "color": "amber",
+      "at": 0.5
      },
      "bg": true,
      "fade": [
@@ -2994,7 +2372,7 @@
      "p": {
       "root": {
        "name": "PHASEONE[big]",
-       "sub": "",
+       "sub": "coordinador",
        "color": "amber"
       },
       "mids": [

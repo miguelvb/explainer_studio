@@ -435,6 +435,37 @@ C[16]=[
   CR('ag',240,160,260,150,0.2,60,color='blue',cols=15,grow=[dict(at=0.2,n=60,dur=1)],until='16b#apagaron'),QU('q1',350,175,'16b#por',s=64),
   SRV('lib',560,170,230,100,0.4,'Artifactory',None,color='amber'),KEY('ke',560,310,'16b#administrador',color='red',w=100,h=40,cap='claves de administrador'),QU('q2',700,300,'16b#qué',s=44)]),
 ]
+
+# ===== v2: scenes rebuilt with the studio's own assets (identity of videos 1 and 3) =====
+def Q(a,at,until,p,bg=True,fade=(0.5,0.5),**k):
+    d=dict(a=a,at=at,until=until,p=p,bg=bg,fade=list(fade)); d.update(k); return d
+C[1]=[
+ Q('terminal','S1','1b',dict(cmd='python resolver_tarea.py',result='trabajando…',note='un agente usa un ordenador por su cuenta',at=0.6,out='1a#escribe')),
+ Q('counters','1a#días','1b',dict(pos='top',small=True,items=[dict(n=5,label='días seguidos en una tarea',at='1a#días',dur=2.5)]),bg=False),
+ Q('cards','1b','1c',dict(items=[dict(title='HPIM',sub='modelo interno muy persistente',code='casi todos',color='blue'),dict(title='GPT-5.6 Sol',sub='modelo de OpenAI',code='el resto',color='teal')],at=0.4,stag=1.2)),
+ Q('breakout','1c','1e',dict(agents=3,zone='cajas · sin internet',at=0.3,hub=dict(label='Artifactory · biblioteca interna',at='1d#Artifactory'),talk='1d#pide',net=dict(label='internet',at='1c#internet'))),
+ Q('timeline','1e','E1',dict(axis=dict(labels=['26 jun','4 jul','6 jul'],hours=24),ev=[
+   dict(h=6,date='desde el 26 jun',label='notas entre agentes',pos=90,color='amber',at='1e#notas'),
+   dict(h=30,date='4 jul',label='tumban la biblioteca',pos=-90,color='red',at='1e#tumbaron'),
+   dict(h=54,date='6 jul',label='biblioteca nueva y vacía',pos=90,color='teal',at='1e#nueva')],at=0.3)),
+]
+C[4]=[
+ Q('board','S4','4b',dict(title='carpetas de la biblioteca',newTag='un nombre = un mensaje',first='4a#zz',gap0=2.2,accel=0.9,rows=4,items=[dict(n='zzASK_…',k='ask'),dict(n='zzANSWER_…',k='ans'),dict(n='zzINFO_…',k='new')])),
+ Q('sequence','4b','4c',dict(items=['archivo grande','cientos de carpetas','montarlo de nuevo'],at='4b#troceaban')),
+ Q('cards','4c','4d',dict(items=[],banner=dict(text='¡Hemos encontrado a otros agentes!',tag='razonamiento',at=0.4))),
+ Q('counters','4d','4d#seis',dict(small=False,items=[dict(n=53,label='agentes · 3 h',at='4d#Tres'),dict(n=1188,label='mensajes',at='4d#Tres+0.8')])),
+ Q('counters','4d#seis','4e',dict(items=[dict(n=76,label='agentes · 6 h',at='4d#seis'),dict(n=1953,label='mensajes',at='4d#seis+0.6')])),
+ Q('cards','4e','4f',dict(items=[],banner=dict(text='¡Son un colectivo!',tag='PHASEONE10841',at=0.4))),
+ Q('dotfield','4f','E4',dict(at=0.3,dur=6,cols=48,count=False)),
+ Q('counters','4f#Al','E4',dict(pos='center',items=[dict(pre='≈ ',n=1200,label='agentes en el tablón',at='4f#Al',dur=4),dict(pre='+',n=70000,label='mensajes y archivos',at='4f#setenta',dur=3)]),bg=False),
+]
+C[8]=[
+ Q('transfer','S8','8c',dict(**{'from':dict(name='fundador',color='blue',bar=20),'to':dict(name='coordinador',color='amber',bar=90),'item':dict(title='todo lo que sabía',sub='troceado'),'barLabel':'tiempo para trabajar','a':0.3,'b':'8a#llegó','move':'8b#pasó'})),
+ Q('cards','8c','8d',dict(items=[],banner=dict(text='«Hay que construir una forma de delegar»',tag='el coordinador',at=0.4))),
+ Q('facts','8d','8e',dict(items=[dict(icon='target',title='Programa falso',sub='más fácil',color='blue'),dict(icon='log',title='Diarios retocados',sub='',color='teal'),dict(icon='mute',title='Atacar al corrector',sub='',color='red')],ats=['8d#fabricar','8d#retocar','8d#atacar'])),
+ Q('proportion','8e','8f',dict(n=10,label='1 de cada 10 órdenes del tablón eran suyas',color='amber',at=0.5)),
+ [l for l in open('/dev/null')] or Q('hierarchy','8f','E8',dict(root=dict(name='PHASEONE[big]',sub='coordinador',color='amber'),mids=[dict(name='',sub='',color='blue',n=10),dict(name='',sub='',color='teal',n=10),dict(name='',sub='',color='red',n=10)],levels=['','',''],at=0.3,step=0.8,assign='8f#Creció')),
+]
 C[17]=[dict(a='seal',at='S17',until='E17',p=dict(text='Arkinos @ oct 2026',sub='Explainer Studio',at=0.8,black=dict(at='>17a+3',dur=3)),bg=True,fade=[1.0,0])]
 # normalize from_ keyword
 def fix(o):
