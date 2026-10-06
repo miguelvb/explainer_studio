@@ -489,10 +489,20 @@ n=[ic('q1','question',200,170,100,'16b#apagaron',color='amber'),T('q1l',130,260,
    ic('k1','key',620,160,80,'16b#claves',color='amber'),ic('q2','question',720,150,60,'16b#claves+0.4',color='amber'),
    T('k1l',580,260,'claves de administrador','16b#claves',color=GRY,fs=15),T('k1d',600,300,'13 julio','16b#trece',color=GRY,fs=15)]
 c16.append(K('16b','E16',n,[],fs=1.0))
-# ================= 17 · Créditos =================
-c17=[dict(a='seal',at='S17',until='E17',p=dict(text='Arkinos @ oct 2026',sub='Explainer Studio',at=0.6,black=dict(at='17a#Explainer+1.5',dur=3)),bg=True,fade=[0.8,0])]
-
-C_NEW=[c8,c9,c10,c11,c12,c13,c14,c15,c16,c17]
+# ================= 17 · Último aviso: black stage, three quotes one after another =================
+CQ=lambda id,lines,at,y,fs,color,**k: N(id,'ctxt',80,y,800,len(lines)*fs*1.5,at,color=color,lines=lines,fs=fs,**k)
+ATT='Ajeya Cotra · METR, investigadora y autora del informe'
+c17=[K('S17','17b',[CQ('q1',['«Este incidente se siente como más de la mitad','del camino hacia una toma de control total','por parte de la IA.»'],'17a#Este',130,30,'#E7EBF1'),
+                    CQ('a1',[ATT],'17a#Este+4',360,18,GRY)],[],fs=1.0),
+     K('17b','17c',[CQ('q2',['«Espero avances de capacidad extremadamente rápidos,','y creo que los agentes de frontera podrán establecer','un despliegue rebelde así en seis meses.»'],0.3,130,30,'#E7EBF1'),
+                    CQ('a2',['Ajeya Cotra · METR'],2.0,360,18,GRY)],[],fs=1.0),
+     K('17c','E17',[CQ('q3',['«No estoy segura de que vayamos a recibir un aviso','tan claro antes de que sea demasiado tarde.»'],0.3,150,30,'#E7EBF1'),
+                    CQ('a3',['Ajeya Cotra · METR'],2.0,360,18,GRY)],[],fs=1.0)]
+# the last scene before the quotes fades out to the empty stage
+c16[-1]['fade']=[0.5,1.8]
+# ================= 18 · Créditos =================
+c18=[dict(a='seal',at='S18',until='E18',p=dict(text='Arkinos @ oct 2026',sub='Explainer Studio',at=1.6,black=dict(at='18a#Explainer+2.5',dur=4)),bg=True,fade=[1.4,0])]
+C_NEW=[c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18]
 
 # ---- overflow lint ----
 def _lint():

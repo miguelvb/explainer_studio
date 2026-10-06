@@ -1,6 +1,6 @@
 {
  "meta": {
-  "title": "Test · escenas 0–17",
+  "title": "Test · escenas 0–18",
   "lang": "es",
   "mark": "mark.txt",
   "numsep": ".",
@@ -24263,6 +24263,159 @@
      "bg": true,
      "fade": [
       0.5,
+      1.8
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Último aviso",
+   "beats": [
+    "Ajeya Cotra, investigadora de METR y una de las autoras del informe: «Este incidente se siente como más de la mitad del camino hacia una toma de control total por parte de la IA.»",
+    {
+     "text": "«Espero avances de capacidad extremadamente rápidos, y creo que los agentes de frontera podrán establecer un despliegue rebelde así en seis meses.»",
+     "pause": 1.6
+    },
+    {
+     "text": "«No estoy segura de que vayamos a recibir un aviso tan claro antes de que sea demasiado tarde.»",
+     "pause": 1.6
+    }
+   ],
+   "cues": [
+    {
+     "a": "world",
+     "at": "S17",
+     "until": "17b",
+     "p": {
+      "nodes": [
+       {
+        "id": "q1",
+        "kind": "ctxt",
+        "x": 80,
+        "y": 130,
+        "w": 800,
+        "h": 135,
+        "at": "17a#Este",
+        "color": "#E7EBF1",
+        "lines": [
+         "«Este incidente se siente como más de la mitad",
+         "del camino hacia una toma de control total",
+         "por parte de la IA.»"
+        ],
+        "fs": 30
+       },
+       {
+        "id": "a1",
+        "kind": "ctxt",
+        "x": 80,
+        "y": 360,
+        "w": 800,
+        "h": 27,
+        "at": "17a#Este+4",
+        "color": "#8C96A4",
+        "lines": [
+         "Ajeya Cotra · METR, investigadora y autora del informe"
+        ],
+        "fs": 18
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "17b",
+     "until": "17c",
+     "p": {
+      "nodes": [
+       {
+        "id": "q2",
+        "kind": "ctxt",
+        "x": 80,
+        "y": 130,
+        "w": 800,
+        "h": 135,
+        "at": 0.3,
+        "color": "#E7EBF1",
+        "lines": [
+         "«Espero avances de capacidad extremadamente rápidos,",
+         "y creo que los agentes de frontera podrán establecer",
+         "un despliegue rebelde así en seis meses.»"
+        ],
+        "fs": 30
+       },
+       {
+        "id": "a2",
+        "kind": "ctxt",
+        "x": 80,
+        "y": 360,
+        "w": 800,
+        "h": 27,
+        "at": 2.0,
+        "color": "#8C96A4",
+        "lines": [
+         "Ajeya Cotra · METR"
+        ],
+        "fs": 18
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "17c",
+     "until": "E17",
+     "p": {
+      "nodes": [
+       {
+        "id": "q3",
+        "kind": "ctxt",
+        "x": 80,
+        "y": 150,
+        "w": 800,
+        "h": 90,
+        "at": 0.3,
+        "color": "#E7EBF1",
+        "lines": [
+         "«No estoy segura de que vayamos a recibir un aviso",
+         "tan claro antes de que sea demasiado tarde.»"
+        ],
+        "fs": 30
+       },
+       {
+        "id": "a3",
+        "kind": "ctxt",
+        "x": 80,
+        "y": 360,
+        "w": 800,
+        "h": 27,
+        "at": 2.0,
+        "color": "#8C96A4",
+        "lines": [
+         "Ajeya Cotra · METR"
+        ],
+        "fs": 18
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
       0.5
      ]
     }
@@ -24276,20 +24429,20 @@
    "cues": [
     {
      "a": "seal",
-     "at": "S17",
-     "until": "E17",
+     "at": "S18",
+     "until": "E18",
      "p": {
       "text": "Arkinos @ oct 2026",
       "sub": "Explainer Studio",
-      "at": 0.6,
+      "at": 1.6,
       "black": {
-       "at": "17a#Explainer+1.5",
-       "dur": 3
+       "at": "18a#Explainer+2.5",
+       "dur": 4
       }
      },
      "bg": true,
      "fade": [
-      0.8,
+      1.4,
       0
      ]
     }

@@ -114,6 +114,14 @@
 
 **16b** Y tampoco lo saben todo: no saben por qué se apagaron, ni qué hicieron con las claves de administrador de la biblioteca que consiguieron el trece de julio.
 
-## 17 · Créditos
+## 17 · Último aviso
 
-**17a** Arkinos, octubre de dos mil veintiséis. Explainer Studio.
+**17a** Ajeya Cotra, investigadora de METR y una de las autoras del informe: «Este incidente se siente como más de la mitad del camino hacia una toma de control total por parte de la IA.»
+
+**17b** «Espero avances de capacidad extremadamente rápidos, y creo que los agentes de frontera podrán establecer un despliegue rebelde así en seis meses.»
+
+**17c** «No estoy segura de que vayamos a recibir un aviso tan claro antes de que sea demasiado tarde.»
+
+## 18 · Créditos
+
+**18a** Arkinos, octubre de dos mil veintiséis. Explainer Studio.

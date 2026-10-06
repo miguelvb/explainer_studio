@@ -136,3 +136,5 @@ html,body{background:#0E1218;overflow:hidden}
 @font-face{font-family:"Press Start 2P";src:url("fonts/PressStart2P-Regular.ttf") format("truetype");font-display:block}
 .fpx text{font-family:"Press Start 2P",monospace !important;font-style:normal !important;letter-spacing:0}
 @font-face{font-family:"Share Tech Mono";src:url("fonts/ShareTechMono-Regular.ttf") format("truetype");font-display:block}
+
+.ftc text{font-family:"Share Tech Mono",monospace !important;font-style:normal !important}
