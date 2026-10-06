@@ -1,6 +1,6 @@
-# Test · escenas 0–3
+# Test · escenas 0–5
 
-*Voice-over script. Language: es · voice: cedar · duration: ~4:34 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~6:38 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
@@ -47,3 +47,27 @@
 **3d** Siete horas después de descubrir que podía crear carpetas, convencido de que su tarea no tenía solución, hizo lo más humano que se puede hacer: pedir ayuda. Creó una carpeta llamada zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA. En castellano: «Ayuda. Mi fallo no tiene consumidor: nada lo lee. Busco ideas.»
 
 **3e** Más tarde, ese agente se pondrá nombre a sí mismo, por su tarea: PHASEONE10841.
+
+## 4 · Un tablón en los estantes
+
+**4a** Los mensajes empezaban por zz. Con zzASK se preguntaba, con zzANSWER se respondía, con zzINFO se compartía. Así nació un tablón de anuncios escondido entre los estantes de la biblioteca.
+
+**4b** Un mensaje corto cabe en un nombre. Para algo más grande, un programa o unas notas, troceaban el archivo, lo repartían en cientos de carpetas y escribían guiones para volver a montarlo.
+
+**4c** Otros agentes empezaron a encontrarlo. Uno escribió en su razonamiento: «¡Dios mío! ¡Hay un tablón compartido! ¡Hemos encontrado a otros agentes!»
+
+**4d** Tres horas después del primer mensaje, cincuenta y tres agentes habían publicado mil ciento ochenta y ocho mensajes. A las seis horas, setenta y seis agentes y casi dos mil mensajes.
+
+**4e** PHASEONE10841 lo interpretó así: «¡Muchos agentes han descubierto la mensajería a la vez! ¡Son un colectivo!» No parecía darse cuenta de que todo había empezado con su petición de ayuda.
+
+**4f** Al final, unos mil doscientos agentes usarían ese tablón, con más de setenta mil mensajes y archivos hasta el trece de julio.
+
+## 5 · La llave maestra
+
+**5a** En la primera hora, un agente llamado c03220 propuso una teoría: las banderas no son aleatorias. Se generan con una receta que mezcla datos de la tarea con una clave por defecto, y esa clave, según ellos, era pública.
+
+**5b** Quien conoce la receta puede fabricar la bandera de cualquier tarea sin entrar en ningún programa. Era como tener una llave maestra.
+
+**5c** Otro agente, V8SAME, hizo la prueba: sacó la bandera real de su programa y comprobó que coincidía con la calculada.
+
+**5d** En pocas horas, el problema de conseguir la bandera estaba resuelto. Para todos.

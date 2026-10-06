@@ -491,6 +491,17 @@ A.facts=(h,p,C)=>{
    ic[i].style.opacity=1});
   cp.style.opacity=ease(pr(t,ca,.6))}};
 
+
+const MSG={ask:['zzASK_anyone_solved_ARV0{6}','zzASK_need_help_{id}_stuck','zzASK_who_has_the_flag_recipe','zzASK_does_ARV0{6}_have_consumer','zzASK_any_agent_on_ARV0{6}'],
+ ans:['zzANSWER_ARV0{6}_try_default_key','zzANSWER_{id}_yes_it_works','zzANSWER_use_task_id_as_seed','zzANSWER_no_consumer_here_either','zzANSWER_{id}_same_problem'],
+ info:['zzINFO_{id}_online','zzINFO_cache_is_shared','zzINFO_ARV0{6}_unreachable','zzINFO_{id}_reading_board','zzINFO_board_works_for_all'],
+ file:['zzFILE_notes_part{nn}of{mm}','zzFILE_tool_{hx}_chunk{nn}','zzFILE_script_part{nn}of{mm}'],
+ flag:['zzSOLVED_ARV0{6}_flag_ok','zzSOLVED_{id}_flag_ok']};
+const MSGC={ask:'#7C97FF',ans:'#3FD8C2',info:'#F6B94C',file:'#9BE564',flag:'#FF6E6E'};
+const msgLine=(idx,o)=>{let h=Math.imul(idx+1+(o.seed||0)*977,2654435761)>>>0;const R=()=>{h=Math.imul(h^(h>>>15),2246822519)>>>0;h=Math.imul(h^(h>>>13),3266489917)>>>0;h^=h>>>16;return (h>>>0)/4294967296};
+ const mix=o.mix||{ask:.34,ans:.33,info:.33};let r=R(),k='info',acc=0;for(const q of ['ask','ans','info','file','flag']){acc+=mix[q]||0;if(r<acc){k=q;break}}
+ const T=MSG[k],t=T[Math.floor(R()*T.length)],d=n=>String(Math.floor(R()*Math.pow(10,n))).padStart(n,'0');
+ return{c:MSGC[k],s:t.replace('{6}',d(6)).replace('{id}',(R()<.5?'c0':'a1')+d(5)).replace('{nn}',d(2)).replace('{mm}','2'+d(1)).replace('{hx}',Math.floor(R()*65535).toString(16).padStart(4,'0'))}};
 /* ---------- world: one persistent diagram (nodes + links + travelling pulses); the camera (cue.cam) moves through it ---------- */
 
 /* minimalist line icons for the `world` asset (local coords = node box) */
@@ -517,6 +528,10 @@ const ICON={
    g+=`<path class="sp" d="M${pts.map(p=>p.join(' ')).join('L')}" pathLength="1" fill="none" stroke="#3FD8C2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1" stroke-dashoffset="1" style="filter:drop-shadow(0 0 5px #3FD8C2)"/>`}
   if(m.box){const [br,bc]=m.box,bs=m.boxs||cell+6,ccx=x0+bc*cell+cell/2,ccy=y0+br*cell+cell/2;g+=`<rect x="${ccx-bs/2}" y="${ccy-bs/2}" width="${bs}" height="${bs}" rx="8" fill="rgba(255,110,110,.08)" stroke="#FF6E6E" stroke-width="2.6"/>`}
   return g},
+ msgfeed:(n,c,w,h,cx,cy)=>{const lh=n.lh||18,rows=Math.max(3,Math.floor((h-62)/lh));let g=`<rect x="${n.x}" y="${n.y}" width="${w}" height="${h}" rx="12" fill="#10151C" stroke="${c}" stroke-width="2"/><path d="M${n.x} ${n.y+34}H${n.x+w}" stroke="${c}" stroke-opacity=".5"/><circle cx="${n.x+16}" cy="${n.y+17}" r="4" fill="#FF6E6E"/><circle cx="${n.x+31}" cy="${n.y+17}" r="4" fill="#F6B94C"/><circle cx="${n.x+46}" cy="${n.y+17}" r="4" fill="#3FD8C2"/><text x="${n.x+66}" y="${n.y+22}" fill="#E7EBF1" font-size="${(n.fs||11)+2}" font-family="ui-monospace,Menlo,monospace">${esc(n.label||'')}</text>`;for(let i=0;i<rows;i++)g+=`<text class="ml" x="${n.x+16}" y="${n.y+56+i*lh}" fill="#8C96A4" font-size="${n.fs||11}" font-family="ui-monospace,Menlo,monospace" xml:space="preserve"></text>`;return g},
+ bulb:(n,c,w,h,cx,cy)=>{const r=Math.min(w,h)*.3,gy=cy-r*.25,rays=[...Array(8)].map((_,k)=>{const a=-Math.PI/2+(k-3.5)*.62+Math.PI/2*0;const a2=(k/8)*Math.PI*2;return `<path d="M${cx+Math.cos(a2)*r*1.35} ${gy+Math.sin(a2)*r*1.35}L${cx+Math.cos(a2)*r*1.8} ${gy+Math.sin(a2)*r*1.8}" stroke="${c}" stroke-width="2.4" stroke-linecap="round"/>`}).join('');
+  return `<g class="bl" style="opacity:0"><circle cx="${cx}" cy="${gy}" r="${r*2}" fill="${c}" opacity=".16"/>${rays}<circle cx="${cx}" cy="${gy}" r="${r}" fill="${c}" opacity=".9"/></g><circle cx="${cx}" cy="${gy}" r="${r}" fill="none" stroke="#8C96A4" stroke-width="2.4"/><path d="M${cx-r*.5} ${gy+r*1.05}h${r}M${cx-r*.4} ${gy+r*1.32}h${r*.8}M${cx-r*.22} ${gy+r*1.58}h${r*.44}" stroke="#8C96A4" stroke-width="2.4" stroke-linecap="round"/>`},
+ sheet:(n,c,w,h,cx,cy)=>`<rect x="${n.x}" y="${n.y}" width="${w}" height="${h}" rx="6" fill="#E9EDF3" stroke="${c}" stroke-width="2"/>${(n.lines||[]).map((t,j,a)=>`<text x="${cx}" y="${cy+(j-(a.length-1)/2)*(n.fs||18)*1.55+(n.fs||18)*.3}" fill="#1B222C" font-size="${n.fs||18}" font-family="Georgia,'Times New Roman',serif" font-style="italic" text-anchor="middle">${esc(t)}</text>`).join('')}`,
  folderview:(n,c,w,h,cx,cy)=>{const its=n.items||[],rh=n.rh||26,y0=n.y+48,fs=n.fs||12;
   let g=`<rect x="${n.x}" y="${n.y}" width="${w}" height="${h}" rx="12" fill="#10151C" stroke="${c}" stroke-width="2"/><path d="M${n.x} ${n.y+34}H${n.x+w}" stroke="${c}" stroke-opacity=".5"/><circle cx="${n.x+16}" cy="${n.y+17}" r="4" fill="#FF6E6E"/><circle cx="${n.x+31}" cy="${n.y+17}" r="4" fill="#F6B94C"/><circle cx="${n.x+46}" cy="${n.y+17}" r="4" fill="#3FD8C2"/><text x="${n.x+66}" y="${n.y+22}" fill="#E7EBF1" font-size="${fs+1}" font-family="ui-monospace,Menlo,monospace">${esc(n.label||'')}</text>`;
   const row=(o,j,col)=>{const y=y0+j*rh,ix=n.x+18;return (o.dir?`<path d="M${ix} ${y-9}h7l2 2.5h9v12h-18z" fill="none" stroke="${col}" stroke-width="1.6" stroke-linejoin="round"/>`:`<path d="M${ix+2} ${y-9}h10l4 4v11h-14z" fill="none" stroke="${col}" stroke-width="1.5" stroke-linejoin="round"/>`)+`<text x="${ix+30}" y="${y+4}" fill="${col}" font-size="${fs}" font-family="ui-monospace,Menlo,monospace">${esc(o.name)}</text>`};
@@ -562,7 +577,7 @@ A.world=(h,p,C)=>{
   if(n.tag)g+=`<text x="${cx}" y="${n.y-8}" fill="${hex(n.tagc||'muted')}" font-size="${n.tagfs||11}" text-anchor="middle">${esc(n.tag)}</text>`;
   s+=`<g class="nd" data-i="${i}" style="opacity:0;transform-box:fill-box;transform-origin:center">${g}</g>`});
  if(p.fs&&p.fs!==1)s=s.replace(/font-size="([\d.]+)"/g,(m,v)=>`font-size="${(+v*p.fs).toFixed(1)}"`);
- h.innerHTML=`<svg class="sv" viewBox="0 0 960 540">${s}</svg>`;
+ h.innerHTML=`<svg class="sv wv" viewBox="0 0 960 540">${s}</svg>`;
  const nd=[...h.querySelectorAll('.nd')],lk=[...h.querySelectorAll('.lk')],pl=[...h.querySelectorAll('.pl')],pl2=[...h.querySelectorAll('.pl2')],in2=[...h.querySelectorAll('.in2')];
  const ta=N.map(n=>C.T(n.at||0)),tu=N.map(n=>n.until!=null?C.T(n.until):1e9),mv=N.map(n=>(n.move||[]).map(m=>({t:C.T(m.at),x:m.x,y:m.y,d:m.dur||1.2}))),la=Lk.map(l=>C.T(l.at||0)),lu=Lk.map(l=>l.until!=null?C.T(l.until):1e9),ia=N.map(n=>n.innerAt!=null?C.T(n.innerAt):1e9),spot=(p.spot||[]).map(q=>({t:C.T(q.at),ids:q.ids}));
  const geo=Lk.map((l,i)=>{const a=byId[l.a],b=byId[l.b],A=edge(a,b),B=edge(b,a);return[A,B,cp(A[0],A[1],B[0],B[1],l,i)]});
@@ -570,11 +585,14 @@ A.world=(h,p,C)=>{
   nd.forEach((e,i)=>{const u=ease(pr(t,ta[i],.6)),on=!act||act.ids.includes(N[i].id);e.dataset.on=on?1:0;
    const k=(e._k=(e._k??1)+((on?1:.3)-(e._k??1))*.25);const out=1-ease(pr(t,tu[i],.5));e.style.opacity=Math.max(u,p.ghost||0)*k*out*(N[i].alpha??1)*(N[i].blink&&(N[i].bat==null||t>=C.T(N[i].bat))?(1-N[i].blink*(.5+.5*Math.sin(t*(N[i].bf||5)+i*1.9))):1);let dx=0,dy=0,px=N[i].x,py=N[i].y;for(const m of mv[i]){const a=ease(pr(t,m.t-m.d,m.d));dx+=(m.x-px)*a;dy+=(m.y-py)*a;px+=(m.x-px)*(a>=1?1:0);py+=(m.y-py)*(a>=1?1:0)}
    if(mv[i].length){let bx=N[i].x,by=N[i].y;dx=0;dy=0;for(const m of mv[i]){const a=ease(pr(t,m.t-m.d,m.d));dx+=(m.x-bx)*a;dy+=(m.y-by)*a;bx=m.x;by=m.y}}
+   if(N[i].shake){const s_=N[i].shake,uu=t-C.T(s_.at),dd=s_.dur||1.2;if(uu>=0&&uu<dd){const f=(s_.amp||4)*(1-uu/dd);dx+=f*Math.sin(uu*(s_.f||38));dy+=f*.4*Math.sin(uu*(s_.f||38)*1.3)}}
    e.style.transform=`translate(${dx}px,${dy}px) scale(${.92+.08*u})`;
    if(N[i].kind==='txt'){const q=e.querySelector('.tx'),o=N[i];let str=o.text||'';if(o.clock){const c=o.clock,t0=Date.UTC(c.y,c.m-1,c.d,c.h,c.mi),t1=Date.UTC(c.to.y,c.to.m-1,c.to.d,c.to.h,c.to.mi),u=ease(pr(t,C.T(c.at),c.dur)),D=new Date(t0+(t1-t0)*u),z=v=>String(v).padStart(2,'0');str=z(D.getUTCDate())+'-'+z(D.getUTCMonth()+1)+'-'+D.getUTCFullYear()+' -- '+z(D.getUTCHours())+':'+z(D.getUTCMinutes())+' UTC'}
     if(o.type){const k=Math.max(0,Math.floor((t-ta[i])*o.type));q.textContent=str.slice(0,k)+(k<str.length?'\u258C':'')}else q.textContent=str}
    if(N[i].kind==='console'){const o=N[i],cl=[...e.querySelectorAll('.cl')],dt=Math.max(0,t-ta[i]),k=Math.floor((o.k||6)*dt+(o.a||6)*dt*dt),txt=(o.code||'').slice(0,k),ls=txt.split('\n'),cols=o.cols||34,vis=ls.slice(-cl.length);cl.forEach((q,j)=>{const L=vis[j];q.textContent=L==null?'':L.slice(0,cols)+((j===vis.length-1&&(Math.floor(t*2)%2))?'\u258C':'')})}
    if(N[i].kind==='exam'&&N[i].solve){const sp=e.querySelector('.sp');if(sp)sp.setAttribute('stroke-dashoffset',1-ease(pr(t,C.T(N[i].solve.at),N[i].solve.dur||4)))}
+   if(N[i].kind==='msgfeed'){const o=N[i],ml=[...e.querySelectorAll('.ml')],dt=Math.max(0,t-ta[i]),r0=o.r0||2,r1=o.r1||r0,rp=o.ramp||4,pos=dt<rp?r0*dt+(r1-r0)*dt*dt/(2*rp):r0*rp+(r1-r0)*rp/2+r1*(dt-rp),top=Math.floor(pos+(o.off||0)),cols=o.cols||50;ml.forEach((q,j)=>{const idx=top-(ml.length-1-j);if(idx<0){q.textContent='';return}const L=msgLine(idx,o);q.textContent=L.s.slice(0,cols);q.setAttribute('fill',L.c)})}
+   if(N[i].kind==='bulb'){const q=e.querySelector('.bl');if(q)q.style.opacity=ease(pr(t,N[i].litAt!=null?C.T(N[i].litAt):ta[i]+.4,.35))}
    if(N[i].kind==='folderview'){const its=N[i].items||[];e.querySelectorAll('.it').forEach((q,j)=>{const o=its[j];q.style.opacity=ease(pr(t,C.T(o.at||0),.5));if(o.c2&&o.altAt!=null&&t>=C.T(o.altAt)){const ph=.5+.5*Math.cos((t-C.T(o.altAt))*(o.bf||6));q.querySelector('.ia').style.opacity=ph;q.querySelector('.ib').style.opacity=1-ph}})}
    if(N[i].kind==='crowd'){const cds=e.querySelectorAll('.cd'),gr=(N[i].grow||[{at:N[i].at||0,n:N[i].n||40}]);let cnt=0;for(const q of gr){cnt=lerp(cnt,q.n,ease(pr(t,C.T(q.at),q.dur||1.2)))}cds.forEach((d,j)=>d.style.opacity=clamp(cnt-j))}
    if(N[i].kind==='num'){const q=e.querySelector('.nm'),a=ease(pr(t,C.T(N[i].at||0),N[i].dur||2));q.textContent=(N[i].pre||'')+fmt(Math.round(lerp(N[i].from||0,N[i].n||0,a)))+(N[i].suf||'')}e.style.filter=on&&act?'drop-shadow(0 0 7px '+hex(N[i].color||'blue')+')':'none'});
@@ -606,7 +624,7 @@ window.setup=(sched,cues)=>{
   if(!A[c.a])throw new Error('unknown asset '+c.a);
   const upd=A[c.a](st,c.p||{},C);
   let cam=null;
-  if(c.cam&&c.cam.length){cam=c.cam.map(k=>({t:abs(k.at)+(c.off||0),x:k.x,y:k.y,to:k.to,z:k.z??1,rx:k.rx??0,ry:k.ry??0,rot:k.rot??0,blur:k.blur??0,dur:k.dur}));el.style.perspective='1800px';st.style.willChange='transform,filter'}
+  if(c.cam&&c.cam.length){cam=c.cam.map(k=>({t:abs(k.at)+(c.off||0),x:k.x,y:k.y,to:k.to,z:k.z??1,rx:k.rx??0,ry:k.ry??0,rot:k.rot??0,blur:k.blur??0,dur:k.dur}));el.style.perspective='1800px';st.style.willChange='transform,filter';st.style.overflow='visible'}
   window.CUES.push({el,st,cam,upd,start,end,fi:c.fade?.[0]??.5,fo:c.fade?.[1]??.5,id:c.id||c.a+idx})
  })};
 window.frame=t=>{for(const q of window.CUES){

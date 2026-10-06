@@ -57,6 +57,19 @@ def clock(id, x, y, start, at=0.2, fs=24, cps=9, run=None, **k):
 def link(a, b, at=0.05, color='blue', **k):
     d = dict(a=a, b=b, at=at, color=color); d.update(k); return d
 
+def msg_feed(id, x, y, label='Artifactory', w=420, h=400, at=0.05, r0=2.0, r1=None, ramp=4.0, mix=None, seed=0, off=0, color='amber', **k):
+    """Window with a scrolling stream of coloured message names (zzASK blue, zzANSWER teal, zzINFO amber, zzFILE green, zzSOLVED red).
+    r0/r1 = lines per second at start/after `ramp` seconds; mix={ask,ans,info,file,flag} weights; off = lines already scrolled (so a swap does not start empty)."""
+    return _n(id, 'msgfeed', x, y, w, h, at, color=color, label=label, r0=r0, r1=r1 or r0, ramp=ramp, mix=mix, seed=seed, off=off, **k)
+
+def bulb(id, cx, cy, at=0.05, lit=None, s=56, color='amber', **k):
+    """Idea light bulb: outline appears at `at`, lights up (glow + rays) at `lit` (default at+0.4)."""
+    return _n(id, 'bulb', cx - s / 2, cy - s / 2, s, s, at, color=color, litAt=lit, **k)
+
+def sheet(id, x, y, w, h, lines, at=0.05, fs=18, color='muted', **k):
+    """A sheet of paper with centred lines of 'formula' text."""
+    return _n(id, 'sheet', x, y, w, h, at, color=color, lines=lines, fs=fs, **k)
+
 CODE = """$ python solve.py
 import os, sys, zlib
 def parse(buf):
