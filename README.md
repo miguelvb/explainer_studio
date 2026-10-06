@@ -100,7 +100,7 @@ La mayoría de escenas nuevas usan `world`: un diagrama persistente de 960×540 
 Reglas del motor (valen para todas las escenas):
 
 - **Un enlace nunca aparece antes que sus dos extremos.**
-- **Dos tipos de enlace.** *Relación* (pertenece a, es parte de, lo tiene, secuencia): segmento **recto y continuo**, sin bolitas (`rel: true`; se asigna solo a enlaces con `chip`, `key`, `person`, `exam`, discontinuos y `sandbox→sheet`, ver `classify_links` en `worldkit.py`). *Comunicación* (viaja información): curva **en S** (dos curvaturas) con bolitas, que **rodea los demás nodos**; si no encuentra paso libre, `validate` avisa.
+- **Dos tipos de enlace.** *Relación* (pertenece a, es parte de, lo tiene, secuencia): segmentos **rectilíneos y continuos** (sin diagonales: tramos horizontales y verticales con esquinas redondeadas, rodeando los nodos; los abanicos forman un árbol), sin bolitas (`rel: true`; se asigna solo a enlaces con `chip`, `key`, `person`, `exam`, discontinuos y `sandbox→sheet`, ver `classify_links` en `worldkit.py`). *Comunicación* (viaja información): curva **en S** (dos curvaturas) con bolitas, que **rodea los demás nodos**; si no encuentra paso libre, `validate` avisa.
 - **Enlaces ortogonales** (`orth`): tramos rectos con giros de 90° y esquinas redondeadas, sin bolitas; los enlaces de comunicación son curvos, con bolita.
 - **Parpadeo** (`blink`, `bf`, `bat`) y **apagado dramático** (`flick`: se apaga varias veces y termina en `off`/`dim`/`on`).
 - **Barras** (`bar`) para presupuestos; **iconos** de línea (`ok*`, `ko*`, `sig*`, `fl*`, `idea*`, `sc*`, `orb`…).
