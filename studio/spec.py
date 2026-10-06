@@ -48,7 +48,7 @@ def schedule(st, timings=None, pad=True, gap=.55, pre=.8, post=1.8):
     nat = []
     for n, sc in enumerate(scenes):
         d = [timings.get(b['id'], est(b['text'])) for b in sc['beats']]
-        p0 = .6 if n == 0 else pre; p1 = post + (tail if n == N - 1 else 0)
+        p0 = m.get('lead', .6) if n == 0 else pre; p1 = post + (tail if n == N - 1 else 0)
         nat.append(p0 + sum(d) + gap * max(0, len(d) - 1) + p1)
     tgt = [sc.get('target') for sc in scenes]
     mins = st['meta'].get('minutes')
@@ -60,7 +60,7 @@ def schedule(st, timings=None, pad=True, gap=.55, pre=.8, post=1.8):
     sched, order, t = {}, [], 0.0
     for n, sc in enumerate(scenes):
         beats = sc['beats']; d = [timings.get(b['id'], est(b['text'])) for b in beats]
-        p0 = .6 if n == 0 else pre; p1 = post + (tail if n == N - 1 else 0); g = gap
+        p0 = m.get('lead', .6) if n == 0 else pre; p1 = post + (tail if n == N - 1 else 0); g = gap
         if pad and tgt[n] and nat[n] < tgt[n]:
             sur = tgt[n] - nat[n]
             ga = min(2.2, sur * .7 / max(1, len(d) - 1)) if len(d) > 1 else 0
