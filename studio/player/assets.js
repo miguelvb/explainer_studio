@@ -456,7 +456,7 @@ A.seal=(h,p,C)=>{
   ds.forEach(d=>{const i=+d.dataset.i,j=+d.dataset.j,a=i*2*Math.PI/N,
    v=Math.abs(Math.sin(3*a+.6*k)*.55+Math.sin(7*a+1-.9*k)*.3+Math.sin(13*a+2+1.3*k)*.15)*34/7+.6;
    d.setAttribute('opacity',e*clamp(v-j)*clamp((k-.4)/1.2))});
-  t1.setAttribute('opacity',ease(pr(t,at+.8,1)));if(t2)t2.setAttribute('opacity',ease(pr(t,at+1.4,1)));
+  if(p.type){const ls=String(p.text||'').split('|'),tot=ls.join('').length,kk=Math.floor(Math.max(0,t-(at+.6))*(p.type));let u=0;[...t1.querySelectorAll('tspan')].forEach((q,i)=>{const n=Math.max(0,Math.min(ls[i].length,kk-u));u+=ls[i].length;q.textContent=ls[i].slice(0,n)+(kk<tot&&kk>=u-ls[i].length&&kk<u?'\u258C':'')});t1.setAttribute('opacity',kk>0?1:0)}else t1.setAttribute('opacity',ease(pr(t,at+.8,1)));if(t2)t2.setAttribute('opacity',ease(pr(t,at+1.4,1)));
   if(bat!=null)bk.setAttribute('opacity',clamp((t-bat)/bd))}};
 
 /* ---------- board: the shared package server used as a message board (folders whose NAMES are messages) ---------- */

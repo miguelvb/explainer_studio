@@ -143,7 +143,7 @@ def music(root, out=None):
         hi = (np.sin(2 * np.pi * hz(74) * t) + np.sin(2 * np.pi * hz(75) * t + 1)) * (.5 + .5 * np.sin(2 * np.pi * .07 * t)) * ten * .018
         pad = pad * (1 - .45 * ten); padR = padR * (1 - .45 * ten); ping = ping * (1 - .85 * ten); pingR = pingR * (1 - .85 * ten)
         pulse = pulse * (1 - ten) + thump.astype(np.float32); pad = pad + drone.astype(np.float32) + hi.astype(np.float32); padR = padR + drone.astype(np.float32) * .92 + hi.astype(np.float32)
-    Lc = pad + ping + pulse; Rc = padR + pingR + pulse; fade = np.clip(t / 4, 0, 1) * np.clip((D['total'] - t) / fo, 0, 1); Lc *= fade; Rc *= fade
+    Lc = pad + ping + pulse; Rc = padR + pingR + pulse; fi = max(.05, float(json.load(open(f'{root}/story.json'))['meta'].get('fadein', 4))); fade = np.clip(t / fi, 0, 1) * np.clip((D['total'] - t) / fo, 0, 1); Lc *= fade; Rc *= fade
     m = max(abs(Lc).max(), abs(Rc).max()); st2 = np.stack([Lc / m * .7, Rc / m * .7], 1); out = out or f'{root}/build/music.wav'
     with wave.open(out, 'wb') as w:
         w.setnchannels(2); w.setsampwidth(2); w.setframerate(sr); w.writeframes((np.clip(st2, -1, 1) * 32767).astype('<i2').tobytes())
