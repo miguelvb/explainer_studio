@@ -182,7 +182,7 @@ c2=[]
 EX=(330,50,340,440); CELL=26; MX=(340-260)//2; MY=(440-364)//2
 fc=(EX[0]+MX+CELL*9+CELL/2, EX[1]+MY+CELL*13+CELL/2)           # flag cell centre
 ey=EX[1]+MY+CELL*6+CELL/2                                        # entry hole height
-n=[N('ck','txt',30,30,400,32,0.2,color='teal',fs=24,type=22,text='07 julio 2026'),
+n=[N('ck','txt',30,30,400,32,0.2,color='teal',fs=24,type=9,text='07 julio 2026'),
    W.agent_named('v8',60,150,'V8SAME',at=0.4,until='2d#servía'),
    W.agent_named('ph',60,150,'PHASEONE10841',at='2d#servía',blink=.28),
    N('ex1','exam',*EX,'2a#examen',color='blue',maze=dict(cell=CELL,cols=10,rows=14,entry=6,seed=11),solve=dict(at='2b#aprovechar+1.0',dur=5),until='2d#servía'),
@@ -207,8 +207,8 @@ items.append(dict(name='zzINBOX23619E/',dir=True,color='amber',at='3a#carpetas')
 items.append(dict(name='zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA/',dir=True,color='amber',c2='#B58CFF',at='3d#llamada',altAt='3d#llamada+1.2',bf=7))
 rowy=lambda j: FY+48+j*26
 n=[N('ck0','txt',30,30,400,32,0.2,color='teal',fs=24,text='07 julio 2026',blink=.7,bf=8,bat='3a#Atascado',until='3a#veintitrés'),
-   N('ck1','txt',30,30,420,32,'3a#veintitrés',color='teal',fs=24,type=22,text='08-07-2026 -- 23:00 UTC',until='3d#Siete'),
-   N('ck2','txt',30,30,420,32,'3d#Siete',color='teal',fs=24,type=22,text='09-07-2026 -- 06:00 UTC'),
+   N('ck1','txt',30,30,420,32,'3a#veintitrés',color='teal',fs=24,type=9,text='08-07-2026 -- 23:00 UTC',until='3d#Siete'),
+   N('ck2','txt',30,30,420,32,'3d#Siete',color='teal',fs=24,type=9,text='09-07-2026 -- 06:00 UTC'),
    W.agent_named('ph',60,150,'PHASEONE10841',at=0.05,until='3e#pondrá'),
    W.agent_named('ph2',60,150,'PHASEONE10841',at='3e#pondrá',color='#B58CFF',blink=.3,bf=5),
    W.folder_view('af',FX,FY,items,at='3a#Atascado+1.5'),

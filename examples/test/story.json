@@ -6672,7 +6672,7 @@
         "at": 0.2,
         "color": "teal",
         "fs": 24,
-        "type": 22,
+        "type": 9,
         "text": "07 julio 2026"
        },
        {
@@ -6895,7 +6895,7 @@
         "at": "3a#veintitrés",
         "color": "teal",
         "fs": 24,
-        "type": 22,
+        "type": 9,
         "text": "08-07-2026 -- 23:00 UTC",
         "until": "3d#Siete"
        },
@@ -6909,7 +6909,7 @@
         "at": "3d#Siete",
         "color": "teal",
         "fs": 24,
-        "type": 22,
+        "type": 9,
         "text": "09-07-2026 -- 06:00 UTC"
        },
        {
