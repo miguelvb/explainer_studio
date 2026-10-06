@@ -34,7 +34,7 @@ def _el_say(text, voice, path, model=None, stability=.5, similarity=.75, style=0
     except urllib.error.HTTPError as e: raise SystemExit(f'ElevenLabs error {e.code}: {e.read().decode()[:300]}')
 
 
-def voices(root, st, text=None, openai_voices=None, el_voices=None, log=print):
+def voices(root, st, text=None, openai_voices=None, el_voices=None, el_model=None, log=print):
     """Same sentence in several voices -> <project>/audio/voices/*.mp3, to choose by ear. Skips providers without a key."""
     from . import env; env.load(root)
     beats = json.load(open(f'{root}/build/beats.json')); text = text or beats[0]['text']
@@ -52,7 +52,7 @@ def voices(root, st, text=None, openai_voices=None, el_voices=None, log=print):
     else: log('OPENAI_API_KEY not set: skipping OpenAI voices')
     if os.environ.get('ELEVENLABS_API_KEY') or os.environ.get('XI_API_KEY'):
         for v in el_voices or list(EL_CANDIDATES):
-            p = f'{out}/eleven_{v}.mp3'; log(f'elevenlabs {v}'); _el_say(text, v, p); made.append(p)
+            tag = '' if not el_model else '_' + el_model.replace('eleven_', ''); p = f'{out}/eleven_{v}{tag}.mp3'; log(f'elevenlabs {v} {el_model or EL_MODEL}'); _el_say(text, v, p, model=el_model); made.append(p)
     else: log('ELEVENLABS_API_KEY not set: skipping ElevenLabs voices')
     log(f'{len(made)} samples in {out}'); return made
 

@@ -87,7 +87,7 @@ def main():
     p = P('build', lambda a: do_build(a)); p.add_argument('--no-pad', action='store_true'); p.add_argument('--estimate', action='store_true')
     P('script', lambda a: (do_build(a), print('wrote', os.path.join(proj(a), 'script.md'))))
     p = P('preview', lambda a: print(render.preview(proj(a), a.scene, a.step) or 'ok')); p.add_argument('--scene', type=int); p.add_argument('--step', type=float, default=6)
-    p = P('voices', lambda a: audio.voices(proj(a), story(a), text=a.text)); p.add_argument('--text')
+    p = P('voices', lambda a: audio.voices(proj(a), story(a), text=a.text, el_model=a.model, el_voices=a.el.split(',') if a.el else None, openai_voices=a.oa.split(',') if a.oa else None)); p.add_argument('--text'); p.add_argument('--model', help='ElevenLabs model id, e.g. eleven_v4'); p.add_argument('--el', help='comma list of ElevenLabs voices'); p.add_argument('--oa', help='comma list of OpenAI voices')
     p = P('tts', lambda a: audio.tts(proj(a), story(a), voice=a.voice, only=set(a.only.split(',')) if a.only else None, force=a.force)); p.add_argument('--voice'); p.add_argument('--only'); p.add_argument('--force', action='store_true')
     P('music', lambda a: print(audio.music(proj(a))))
     p = P('render', lambda a: render.render(proj(a), a.w, 30, a.scene, a.workers, a.limit)); p.add_argument('--w', type=int, default=1280); p.add_argument('--scene', type=int); p.add_argument('--workers', type=int, default=2); p.add_argument('--limit', type=float, default=0)
