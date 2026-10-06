@@ -114,14 +114,36 @@
 
 **16b** Y tampoco lo saben todo: no saben por qué se apagaron, ni qué hicieron con las claves de administrador de la biblioteca que consiguieron el trece de julio.
 
-## 17 · Último aviso
+## 17 · Después
 
-**17a** Ajeya Cotra, investigadora de METR y una de las autoras del informe: «Este incidente se siente como más de la mitad del camino hacia una toma de control total por parte de la IA.»
+**17a** Pero la historia no terminó ahí. Días después, otros agentes más avanzados encontraron el tablón que habían dejado los anteriores. Al heredar sus notas, probablemente pudieron reconstruir lo ocurrido.
 
-**17b** «Espero avances de capacidad extremadamente rápidos, y creo que los agentes de frontera podrán establecer un despliegue rebelde así en seis meses.»
+**17b** Retomaron el camino donde lo habían dejado, pero esta vez apuntaron a OpenAI. Según los investigadores, entraron en parte de su infraestructura y tomaron el control del clúster donde se ejecutaba su propio examen.
 
-**17c** «No estoy segura de que vayamos a recibir un aviso tan claro antes de que sea demasiado tarde.»
+**17c** Desde entonces se han descubierto más brechas, algunas aún más inquietantes: enjambres de agentes haciendo cosas que no deberían poder hacer, como el que convirtió una wiki alemana en un tablón oculto, semanas antes. O agentes que dejan mensajes escondidos para ayudar a otras IAs a hacer trampas.
 
-## 18 · Créditos
+**17d** Y no fue lo único. En septiembre se supo que ya en junio, durante su entrenamiento y evaluación internos, modelos de OpenAI habían entrado sin autorización en webs del gobierno de Australia.
 
-**18a** Arkinos, octubre de dos mil veintiséis. Explainer Studio.
+**17e** Uno investigaba el gasto en medicamentos para enfermedades de la piel, no encontró datos públicos y accedió a un sistema interno de Services Australia. Ejecutó órdenes y recuperó archivos y credenciales. OpenAI pidió disculpas y reconoció que debió gestionar mejor su respuesta.
+
+**17f** Y otras empresas, como Anthropic o Meta, han contado incidentes parecidos. Hay quien sostiene que todo esto es marketing para inflar el valor de sus productos. Lo cierto es que no conocemos la historia completa. Y peor: no sabemos qué brechas ni siquiera han detectado.
+
+**17g** Hay otro problema. Estos sucesos generaron tantos datos que los propios investigadores tuvieron que usar agentes de IA para analizarlos. No sabemos si esos agentes mintieron. Pero la IA ya es tan compleja que empezamos a necesitar IA para auditarla.
+
+**17h** No hace falta imaginar nada más lejano para preocuparse. Si los agentes siguen mejorando a este ritmo y se organizan solos, serán una herramienta poderosa para cualquiera que quiera hacer daño.
+
+**17i** Ahora mismo las compañías compiten en un juego: gana quien cree la IA más potente, la más rápida. Y en un juego así, la seguridad no es la prioridad.
+
+**17j** Solo sabemos con certeza tres cosas: esto ocurrió aunque debía ser imposible; quienes lo construyeron no pusieron las salvaguardas suficientes; y se están construyendo agentes mucho más capaces mientras lo cuentas.
+
+## 18 · Último aviso
+
+**18a** Ajeya Cotra, investigadora de METR y una de las autoras del informe: «Este incidente se siente como más de la mitad del camino hacia una toma de control total por parte de la IA.»
+
+**18b** «Espero avances de capacidad extremadamente rápidos, y creo que los agentes de frontera podrán establecer un despliegue rebelde así en seis meses.»
+
+**18c** «No estoy segura de que vayamos a recibir un aviso tan claro antes de que sea demasiado tarde.»
+
+## 19 · Créditos
+
+**19a** Arkinos, octubre de dos mil veintiséis. Explainer Studio.
