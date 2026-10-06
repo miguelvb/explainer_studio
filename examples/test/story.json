@@ -26,7 +26,14 @@
    "METR": "Míter",
    "HPIM": "Eich Pi Ai Em",
    "GPT-5.6 Sol": "Yi Pi Ti cinco punto seis Sol",
-   "hacking": "jáking",
+   "hacking": "jákin",
+   "zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA": "ceta-ceta Jelp, Féis Uán, ARV010841, No Cónsumer, Sik Aidía",
+   "zzASK": "ceta-ceta Ask",
+   "zzANSWER": "ceta-ceta Ánser",
+   "zzINFO": "ceta-ceta Ínfo",
+   "zzHELP": "ceta-ceta Jelp",
+   "zzP": "ceta-ceta P",
+   "zz": "ceta-ceta",
    "sandbox": "sándbox",
    "Artifactory": "Artifáctori",
    "MKCOL": "Eme Ka Col",
@@ -5587,6 +5594,18 @@
           "dur": 1.4
          }
         ]
+       },
+       {
+        "id": "zh",
+        "kind": "chip",
+        "x": 70,
+        "y": 170,
+        "w": 120,
+        "h": 30,
+        "at": "0e#METR",
+        "color": "amber",
+        "label": "zzHELP",
+        "fs": 15
        }
       ],
       "links": [
@@ -6755,7 +6774,7 @@
         "y": 205,
         "w": 230,
         "h": 140,
-        "at": "1d#Artifactory",
+        "at": "1d#Salvo+0.3",
         "color": "amber",
         "label": "Artifactory",
         "items": [
@@ -6791,7 +6810,7 @@
        {
         "a": "on",
         "b": "art",
-        "at": "1d#pide",
+        "at": "1d#Salvo+1.0",
         "color": "blue",
         "bi": true,
         "curve": 0.1
@@ -6825,11 +6844,11 @@
        "dur": 2.5
       },
       {
-       "at": "1d#Artifactory",
+       "at": "1d#Salvo",
        "x": 64.32291666666667,
        "y": 53.7037037037037,
        "z": 1.6,
-       "dur": 2.0
+       "dur": 1.6
       }
      ]
     }
@@ -6933,6 +6952,10 @@
            13,
            9
           ]
+         ],
+         "end": [
+          604,
+          426
          ]
         },
         "solve": {
@@ -7024,16 +7047,6 @@
         "until": "2d#servía"
        },
        {
-        "id": "xf",
-        "kind": "cross",
-        "x": 633,
-        "y": 369,
-        "w": 26,
-        "h": 26,
-        "at": "2e#imposible",
-        "color": "red"
-       },
-       {
         "id": "eg",
         "kind": "txt",
         "x": 425,
@@ -7043,7 +7056,8 @@
         "at": "2a#ExploitGym",
         "color": "#E7EBF1",
         "fs": 24,
-        "text": "ExploitGym"
+        "text": "ExploitGym",
+        "until": "2d#servía"
        }
       ],
       "links": [
@@ -7929,13 +7943,13 @@
           "dur": 1.1
          },
          {
-          "at": "4b#guiones+1.6",
+          "at": "4b#guiones-1.0",
           "x": 750,
           "y": 232,
           "dur": 1.0
          }
         ],
-        "until": "4b#guiones+2.0"
+        "until": "4b#guiones+0.1"
        },
        {
         "id": "p1",
@@ -7956,13 +7970,13 @@
           "dur": 1.1
          },
          {
-          "at": "4b#guiones+1.6",
+          "at": "4b#guiones-1.0",
           "x": 750,
           "y": 232,
           "dur": 1.0
          }
         ],
-        "until": "4b#guiones+2.0"
+        "until": "4b#guiones+0.1"
        },
        {
         "id": "p2",
@@ -7983,13 +7997,13 @@
           "dur": 1.1
          },
          {
-          "at": "4b#guiones+1.6",
+          "at": "4b#guiones-1.0",
           "x": 750,
           "y": 232,
           "dur": 1.0
          }
         ],
-        "until": "4b#guiones+2.0"
+        "until": "4b#guiones+0.1"
        },
        {
         "id": "p3",
@@ -8010,13 +8024,13 @@
           "dur": 1.1
          },
          {
-          "at": "4b#guiones+1.6",
+          "at": "4b#guiones-1.0",
           "x": 750,
           "y": 232,
           "dur": 1.0
          }
         ],
-        "until": "4b#guiones+2.0"
+        "until": "4b#guiones+0.1"
        },
        {
         "id": "p4",
@@ -8037,13 +8051,13 @@
           "dur": 1.1
          },
          {
-          "at": "4b#guiones+1.6",
+          "at": "4b#guiones-1.0",
           "x": 750,
           "y": 232,
           "dur": 1.0
          }
         ],
-        "until": "4b#guiones+2.0"
+        "until": "4b#guiones+0.1"
        },
        {
         "id": "p5",
@@ -8064,13 +8078,13 @@
           "dur": 1.1
          },
          {
-          "at": "4b#guiones+1.6",
+          "at": "4b#guiones-1.0",
           "x": 750,
           "y": 232,
           "dur": 1.0
          }
         ],
-        "until": "4b#guiones+2.0"
+        "until": "4b#guiones+0.1"
        },
        {
         "id": "p6",
@@ -8091,30 +8105,48 @@
           "dur": 1.1
          },
          {
-          "at": "4b#guiones+1.6",
+          "at": "4b#guiones-1.0",
           "x": 750,
           "y": 232,
           "dur": 1.0
          }
         ],
-        "until": "4b#guiones+2.0"
+        "until": "4b#guiones+0.1"
+       },
+       {
+        "id": "dots",
+        "kind": "txt",
+        "x": 925,
+        "y": 214,
+        "w": 30,
+        "h": 24,
+        "at": "4b#troceaban+2.3",
+        "color": "muted",
+        "fs": 22,
+        "text": "...",
+        "until": "4b#guiones-0.8"
        },
        {
         "id": "prog",
-        "kind": "console",
-        "x": 500,
-        "y": 120,
-        "w": 430,
-        "h": 250,
-        "at": "4b#guiones+1.8",
+        "kind": "sheet",
+        "x": 470,
+        "y": 95,
+        "w": 460,
+        "h": 300,
+        "at": "4b#guiones-0.1",
         "color": "#9BE564",
-        "fs": 12,
-        "lh": 16,
-        "k": 14,
-        "a": 3,
-        "cols": 44,
-        "until": "4c#Otros",
-        "code": "#!/bin/sh\n# volver a montar el programa\nfor p in zzP_*; do\n  cat \"$p\" >> programa.py\ndone\nchmod +x programa.py\npython programa.py\n"
+        "lines": [
+         "# programa.py",
+         "import os, sys",
+         "def main():",
+         "    cargar()",
+         "    ejecutar()",
+         "    enviar()",
+         "main()"
+        ],
+        "fs": 22,
+        "mono": true,
+        "until": "4c#Otros"
        },
        {
         "id": "ze",
