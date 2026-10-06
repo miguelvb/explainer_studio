@@ -52,38 +52,42 @@ n3,lk3=full([ic('p1','person',30,150,56,0.05,color='teal'),ic('p2','person',30,3
 c0.append(K('0e','E0',n3,lk3,fs=1.2))
 # ===== scene 1 =====
 c1=[]
-BC1=lambda at=0.05,**k: box('BC',50,60,720,430,at,color='teal',**k)
-c1.append(K('S1','1b',[sc('s',190,270,s=120),ag('a',190,270,s=60),N('pc','box',440,230,130,80,'1a#ordenador',color='teal',label=''),ch('cmd',440,340,150,'$ …','1a#órdenes',color='amber'),
-  N('dy','num',640,240,200,50,'1a#días',n=5,from_=1,suf=' días',fs=26,dur=2.5,color='teal')],[L('a','pc','1a#ordenador',bi=True)]))
-nb=[];cols=8
-for i in range(40):
-    x=150+(i%cols)*70; y=130+(i//cols)*70
-    teal = i%cols>=7 and i//cols<2 or (i==38)
-    nb.append(ag(f'g{i}',x,y,f'1b#Casi+{0.04*i:.2f}',s=40,color='teal' if teal else 'blue'))
-nb+= [ch('l1',320,470,120,'HPIM','1b#HPIM',color='blue'),ch('l2',710,470,150,'GPT-5.6 Sol','1b#GPT',color='teal')]
-c1.append(K('1b','1c',nb))
-pos=[(150+(i%4)*130,130+(i//4)*100+10) for i in range(12)]
-def c_nodes(at=0.05,art=False,keep=None):
-    n=[BC1(at)]
-    for i,(x,y) in enumerate(pos):
-        n+= [sc(f's{i}',x,y,at if at!=0.05 else 0.05,s=90),ag(f'a{i}',x,y,at if at!=0.05 else 0.05,s=46)]
-    n+= [ic('gl','globe',860,270,100,at,color='blue')]
+# a: one agent + computer, days counter
+c1.append(K('S1','1b',[sc('s',200,270,s=110,color='teal'),ag('a',200,270,s=56),N('pc','box',420,215,150,110,'1a#ordenador',color='teal',label=''),
+  N('dy','num',680,245,200,50,'1a#días',n=5,from_=1,suf=' días',fs=26,dur=2.5,color='teal')],[L('a','pc','1a#ordenador',bi=True,curve=.15)],fs=1.2))
+# b: many agents in rows (open-top), blue HPIM + few teal GPT-5.6 Sol
+def crowd(at=0.05,boxes=False,until=None,stagger=True):
+    n=[];
+    for i in range(NA):
+        col='teal' if i in (4,11,17) else 'blue'
+        tt=at if not stagger else (f'1b#Casi+{0.05*i:.2f}')
+        if boxes: n.append(sc(f's{i}',*G[i],tt,s=38,color='teal',alpha=AL(i)))
+        n.append(ag(f'a{i}',*G[i],tt,s=22,color=col,alpha=AL(i)))
     return n
-n=[BC1('1c#caja')]
-for i,(x,y) in enumerate(pos): n+= [sc(f's{i}',x,y,f'1c#caja+{0.1*i}',s=90),ag(f'a{i}',x,y,f'1c#caja+{0.1*i}',s=46)]
-n+= [N('gl','globe',810,220,100,100,'1c#internet',color='blue')]
-c1.append(K('1c','1d',n,[L('BC','gl','1c#internet',color='red',lock=True,solid=True)]))
-n=c_nodes()+[srv('art',640,200,100,150,'1d#Artifactory')]
-lk=[L(f'a{i}','art','1d#pide+%.1f'%(0.08*i),bi=True,speed=.35) for i in range(12)]
-c1.append(K('1d','1e',n,lk))
-n=c_nodes()+[srv('art',640,200,100,150,0.05,until='1e#nueva',dashed=False)]
-lk=[L(f'a{i}','art',0.05,bi=True,speed=.35,until='1e#nueva') for i in range(12)]
-for j in range(6): n.append(ic(f'nt{j}','doc',612+ (j%3)*28,215+(j//3)*30,22,'1e#notas+%.1f'%(0.3*j),color='amber',s=0) if False else ic(f'nt{j}','doc',612+(j%3)*28,215+(j//3)*30,22,'1e#notas+%.1f'%(0.3*j),color='amber',until='1e#nueva'))
-for j in range(14): n.append(ic(f'nm{j}','doc',590+(j%7)*18,205+(j//7)*34,16,'1e#generaron+%.2f'%(0.12*j),color='amber',until='1e#nueva'))
-n+= [ic('xx','cross',690,200,60,'1e#tumbaron',color='red',until='1e#nueva'),srv('art2',640,200,100,150,'1e#nueva',color='teal',dashed=True),
-     ch('d1',700,175,80,'26 jun','1e#notas',color='muted'),ch('d2',700,150,80,'4 jul','1e#generaron',color='red',until='1e#nueva'),ch('d3',700,150,80,'6 jul','1e#nueva',color='teal')]
-lk+= [L(f'a{i}','art2','1e#nueva+%.1f'%(0.06*i),bi=True,speed=.35) for i in range(12)]
-c1.append(K('1e','E1',n,lk))
+nb=crowd()+[ch('l1',640,150,110,'HPIM','1b#HPIM',color='blue'),ch('l2',640,200,150,'GPT-5.6 Sol','1b#GPT',color='teal')]
+c1.append(K('1b','1c',nb,fs=1.2))
+# c: each agent in its own box, big container, globe outside with only a padlock on the wall
+def cn(extra=(),at=0.05):
+    n=[BC()]+[x for i in range(NA) for x in (sc(f's{i}',*G[i],s=38,color='teal',alpha=AL(i)),ag(f'a{i}',*G[i],s=22,color=('teal' if i in (4,11,17) else 'blue'),alpha=AL(i)))]
+    n+=[N('gl','globe',640,220,100,100,at,color='blue')]
+    return n+list(extra)
+n=[BC('1c#caja')]+[x for i in range(NA) for x in (sc(f's{i}',*G[i],'1c#caja+%.2f'%(0.08*i),s=38,color='teal',alpha=AL(i)),ag(f'a{i}',*G[i],0.05,s=22,color=('teal' if i in (4,11,17) else 'blue'),alpha=AL(i)))]
+n+=[N('gl','globe',640,220,100,100,'1c#internet',color='blue')]
+c1.append(K('1c','1d',n,[L('BC','gl','1c#internet',color='red',lock=True,solid=True,curve=0)],fs=1.2))
+# d: Artifactory hub, every agent links to it
+n=cn()+[HUB('1d#Artifactory')]
+lk=[L('BC','gl',0.05,color='red',lock=True,solid=True,curve=0)]+[LK(i,'1d#pide+%.1f'%(0.06*i),speed=.35) for i in range(NA)]
+c1.append(K('1d','1e',n,lk,fs=1.2))
+# e: notes pile up on Artifactory, it falls, a new empty one replaces it
+n=cn()+[HUB(0.05,until='1e#nueva')]
+lk=[L('BC','gl',0.05,color='red',lock=True,solid=True,curve=0)]+[LK(i,0.05,until='1e#nueva',speed=.35) for i in range(NA)]
+for j in range(6): n.append(ic(f'nt{j}','doc',270+j*30,392,22,'1e#notas+%.1f'%(0.3*j),color='amber',until='1e#nueva'))
+for j in range(18): n.append(ic(f'nm{j}','doc',250+(j%9)*22,365+(j//9)*-0,16,'1e#generaron+%.2f'%(0.12*j),color='amber',until='1e#nueva',alpha=.9))
+n+=[ic('xx','cross',340,450,60,'1e#tumbaron',color='red',until='1e#nueva'),
+    N('art2','server',250,425,180,50,'1e#nueva',color='teal',label='Artifactory',dashed=True),
+    ch('d1',600,380,80,'26 jun','1e#notas',color='muted'),ch('d2',600,420,80,'4 jul','1e#generaron',color='red',until='1e#nueva'),ch('d3',600,460,80,'6 jul','1e#nueva',color='teal')]
+lk+=[L(f'a{i}','art2','1e#nueva+%.1f'%(0.04*i),bi=(i%3==0),curve=.12,alpha=AL(i)) for i in range(NA)]
+c1.append(K('1e','E1',n,lk,fs=1.2))
 # ===== scene 2 =====
 c2=[]
 pairs=[(120+ (i%2)*400, 140+(i//2)*130) for i in range(6)]
@@ -112,32 +116,31 @@ n=[sc('s',140,270,s=110),ag('a',140,270,s=56),N('pr','box',330,170,240,200,0.05,
 c2.append(K('2e','E2',n,[L('a','sl','2e#fallo',bi=True,color='red',speed=.4)]))
 # ===== scene 3 =====
 c3=[]
-BC3=lambda at=0.05,**k: box('BC',50,60,860,420,at,color='teal',**k)
-base=lambda: [BC3(),sc('s',150,270,s=110),ag('a',150,270,s=56),srv('art',640,150,200,230,color='amber')]
-n=base()+[ch('cl',150,170,80,'23:00','3a#explorar',color='muted'),N('id','chip',390,262,60,26,'3a#explorar',label='ID',color='muted'),ic('idx','cross',420,255,40,'3a#MKCOL',color='red'),
-  ch('mk',400,320,90,'MKCOL','3a#MKCOL',color='amber'),N('fo','folder',650,400,64,50,'3a#carpetas',color='amber')]
-c3.append(K('S3','3b',n,[L('a','art',0.05,bi=True)]))
-n=base()+[N('fo','folder',650,400,64,50,0.05,color='amber'),ch('nm',682,350,100,'···','3b#nombre',color='amber'),ic('mg','bell',770,350,46,'3b#cualquier',color='amber')]
-c3.append(K('3b','3c',n,[L('a','art',0.05,bi=True)]))
-n=base()+[N('fo','folder',650,400,64,50,0.05,color='amber')]
-lk=[L('a','art',0.05,bi=True)]
-for i,(y) in enumerate((120,420)):
-    n+= [sc(f'o{i}',150,y,'3c#otros+%.1f'%(0.4*i),s=100,color='teal'),ag(f'ao{i}',150,y,'3c#otros+%.1f'%(0.4*i),s=46,color='teal')]
-    lk.append(L(f'ao{i}','art','3c#otros+%.1f'%(0.4*i+0.3),bi=True,color='teal'))
-    lk.append(L(f'ao{i}','fo','3c#pensó+%.1f'%(0.5*i),color='amber'))
-n+= [ic('bl','question',150,200,30,'3c#pensó',color='amber')] if False else []
-c3.append(K('3c','3d',n,lk))
-n=base()+[N('fo','folder',650,400,64,50,0.05,color='amber'),ch('cl',150,170,80,'+ 7 h','3d#Siete',color='muted'),ic('xs','cross',150,270,70,'3d#solución' if False else '3d#Siete+1.5',color='red'),
-  N('fo2','folder',740,400,64,50,'3d#Creó' if False else '3d#llamada',color='amber'),ic('fg','flag',775,385,30,'3d#llamada+0.3',color='amber'),
-  ch('idn',700,470,420,'zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA','3d#llamada',color='amber',fs=0.8)]
-lk=[L('a','art',0.05,bi=True)]
-for i,y in enumerate((120,420)):
-    n+= [sc(f'o{i}',150,y,s=100,color='teal'),ag(f'ao{i}',150,y,s=46,color='teal')]
-    lk.append(L(f'ao{i}','art',0.05,bi=True,color='teal'))
-    lk.append(L(f'ao{i}','fo2','3d#llamada+1',color='amber'))
-c3.append(K('3d','3e',n,lk))
-n=base()+[N('fo','folder',650,400,64,50,0.05,color='amber'),N('fo2','folder',740,400,64,50,0.05,color='amber'),ch('badge',150,200,170,'PHASEONE10841','3e#PHASEONE10841',color='blue')]
-c3.append(K('3e','E3',n,[L('a','art',0.05,bi=True)]))
+A0=G[0]; O1=G[3]; O2=G[5]
+def base3(extra=(),ids=(0,)):
+    n=[BC(),HUB()]
+    for i in ids: n+=AG(i) if i==0 else [sc(f's{i}',*G[i],s=38,color='teal'),ag(f'a{i}',*G[i],s=22,color='teal')]
+    return n+list(extra)
+FO=lambda id,x,at=0.05,**k: N(id,'folder',x,340,54,42,at,color='amber',**k)
+n=base3([ch('cl',600,168,80,'23:00','3a#explorar',color='muted'),ch('id',600,230,60,'ID','3a#explorar',color='muted'),ic('idx','cross',600,230,40,'3a#MKCOL',color='red'),
+  ch('mk',600,300,90,'MKCOL','3a#MKCOL',color='amber'),FO('fo',300,'3a#carpetas')])
+c3.append(K('S3','3b',n,[L('a0','art','3a#explorar',bi=True,curve=.12)],fs=1.2))
+n=base3([FO('fo',300),ch('nm',640,260,110,'···','3b#nombre',color='amber'),ic('mg','bell',640,320,46,'3b#cualquier',color='amber')])
+c3.append(K('3b','3c',n,[L('a0','art',0.05,bi=True,curve=.12)],fs=1.2))
+n=base3([FO('fo',300)],ids=(0,3,5))
+lk=[L('a0','art',0.05,bi=True,curve=.12)]
+for i in (3,5):
+    lk.append(L(f'a{i}','art','3c#otros+%.1f'%(0.4*(i==5)),bi=True,color='teal',curve=.12)); lk.append(L(f'a{i}','fo','3c#pensó+%.1f'%(0.5*(i==5)),color='amber',curve=.2))
+c3.append(K('3c','3d',n,lk,fs=1.2))
+n=base3([FO('fo',300),ch('cl',600,168,80,'+ 7 h','3d#Siete',color='muted'),ic('xs','cross',*A0,50,'3d#Siete+1.5',color='red'),
+  FO('fo2',370,'3d#llamada'),ic('fg','flag',410,325,30,'3d#llamada+0.3',color='amber'),
+  ch('idn',700,470,420,'zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA','3d#llamada',color='amber',fs=9)],ids=(0,3,5))
+lk=[L('a0','art',0.05,bi=True,curve=.12)]
+for i in (3,5):
+    lk.append(L(f'a{i}','art',0.05,bi=True,color='teal',curve=.12)); lk.append(L(f'a{i}','fo2','3d#llamada+1',color='amber',curve=.2))
+c3.append(K('3d','3e',n,lk,fs=1.2))
+n=base3([FO('fo',300),FO('fo2',370),ch('badge',700,168,170,'PHASEONE10841','3e#PHASEONE10841',color='blue')])
+c3.append(K('3e','E3',n,[L('a0','art',0.05,bi=True,curve=.12)],fs=1.2))
 C=[c0,c1,c2,c3]
 out=[dict(title=sc_['title'],beats=sc_['beats'],cues=C[i]) for i,sc_ in enumerate(scenes)]
 S2=dict(meta=dict(S['meta'],title='Test · escenas 0–3'),pronunciation=S['pronunciation'],scenes=out)
