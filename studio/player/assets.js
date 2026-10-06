@@ -705,10 +705,35 @@ A.world=(h,p,C)=>{
  upd.pos=id=>{const n=byId[id];if(!n)return[50,50];const [x,y]=ctr(n);return[x/9.6,y/5.4]};
  return upd};
 
+
+/* ---------- cinematic background: one subtle layer under every cue (meta.background: haze | dust | stars | grid) ---------- */
+const BG=(()=>{let el=null,cfg=null,parts=[],blobs=[],gl=null,vig=null,rnd;
+ const mul=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+ const ip=(P,t)=>{if(!P||!P.length)return 0;if(t<=P[0][0])return P[0][1];for(let i=1;i<P.length;i++)if(t<=P[i][0]){const u=(t-P[i-1][0])/Math.max(1e-6,P[i][0]-P[i-1][0]);return P[i-1][1]+(P[i][1]-P[i-1][1])*u}return P[P.length-1][1]};
+ const mixc=(a,b,u)=>a.map((v,i)=>Math.round(v+(b[i]-v)*u));const C={bl:[124,151,255],tl:[63,216,194],vi:[150,110,255],rd:[255,90,80],am:[255,160,70]};
+ return{
+  init(stage,c){cfg=c;el=null;parts=[];blobs=[];if(!c||!c.style||c.style==='none'){stage.classList.remove('cine');return}
+   stage.classList.add('cine');rnd=mul(7);const st=c.style;let s='<defs>';
+   ['A','B','C'].forEach(k=>s+=`<radialGradient id="bg${k}"><stop class="gs${k}" offset="0" stop-color="#7C97FF" stop-opacity="1"/><stop class="gs${k}" offset=".45" stop-color="#7C97FF" stop-opacity=".32"/><stop class="gs${k}" offset="1" stop-color="#7C97FF" stop-opacity="0"/></radialGradient>`);
+   s+='</defs>';
+   if(st==='haze'||st==='dust'||st==='stars'||st==='grid')for(let i=0;i<3;i++)s+=`<circle class="bb" data-i="${i}" r="${st==='haze'?300:st==='stars'?260:220}" fill="url(#bg${'ABC'[i]})" opacity="0"/>`;
+   if(st==='dust'){for(let i=0;i<70;i++){const z=.3+rnd()*.7;parts.push({x:rnd()*960,y:rnd()*540,z,r:.5+z*1.6,ph:rnd()*6.28,sp:.4+rnd()});s+=`<circle class="pp" r="${(.5+z*1.5).toFixed(2)}" fill="#cfe0ff" opacity="0"/>`}}
+   if(st==='stars'){for(let i=0;i<130;i++){const z=rnd();parts.push({x:rnd()*960,y:rnd()*540,z,ph:rnd()*6.28,sp:.6+rnd()*1.6});s+=`<circle class="pp" r="${(.4+z*1.1).toFixed(2)}" fill="#e6efff" opacity="0"/>`}}
+   if(st==='grid'){s+=`<g class="gd" stroke="#7C97FF" fill="none" stroke-width="1"></g><rect x="0" y="0" width="960" height="540" fill="url(#bgA)" opacity="0" class="hz"/>`}
+   el=document.createElement('div');el.id='cine';el.innerHTML=`<svg viewBox="0 0 960 540" preserveAspectRatio="none">${s}</svg>`;stage.prepend(el);
+   vig=document.createElement('div');vig.id='cinev';vig.className=c.grain?'grain':'';stage.append(vig);
+   blobs=[...el.querySelectorAll('.bb')];parts.forEach((p,i)=>p.e=el.querySelectorAll('.pp')[i]);gl=el.querySelector('.gd')},
+  upd(t){if(!el||!cfg)return;t=Math.floor(t*12)/12;const I=ip(cfg.keys,t),T=ip(cfg.mk,t),st=cfg.style,k=[C.bl,C.tl,C.vi];
+   const base=[mixc(C.bl,C.rd,T),mixc(C.vi,C.am,T*.8),mixc(C.tl,C.rd,T*.6)];
+   blobs.forEach((b,i)=>{const a=t*(.018+.007*i)+i*2.1,x=480+Math.cos(a)*(250+60*i)*(i===1?-1:1),y=270+Math.sin(a*1.3)*(110+30*i);b.setAttribute('cx',x.toFixed(1));b.setAttribute('cy',y.toFixed(1));el.querySelectorAll('.gs'+'ABC'[i]).forEach(q=>q.setAttribute('stop-color',`rgb(${base[i].join(',')})`));b.setAttribute('opacity',((st==='haze'?.2:st==='stars'?.16:.11)*(.55+.6*I+.4*T)).toFixed(3))});
+   if(st==='dust')parts.forEach(p=>{const sp=(.5+.9*I+.5*T)*p.sp*p.z,x=((p.x+t*3.2*sp+Math.sin(t*.2+p.ph)*10)%980+980)%980-10,y=((p.y-t*5.5*sp)%560+560)%560-10;p.e.setAttribute('cx',x.toFixed(1));p.e.setAttribute('cy',y.toFixed(1));p.e.setAttribute('opacity',((.12+.32*p.z)*(.6+.4*Math.sin(t*p.sp+p.ph))*(.6+.5*I)).toFixed(3))});
+   if(st==='stars')parts.forEach(p=>{const a=t*.004*(.3+p.z),dx=p.x-480,dy=p.y-270,x=480+dx*Math.cos(a)-dy*Math.sin(a),y=270+dx*Math.sin(a)+dy*Math.cos(a);p.e.setAttribute('cx',x.toFixed(1));p.e.setAttribute('cy',y.toFixed(1));p.e.setAttribute('opacity',((.2+.55*p.z)*(.55+.45*Math.sin(t*p.sp+p.ph))*(.7+.4*I)).toFixed(3))});
+   if(st==='grid'){let g='';const hy=250,sc=(t*(10+30*I))%1,col=`rgb(${mixc(C.bl,C.rd,T).join(',')})`;gl.setAttribute('stroke',col);for(let i=-14;i<=14;i++){g+=`<line x1="${480+i*32}" y1="${hy}" x2="${480+i*190}" y2="540" stroke-opacity="${(.16*(1-Math.abs(i)/16)).toFixed(3)}"/>`}for(let j=0;j<12;j++){const u=((j+sc)/12),y=hy+(540-hy)*u*u;g+=`<line x1="0" y1="${y.toFixed(1)}" x2="960" y2="${y.toFixed(1)}" stroke-opacity="${(.03+.2*u*u).toFixed(3)}"/>`}gl.innerHTML=g;const h=el.querySelector('.hz');h.setAttribute('opacity',(.12*(.5+I)).toFixed(3))}}}})();
+
 /* ---------- driver ---------- */
 window.CUES=[];
 window.setup=(sched,cues)=>{
- const stage=document.getElementById('stage');stage.innerHTML='';window.CUES=[];
+ const stage=document.getElementById('stage');stage.innerHTML='';window.CUES=[];BG.init(stage,window.BGCFG);
  const wpos=(r,w)=>{const tx=r.txt||'';const re=new RegExp('(^|[^A-Za-z0-9])'+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z0-9])','i');const m=re.exec(tx);if(!m)throw new Error('word not found: '+w+' in '+tx.slice(0,50));const i=m.index+m[1].length;const wt=ch=>'.?!'.includes(ch)?7:',;:—'.includes(ch)?3.5:1;let a=0,b=0;for(let k=0;k<tx.length;k++){const x=wt(tx[k]);if(k<i)a+=x;b+=x}return r.s+(r.e-r.s)*(a/b)};
  const abs=spec=>{if(typeof spec==='number')return spec;const m=/^(>?)([SE]?\d+[a-z]?)(?:#(.+?))?([+-]\d+(?:\.\d+)?)?$/.exec(spec);if(!m)throw new Error('bad time '+spec);const r=sched[m[2]];if(r==null)throw new Error('unknown anchor '+spec);const base=m[3]?wpos(r,m[3].replace(/_/g,' ')):(m[1]?r.e:r.s);return base+(m[4]?parseFloat(m[4]):0)};
  cues.forEach((c,idx)=>{
@@ -729,7 +754,7 @@ window.setup=(sched,cues)=>{
   if(c.cam&&c.cam.length){cam=c.cam.map(k=>({t:abs(k.at)+(c.off||0),x:k.x,y:k.y,to:k.to,z:k.z??1,rx:k.rx??0,ry:k.ry??0,rot:k.rot??0,blur:k.blur??0,dur:k.dur}));el.style.perspective='1800px';st.style.overflow='visible'}
   window.CUES.push({el,st,cam,upd,start,end,fi:c.fade?.[0]??.5,fo:c.fade?.[1]??.5,id:c.id||c.a+idx})
  })};
-window.frame=t=>{for(const q of window.CUES){
+window.frame=t=>{BG.upd(t);for(const q of window.CUES){
   if(t<q.start-.001||t>q.end+.001){q.el.style.opacity=0;q.el.style.visibility='hidden';continue}
   q.el.style.visibility='visible';const lt=t-q.start;
   q.el.style.opacity=Math.min(q.fi>0?clamp(lt/q.fi):1,q.fo>0?clamp((q.end-t)/q.fo):1);

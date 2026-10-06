@@ -37,7 +37,7 @@ async def _page(b, url, D, W):
 def _scene_hash(root, D, n, w, fps, limit, preset, crf):
     import hashlib, glob as _g
     S = D['sched']; t0, t1 = S[f'S{n}']['s'], S[f'E{n}']['s']; h = hashlib.sha1()
-    h.update(json.dumps([t0, t1, w, fps, limit, preset, crf, D.get('fps')], sort_keys=True).encode())
+    h.update(json.dumps([t0, t1, w, fps, limit, preset, crf, D.get('fps'), D.get('bg')], sort_keys=True).encode())
     from .spec import cue_times
     def ov(c):
         try: cs, ce = cue_times(c, S); return ce > t0 - .5 and cs < t1 + .5
@@ -62,7 +62,7 @@ def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, scenes=None, dr
         out = f'{b}/video/scene_{n}.mp4'; hf = out + '.hash'; hh = _scene_hash(root, D, n, w, fps, limit, preset, crf)
         if not force and os.path.exists(out) and os.path.exists(hf) and open(hf).read() == hh: return n, -1
         pg, errs = await _page(br, url, D, w)
-        await pg.evaluate('(d)=>setup(d.sched,d.cues)', D)
+        await pg.evaluate('(d)=>{window.BGCFG=d.bg;setup(d.sched,d.cues)}', D)
         ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', str(fps), '-c:v', 'mjpeg', '-i', '-',
                                '-c:v', 'libx264', '-preset', preset, '-crf', str(crf), '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
         last, img, reused = None, b'', 0
@@ -108,7 +108,7 @@ def preview(root, scene=None, step=6.0, w=640, times=None, log=print):
     async def main():
         async with async_playwright() as p:
             br = await _launch(p); pg, errs = await _page(br, url, D, w)
-            await pg.evaluate('(d)=>setup(d.sched,d.cues)', D)
+            await pg.evaluate('(d)=>{window.BGCFG=d.bg;setup(d.sched,d.cues)}', D)
             for t in times:
                 await pg.evaluate(f'frame({t})'); await pg.screenshot(path=f'{b}/preview/{t:08.2f}.png')
             await br.close(); return errs
@@ -159,7 +159,7 @@ def blanks(root, step=1.0, thresh=2.0):
         out = []
         async with async_playwright() as p:
             br = await _launch(p); pg, _ = await _page(br, url, D, 320)
-            await pg.evaluate('(d)=>setup(d.sched,d.cues)', D)
+            await pg.evaluate('(d)=>{window.BGCFG=d.bg;setup(d.sched,d.cues)}', D)
             t = 0.5
             while t < D['total'] - .3:
                 await pg.evaluate(f'frame({t})')

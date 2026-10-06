@@ -14,9 +14,8 @@ hz = lambda m: 440.0 * 2 ** ((np.asarray(m, dtype=np.float64) - 69) / 12)
 
 
 # ------------------------------------------------------------------ curves
-def curves(root, D=None):
-    D = D or json.load(open(f'{root}/build/data.json')); st = json.load(open(f'{root}/story.json'))
-    S = D['sched']; N = len(st['scenes']); total = D['total'] + 2
+def curve_data(st, S, total):
+    N = len(st['scenes'])
     ints = [sc.get('intensity') for sc in st['scenes']]
     arc = [.3 + .7 * (1 - abs(i / max(1, N - 1) - .7) / .7) if i / max(1, N - 1) <= .7 else 1 - (i / max(1, N - 1) - .7) / .3 * .6 for i in range(N)]
     ints = [x if x is not None else arc[i] for i, x in enumerate(ints)]
@@ -24,6 +23,12 @@ def curves(root, D=None):
     keys = [(0, ints[0] * .8)] + [(S[f'S{i}']['s'] + 2, ints[i]) for i in range(N)] + [(total, 0)]
     mk = [(0, mood[0])] + [p for i in range(1, N) for p in ((S[f'S{i}']['s'], mood[i - 1]), (S[f'S{i}']['s'] + 3, mood[i]))] + [(total, mood[-1])]
     bounds = [(S[f'S{i}']['s'], ints[i], mood[i]) for i in range(N)]
+    return keys, mk, bounds
+
+
+def curves(root, D=None):
+    D = D or json.load(open(f'{root}/build/data.json')); st = json.load(open(f'{root}/story.json'))
+    total = D['total'] + 2; keys, mk, bounds = curve_data(st, D['sched'], total)
     return dict(total=total, keys=keys, mk=mk, bounds=bounds, meta=st['meta'])
 
 

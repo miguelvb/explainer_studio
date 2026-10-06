@@ -89,7 +89,9 @@ Escenas → `beats` (frases de voz, ids automáticos `3a`, `3b`…) y `cues` (qu
 
 **Frases**: pueden ser texto o `{text, pause}`; `pause` añade segundos de silencio detrás de la frase.
 
-**`meta`** (por película): `title`, `lang`, `provider`, `el_voice`, `el_model`, `el_speed`, `el_pronunciation` (tabla de pronunciación), `pre`/`post`/`gap` (silencios), `lead` (silencio antes de la primera frase), `fadein` (entrada de la música, s), `fadeout` (salida), `mark` (logo vectorizado), `typing_sound` (sonido de teclas; apagado en nuestras películas).
+**`meta`** (por película): `title`, `lang`, `provider`, `el_voice`, `el_model`, `el_speed`, `el_pronunciation` (tabla de pronunciación), `pre`/`post`/`gap` (silencios), `lead` (silencio antes de la primera frase), `fadein` (entrada de la música, s), `fadeout` (salida), `mark` (logo vectorizado), `typing_sound` (sonido de teclas; apagado en nuestras películas), `music_style` (`pad` · `pulse` · `cinema` · `bells` · `data`), `music_db` (por defecto −9), `duck_ratio`/`duck_threshold` (bajada de la música bajo la voz; por defecto 2,5 / 0,04), `ambience` (nivel del ambiente, 0 = nada), `sfx` / `sfx_db` (efectos de sonido sacados de los cues), `background` (`haze` · `dust` · `stars` · `grid` · `none`) y `grain`.
+
+**Sonido** (`studio/sound.py`): todo sintetizado, sin descargas ni licencias. La música sigue dos curvas: `intensity` (0–1, por escena) y `mood: "tense"`. Los efectos salen de los nodos de cada cue (agente que aparece, bandera, llave, tachado, apagón…) y se mezclan después del ducking.
 
 ---
 
