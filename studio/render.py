@@ -27,7 +27,7 @@ async def _page(b, url, D, W):
     return pg, errs
 
 
-def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, log=print):
+def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, scenes=None, log=print):
     b, D, url = _paths(root); S = D['sched']; N = D['scenes']
     os.makedirs(f'{b}/video', exist_ok=True)
 
@@ -47,15 +47,20 @@ def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, log=print):
         return n, f1 - f0
 
     async def main():
-        scenes = [scene] if scene is not None else list(range(N)); t = time.time(); sem = asyncio.Semaphore(workers)
+        scenes_ = list(scenes) if scenes is not None else ([scene] if scene is not None else list(range(N))); t = time.time(); sem = asyncio.Semaphore(workers)
         async with async_playwright() as p:
             br = await _launch(p)
             async def go(n):
                 async with sem:
                     r = await one(br, n); log(f'scene {r[0]} done: {r[1]} frames, {time.time() - t:.0f}s'); return r
-            await asyncio.gather(*[go(n) for n in scenes]); await br.close()
+            await asyncio.gather(*[go(n) for n in scenes_]); await br.close()
     asyncio.run(main())
-    if scene is None:
+    if scenes is not None:
+        with open(f'{b}/video/list_range.txt', 'w') as f:
+            for n in scenes: f.write(f"file 'scene_{n}.mp4'\n")
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', f'{b}/video/list_range.txt', '-c', 'copy', f'{b}/video_range.mp4'], check=True)
+        log(f'wrote {b}/video_range.mp4')
+    elif scene is None:
         with open(f'{b}/video/list.txt', 'w') as f:
             for n in range(N): f.write(f"file 'scene_{n}.mp4'\n")
         subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', f'{b}/video/list.txt', '-c', 'copy', f'{b}/video_silent.mp4'], check=True)

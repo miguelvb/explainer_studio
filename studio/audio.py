@@ -81,11 +81,11 @@ def music(root, out=None):
     return out
 
 
-def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_db=-14, video=None, scene=None, log=print):
+def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_db=-14, video=None, scenes=None, log=print):
     b = f'{root}/build'; D = json.load(open(f'{b}/data.json')); S = D['sched']; beats = json.load(open(f'{b}/beats.json'))
     t0, tot = 0.0, D['total']
-    if scene is not None: t0, tot = S[f'S{scene}']['s'], S[f'E{scene}']['s'] - S[f'S{scene}']['s']; beats = [x for x in beats if t0 - .01 <= S[x['id']]['s'] < t0 + tot]
-    video = video or (f'{b}/video/scene_{scene}.mp4' if scene is not None else f'{b}/video_silent.mp4'); out = out or (f'{b}/final_scene_{scene}.mp4' if scene is not None else f'{b}/final.mp4'); ad = os.path.join(root, audio_dir)
+    if scenes is not None: t0, tot = S[f'S{scenes[0]}']['s'], S[f'E{scenes[-1]}']['s'] - S[f'S{scenes[0]}']['s']; beats = [x for x in beats if t0 - .01 <= S[x['id']]['s'] < t0 + tot]
+    video = video or (f'{b}/video_range.mp4' if scenes is not None else f'{b}/video_silent.mp4'); out = out or (f'{b}/final_scenes_{scenes[0]}-{scenes[-1]}.mp4' if scenes is not None else f'{b}/final.mp4'); ad = os.path.join(root, audio_dir)
     files = [] if music_only else [(x['id'], f"{ad}/beats/{x['id']}.mp3") for x in beats if os.path.exists(f"{ad}/beats/{x['id']}.mp3")]
     if not music_only and len(files) < len(beats): log(f'warning: {len(files)}/{len(beats)} narration files found')
     cmd = ['ffmpeg', '-y', '-loglevel', 'error', '-i', video, '-ss', f'{t0:.2f}', '-i', f'{b}/music.wav']
