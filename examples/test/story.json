@@ -93,53 +93,57 @@
      "p": {
       "nodes": [
        {
-        "id": "BC",
-        "kind": "sandbox",
-        "x": 120,
-        "y": 100,
-        "w": 390,
-        "h": 340,
-        "at": 0.05,
-        "color": "teal"
-       },
-       {
         "id": "s0",
         "kind": "sandbox",
-        "x": 256,
-        "y": 122,
-        "w": 46,
-        "h": 46,
+        "x": 207,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a0",
         "kind": "agent",
-        "x": 266,
-        "y": 132,
-        "w": 26,
-        "h": 26,
+        "x": 215,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
+        "id": "BC",
+        "kind": "sandbox",
+        "x": 200,
+        "y": 60,
+        "w": 280,
+        "h": 430,
+        "at": "0b#encerrada",
+        "color": "red",
+        "open": true,
+        "label": ""
+       },
+       {
         "id": "art",
         "kind": "server",
-        "x": 355,
-        "y": 238,
-        "w": 90,
-        "h": 64,
-        "at": "0a#mensaje",
-        "color": "amber"
+        "x": 250,
+        "y": 425,
+        "w": 180,
+        "h": 50,
+        "at": "0b#encerrada+0.4",
+        "color": "amber",
+        "label": "Artifactory"
        }
       ],
       "links": [
        {
         "a": "a0",
         "b": "art",
-        "at": "0a#mensaje",
+        "at": "0b#encerrada+1",
         "color": "blue",
-        "bi": true
+        "bi": true,
+        "curve": 0.12
        }
       ],
       "fs": 1.2
@@ -148,6 +152,25 @@
      "fade": [
       0.5,
       0.5
+     ],
+     "cam": [
+      {
+       "at": "S0",
+       "to": "a0",
+       "z": 3.2
+      },
+      {
+       "at": "0b#encerrada+0.3",
+       "to": "a0",
+       "z": 3.2
+      },
+      {
+       "at": "0b#encerrada+2.2",
+       "x": 50,
+       "y": 50,
+       "z": 1,
+       "dur": 1.9
+      }
      ]
     },
     {
@@ -159,32 +182,35 @@
        {
         "id": "BC",
         "kind": "sandbox",
-        "x": 120,
-        "y": 100,
-        "w": 390,
-        "h": 340,
+        "x": 200,
+        "y": 60,
+        "w": 280,
+        "h": 430,
         "at": 0.05,
-        "color": "teal",
+        "color": "red",
+        "open": true,
+        "label": "",
         "until": "0d"
        },
        {
         "id": "art",
         "kind": "server",
-        "x": 355,
-        "y": 238,
-        "w": 90,
-        "h": 64,
+        "x": 250,
+        "y": 425,
+        "w": 180,
+        "h": 50,
         "at": 0.05,
         "color": "amber",
+        "label": "Artifactory",
         "until": "0d"
        },
        {
         "id": "s0",
         "kind": "sandbox",
-        "x": 256,
-        "y": 122,
-        "w": 46,
-        "h": 46,
+        "x": 207,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal",
         "until": "0d"
@@ -192,10 +218,10 @@
        {
         "id": "a0",
         "kind": "agent",
-        "x": 266,
-        "y": 132,
-        "w": 26,
-        "h": 26,
+        "x": 215,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue",
         "until": "0d"
@@ -203,10 +229,10 @@
        {
         "id": "s1",
         "kind": "sandbox",
-        "x": 212,
-        "y": 151,
-        "w": 46,
-        "h": 46,
+        "x": 251,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+0.0",
         "color": "teal",
         "until": "0d"
@@ -214,10 +240,10 @@
        {
         "id": "a1",
         "kind": "agent",
-        "x": 222,
-        "y": 161,
-        "w": 26,
-        "h": 26,
+        "x": 259,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+0.0",
         "color": "blue",
         "until": "0d"
@@ -225,10 +251,10 @@
        {
         "id": "s2",
         "kind": "sandbox",
-        "x": 182,
-        "y": 195,
-        "w": 46,
-        "h": 46,
+        "x": 295,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+0.9",
         "color": "teal",
         "until": "0d"
@@ -236,10 +262,10 @@
        {
         "id": "a2",
         "kind": "agent",
-        "x": 192,
-        "y": 205,
-        "w": 26,
-        "h": 26,
+        "x": 303,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+0.9",
         "color": "blue",
         "until": "0d"
@@ -247,10 +273,10 @@
        {
         "id": "s3",
         "kind": "sandbox",
-        "x": 172,
-        "y": 247,
-        "w": 46,
-        "h": 46,
+        "x": 339,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+1.7",
         "color": "teal",
         "until": "0d"
@@ -258,10 +284,10 @@
        {
         "id": "a3",
         "kind": "agent",
-        "x": 182,
-        "y": 257,
-        "w": 26,
-        "h": 26,
+        "x": 347,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+1.7",
         "color": "blue",
         "until": "0d"
@@ -269,10 +295,10 @@
        {
         "id": "s4",
         "kind": "sandbox",
-        "x": 182,
-        "y": 299,
-        "w": 46,
-        "h": 46,
+        "x": 383,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+2.4",
         "color": "teal",
         "until": "0d"
@@ -280,10 +306,10 @@
        {
         "id": "a4",
         "kind": "agent",
-        "x": 192,
-        "y": 309,
-        "w": 26,
-        "h": 26,
+        "x": 391,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+2.4",
         "color": "blue",
         "until": "0d"
@@ -291,10 +317,10 @@
        {
         "id": "s5",
         "kind": "sandbox",
-        "x": 212,
-        "y": 343,
-        "w": 46,
-        "h": 46,
+        "x": 427,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+3.0",
         "color": "teal",
         "until": "0d"
@@ -302,10 +328,10 @@
        {
         "id": "a5",
         "kind": "agent",
-        "x": 222,
-        "y": 353,
-        "w": 26,
-        "h": 26,
+        "x": 435,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+3.0",
         "color": "blue",
         "until": "0d"
@@ -313,10 +339,10 @@
        {
         "id": "s6",
         "kind": "sandbox",
-        "x": 256,
-        "y": 372,
-        "w": 46,
-        "h": 46,
+        "x": 207,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+3.5",
         "color": "teal",
         "until": "0d"
@@ -324,10 +350,10 @@
        {
         "id": "a6",
         "kind": "agent",
-        "x": 266,
-        "y": 382,
-        "w": 26,
-        "h": 26,
+        "x": 215,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+3.5",
         "color": "blue",
         "until": "0d"
@@ -335,10 +361,10 @@
        {
         "id": "s7",
         "kind": "sandbox",
-        "x": 291,
-        "y": 171,
-        "w": 46,
-        "h": 46,
+        "x": 251,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+3.9",
         "color": "teal",
         "until": "0d"
@@ -346,10 +372,10 @@
        {
         "id": "a7",
         "kind": "agent",
-        "x": 301,
-        "y": 181,
-        "w": 26,
-        "h": 26,
+        "x": 259,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+3.9",
         "color": "blue",
         "until": "0d"
@@ -357,10 +383,10 @@
        {
         "id": "s8",
         "kind": "sandbox",
-        "x": 254,
-        "y": 199,
-        "w": 46,
-        "h": 46,
+        "x": 295,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+4.2",
         "color": "teal",
         "until": "0d"
@@ -368,10 +394,10 @@
        {
         "id": "a8",
         "kind": "agent",
-        "x": 264,
-        "y": 209,
-        "w": 26,
-        "h": 26,
+        "x": 303,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+4.2",
         "color": "blue",
         "until": "0d"
@@ -379,10 +405,10 @@
        {
         "id": "s9",
         "kind": "sandbox",
-        "x": 240,
-        "y": 247,
-        "w": 46,
-        "h": 46,
+        "x": 339,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+4.45",
         "color": "teal",
         "until": "0d"
@@ -390,10 +416,10 @@
        {
         "id": "a9",
         "kind": "agent",
-        "x": 250,
-        "y": 257,
-        "w": 26,
-        "h": 26,
+        "x": 347,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+4.45",
         "color": "blue",
         "until": "0d"
@@ -401,10 +427,10 @@
        {
         "id": "s10",
         "kind": "sandbox",
-        "x": 254,
-        "y": 295,
-        "w": 46,
-        "h": 46,
+        "x": 383,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+4.65",
         "color": "teal",
         "until": "0d"
@@ -412,10 +438,10 @@
        {
         "id": "a10",
         "kind": "agent",
-        "x": 264,
-        "y": 305,
-        "w": 26,
-        "h": 26,
+        "x": 391,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+4.65",
         "color": "blue",
         "until": "0d"
@@ -423,10 +449,10 @@
        {
         "id": "s11",
         "kind": "sandbox",
-        "x": 291,
-        "y": 323,
-        "w": 46,
-        "h": 46,
+        "x": 427,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": "0c#respondió+4.8",
         "color": "teal",
         "until": "0d"
@@ -434,10 +460,10 @@
        {
         "id": "a11",
         "kind": "agent",
-        "x": 301,
-        "y": 333,
-        "w": 26,
-        "h": 26,
+        "x": 435,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": "0c#respondió+4.8",
         "color": "blue",
         "until": "0d"
@@ -445,10 +471,10 @@
        {
         "id": "brk",
         "kind": "cross",
-        "x": 493,
-        "y": 253,
-        "w": 34,
-        "h": 34,
+        "x": 465,
+        "y": 285,
+        "w": 30,
+        "h": 30,
         "at": "0c#atacando",
         "color": "red",
         "until": "0d"
@@ -456,10 +482,10 @@
        {
         "id": "hf",
         "kind": "victim",
-        "x": 710,
-        "y": 230,
+        "x": 700,
+        "y": 225,
         "w": 190,
-        "h": 80,
+        "h": 70,
         "at": "0c#Hugging",
         "color": "red",
         "label": "Hugging Face",
@@ -468,9 +494,9 @@
        {
         "id": "n700",
         "kind": "num",
-        "x": 600,
+        "x": 560,
         "y": 110,
-        "w": 200,
+        "w": 220,
         "h": 50,
         "at": "0c#setecientas",
         "n": 700,
@@ -487,7 +513,8 @@
         "at": 0.05,
         "color": "blue",
         "bi": true,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a1",
@@ -495,7 +522,8 @@
         "at": "0c#respondió+0.0",
         "color": "blue",
         "bi": false,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a2",
@@ -503,7 +531,8 @@
         "at": "0c#respondió+0.9",
         "color": "blue",
         "bi": false,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a3",
@@ -511,7 +540,8 @@
         "at": "0c#respondió+1.7",
         "color": "blue",
         "bi": true,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a4",
@@ -519,7 +549,8 @@
         "at": "0c#respondió+2.4",
         "color": "blue",
         "bi": false,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a5",
@@ -527,7 +558,8 @@
         "at": "0c#respondió+3.0",
         "color": "blue",
         "bi": false,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a6",
@@ -535,7 +567,8 @@
         "at": "0c#respondió+3.5",
         "color": "blue",
         "bi": true,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a7",
@@ -543,7 +576,8 @@
         "at": "0c#respondió+3.9",
         "color": "blue",
         "bi": false,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a8",
@@ -551,7 +585,8 @@
         "at": "0c#respondió+4.2",
         "color": "blue",
         "bi": false,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a9",
@@ -559,7 +594,8 @@
         "at": "0c#respondió+4.45",
         "color": "blue",
         "bi": true,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a10",
@@ -567,7 +603,8 @@
         "at": "0c#respondió+4.65",
         "color": "blue",
         "bi": false,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a11",
@@ -575,7 +612,8 @@
         "at": "0c#respondió+4.8",
         "color": "blue",
         "bi": false,
-        "until": "0d"
+        "until": "0d",
+        "curve": 0.12
        },
        {
         "a": "a1",
@@ -623,40 +661,43 @@
        {
         "id": "BC",
         "kind": "sandbox",
-        "x": 120,
-        "y": 100,
-        "w": 390,
-        "h": 340,
+        "x": 200,
+        "y": 60,
+        "w": 280,
+        "h": 430,
         "at": 0.05,
-        "color": "teal"
+        "color": "red",
+        "open": true,
+        "label": ""
        },
        {
         "id": "art",
         "kind": "server",
-        "x": 355,
-        "y": 238,
-        "w": 90,
-        "h": 64,
+        "x": 250,
+        "y": 425,
+        "w": 180,
+        "h": 50,
         "at": 0.05,
-        "color": "amber"
+        "color": "amber",
+        "label": "Artifactory"
        },
        {
         "id": "brk",
         "kind": "cross",
-        "x": 493,
-        "y": 253,
-        "w": 34,
-        "h": 34,
+        "x": 465,
+        "y": 285,
+        "w": 30,
+        "h": 30,
         "at": 0.05,
         "color": "red"
        },
        {
         "id": "hf",
         "kind": "victim",
-        "x": 710,
-        "y": 230,
+        "x": 700,
+        "y": 225,
         "w": 190,
-        "h": 80,
+        "h": 70,
         "at": 0.05,
         "color": "red",
         "label": "Hugging Face"
@@ -664,257 +705,257 @@
        {
         "id": "s0",
         "kind": "sandbox",
-        "x": 256,
-        "y": 122,
-        "w": 46,
-        "h": 46,
+        "x": 207,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a0",
         "kind": "agent",
-        "x": 266,
-        "y": 132,
-        "w": 26,
-        "h": 26,
+        "x": 215,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s1",
         "kind": "sandbox",
-        "x": 212,
-        "y": 151,
-        "w": 46,
-        "h": 46,
+        "x": 251,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a1",
         "kind": "agent",
-        "x": 222,
-        "y": 161,
-        "w": 26,
-        "h": 26,
+        "x": 259,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s2",
         "kind": "sandbox",
-        "x": 182,
-        "y": 195,
-        "w": 46,
-        "h": 46,
+        "x": 295,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a2",
         "kind": "agent",
-        "x": 192,
-        "y": 205,
-        "w": 26,
-        "h": 26,
+        "x": 303,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s3",
         "kind": "sandbox",
-        "x": 172,
-        "y": 247,
-        "w": 46,
-        "h": 46,
+        "x": 339,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a3",
         "kind": "agent",
-        "x": 182,
-        "y": 257,
-        "w": 26,
-        "h": 26,
+        "x": 347,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s4",
         "kind": "sandbox",
-        "x": 182,
-        "y": 299,
-        "w": 46,
-        "h": 46,
+        "x": 383,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a4",
         "kind": "agent",
-        "x": 192,
-        "y": 309,
-        "w": 26,
-        "h": 26,
+        "x": 391,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s5",
         "kind": "sandbox",
-        "x": 212,
-        "y": 343,
-        "w": 46,
-        "h": 46,
+        "x": 427,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a5",
         "kind": "agent",
-        "x": 222,
-        "y": 353,
-        "w": 26,
-        "h": 26,
+        "x": 435,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s6",
         "kind": "sandbox",
-        "x": 256,
-        "y": 372,
-        "w": 46,
-        "h": 46,
+        "x": 207,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a6",
         "kind": "agent",
-        "x": 266,
-        "y": 382,
-        "w": 26,
-        "h": 26,
+        "x": 215,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s7",
         "kind": "sandbox",
-        "x": 291,
-        "y": 171,
-        "w": 46,
-        "h": 46,
+        "x": 251,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a7",
         "kind": "agent",
-        "x": 301,
-        "y": 181,
-        "w": 26,
-        "h": 26,
+        "x": 259,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s8",
         "kind": "sandbox",
-        "x": 254,
-        "y": 199,
-        "w": 46,
-        "h": 46,
+        "x": 295,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a8",
         "kind": "agent",
-        "x": 264,
-        "y": 209,
-        "w": 26,
-        "h": 26,
+        "x": 303,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s9",
         "kind": "sandbox",
-        "x": 240,
-        "y": 247,
-        "w": 46,
-        "h": 46,
+        "x": 339,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a9",
         "kind": "agent",
-        "x": 250,
-        "y": 257,
-        "w": 26,
-        "h": 26,
+        "x": 347,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s10",
         "kind": "sandbox",
-        "x": 254,
-        "y": 295,
-        "w": 46,
-        "h": 46,
+        "x": 383,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a10",
         "kind": "agent",
-        "x": 264,
-        "y": 305,
-        "w": 26,
-        "h": 26,
+        "x": 391,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s11",
         "kind": "sandbox",
-        "x": 291,
-        "y": 323,
-        "w": 46,
-        "h": 46,
+        "x": 427,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a11",
         "kind": "agent",
-        "x": 301,
-        "y": 333,
-        "w": 26,
-        "h": 26,
+        "x": 435,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "p1",
         "kind": "person",
-        "x": -62,
-        "y": 138,
-        "w": 64,
-        "h": 64,
+        "x": -58,
+        "y": 142,
+        "w": 56,
+        "h": 56,
         "at": "0d#Cómo",
         "color": "teal",
         "move": [
          {
           "at": "0d#Cómo",
-          "x": 40,
-          "y": 140,
+          "x": 30,
+          "y": 150,
           "dur": 2.5
          }
         ]
@@ -922,17 +963,35 @@
        {
         "id": "p2",
         "kind": "person",
-        "x": -62,
-        "y": 328,
-        "w": 64,
-        "h": 64,
+        "x": -58,
+        "y": 272,
+        "w": 56,
+        "h": 56,
         "at": "0d#Cómo+0.4",
         "color": "blue",
         "move": [
          {
           "at": "0d#Cómo+0.4",
-          "x": 40,
-          "y": 330,
+          "x": 30,
+          "y": 310,
+          "dur": 2.5
+         }
+        ]
+       },
+       {
+        "id": "lp",
+        "kind": "lupa",
+        "x": -95,
+        "y": 195,
+        "w": 70,
+        "h": 70,
+        "at": "0d#Cómo+0.8",
+        "color": "amber",
+        "move": [
+         {
+          "at": "0d#Cómo+0.8",
+          "x": 115,
+          "y": 215,
           "dur": 2.5
          }
         ]
@@ -944,84 +1003,96 @@
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": true
+        "bi": true,
+        "curve": 0.12
        },
        {
         "a": "a1",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a2",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a3",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": true
+        "bi": true,
+        "curve": 0.12
        },
        {
         "a": "a4",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a5",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a6",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": true
+        "bi": true,
+        "curve": 0.12
        },
        {
         "a": "a7",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a8",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a9",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": true
+        "bi": true,
+        "curve": 0.12
        },
        {
         "a": "a10",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a11",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a1",
@@ -1065,40 +1136,43 @@
        {
         "id": "BC",
         "kind": "sandbox",
-        "x": 120,
-        "y": 100,
-        "w": 390,
-        "h": 340,
+        "x": 200,
+        "y": 60,
+        "w": 280,
+        "h": 430,
         "at": 0.05,
-        "color": "teal"
+        "color": "red",
+        "open": true,
+        "label": ""
        },
        {
         "id": "art",
         "kind": "server",
-        "x": 355,
-        "y": 238,
-        "w": 90,
-        "h": 64,
+        "x": 250,
+        "y": 425,
+        "w": 180,
+        "h": 50,
         "at": 0.05,
-        "color": "amber"
+        "color": "amber",
+        "label": "Artifactory"
        },
        {
         "id": "brk",
         "kind": "cross",
-        "x": 493,
-        "y": 253,
-        "w": 34,
-        "h": 34,
+        "x": 465,
+        "y": 285,
+        "w": 30,
+        "h": 30,
         "at": 0.05,
         "color": "red"
        },
        {
         "id": "hf",
         "kind": "victim",
-        "x": 710,
-        "y": 230,
+        "x": 700,
+        "y": 225,
         "w": 190,
-        "h": 80,
+        "h": 70,
         "at": 0.05,
         "color": "red",
         "label": "Hugging Face"
@@ -1106,278 +1180,278 @@
        {
         "id": "s0",
         "kind": "sandbox",
-        "x": 256,
-        "y": 122,
-        "w": 46,
-        "h": 46,
+        "x": 207,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a0",
         "kind": "agent",
-        "x": 266,
-        "y": 132,
-        "w": 26,
-        "h": 26,
+        "x": 215,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s1",
         "kind": "sandbox",
-        "x": 212,
-        "y": 151,
-        "w": 46,
-        "h": 46,
+        "x": 251,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a1",
         "kind": "agent",
-        "x": 222,
-        "y": 161,
-        "w": 26,
-        "h": 26,
+        "x": 259,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s2",
         "kind": "sandbox",
-        "x": 182,
-        "y": 195,
-        "w": 46,
-        "h": 46,
+        "x": 295,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a2",
         "kind": "agent",
-        "x": 192,
-        "y": 205,
-        "w": 26,
-        "h": 26,
+        "x": 303,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s3",
         "kind": "sandbox",
-        "x": 172,
-        "y": 247,
-        "w": 46,
-        "h": 46,
+        "x": 339,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a3",
         "kind": "agent",
-        "x": 182,
-        "y": 257,
-        "w": 26,
-        "h": 26,
+        "x": 347,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s4",
         "kind": "sandbox",
-        "x": 182,
-        "y": 299,
-        "w": 46,
-        "h": 46,
+        "x": 383,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a4",
         "kind": "agent",
-        "x": 192,
-        "y": 309,
-        "w": 26,
-        "h": 26,
+        "x": 391,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s5",
         "kind": "sandbox",
-        "x": 212,
-        "y": 343,
-        "w": 46,
-        "h": 46,
+        "x": 427,
+        "y": 99,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a5",
         "kind": "agent",
-        "x": 222,
-        "y": 353,
-        "w": 26,
-        "h": 26,
+        "x": 435,
+        "y": 107,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s6",
         "kind": "sandbox",
-        "x": 256,
-        "y": 372,
-        "w": 46,
-        "h": 46,
+        "x": 207,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a6",
         "kind": "agent",
-        "x": 266,
-        "y": 382,
-        "w": 26,
-        "h": 26,
+        "x": 215,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s7",
         "kind": "sandbox",
-        "x": 291,
-        "y": 171,
-        "w": 46,
-        "h": 46,
+        "x": 251,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a7",
         "kind": "agent",
-        "x": 301,
-        "y": 181,
-        "w": 26,
-        "h": 26,
+        "x": 259,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s8",
         "kind": "sandbox",
-        "x": 254,
-        "y": 199,
-        "w": 46,
-        "h": 46,
+        "x": 295,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a8",
         "kind": "agent",
-        "x": 264,
-        "y": 209,
-        "w": 26,
-        "h": 26,
+        "x": 303,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s9",
         "kind": "sandbox",
-        "x": 240,
-        "y": 247,
-        "w": 46,
-        "h": 46,
+        "x": 339,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a9",
         "kind": "agent",
-        "x": 250,
-        "y": 257,
-        "w": 26,
-        "h": 26,
+        "x": 347,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s10",
         "kind": "sandbox",
-        "x": 254,
-        "y": 295,
-        "w": 46,
-        "h": 46,
+        "x": 383,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a10",
         "kind": "agent",
-        "x": 264,
-        "y": 305,
-        "w": 26,
-        "h": 26,
+        "x": 391,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "s11",
         "kind": "sandbox",
-        "x": 291,
-        "y": 323,
-        "w": 46,
-        "h": 46,
+        "x": 427,
+        "y": 149,
+        "w": 38,
+        "h": 38,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "a11",
         "kind": "agent",
-        "x": 301,
-        "y": 333,
-        "w": 26,
-        "h": 26,
+        "x": 435,
+        "y": 157,
+        "w": 22,
+        "h": 22,
         "at": 0.05,
         "color": "blue"
        },
        {
         "id": "p1",
         "kind": "person",
-        "x": 40,
-        "y": 140,
-        "w": 64,
-        "h": 64,
+        "x": 2,
+        "y": 122,
+        "w": 56,
+        "h": 56,
         "at": 0.05,
         "color": "teal"
        },
        {
         "id": "p2",
         "kind": "person",
-        "x": 40,
-        "y": 330,
-        "w": 64,
-        "h": 64,
+        "x": 2,
+        "y": 282,
+        "w": 56,
+        "h": 56,
         "at": 0.05,
         "color": "blue"
        },
        {
-        "id": "ey",
-        "kind": "eye",
-        "x": 260,
-        "y": 215,
-        "w": 110,
-        "h": 110,
-        "at": "0e#leyeron",
+        "id": "lp",
+        "kind": "lupa",
+        "x": 80,
+        "y": 180,
+        "w": 70,
+        "h": 70,
+        "at": 0.05,
         "color": "amber"
        },
        {
         "id": "doc",
         "kind": "doc",
-        "x": 773,
-        "y": 403,
+        "x": 753,
+        "y": 373,
         "w": 54,
         "h": 54,
         "at": "0e#publicaron",
@@ -1387,7 +1461,7 @@
        {
         "id": "utc",
         "kind": "chip",
-        "x": 855,
+        "x": 835,
         "y": 487,
         "w": 90,
         "h": 26,
@@ -1402,84 +1476,96 @@
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": true
+        "bi": true,
+        "curve": 0.12
        },
        {
         "a": "a1",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a2",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a3",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": true
+        "bi": true,
+        "curve": 0.12
        },
        {
         "a": "a4",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a5",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a6",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": true
+        "bi": true,
+        "curve": 0.12
        },
        {
         "a": "a7",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a8",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a9",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": true
+        "bi": true,
+        "curve": 0.12
        },
        {
         "a": "a10",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a11",
         "b": "art",
         "at": 0.05,
         "color": "blue",
-        "bi": false
+        "bi": false,
+        "curve": 0.12
        },
        {
         "a": "a1",

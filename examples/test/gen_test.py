@@ -13,41 +13,41 @@ def L(a,b,at=0.05,color='blue',**k): d=dict(a=a,b=b,at=at,color=color); d.update
 def K(at,until,nodes,links=None,fs=1.5):
     return dict(a='world',at=at,until=until,p=dict(nodes=nodes,links=links or [],fs=fs),bg=True,fade=[0.5,0.5])
 # ===== scene 0 =====
-import math
-AX,AY=400,270
-BC=lambda at=0.05,**k: box('BC',120,100,390,340,at,color='teal',**k)
-def ring():
-    P=[]
-    for j in range(7): a=math.radians(-68+j*136/6); P.append((AX-70-135*math.cos(a),AY+135*math.sin(a)))
-    for j in range(5): a=math.radians(-76+j*38); P.append((AX-70-75*math.cos(a)*0.9,AY+78*math.sin(a)))
-    return P
-G=ring()
-asset=lambda color='amber',**k: srv('art',AX-45,AY-32,90,64,color=color,**k)
-HF=lambda at,**k: N('hf','victim',710,AY-40,190,80,at,color='red',label='Hugging Face',**k)
-def AG(i,at=0.05,**k): x,y=G[i]; return [sc(f's{i}',x,y,at,s=46,**k),ag(f'a{i}',x,y,at,s=26,**k)]
+def K(at,until,nodes,links=None,fs=1.5,cam=None):
+    d=dict(a='world',at=at,until=until,p=dict(nodes=nodes,links=links or [],fs=fs),bg=True,fade=[0.5,0.5])
+    if cam: d['cam']=cam
+    return d
+GX=[226+44*i for i in range(6)]
+G=[(GX[i%6],118+50*(i//6)) for i in range(12)]
+BC=lambda at=0.05,**k: box('BC',200,60,280,430,at,color='red',open=True,label='',**k)
+HUB=lambda at=0.05,**k: N('art','server',250,425,180,50,at,color='amber',label='Artifactory',**k)
+HF=lambda at,**k: N('hf','victim',700,225,190,70,at,color='red',label='Hugging Face',**k)
+def AG(i,at=0.05,**k): x,y=G[i]; return [sc(f's{i}',x,y,at,s=38,color='teal',**k),ag(f'a{i}',x,y,at,s=22,**k)]
 c0=[]
-c0.append(K('S0','0c',[BC(),*AG(0),asset(at='0a#mensaje')],[L('a0','art','0a#mensaje',bi=True)],fs=1.2))
+# a: zoom on a single agent ; b: pull back, container + hub, one link
+c0.append(K('S0','0c',[*AG(0),BC(at='0b#encerrada'),HUB(at='0b#encerrada+0.4')],[L('a0','art','0b#encerrada+1',bi=True,curve=.12)],fs=1.2,
+  cam=[dict(at='S0',to='a0',z=3.2),dict(at='0b#encerrada+0.3',to='a0',z=3.2),dict(at='0b#encerrada+2.2',x=50,y=50,z=1,dur=1.9)]))
 offs=[0.0,0.9,1.7,2.4,3.0,3.5,3.9,4.2,4.45,4.65,4.8]
-n=[BC(until='0d'),asset(until='0d')]
+n=[BC(until='0d'),HUB(until='0d')]
 lk=[]
-n+=AG(0,until='0d'); lk.append(L('a0','art',0.05,bi=True,until='0d'))
+n+=AG(0,until='0d'); lk.append(L('a0','art',0.05,bi=True,until='0d',curve=.12))
 for i in range(1,12):
     t=f'0c#respondió+{offs[i-1]}'
-    n+=AG(i,t,until='0d'); lk.append(L(f'a{i}','art',t,bi=(i%3==0),until='0d'))
-n+= [ic('brk','cross',510,AY,34,'0c#atacando',color='red',until='0d'),HF('0c#Hugging',until='0d'),
-     N('n700','num',600,110,200,50,'0c#setecientas',n=700,color='red',fs=36,dur=3,until='0d')]
+    n+=AG(i,t,until='0d'); lk.append(L(f'a{i}','art',t,bi=(i%3==0),until='0d',curve=.12))
+n+= [ic('brk','cross',480,300,30,'0c#atacando',color='red',until='0d'),HF('0c#Hugging',until='0d'),
+     N('n700','num',560,110,220,50,'0c#setecientas',n=700,color='red',fs=36,dur=3,until='0d')]
 for i in (1,4,7,10): lk.append(L(f'a{i}','hf','0c#atacando+%.1f'%(0.2*i),color='red',until='0d'))
 c0.append(K('0c','0d',n,lk,fs=1.2))
 def full(extra=()):
-    n=[BC(),asset(),ic('brk','cross',510,AY,34,0.05,color='red'),HF(0.05)]; lk=[]
-    for i in range(12): n+=AG(i); lk.append(L(f'a{i}','art',0.05,bi=(i%3==0)))
+    n=[BC(),HUB(),ic('brk','cross',480,300,30,0.05,color='red'),HF(0.05)]; lk=[]
+    for i in range(12): n+=AG(i); lk.append(L(f'a{i}','art',0.05,bi=(i%3==0),curve=.12))
     for i in (1,4,7,10): lk.append(L(f'a{i}','hf',0.05,color='red'))
     return n+list(extra),lk
-n2,lk2=full([ic('p1','person',-30,170,64,'0d#Cómo',color='teal',move=[dict(at='0d#Cómo',x=40,y=140,dur=2.5)]),ic('p2','person',-30,360,64,'0d#Cómo+0.4',color='blue',move=[dict(at='0d#Cómo+0.4',x=40,y=330,dur=2.5)])])
+n2,lk2=full([ic('p1','person',-30,170,56,'0d#Cómo',color='teal',move=[dict(at='0d#Cómo',x=30,y=150,dur=2.5)]),ic('p2','person',-30,300,56,'0d#Cómo+0.4',color='blue',move=[dict(at='0d#Cómo+0.4',x=30,y=310,dur=2.5)]),
+  ic('lp','lupa',-60,230,70,'0d#Cómo+0.8',color='amber',move=[dict(at='0d#Cómo+0.8',x=115,y=215,dur=2.5)])])
 c0.append(K('0d','0e',n2,lk2,fs=1.2))
-n3,lk3=full([ic('p1','person',72,172,64,0.05,color='teal'),ic('p2','person',72,362,64,0.05,color='blue'),
-      ic('ey','eye',315,270,110,'0e#leyeron',color='amber'),
-      ic('doc','doc',800,430,54,'0e#publicaron',color='blue',tag='26 ago'),ch('utc',900,500,90,'UTC','0e#UTC',color='muted')])
+n3,lk3=full([ic('p1','person',30,150,56,0.05,color='teal'),ic('p2','person',30,310,56,0.05,color='blue'),ic('lp','lupa',115,215,70,0.05,color='amber'),
+      ic('doc','doc',780,400,54,'0e#publicaron',color='blue',tag='26 ago'),ch('utc',880,500,90,'UTC','0e#UTC',color='muted')])
 c0.append(K('0e','E0',n3,lk3,fs=1.2))
 # ===== scene 1 =====
 c1=[]
