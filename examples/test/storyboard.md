@@ -1,27 +1,22 @@
 # Script + escenas (0–3) — pendiente de aprobación
 Regla: se ilustra lo que pasa con iconos y objetos sencillos (el agente es el icono de OpenAI); nunca pantallas con el texto de la voz.
 
-## Escena 0 · Gancho
+## Escena 0 · Gancho (revisada)
 
-**a. Voz:** La noche del ocho de julio de 2026, una inteligencia artificial escribió un mensaje pidiendo ayuda: «Mi fallo no tiene consumidor. Busco ideas.»
+**a.** Voz: La noche del ocho de julio de 2026, una inteligencia artificial escribió un mensaje pidiendo ayuda: «Mi fallo no tiene consumidor. Busco ideas.»
+**En pantalla:** un agente dentro de su contenedor. Un enlace activo lo une a un asset (el que luego será Artifactory); por el enlace va y viene una bolita. Sin fecha, sin sobre.
 
-**En pantalla:** Un agente dentro de una caja; de la caja sale un sobre que queda flotando en la oscuridad. Etiqueta «8 jul · noche».
+**b.** Voz: No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.
+**En pantalla:** el mismo plano, sin añadir nada: un solo enlace con su bolita yendo y viniendo, y ningún otro. No hay corte de línea.
 
-**b. Voz:** No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.
+**c.** Voz: Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.
+**En pantalla:** van apareciendo agentes dentro del contenedor, poco a poco y cada vez más deprisa, y cada uno se enlaza con el mismo asset. El contenedor se rompe por un lado y por esa rotura salen enlaces hacia otro asset, Hugging Face.
 
-**En pantalla:** La caja se cierra con un candado; unas tijeras cortan su cable hacia el globo de internet. Alrededor, otras cajas con un agente cada una, sin conexión entre ellas.
+**d.** Voz: ¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.
+**En pantalla:** aparecen iconos sencillos de personas y una lupa que se acercan al contenedor de los agentes.
 
-**c. Voz:** Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.
-
-**En pantalla:** De otra caja sale un sobre de vuelta hacia el primero. El calendario pasa 8, 9, 10, 11. El agente se multiplica en una nube de iconos hasta el número grande 700, que golpea un servidor rojo «Hugging Face».
-
-**d. Voz:** ¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.
-
-**En pantalla:** El sobre pequeño a un lado, la nube atacando al otro y, entre ambos, un «?» enorme.
-
-**e. Voz:** Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado, y lo publicaron el veintiséis de agosto. Todas las horas que vas a oír son UTC.
-
-**En pantalla:** Dos pictogramas de persona («METR», «Redwood») con una lupa sobre un rollo de mensajes, que se archiva con la fecha «26 ago». Reloj pequeño «UTC» en la esquina.
+**e.** Voz: Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado, y lo publicaron el veintiséis de agosto. Todas las horas que vas a oír son UTC.
+**En pantalla:** (propuesta) la lupa se queda sobre el contenedor y por las paredes se ven los mensajes de los agentes; los iconos de persona lo leen. Un informe se archiva con «26 ago». Reloj pequeño «UTC» en la esquina.
 
 ## Escena 1 · Cajas selladas
 
