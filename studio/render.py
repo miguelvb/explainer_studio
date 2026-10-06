@@ -118,8 +118,8 @@ def preview(root, scene=None, step=6.0, w=640, times=None, log=print):
 
 PROBE = """(a)=>{const out=[];const [sched,cues,total]=a;
  for(let i=0;i<cues.length;i++){const c=cues[i];
-  try{setup(sched,[c]);const q=window.CUES[0];const ts=[q.start+.05,(q.start+q.end)/2,q.end-.05,q.end+1];
-   for(const t of ts)frame(t);
+  try{setup(sched,[c]);const q=window.CUES[0];const ts=[];for(let t=q.start+.05;t<q.end;t+=Math.max(.5,(q.end-q.start)/14))ts.push(t);ts.push(q.end-.05,q.end+1);
+   window.__fit=[];for(const t of ts)frame(t);const seen=new Set();for(const f of window.__fit){const k=f.id+f.t;if(seen.has(k))continue;seen.add(k);out.push({i,msg:'text '+f.how+' to fit its container: "'+f.t+'" (node '+f.id+')',warn:f.how!=='hidden'})}
    const st=document.querySelector('#stage .st[data-c]');
    if(st&&!st.textContent.trim()&&!st.querySelector('svg,canvas,i'))out.push({i,msg:'rendered nothing'});
    const el=document.querySelector('#stage .st');

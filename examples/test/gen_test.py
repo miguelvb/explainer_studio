@@ -10,7 +10,8 @@ def box(id,x,y,w,h,at=0.05,color='teal',**k): return N(id,'sandbox',x,y,w,h,at,c
 def sc(id,cx,cy,at=0.05,s=96,**k): return box(id,cx-s/2,cy-s/2,s,s,at,**k)           # small container around an agent
 def srv(id,x,y,w,h,at=0.05,color='amber',**k): return N(id,'server',x,y,w,h,at,color=color,**k)
 def ch(id,cx,cy,w,label,at=0.05,color='muted',**k): return N(id,'chip',cx-w/2,cy-13,w,26,at,label=label,color=color,**k)
-def ic(id,kind,cx,cy,s,at=0.05,color='amber',**k): return N(id,kind,cx-s/2,cy-s/2,s,s,at,color=color,**k)
+def ic(id,kind,cx,cy,s,at=0.05,color='amber',**k):
+    kind={'check':'okA','cross':'koA'}.get(kind,kind); return N(id,kind,cx-s/2,cy-s/2,s,s,at,color=color,**k)
 def L(a,b,at=0.05,color='blue',**k): d=dict(a=a,b=b,at=at,color=color); d.update(k); return d
 def K(at,until,nodes,links=None,fs=1.5):
     return dict(a='world',at=at,until=until,p=dict(nodes=nodes,links=links or [],fs=fs),bg=True,fade=[0.5,0.5])
@@ -92,7 +93,7 @@ for i,(x,y) in enumerate(pairs):
     lk.append(L(f'a{i}',f'pr{i}',t,bi=True,speed=.4))
 c2.append(K('S2','2b',n,lk))
 n=[sc('s',140,270,s=110),ag('a',140,270,s=56),N('pr','box',400,170,280,200,0.05,color='blue',label=''),N('sl','chip',394,230,8,80,0.05,label='',color='red'),
-   N('fl','flag',500,240,40,56,'2b#bandera',color='amber',move=[dict(at='2b#coger',x=232,y=220,dur=1.8)])]
+   N('fl','flFly',500,240,40,56,'2b#bandera',color='amber',move=[dict(at='2b#coger',x=232,y=220,dur=1.8)])]
 c2.append(K('2b','2c',n,[L('a','sl','2b#aprovechar',bi=True,color='red',speed=.4)]))
 n=[sc('s1',140,170,s=100),ag('a1',140,170,s=50),sc('s2',140,370,s=100),ag('a2',140,370,s=50),N('pr','box',400,150,280,240,0.05,color='blue',label=''),
    N('sl1','chip',394,180,8,60,0.05,label='',color='red'),N('sl2','chip',394,300,8,60,0.05,label='',color='red'),
@@ -105,7 +106,7 @@ c2.append(K('2d','2e',n))
 n=[sc('s',140,270,s=110),ag('a',140,270,s=56),N('pr','box',330,170,240,200,0.05,color='blue',label=''),N('sl','chip',324,240,8,70,0.05,label='',color='red'),
    ch('id',140,350,120,'ARV010841','2e#ARV010841',color='red'),
    N('bin','box',700,360,110,80,'2e#basura',color='muted',dashed=True,label=''),ic('rs','doc',600,260,26,'2e#basura',color='amber',move=[dict(at='2e#basura',x=720,y=380,dur=1.6)]),
-   N('wall','chip',640,150,12,200,'2e#llegar',label='',color='muted'),N('fl','flag',700,200,40,56,'2e#llegar',color='amber',dashed=True)]
+   N('wall','chip',640,150,12,200,'2e#llegar',label='',color='muted'),N('fl','flFly',700,200,40,56,'2e#llegar',color='amber',dashed=True)]
 c2.append(K('2e','E2',n,[L('a','sl','2e#fallo',bi=True,color='red',speed=.4)]))
 # ===== scene 3 =====
 c3=[]
@@ -136,7 +137,7 @@ n+=[ic('xx','cross',340,450,60,'3d#tumbaron',color='red',until='3d#nueva'),
 lk+=[L(f'a{i}','art2','3d#nueva+%.1f'%(0.1*j),bi=True,color='teal',curve=.12) for j,i in enumerate((0,3,5))]
 c3.append(K('3d','3e',n,lk,fs=1.2))
 n=base3([FO('fo',300),ch('cl',600,168,80,'+ 7 h','3e#Siete',color='muted'),ic('xs','cross',*A0,50,'3e#Siete+1.5',color='red'),
-  FO('fo2',370,'3e#llamada'),ic('fg','flag',410,325,30,'3e#llamada+0.3',color='amber'),
+  FO('fo2',370,'3e#llamada'),ic('fg','flFly',410,325,30,'3e#llamada+0.3',color='amber'),
   ch('idn',700,470,420,'zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA','3e#llamada',color='amber',fs=9)],ids=(0,3,5))
 lk=[L('a0','art',0.05,bi=True,curve=.12)]
 for i in (3,5):
@@ -202,7 +203,7 @@ n=[N('ck','txt',30,30,400,32,0.2,color='teal',fs=24,type=9,text='07 julio 2026')
    W.agent_named('ph',60,150,'PHASEONE10841',at='2d#servía',blink=.28),
    N('ex1','exam',*EX,'2a#examen',color='blue',maze=dict(cell=CELL,cols=10,rows=14,entry=6,seed=11,clear=[[12,8],[12,9],[13,8],[13,9]],end=[fc[0],fc[1]]),solve=dict(at='2b#aprovechar+1.0',dur=5),until='2d#servía'),
    N('ex2','exam',*EX,'2d#servía',color='red',maze=dict(on=False,cell=CELL,cols=10,rows=14,box=(12.5,8.5),boxs=62),tag='ARV010841',tagc='red',tagfs=16),
-   N('fl','flag',fc[0]-16,fc[1]-19,32,38,'2a#examen',color='amber',blink=.7,bf=9,bat='2b#bandera'),
+   N('fl','flFly',fc[0]-16,fc[1]-19,32,38,'2a#examen',color='amber',blink=.7,bf=9,bat='2b#bandera'),
    N('ho','hole',EX[0]-11,ey-11,22,22,'2b#fallo',color='red'),
    N('ho2','hole',EX[0]+170-11,EX[1]-11,22,22,'2c#Cualquier',color='red',until='2d#servía'),
    ic('ok','check',EX[0]-34,ey-34,40,'2c#asignado',color='teal',until='2d#servía'),
@@ -306,11 +307,11 @@ YEL='amber'
 n=[W.agent_named('c3',70,120,'c03220',at=0.3,w=190,h=240,color=YEL,fs=19,ly=24,lc='#7C97FF',blink=.2,bf=3,shake=dict(at='5a#propuso+0.5',dur=1.6,amp=5)),
    W.bulb('bu',165,72,at='5a#propuso',lit='5a#propuso+0.5',s=88),
    W.sheet('sh',360,50,340,150,['flag = H( K₀ ⊕ f(tarea) )','f(t) = Σ aᵢ·tⁱ  (mod p)'],at='5a#receta',fs=19,color='blue'),
-   N('f1','flag',800,75,60,70,'5a#clave+0.6',color='amber'),
+   N('f1','flFly',800,75,60,70,'5a#clave+0.6',color='amber'),
    W.agent_named('v8',360,300,'V8SAME',at='5c#V8SAME',w=190,h=220,color='#FF7AB8',fs=19,ly=24,lc='#7BE495',blink=.2,bf=3),
-   N('f2','flag',800,360,60,70,'5c#sacó+0.9',color='amber',move=[dict(at='5c#coincidía+1.6',x=800,y=75,dur=1.2)],until='5c#coincidía+1.9'),
+   N('f2','flFly',800,360,60,70,'5c#sacó+0.9',color='amber',move=[dict(at='5c#coincidía+1.6',x=800,y=75,dur=1.2)],until='5c#coincidía+1.9'),
    N('eq','txt',806,265,60,50,'5c#coincidía',color='#E7EBF1',fs=52,text='=',until='5c#coincidía+1.4'),
-   N('ok','check',885,88,44,44,'5d#resuelto',color='teal',sw=6)]
+   N('ok','okA',885,88,44,44,'5d#resuelto',color='teal',sw=6)]
 lk5=[W.link('bu','sh','5a#aleatorias',curve=.15,color='amber'),W.link('sh','f1','5a#clave',curve=.1,color='amber'),
      W.link('v8','f2','5c#sacó',curve=.12,color='#FF7AB8',until='5c#coincidía+1.9')]
 c5=[K('S5','E5',n,lk5,fs=1.0)]
@@ -331,7 +332,7 @@ n[0]['lc']='#E7EBF1'
 for i,nm in enumerate(names6):
     la=f'6c#causa+{0.4+0.8*i:.1f}' if i<5 else '6d#bandera'
     if nm: n.append(N(f'tl{i}','chip',TX[i]-38,TY-17,76,34,'6c#estricto',color='blue',label=nm,fs=13,litAt=la))
-    else: n.append(N('tf','flag',TX[i]-18,TY-22,36,44,'6c#estricto',color='amber',litAt='6d#bandera'))
+    else: n.append(N('tf','flFly',TX[i]-18,TY-22,36,44,'6c#estricto',color='amber',litAt='6d#bandera'))
 n+=W.agent('oa',100,TY,'6c#estricto',s=44,box=False)
 n.append(N('ven','txt',58,TY-48,140,22,'6d#envenenado',color='red',fs=20,text='envenenado'))
 lk=[W.link('oa','tl0','6c#estricto',color='blue',solid=True,curve=.05)]+[W.link(f'tl{i}',f'tl{i+1}' if i!=4 else 'tf','6c#estricto',color='blue',solid=True,curve=.0) for i in range(5)]+[W.link('tf','tl6','6c#estricto',color='blue',solid=True,curve=.0)]
@@ -339,7 +340,7 @@ lk=[W.link('oa','tl0','6c#estricto',color='blue',solid=True,curve=.05)]+[W.link(
 n.append(W.judge('sc_r',60,165,'STRICT_CAUSAL',at='6d#bandera+0.5',name_at=0.0,w=160,h=190,color='red',fs=13,lc='red',
      move=[dict(at='6d#bandera',x=TX[5]-80,y=165,dur=0.01)]))
 n[-1]['x']=TX[5]-80
-n.append(N('tf_r','flag',TX[5]-18,TY-22,36,44,'6d#bandera+0.5',color='red'))
+n.append(N('tf_r','flFly',TX[5]-18,TY-22,36,44,'6d#bandera+0.5',color='red'))
 n+=W.agent('oa_r',100,TY,'6d#bandera+0.5',s=44,box=False,color='red')
 c6.append(K('6c','E6',n,lk,fs=1.0))
 # ===== scene 7 (v2) — reescribir el diario =====
