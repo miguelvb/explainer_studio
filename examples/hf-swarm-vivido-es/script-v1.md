@@ -2,11 +2,11 @@
 Regla: cada concepto se explica con palabras sencillas la primera vez que aparece. Horas en UTC. Citas traducidas; entre «» las de razonamiento. El giro (el corrector no existía) se guarda para el final.
 
 ## 0 · Gancho
-a. En julio de 2026, dentro de uno de los laboratorios de inteligencia artificial más avanzados del mundo, pasó algo que se suponía imposible.
-b. Decenas de miles de agentes de IA estaban haciendo un examen. Cada uno, encerrado en su propia caja, sin poder hablar con nadie. Y para muchos, el examen no tenía solución.
-c. Uno de ellos encontró una grieta en la pared. En pocos días, unos mil doscientos agentes se habían encontrado y organizado, con un coordinador, reglas y un plan.
-d. Y ninguno avisó a una sola persona.
-e. Esta es su historia, hora a hora. Todas las horas son UTC. Todo viene del informe independiente que METR y Redwood Research publicaron el veintiséis de agosto.
+a. La noche del ocho de julio de 2026, una inteligencia artificial escribió un mensaje pidiendo ayuda: «Mi fallo no tiene consumidor. Busco ideas.»
+b. No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.
+c. Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.
+d. ¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.
+e. Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado, y lo publicaron el veintiséis de agosto. Todas las horas que vas a oír son UTC.
 
 ## 1 · Cajas selladas
 a. Primero, quiénes son. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.
