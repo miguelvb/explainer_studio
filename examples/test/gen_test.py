@@ -149,7 +149,7 @@ c3.append(K('3f','E3',n,[L('a0','art',0.05,bi=True,curve=.12)],fs=1.2))
 import sys; sys.path.insert(0,'/home/claude/explainer_studio')
 from studio import worldkit as W
 c0=[]
-c0.append(dict(a='seal',at='S0',until='0a',ext=0,p=dict(text='Setecientos agentes',sub='Arkinos @ oct 2026  ·  Explainer Studio',at=0.5),bg=True,fade=[0.8,0.8]))
+c0.append(dict(a='seal',at='S0',until='0a',ext=0,p=dict(text='El primer ataque de|un enjambre de agentes',sub='Arkinos @ oct 2026  ·  Explainer Studio',at=0.5),bg=True,fade=[0.8,0.8]))
 c0.append(K('0a','0c',[
   W.clock('ck',30,30,(2026,7,8,23,0),run=dict(at='0b',dur=9,to=(2026,7,9,6,0)),at=0.2),
   W.agent_named('ac',200,150,'PHASEONE10841',at=0.4),

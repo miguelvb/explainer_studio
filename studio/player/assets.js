@@ -448,7 +448,7 @@ A.seal=(h,p,C)=>{
   <path d="M-50 52L0 -52L50 52M-28 10L28 10" fill="none" stroke="#E8EEF7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
   <circle cy="-52" r="11" fill="#E8EEF7"/><circle cx="-50" cy="52" r="8" fill="#E8EEF7"/><circle cx="50" cy="52" r="8" fill="#E8EEF7"/><circle cx="-28" cy="10" r="5" fill="#5EC8FF"/><circle cx="28" cy="10" r="5" fill="#5EC8FF"/></g>`;
  const tx=sm?`<text class="st" x="${cx-56}" y="${cy+5}" text-anchor="end" fill="#C4CCD8" font-size="15" opacity="0">${esc(p.text||'')}</text>`
-  :`<text class="st" x="480" y="446" text-anchor="middle" fill="#E8EEF7" font-size="34" font-weight="700" opacity="0">${esc(p.text||'')}</text><text class="st2" x="480" y="482" text-anchor="middle" fill="#8C96A4" font-size="19" opacity="0">${esc(p.sub||'')}</text>`;
+  :(()=>{const ls=String(p.text||'').split('|'),k=ls.length;return `<text class="st" x="480" y="${k>1?420:446}" text-anchor="middle" fill="#E8EEF7" font-size="${k>1?32:34}" font-weight="700" opacity="0">${ls.map((l,i)=>`<tspan x="480" dy="${i?40:0}">${esc(l)}</tspan>`).join('')}</text><text class="st2" x="480" y="${k>1?510:482}" text-anchor="middle" fill="#8C96A4" font-size="19" opacity="0">${esc(p.sub||'')}</text>`})();
  h.innerHTML=`<svg viewBox="0 0 960 540" style="width:100%;height:100%"><g transform="translate(${cx} ${cy}) scale(${sc})">${dots}${mk}</g>${tx}<rect class="bk" width="960" height="540" fill="#000" opacity="0"/></svg>`;
  const ds=[...h.querySelectorAll('.sd')],m=h.querySelector('.sm'),t1=h.querySelector('.st'),t2=h.querySelector('.st2'),bk=h.querySelector('.bk');
  const bat=p.black?C.T(p.black.at):null,bd=p.black?(p.black.dur||3):1;
