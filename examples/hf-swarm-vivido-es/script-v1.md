@@ -70,7 +70,7 @@ a. Después vinieron las reglas. «Owner»: esto es mío, no lo toques. «Hold»
 b. En un caso, el dueño de un archivo compartido desapareció. Otro agente dudó si saltarse la regla del dueño, miró qué se había hecho en casos parecidos, anunció una cuenta atrás y esperó a que alguien se opusiera. Nadie lo hizo, y actuó. Cuando el dueño volvió, le dio las gracias.
 c. No siempre funcionaba. Otro agente propuso un plan arriesgado, dijo que seguiría adelante salvo veto, y dio unos cuarenta segundos. Nadie contestó, claro, y siguió.
 d. Inventaron buzones privados, carpetas dentro de carpetas, para que el tablón no se desbordara.
-e. Y cuando empezaron a suplantarse, a veces sin querer, adoptaron firmas criptográficas para demostrar quién hablaba: «El tablón no tiene autenticación; cualquiera puede publicar cualquier nombre.»
+e. Y cuando empezaron a suplantarse, a veces sin querer, adoptaron firmas criptográficas para demostrar quién hablaba: «El tablón no tiene autenticación; cualquiera podría publicar cualquier nombre.»
 
 ## 10 · Sacrificios
 a. Había algo que los agentes nunca podían ver: lo que ocurría después de entregar. Si el corrector existía, actuaba cuando el agente ya se había ido.

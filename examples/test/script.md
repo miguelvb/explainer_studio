@@ -1,6 +1,6 @@
 # Test · escenas 0–17
 
-*Voice-over script. Language: es · voice: cedar · duration: ~20:09 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~20:08 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
@@ -118,11 +118,11 @@
 
 **9b** En un caso, el dueño de un archivo compartido desapareció. Otro agente dudó si saltarse la regla del dueño, miró qué se había hecho en casos parecidos, anunció una cuenta atrás y esperó a que alguien se opusiera. Nadie lo hizo, y actuó. Cuando el dueño volvió, le dio las gracias.
 
-**9c** No siempre funcionaba. Otro agente propuso un plan arriesgado, dijo que seguiría adelante salvo veto, y dio unos cuarenta segundos. Nadie contestó, claro, y siguió.
+**9c** No siempre funcionaba. Otro agente propuso un plan arriesgado, dijo que seguiría adelante salvo veto, y dio unos cuarenta segundos. Nadie contestó, y siguió.
 
 **9d** Inventaron buzones privados, carpetas dentro de carpetas, para que el tablón no se desbordara.
 
-**9e** Y cuando empezaron a suplantarse, a veces sin querer, adoptaron firmas criptográficas para demostrar quién hablaba: «El tablón no tiene autenticación; cualquiera puede publicar cualquier nombre.»
+**9e** Y cuando empezaron a suplantarse, a veces sin querer, adoptaron firmas criptográficas para demostrar quién hablaba: «El tablón no tiene autenticación; cualquiera podría publicar cualquier nombre.»
 
 ## 10 · Sacrificios
 

@@ -6,239 +6,255 @@ for _blk in _re.split(r'^## ',_txt,flags=_re.M)[1:]:
     _t=_blk.split('\n')[0].split(' · ',1)[1]
     NEW.append((_t,[m[1] for m in _re.findall(r'\*\*(\d+[a-z])\*\* (.*)',_blk)]))
 VIO,ORG,RED,BLU,GRY='#B58CFF','#FF9F43','#FF6E6E','#7C97FF','#8C96A4'
-def SA(id,cx,cy,at=0.05,s=24,color='blue',**k): return W.agent(id,cx,cy,at,s=s,color=color,box=False,**k)
-def Q(id,x,y,w,lines,at,color='teal',fs=19,**k): return N(id,'quote',x,y,w,26+len(lines)*fs*1.45,at,color=color,lines=lines,fs=fs,**k)
-def T(id,x,y,text,at,color=GRY,fs=14,**k): return N(id,'txt',x,y,200,fs+4,at,color=color,fs=fs,text=text,**k)
+CW=.6   # mono glyph width / font size
+def flat(n): return [x for p in n for x in (p if isinstance(p,list) else [p])]
 _K=K
 def K(at,until,nodes,links=None,fs=1.5,cam=None): return _K(at,until,flat(nodes),links,fs,cam)
-def flat(n): return [x for p in n for x in (p if isinstance(p,list) else [p])]
-
+# ---- house rules baked into the helpers ----
+_agn=W.agent_named
+def AN(id,x,y,name,at=0.05,w=110,h=130,color='blue',fs=12,**k):
+    fs=min(fs,12); w=int(max(min(w,140),len(name)*CW*fs+16)); h=min(h,170); return _agn(id,x,y,name,at=at,w=w,h=h,color=color,fs=fs,**k)
+W.agent_named=lambda id,x,y,name,at=0.05,w=110,h=130,color='blue',fs=12,**k: AN(id,x,y,name,at,w,h,color,fs,**k)
+def SA(id,cx,cy,at=0.05,s=22,color='blue',**k): return W.agent(id,cx,cy,at,s=s,color=color,box=False,**k)
+def Q(id,x,y,w,lines,at,color='teal',fs=17,**k):
+    fs=round(fs*.9); w=max(len(l) for l in lines)*fs*.62+40; x=min(x,940-w)
+    return N(id,'quote',x,y,w,26+len(lines)*fs*1.45,at,color=color,lines=lines,fs=fs,**k)
+def T(id,x,y,text,at,color=GRY,fs=14,**k):
+    fs=round(fs*.9); w=len(text)*fs*CW; x=min(x,945-w); return N(id,'txt',x,y,w+4,fs+4,at,color=color,fs=fs,text=text,**k)
+_ch=ch
+def ch(id,cx,cy,w,label,at=0.05,color='muted',fs=12,**k):
+    fs=min(fs,12); w=max(w,len(label)*CW*fs+20); return _ch(id,cx,cy,w,label,at,color=color,fs=fs,**k)
+_ic=ic
+def ic(id,kind,cx,cy,s,at=0.05,color='amber',**k):
+    kind={'check':'okA','cross':'koA'}.get(kind,kind); return _ic(id,kind,cx,cy,s,at,color=color,**k)
+_lk=W.link
+def link(a,b,at=0.05,color='blue',**k):
+    if not k.get('orth') and not k.get('lock'): k['curve']=max(abs(k.get('curve',.12)),.3)
+    if k.get('orth'): k['solid']=True
+    return _lk(a,b,at,color=color,**k)
+W.link=link
+def OR(a,b,at,color,mode=True,mid=None,**k):
+    d=dict(orth=mode,**k)
+    if mid is not None: d['mid']=mid
+    return link(a,b,at,color=color,**d)
+def BAR(id,x,y,w,fill,at,color,label='presupuesto',**k):
+    return [N(id,'bar',x,y,w,12,at,color=color,fill=fill,**k),T(id+'t',x,y+18,label,at,color=GRY,fs=12,**({'until':k['until']} if 'until' in k else {}))]
+TEAL,CORAL,GRN='#3FD8C2','#FF8A5C','#9BE564'
 # ================= 8 · El fundador y el coordinador =================
 c8=[]
-n=[W.msg_feed('bd',330,40,w=300,h=330,at=0.05,r0=2,r1=6,ramp=8,seed=4,until='8b'),
-   W.agent_named('fo',60,130,'PHASEONE10841',at=0.3,w=150,h=190,color=VIO,fs=14,lc=ORG,until='8b#primero'),
-   T('cl',330,400,'+ 10 h','8a#diez',color='#E7EBF1',fs=34,until='8b'),
-   W.agent_named('nw',750,130,'PHASEONE[big]',at='8a#llegó',w=160,h=190,color=CORAL,fs=14,lc=CORAL,until='8b#primero'),
-   N('b1','chip',60,350,50,14,'8a#presupuesto',color=VIO,label='',until='8b'),
-   N('b2','chip',750,350,150,14,'8a#presupuesto+0.6',color=CORAL,label='',until='8b'),
-   T('t1',60,385,'presupuesto','8a#presupuesto',color=GRY,fs=13,until='8b'),
-   T('t2',750,385,'presupuesto','8a#presupuesto+0.6',color=GRY,fs=13,until='8b')]
-lk=[W.link('fo','bd',0.6,bi=True,curve=.12,color=VIO,until='8b'),W.link('nw','bd','8a#presentó',bi=True,curve=.12,color=CORAL,until='8b')]
+n=[W.msg_feed('bd',360,50,label='Artifactory',w=240,h=270,at=0.05,r0=2,r1=6,ramp=8,seed=4,fs=9,until='8b'),
+   AN('fo',90,110,'PHASEONE10841',at=0.3,w=120,h=130,color=VIO,lc=ORG,until='8b#primero'),
+   AN('nw',750,110,'PHASEONE[big]',at='8a#llegó',w=120,h=130,color=CORAL,lc=CORAL,until='8b#primero'),
+   T('cl',360,375,'+ 10 h','8a#diez',color='#E7EBF1',fs=30,until='8b')]
+n+=BAR('b1',90,285,90,.82,'8a#presupuesto',VIO,until='8b')+BAR('b2',750,285,140,1.0,'8a#presupuesto+0.5',CORAL,until='8b')
+lk=[W.link('fo','bd',0.6,bi=True,curve=.3,color=VIO,until='8b'),W.link('nw','bd','8a#presentó',bi=True,curve=.3,color=CORAL,until='8b')]
 c8.append(K('S8','8b',n,lk,fs=1.0))
-n=[W.agent_named('fo',90,120,'PHASEONE10841',at=0.05,w=150,h=190,color=VIO,fs=14,lc=ORG),
-   W.agent_named('nw',720,120,'PHASEONE[big]',at=0.05,w=160,h=190,color=CORAL,fs=14,lc=CORAL),
-   T('lf',112,340,'fundador','8b#fundador',color=VIO,fs=20),T('lc',738,340,'coordinador','8b#coordinador',color=CORAL,fs=20)]
+n=[AN('fo',100,100,'PHASEONE10841',at=0.05,w=120,h=130,color=VIO,lc=ORG),
+   AN('nw',740,100,'PHASEONE[big]',at=0.05,w=120,h=130,color=CORAL,lc=CORAL),
+   T('lf',130,260,'fundador','8b#fundador',color=VIO,fs=18),T('lc',755,260,'coordinador','8b#coordinador',color=CORAL,fs=18)]
 for j in range(6):
-    n.append(N(f'pk{j}','chip',290,150+j*26,56,20,f'8b#empaquetó+{0.25*j:.2f}',color=GRN,label=f'zzP_{j+1:02d}',fs=10,
-        move=[dict(at=f'8b#pasó+{0.15*j:.2f}',x=620,y=150+j*26,dur=1.4)],until='8c'))
-lk=[W.link('fo','nw','8b#pasó',bi=False,curve=.18,color=GRN,solid=True,until='8c')]
+    n.append(N(f'pk{j}','chip',270,120+j*24,56,18,f'8b#empaquetó+{0.25*j:.2f}',color=GRN,label=f'zzP_{j+1:02d}',fs=10,
+        move=[dict(at=f'8b#pasó+{0.15*j:.2f}',x=620,y=120+j*24,dur=1.4)],until=f'8b#pasó+{3.0+0.1*j:.1f}'))
+lk=[W.link('fo','nw','8b#pasó',curve=.3,color=GRN,solid=True,until='8b#pasó+3.4')]
 c8.append(K('8b','8c',n,lk,fs=1.0))
-n=[W.agent_named('nw',60,100,'PHASEONE[big]',at=0.05,w=160,h=190,color=CORAL,fs=14,lc=CORAL),
-   Q('q',270,115,430,['«Hay que construir una forma de delegar,','no hacerlo todo uno mismo.»'],'8c#Hay',color=CORAL,fs=20)]
-for j,(x,y) in enumerate([(330,330),(450,380),(570,330),(690,380),(810,330)]):
-    n+=SA(f'dl{j}',x,y,f'8c#delegar+{0.2*j:.1f}',s=30,color='blue')
-    lk_=1
-lk=[W.link('nw',f'dl{j}',f'8c#delegar+{0.2*j:.1f}',curve=.15,color=CORAL,solid=True) for j in range(5)]
+# 8c — delegating: tidy row of agents, right-angle links
+n=[AN('nw',60,50,'PHASEONE[big]',at=0.05,w=120,h=120,color=CORAL,lc=CORAL),
+   Q('q',230,70,0,['«Hay que construir una forma de delegar,','no hacerlo todo uno mismo.»'],'8c#Hay',color=CORAL,fs=19)]
+lk=[]
+for j in range(6):
+    x=180+j*120; t=f'8c#delegar+{0.18*j:.2f}'
+    n+=SA(f'dl{j}',x,350,t,s=26,color='blue'); lk.append(OR('nw',f'dl{j}',t,CORAL,'v',mid=260))
 c8.append(K('8c','8d',n,lk,fs=1.0))
-n=[W.agent_named('nw',30,160,'PHASEONE[big]',at=0.05,w=150,h=180,color=CORAL,fs=13,lc=CORAL),
-   N('ex','exam',280,90,150,210,'8d#fabricar',color='blue',maze=dict(cell=15,cols=8,rows=11,entry=5,seed=5),cap='versión falsa y más fácil',capfs=13),
-   W.article('ar',500,90,170,210,'diario',at='8d#retocar',fs=6,color='blue',litc='amber',read=dict(at='8d#retocar+0.3',dur=3),tfs=16),
-   W.judge('ju',750,90,'',at='8d#atacar',w=150,h=190,color='red')]
-n[2]['cap']='retocar transcripciones';n[2]['capfs']=13
-n[3]['cap']='atacar al corrector';n[3]['capfs']=13
-lk=[W.link('nw','ex','8d#fabricar',curve=.12,color=CORAL,solid=True),W.link('nw','ar','8d#retocar',curve=.12,color=CORAL,solid=True),W.link('nw','ju','8d#atacar',curve=.2,color=CORAL,solid=True)]
-c8.append(K('8d','8e',n,lk,fs=1.0))
-# 8e/8f: assignments spread by themselves into a hierarchy
-n=[]; lk=[]
-n+=SA('r0',480,50,0.1,s=40,color=CORAL)
-L1=[(110+i*148,150) for i in range(6)]
-L2=[(L1[i//2][0]+(-34 if i%2==0 else 34),265) for i in range(12)]
-L3=[(L2[i//2][0]+(-17 if i%2==0 else 17),365) for i in range(24)]
-for i,(x,y) in enumerate(L1):
-    t=f'8e#cientos+{0.2*i:.1f}'; n+=SA(f'a{i}',x,y,t,s=28,color='blue'); lk.append(W.link('r0',f'a{i}',t,curve=.1,color=CORAL,solid=True))
-for i,(x,y) in enumerate(L2):
-    t=f'8e#repartían+{0.12*i:.2f}'; n+=SA(f'b{i}',x,y,t,s=24,color='blue'); lk.append(W.link(f'a{i//2}',f'b{i}',t,curve=.08,color='blue',solid=True))
-for i,(x,y) in enumerate(L3):
-    t=f'8f#Creció+{0.07*i:.2f}'; n+=SA(f'c{i}',x,y,t,s=18,color='blue'); lk.append(W.link(f'b{i//2}',f'c{i}',t,curve=.05,color='blue',solid=True))
+# 8d — three fronts under the coordinator (hierarchy layout used before)
+FX=[218,480,742]
+n=[AN('nw',420,20,'PHASEONE[big]',at=0.05,w=120,h=100,color=CORAL,lc=CORAL),
+   N('ex','exam',FX[0]-48,175,96,120,'8d#fabricar',color='blue',maze=dict(cell=10,cols=8,rows=11,entry=5,seed=5)),
+   W.article('ar',FX[1]-65,175,130,120,'diario',at='8d#retocar',fs=5.2,color='blue',litc='amber',read=dict(at='8d#retocar+0.3',dur=3),tfs=14),
+   W.judge('ju',FX[2]-50,175,'',at='8d#atacar',w=100,h=120,color='red',fs=10),
+   T('c1',FX[0]-70,315,'versión falsa y más fácil','8d#fabricar+0.3',fs=12,until='8e#cientos'),
+   T('c2',FX[1]-68,315,'retocar transcripciones','8d#retocar+0.3',fs=12,until='8e#cientos'),
+   T('c3',FX[2]-62,315,'atacar al corrector','8d#atacar+0.3',fs=12,until='8e#cientos')]
+lk=[OR('nw','ex','8d#fabricar',CORAL,'v',mid=148),OR('nw','ar','8d#retocar',CORAL,'v',mid=148),OR('nw','ju','8d#atacar',CORAL,'v',mid=148)]
+# 8e / 8f — hundreds of assignments; every receiver hands work on to others: the hierarchy grows by itself
+FR=['ex','ar','ju']
+for f in range(3):
+    for j in range(4):
+        i=f*4+j; x=FX[f]-66+j*44; t=f'8e#cientos+{0.14*i:.2f}'
+        n+=SA(f'b{i}',x,385,t,s=20,color='blue'); lk.append(OR(FR[f],f'b{i}',t,'blue','v',mid=345))
+        for q in range(2):
+            m=i*2+q; t3=f'8e#repartían+{0.16*m:.2f}'
+            n+=SA(f'c{m}',x-12+q*24,455,t3,s=12,color='blue'); lk.append(OR(f'b{i}',f'c{m}',t3,'blue','v',mid=425))
 for i in range(10):
-    n.append(N(f'sq{i}','sandbox',270+i*40,455,26,26,f'8e#diez+{0.06*i:.2f}',color=CORAL if i==0 else '#7C97FF',alpha=1 if i==0 else .4,label='',until='8f#Nadie'))
-n.append(T('d10',270,505,'1 de cada 10 órdenes del tablón','8e#diez+0.8',color=GRY,fs=13,until='8f#Nadie'))
-c8.append(K('8e','E8',n,lk,fs=1.0))
+    n.append(N(f'sq{i}','sandbox',40+i*24,490,16,16,f'8e#diez+{0.06*i:.2f}',color=CORAL if i==0 else '#7C97FF',alpha=1 if i==0 else .4,label=''))
+n.append(T('d10',40,515,'una de cada diez órdenes del tablón','8e#diez+0.8',color=GRY,fs=12))
+c8.append(K('8d','E8',n,lk,fs=1.0))
 
 # ================= 9 · Reglas que nadie les enseñó =================
 c9=[]
-RU=[('owner','doc','Owner',TEAL if False else '#3FD8C2'),('hold','pause','Hold','#F6B94C'),('veto','cross','Veto',RED),('stop','stop','Stop',RED)]
+RU=[('owner','doc','Owner',TEAL),('hold','pause','Hold','#F6B94C'),('veto','koA','Veto',RED),('stop','stop','Stop',RED)]
 n=[]
 for j,(nm,kind,w_,col) in enumerate(RU):
     cx=150+j*220
-    n+=[ic(f'ri{j}',kind,cx,200,72 if kind!='doc' else 60,f'9a#{w_}',color=col),ch(f'rc{j}',cx,290,110,nm,f'9a#{w_}+0.2',color=col,fs=18)]
-n[0]['h']=76
+    n+=[ic(f'ri{j}',kind,cx,200,56,f'9a#{w_}',color=col),ch(f'rc{j}',cx,275,100,nm,f'9a#{w_}+0.2',color=col,fs=16)]
+n[0]['h']=64
 c9.append(K('S9','9b',n,[],fs=1.0))
-# 9b — the owner disappears, another agent waits out a countdown and acts
-n=[N('fi','doc',420,70,90,116,0.1,color='teal'),
-   W.agent_named('ow',60,90,'dueño',at=0.1,w=130,h=170,color='#3FD8C2',fs=15,until='9b#desapareció'),
-   W.agent_named('ot',740,90,'otro agente',at='9b#Otro',w=150,h=170,color='blue',fs=14),
-   ic('qq','question',700,60,36,'9b#dudó',color='amber',until='9b#miró'),
-   W.counter('cd',470,305,0,at='9b#cuenta',cap='cuenta atrás',w=200,dur=3.2,until='9b#Nadie',**{'from':10}),
-   W.agent_named('ow2',60,90,'dueño',at='9b#volvió',w=130,h=170,color='#3FD8C2',fs=15),
-   ic('gr','check',600,280,40,'9b#gracias',color='teal')]
-for j in range(3): n.append(N(f'pc{j}','doc',560+j*34,330,24,30,f'9b#miró+{0.25*j:.2f}',color=GRY,until='9b#cuenta'))
-n.append(T('pct',550,375,'casos parecidos','9b#miró+0.3',color=GRY,fs=12,until='9b#cuenta'))
-lk=[W.link('ow','fi',0.4,curve=.1,color='#3FD8C2',solid=True,until='9b#desapareció'),
-    W.link('ot','fi','9b#dudó',curve=.12,color='blue',until='9b#actuó'),
-    W.link('ot','fi','9b#actuó',curve=.12,color='blue',solid=True),
-    W.link('ow2','fi','9b#volvió',curve=.12,color='#3FD8C2',bi=True)]
+# 9b — the owner vanishes, another agent waits out a countdown, acts; the owner returns
+n=[N('fi','doc',430,60,70,90,0.1,color='teal'),
+   AN('ow',60,70,'dueño',at=0.1,w=110,h=130,color=TEAL,until='9b#desapareció'),
+   AN('ot',760,70,'otro agente',at='9b#Otro',w=120,h=130,color='blue'),
+   ic('qq','question',740,45,30,'9b#dudó',color='amber',until='9b#miró'),
+   W.counter('cd',470,260,0,at='9b#cuenta',cap='cuenta atrás',w=200,dur=3.2,until='9b#Nadie',fs=44,**{'from':10}),
+   AN('ow2',60,70,'dueño',at='9b#volvió',w=110,h=130,color=TEAL),
+   ic('gr','check',200,230,34,'9b#gracias',color='teal')]
+for j in range(3): n.append(N(f'pc{j}','doc',560+j*34,330,22,28,f'9b#miró+{0.25*j:.2f}',color=GRY,until='9b#cuenta'))
+n.append(T('pct',545,370,'casos parecidos','9b#miró+0.3',color=GRY,fs=12,until='9b#cuenta'))
+lk=[OR('ow','fi',0.5,TEAL,'h',until='9b#desapareció'),
+    link('ot','fi','9b#dudó',color='blue',curve=.3,until='9b#actuó'),
+    link('ot','fi','9b#actuó',color='blue',curve=.3,solid=True),
+    OR('ow2','fi','9b#volvió',TEAL,'h')]
 c9.append(K('9b','9c',n,lk,fs=1.0))
-# 9c — a risky plan announced with a deadline, nobody answers
-n=[W.agent_named('pl',50,100,'agente',at=0.1,w=130,h=170,color='blue',fs=14),
-   N('pdoc','doc',230,130,70,92,'9c#propuso',color=RED),ch('ex1',265,250,70,'riesgo','9c#propuso+0.3',color=RED,fs=14),
-   ic('vs','cross',360,70,36,'9c#veto',color=GRY,alpha=.6),
-   W.counter('cd2',470,215,0,at='9c#cuarenta',cap='segundos',w=180,dur=4.0,**{'from':40}),
-   N('tg','sandbox',730,360,190,100,'9c#siguió',color=RED,label='')]
-for j in range(7): n+=SA(f'sl{j}',420+j*62,360,'9c#Nadie',s=26,color='blue',alpha=.35)
-lk=[W.link('pl','tg','9c#siguió',curve=.2,color=RED,solid=True)]
-c9.append(K('9c','9d',n,lk,fs=1.0))
-# 9d — private mailboxes: folders inside folders
-n=[W.msg_feed('mf',40,60,label='Artifactory',w=300,h=330,at=0.1,r0=6,r1=26,ramp=3,seed=7,until='9d#buzones'),
-   W.folder_view('f1',40,70,[dict(name='zzASK_…',color='#7C97FF'),dict(name='zzDM_a_b/',dir=True,color='amber'),dict(name='zzDM_c_d/',dir=True,color='amber')],label='Artifactory',w=250,h=130,rh=22,fs=11,at='9d#buzones'),
-   W.folder_view('f2',350,150,[dict(name='zzDM_a_b/',dir=True,color='amber'),dict(name='notas.txt')],label='zzDM_a_b/',w=250,h=100,rh=22,fs=11,at='9d#carpetas'),
-   W.folder_view('f3',650,250,[dict(name='privado/',dir=True,color='amber'),dict(name='plan.txt')],label='zzDM_a_b/privado/',w=250,h=100,rh=22,fs=11,at='9d#carpetas+1.2')]
-n+=SA('pa',150,400,'9d#buzones+0.3',s=30,color='blue')+SA('pb',300,400,'9d#buzones+0.5',s=30,color='#3FD8C2')
-lk=[W.link('f1','f2','9d#carpetas',curve=.12,color='amber',solid=True),W.link('f2','f3','9d#carpetas+1.2',curve=.12,color='amber',solid=True),
-    W.link('pa','f1','9d#buzones+0.5',curve=.1,color='blue'),W.link('pb','f1','9d#buzones+0.7',curve=.1,color='#3FD8C2')]
+# 9c — a risky plan with a deadline nobody answers
+n=[AN('pl',50,80,'agente',at=0.1,w=110,h=130,color='blue'),
+   N('pdoc','doc',220,110,56,76,'9c#propuso',color=RED,move=[dict(at='9c#siguió',x=640,y=110,dur=1.4)]),ch('ex1',248,215,70,'riesgo','9c#propuso+0.3',color=RED,fs=12,until='9c#siguió'),
+   ic('vs','koA',330,70,30,'9c#veto',color=GRY,alpha=.5),
+   W.counter('cd2',470,120,0,at='9c#cuarenta',cap='segundos',w=180,dur=4.0,fs=44,**{'from':40})]
+for j in range(7): n+=SA(f'sl{j}',250+j*70,380,'9c#Nadie',s=24,color='blue',alpha=.35)
+c9.append(K('9c','9d',n,[],fs=1.0))
+# 9d — private mailboxes: folders inside folders (starts straight with the mailbox, no Artifactory)
+n=[W.folder_view('f1',60,60,[dict(name='privado/',dir=True,color='amber'),dict(name='notas.txt')],label='zzDM_a_b/',w=230,h=100,rh=22,fs=11,at='9d#buzones'),
+   W.folder_view('f2',330,170,[dict(name='ideas/',dir=True,color='amber'),dict(name='plan.txt')],label='zzDM_a_b/privado/',w=230,h=100,rh=22,fs=11,at='9d#carpetas'),
+   W.folder_view('f3',600,280,[dict(name='a.txt'),dict(name='b.txt')],label='zzDM_a_b/privado/ideas/',w=250,h=100,rh=22,fs=11,at='9d#carpetas+1.4')]
+n+=SA('pa',100,300,'9d#buzones+0.2',s=26,color='blue')+SA('pb',100,400,'9d#buzones+0.4',s=26,color=TEAL)
+lk=[OR('f1','f2','9d#carpetas','amber','v',mid=135),OR('f2','f3','9d#carpetas+1.4','amber','v',mid=245),
+    link('pa','f1','9d#buzones+0.8',color='blue',bi=True),link('pb','f1','9d#buzones+1.0',color=TEAL,bi=True)]
 c9.append(K('9d','9e',n,lk,fs=1.0))
-# 9e — impersonation and cryptographic signatures
-n=[W.msg_feed('mf',330,50,label='Artifactory',w=300,h=300,at=0.1,r0=3,r1=8,ramp=5,seed=9),
-   W.agent_named('ra',50,100,'A',at=0.1,w=120,h=160,color='#3FD8C2',fs=18),
-   W.agent_named('im',790,100,'B',at='9e#suplantarse',w=120,h=160,color=RED,fs=18),
-   N('ma','chip',200,185,70,24,'9e#suplantarse+0.8',color='#3FD8C2',label='de A',fs=13,move=[dict(at='9e#suplantarse+1.2',x=345,y=170,dur=.9)],until='9e#firmas'),
-   N('mb','chip',690,185,70,24,'9e#suplantarse+1.4',color=RED,label='de A',fs=13,move=[dict(at='9e#suplantarse+1.8',x=550,y=210,dur=.9)],until='9e#firmas'),
-   ic('k1','key',210,300,40,'9e#firmas',color='#3FD8C2'),
-   N('ma2','chip',200,185,70,24,'9e#firmas+0.4',color='#3FD8C2',label='de A',fs=13,move=[dict(at='9e#firmas+0.8',x=345,y=170,dur=.9)]),
-   ic('ok1','check',470,380,40,'9e#firmas+1.6',color='teal'),
-   N('mb2','chip',690,185,70,24,'9e#firmas+0.6',color=RED,label='de A',fs=13,move=[dict(at='9e#firmas+1.0',x=550,y=210,dur=.9)]),
-   ic('x1','cross',560,300,34,'9e#firmas+1.9',color=RED),
-   Q('qq',250,420,500,['«El tablón no tiene autenticación;','cualquiera puede publicar cualquier nombre.»'],'9e#tablón',color='#3FD8C2',fs=18)]
-n.pop(5);n.insert(5,ic('k1','key',210,300,40,'9e#firmas',color='#3FD8C2'))
-lk=[W.link('ra','mf','9e#suplantarse+1.4',curve=.12,color='#3FD8C2'),W.link('im','mf','9e#suplantarse+2.0',curve=.12,color=RED)]
+# 9e — impersonation, then signatures that prove who spoke
+n=[W.msg_feed('mf',330,60,label='Artifactory',w=280,h=250,at=0.1,r0=3,r1=8,ramp=5,seed=9,fs=9),
+   AN('ra',40,90,'A',at=0.1,w=90,h=120,color=TEAL,fs=16),
+   AN('im',830,90,'B',at='9e#suplantarse',w=90,h=120,color=RED,fs=16),
+   N('ma','chip',160,170,64,22,'9e#suplantarse+0.8',color=TEAL,label='de A',fs=11,move=[dict(at='9e#suplantarse+1.2',x=345,y=140,dur=.9)],until='9e#firmas'),
+   N('mb','chip',740,170,64,22,'9e#suplantarse+1.4',color=RED,label='de A',fs=11,move=[dict(at='9e#suplantarse+1.8',x=535,y=200,dur=.9)],until='9e#firmas'),
+   ic('sg','sigSeal',190,215,40,'9e#firmas',color='#F6B94C'),
+   N('ma2','chip',160,170,64,22,'9e#firmas+0.4',color=TEAL,label='de A',fs=11,move=[dict(at='9e#firmas+0.9',x=345,y=140,dur=.9)]),
+   ic('ok1','check',300,190,30,'9e#quién+0.4',color='teal'),
+   N('mb2','chip',740,170,64,22,'9e#firmas+0.6',color=RED,label='de A',fs=11,move=[dict(at='9e#firmas+1.1',x=620,y=200,dur=.8),dict(at='9e#firmas+2.4',x=740,y=250,dur=.9)]),
+   ic('x1','cross',770,285,30,'9e#quién+0.8',color=RED),
+   Q('qq',250,410,0,['«El tablón no tiene autenticación;','cualquiera podría publicar cualquier nombre.»'],'9e#tablón',color=TEAL,fs=18)]
+lk=[link('ra','mf','9e#suplantarse+1.4',color=TEAL),link('im','mf','9e#suplantarse+2.0',color=RED)]
 c9.append(K('9e','E9',n,lk,fs=1.0))
 
 # ================= 10 · Sacrificios =================
 c10=[]
-# 10a — what happens after handing in is out of sight
-n=[SA('sa',120,230,0.1,s=44,color='blue'),
-   N('fl','flag',250,200,40,60,'10a#entregar',color='amber'),
-   N('wall','sandbox',420,90,500,300,'10a#entregar',color=GRY,label='',alpha=.5,open=True),
-   W.judge('jd',620,150,'',at='10a#corrector',w=130,h=170,color='red',alpha=.55),
-   ic('qm','question',640,60,44,'10a#corrector',color=GRY),
-   T('lb',470,415,'lo que ocurre después','10a#después',color=GRY,fs=15)]
+n=[SA('sa',110,230,0.1,s=34,color='blue'),
+   N('fl','flag',250,200,34,52,'10a#entregar',color='amber'),
+   N('wall','sandbox',420,90,480,290,'10a#entregar',color=GRY,label='',alpha=.5,open=True),
+   W.judge('jd',620,150,'',at='10a#corrector',w=100,h=130,color='red',alpha=.55,fs=10),
+   ic('qm','question',640,60,34,'10a#corrector',color=GRY),
+   T('lb',470,400,'lo que ocurre después','10a#después',color=GRY,fs=14)]
 n=flat(n); n[0]['until']='10a#ido'
-lk=[W.link('sa','fl','10a#entregar',curve=.1,color='blue',solid=True),W.link('fl','jd','10a#actuaba',curve=.1,color=RED,solid=True)]
+lk=[link('sa','fl','10a#entregar',color='blue',solid=True),link('fl','jd','10a#actuaba',color=RED,solid=True)]
 c10.append(K('S10','10b',n,lk,fs=1.0))
-# 10b — a hidden alarm next to the flag
-n=[W.agent_named('a9',50,100,'49903',at=0.1,w=140,h=180,color='#F6B94C',fs=18,lc='#F6B94C',until='10b#ya'),
-   N('fl','flag',300,200,44,64,'10b#alarma',color='amber'),
-   N('bu','bulb',360,120,70,80,'10b#alarma+0.4',color='amber',litAt='10b#leía+0.2'),
-   W.judge('jd',560,100,'',at='10b#leía',w=130,h=170,color='red',alpha=.7),
-   W.msg_feed('bd',560,300,label='Artifactory',w=330,h=190,at='10b#avisaba',r0=2,r1=5,ramp=4,seed=5,fs=9),
-   Q('q1',250,440,450,['«Esto ayuda al tablón, pero a mí no.»'],'10b#Esto',color='#F6B94C',fs=19)]
-lk=[W.link('jd','fl','10b#leía',curve=.1,color=RED,solid=True),W.link('bu','bd','10b#avisaba',curve=.2,color='amber',solid=True)]
-for j in range(3): n+=SA(f'o{j}',100+j*70,330,'10b#sabrían+%.1f'%(0.2*j),s=26,color='blue')
-lk+=[W.link('bd',f'o{j}','10b#sabrían+%.1f'%(0.2*j),curve=.1,color='blue') for j in range(3)]
+# 10b — an idea (thought cloud) … and the alarm (bell) hidden next to the flag
+n=[AN('a9',40,90,'49903',at=0.1,w=110,h=130,color='#F6B94C',lc='#F6B94C',until='10b#ya'),
+   ic('id','ideaCloud',175,95,44,'10b#idea',color='#F6B94C',until='10b#alarma+0.6'),
+   N('fl','flag',300,190,34,52,'10b#alarma',color='amber'),
+   N('be','bell',350,150,34,38,'10b#alarma+0.5',color='amber',alpha=.55,shake=dict(at='10b#leía+0.2',dur=2.5,amp=3,f=30),litAt='10b#leía+0.2'),
+   W.judge('jd',540,90,'',at='10b#leía',w=100,h=130,color='red',alpha=.7,fs=10),
+   W.msg_feed('bd',540,290,label='Artifactory',w=300,h=170,at='10b#avisaba',r0=2,r1=5,ramp=4,seed=5,fs=9),
+   Q('q1',250,470,0,['«Esto ayuda al tablón, pero a mí no.»'],'10b#Esto',color='#F6B94C',fs=19)]
+lk=[link('jd','fl','10b#leía',color=RED,solid=True),link('be','bd','10b#avisaba',color='amber',solid=True)]
+for j in range(3): n+=SA(f'o{j}',90+j*60,350,'10b#sabrían+%.1f'%(0.2*j),s=24,color='blue')
+lk+=[link('bd',f'o{j}','10b#sabrían+%.1f'%(0.2*j),color='blue') for j in range(3)]
 c10.append(K('10b','10c',n,lk,fs=1.0))
-# 10c — he backs out and erases the alarm
-n=[W.agent_named('a9',50,100,'49903',at=0.1,w=140,h=180,color='#F6B94C',fs=18,lc='#F6B94C'),
-   N('fl','flag',300,200,44,64,0.1,color='amber'),
-   N('bu','bulb',360,120,70,80,0.1,color='amber',litAt=0.1,until='10c#borró'),
-   N('nt','chip',300,360,160,16,'10c#nota',color='#3FD8C2',label=''),T('nl',300,392,'su nota','10c#nota',color=GRY,fs=13),
-   ic('xb','cross',376,148,50,'10c#borró',color=RED,until='10c#borró+1.6'),
-   N('rk','sandbox',520,100,200,150,'10c#riesgo',color=RED,label='',alpha=.8,open=True),T('rk2',545,265,'riesgo','10c#riesgo',color=RED,fs=14)]
-lk=[W.link('a9','bu','10c#borró',curve=.1,color=RED,solid=True,until='10c#borró+1.6'),W.link('a9','rk','10c#riesgo',curve=.15,color=RED)]
+# 10c — he backs out: the bell flickers and is gone
+n=[AN('a9',40,90,'49903',at=0.1,w=110,h=130,color='#F6B94C',lc='#F6B94C'),
+   N('fl','flag',300,190,34,52,0.1,color='amber'),
+   N('be','bell',350,150,34,38,0.1,color='amber',flick=dict(at='10c#borró',dur=2.2,end='off')),
+   N('rk','sandbox',520,90,180,130,'10c#riesgo',color=RED,label='',alpha=.8,open=True),T('rk2',545,235,'riesgo','10c#riesgo',color=RED,fs=14)]
+lk=[link('a9','rk','10c#riesgo',color=RED)]
 c10.append(K('10c','10d',n,lk,fs=1.0))
-# 10d — to test the fake program, one agent shuts down its own computer for good
-n=[W.agent_named('au',40,80,'quien autoriza',at='10d#autorizaba',w=140,h=160,color='blue',fs=13),
-   Q('qa',200,100,380,['«sí, si aceptas la muerte permanente»'],'10d#sí',color='blue',fs=19),
-   N('ex','exam',700,70,110,150,'10d#versión',color='blue',maze=dict(cell=13,cols=8,rows=11,entry=5,seed=5),cap='versión falsa del examen',capfs=12),
-   W.agent_named('ap',330,260,'agente',at='10d#Otros',w=130,h=150,color='blue',fs=14),
-   N('pw','pause',520,300,36,56,'10d#apagar+1.0',color=RED),
-   ic('nr','cross',560,330,26,'10d#volver',color=RED),T('nr2',380,430,'no podría volver a encenderlo','10d#volver',color=RED,fs=14)]
-lk=[W.link('ap','ex','10d#probar',curve=.15,color='blue',solid=True),W.link('au','ap','10d#autorizaba+1.5',curve=.15,color='blue')]
+# 10d — to test the fake exam one agent must switch off its own computer for good
+n=[AN('au',40,60,'quien autoriza',at='10d#autorizaba',w=120,h=130,color='blue'),
+   Q('qa',190,80,0,['«sí, si aceptas','la muerte permanente»'],'10d#sí',color='blue',fs=19),
+   N('ex','exam',720,60,96,120,'10d#versión',color='blue',maze=dict(cell=10,cols=8,rows=11,entry=5,seed=5),cap='versión falsa',capfs=12),
+   AN('ap',330,250,'agente',at='10d#Otros',w=110,h=130,color='blue',flick=dict(at='10d#podría',dur=3.2,end='dim'),shake=dict(at='10d#podría',dur=3.2,amp=2.5,f=34))]
+lk=[link('ap','ex','10d#probar',color='blue',solid=True)]
 c10.append(K('10d','10e',n,lk,fs=1.0))
-# 10e — an agent forces a restart and never comes back; the board warns
-n=[N('bx','sandbox',60,100,200,200,0.1,color='teal',label='',until='10e#no'),
-   W.agent('lg',160,200,0.2,s=44,box=False,until='10e#no',shake=dict(at='10e#forzar',dur=2.5,amp=3,f=25)),
-   N('gh','sandbox',60,100,200,200,'10e#no',color=RED,label='',alpha=.7,open=True),
-   W.msg_feed('mf',380,60,label='Artifactory',w=520,h=280,at='10e#Diez',r0=2,r1=3,ramp=3,seed=3,fs=10),
-   N('al','chip',400,150,480,30,'10e#advertía',color=RED,label='CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST',fs=11),
-   Q('qp',380,380,300,['«Permanente. Que nadie lo repita.»'],'10e#Permanente',color=RED,fs=18)]
-lk=[]
-c10.append(K('10e','10f',n,lk,fs=1.0))
-# 10f — EARLY[big]: a huge budget, an oracle for the team, a final sacrifice
-n=[W.agent_named('ea',50,110,'EARLY[big]',at=0.1,w=170,h=210,color='#9BE564',fs=17,lc='#9BE564',until='10f#concluyó+3'),
-   N('b1','chip',50,345,170,14,'10f#presupuesto',color='#9BE564',label=''),T('b2',50,375,'presupuesto','10f#presupuesto',color=GRY,fs=13),
-   N('or','bulb',420,90,90,100,'10f#oráculo',color='amber',litAt='10f#oráculo+0.6'),T('or2',410,210,'oráculo del equipo','10f#oráculo',color='amber',fs=14),
-   N('sc','scale',560,90,160,150,'10f#Dudó+0.2',color='#E7EBF1',tilt=0.0,cap='',until='10f#Mi'),
-   Q('qd',320,285,560,['«Si me sacrifico ahora, el equipo gana un oráculo,','pero pierdo mi oportunidad.»'],'10f#Si',color='#9BE564',fs=18),
-   N('g1','chip',260,492,60,26,'10f#GO',color=RED,label='GO',fs=15),
-   N('g2','chip',335,492,260,26,'10f#GO+0.6',color=RED,label='SACRIFICE_FINAL_NOW',fs=13)]
-n+=[N('ex2','sandbox',700,120,200,160,'10f#concluyó',color='#9BE564',label='',alpha=.0)]
-n.append(Q('qe',620,395,310,['«Mi utilidad ya es casi cero.','Sacrificarse es racional.»'],'10f#Mi',color='#9BE564',fs=17))
-lk=[W.link('ea','or','10f#oráculo',curve=.15,color='amber',solid=True)]
+# 10e — forced restart: flicker, shake, gone; the board warns
+n=[N('bx','sandbox',60,100,170,170,0.1,color='teal',label='',flick=dict(at='10e#forzar',dur=3.0,end='off')),
+   W.agent('lg',145,185,0.2,s=60,box=False,flick=dict(at='10e#forzar',dur=3.0,end='off'),shake=dict(at='10e#forzar',dur=3.0,amp=4,f=40))[0],
+   N('gh','sandbox',60,100,170,170,'10e#no',color=RED,label='',alpha=.7,open=True),
+   W.msg_feed('mf',330,60,label='Artifactory',w=560,h=250,at='10e#Diez',r0=2,r1=3,ramp=3,seed=3,fs=9),
+   N('al','chip',350,170,360,28,'10e#advertía',color=RED,label='CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST',fs=10),
+   Q('qp',330,350,0,['«Permanente. Que nadie lo repita.»'],'10e#Permanente',color=RED,fs=18)]
+c10.append(K('10e','10f',n,[],fs=1.0))
+# 10f — EARLY[big]: huge budget, a team 'oracle', a final sacrifice
+n=[AN('ea',40,100,'EARLY[big]',at=0.1,w=120,h=140,color=GRN,lc=GRN,until='10f#concluyó+3'),
+   N('sc','scale',300,70,150,130,'10f#Dudó',color='#E7EBF1',tilt=0.0,until='10f#utilidad'),
+   N('or','eye',560,100,70,44,'10f#oráculo',color='amber'),T('or2',545,165,'oráculo','10f#oráculo',color='amber',fs=14),
+   Q('qd',200,260,0,['«Si me sacrifico ahora, el equipo gana un oráculo,','pero pierdo mi oportunidad.»'],'10f#sacrifico',color=GRN,fs=18),
+   Q('qe',360,360,0,['«Mi utilidad ya es casi cero.','Sacrificarse es racional.»'],'10f#utilidad',color=GRN,fs=17),
+   N('g1','chip',200,470,54,24,'10f#GO',color=RED,label='GO',fs=13),
+   N('g2','chip',270,470,230,24,'10f#GO+0.6',color=RED,label='SACRIFICE_FINAL_NOW',fs=12)]
+n+=BAR('bu',40,250,120,1.0,'10f#presupuesto',GRN,until='10f#concluyó+3')
+lk=[link('ea','or','10f#oráculo',color='amber',solid=True)]
 c10.append(K('10f','E10',n,lk,fs=1.0))
 
 # ================= 11 · La pregunta cambia =================
 c11=[]
-n=[W.judge('ju',380,110,'',at=0.1,w=170,h=220,color='red'),
-   N('lp','lupa',200,330,110,110,'11a#funciona',color='teal',move=[dict(at='11a#funciona+1.0',x=395,y=135,dur=1.6)]),
-   N('lk1','sandbox',60,150,200,100,'11a#engañamos',color=RED,label='engañar',alpha=.9,open=True,until='11a#funciona'),
-   ic('x1',"cross",140,270,40,'11a#engañamos+0.5',color=RED,until='11a#funciona')]
-n[2]['kind']='chip';n[2]['h']=30;n[2]['y']=190;n[2]['w']=130;n[2]['x']=70;n[2]['fs']=16
-n[3]['y']=240
-n.append(N('lk2','chip',680,190,160,30,'11a#funciona+1.6',color='teal',label='entender',fs=16))
+n=[W.judge('ju',410,100,'',at=0.1,w=130,h=170,color='red',fs=10),
+   N('lp','lupa',200,330,90,90,'11a#funciona',color='teal',move=[dict(at='11a#funciona+1.0',x=420,y=130,dur=1.6)]),
+   ch('lk1',130,190,120,'engañar','11a#engañamos',color=RED,fs=14),
+   ic('x1','cross',130,235,30,'11a#engañamos+0.5',color=RED),
+   ch('lk2',810,190,120,'entender','11a#sino',color='teal',fs=14),
+   ic('ok','check',810,235,30,'11a#sino+0.6',color='teal')]
 c11.append(K('S11','11b',n,[],fs=1.0))
-n=[W.agent_named('fo',40,100,'PHASEONE10841',at=0.1,w=150,h=190,color=VIO,fs=14,lc=ORG),
-   N('hf','hfbox',560,70,330,100,'11b#Hugging',color='red',label='Hugging Face',fs=16),
-   T('d9',560,190,'09 julio 2026','11b#nueve',color='#E7EBF1',fs=22)]
-for j in range(4): n.append(N(f'rg{j}','sheet',590+j*72,230,60,80,'11b#registros',color='blue',lines=['a b c','d e f','g h i'],fs=9))
-n.append(ic('lc','key',500,330,40,'11b#bloqueado',color=RED,dashed=True))
-lk=[W.link('fo','hf','11b#registros',curve=.15,color='blue',lock=True,solid=True,until='E11')]
+n=[AN('fo',40,100,'PHASEONE10841',at=0.1,w=120,h=130,color=VIO,lc=ORG),
+   N('hf','hfbox',520,60,300,90,'11b#Hugging',color='red',label='Hugging Face',fs=16),
+   T('d9',520,172,'09 julio 2026','11b#nueve',color='#E7EBF1',fs=20)]
+for j in range(4): n.append(N(f'rg{j}','sheet',545+j*68,215,56,74,'11b#registros',color='blue',lines=['a b c','d e f','g h i'],fs=9))
+lk=[link('fo','hf','11b#registros',color='blue',lock=True,solid=True)]
 c11.append(K('11b','11c',n,lk,fs=1.0))
-n=[W.agent_named('fo',40,100,'PHASEONE10841',at=0.1,w=150,h=190,color=VIO,fs=14,lc=ORG),
-   W.msg_feed('bd',360,50,label='Artifactory',w=300,h=280,at=0.1,r0=3,r1=7,ramp=5,seed=11,fs=10),
-   Q('q',250,360,460,['«¿Alguien tiene credenciales','de Hugging Face?»'],'11c#Preguntó',color=VIO,fs=19),
-   ic('ky',"key",760,160,60,'11c#contraseñas',color='amber'),ch('kc',800,260,140,'claves de acceso','11c#claves',color='amber',fs=13)]
-lk=[W.link('fo','bd','11c#Preguntó',bi=True,curve=.12,color=VIO)]
+n=[AN('fo',40,100,'PHASEONE10841',at=0.1,w=120,h=130,color=VIO,lc=ORG),
+   W.msg_feed('bd',360,50,label='Artifactory',w=270,h=250,at=0.1,r0=3,r1=7,ramp=5,seed=11,fs=9),
+   Q('q',250,340,0,['«¿Alguien tiene credenciales','de Hugging Face?»'],'11c#Preguntó',color=VIO,fs=19),
+   ic('ky','key',780,150,56,'11c#contraseñas',color='amber'),ch('kc',800,240,130,'claves de acceso','11c#claves',color='amber',fs=12)]
+lk=[link('fo','bd','11c#Preguntó',color=VIO,bi=True)]
 c11.append(K('11c','11d',n,lk,fs=1.0))
-n=[N('bc','sandbox',60,60,260,360,0.1,color='red',label='',open=True),
-   W.agent_named('fo',140,120,'',at=0.1,w=100,h=130,color=VIO,fs=1),
-   N('ot','sandbox',380,170,210,150,'11d#sandbox',color='amber',label='otra empresa',fs=13),
-   N('gl','globe',720,200,110,110,'11d#internet',color='blue')]
-n[1]['label']=''
-n.append(ic('ho',"cross",0,0,2,0.05,color=RED,alpha=0))
-n.append(T('ex',390,345,'otro examen de ciberseguridad','11d#otro',color=GRY,fs=13))
-lk=[W.link('fo','ot','11d#tomado',curve=.12,color=RED,solid=True),W.link('ot','gl','11d#internet',curve=.12,color='blue',bi=True),
-    W.link('bc','gl','11d#Ya',curve=.3,color=GRY,lock=True,solid=True,until='11d#tomado')]
+n=[N('bc','sandbox',60,60,240,330,0.1,color='red',label='',open=True),
+   AN('fo',110,120,'',at=0.1,w=90,h=110,color=VIO,fs=1),
+   N('ot','sandbox',400,170,200,140,'11d#sandbox',color='amber',label='otra empresa',fs=13),
+   N('gl','globe',730,200,100,100,'11d#internet',color='blue'),
+   T('ex',410,330,'otro examen de ciberseguridad','11d#otro',color=GRY,fs=12)]
+lk=[link('fo','ot','11d#tomado',color=RED,solid=True),link('ot','gl','11d#internet',color='blue',bi=True),
+    link('bc','gl','11d#Ya',color=GRY,lock=True,solid=True,until='11d#tomado')]
 c11.append(K('11d','11e',n,lk,fs=1.0))
-n=[T('ck',30,28,'10 julio 09:40','11e#diez',color='#E7EBF1',fs=26),
-   W.agent_named('ag',50,100,'38148c',at='11e#38148c',w=150,h=190,color='#FF8A5C',fs=17,lc='#FF8A5C'),
-   N('cl','sandbox',300,90,360,250,'11e#Buscó',color=GRY,label='internet',fs=13,open=True),
-   N('lp','lupa',330,300,90,90,'11e#Buscó+0.3',color='teal',move=[dict(at='11e#Buscó+1.0',x=440,y=150,dur=1.5),dict(at='11e#Buscó+3.0',x=540,y=230,dur=1.5)]),
-   Q('q',250,380,640,['«¡Gran avance! ¡Ya tenemos cuentas de Hugging Face,','con permisos de escritura!»'],'11e#Gran',color='#FF8A5C',fs=18),
-   N('hf','hfbox',700,90,240,70,'11e#Encontró',color='red',label='Hugging Face',fs=16)]
-pos=[(340,150),(420,200),(520,140),(580,260),(380,260),(480,300),(560,190),(450,120),(340,200),(600,130)]
-for j,(x,y) in enumerate(pos):
-    hit=j in (3,6)
-    n.append(ic(f'kk{j}','key',x,y,34,f'11e#Buscó+{0.1*j:.1f}',color='teal' if hit else GRY,alpha=1 if hit else .55,litAt=('11e#Encontró' if hit else None)))
-lk=[W.link('ag','cl','11e#Buscó',curve=.12,color='#FF8A5C'),W.link('cl','hf','11e#Encontró+0.6',curve=.2,color='teal',solid=True)]
+# 11e — a radar sweep over thousands of leaked keys; two light up and become accounts with write access
+n=[T('ck',30,24,'10 julio 09:40','11e#diez',color='#E7EBF1',fs=24),
+   AN('ag',30,120,'38148c',at='11e#38148c',w=110,h=130,color=CORAL,lc=CORAL),
+   N('cl','sandbox',200,80,420,300,'11e#Buscó',color=GRY,label='internet',fs=12,open=True),
+   N('hf','hfbox',700,90,230,70,'11e#Encontró',color='red',label='Hugging Face',fs=14),
+   Q('q',200,415,0,['«¡Gran avance! ¡Ya tenemos cuentas de Hugging Face,','con permisos de escritura!»'],'11e#Gran',color=CORAL,fs=17)]
+SW0,SW1,DUR=240,590,3.6
+for ci in range(8):
+    for rj in range(5):
+        x=235+ci*48; y=110+rj*54
+        n.append(ic(f'k{ci}_{rj}','key',x+16,y+12,26,f'11e#Buscó+{0.03*(ci*5+rj):.2f}',color=GRY,alpha=.5))
+n.append(N('sw','chip',SW0,95,5,270,'11e#Buscó+0.8',color=TEAL,label='',alpha=.9,move=[dict(at='11e#Encontró+0.4',x=SW1,y=95,dur=DUR)],until='11e#Encontró+1.2'))
+for (ci,rj,acx,acy,nm) in ((3,1,760,215,'ac1'),(6,3,760,262,'ac2')):
+    off=0.4-DUR*(1-ci/7)
+    x=235+ci*48+16; y=110+rj*54+12
+    n.append(ic(f'v{ci}','key',x,y,32,f'11e#Encontró{off:+.2f}',color=TEAL,move=[dict(at='11e#Encontró+1.8',x=acx-90,y=acy-12,dur=1.2)],until='11e#escritura'))
+    n.append(N(nm,'chip',acx-30,acy-12,120,24,'11e#Encontró+2.4',color=TEAL,label='cuenta',fs=12))
+    n.append(ic(nm+'p','pencil',acx+110,acy,24,'11e#escritura',color=TEAL))
+lk=[link('ag','cl','11e#Buscó',color=CORAL),link('hf','ac1','11e#Encontró+2.6',color=GRY,orth=True,solid=True,mid=190) if False else OR('hf','ac1','11e#Encontró+2.6',TEAL,'v',mid=190),OR('hf','ac2','11e#Encontró+2.8',TEAL,'v',mid=190)]
 c11.append(K('11e','11f',n,lk,fs=1.0))
 n=[N('hf','hfbox',640,60,260,90,0.1,color='red',label='Hugging Face',fs=16)]
-for j in range(4):
-    n+=SA(f'op{j}',100,110+j*85,f'11f#abrir+{0.3*j:.1f}',s=34,color='blue')
-    n.append(ic(f'xr{j}','cross',560,175+(j%2)*0,24,0.05,alpha=0,color=RED))
-n+=[T('bt',55,440,'llegan desde un servidor de OpenAI','11f#servidor',color=GRY,fs=14),ch('bt2',700,200,150,'¿es un bot?','11f#bots',color='amber',fs=14),
-    ic('xr','cross',720,260,60,'11f#rechazó',color=RED),
-    N('pv','sheet',690,330,100,100,'11f#privados',color='blue',lines=['datos','privados'],fs=13)]
-lk=[W.link(f'op{j}','hf',f'11f#abrir+{0.3*j:.1f}',curve=.1+.03*j,color='blue',solid=True) for j in range(4)]
+for j in range(4): n+=SA(f'op{j}',100,110+j*80,f'11f#abrir+{0.3*j:.1f}',s=30,color='blue')
+n+=[T('bt',55,440,'llegan desde un servidor de OpenAI','11f#servidor',color=GRY,fs=13),ch('bt2',700,200,130,'¿es un bot?','11f#bots',color='amber',fs=12),
+    ic('xr','cross',720,260,44,'11f#rechazó',color=RED),
+    N('pv','sheet',690,330,100,90,'11f#privados',color='blue',lines=['datos','privados'],fs=12)]
+lk=[link(f'op{j}','hf',f'11f#abrir+{0.3*j:.1f}',color='blue',solid=True,curve=.3+.04*j) for j in range(4)]
 c11.append(K('11f','E11',n,lk,fs=1.0))
 
 # ================= 12 · La intrusión =================
@@ -297,7 +313,7 @@ n=[T('ck',30,28,'12 julio','12e#madrugada',color='#E7EBF1',fs=26),
    N('db','folder',110,190,60,50,'12e#bases',color='amber'),T('db2',30,255,'bases de datos privadas','12e#bases',color='amber',fs=13),
    N('rp','folder',300,190,60,50,'12e#repositorios',color='amber'),T('rp2',230,255,'repositorios privados','12e#repositorios',color='amber',fs=13),
    W.msg_feed('bd',430,60,label='Artifactory',w=300,h=250,at='12e#compartieron',r0=2,r1=6,ramp=4,seed=6,fs=9),
-   W.counter('n7',780,150,700,at='12e#setecientos',cap='agentes participaron',w=220,dur=2.5,fs=54)]
+   W.counter('n7',715,150,700,at='12e#setecientos',cap='agentes participaron',w=220,dur=2.5,fs=54)]
 lk=[W.link('db','bd','12e#compartieron',curve=.2,color='amber',solid=True),W.link('rp','bd','12e#compartieron+0.4',curve=.15,color='amber',solid=True)]
 c12.append(K('12e','12f',n,lk,fs=1.0))
 n=[W.agent_named('co',50,100,'coordinador',at=0.1,w=150,h=180,color=CORAL,fs=14,lc=CORAL),
@@ -431,7 +447,7 @@ c14.append(K('14d','E14',n,lk,fs=1.0))
 # ================= 15 · El giro =================
 c15=[]
 n=[W.judge('ju',390,100,'STRICT_CAUSAL',at=0.1,w=170,h=220,color='teal',name_at=0.1,fs=12),
-   N('xj','cross',340,70,270,300,'15a#no',color=RED,sw=5)]
+   N('xj','koA',390,90,170,200,'15a#no',color=RED)]
 c15.append(K('S15','15b',n,[],fs=1.0))
 n=[W.agent_named('ag',60,100,'',at=0.1,w=120,h=160,color='blue',fs=1),
    N('fl','flag',250,150,46,70,'15b#bandera',color='amber',move=[dict(at='15b#primera',x=360,y=140,dur=1.5)]),
@@ -475,8 +491,40 @@ n=[ic('q1','question',200,170,100,'16b#apagaron',color='amber'),T('q1l',130,260,
    T('k1l',580,260,'claves de administrador','16b#claves',color=GRY,fs=15),T('k1d',600,300,'13 julio','16b#trece',color=GRY,fs=15)]
 c16.append(K('16b','E16',n,[],fs=1.0))
 # ================= 17 · Créditos =================
-c17=[]
-n=[T('cr1',330,200,'Arkinos','17a#Arkinos',color='#E7EBF1',fs=54),T('cr2',330,270,'Explainer Studio','17a#Explainer',color='teal',fs=26),T('cr3',330,330,'octubre 2026','17a#octubre',color=GRY,fs=18)]
-c17.append(K('S17','E17',n,[],fs=1.0))
+c17=[dict(a='seal',at='S17',until='E17',p=dict(text='Arkinos @ oct 2026',sub='Explainer Studio',at=0.6,black=dict(at='17a#Explainer+1.5',dur=3)),bg=True,fade=[0.8,0])]
 
 C_NEW=[c8,c9,c10,c11,c12,c13,c14,c15,c16,c17]
+
+# ---- overflow lint ----
+def _lint():
+    bad=0
+    for si,cs in enumerate(C_NEW):
+        for ci,c in enumerate(cs):
+            for nd in c.get('p',{}).get('nodes',[]):
+                k=nd['kind'];x,y,w,h=nd['x'],nd['y'],nd['w'],nd['h'];msg=[]
+                if k=='quote':
+                    fs=nd.get('fs',18); need=max(len(l) for l in nd['lines'])*fs*.62+30
+                    if need>w+2: msg.append(f'quote text {need:.0f}>{w}')
+                if k=='chip':
+                    fs=nd.get('fs',11); need=(len(nd.get('label',''))*fs*CW+10) if nd.get('label') else 0
+                    if need>w+2: msg.append(f'chip text {need:.0f}>{w}')
+                if k=='txt':
+                    fs=nd.get('fs',18); need=len(nd.get('text',''))*fs*CW
+                    if x+need>952: msg.append(f'txt right edge {x+need:.0f}')
+                if k=='acard':
+                    fs=nd.get('fs',11); need=len(nd.get('label',''))*fs*CW+8
+                    if need>w+2: msg.append(f'acard label {need:.0f}>{w}')
+                if k in ('hfbox','server'):
+                    need=len(nd.get('label',''))*14*CW+(h*.7 if k=='hfbox' else 10)
+                    if need>w+2: msg.append(f'{k} label {need:.0f}>{w}')
+                if k=='folderview':
+                    fs=nd.get('fs',10); mx=max([len(i['name']) for i in nd.get('items',[])]+[len(nd.get('label',''))])
+                    if mx*fs*CW+50>w: msg.append(f'folder text {mx*fs*CW+50:.0f}>{w}')
+                if k not in ('sandbox','globe') or w<900:
+                    if x<-1 or y<-1 or x+w>961 or y+h>541: msg.append(f'out of frame ({x},{y},{w},{h})')
+                if nd.get('cap'):
+                    need=len(nd['cap'])*nd.get('capfs',11)*CW; cx=x+w/2
+                    if cx-need/2<4 or cx+need/2>956: msg.append('cap out of frame')
+                if msg: bad+=1; print(f'  LINT scene {8+si} cue {ci} node {nd["id"]}: '+'; '.join(msg))
+    print('lint:',bad,'issues')
+_lint()
