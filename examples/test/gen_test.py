@@ -18,9 +18,9 @@ def K(at,until,nodes,links=None,fs=1.5,cam=None):
     if cam: d['cam']=cam
     return d
 GX=[226+44*i for i in range(6)]
-R=7; NA=6*R
-G=[(GX[i%6],340-50*(i//6)) for i in range(NA)]
-AL=lambda i: [1,.92,.78,.62,.46,.3,.16][i//6]
+R=6; NA=6*R
+G=[(GX[i%6],168-50*(i//6)) for i in range(NA)]
+AL=lambda i: [1,.85,.6,.35,.15,.05][i//6]
 BC=lambda at=0.05,**k: box('BC',200,-80,280,570,at,color='red',open=True,label='',notop=True,**k)
 BG=lambda at=0.05,**k: box('BG',200,-80,280,570,at,color='red',open=True,label='',notop=True,gap=[235,305],**k)
 HUB=lambda at=0.05,**k: N('art','server',250,425,180,50,at,color='amber',label='Artifactory',**k)
