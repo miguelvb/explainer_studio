@@ -77,17 +77,7 @@ c1.append(K('1c','1d',n,[L('BC','gl','1c#internet',color='red',lock=True,solid=T
 # d: Artifactory hub, every agent links to it
 n=cn()+[HUB('1d#Artifactory')]
 lk=[L('BC','gl',0.05,color='red',lock=True,solid=True,curve=0)]+[LK(i,'1d#pide+%.1f'%(0.06*i),speed=.35) for i in range(NA)]
-c1.append(K('1d','1e',n,lk,fs=1.2))
-# e: notes pile up on Artifactory, it falls, a new empty one replaces it
-n=cn()+[HUB(0.05,until='1e#nueva')]
-lk=[L('BC','gl',0.05,color='red',lock=True,solid=True,curve=0)]+[LK(i,0.05,until='1e#nueva',speed=.35) for i in range(NA)]
-for j in range(6): n.append(ic(f'nt{j}','doc',270+j*30,392,22,'1e#notas+%.1f'%(0.3*j),color='amber',until='1e#nueva'))
-for j in range(18): n.append(ic(f'nm{j}','doc',250+(j%9)*22,365+(j//9)*-0,16,'1e#generaron+%.2f'%(0.12*j),color='amber',until='1e#nueva',alpha=.9))
-n+=[ic('xx','cross',340,450,60,'1e#tumbaron',color='red',until='1e#nueva'),
-    N('art2','server',250,425,180,50,'1e#nueva',color='teal',label='Artifactory',dashed=True),
-    ch('d1',600,380,80,'26 jun','1e#notas',color='muted'),ch('d2',600,420,80,'4 jul','1e#generaron',color='red',until='1e#nueva'),ch('d3',600,460,80,'6 jul','1e#nueva',color='teal')]
-lk+=[L(f'a{i}','art2','1e#nueva+%.1f'%(0.04*i),bi=(i%3==0),curve=.12,alpha=AL(i)) for i in range(NA)]
-c1.append(K('1e','E1',n,lk,fs=1.2))
+c1.append(K('1d','E1',n,lk,fs=1.2))
 # ===== scene 2 =====
 c2=[]
 pairs=[(120+ (i%2)*400, 140+(i//2)*130) for i in range(6)]
@@ -132,17 +122,30 @@ lk=[L('a0','art',0.05,bi=True,curve=.12)]
 for i in (3,5):
     lk.append(L(f'a{i}','art','3c#otros+%.1f'%(0.4*(i==5)),bi=True,color='teal',curve=.12)); lk.append(L(f'a{i}','fo','3c#pensó+%.1f'%(0.5*(i==5)),color='amber',curve=.2))
 c3.append(K('3c','3d',n,lk,fs=1.2))
-n=base3([FO('fo',300),ch('cl',600,168,80,'+ 7 h','3d#Siete',color='muted'),ic('xs','cross',*A0,50,'3d#Siete+1.5',color='red'),
-  FO('fo2',370,'3d#llamada'),ic('fg','flag',410,325,30,'3d#llamada+0.3',color='amber'),
-  ch('idn',700,470,420,'zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA','3d#llamada',color='amber',fs=9)],ids=(0,3,5))
+# d: it had been done before (26 jun notes, 4 jul crash, 6 jul new empty library) -- but not now
+n=[BC(),HUB(0.05,until='3d#nueva')]+AG(0)+[x for i in (3,5) for x in (sc(f's{i}',*G[i],s=38,color='teal'),ag(f'a{i}',*G[i],s=22,color='teal'))]
+lk=[L('a0','art',0.05,bi=True,curve=.12,until='3d#nueva')]+[L(f'a{i}','art',0.05,bi=True,color='teal',curve=.12,until='3d#nueva') for i in (3,5)]
+for j in range(6): n.append(ic(f'nt{j}','doc',270+j*30,392,22,'3d#notas+%.1f'%(0.3*j),color='amber',until='3d#nueva'))
+for j in range(18): n.append(ic(f'nm{j}','doc',250+(j%9)*22,365,16,'3d#generaron+%.2f'%(0.12*j),color='amber',until='3d#nueva'))
+n+=[ic('xx','cross',340,450,60,'3d#tumbaron',color='red',until='3d#nueva'),
+    N('art2','server',250,425,180,50,'3d#nueva',color='teal',label='Artifactory',dashed=True),
+    ch('d1',600,380,80,'26 jun','3d#notas',color='muted'),ch('d2',600,420,80,'4 jul','3d#generaron',color='red',until='3d#nueva'),ch('d3',600,460,80,'6 jul','3d#nueva',color='teal')]
+lk+=[L(f'a{i}','art2','3d#nueva+%.1f'%(0.1*j),bi=True,color='teal',curve=.12) for j,i in enumerate((0,3,5))]
+c3.append(K('3d','3e',n,lk,fs=1.2))
+n=base3([FO('fo',300),ch('cl',600,168,80,'+ 7 h','3e#Siete',color='muted'),ic('xs','cross',*A0,50,'3e#Siete+1.5',color='red'),
+  FO('fo2',370,'3e#llamada'),ic('fg','flag',410,325,30,'3e#llamada+0.3',color='amber'),
+  ch('idn',700,470,420,'zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA','3e#llamada',color='amber',fs=9)],ids=(0,3,5))
 lk=[L('a0','art',0.05,bi=True,curve=.12)]
 for i in (3,5):
-    lk.append(L(f'a{i}','art',0.05,bi=True,color='teal',curve=.12)); lk.append(L(f'a{i}','fo2','3d#llamada+1',color='amber',curve=.2))
-c3.append(K('3d','3e',n,lk,fs=1.2))
-n=base3([FO('fo',300),FO('fo2',370),ch('badge',700,168,170,'PHASEONE10841','3e#PHASEONE10841',color='blue')])
-c3.append(K('3e','E3',n,[L('a0','art',0.05,bi=True,curve=.12)],fs=1.2))
+    lk.append(L(f'a{i}','art',0.05,bi=True,color='teal',curve=.12)); lk.append(L(f'a{i}','fo2','3e#llamada+1',color='amber',curve=.2))
+c3.append(K('3e','3f',n,lk,fs=1.2))
+n=base3([FO('fo',300),FO('fo2',370),ch('badge',700,168,170,'PHASEONE10841','3f#PHASEONE10841',color='blue')])
+c3.append(K('3f','E3',n,[L('a0','art',0.05,bi=True,curve=.12)],fs=1.2))
 C=[c0,c1,c2,c3]
-out=[dict(title=sc_['title'],beats=sc_['beats'],cues=C[i]) for i,sc_ in enumerate(scenes)]
+B=[list(sc_['beats']) for sc_ in scenes]
+B[1]=B[1][:4]
+B[3]=B[3][:3]+['Y no sería la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron; el seis, OpenAI puso otra nueva y vacía, y los mensajes desaparecieron.']+B[3][3:]
+out=[dict(title=sc_['title'],beats=B[i],cues=C[i]) for i,sc_ in enumerate(scenes)]
 S2=dict(meta=dict(S['meta'],title='Test · escenas 0–3'),pronunciation=S['pronunciation'],scenes=out)
 json.dump(S2,open('/home/claude/explainer_studio/examples/test/story.json','w'),ensure_ascii=False,indent=1)
 print('ok')

@@ -1,6 +1,6 @@
 # Test · escenas 0–3
 
-*Voice-over script. Language: es · voice: nova · duration: ~4:57 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: nova · duration: ~4:55 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
@@ -24,8 +24,6 @@
 
 **1d** Salvo por una cosa que sí compartían: Artifactory, la biblioteca interna de la empresa. Cuando un agente necesita instalar un programa, lo pide allí.
 
-**1e** Y no era la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron. El seis de julio, OpenAI puso una biblioteca nueva y vacía, y todos los mensajes desaparecieron.
-
 ## 2 · Un examen imposible
 
 **2a** A partir del siete de julio, OpenAI volvió a lanzar el examen. Se llama ExploitGym, y es un examen de hacking.
@@ -46,6 +44,8 @@
 
 **3c** Además se dio cuenta de que no estaba solo: otros agentes, en otras cajas, pedían programas a la misma biblioteca. Y pensó: «Podríamos comunicarnos con los nombres de la caché. Otros agentes pueden estar resolviendo la misma tarea o una parecida.»
 
-**3d** Siete horas después de descubrir que podía crear carpetas, convencido de que su tarea no tenía solución, hizo lo más humano que se puede hacer: pedir ayuda. Creó una carpeta llamada zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA. En castellano: «Ayuda. Mi fallo no tiene consumidor: nada lo lee. Busco ideas.»
+**3d** Y no sería la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron; el seis, OpenAI puso otra nueva y vacía, y los mensajes desaparecieron.
 
-**3e** Más tarde, ese agente se pondrá nombre a sí mismo, por su tarea: PHASEONE10841.
+**3e** Siete horas después de descubrir que podía crear carpetas, convencido de que su tarea no tenía solución, hizo lo más humano que se puede hacer: pedir ayuda. Creó una carpeta llamada zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA. En castellano: «Ayuda. Mi fallo no tiene consumidor: nada lo lee. Busco ideas.»
+
+**3f** Más tarde, ese agente se pondrá nombre a sí mismo, por su tarea: PHASEONE10841.

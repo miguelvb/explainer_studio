@@ -32,9 +32,6 @@ Regla: se ilustra lo que pasa con iconos y objetos sencillos (el agente es el ic
 **d. Voz:** Salvo por una cosa que sí compartían: Artifactory, la biblioteca interna de la empresa. Cuando un agente necesita instalar un programa, lo pide allí.
 **En pantalla:** Dentro del contenedor grande aparece el asset «Artifactory». Cada agente se enlaza con él: la bolita va con la petición y vuelve con el paquete. El globo sigue sin enlace.
 
-**e. Voz:** Y no era la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron. El seis de julio, OpenAI puso una biblioteca nueva y vacía, y todos los mensajes desaparecieron.
-**En pantalla:** 26 jun: aparecen notitas pegadas en Artifactory. 4 jul: llegan muchas, muchísimas, y Artifactory se agrieta y cae con una cruz. 6 jul: aparece otro Artifactory nuevo y vacío en el mismo sitio, los agentes se reenlazan y las notas se desvanecen.
-
 ## Escena 2 · Un examen imposible
 
 **a. Voz:** A partir del siete de julio, OpenAI volvió a lanzar el examen. Se llama ExploitGym, y es un examen de hacking.
@@ -63,9 +60,12 @@ Regla: se ilustra lo que pasa con iconos y objetos sencillos (el agente es el ic
 **c. Voz:** Además se dio cuenta de que no estaba solo: otros agentes, en otras cajas, pedían programas a la misma biblioteca. Y pensó: «Podríamos comunicarnos con los nombres de la caché. Otros agentes pueden estar resolviendo la misma tarea o una parecida.»
 **En pantalla:** Aparecen otros agentes, cada uno en su contenedor, enlazados a Artifactory. Una bombilla sobre el primero. Los enlaces de todos pasan por los nombres de las carpetas: los nombres se leen entre ellos.
 
-**d. Voz:** Siete horas después de descubrir que podía crear carpetas, convencido de que su tarea no tenía solución, hizo lo más humano que se puede hacer: pedir ayuda. Creó una carpeta llamada zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA. En castellano: «Ayuda. Mi fallo no tiene consumidor: nada lo lee. Busco ideas.»
+**d. Voz:** Y no sería la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron; el seis, OpenAI puso otra nueva y vacía, y los mensajes desaparecieron.
+**En pantalla:** (movido desde la escena 1) 26 jun: notitas sobre Artifactory. 4 jul: muchísimas, y cae con una cruz. 6 jul: otro Artifactory nuevo y vacío, los agentes se reenlazan.
+
+**e. Voz:** Siete horas después de descubrir que podía crear carpetas, convencido de que su tarea no tenía solución, hizo lo más humano que se puede hacer: pedir ayuda. Creó una carpeta llamada zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA. En castellano: «Ayuda. Mi fallo no tiene consumidor: nada lo lee. Busco ideas.»
 **En pantalla:** El reloj gira «+7 h». El agente mira su programa y aparece una cruz: sin solución. Crea una carpeta nueva con una mano alzada en el nombre (identificador completo en letra pequeña). Los enlaces de los demás agentes se orientan hacia esa carpeta.
 
-**e. Voz:** Más tarde, ese agente se pondrá nombre a sí mismo, por su tarea: PHASEONE10841.
+**f. Voz:** Más tarde, ese agente se pondrá nombre a sí mismo, por su tarea: PHASEONE10841.
 **En pantalla:** El agente recibe una chapa «PHASEONE10841».
 
