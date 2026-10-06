@@ -19,3 +19,7 @@
 - Una rotura del contenedor es un **hueco** en la pared, y los enlaces pasan por él (no una X).
 - Hugging Face = caja roja con su nombre, fuera del contenedor, con mucho aire alrededor.
 - Se empieza con **zoom** al agente solo y la cámara se aleja al mostrar el contexto.
+
+## Assets guardados (studio/worldkit.py)
+
+`agent_named` (agente con su nombre) · `agent` (agente sin nombre, en su cajita) · `agent_group` (conjunto: contenedor abierto por arriba con filas que se desvanecen; admite un hueco en la pared) · `hugging_face` (estructura + agujeros) · `counter` (número blanco que cuenta, con texto debajo) · `clock` (reloj UTC tipo máquina de escribir, que puede avanzar) · `link` (enlace con bolita). La escena 0 de `examples/test/gen_test.py` ya los usa.
