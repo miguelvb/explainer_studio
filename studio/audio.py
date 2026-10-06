@@ -154,15 +154,20 @@ def typing_events(root, D, t0, tot):
 
 
 def typing_wav(ev, tot, path, sr=44100):
-    """synthetic typewriter: a sharp key click + low thunk per character, bolder on spaces."""
+    """soft, muted keystrokes: short low-passed thud with a gentle attack (no sharp click or hiss)."""
     rng = np.random.default_rng(7); y = np.zeros(int((tot + 1) * sr), dtype=np.float32)
+    def lp(x, fc):  # one-pole low-pass
+        a = np.exp(-2 * np.pi * fc / sr); o = np.empty_like(x); z = 0.0
+        for k in range(len(x)): z = (1 - a) * x[k] + a * z; o[k] = z
+        return o
     for t, ch in ev:
-        i = int(t * sr); L = int(.07 * sr); x = np.arange(L) / sr
-        env = np.exp(-x * (90 if ch != ' ' else 55)); f = rng.uniform(150, 210) * (.7 if ch == ' ' else 1)
-        click = (rng.standard_normal(L) * env * .55 + np.sin(2 * np.pi * f * x) * np.exp(-x * 60) * .7).astype(np.float32)
-        hi = (np.diff(rng.standard_normal(L + 1)) * np.exp(-x * 220)).astype(np.float32) * .35
-        y[i:i + L] += (click + hi) * rng.uniform(.8, 1.1)
-    y = np.clip(y, -1, 1); import wave
+        i = int(t * sr); L = int(.045 * sr); x = np.arange(L) / sr
+        f = rng.uniform(110, 150) * (.8 if ch == ' ' else 1)
+        body = np.sin(2 * np.pi * f * x) * np.exp(-x * 75)                       # soft low thud
+        tick = lp(rng.standard_normal(L), 1800) * np.exp(-x * 160) * .35         # muffled tick, no hiss
+        w = (body + tick) * np.minimum(1, x / .003) * (1.0 if ch != ' ' else 1.15) * rng.uniform(.75, 1.0)
+        y[i:i + L] += w.astype(np.float32)
+    y = np.clip(y * .6, -1, 1); import wave
     with wave.open(path, 'wb') as w: w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr); w.writeframes((y * 32767).astype('<i2').tobytes())
     return path
 
@@ -182,7 +187,7 @@ def mux(root, audio_dir='audio', out=None, music_only=False, burn=False, music_d
     if files:
         for k, (i, _) in enumerate(files):
             ms = int((S[i]['s'] - t0) * 1000); fc.append(f'[{k + 2}:a]adelay={ms}|{ms},apad[b{k}]')
-        if tk: fc.append(f'[{tk}:a]volume=-8dB[ty]')
+        if tk: fc.append(f'[{tk}:a]volume=-20dB[ty]')
         fc += [''.join(f'[b{k}]' for k in range(len(files))) + (f'[ty]' if tk else '') + f'amix=inputs={len(files) + (1 if tk else 0)}:normalize=0:duration=longest[nar0]', '[nar0]asplit=2[nar][sc]', f'[1:a]volume={music_db}dB[mu]',
                '[mu][sc]sidechaincompress=threshold=0.015:ratio=9:attack=20:release=700[duck]', '[nar][duck]amix=inputs=2:normalize=0:duration=longest,loudnorm=I=-16:TP=-1.5:LRA=9[aout0]']
     else: fc.append(f'[1:a]volume={music_db + 4}dB,loudnorm=I=-20:TP=-1.5[aout0]')
