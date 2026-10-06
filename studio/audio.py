@@ -11,15 +11,61 @@ def _dur(p):
     return float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', p]).strip())
 
 
+EL_MODEL = 'eleven_multilingual_v2'
+# Spanish male candidates (voice ids from the public ElevenLabs library; availability can change)
+EL_CANDIDATES = {'jacobo': 'syjZiIvIUSwKREBfMpKZ', 'carlos': '4FMxnogu8ehUVsRIxx9H', 'jeijo': 'PBaBRSRTvwmnK1PAq9e0',
+                 'mateo': 'LcMajEnHqf3tUTha5ppa', 'juancarlos': 'YExhVa4bZONzeingloMX', 'manuel': 'L7pBVwjueW3IPcQt4Ej9'}
+OA_CANDIDATES = ['cedar', 'onyx', 'ash', 'echo', 'verse', 'fable']
+
+
+def _el_say(text, voice, path, model=None, stability=.5, similarity=.75, style=0.0, speed=1.0):
+    """ElevenLabs text-to-speech -> mp3. voice = voice id (or a name from EL_CANDIDATES). Key: ELEVENLABS_API_KEY."""
+    import urllib.request, urllib.error
+    key = os.environ.get('ELEVENLABS_API_KEY') or os.environ.get('XI_API_KEY')
+    if not key: raise SystemExit('ELEVENLABS_API_KEY not set (add ELEVENLABS_API_KEY=... to .env)')
+    voice = EL_CANDIDATES.get(voice, voice)
+    body = json.dumps({'text': text, 'model_id': model or EL_MODEL, 'voice_settings': {'stability': stability, 'similarity_boost': similarity, 'style': style, 'use_speaker_boost': True, 'speed': speed}}).encode()
+    rq = urllib.request.Request(f'https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128', data=body, headers={'xi-api-key': key, 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'})
+    try:
+        with urllib.request.urlopen(rq, timeout=180) as r: open(path, 'wb').write(r.read())
+    except urllib.error.HTTPError as e: raise SystemExit(f'ElevenLabs error {e.code}: {e.read().decode()[:300]}')
+
+
+def voices(root, st, text=None, openai_voices=None, el_voices=None, log=print):
+    """Same sentence in several voices -> <project>/audio/voices/*.mp3, to choose by ear. Skips providers without a key."""
+    from . import env; env.load(root)
+    beats = json.load(open(f'{root}/build/beats.json')); text = text or beats[0]['text']
+    pron = sorted(st.get('pronunciation', {}).items(), key=lambda kv: -len(kv[0]))
+    for k, v in pron: text = text.replace(k, v)
+    out = f'{root}/audio/voices'; os.makedirs(out, exist_ok=True); m = st['meta']; made = []
+    log(f'sample text ({len(text)} chars): {text[:90]}...')
+    if 'OPENAI_API_KEY' in os.environ:
+        from openai import OpenAI
+        c = OpenAI(); instr = m.get('instructions') or os.environ.get('OPENAI_TTS_INSTRUCTIONS') or DEFAULT_INSTR
+        for v in openai_voices or OA_CANDIDATES:
+            p = f'{out}/openai_{v}.mp3'; log(f'openai {v}')
+            with c.audio.speech.with_streaming_response.create(model='gpt-4o-mini-tts', voice=v, input=text, instructions=instr, response_format='mp3') as r: r.stream_to_file(p)
+            made.append(p)
+    else: log('OPENAI_API_KEY not set: skipping OpenAI voices')
+    if os.environ.get('ELEVENLABS_API_KEY') or os.environ.get('XI_API_KEY'):
+        for v in el_voices or list(EL_CANDIDATES):
+            p = f'{out}/eleven_{v}.mp3'; log(f'elevenlabs {v}'); _el_say(text, v, p); made.append(p)
+    else: log('ELEVENLABS_API_KEY not set: skipping ElevenLabs voices')
+    log(f'{len(made)} samples in {out}'); return made
+
+
 def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, log=print):
     """One MP3 per beat -> audio/beats/<id>.mp3 and audio/timings.json. Needs OPENAI_API_KEY (env or .env)."""
     from . import env; env.load(root)
-    if 'OPENAI_API_KEY' not in os.environ: raise SystemExit('OPENAI_API_KEY not set. .env files read: ' + (', '.join(env.FOUND) or 'none found') + '. The line must look like OPENAI_API_KEY=sk-...')
-    from openai import OpenAI
-    client = OpenAI(); m = st['meta']; E = os.environ
+    m0 = st['meta']; prov = (m0.get('provider') or os.environ.get('TTS_PROVIDER') or 'openai').lower(); el = prov.startswith('eleven')
+    if not el and 'OPENAI_API_KEY' not in os.environ: raise SystemExit('OPENAI_API_KEY not set. .env files read: ' + (', '.join(env.FOUND) or 'none found') + '. The line must look like OPENAI_API_KEY=sk-...')
+    client = None
+    if not el: from openai import OpenAI; client = OpenAI()
+    m = st['meta']; E = os.environ
     model = model or m.get('model') or E.get('OPENAI_TTS_MODEL', 'gpt-4o-mini-tts'); voice = voice or m.get('voice') or E.get('OPENAI_TTS_VOICE') or 'marin'
     speed = float(speed or m.get('speed') or E.get('OPENAI_TTS_SPEED', 1.0)); instr = m.get('instructions') or E.get('OPENAI_TTS_INSTRUCTIONS') or DEFAULT_INSTR
-    log(f'tts model={model} voice={voice} speed={speed}')
+    if el: model = m.get('el_model') or E.get('ELEVENLABS_MODEL', EL_MODEL); voice = m.get('el_voice') or E.get('ELEVENLABS_VOICE') or 'jacobo'; speed = float(m.get('el_speed') or speed); instr = 'el'
+    log(f'tts[{prov}] model={model} voice={voice} speed={speed}')
     pron = sorted(st.get('pronunciation', {}).items(), key=lambda kv: -len(kv[0]))
     def say(t):
         for k, v in pron: t = t.replace(k, v)
@@ -35,8 +81,10 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
         hh = hashlib.sha1('|'.join([say(b['text']), model, voice, str(speed), instr]).encode()).hexdigest()[:12]
         if os.path.exists(p) and not force and i in T and Hh.get(i) == hh: continue
         log(f'tts {i}')
-        with client.audio.speech.with_streaming_response.create(model=model, voice=voice, input=say(b['text']), instructions=instr, speed=speed, response_format='mp3') as r:
-            r.stream_to_file(p)
+        if el: _el_say(say(b['text']), voice, p, model=model, speed=min(1.2, max(.7, speed)), stability=float(m.get('el_stability', .5)))
+        else:
+            with client.audio.speech.with_streaming_response.create(model=model, voice=voice, input=say(b['text']), instructions=instr, speed=speed, response_format='mp3') as r:
+                r.stream_to_file(p)
         T[i] = round(_dur(p) + .12, 3); json.dump(T, open(tf, 'w'), indent=1); Hh[i] = hh; json.dump(Hh, open(hf, 'w'), indent=1)
     log(f'timings -> {tf}  narration {sum(T.values()):.0f}s')
 
