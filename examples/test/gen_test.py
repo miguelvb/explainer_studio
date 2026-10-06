@@ -148,17 +148,23 @@ c0.append(K('S0','0c',[
   N('ck','txt',30,30,400,32,0.2,color='teal',fs=24,type=22,clock=dict(y=2026,m=7,d=8,h=23,mi=0,at='0b',dur=9,to=dict(y=2026,m=7,d=9,h=6,mi=0))),
   N('ac','acard',200,150,170,240,0.4,color='blue',label='PHASEONE10841',fs=14,blink=.28,bf=4),
   N('q','quote',420,235,500,92,'0a#mensaje',color='teal',lines=['«Mi fallo no tiene consumidor.','Busco ideas.»'],fs=24,blink=.2,bf=3.2)],fs=1.0))
-# 0c-0e : fade to a zoomed grid of blinking agents, zoom out -> all in one container, breach, red links to Hugging Face
-CW=[226+44*i for i in range(6)]; RW=[(CW[i%6],450-44*(i//6)) for i in range(66)]
+# 0c-0e : fade to a zoomed grid of blinking agents, zoom out -> all in one wide container, breach, red links hit Hugging Face and make holes
+NC=12; CW=[70+36*i for i in range(NC)]; NR=15; RW=[(CW[i%NC],452-36*(i//NC)) for i in range(NC*NR)]
 al0=lambda y: max(0.0,min(1.0,(y+10)/170))
-n=[box('BC',200,-80,280,570,0.05,color='red',open=True,label='',notop=True,until='0c#atacando'),
-   box('BG',200,-80,280,570,'0c#atacando',color='red',open=True,label='',notop=True,gap=[235,305])]
+n=[box('BC',40,-120,460,610,0.05,color='red',open=True,label='',notop=True,until='0c#atacando'),
+   box('BG',40,-120,460,610,'0c#atacando',color='red',open=True,label='',notop=True,gap=[235,305])]
 for i,(x,y) in enumerate(RW):
-    n+= [sc(f'x{i}',x,y,0.05,s=38,color='teal',alpha=al0(y),blink=.45,bf=3+(i%5)*.6),ag(f'g{i}',x,y,0.05,s=22,alpha=al0(y),blink=.45,bf=3+(i%5)*.6)]
-n+= [N('hf','hfbox',690,225,210,70,'0c#atacando',color='amber',label='Hugging Face',fs=15,blink=.25,bf=4),
-     N('n700','num',560,110,220,50,'0c#setecientas',n=700,color='red',fs=36,dur=3)]
-lk=[L(f'g{i}','hf','0c#atacando+%.1f'%(0.12*j),color='red',via=[480,270],speed=.7,curve=.1) for j,i in enumerate((5,11,17,23,29,35,41,47,53,59,65,3,9,15,21,27))]
-cm=[dict(at='0c',x=35,y=50,z=3.0),dict(at='0c#setecientas',x=35,y=50,z=3.0),dict(at='0c#atacando',x=50,y=50,z=1,dur=2.0)]
+    n+= [sc(f'x{i}',x,y,0.05,s=32,color='teal',alpha=al0(y),blink=.45,bf=3+(i%5)*.6),ag(f'g{i}',x,y,0.05,s=16,alpha=al0(y),blink=.45,bf=3+(i%5)*.6)]
+n+= [N('hf','hfbase',650,135,250,320,'0c#atacando',color='amber',label='Hugging Face',fs=17,blink=.12,bf=3),
+     N('gp','cross',499,269,2,2,0.05,color='red',alpha=0),
+     N('n700','num',655,18,240,50,'0c#setecientas',n=700,color='#E7EBF1',fs=54,dur=3,cap='ataque a Hugging Face',capc='muted',capfs=15)]
+HOLES=[(662,175),(660,235),(664,300),(662,365),(666,425),(745,135),(830,135),(885,142),(890,215),(892,290),(890,360),(870,440),(800,442),(725,440),(780,230),(740,330)]
+lk=[]
+for j,(hx,hy) in enumerate(HOLES):
+    ta='0c#atacando+%.1f'%(0.35*j)
+    n.append(N(f'h{j}','hole',hx-11,hy-11,22,22,'0c#atacando+%.1f'%(0.35*j+1.8),color='red'))
+    lk.append(L('gp',f'h{j}',ta,color='red',speed=.55,curve=.1+.04*(j%4),solid=False))
+cm=[dict(at='0c',x=30,y=50,z=3.4),dict(at='0c#setecientas',x=30,y=50,z=3.4),dict(at='0c#atacando',x=50,y=50,z=1,dur=2.0)]
 c0.append(K('0c','E0',n,lk,fs=1.0,cam=cm))
 C=[c0,c1,c2,c3]
 B=[list(sc_['beats']) for sc_ in scenes]
