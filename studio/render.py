@@ -23,6 +23,7 @@ async def _page(b, url, D, W):
     errs = []
     pg.on('pageerror', lambda e: errs.append(str(e)))
     await pg.goto(url)
+    await pg.evaluate("document.fonts.load('16px \"Press Start 2P\"').then(()=>document.fonts.ready)")
     await pg.evaluate(f"document.getElementById('stage').style.transform='scale({W / 1920})'")
     return pg, errs
 

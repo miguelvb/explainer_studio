@@ -645,7 +645,8 @@ A.world=(h,p,C)=>{
   else g=`<rect x="${n.x}" y="${n.y}" width="${w}" height="${hh}" rx="10" fill="#171D26" stroke="${c}" stroke-width="1.8"/><text x="${cx}" y="${cy+5}" fill="#E7EBF1" font-size="12" text-anchor="middle">${esc(n.label||'')}</text>`;
   if(n.cap)g+=`<text x="${cx}" y="${n.y+hh+(n.kind==='agent'?30:16)}" fill="${hex(n.capc||'muted')}" font-size="${n.capfs||11}" ${n.capm?'font-family="ui-monospace,Menlo,monospace" ':''}text-anchor="middle">${esc(n.cap)}</text>`;
   if(n.tag)g+=`<text x="${cx}" y="${n.y-8}" fill="${hex(n.tagc||'muted')}" font-size="${n.tagfs||11}" text-anchor="middle">${esc(n.tag)}</text>`;
-  s+=`<g class="nd" data-i="${i}" style="opacity:0;transform-box:fill-box;transform-origin:center">${g}</g>`});
+  const fnt=n.font||(n.kind==='quote'?'pixel':'');if(fnt==='pixel')g=g.replace(/font-size="([\d.]+)"/g,(m,v)=>`font-size="${(+v*.6).toFixed(1)}"`);
+  s+=`<g class="nd${fnt==='pixel'?' fpx':''}" data-i="${i}" style="opacity:0;transform-box:fill-box;transform-origin:center">${g}</g>`});
  if(p.fs&&p.fs!==1)s=s.replace(/font-size="([\d.]+)"/g,(m,v)=>`font-size="${(+v*p.fs).toFixed(1)}"`);
  h.innerHTML=`<svg class="sv wv" viewBox="0 0 960 540">${s}</svg>`;
  const nd=[...h.querySelectorAll('.nd')],lk=[...h.querySelectorAll('.lk')],pl=[...h.querySelectorAll('.pl')],pl2=[...h.querySelectorAll('.pl2')],in2=[...h.querySelectorAll('.in2')];

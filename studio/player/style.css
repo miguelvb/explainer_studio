@@ -132,3 +132,6 @@ html,body{background:#0E1218;overflow:hidden}
 .st.vig::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
 .vgn{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
 .sv.wv{overflow:visible}
+
+@font-face{font-family:"Press Start 2P";src:url("fonts/PressStart2P-Regular.ttf") format("truetype");font-display:block}
+.fpx text{font-family:"Press Start 2P",monospace !important;font-style:normal !important;letter-spacing:0}
