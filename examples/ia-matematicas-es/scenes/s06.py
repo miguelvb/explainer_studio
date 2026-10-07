@@ -43,5 +43,5 @@ n = [N('ias', 'sandbox', 60, 190, 300, 200, 0.3, color=TEAL, label='Grupo asesor
      AN('oa', 700, 225, 'OpenAI', 0.3, color='blue')]
 for i in range(9):
     n.append(N(f'ip{i}', 'person', 105 + 80 * (i % 3), 225 + 50 * (i // 3), 34, 40, f'6d#grupo+{0.08 * i:.2f}', color='#E7EBF1'))
-lk = [link('ias', 'st', '6d#asesora', color=TEAL), link('st', 'oa', '6d#ritmo', color=GRY, dashed=True, rel=True)]
+lk = [link('ias', 'st', '6d#asesora', color=TEAL), link('st', 'oa', '6d#ritmo', color=TEAL)]
 cues.append(K('6d', 'E6', n, lk, fs=1.0))
