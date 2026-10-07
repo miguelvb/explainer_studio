@@ -98,9 +98,13 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
     log(f'timings -> {tf}  narration {sum(T.values()):.0f}s')
 
 
-def music(root, out=None):
+def music(root, out=None, style=None, ambience=None):
     """Music bed. meta.music_style: pad (default) | pulse | cinema | bells | data. Shaped by each scene's `intensity` (0-1) and `mood: tense`."""
-    _m = json.load(open(f'{root}/story.json'))['meta']; _style = _m.get('music_style', 'pad')
+    _m = json.load(open(f'{root}/story.json'))['meta']; _style = style or _m.get('music_style', 'pad')
+    if ambience is not None: _m = dict(_m, ambience=ambience)
+    if _style == 'mix':
+        from . import sound
+        return sound.render_mix(root, out=out or f'{root}/build/music.wav')
     if _style != 'pad':
         from . import sound
         D = json.load(open(f'{root}/build/data.json')); cv = sound.curves(root, D)

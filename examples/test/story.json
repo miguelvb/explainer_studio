@@ -14,6 +14,13 @@
   "instructions": "Narrador masculino de documental de divulgación: voz grave, cálida y segura, con autoridad serena. Español de España (castellano peninsular), dicción impecable. Ritmo pausado y envolvente, con gravedad en los momentos clave y una pausa breve al final de cada frase. Cuenta la historia como un narrador de documental de ciencia y tecnología. Los identificadores y las citas en inglés se leen en inglés con naturalidad.",
   "notes": "Relato construido desde el informe de METR/Redwood (26 ago 2026). Ver bible/metr-hf-incident/biblia.md",
   "fadein": 0.3,
+  "music_style": "mix",
+  "music_db": -8,
+  "sfx_db": -12,
+  "duck_ratio": 2.5,
+  "duck_threshold": 0.04,
+  "ambience": 1.0,
+  "background": "grid",
   "model": "gpt-4o-mini-tts",
   "provider": "elevenlabs",
   "el_voice": "cristina",
@@ -5651,7 +5658,10 @@
       0.5
      ]
     }
-   ]
+   ],
+   "music": {
+    "bells": 1
+   }
   },
   {
    "title": "Cajas selladas",
@@ -6877,7 +6887,11 @@
       }
      ]
     }
-   ]
+   ],
+   "music": {
+    "bells": 0.7,
+    "pad": 0.6
+   }
   },
   {
    "title": "Un examen imposible",
@@ -7142,7 +7156,11 @@
       0.5
      ]
     }
-   ]
+   ],
+   "music": {
+    "bells": 0.6,
+    "pad": 0.7
+   }
   },
   {
    "title": "Una carpeta con nombre",
@@ -7696,7 +7714,11 @@
       }
      ]
     }
-   ]
+   ],
+   "music": {
+    "pad": 0.8,
+    "data": 0.4
+   }
   },
   {
    "title": "Un tablón en los estantes",
@@ -12584,7 +12606,11 @@
       }
      ]
     }
-   ]
+   ],
+   "music": {
+    "data": 0.8,
+    "pad": 0.4
+   }
   },
   {
    "title": "La llave maestra",
@@ -12763,7 +12789,11 @@
       0.5
      ]
     }
-   ]
+   ],
+   "music": {
+    "data": 0.7,
+    "bells": 0.5
+   }
   },
   {
    "title": "Envenenados",
@@ -13139,6 +13169,10 @@
      ]
     }
    ],
+   "music": {
+    "cinema": 0.8,
+    "data": 0.4
+   },
    "mood": "tense"
   },
   {
@@ -14747,6 +14781,10 @@
      ]
     }
    ],
+   "music": {
+    "cinema": 0.9,
+    "data": 0.3
+   },
    "mood": "tense"
   },
   {
@@ -16237,7 +16275,11 @@
       0.5
      ]
     }
-   ]
+   ],
+   "music": {
+    "data": 1.0,
+    "cinema": 0.3
+   }
   },
   {
    "title": "Reglas que nadie les enseñó",
@@ -17054,7 +17096,11 @@
       0.5
      ]
     }
-   ]
+   ],
+   "music": {
+    "data": 0.9,
+    "pulse": 0.3
+   }
   },
   {
    "title": "Sacrificios",
@@ -17809,7 +17855,18 @@
      ]
     }
    ],
-   "mood": "tense"
+   "music": {
+    "cinema": 1.0,
+    "pulse": 0.4
+   },
+   "mood": "tense",
+   "sfx": [
+    {
+     "at": "10i#utilidad",
+     "kind": "thud",
+     "g": 0.6
+    }
+   ]
   },
   {
    "title": "La pregunta cambia",
@@ -19038,7 +19095,11 @@
       0.5
      ]
     }
-   ]
+   ],
+   "music": {
+    "pulse": 0.9,
+    "data": 0.3
+   }
   },
   {
    "title": "La intrusión",
@@ -20615,7 +20676,23 @@
      ]
     }
    ],
-   "mood": "tense"
+   "music": {
+    "pulse": 1.0,
+    "cinema": 0.5
+   },
+   "mood": "tense",
+   "sfx": [
+    {
+     "at": "12a#BOOM",
+     "kind": "impact",
+     "g": 0.7
+    },
+    {
+     "at": "12a#BOOM",
+     "kind": "sting",
+     "g": 0.5
+    }
+   ]
   },
   {
    "title": "¿Sabían que estaba mal?",
@@ -21879,7 +21956,17 @@
      ]
     }
    ],
-   "mood": "tense"
+   "music": {
+    "cinema": 1.0
+   },
+   "mood": "tense",
+   "sfx": [
+    {
+     "at": "13c#Debemos",
+     "kind": "sting",
+     "g": 0.55
+    }
+   ]
   },
   {
    "title": "Se apagan",
@@ -23265,7 +23352,23 @@
      ]
     }
    ],
-   "mood": "tense"
+   "music": {
+    "cinema": 0.8,
+    "bells": 0.5
+   },
+   "mood": "tense",
+   "sfx": [
+    {
+     "at": "14a#desaparecieron",
+     "kind": "poweroff",
+     "g": 0.8
+    },
+    {
+     "at": "14a#desaparecieron",
+     "kind": "heartbeat",
+     "g": 0.5
+    }
+   ]
   },
   {
    "title": "El giro",
@@ -23683,6 +23786,22 @@
       0.5,
       0.5
      ]
+    }
+   ],
+   "music": {
+    "bells": 0.8,
+    "pad": 0.5
+   },
+   "sfx": [
+    {
+     "at": "S15",
+     "kind": "rise",
+     "g": 0.5
+    },
+    {
+     "at": "15a#no",
+     "kind": "impact",
+     "g": 0.5
     }
    ]
   },
@@ -24301,7 +24420,11 @@
       0.5
      ]
     }
-   ]
+   ],
+   "music": {
+    "bells": 0.7,
+    "cinema": 0.3
+   }
   },
   {
    "title": "Después",
@@ -25037,6 +25160,17 @@
       0.5
      ]
     }
+   ],
+   "music": {
+    "pulse": 0.6,
+    "data": 0.5
+   },
+   "sfx": [
+    {
+     "at": "17b#control",
+     "kind": "sting",
+     "g": 0.5
+    }
    ]
   },
   {
@@ -25399,6 +25533,17 @@
       1.8
      ]
     }
+   ],
+   "music": {
+    "cinema": 1.0,
+    "pad": 0.4
+   },
+   "sfx": [
+    {
+     "at": "S18",
+     "kind": "impact",
+     "g": 0.8
+    }
    ]
   },
   {
@@ -25552,6 +25697,23 @@
       0.5
      ]
     }
+   ],
+   "music": {
+    "pad": 0.8,
+    "cinema": 0.2
+   },
+   "intensity": 0.12,
+   "sfx": [
+    {
+     "at": "19a#Este",
+     "kind": "heartbeat",
+     "g": 0.5
+    },
+    {
+     "at": "19c#tarde",
+     "kind": "poweroff",
+     "g": 0.7
+    }
    ]
   },
   {
@@ -25579,7 +25741,12 @@
       0
      ]
     }
-   ]
+   ],
+   "music": {
+    "bells": 1.0,
+    "pad": 0.6
+   },
+   "intensity": 0.2
   }
  ]
 }

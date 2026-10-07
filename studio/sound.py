@@ -254,6 +254,21 @@ def sfx_sound(kind, rng):
         return bell(float(hz(76)), 3.5, .6, 1.0)
     if kind == 'rise':
         d = 4.0; t = tt(d); x = bp(rng.standard_normal(len(t)).astype(np.float32), 400, 4000) * (t / d) ** 2; return x * .7
+    if kind == 'idea':
+        return _mix_at([(i * .09, bell(float(hz(m)), 1.4, 1.0, 3.0)) for i, m in enumerate((79, 83, 86, 91))] + [(.3, bp(rng.standard_normal(int(.5 * SR)).astype(np.float32), 5000, 9000) * np.exp(-tt(.5) * 6) * .25)])
+    if kind == 'poweroff':
+        d = 1.8; t = tt(d); f = 330 * np.exp(-t * 2.6) + 24; ph = 2 * np.pi * np.cumsum(f) / SR
+        fl = (np.sin(t * (22 + 30 * t / d)) > -.2 + t / d * 1.1).astype(np.float32) * .85 + .15
+        return (np.sin(ph) * np.exp(-t * 1.5) * fl + .25 * lp(rng.standard_normal(len(t)).astype(np.float32), 500) * np.exp(-t * 5)).astype(np.float32)
+    if kind == 'impact':
+        d = 3.2; t = tt(d); boom = np.sin(2 * np.pi * (38 + 60 * np.exp(-t * 7)) * t) * np.exp(-t * 1.5)
+        return (boom + .5 * lp(rng.standard_normal(len(t)).astype(np.float32), 700) * np.exp(-t * 7)).astype(np.float32)
+    if kind == 'sting':
+        d = 1.6; t = tt(d); x = sum(np.sin(2 * np.pi * float(hz(m)) * t + i) for i, m in enumerate((50, 51, 56, 62))) * np.exp(-t * 2.2) * np.clip(t / .01, 0, 1)
+        return lp(x.astype(np.float32), 1800) * .3
+    if kind == 'heartbeat':
+        t = tt(1.2); b = lambda t0: np.sin(2 * np.pi * 48 * np.clip(t - t0, 0, None)) * np.exp(-np.clip(t - t0, 0, None) * 14) * (t >= t0)
+        return (b(0) + .6 * b(.28)).astype(np.float32)
     if kind == 'hole':
         t = tt(.35); return (np.sin(2 * np.pi * (160 - 80 * t / .35) * t) * np.exp(-t * 9)).astype(np.float32) * .8
     t = tt(.1); return np.zeros(len(t), np.float32)
@@ -267,7 +282,7 @@ def _mix_at(parts):
 
 KIND_SFX = {   # world node kind -> (sfx, gain)
     'acard': ('pop', .5), 'agent': ('pop', .3), 'koA': ('deny', .6), 'cross': ('deny', .6), 'okA': ('chime', .55), 'check': ('chime', .55),
-    'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('spark', .5), 'bulb': ('spark', .5), 'key': ('key', .45), 'sigLock': ('lock', .6),
+    'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('idea', .55), 'bulb': ('idea', .55), 'key': ('key', .45), 'sigLock': ('lock', .6),
     'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('pop', .35),
     'orb': ('spark', .4), 'flagTrophy': ('flag', .5),
 }
@@ -287,12 +302,26 @@ def sfx_events(root, D):
         for nd in c.get('p', {}).get('nodes', []):
             k = nd.get('kind'); ta = T(nd.get('at', 0))
             if nd.get('flick'): ev.append((T(nd['flick']['at']), 'power', .5, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960)); continue
+            if nd.get('until') is not None and k in ('agent', 'acard') and (nd.get('alpha', 1) or 1) > .2:
+                try:
+                    tu = T(nd['until'])
+                    if tu < ce - 1.5: ev.append((tu + .1, 'poweroff', .3, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+                except Exception: pass
+            if k == 'bulb' and nd.get('litAt') is not None:
+                try: ev.append((T(nd['litAt']), 'idea', .5, .5))
+                except Exception: pass
             if k in KIND_SFX and (nd.get('alpha', 1) or 1) > .2 and ta > cs - .01:
                 s_, g = KIND_SFX[k]; ev.append((ta + .05, s_, g, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+    try: stj = json.load(open(f'{root}/story.json'))
+    except Exception: stj = {'scenes': []}
+    for sc in stj.get('scenes', []):
+        for e in sc.get('sfx', []) or []:
+            try: ev.append((resolve(e['at'], S), e['kind'], float(e.get('g', .6)), float(e.get('pan', .5))))
+            except Exception: pass
     ev.sort()
     out = []; last = {}
     for t_, s_, g, p in ev:        # thin out dense bursts so the film does not rattle
-        gap = {'pop': .35, 'swell': 3, 'whoosh': 1}.get(s_, .12)
+        gap = {'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
         if t_ - last.get(s_, -9) < gap: continue
         last[s_] = t_; out.append((t_, s_, g, min(.95, max(.05, p))))
     return out
@@ -342,3 +371,70 @@ def sfx_sampler(path):
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
+
+
+# ------------------------------------------------------------------ mix of styles by chapter
+def _norm_mix(m, default):
+    if m is None: m = default
+    if isinstance(m, str): m = {m: 1.0}
+    return {k: float(v) for k, v in m.items()}
+
+
+def render_mix(root, D=None, out=None, log=print):
+    """meta.music_style = 'mix': every scene has `music` = style or {style: weight}; layers crossfade over 4 s at scene boundaries.
+    Memory-lean: each layer is rendered once, parked on disk as int16 and the final mix is streamed in 20 s blocks."""
+    import os, tempfile, gc, shutil
+    from . import audio
+    D = D or json.load(open(f'{root}/build/data.json')); st = json.load(open(f'{root}/story.json')); S = D['sched']; meta = st['meta']
+    cv = curves(root, D); n = int(cv['total'] * SR); N = len(st['scenes']); default = meta.get('music_default', {'cinema': 1.0})
+    mixes = [_norm_mix(sc.get('music'), default) for sc in st['scenes']]; styles = sorted({k for m in mixes for k in m})
+    out = out or f'{root}/build/music.wav'; tmpd = tempfile.mkdtemp(prefix='mix_')
+
+    def gain_pts(sname):
+        pts = [(0, mixes[0].get(sname, 0))]
+        for i in range(1, N):
+            tb = S[f'S{i}']['s']; pts += [(tb - 2.0, mixes[i - 1].get(sname, 0)), (tb + 2.0, mixes[i].get(sname, 0))]
+        pts.append((cv['total'], mixes[-1].get(sname, 0))); return pts
+
+    def park(name, x, pts=None):
+        peak = float(np.abs(x).max()) or 1.0
+        if pts is not None:
+            tg = np.arange(0, x.shape[1], SR, dtype=np.float32) / SR; g = np.interp(tg, [p[0] for p in pts], [p[1] for p in pts]); act = np.repeat(g > .05, SR)[:x.shape[1]]
+            rms = float(np.sqrt((x[:, act] ** 2).mean())) if act.any() else 1.0
+        else:
+            rms = float(np.sqrt((x ** 2).mean())) or 1.0
+        mm = np.lib.format.open_memmap(f'{tmpd}/{name}.npy', mode='w+', dtype=np.int16, shape=x.shape)
+        for i in range(0, x.shape[1], SR * 30): mm[:, i:i + SR * 30] = (x[:, i:i + SR * 30] / peak * 32767).astype(np.int16)
+        mm.flush(); del mm
+        return dict(peak=peak, rms=rms)
+
+    L = {}
+    for sname in sorted(styles, key=lambda k: (k != 'pad', k)):      # the legacy pad is the hungriest: do it first
+        log(f'  music layer: {sname}'); gc.collect()
+        if sname == 'pad':
+            tmp = f'{tmpd}/pad.wav'; audio.music(root, tmp, style='pad', ambience=0); gc.collect()
+            with wave.open(tmp, 'rb') as w: x = np.frombuffer(w.readframes(w.getnframes()), '<i2').reshape(-1, 2).T.astype(np.float32) / 32768
+            os.remove(tmp); x = x[:, :n] if x.shape[1] >= n else np.pad(x, ((0, 0), (0, n - x.shape[1])))
+        else:
+            x = render_style(sname, cv, ambience_level=0)[:, :n]
+        L[sname] = park(sname, x, gain_pts(sname)); L[sname]['pts'] = gain_pts(sname); del x; gc.collect()
+    lvl = float(meta.get('ambience', 1.0)); amb = None
+    if lvl > 0:
+        nn, t = make_t(cv['total']); a = ambience(cv, nn, t, np.random.default_rng(9), 1.0)[:, :n]; del t; amb = park('amb', a); del a; gc.collect()
+    fi = max(.05, float(meta.get('fadein', 4))); fo = float(meta.get('fadeout', 4)); tot = D['total']
+    mms = {k: np.load(f'{tmpd}/{k}.npy', mmap_mode='r') for k in list(L) + (['amb'] if amb else [])}
+    B = SR * 20
+
+    def block(i0, i1):
+        tb = np.arange(i0, i1, dtype=np.float32) / SR; acc = np.zeros((2, i1 - i0), np.float32)
+        for k, meta_ in L.items():
+            g = np.interp(tb, [p[0] for p in meta_['pts']], [p[1] for p in meta_['pts']]).astype(np.float32)
+            acc += mms[k][:, i0:i1].astype(np.float32) * (meta_['peak'] / 32767 * .11 / max(meta_['rms'], 1e-6)) * g[None]
+        if amb: acc += mms['amb'][:, i0:i1].astype(np.float32) * (amb['peak'] / 32767 * .012 * lvl / max(amb['rms'], 1e-6))
+        return acc * (np.clip(tb / fi, 0, 1) * np.clip((tot - tb) / fo, 0, 1))[None]
+    mx = max(float(np.abs(block(i, min(n, i + B))).max()) for i in range(0, n, B)) or 1.0
+    with wave.open(out, 'wb') as w:
+        w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)
+        for i in range(0, n, B):
+            x = block(i, min(n, i + B)) / mx * .7; w.writeframes((np.clip(x.T, -1, 1) * 32767).astype('<i2').tobytes())
+    del mms; shutil.rmtree(tmpd, ignore_errors=True); return out
