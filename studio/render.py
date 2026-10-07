@@ -1,5 +1,5 @@
 """Frame-exact rendering (Playwright + ffmpeg), preview contact sheets and the deep probe."""
-import asyncio, json, os, subprocess, time, glob
+import asyncio, json, os, subprocess, time, glob, sys, shutil
 from playwright.async_api import async_playwright
 
 CHROMIUM_FALLBACK = os.environ.get('CHROMIUM_PATH', '/opt/pw-browsers/chromium')
@@ -55,12 +55,28 @@ def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, scenes=None, dr
     preset, crf = ('ultrafast', 26) if draft else ('fast', 17)
     os.makedirs(f'{b}/video', exist_ok=True)
 
+    PR = dict(total=0, done=0, scenes=0, sdone=0, active=set(), t=time.time(), last=0.0)
+
+    def _fr(n):
+        f0, f1 = round(S[f'S{n}']['s'] * fps), round(S[f'E{n}']['s'] * fps)
+        return f0, (min(f1, f0 + int(limit * fps)) if limit else f1)
+
+    def _fmt(x): x = int(max(0, x)); return f'{x // 3600}:{x % 3600 // 60:02d}:{x % 60:02d}' if x >= 3600 else f'{x // 60}:{x % 60:02d}'
+
+    def _progress(force=False):
+        now = time.time()
+        if not force and now - PR['last'] < (2 if sys.stdout.isatty() else 20): return
+        PR['last'] = now; el = now - PR['t']; d, T = PR['done'], max(1, PR['total']); rate = d / el if el > 1 else 0
+        eta = (T - d) / rate if rate else 0
+        msg = f"  progreso {100 * d / T:5.1f}%  escenas {PR['sdone']}/{PR['scenes']}  frames {d}/{T}  transcurrido {_fmt(el)}  falta ~{_fmt(eta) if rate else '?'}  total est. ~{_fmt(el + eta) if rate else '?'}  {rate:.1f} fps  en curso: {','.join(str(a) for a in sorted(PR['active']))}"
+        if sys.stdout.isatty(): sys.stdout.write('\r' + msg[:shutil.get_terminal_size((160, 20)).columns - 1].ljust(shutil.get_terminal_size((160, 20)).columns - 1)); sys.stdout.flush()
+        else: log(msg)
+
     async def one(br, n):
-        t0, t1 = S[f'S{n}']['s'], S[f'E{n}']['s']
-        f0, f1 = round(t0 * fps), round(t1 * fps)
-        if limit: f1 = min(f1, f0 + int(limit * fps))
+        f0, f1 = _fr(n)
         out = f'{b}/video/scene_{n}.mp4'; hf = out + '.hash'; hh = _scene_hash(root, D, n, w, fps, limit, preset, crf)
         if not force and os.path.exists(out) and os.path.exists(hf) and open(hf).read() == hh: return n, -1
+        PR['active'].add(n)
         pg, errs = await _page(br, url, D, w)
         await pg.evaluate('(d)=>{window.BGCFG=d.bg;setup(d.sched,d.cues)}', D)
         ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', str(fps), '-c:v', 'mjpeg', '-i', '-',
@@ -70,18 +86,22 @@ def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, scenes=None, dr
             sig = await pg.evaluate(f'(()=>{{frame({f / fps});return window.__sig()}})()')   # one round trip: draw + state signature
             if sig != last or not img or os.environ.get('NODEDUP'): img = await pg.screenshot(type='jpeg', quality=94); last = sig
             else: reused += 1                                                              # identical DOM state -> identical picture: skip the screenshot
-            ff.stdin.write(img)
-        ff.stdin.close(); ff.wait(); await pg.close(); open(hf, 'w').write(hh)
-        log(f'  scene {n}: {reused}/{f1 - f0} frames reused (identical state)') if reused else None
+            ff.stdin.write(img); PR['done'] += 1; _progress()
+        ff.stdin.close(); ff.wait(); await pg.close(); open(hf, 'w').write(hh); PR['active'].discard(n); PR['sdone'] += 1
+        None
         return n, f1 - f0
 
     async def main():
         scenes_ = list(scenes) if scenes is not None else ([scene] if scene is not None else list(range(N))); t = time.time(); sem = asyncio.Semaphore(workers)
+        todo = [n for n in scenes_ if force or not (os.path.exists(f'{b}/video/scene_{n}.mp4') and os.path.exists(f'{b}/video/scene_{n}.mp4.hash') and open(f'{b}/video/scene_{n}.mp4.hash').read() == _scene_hash(root, D, n, w, fps, limit, preset, crf))]
+        PR.update(total=sum(_fr(n)[1] - _fr(n)[0] for n in todo), scenes=len(todo), t=time.time()); log(f'  a renderizar: {len(todo)} escenas, {PR["total"]} frames ({w}px, {fps} fps, {workers} workers); el resto se reutiliza')
         async with async_playwright() as p:
             br = await _launch(p)
             async def go(n):
                 async with sem:
-                    r = await one(br, n); log(f'scene {r[0]} unchanged, reused' if r[1] < 0 else f'scene {r[0]} done: {r[1]} frames, {time.time() - t:.0f}s'); return r
+                    r = await one(br, n)
+                    if sys.stdout.isatty(): sys.stdout.write('\r' + ' ' * (shutil.get_terminal_size((160, 20)).columns - 1) + '\r')
+                    log(f'scene {r[0]} unchanged, reused' if r[1] < 0 else f'scene {r[0]} done: {r[1]} frames, {_fmt(time.time() - t)}'); _progress(True); return r
             await asyncio.gather(*[go(n) for n in scenes_]); await br.close()
     asyncio.run(main())
     if scenes is not None:
