@@ -231,6 +231,8 @@ def sfx_sound(kind, rng):
         return out
     if kind == 'msg':         # a message from an agent arrives: warm notification bell, two soft strokes
         return _mix_at([(0, bell(float(hz(79)), 1.6, 1.0, 2.6)), (.16, bell(float(hz(86)), 2.0, .9, 2.2))]) * .4
+    if kind == 'validate':    # flags merge into one / validated: bright confirming two-step with a sparkle tail
+        return _mix_at([(0, bell(float(hz(84)), .6, 1.0, 4.0)), (.11, bell(float(hz(91)), 1.4, 1.0, 3.0)), (.11, bell(float(hz(96)), 1.2, .5, 4.0)), (.2, bp(rng.standard_normal(int(.3 * SR)).astype(np.float32), 4000, 8000) * np.exp(-tt(.3) * 12) * .2)]) * .32
     if kind == 'tick':        # list item / small element appears
         t = tt(.09); return (np.sin(2 * np.pi * 1250 * t) * np.exp(-t * 55) * .6 + bp(rng.standard_normal(len(t)).astype(np.float32), 2500, 6000) * np.exp(-t * 90) * .3).astype(np.float32) * .8
     if kind == 'slide':       # something moves: short airy glide
@@ -338,7 +340,7 @@ def _mix_at(parts):
 KIND_SFX = {   # world node kind -> (sfx, gain)
     'acard': ('spawn', .55), 'agent': ('spawn', .45), 'koA': ('error', .8), 'cross': ('error', .8), 'okA': ('chime', .55), 'check': ('chime', .55),
     'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('idea', .55), 'bulb': ('idea', .55), 'key': ('key', .45), 'sigLock': ('lock', .6),
-    'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('pop', .35),
+    'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('spawn', .4),
     'orb': ('spark', .4), 'chip': ('tick', .4), 'quote': ('msg', .6), 'sheet': ('create', .55), 'flagTrophy': ('flag', .5),
 }
 
@@ -384,6 +386,10 @@ def sfx_events(root, D):
                     except Exception: pass
             if k == 'chip' and nd.get('label') in ('zzASK', 'zzANSWER', 'zzINFO'):
                 ev.append((ta + .05, nd['label'][2:].lower(), .6, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+            if k == 'flFly' and nd.get('move') and nd.get('until') is not None:
+                try:
+                    m = nd['move'][-1]; ev.append((T(m['at']) + float(m.get('dur', 1)), 'validate', .6, (m.get('x', 480)) / 960))
+                except Exception: pass
             if k == 'num' and nd.get('dur'):
                 ev.append((ta, f"count:{min(6.0, float(nd['dur'])):.1f}", .45, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
             if k == 'msgfeed':
@@ -415,7 +421,7 @@ def sfx_events(root, D):
     ev.sort()
     out = []; last = {}
     for t_, s_, g, p in ev:        # thin out dense bursts so the film does not rattle
-        gap = {'msg': .8, 'tick': .08, 'slide': .15, 'connect': .5, 'spawn': .4, 'create': .3, 'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
+        gap = {'validate': .8, 'msg': .8, 'tick': .08, 'slide': .15, 'connect': .5, 'spawn': .25, 'create': .3, 'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
         if t_ - last.get(s_, -9) < gap: continue
         last[s_] = t_; out.append((t_, s_, g, min(.95, max(.05, p))))
     return out
@@ -461,7 +467,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'msg', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'validate', 'msg', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
