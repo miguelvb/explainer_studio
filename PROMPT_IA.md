@@ -11,6 +11,17 @@
 - Si algo no se entiende de lo que dice, pregunta **una** cosa corta; si es una corrección clara, hazla.
 - Marca de la casa: las películas se firman *Arkinos · Explainer Studio*; cierre con sello "Arkinos @ oct 2026".
 
+## 1b. Flujo con una película nueva (el que quiere el usuario)
+
+El usuario **no edita archivos `.py`**. Su único documento es `script.md`; tú traduces ese documento en escenas.
+
+1. **Entrada:** el usuario te pasa una idea, un informe, una transcripción… y te explica qué quiere (duración, tono, idioma, voz).
+2. **Tú escribes `script.md`:** la narración por escenas y frases (`## N · Título`, `**3a** frase`) y, **debajo de cada frase, una o dos líneas `> …` con la escena visual simple** ("aparece un agente y se ve que dice …", "el mensaje viaja hasta la caja de Hugging Face"). Respeta la regla visual nº 1: se muestra lo que ocurre, no texto repetido. Se crea el esqueleto con `python explainer.py newfilm -p examples/<nombre> --title "…"`.
+3. **El usuario corrige `script.md`** (texto y escenas visuales) y te lo devuelve; itera hasta aprobarlo.
+4. **Tú construyes** `scenes/sNN.py` siguiendo las líneas `>` ya aprobadas, `film.py` (voz, música, fondo, pronunciaciones) y los avisos de pronunciación de los términos en inglés; `gen` produce `story.json`.
+5. **Tú compruebas:** `validate` (0 errores) y vista previa en PNG de cada escena; arreglas lo que salga mal y se las enseñas al usuario antes del render.
+6. **El usuario hace `git pull`, genera voz y renderiza** (`explainer.py all …`) y revisa el vídeo con capturas y minutos; cada corrección vuelve a ti. Si cambia solo una frase de la narración, puede editarla él mismo en `script.md` y regenerar la voz de esa escena; si cambia lo que se ve, te lo pide a ti (o edita la línea `>` y tú actualizas la escena).
+
 ## 2. Qué es el proyecto
 
 Programa (Python + Chromium/Playwright + ffmpeg) que convierte un guion en un vídeo explicativo animado. Todo lo que se ve son *assets* de movimiento deterministas (`studio/player/assets.js`), sin imágenes de archivo ni clips de IA. La voz es ElevenLabs; la película se reajusta sola a los tiempos reales de la voz porque todo cuelga de **anclas de palabra** (`"3c#palabra+0.4"`).
@@ -40,9 +51,9 @@ Mapa del código:
 
 **No edites `story.json` a mano:** lo escribe `studio/storykit.py` (`python explainer.py gen -p <película>`; `validate`/`build`/`all` lo regeneran solos).
 
-- La carpeta de la película tiene `film.py` (META y PRONUNCIATION), `narration.md` (la narración: **fuente de verdad**; `script.md` lo genera `build` solo para leer) y `scenes/sNN.py` (un script por escena).
+- La carpeta de la película tiene `film.py` (META y PRONUNCIATION), `script.md` (la narración y su storyboard: **fuente de verdad** y único archivo que edita el usuario) y `scenes/sNN.py` (un script por escena).
 - Un script de escena define `cues` y, opcionalmente, `MUSIC`, `MOOD`, `INTENSITY`, `SFX` y `PROFILE` (`'house'` por defecto, y lo usan todas las escenas; `'raw'` solo para casos excepcionales). Corre en un espacio de nombres compartido con los helpers de `storykit` y `worldkit`.
-- La numeración de escenas y frases (`9c`, `17e`…) sale de `narration.md`: una línea `**9c** texto` por frase; `(pausa 2.4)` tras el id añade silencio.
+- La numeración de escenas y frases (`9c`, `17e`…) sale de `script.md`: una línea `**9c** texto` por frase; `(pausa 2.4)` tras el id añade silencio.
 - Película nueva: `python explainer.py newfilm -p examples/<nombre> --title "…"`.
 - Tras cualquier cambio: `python explainer.py validate -p examples/hf-swarm-vivido-es` (debe dar **0 errores**; hay ~26 avisos conocidos). Si has refactorizado, comprueba que `story.json` no cambia (`git diff --stat`).
 - Si cambias el texto de una frase, avisa al usuario de que debe **regenerar la narración de esa escena**; los tiempos de las demás se recalculan solos.
@@ -87,7 +98,7 @@ Todo sintetizado, sin descargas. Se configura en `meta` de la película: `music_
 
 - *"No se oye X"*: localiza el nodo (`grep` en `scenes/`), mira qué eventos genera `sound.sfx_events(root, D)` en esa franja y sube ganancia/duración o añade el evento.
 - *"Este enlace…"*: localiza la escena por el texto o el minuto (sumando `S{n}` en `build/data.json['sched']`), cambia el enlace en el generador, vuelve a generar, vista previa, valida.
-- *"Quita esta frase"*: edita `narration.md`, regenera y avisa de rehacer la narración de esa escena.
+- *"Quita esta frase"*: edita `script.md`, regenera y avisa de rehacer la narración de esa escena.
 - Convierte "minuto:segundo" del vídeo del usuario en escena con `D['sched']['S{n}']['s']`.
 - Los 21 avisos de "link crosses another node" son avisos de la sonda de render (un enlace roza algo), no errores; arréglalos solo si el usuario señala una escena.
 

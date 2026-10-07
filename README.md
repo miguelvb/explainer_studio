@@ -149,18 +149,17 @@ Una película vive en una carpeta y `story.json` **se genera**, no se escribe a 
 ```
 examples/mi-pelicula/
   film.py          META (el `meta` de story.json) y PRONUNCIATION
-  narration.md     la narración, fuente de verdad: `## N · Título` y una línea `**3a** frase` por frase  ((pausa 2.4) tras el id añade silencio)
+  script.md     la narración, fuente de verdad: `## N · Título` y una línea `**3a** frase` por frase  ((pausa 2.4) tras el id añade silencio)
   scenes/s00.py …  un script por escena: define `cues` y, si quiere, MUSIC, MOOD, INTENSITY, SFX, PROFILE
   story.json       generado
-  script.md        generado por `build` (para leer)
 ```
 
 ```bash
 python explainer.py newfilm -p examples/mi-pelicula --title "Mi película"   # esqueleto mínimo que ya valida
-python explainer.py gen     -p examples/mi-pelicula                         # film.py + narration.md + scenes/*.py -> story.json (+ lint)
+python explainer.py gen     -p examples/mi-pelicula                         # film.py + script.md + scenes/*.py -> story.json (+ lint)
 ```
 
-`validate`, `build`, `preview` y `all` regeneran `story.json` solos antes de actuar. Los scripts de escena corren en un espacio de nombres compartido con los helpers de `studio/storykit.py` (`N`, `K`, `L`, `ag`, `box`, `sc`, `ch`, `ic`, `AN`, `SA`, `Q`, `T`, `BAR`, `OR`, `link`), `W` (`worldkit`), `math` y la paleta (`TEAL`, `CORAL`, `GRN`, `RED`, `AMB`…). `PROFILE='house'` (por defecto) aplica las reglas de la casa (tarjetas y fichas ajustadas al texto, enlaces nunca casi rectos, ortogonales siempre continuos, citas del ancho de su texto); `PROFILE='raw'` usa los constructores sin más (solo casos excepcionales; ninguna escena de la película de referencia lo usa). Cambiar la narración de una frase exige regenerar la voz de esa escena; el resto se reajusta solo.
+Bajo cada frase pueden ir líneas `> …` con lo que se ve en pantalla ("aparece un agente y dice…"); el programa las ignora, son para ti y para quien construya las escenas. `validate`, `build`, `preview` y `all` regeneran `story.json` solos antes de actuar. Los scripts de escena corren en un espacio de nombres compartido con los helpers de `studio/storykit.py` (`N`, `K`, `L`, `ag`, `box`, `sc`, `ch`, `ic`, `AN`, `SA`, `Q`, `T`, `BAR`, `OR`, `link`), `W` (`worldkit`), `math` y la paleta (`TEAL`, `CORAL`, `GRN`, `RED`, `AMB`…). `PROFILE='house'` (por defecto) aplica las reglas de la casa (tarjetas y fichas ajustadas al texto, enlaces nunca casi rectos, ortogonales siempre continuos, citas del ancho de su texto); `PROFILE='raw'` usa los constructores sin más (solo casos excepcionales; ninguna escena de la película de referencia lo usa). Cambiar la narración de una frase exige regenerar la voz de esa escena; el resto se reajusta solo.
 
 `examples/hf-swarm-vivido-es` es la película de referencia construida así. El resto de proyectos de `examples/` son `story.json` escritos a mano o por `ingest`.
 

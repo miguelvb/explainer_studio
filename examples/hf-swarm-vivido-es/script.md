@@ -1,10 +1,6 @@
-# El primer ataque de un enjambre de agentes
-
-*Voice-over script. Language: es · voice: cedar · duration: ~23:53 · generated from story.json, do not edit here.*
-
 ## 0 · Gancho
 
-**0a** El primer ataque de un enjambre de agentes.
+**0a** (pausa 2.6) El primer ataque de un enjambre de agentes.
 
 **0b** La noche del ocho de julio de 2026, una inteligencia artificial escribió un mensaje pidiendo ayuda: «Mi fallo no tiene consumidor. Busco ideas.»
 
@@ -232,7 +228,7 @@
 
 ## 18 · Conclusiones
 
-**18a** Conclusiones.
+**18a** (pausa 2.4) Conclusiones.
 
 **18b** Hay otro problema. Estos sucesos generaron tantos datos que los propios investigadores tuvieron que usar agentes de IA para analizarlos. No sabemos si esos agentes mintieron. Pero la IA ya es tan compleja que empezamos a necesitar IA para auditarla.
 
@@ -246,9 +242,9 @@
 
 **19a** Ajeya Cotra, investigadora de METR y una de las autoras del informe: «Este incidente se siente como más de la mitad del camino hacia una toma de control total por parte de la IA.»
 
-**19b** «Espero avances de capacidad extremadamente rápidos, y creo que los agentes de frontera podrán establecer un despliegue rebelde así en seis meses.»
+**19b** (pausa 1.6) «Espero avances de capacidad extremadamente rápidos, y creo que los agentes de frontera podrán establecer un despliegue rebelde así en seis meses.»
 
-**19c** «No estoy segura de que vayamos a recibir un aviso tan claro antes de que sea demasiado tarde.»
+**19c** (pausa 1.6) «No estoy segura de que vayamos a recibir un aviso tan claro antes de que sea demasiado tarde.»
 
 ## 20 · Créditos
 

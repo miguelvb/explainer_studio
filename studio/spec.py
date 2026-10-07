@@ -228,6 +228,7 @@ def write_build(st, root, timings=None, pad=True, **kw):
 
 def write_script(st, root, sched=None, total=None, real=False):
     """script.md next to story.json: the voice-over, scene by scene (regenerated on every build)."""
+    if os.path.exists(os.path.join(root, 'film.py')): return          # storykit films: script.md is the hand-written source, never overwritten
     m = st['meta']; mm = lambda x: f'{int(x // 60)}:{int(x % 60):02d}'
     L = [f"# {m.get('title', 'Script')}", '', f"*Voice-over script. Language: {m.get('lang', 'en')}" + (f" · voice: {m['voice']}" if m.get('voice') else '') +
          (f" · duration: {'' if real else '~'}{mm(total)}" if total else '') + ' · generated from story.json, do not edit here.*', '']
