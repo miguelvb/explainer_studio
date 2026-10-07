@@ -22977,16 +22977,6 @@
         "text": "presupuesto"
        },
        {
-        "id": "xb",
-        "kind": "koA",
-        "x": 183,
-        "y": 267,
-        "w": 34,
-        "h": 34,
-        "at": "14b#presupuesto",
-        "color": "#FF6E6E"
-       },
-       {
         "id": "ou",
         "kind": "sandbox",
         "x": 420,
