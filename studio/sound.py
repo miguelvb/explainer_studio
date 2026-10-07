@@ -222,6 +222,11 @@ def ambience(cv, n, t, rng, level=1.0):
 # ------------------------------------------------------------------ sfx
 def sfx_sound(kind, rng):
     """Short synthesised effect (mono float32) for a named kind."""
+    if kind == 'create':      # something new is made: bright rising pluck + a little sparkle
+        return _mix_at([(i * .06, bell(float(hz(n_)), .7, .9, 5.0)) for i, n_ in enumerate((79, 84, 91))] + [(.14, bp(rng.standard_normal(int(.25 * SR)).astype(np.float32), 3000, 7000) * np.exp(-tt(.25) * 14) * .25)]) * .35
+    if kind == 'spawn':       # an agent appears: soft upward bloop with a halo
+        t = tt(.3); sw = np.sin(2 * np.pi * np.cumsum(180 + 520 * (t / .3) ** .7) / SR) * np.minimum(1, t / .01) * np.exp(-t * 7) * .6
+        return _mix_at([(0, sw.astype(np.float32)), (.12, bell(float(hz(76)), 1.0, .6, 3.0))]) * .55
     if kind.startswith('alarm'):       # 'alarm:<seconds>' - soft, non-dramatic repeating two-note alert (a flag blinking)
         d = float(kind.split(':')[1]) if ':' in kind else 3.0; out = np.zeros(int(d * SR), np.float32); per = 1.15; k = 0
         while k * per + .5 < d:
@@ -301,7 +306,7 @@ def _mix_at(parts):
 
 
 KIND_SFX = {   # world node kind -> (sfx, gain)
-    'acard': ('pop', .5), 'agent': ('pop', .3), 'koA': ('error', .8), 'cross': ('error', .8), 'okA': ('chime', .55), 'check': ('chime', .55),
+    'acard': ('spawn', .55), 'agent': ('spawn', .45), 'koA': ('error', .8), 'cross': ('error', .8), 'okA': ('chime', .55), 'check': ('chime', .55),
     'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('idea', .55), 'bulb': ('idea', .55), 'key': ('key', .45), 'sigLock': ('lock', .6),
     'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('pop', .35),
     'orb': ('spark', .4), 'flagTrophy': ('flag', .5),
@@ -332,6 +337,10 @@ def sfx_events(root, D):
                     tb = T(nd['bat']); te = T(nd['until']) if nd.get('until') is not None else ce; dd = min(6.0, te - tb)
                     if dd >= 1.2: ev.append((tb, f'alarm:{dd:.1f}', .5, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
                 except Exception: pass
+            for it in nd.get('items', []) or []:
+                if it.get('dir') and it.get('at') is not None:
+                    try: ev.append((T(it['at']), 'create', .55, .55))
+                    except Exception: pass
             if nd.get('shake') and k in ('agent', 'acard'):
                 try:
                     sh = nd['shake']; dd = min(7.0, float(sh.get('dur', 1.2)))
@@ -351,7 +360,7 @@ def sfx_events(root, D):
     ev.sort()
     out = []; last = {}
     for t_, s_, g, p in ev:        # thin out dense bursts so the film does not rattle
-        gap = {'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
+        gap = {'spawn': .4, 'create': .3, 'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
         if t_ - last.get(s_, -9) < gap: continue
         last[s_] = t_; out.append((t_, s_, g, min(.95, max(.05, p))))
     return out
@@ -397,7 +406,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'engine:3', 'alarm:3', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
