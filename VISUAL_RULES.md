@@ -9,7 +9,7 @@
 - Se mantiene la identidad visual de las primeras películas (tarjetas, secuencias, terminal, jerarquía, banderas, cajas aisladas, campo de puntos, contadores).
 - Método: **primero** se escribe, por cada frase del guion, qué se ve en pantalla (storyboard en texto); se aprueba; **después** se construye.
 
-## Composición (aprobada con la escena 0 de `examples/test`)
+## Composición (aprobada con la escena 0 de `examples/hf-swarm-vivido-es`)
 
 - Se cuenta **qué ha pasado** y se deja **espacio** para las cosas: conexiones, assets, acciones. Nada de pantallas llenas.
 - Los agentes son **pequeños** (no pasa nada); lo que importa es el conjunto.
@@ -22,4 +22,4 @@
 
 ## Assets guardados (studio/worldkit.py)
 
-`agent_named` (agente con su nombre) · `agent` (agente sin nombre, en su cajita) · `agent_group` (conjunto: contenedor abierto por arriba con filas que se desvanecen; admite un hueco en la pared) · `hugging_face` (estructura + agujeros) · `counter` (número blanco que cuenta, con texto debajo) · `clock` (reloj UTC tipo máquina de escribir, que puede avanzar) · `link` (enlace con bolita). La escena 0 de `examples/test/gen_test.py` ya los usa.
+`agent_named` (agente con su nombre) · `agent` (agente sin nombre, en su cajita) · `agent_group` (conjunto: contenedor abierto por arriba con filas que se desvanecen; admite un hueco en la pared) · `hugging_face` (estructura + agujeros) · `counter` (número blanco que cuenta, con texto debajo) · `clock` (reloj UTC tipo máquina de escribir, que puede avanzar) · `link` (enlace con bolita). La escena 0 de `examples/hf-swarm-vivido-es/gen_story.py` ya los usa.

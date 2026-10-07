@@ -41,11 +41,11 @@ Precedencia: línea de comandos > `meta` de `story.json` > `.env` > valores por 
 El método que seguimos (ver `VISUAL_RULES.md`): **primero** el guion, **después** qué se ve en cada frase (storyboard en texto, se aprueba), **después** se construye.
 
 ```bash
-python explainer.py validate -p examples/test            # comprobaciones estáticas + cada cue en un navegador real
-python explainer.py build    -p examples/test --estimate # horario con tiempos estimados (necesario antes de preview)
-python explainer.py preview  -p examples/test --scene 3  # hoja de contactos en build/preview/sheet.png
-python explainer.py voices   -p examples/test            # probar voces y pronunciaciones
-python explainer.py all      -p examples/test            # build → voz → reajuste → música → render → mux
+python explainer.py validate -p examples/hf-swarm-vivido-es            # comprobaciones estáticas + cada cue en un navegador real
+python explainer.py build    -p examples/hf-swarm-vivido-es --estimate # horario con tiempos estimados (necesario antes de preview)
+python explainer.py preview  -p examples/hf-swarm-vivido-es --scene 3  # hoja de contactos en build/preview/sheet.png
+python explainer.py voices   -p examples/hf-swarm-vivido-es            # probar voces y pronunciaciones
+python explainer.py all      -p examples/hf-swarm-vivido-es            # build → voz → reajuste → música → render → mux
 ```
 
 Variantes de `all`:
@@ -140,7 +140,7 @@ brand/              marca Arkinos (svg/png)
 VISUAL_RULES.md     reglas visuales
 ```
 
-Un proyecto contiene `story.json`, `script.md` (guion generado), `audio/`, `build/` y, opcionalmente, `mark.txt`. En `examples/test`, `story.json` **se genera** con `python examples/test/gen_test.py` (y `gen_8_17.py`): edita esos scripts, no el JSON.
+Un proyecto contiene `story.json`, `script.md` (guion generado), `audio/`, `build/` y, opcionalmente, `mark.txt`. En `examples/hf-swarm-vivido-es`, `story.json` **se genera** con `python examples/hf-swarm-vivido-es/gen_story.py` (y `gen_8_17.py`): edita esos scripts, no el JSON.
 
 ---
 

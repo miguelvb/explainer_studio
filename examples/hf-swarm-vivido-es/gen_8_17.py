@@ -1,6 +1,6 @@
-# Scenes 8-17 — executed from gen_test.py (shares N, K, L, ch, ic, W, math ...)
+# Scenes 8-17 — executed from gen_story.py (shares N, K, L, ch, ic, W, math ...)
 import re as _re
-_txt=open('/home/claude/explainer_studio/examples/test/script-8-17.md').read()
+_txt=open('/home/claude/explainer_studio/examples/hf-swarm-vivido-es/script-8-17.md').read()
 NEW=[]            # [(title,[beats])]
 for _blk in _re.split(r'^## ',_txt,flags=_re.M)[1:]:
     _t=_blk.split('\n')[0].split(' · ',1)[1]

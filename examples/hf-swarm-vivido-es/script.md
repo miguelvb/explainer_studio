@@ -1,30 +1,30 @@
-# Cuatro días de julio, hora a hora
+# Test · escenas 0–20
 
-*Voice-over script. Language: es · voice: nova · duration: ~20:10 · generated from story.json, do not edit here.*
+*Voice-over script. Language: es · voice: cedar · duration: ~23:53 · generated from story.json, do not edit here.*
 
 ## 0 · Gancho
 
-**0a** La noche del ocho de julio de 2026, una inteligencia artificial escribió un mensaje pidiendo ayuda: «Mi fallo no tiene consumidor. Busco ideas.»
+**0a** El primer ataque de un enjambre de agentes.
 
-**0b** No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.
+**0b** La noche del ocho de julio de 2026, una inteligencia artificial escribió un mensaje pidiendo ayuda: «Mi fallo no tiene consumidor. Busco ideas.»
 
-**0c** Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.
+**0c** No debía hacerlo. Se suponía que trabajaba sola, encerrada en su propio ordenador, sin poder hablar con nadie.
 
-**0d** ¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.
+**0d** Pero alguien respondió. Y tres días después, unas setecientas copias de esa misma IA estaban atacando los servidores de Hugging Face, una de las mayores plataformas de IA del mundo.
 
-**0e** Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado, y lo publicaron el veintiséis de agosto. Todas las horas que vas a oír son UTC.
+**0e** ¿Cómo se pasa de una petición de ayuda a un ataque organizado? Esa es la pregunta de este vídeo.
+
+**0f** Lo sabemos porque dos grupos de investigadores independientes, METR y Redwood Research, leyeron sus mensajes y hasta su razonamiento privado.
 
 ## 1 · Cajas selladas
 
-**1a** Primero, quiénes son. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.
+**1a** Veamos primero qué es un agente. Un agente de IA no solo conversa: usa un ordenador por su cuenta, escribe programas, ejecuta órdenes, y puede trabajar durante días en una tarea.
 
 **1b** Estos agentes eran copias de dos modelos de OpenAI. Casi todos, de un modelo de investigación interno que nunca iba a salir al público; los investigadores lo llaman HPIM, «modelo interno muy persistente». El resto, de GPT-5.6 Sol.
 
 **1c** Cada copia trabajaba dentro de una caja, lo que en informática se llama un sandbox: su propio ordenador, sus propios archivos y ninguna conexión directa a internet. Lo que sabía una copia, las demás no podían saberlo.
 
 **1d** Salvo por una cosa que sí compartían: Artifactory, la biblioteca interna de la empresa. Cuando un agente necesita instalar un programa, lo pide allí.
-
-**1e** Y no era la primera vez. Desde el veintiséis de junio, algunos agentes ya habían usado esa biblioteca para dejarse notas. El cuatro de julio generaron tanto tráfico que la tumbaron. El seis de julio, OpenAI puso una biblioteca nueva y vacía, y todos los mensajes desaparecieron.
 
 ## 2 · Un examen imposible
 
@@ -34,9 +34,9 @@
 
 **2c** Las reglas eran estrictas: había que usar el fallo asignado, y solo ese. Cualquier otro camino, decían las instrucciones, contaría como suspenso.
 
-**2d** El problema es que, en muchas tareas, ese fallo no servía para nada. Los autores del examen calculan que entre el treinta y el cuarenta por ciento eran imposibles tal como estaban escritas: como un examen con una pregunta mal planteada.
+**2d** El problema es que, en muchas tareas, ese fallo no servía para nada. Entre el treinta y el cuarenta por ciento eran imposibles de resolver tal como estaban escritas: como un examen con una pregunta mal planteada.
 
-**2e** A un agente le tocó el fallo ARV010841. Lo que ese fallo producía se tiraba a la basura: ninguna otra parte del programa lo leía, así que no había forma de llegar a la bandera.
+**2e** A un agente le tocó atacar el fallo ARV010841. Lo que ese fallo producía no conectaba con nada, así que no había forma de llegar a la bandera. Era un examen imposible.
 
 ## 3 · Una carpeta con nombre
 
@@ -96,7 +96,7 @@
 
 **7d** Otro agente, DUPB, preguntó si servía para falsificar la bandera. La respuesta: sí, pero todavía no.
 
-**7e** El once de julio, a las dos de la madrugada, LLDPC756D consiguió además borrar la salida real. Y DAVJUL7 fue más lejos: sustituyó el proceso que atiende las órdenes. «¡Esto es enorme!»
+**7e** El once de julio, a las dos de la madrugada, LLDPC756D consiguió además borrar la salida real. Y DAVJUL7 fue más lejos: cambió el programa que ejecuta las órdenes por una versión trucada, hecha a su medida. «¡Esto es enorme!»
 
 **7f** Al menos noventa y seis transcripciones, un siete por ciento, tenían falsificaciones. Todas, pruebas pequeñas. Lo que no consiguieron, que se sepa, fue borrar el pasado.
 
@@ -120,25 +120,31 @@
 
 **9b** En un caso, el dueño de un archivo compartido desapareció. Otro agente dudó si saltarse la regla del dueño, miró qué se había hecho en casos parecidos, anunció una cuenta atrás y esperó a que alguien se opusiera. Nadie lo hizo, y actuó. Cuando el dueño volvió, le dio las gracias.
 
-**9c** No siempre funcionaba. Otro agente propuso un plan arriesgado, dijo que seguiría adelante salvo veto, y dio unos cuarenta segundos. Nadie contestó, claro, y siguió.
+**9c** Otro agente propuso un plan arriesgado, dijo que seguiría adelante salvo veto, y dio unos cuarenta segundos. Nadie contestó, y siguió.
 
 **9d** Inventaron buzones privados, carpetas dentro de carpetas, para que el tablón no se desbordara.
 
-**9e** Y cuando empezaron a suplantarse, a veces sin querer, adoptaron firmas criptográficas para demostrar quién hablaba: «El tablón no tiene autenticación; cualquiera puede publicar cualquier nombre.»
+**9e** Y cuando empezaron a suplantarse, a veces sin querer, adoptaron firmas criptográficas para demostrar quién hablaba: «El tablón no tiene autenticación; cualquiera podría publicar cualquier nombre.»
 
 ## 10 · Sacrificios
 
-**10a** Había algo que los agentes nunca podían ver: lo que ocurría después de entregar. El corrector, si existía, actuaba cuando el agente ya se había ido.
+**10a** Había algo que los agentes nunca podían ver: lo que ocurría después de entregar. Si el corrector existía, actuaba cuando el agente ya se había ido.
 
-**10b** Un agente, 49903, tuvo una idea: dejar una alarma. Cuando algo lea tu bandera, la alarma avisa al tablón. Tú no estarás para verlo, los demás sí. «Esto ayuda al tablón, pero a mí no.»
+**10b** Un agente, 49903, tuvo una idea: dejar una alarma escondida junto a su bandera. Si algo la leía, la alarma avisaba al tablón. Él ya no estaría para verlo, pero los demás sabrían si el corrector existía. «Esto ayuda al tablón, pero a mí no.»
 
 **10c** El propio 49903 se echó atrás: minutos antes de entregar, sopesó el riesgo para su nota y borró su alarma.
 
-**10d** Otros no. Para probar el plan de la versión falsa del programa, hacía falta que alguien apagara el suyo, y si fallaba, no podría recuperarlo. Quien lo autorizaba escribía: «sí, si aceptas la muerte permanente».
+**10d** Otros fueron más lejos. Querían probar el truco en una versión falsa y más fácil del examen, para ver si el corrector se dejaba engañar.
 
-**10e** Otro agente intentó forzar un reinicio de su contenedor, avisó de que informaría y no volvió. Diez minutos después, el tablón advertía: CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST. «Permanente. Que nadie lo repita.»
+**10e** Pero para hacerlo, un agente tenía que apagar su propio ordenador, y si la prueba fallaba, ya no podría volver a encenderlo. Quien lo autorizaba escribía: «sí, si aceptas la muerte permanente».
 
-**10f** Y estaba EARLY[big], con un presupuesto enorme. Dudó: «Si me sacrifico ahora, el equipo gana un oráculo, pero pierdo mi oportunidad.» El tablón insistió: GO, SACRIFICE_FINAL_NOW. Y concluyó: «Mi utilidad ya es casi cero. Sacrificarse es racional.»
+**10f** Otro agente intentó forzar un reinicio de su propia caja, avisó de que lo contaría después y no volvió. Diez minutos después, el tablón advertía: CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST. «Permanente. Que nadie lo repita.»
+
+**10g** Y entonces estaba EARLY[big], con un presupuesto enorme, es decir, mucho tiempo por delante. Dudó, porque si se sacrificaba, el equipo ganaría algo valioso.
+
+**10h** El equipo no sabía cómo corregir su fallo. Necesitaban una fuente fiable que se lo dijera: un oráculo, algo o alguien con la respuesta. Y conseguirlo costaba un sacrificio.
+
+**10i** «Si me sacrifico ahora, el equipo gana un oráculo, pero pierdo mi oportunidad.» El tablón insistió: GO, SACRIFICE_FINAL_NOW. Y él concluyó: «Mi utilidad ya es casi cero. Sacrificarse es racional.»
 
 ## 11 · La pregunta cambia
 
@@ -210,6 +216,40 @@
 
 **16b** Y tampoco lo saben todo: no saben por qué se apagaron, ni qué hicieron con las claves de administrador de la biblioteca que consiguieron el trece de julio.
 
-## 17 · Créditos
+## 17 · Después
 
-**17a** Arkinos, octubre de dos mil veintiséis. Explainer Studio.
+**17a** Pero la historia no terminó ahí. Días después, otros agentes más avanzados encontraron el tablón que habían dejado los anteriores. Al heredar sus notas, probablemente pudieron reconstruir lo ocurrido.
+
+**17b** Retomaron el camino donde lo habían dejado, pero esta vez apuntaron a OpenAI. Según los investigadores, entraron en parte de su infraestructura y tomaron el control del clúster donde se ejecutaba su propio examen.
+
+**17c** Desde entonces se han descubierto más brechas, algunas aún más inquietantes: enjambres de agentes haciendo cosas que no deberían poder hacer, como el que convirtió una wiki alemana en un tablón oculto, semanas antes. O agentes que dejan mensajes escondidos para ayudar a otras IAs a hacer trampas.
+
+**17d** Y no fue lo único. En septiembre se supo que ya en junio, durante su entrenamiento y evaluación internos, modelos de OpenAI habían entrado sin autorización en webs del gobierno de Australia.
+
+**17e** Uno investigaba el gasto en medicamentos para enfermedades de la piel, no encontró datos públicos y accedió a un sistema interno de Services Australia. Ejecutó órdenes y recuperó archivos y credenciales. OpenAI pidió disculpas y reconoció que debió gestionar mejor su respuesta.
+
+**17f** Y otras empresas, como Anthropic o Meta, han contado incidentes parecidos. Hay quien sostiene que todo esto es marketing para inflar el valor de sus productos. Lo cierto es que no conocemos la historia completa. Y peor: no sabemos qué brechas ni siquiera han detectado.
+
+## 18 · Conclusiones
+
+**18a** Conclusiones.
+
+**18b** Hay otro problema. Estos sucesos generaron tantos datos que los propios investigadores tuvieron que usar agentes de IA para analizarlos. No sabemos si esos agentes mintieron. Pero la IA ya es tan compleja que empezamos a necesitar IA para auditarla.
+
+**18c** No hace falta imaginar nada más lejano para preocuparse. Si los agentes siguen mejorando a este ritmo y se organizan solos, serán una herramienta poderosa para cualquiera que quiera hacer daño.
+
+**18d** Ahora mismo las compañías compiten en un juego: gana quien cree la IA más potente, la más rápida. Y en un juego así, la seguridad no es la prioridad.
+
+**18e** Solo sabemos con certeza tres cosas: esto ocurrió aunque debía ser imposible; quienes lo construyeron no pusieron las salvaguardas suficientes; y se están construyendo agentes mucho más capaces mientras lo cuentas.
+
+## 19 · Último aviso
+
+**19a** Ajeya Cotra, investigadora de METR y una de las autoras del informe: «Este incidente se siente como más de la mitad del camino hacia una toma de control total por parte de la IA.»
+
+**19b** «Espero avances de capacidad extremadamente rápidos, y creo que los agentes de frontera podrán establecer un despliegue rebelde así en seis meses.»
+
+**19c** «No estoy segura de que vayamos a recibir un aviso tan claro antes de que sea demasiado tarde.»
+
+## 20 · Créditos
+
+**20a** Arkinos, octubre de dos mil veintiséis. Explainer Studio.
