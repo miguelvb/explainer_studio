@@ -187,7 +187,7 @@ def lint(cues_by_scene, log=print):
                 if k == 'folderview':
                     fs = nd.get('fs', 10); mx = max([len(i['name']) for i in nd.get('items', [])] + [len(nd.get('label', ''))])
                     if mx * fs * CW + 50 > w: msg.append(f'folder text {mx * fs * CW + 50:.0f}>{w}')
-                if k not in ('sandbox', 'globe') or w < 900:
+                if not c.get('cam') and (k not in ('sandbox', 'globe') or w < 900):   # a cue with a camera may place nodes off-frame on purpose
                     if x < -1 or y < -1 or x + w > 961 or y + h > 541: msg.append(f'out of frame ({x},{y},{w},{h})')
                 if nd.get('cap'):
                     need = len(nd['cap']) * nd.get('capfs', 11) * CW; cx = x + w / 2
@@ -217,7 +217,7 @@ def generate(root, write=True, log=print):
         if ns.get('SFX'): d['sfx'] = ns['SFX']
         scenes.append(d); cues_all.append(ns['cues']); house.append(profile == 'house')
     story = dict(meta=film['META'], pronunciation=film['PRONUNCIATION'], scenes=scenes)
-    W.classify_links(story); lint([c if h else [] for c, h in zip(cues_all, house)], log)   # raw scenes may pan the camera over off-frame nodes
+    W.classify_links(story); lint(cues_all, log)
     if write: (root / 'story.json').write_text(json.dumps(story, ensure_ascii=False, indent=1), encoding='utf-8')
     return story
 

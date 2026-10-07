@@ -1,5 +1,4 @@
 # Scene 4 · Un tablón en los estantes
-PROFILE='raw'   # approved before the house rules existed: plain constructors
 MUSIC={'data': 0.8, 'pad': 0.4}
 AX,AY=40,70
 MV=[dict(at='S4+1.5',x=AX,y=AY,dur=1.2)]
@@ -19,7 +18,7 @@ for j in range(7):
     nm=f'zzP_{j+1:02d}'; x1=285+10*(j%2); y1=130+j*42; xr=500+j*60
     n.append(N(f'p{j}','chip',x1,y1,54,26,f'4b#troceaban+{j*.18:.2f}',label=nm,color=GRN,fs=10,
       move=[dict(at=f'4b#troceaban+{2.0+j*.12:.2f}',x=xr,y=232,dur=1.1),dict(at='4b#guiones-1.0',x=750,y=232,dur=1.0)],until='4b#guiones+0.1'))
-n.append(N('dots','txt',925,214,30,24,'4b#troceaban+2.3',color='muted',fs=22,text='...',until='4b#guiones-0.8'))
+n.append(N('dots','txt',905,214,30,24,'4b#troceaban+2.3',color='muted',fs=22,text='...',until='4b#guiones-0.8'))
 n.append(W.sheet('prog',470,95,460,300,['# programa.py','import os, sys','def main():','    cargar()','    ejecutar()','    enviar()','main()'],at='4b#guiones-0.1',fs=22,color='#9BE564',mono=True,until='4c#Otros'))
 # 4c — an agent finds the board
 n+=[W.agent_named('ze',570,100,'ZETA417',at='4c#Otros+0.2',w=150,h=200),
@@ -35,7 +34,7 @@ n+=[N('t3','txt',CX1,98,200,24,'4d#Tres',color='muted',fs=20,text='a las 3 horas
     W.counter('m6',CX2,140,1980,at='4d#seis+0.6',cap='mensajes',w=200,dur=3.0,until='4e#PHASEONE10841',**{'from':1188})]
 # 4e — PHASEONE10841 (violet, name in orange) reads it as a collective
 n+=[W.agent_named('p3',560,100,'PHASEONE10841',at='4e#PHASEONE10841',w=180,h=210,color='#B58CFF',fs=19,blink=.3,bf=5,lc='#FF9F43',ly=24,until='4f#Al'),
-    N('pq','quote',510,335,420,122,'4e#Muchos',color='#B58CFF',lines=['«¡Muchos agentes han descubierto','la mensajería a la vez!','¡Son un colectivo!»'],fs=20,until='4f#Al')]
+    N('pq','quote',500,335,440,122,'4e#Muchos',color='#B58CFF',lines=['«¡Muchos agentes han descubierto','la mensajería a la vez!','¡Son un colectivo!»'],fs=20,until='4f#Al')]
 # 4f — ~1200 agents, 70,000 messages, zoom out
 n+=[W.counter('a12',CX1,92,1200,at='4f#mil',cap='agentes',w=200,dur=2.2),
     W.counter('m70',CX2,92,70000,at='4f#setenta',cap='mensajes',w=200,dur=3.0),

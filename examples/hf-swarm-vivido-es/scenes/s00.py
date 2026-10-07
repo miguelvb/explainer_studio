@@ -1,5 +1,4 @@
 # Scene 0 · Gancho
-PROFILE='raw'   # approved before the house rules existed: plain constructors
 MUSIC={'bells': 1}
 cues=[]
 cues.append(dict(a='seal',at='S0',until='0b',ext=0,p=dict(text='El primer ataque de|un enjambre de agentes',sub='Arkinos @ oct 2026  ·  Explainer Studio',at=0.5,type=14,scale=1.0,cy=215,ty=392),bg=True,fade=[0.8,2.0]))

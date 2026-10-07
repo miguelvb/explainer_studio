@@ -1,5 +1,4 @@
 # Scene 6 · Envenenados
-PROFILE='raw'   # approved before the house rules existed: plain constructors
 MUSIC={'cinema': 0.8, 'data': 0.4}
 MOOD='tense'
 # 6a/6b: an agent beside the ExploitGym article; its words light up as if being read

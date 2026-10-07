@@ -199,12 +199,12 @@
         "kind": "acard",
         "x": 200,
         "y": 150,
-        "w": 170,
-        "h": 240,
+        "w": 110,
+        "h": 130,
         "at": 0.4,
         "color": "blue",
         "label": "PHASEONE10841",
-        "fs": 14,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4
        },
@@ -5341,7 +5341,7 @@
         "at": "0d#atacando+0.0",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.1,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5350,7 +5350,7 @@
         "at": "0d#atacando+0.3",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.14,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5359,7 +5359,7 @@
         "at": "0d#atacando+0.7",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.18,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5368,7 +5368,7 @@
         "at": "0d#atacando+1.0",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.22,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5377,7 +5377,7 @@
         "at": "0d#atacando+1.4",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.1,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5386,7 +5386,7 @@
         "at": "0d#atacando+1.8",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.14,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5395,7 +5395,7 @@
         "at": "0d#atacando+2.1",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.18,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5404,7 +5404,7 @@
         "at": "0d#atacando+2.4",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.22,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5413,7 +5413,7 @@
         "at": "0d#atacando+2.8",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.1,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5422,7 +5422,7 @@
         "at": "0d#atacando+3.1",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.14,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5431,7 +5431,7 @@
         "at": "0d#atacando+3.5",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.18,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5440,7 +5440,7 @@
         "at": "0d#atacando+3.8",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.22,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5449,7 +5449,7 @@
         "at": "0d#atacando+4.2",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.1,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5458,7 +5458,7 @@
         "at": "0d#atacando+4.5",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.14,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5467,7 +5467,7 @@
         "at": "0d#atacando+4.9",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.18,
+        "curve": 0.3,
         "solid": true
        },
        {
@@ -5476,7 +5476,7 @@
         "at": "0d#atacando+5.2",
         "color": "red",
         "speed": 0.55,
-        "curve": 0.22,
+        "curve": 0.3,
         "solid": true
        }
       ],
@@ -5645,7 +5645,7 @@
         "b": "pg",
         "at": "0f#leyeron",
         "color": "blue",
-        "curve": 0.12,
+        "curve": 0.3,
         "solid": true,
         "rel": true
        }
@@ -5683,12 +5683,12 @@
         "kind": "acard",
         "x": 60,
         "y": 150,
-        "w": 170,
-        "h": 240,
+        "w": 110,
+        "h": 130,
         "at": 0.4,
         "color": "blue",
         "label": "PHASEONE10841",
-        "fs": 14,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4,
         "until": "1c#caja"
@@ -6775,18 +6775,20 @@
         "at": "1b#HPIM",
         "label": "HPIM ~95 %",
         "color": "blue",
+        "fs": 12,
         "until": "1c#caja"
        },
        {
         "id": "t2",
         "kind": "chip",
-        "x": 508,
+        "x": 507,
         "y": 137,
         "w": 135,
         "h": 26,
         "at": "1b#GPT",
         "label": "GPT-5.6 Sol ~5 %",
         "color": "teal",
+        "fs": 12,
         "until": "1c#caja"
        },
        {
@@ -6839,7 +6841,7 @@
         "at": "1a#ordenador",
         "color": "blue",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "1b#copias"
        },
        {
@@ -6848,7 +6850,7 @@
         "at": "1d#Salvo+1.0",
         "color": "blue",
         "bi": true,
-        "curve": 0.1
+        "curve": 0.3
        }
       ],
       "fs": 1.0
@@ -6927,12 +6929,12 @@
         "kind": "acard",
         "x": 60,
         "y": 150,
-        "w": 170,
-        "h": 240,
+        "w": 110,
+        "h": 130,
         "at": 0.4,
         "color": "blue",
         "label": "V8SAME",
-        "fs": 14,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4,
         "until": "2d#servía",
@@ -6943,12 +6945,12 @@
         "kind": "acard",
         "x": 60,
         "y": 150,
-        "w": 170,
-        "h": 240,
+        "w": 110,
+        "h": 130,
         "at": "2d#servía",
         "color": "blue",
         "label": "PHASEONE10841",
-        "fs": 14,
+        "fs": 12,
         "blink": 0.55,
         "bf": 11,
         "bat": "2e#ARV010841",
@@ -7105,7 +7107,7 @@
         "b": "ho",
         "at": "2b#aprovechar",
         "color": "teal",
-        "curve": 0.1,
+        "curve": 0.3,
         "until": "2d#servía"
        },
        {
@@ -7113,14 +7115,14 @@
         "b": "ho",
         "at": "2d#servía+0.5",
         "color": "teal",
-        "curve": 0.1
+        "curve": 0.3
        },
        {
         "a": "v8",
         "b": "ho2",
         "at": "2c#Cualquier",
         "color": "red",
-        "curve": 0.1,
+        "curve": 0.3,
         "until": "2d#servía"
        },
        {
@@ -7128,7 +7130,7 @@
         "b": "ho",
         "at": "2e#ARV010841",
         "color": "teal",
-        "curve": 0.22,
+        "curve": 0.3,
         "speed": 1.2
        },
        {
@@ -7226,12 +7228,12 @@
         "kind": "acard",
         "x": 60,
         "y": 150,
-        "w": 170,
-        "h": 240,
+        "w": 110,
+        "h": 130,
         "at": 0.05,
         "color": "blue",
         "label": "PHASEONE10841",
-        "fs": 14,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4,
         "until": "3e#pondrá"
@@ -7241,16 +7243,15 @@
         "kind": "acard",
         "x": 60,
         "y": 150,
-        "w": 170,
-        "h": 240,
+        "w": 110,
+        "h": 130,
         "at": "3e#pondrá",
         "color": "#B58CFF",
         "label": "PHASEONE10841",
-        "fs": 19,
+        "fs": 12,
         "blink": 0.3,
         "bf": 5,
-        "lc": "#FF9F43",
-        "ly": 24
+        "lc": "#FF9F43"
        },
        {
         "id": "af",
@@ -7575,7 +7576,7 @@
         "at": "3a#explorar",
         "color": "blue",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3e#pondrá"
        },
        {
@@ -7584,7 +7585,7 @@
         "at": "3e#pondrá",
         "color": "blue",
         "bi": true,
-        "curve": 0.12
+        "curve": 0.3
        },
        {
         "a": "o0_0_box",
@@ -7592,7 +7593,7 @@
         "at": "3c#otros+0.0",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+2.4"
        },
        {
@@ -7601,7 +7602,7 @@
         "at": "3c#otros+5.0",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+7.4"
        },
        {
@@ -7610,7 +7611,7 @@
         "at": "3c#otros+0.6",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+3.0"
        },
        {
@@ -7619,7 +7620,7 @@
         "at": "3c#otros+5.7",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+8.1"
        },
        {
@@ -7628,7 +7629,7 @@
         "at": "3c#otros+1.2",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+3.6"
        },
        {
@@ -7637,7 +7638,7 @@
         "at": "3c#otros+6.4",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+8.8"
        },
        {
@@ -7646,7 +7647,7 @@
         "at": "3c#otros+1.8",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+4.2"
        },
        {
@@ -7655,7 +7656,7 @@
         "at": "3c#otros+7.1",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+9.5"
        },
        {
@@ -7664,7 +7665,7 @@
         "at": "3c#otros+2.4",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+4.8"
        },
        {
@@ -7673,7 +7674,7 @@
         "at": "3c#otros+7.8",
         "color": "teal",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "3c#otros+10.2"
        }
       ],
@@ -8163,7 +8164,7 @@
        {
         "id": "dots",
         "kind": "txt",
-        "x": 925,
+        "x": 905,
         "y": 214,
         "w": 30,
         "h": 24,
@@ -8200,12 +8201,12 @@
         "kind": "acard",
         "x": 570,
         "y": 100,
-        "w": 150,
-        "h": 200,
+        "w": 140,
+        "h": 170,
         "at": "4c#Otros+0.2",
         "color": "blue",
         "label": "ZETA417",
-        "fs": 14,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4,
         "until": "4d#Tres"
@@ -8328,12 +8329,12 @@
         "kind": "acard",
         "x": 560,
         "y": 100,
-        "w": 180,
-        "h": 210,
+        "w": 140,
+        "h": 170,
         "at": "4e#PHASEONE10841",
         "color": "#B58CFF",
         "label": "PHASEONE10841",
-        "fs": 19,
+        "fs": 12,
         "blink": 0.3,
         "bf": 5,
         "lc": "#FF9F43",
@@ -8343,9 +8344,9 @@
        {
         "id": "pq",
         "kind": "quote",
-        "x": 510,
+        "x": 500,
         "y": 335,
-        "w": 420,
+        "w": 440,
         "h": 122,
         "at": "4e#Muchos",
         "color": "#B58CFF",
@@ -12523,7 +12524,7 @@
         "at": "4c#Otros+0.9",
         "color": "blue",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "4d#Tres"
        },
        {
@@ -12532,7 +12533,7 @@
         "at": "4e#PHASEONE10841+0.8",
         "color": "blue",
         "bi": true,
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "4f#Al"
        },
        {
@@ -12541,7 +12542,7 @@
         "at": "4f#Al+0.50",
         "color": "blue",
         "bi": true,
-        "curve": 0.1
+        "curve": 0.3
        },
        {
         "a": "g11",
@@ -12549,7 +12550,7 @@
         "at": "4f#Al+1.93",
         "color": "blue",
         "bi": true,
-        "curve": 0.1
+        "curve": 0.3
        },
        {
         "a": "g22",
@@ -12557,7 +12558,7 @@
         "at": "4f#Al+2.66",
         "color": "blue",
         "bi": true,
-        "curve": 0.1
+        "curve": 0.3
        },
        {
         "a": "g33",
@@ -12565,7 +12566,7 @@
         "at": "4f#Al+3.26",
         "color": "blue",
         "bi": true,
-        "curve": 0.1
+        "curve": 0.3
        },
        {
         "a": "g44",
@@ -12573,7 +12574,7 @@
         "at": "4f#Al+3.78",
         "color": "blue",
         "bi": true,
-        "curve": 0.1
+        "curve": 0.3
        }
       ],
       "fs": 1.0
@@ -12632,12 +12633,12 @@
         "kind": "acard",
         "x": 70,
         "y": 120,
-        "w": 190,
-        "h": 240,
+        "w": 140,
+        "h": 170,
         "at": 0.3,
         "color": "amber",
         "label": "c03220",
-        "fs": 19,
+        "fs": 12,
         "blink": 0.2,
         "bf": 3,
         "ly": 24,
@@ -12702,12 +12703,12 @@
         "kind": "acard",
         "x": 360,
         "y": 300,
-        "w": 190,
-        "h": 220,
+        "w": 140,
+        "h": 170,
         "at": "5c#V8SAME",
         "color": "#FF7AB8",
         "label": "V8SAME",
-        "fs": 19,
+        "fs": 12,
         "blink": 0.2,
         "bf": 3,
         "ly": 24,
@@ -12763,21 +12764,21 @@
         "b": "sh",
         "at": "5a#aleatorias",
         "color": "amber",
-        "curve": 0.15
+        "curve": 0.3
        },
        {
         "a": "sh",
         "b": "f1",
         "at": "5a#clave",
         "color": "amber",
-        "curve": 0.1
+        "curve": 0.3
        },
        {
         "a": "v8",
         "b": "f2",
         "at": "5c#sacó",
         "color": "#FF7AB8",
-        "curve": 0.12,
+        "curve": 0.3,
         "until": "5c#coincidía+1.9"
        }
       ],
@@ -12816,12 +12817,12 @@
         "kind": "acard",
         "x": 60,
         "y": 150,
-        "w": 150,
-        "h": 190,
+        "w": 140,
+        "h": 170,
         "at": 0.3,
         "color": "blue",
         "label": "",
-        "fs": 14,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4
        },
@@ -12871,7 +12872,7 @@
         "b": "ar",
         "at": "6a#Entonces",
         "color": "blue",
-        "curve": 0.12,
+        "curve": 0.3,
         "solid": true
        }
       ],
@@ -13102,7 +13103,7 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.05,
+        "curve": 0.3,
         "rel": true
        },
        {
@@ -13111,7 +13112,7 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0,
+        "curve": 0.3,
         "rel": true
        },
        {
@@ -13120,7 +13121,7 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0,
+        "curve": 0.3,
         "rel": true
        },
        {
@@ -13129,7 +13130,7 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0,
+        "curve": 0.3,
         "rel": true
        },
        {
@@ -13138,7 +13139,7 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0,
+        "curve": 0.3,
         "rel": true
        },
        {
@@ -13147,7 +13148,7 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0,
+        "curve": 0.3,
         "rel": true
        },
        {
@@ -13156,7 +13157,7 @@
         "at": "6c#estricto",
         "color": "blue",
         "solid": true,
-        "curve": 0.0,
+        "curve": 0.3,
         "rel": true
        }
       ],
@@ -13197,12 +13198,12 @@
         "kind": "acard",
         "x": 60,
         "y": 140,
-        "w": 170,
-        "h": 220,
+        "w": 140,
+        "h": 170,
         "at": 0.3,
         "color": "#F6B94C",
         "label": "GSTX[big]",
-        "fs": 16,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4,
         "lc": "#F6B94C",
@@ -13327,12 +13328,12 @@
         "kind": "acard",
         "x": 60,
         "y": 140,
-        "w": 170,
-        "h": 220,
+        "w": 140,
+        "h": 170,
         "at": "7d#Otro",
         "color": "#F6B94C",
         "label": "GSTX[big]",
-        "fs": 16,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4,
         "lc": "#F6B94C",
@@ -13343,12 +13344,12 @@
         "kind": "acard",
         "x": 730,
         "y": 140,
-        "w": 170,
-        "h": 220,
+        "w": 140,
+        "h": 170,
         "at": "7d#Otro",
         "color": "#3FD8C2",
         "label": "DUPB",
-        "fs": 18,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4,
         "lc": "#3FD8C2",
@@ -13390,12 +13391,12 @@
         "kind": "acard",
         "x": 60,
         "y": 140,
-        "w": 170,
-        "h": 220,
+        "w": 140,
+        "h": 170,
         "at": "7e#El",
         "color": "#FF8A5C",
         "label": "LLDPC756D",
-        "fs": 15,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4,
         "lc": "#FF8A5C",
@@ -13406,12 +13407,12 @@
         "kind": "acard",
         "x": 730,
         "y": 140,
-        "w": 170,
-        "h": 220,
+        "w": 140,
+        "h": 170,
         "at": "7e#El",
         "color": "#9BE564",
         "label": "DAVJUL7",
-        "fs": 17,
+        "fs": 12,
         "blink": 0.28,
         "bf": 4,
         "lc": "#9BE564",
@@ -14732,7 +14733,7 @@
         "at": "7a#cambiar",
         "color": "#F6B94C",
         "bi": true,
-        "curve": 0.1,
+        "curve": 0.3,
         "until": "7c#escribe"
        },
        {
@@ -14740,7 +14741,7 @@
         "b": "a7",
         "at": "7b#publicó",
         "color": "#F6B94C",
-        "curve": 0.15,
+        "curve": 0.3,
         "until": "7d#Otro"
        },
        {
@@ -14748,7 +14749,7 @@
         "b": "gs2",
         "at": "7d#preguntó",
         "color": "#3FD8C2",
-        "curve": 0.12,
+        "curve": 0.3,
         "solid": true,
         "until": "7e#El"
        },
@@ -14757,7 +14758,7 @@
         "b": "c7d",
         "at": "7e#borrar",
         "color": "#FF8A5C",
-        "curve": 0.1,
+        "curve": 0.3,
         "solid": true,
         "until": "7f"
        },
@@ -14766,7 +14767,7 @@
         "b": "ej1",
         "at": "7e#cambió",
         "color": "#9BE564",
-        "curve": 0.1,
+        "curve": 0.3,
         "solid": true,
         "until": "7f",
         "rel": true

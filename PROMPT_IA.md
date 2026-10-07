@@ -41,7 +41,7 @@ Mapa del código:
 **No edites `story.json` a mano:** lo escribe `studio/storykit.py` (`python explainer.py gen -p <película>`; `validate`/`build`/`all` lo regeneran solos).
 
 - La carpeta de la película tiene `film.py` (META y PRONUNCIATION), `narration.md` (la narración: **fuente de verdad**; `script.md` lo genera `build` solo para leer) y `scenes/sNN.py` (un script por escena).
-- Un script de escena define `cues` y, opcionalmente, `MUSIC`, `MOOD`, `INTENSITY`, `SFX` y `PROFILE` (`'house'` por defecto; `'raw'` en las escenas 0–7, aprobadas antes de las reglas de la casa). Corre en un espacio de nombres compartido con los helpers de `storykit` y `worldkit`.
+- Un script de escena define `cues` y, opcionalmente, `MUSIC`, `MOOD`, `INTENSITY`, `SFX` y `PROFILE` (`'house'` por defecto, y lo usan todas las escenas; `'raw'` solo para casos excepcionales). Corre en un espacio de nombres compartido con los helpers de `storykit` y `worldkit`.
 - La numeración de escenas y frases (`9c`, `17e`…) sale de `narration.md`: una línea `**9c** texto` por frase; `(pausa 2.4)` tras el id añade silencio.
 - Película nueva: `python explainer.py newfilm -p examples/<nombre> --title "…"`.
 - Tras cualquier cambio: `python explainer.py validate -p examples/hf-swarm-vivido-es` (debe dar **0 errores**; hay ~26 avisos conocidos). Si has refactorizado, comprueba que `story.json` no cambia (`git diff --stat`).

@@ -1,5 +1,4 @@
 # Scene 2 · Un examen imposible
-PROFILE='raw'   # approved before the house rules existed: plain constructors
 MUSIC={'bells': 0.6, 'pad': 0.7}
 cues=[]
 EX=(330,50,340,440); CELL=26; MX=(340-260)//2; MY=(440-364)//2

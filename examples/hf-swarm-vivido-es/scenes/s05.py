@@ -1,5 +1,4 @@
 # Scene 5 · La llave maestra
-PROFILE='raw'   # approved before the house rules existed: plain constructors
 MUSIC={'data': 0.7, 'bells': 0.5}
 YEL='amber'
 n=[W.agent_named('c3',70,120,'c03220',at=0.3,w=190,h=240,color=YEL,fs=19,ly=24,lc='#7C97FF',blink=.2,bf=3,shake=dict(at='5a#propuso+0.5',dur=1.6,amp=5)),

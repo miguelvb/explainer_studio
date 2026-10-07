@@ -1,5 +1,4 @@
 # Scene 1 · Cajas selladas
-PROFILE='raw'   # approved before the house rules existed: plain constructors
 MUSIC={'bells': 0.7, 'pad': 0.6}
 cues=[]
 GX0,GY0,GP=350,200,30

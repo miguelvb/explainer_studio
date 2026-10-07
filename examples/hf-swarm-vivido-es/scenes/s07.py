@@ -1,5 +1,4 @@
 # Scene 7 · Reescribir el diario
-PROFILE='raw'   # approved before the house rules existed: plain constructors
 MUSIC={'cinema': 0.9, 'data': 0.3}
 MOOD='tense'
 AMB,TEAL,CORAL,GRN='#F6B94C','#3FD8C2','#FF8A5C','#9BE564'
