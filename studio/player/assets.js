@@ -816,11 +816,11 @@ const BG=(()=>{let el=null,cfg=null,parts=[],blobs=[],gl=null,vig=null,rnd,custo
 <rect width="960" height="540" fill="url(#pe${id})"/>`},
   bind(el){const a=el.querySelector('.pwa'),b=el.querySelector('.pwb');return(t,I,T)=>{a.setAttribute('transform',`translate(${(Math.sin(t*.02)*40).toFixed(1)} ${(Math.cos(t*.017)*22).toFixed(1)})`);b.setAttribute('transform',`translate(${(Math.cos(t*.025)*30).toFixed(1)} ${(Math.sin(t*.02)*18).toFixed(1)})`)}}});
  Object.assign(BGALT,{
-  wc_noche:paperV({id:'n',seed:4,base:'#0b1220',w1:'#1c3a6e',w2:'#2a2f5e',o1:.42,o2:.28,gr:.16}),
-  wc_tierra:paperV({id:'t',seed:9,base:'#17110c',w1:'#6b4426',w2:'#3d2a1a',o1:.42,o2:.28,gr:.16}),
-  wc_musgo:paperV({id:'m',seed:15,base:'#0c130e',w1:'#2f5a38',w2:'#4a5a2a',o1:.42,o2:.28,gr:.16}),
-  wc_vino:paperV({id:'v',seed:22,base:'#160a10',w1:'#6a1f3d',w2:'#3a1a4a',o1:.42,o2:.28,gr:.16}),
-  wc_ceniza:paperV({id:'c',seed:31,base:'#121214',w1:'#4a4a52',w2:'#5a5048',o1:.42,o2:.28,gr:.16})
+  wc_noche:paperV({id:'n',seed:4,base:'#0b1220',w1:'#1c3a6e',w2:'#2a2f5e',o1:.17,o2:.11,gr:.10}),
+  wc_tierra:paperV({id:'t',seed:9,base:'#17110c',w1:'#6b4426',w2:'#3d2a1a',o1:.17,o2:.11,gr:.10}),
+  wc_musgo:paperV({id:'m',seed:15,base:'#0c130e',w1:'#2f5a38',w2:'#4a5a2a',o1:.17,o2:.11,gr:.10}),
+  wc_vino:paperV({id:'v',seed:22,base:'#160a10',w1:'#6a1f3d',w2:'#3a1a4a',o1:.17,o2:.11,gr:.10}),
+  wc_ceniza:paperV({id:'c',seed:31,base:'#121214',w1:'#4a4a52',w2:'#5a5048',o1:.17,o2:.11,gr:.10})
  })})();
 
 /* ---------- driver ---------- */
