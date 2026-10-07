@@ -420,7 +420,7 @@ n+=[T('ck2',30,28,'05:00','14a#amanecer',color='#E7EBF1',fs=26)]
 c14.append(K('S14','14b',n,[],fs=1.0))
 # 14b — nobody knows why: not out of budget, something outside the exam
 n=[W.agent_named('ag',60,110,'',at=0.1,w=120,h=160,color='blue',fs=1,alpha=.5),
-   N('bd','chip',60,300,120,14,0.2,color='#9BE564',label=''),T('bt',60,325,'presupuesto','14b#presupuesto',color=GRY,fs=13),
+   *BAR('bd',60,300,120,.92,0.2,GRN,label='presupuesto'),
    ic('xb','cross',200,284,34,'14b#presupuesto',color=RED),
    N('ou','sandbox',420,70,400,300,'14b#algo',color=GRY,label='',open=True,alpha=.8),
    N('qm','question',590,160,100,100,'14b#ajeno',color='amber'),T('ou2',500,395,'ajeno al examen','14b#ajeno',color=GRY,fs=14)]

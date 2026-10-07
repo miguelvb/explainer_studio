@@ -22955,25 +22955,25 @@
        },
        {
         "id": "bd",
-        "kind": "chip",
+        "kind": "bar",
         "x": 60,
         "y": 300,
         "w": 120,
-        "h": 14,
+        "h": 12,
         "at": 0.2,
         "color": "#9BE564",
-        "label": ""
+        "fill": 0.92
        },
        {
-        "id": "bt",
+        "id": "bdt",
         "kind": "txt",
         "x": 60,
-        "y": 325,
-        "w": 83,
-        "h": 16,
-        "at": "14b#presupuesto",
+        "y": 318,
+        "w": 77,
+        "h": 15,
+        "at": 0.2,
         "color": "#8C96A4",
-        "fs": 12,
+        "fs": 11,
         "text": "presupuesto"
        },
        {
