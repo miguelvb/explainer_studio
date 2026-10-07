@@ -235,6 +235,9 @@ def sfx_sound(kind, rng):
             x = lp((car * (.55 + .45 * mod)).astype(np.float32), 3200) * np.minimum(1, t / .006) * np.exp(-np.maximum(0, t - d * .7) * 40)
             return x.astype(np.float32)
         return _mix_at([(0, rb(420, .09)), (.11, rb(560, .09)), (.22, rb(760, .16))]) * .6
+    if kind == 'buzz':        # the judge inspects one thing: single short robotic buzz
+        t = tt(.14); car = np.sign(np.sin(2 * np.pi * (460 + 120 * t / .14) * t)); mod = np.sin(2 * np.pi * 61 * t)
+        return (lp((car * (.55 + .45 * mod)).astype(np.float32), 3000) * np.minimum(1, t / .006) * np.exp(-np.maximum(0, t - .08) * 45)).astype(np.float32) * .6
     if kind == 'tick':        # list item / small element appears
         t = tt(.09); return (np.sin(2 * np.pi * 1250 * t) * np.exp(-t * 55) * .6 + bp(rng.standard_normal(len(t)).astype(np.float32), 2500, 6000) * np.exp(-t * 90) * .3).astype(np.float32) * .8
     if kind == 'slide':       # something moves: short airy glide
@@ -388,6 +391,12 @@ def sfx_events(root, D):
                     except Exception: pass
             if k == 'chip' and nd.get('label') in ('zzASK', 'zzANSWER', 'zzINFO'):
                 ev.append((ta + .05, nd['label'][2:].lower(), .6, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+            if nd.get('litAt') is not None and k in ('chip', 'flFly'):
+                try:
+                    tl = T(nd['litAt']); pn = (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960
+                    if k == 'flFly': ev += [(tl, 'error', 1.0, pn), (tl, 'thud', .55, pn)]
+                    else: ev.append((tl, 'buzz', .6, pn))
+                except Exception: pass
             if k == 'flFly' and nd.get('move') and nd.get('until') is not None:
                 try:
                     m = nd['move'][-1]; ev.append((T(m['at']) + float(m.get('dur', 1)), 'validate', .6, (m.get('x', 480)) / 960))
@@ -474,7 +483,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'validate', 'msg', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'buzz', 'validate', 'msg', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
