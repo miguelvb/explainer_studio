@@ -229,6 +229,8 @@ def sfx_sound(kind, rng):
             out[a:a + n_] += (np.sin(2 * np.pi * f * t) * np.exp(-t * 70) * (.35 + .25 * u)).astype(np.float32); tk += 1 / (9 + 22 * u)
         ch = bell(float(hz(88)), 1.0, .8, 3.0); a = int(d * SR); out[a:a + len(ch)] += ch[:len(out) - a] * .5
         return out
+    if kind == 'msg':         # a message from an agent arrives: warm notification bell, two soft strokes
+        return _mix_at([(0, bell(float(hz(79)), 1.6, 1.0, 2.6)), (.16, bell(float(hz(86)), 2.0, .9, 2.2))]) * .4
     if kind == 'tick':        # list item / small element appears
         t = tt(.09); return (np.sin(2 * np.pi * 1250 * t) * np.exp(-t * 55) * .6 + bp(rng.standard_normal(len(t)).astype(np.float32), 2500, 6000) * np.exp(-t * 90) * .3).astype(np.float32) * .8
     if kind == 'slide':       # something moves: short airy glide
@@ -337,7 +339,7 @@ KIND_SFX = {   # world node kind -> (sfx, gain)
     'acard': ('spawn', .55), 'agent': ('spawn', .45), 'koA': ('error', .8), 'cross': ('error', .8), 'okA': ('chime', .55), 'check': ('chime', .55),
     'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('idea', .55), 'bulb': ('idea', .55), 'key': ('key', .45), 'sigLock': ('lock', .6),
     'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('pop', .35),
-    'orb': ('spark', .4), 'chip': ('tick', .4), 'sheet': ('create', .55), 'flagTrophy': ('flag', .5),
+    'orb': ('spark', .4), 'chip': ('tick', .4), 'quote': ('msg', .6), 'sheet': ('create', .55), 'flagTrophy': ('flag', .5),
 }
 
 
@@ -413,7 +415,7 @@ def sfx_events(root, D):
     ev.sort()
     out = []; last = {}
     for t_, s_, g, p in ev:        # thin out dense bursts so the film does not rattle
-        gap = {'tick': .08, 'slide': .15, 'connect': .5, 'spawn': .4, 'create': .3, 'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
+        gap = {'msg': .8, 'tick': .08, 'slide': .15, 'connect': .5, 'spawn': .4, 'create': .3, 'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
         if t_ - last.get(s_, -9) < gap: continue
         last[s_] = t_; out.append((t_, s_, g, min(.95, max(.05, p))))
     return out
@@ -459,7 +461,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'msg', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
