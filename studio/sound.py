@@ -222,6 +222,14 @@ def ambience(cv, n, t, rng, level=1.0):
 # ------------------------------------------------------------------ sfx
 def sfx_sound(kind, rng):
     """Short synthesised effect (mono float32) for a named kind."""
+    if kind.startswith('engine'):      # 'engine:<seconds>' - a machine revving up while an agent shakes
+        d = float(kind.split(':')[1]) if ':' in kind else 3.0; t = tt(d); u = t / d
+        f = 48 + 120 * u ** 1.6 + 3 * np.sin(2 * np.pi * 7 * t); ph = 2 * np.pi * np.cumsum(f) / SR
+        saw = sum(np.sin(ph * k) / k for k in (1, 2, 3, 4, 5)).astype(np.float32)
+        trem = .72 + .28 * np.sin(2 * np.pi * (9 + 26 * u) * t)                      # chugging that speeds up with the revs
+        rum = lp(rng.standard_normal(len(t)).astype(np.float32), 260) * 1.6
+        env = np.minimum(1, t / .35) * (.55 + .45 * u) * np.exp(-np.maximum(0, t - (d - .5)) * 6)
+        return ((lp(saw, 450) * (1 - u) + lp(saw, 2200) * u) * .55 + rum * .35) * trem * env * .7
     if kind == 'pop':
         t = tt(.12); return (np.sin(2 * np.pi * (380 + 260 * np.exp(-t * 40)) * t) * np.exp(-t * 32)).astype(np.float32) * .5
     if kind == 'zip':
@@ -312,6 +320,11 @@ def sfx_events(root, D):
                     tu = T(nd['until'])
                     if tu < ce - 1.5: ev.append((tu + .1, 'poweroff', .3, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
                 except Exception: pass
+            if nd.get('shake') and k in ('agent', 'acard'):
+                try:
+                    sh = nd['shake']; dd = min(7.0, float(sh.get('dur', 1.2)))
+                    if dd >= 1.0: ev.append((T(sh['at']), f'engine:{dd:.1f}', .45, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+                except Exception: pass
             if k == 'bulb' and nd.get('litAt') is not None:
                 try: ev.append((T(nd['litAt']), 'idea', .5, .5))
                 except Exception: pass
@@ -372,7 +385,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'engine:3', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
