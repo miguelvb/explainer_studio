@@ -788,14 +788,14 @@ const BG=(()=>{let el=null,cfg=null,parts=[],blobs=[],gl=null,vig=null,rnd,custo
   bind(el){const g=el.querySelector('.g2'),h=el.querySelector('.hz2');return(t,I,T)=>{g.setAttribute('stroke',T>.3?'#ff8080':o.col);let q='';
    if(o.kind==='flat'){const D=48,ox=(t*2.5)%D,oy=(t*1.2)%D;for(let x=-D;x<=960+D;x+=D){const m=Math.round((x-ox)/D)%5===0;q+=`<line x1="${x-ox+0}" y1="0" x2="${x-ox}" y2="540" stroke-opacity="${m?.2:.07}"/>`}for(let y=-D;y<=540+D;y+=D){const m=Math.round((y-oy)/D)%5===0;q+=`<line x1="0" y1="${y-oy}" x2="960" y2="${y-oy}" stroke-opacity="${m?.2:.07}"/>`}}
    else{const sc=(t*(10+30*I)*.04)%1,sides=o.kind==='tunnel'?[1,-1]:[1];for(const sd of sides){const hy=o.hy;for(let i=-14;i<=14;i++)q+=`<line x1="${480+i*32}" y1="${hy}" x2="${480+i*190}" y2="${sd>0?540:0}" stroke-opacity="${(o.op*(1-Math.abs(i)/16)).toFixed(3)}"/>`;for(let j=0;j<12;j++){const u=(j+sc)/12,y=hy+sd*((sd>0?540:0)-hy)*sd*u*u;q+=`<line x1="0" y1="${y.toFixed(1)}" x2="960" y2="${y.toFixed(1)}" stroke-opacity="${(.03+o.op*1.2*u*u).toFixed(3)}"/>`}}}
-   g.innerHTML=q;if(h)h.setAttribute('opacity',(.2*(.5+I)).toFixed(3))}}});
+   g.innerHTML=q;if(h)h.setAttribute('opacity',((o.hzo||.2)*(.5+I)).toFixed(3))}}});
  Object.assign(BGALT,{
   sand2:sandV({id:2,n:18,y0:30,dy:32,a0:16,a1:14,sl:.06,slv:.04,col:'#d9bf94',w:1.2,sp:120,spc:'#ffe9c2',op:.13,sp_t:.035,a2:10,glow:'#c98a3a',gx:480,gy:560}),
   sand3:sandV({id:3,n:44,y0:-10,dy:13,a0:5,a1:8,sl:.14,slv:.02,col:'#86b4ff',w:.9,sp:200,spc:'#e6f0ff',op:.1,sp_t:.09,a2:4}),
   sand4:sandV({id:4,n:28,y0:260,dy:22,a0:10,a1:16,sl:-.5,slv:.06,col:'#74e3d3',w:1.1,sp:160,spc:'#dffff8',op:.11,sp_t:.05,a2:7,glow:'#2aa89a',gx:200,gy:100}),
   grid2:gridV({id:2,kind:'floor',hy:300,col:'#3FD8C2',op:.22,hz:1}),
   grid3:gridV({id:3,kind:'flat',col:'#7C97FF'}),
-  grid4:gridV({id:4,kind:'tunnel',hy:270,col:'#A58BFF',op:.16,hz:0})
+  grid4:gridV({id:4,kind:'tunnel',hy:270,col:'#A58BFF',op:.16,hz:1,hzo:.06})
  })})();
 
 /* ---------- dark watercolour-paper backgrounds (meta.background: wc_noche wc_tierra wc_musgo wc_vino wc_ceniza) ---------- */
