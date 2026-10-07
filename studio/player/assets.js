@@ -631,22 +631,32 @@ A.world=(h,p,C)=>{
  const LKREP=[];const NOOBS=['txt','ctxt','sandbox','seal','bar'];
  const cub=(P,u)=>{const m=1-u;return[m*m*m*P[0][0]+3*m*m*u*P[1][0]+3*m*u*u*P[2][0]+u*u*u*P[3][0],m*m*m*P[0][1]+3*m*m*u*P[1][1]+3*m*u*u*P[2][1]+u*u*u*P[3][1]]};
  const hitN=(P,obs)=>{let c=0;for(let k=1;k<28;k++){const [x,y]=cub(P,k/28);for(const o of obs)if(x>o.x-7&&x<o.x+o.w+7&&y>o.y-7&&y<o.y+o.h+7){c++;break}}return c};
+ const PC={},PR={},PRK={};Lk.forEach(l=>{const k=[l.a,l.b].sort().join('|');PC[k]=(PC[k]||0)+1});
  const linkGeo=(l,i)=>{const a=byId[l.a],b=byId[l.b],A=edge(a,b),B=edge(b,a);
   if(l.orth)return{rel:1,P:[A,A,B,B],A,B};
   const dx=B[0]-A[0],dy=B[1]-A[1],len=Math.hypot(dx,dy)||1,ux=dx/len,uy=dy/len,nx=-uy,ny=ux,base=Math.max(14,len*(l.curve??.22)*.9)*(i%2?-1:1),inA=n=>A[0]>n.x&&A[0]<n.x+(n.w||0)&&A[1]>n.y&&A[1]<n.y+(n.h||0),inB=n=>B[0]>n.x&&B[0]<n.x+(n.w||0)&&B[1]>n.y&&B[1]<n.y+(n.h||0);
   const i0=N.indexOf(a),i1=N.indexOf(b),T0=n=>C.T(n.at||0),T1=n=>n.until!=null?C.T(n.until):1e9,ls=Math.max(C.T(l.at||0),T0(a),T0(b)),le=l.until!=null?C.T(l.until):1e9,obs=N.filter((n,j)=>j!==i0&&j!==i1&&!NOOBS.includes(n.kind)&&!inA(n)&&!inB(n)&&(n.w||0)>0&&T0(n)<le&&T1(n)>ls&&(n.alpha??1)>.2).map(n=>({x:n.x,y:n.y,w:n.w||90,h:n.h||60,id:n.id,j:N.indexOf(n)}));
-  if(l.rel){const segHit=(p,q)=>{const L=Math.hypot(q[0]-p[0],q[1]-p[1]),m=Math.max(2,Math.ceil(L/6));for(let k=0;k<=m;k++){const x=p[0]+(q[0]-p[0])*k/m,y=p[1]+(q[1]-p[1])*k/m;for(const o of obs)if(x>o.x-5&&x<o.x+o.w+5&&y>o.y-5&&y<o.y+o.h+5)return 1}return 0},polyHit=P=>{let c=0;for(let k=1;k<P.length;k++)c+=segHit(P[k-1],P[k]);return c},plen=P=>{let L=0;for(let k=1;k<P.length;k++)L+=Math.hypot(P[k][0]-P[k-1][0],P[k][1]-P[k-1][1]);return L};
-   const R={rel:1,P:[A,A,B,B],A,B},D=orthPts({orth:(()=>{const ca=ctr(a),cb=ctr(b);return Math.abs(cb[1]-ca[1])-((a.h||60)+(b.h||60))/2>12?'v':'h'})(),mid:l.mid},a,b);R.poly=D;if(!polyHit(D))return R;
-   const [ax,ay]=ctr(a),[bx,by]=ctr(b),ha=(a.h||60)/2,hb=(b.h||60)/2,wa=(a.w||90)/2,wb=(b.w||90)/2,C=[];
+  const zig=(a,b,polyHit,plen)=>{const [ax,ay]=ctr(a),[bx,by]=ctr(b),ha=(a.h||60)/2,hb=(b.h||60)/2,wa=(a.w||90)/2,wb=(b.w||90)/2,C=[];
    for(let ym=16;ym<=524;ym+=8){if(Math.abs(ym-ay)<=ha+2||Math.abs(ym-by)<=hb+2)continue;C.push([[ax,ym<ay?ay-ha:ay+ha],[ax,ym],[bx,ym],[bx,ym<by?by-hb:by+hb]])}
    for(let xm=16;xm<=944;xm+=8){if(Math.abs(xm-ax)<=wa+2||Math.abs(xm-bx)<=wb+2)continue;C.push([[xm<ax?ax-wa:ax+wa,ay],[xm,ay],[xm,by],[xm<bx?bx-wb:bx+wb,by]])}
    let best=null,bl=1e9;for(const P of C){if(polyHit(P))continue;const L=plen(P);if(L<bl){bl=L;best=P}}
+return best};
+  const segHit=(p,q)=>{const L=Math.hypot(q[0]-p[0],q[1]-p[1]),m=Math.max(2,Math.ceil(L/6));for(let k=0;k<=m;k++){const x=p[0]+(q[0]-p[0])*k/m,y=p[1]+(q[1]-p[1])*k/m;for(const o of obs)if(x>o.x-5&&x<o.x+o.w+5&&y>o.y-5&&y<o.y+o.h+5)return 1}return 0},polyHit=P=>{let c=0;for(let k=1;k<P.length;k++)c+=segHit(P[k-1],P[k]);return c},plen=P=>{let L=0;for(let k=1;k<P.length;k++)L+=Math.hypot(P[k][0]-P[k-1][0],P[k][1]-P[k-1][1]);return L};
+  if(l.rel){
+   const R={rel:1,P:[A,A,B,B],A,B},D=orthPts({orth:(()=>{const ca=ctr(a),cb=ctr(b);return Math.abs(cb[1]-ca[1])-((a.h||60)+(b.h||60))/2>12?'v':'h'})(),mid:l.mid},a,b);R.poly=D;if(!polyHit(D))return R;
+   const best=zig(a,b,polyHit,plen);
    if(best)R.poly=best;else LKREP.push({a:l.a,b:l.b,n:1});return R}
-  const mk=(h1,h2,f1=.33,f2=.33)=>[A,[A[0]+ux*len*f1+nx*h1,A[1]+uy*len*f1+ny*h1],[B[0]-ux*len*f2+nx*h2,B[1]-uy*len*f2+ny*h2],B];
   if(l.via){const q=cp(A[0],A[1],B[0],B[1],l,i);return{P:[A,[A[0]+2/3*(q[0]-A[0]),A[1]+2/3*(q[1]-A[1])],[B[0]+2/3*(q[0]-B[0]),B[1]+2/3*(q[1]-B[1])],B],A,B}}
-  const cands=[];for(const m of [1,-1,1.7,-1.7,2.6,-2.6,.55,-.55,3.6,-3.6]){cands.push([base*m,-base*m]);cands.push([base*m,-base*m*.45])}
-  let best=null,bs=1e9;cands.forEach((c,k)=>{const P=mk(c[0],c[1]),pen=hitN(P,obs)*100+Math.abs(c[0])/ (len||1)*20+k*.3;if(pen<bs){bs=pen;best=P}});
-  const hh=hitN(best,obs);if(hh)LKREP.push({a:l.a,b:l.b,n:hh});return{P:best,A,B,obs}};
+  /* communication link: leaves and arrives at 90 degrees to the node surfaces; a gentle S whose only amplitude is the offset between the two attachment points */
+  const pk=[l.a,l.b].sort().join('|'),cnt=PC[pk],off=(((PRK[pk]=(PRK[pk]??-1)+1))-(cnt-1)/2)*12;
+  const [ax,ay]=ctr(a),[bx,by]=ctr(b),wa=(a.w||90)/2,ha=(a.h||60)/2,wb=(b.w||90)/2,hb=(b.h||60)/2,sgnx=bx>=ax?1:-1,sgny=by>=ay?1:-1;
+  const clampo=(o,h)=>Math.max(-h+6,Math.min(h-6,o));
+  const Hm=()=>{const A1=[ax+sgnx*wa,ay+clampo(off,ha)],B1=[bx-sgnx*wb,by+clampo(off,hb)],L=(B1[0]-A1[0])*sgnx;return L<10?null:{A:A1,B:B1,na:[sgnx,0],nb:[-sgnx,0],L}};
+  const Vm=()=>{const A1=[ax+clampo(off,wa),ay+sgny*ha],B1=[bx+clampo(off,wb),by-sgny*hb],L=(B1[1]-A1[1])*sgny;return L<10?null:{A:A1,B:B1,na:[0,sgny],nb:[0,-sgny],L}};
+  const modes=Math.abs(bx-ax)-wa-wb>Math.abs(by-ay)-ha-hb?[Hm(),Vm()]:[Vm(),Hm()];let best=null,bs=1e9;
+  modes.forEach((m,mi)=>{if(!m)return;for(const f of [.45,.3,.6]){const k=Math.max(14,Math.min(70,m.L*f)),P=[m.A,[m.A[0]+m.na[0]*k,m.A[1]+m.na[1]*k],[m.B[0]+m.nb[0]*k,m.B[1]+m.nb[1]*k],m.B],pen=hitN(P,obs)*100+mi*6+(f===.45?0:2);if(pen<bs){bs=pen;best=P}}});
+  if(!best){const A1=A,B1=B;best=[A1,[A1[0]+(B1[0]-A1[0])/3,A1[1]+(B1[1]-A1[1])/3],[B1[0]-(B1[0]-A1[0])/3,B1[1]-(B1[1]-A1[1])/3],B1]}
+  const hh=hitN(best,obs);if(hh){const z=zig(a,b,polyHit,plen);if(z)return{P:[A,A,B,B],A,B,poly:z,obs};LKREP.push({a:l.a,b:l.b,n:hh})}return{P:best,A:best[0],B:best[3],obs}};
  const lkD=g=>g.poly?orthD(g.poly):g.rel?`M${g.A[0]} ${g.A[1]}L${g.B[0]} ${g.B[1]}`:`M${g.P[0][0]} ${g.P[0][1]}C${g.P[1][0]} ${g.P[1][1]} ${g.P[2][0]} ${g.P[2][1]} ${g.P[3][0]} ${g.P[3][1]}`;
 
  const orthPts=(l,a,b)=>{const [ax,ay]=ctr(a),[bx,by]=ctr(b),ha=(a.h||60)/2,hb=(b.h||60)/2,wa=(a.w||90)/2,wb=(b.w||90)/2;let m=l.orth;if(m===true)m=Math.abs(by-ay)>=Math.abs(bx-ax)?'v':'h';
@@ -698,8 +708,8 @@ A.world=(h,p,C)=>{
    if(N[i].kind==='crowd'){const cds=e.querySelectorAll('.cd'),gr=(N[i].grow||[{at:N[i].at||0,n:N[i].n||40}]);let cnt=0;for(const q of gr){cnt=lerp(cnt,q.n,ease(pr(t,C.T(q.at),q.dur||1.2)))}cds.forEach((d,j)=>d.style.opacity=clamp(cnt-j))}
    if(N[i].kind==='num'){const q=e.querySelector('.nm'),a=ease(pr(t,C.T(N[i].at||0),N[i].dur||2));q.textContent=(N[i].pre||'')+fmt(Math.round(lerp(N[i].from||0,N[i].n||0,a)))+(N[i].suf||'')}e.style.filter=on&&act?'drop-shadow(0 0 7px '+hex(N[i].color||'blue')+')':'none';if(N[i].glowAt!=null){const gg=ease(pr(t,C.T(N[i].glowAt),N[i].glowDur||8))*(.8+.2*Math.sin(t*7));e.style.filter=`drop-shadow(0 0 ${2+14*gg}px #FF6E6E) drop-shadow(0 0 ${12*gg}px #FF6E6E)`}});
   lk.forEach((e,i)=>{const on=!act||act.ids.includes(Lk[i].a)&&act.ids.includes(Lk[i].b);e.style.opacity=ease(pr(t,la[i],.5))*(on?1:.25)*(1-ease(pr(t,lu[i],.5)))*(Lk[i].alpha??1)});
-  Lk.forEach((l,i)=>{const G=geo[i];if(l.orth||l.rel||l.nob||t<la[i]+.4){pl[i].style.opacity=0;pl2[i].style.opacity=0;return}const sp=l.speed||.45,tt=t-la[i]-.4;
-   [pl[i],pl2[i]].forEach((c,j)=>{const u=((tt*sp+j*.5)%1),w=(l.bi&&j)?1-u:u;const m=1-w;const pt=cub(G.P,w);c.setAttribute('cx',pt[0]);c.setAttribute('cy',pt[1]);c.style.opacity=Math.sin(u*Math.PI)*.95*ease(pr(t,la[i]+.4,.4))*(1-ease(pr(t,lu[i],.5)))})});
+  Lk.forEach((l,i)=>{const G=geo[i];if(l.orth||l.rel||l.nob||t<la[i]+.4){pl[i].style.opacity=0;pl2[i].style.opacity=0;return}const PP=G.poly?(G.cum||(G.cum=(()=>{const c=[0];for(let k=1;k<G.poly.length;k++)c.push(c[k-1]+Math.hypot(G.poly[k][0]-G.poly[k-1][0],G.poly[k][1]-G.poly[k-1][1]));return c})())):null,pAt=u=>{const L=PP[PP.length-1]*u;let k=1;while(k<PP.length-1&&PP[k]<L)k++;const f=(L-PP[k-1])/Math.max(1e-6,PP[k]-PP[k-1]),A_=G.poly[k-1],B_=G.poly[k];return[A_[0]+(B_[0]-A_[0])*f,A_[1]+(B_[1]-A_[1])*f]};const sp=l.speed||.45,tt=t-la[i]-.4;
+   [pl[i],pl2[i]].forEach((c,j)=>{const u=((tt*sp+j*.5)%1),w=(l.bi&&j)?1-u:u;const m=1-w;const pt=PP?pAt(w):cub(G.P,w);c.setAttribute('cx',pt[0]);c.setAttribute('cy',pt[1]);c.style.opacity=Math.sin(u*Math.PI)*.95*ease(pr(t,la[i]+.4,.4))*(1-ease(pr(t,lu[i],.5)))})});
   nd.forEach((e,i)=>{const vis=+e.style.opacity>.02;if(!vis)return;fitNode(e,N[i],!e._fd);e._fd=1});
   in2.forEach(e=>{const i=+e.dataset.i;e.style.opacity=ease(pr(t,ia[i],.6))})};
  upd.pos=id=>{const n=byId[id];if(!n)return[50,50];const [x,y]=ctr(n);return[x/9.6,y/5.4]};
