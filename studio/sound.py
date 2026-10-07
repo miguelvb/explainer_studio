@@ -234,6 +234,11 @@ def sfx_sound(kind, rng):
         t = tt(.7); return (np.sin(2 * np.pi * (60 + 80 * np.exp(-t * 25)) * t) * np.exp(-t * 7)).astype(np.float32) + lp(rng.standard_normal(len(t)).astype(np.float32), 300) * np.exp(-t * 18) * .4
     if kind == 'deny':
         t = tt(.5); return (np.sin(2 * np.pi * 170 * t) * np.exp(-t * 7) * .7 + np.sin(2 * np.pi * 120 * t) * np.exp(-t * 5)).astype(np.float32) * .8
+    if kind == 'error':      # two-tone buzzer: harsh, short, unmistakable "error"
+        def buz(f, d):
+            t = tt(d); sq = np.sign(np.sin(2 * np.pi * f * t)) * .6 + np.sin(2 * np.pi * f * 2.01 * t) * .25
+            return (lp(sq.astype(np.float32), 2600) * np.minimum(1, t / .008) * np.exp(-np.maximum(0, t - d * .6) * 22)).astype(np.float32)
+        return _mix_at([(0, buz(311, .17)), (.2, buz(208, .32))]) * .9
     if kind == 'spark':
         return _mix_at([(i * .07, bell(float(hz(93 + [0, 4, 7, 12][i])), .9, 1.0, 4.0)) for i in range(4)])
     if kind == 'key':
@@ -281,7 +286,7 @@ def _mix_at(parts):
 
 
 KIND_SFX = {   # world node kind -> (sfx, gain)
-    'acard': ('pop', .5), 'agent': ('pop', .3), 'koA': ('deny', .6), 'cross': ('deny', .6), 'okA': ('chime', .55), 'check': ('chime', .55),
+    'acard': ('pop', .5), 'agent': ('pop', .3), 'koA': ('error', .8), 'cross': ('error', .8), 'okA': ('chime', .55), 'check': ('chime', .55),
     'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('idea', .55), 'bulb': ('idea', .55), 'key': ('key', .45), 'sigLock': ('lock', .6),
     'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('pop', .35),
     'orb': ('spark', .4), 'flagTrophy': ('flag', .5),
@@ -367,7 +372,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
