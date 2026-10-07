@@ -13,7 +13,7 @@
   "duck_ratio": 2.5,
   "duck_threshold": 0.04,
   "ambience": 1.0,
-  "background": "poly",
+  "background": "grid4",
   "fadein": 0.3,
   "el_pronunciation": {
    "GPT-5.2": "GPT cinco punto dos",
