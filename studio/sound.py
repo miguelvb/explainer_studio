@@ -550,6 +550,83 @@ def _layer_key(sname, cv, n):
     return h
 
 
+
+# ------------------------------------------------------------------ music loops (shared, film-independent)
+# The film's music only follows two curves (intensity, tension) and the scene cuts, so instead of synthesising every layer over the whole film
+# (minutes of CPU, and invalidated by any change of timing) each style is synthesised ONCE as a few seamless loops - calm / medium / intense, plus a tense one -
+# kept in a shared cache and cross-faded block by block by the mixer.  Changing the voice or the cuts costs nothing.
+MUSIC_LOOP_VERSION = 1
+LOOP_STEMS = [(.2, 0), (.6, 0), (1.0, 0), (.6, 1)]            # (intensity, tension)
+LOOP_PRE, LOOP_TAIL, LOOP_XF = 32.0, 8.0, 6.0
+_CYCLE = {'pulse': 20.0, 'cinema': 64.0, 'bells': 96.0, 'data': 60 / 108 / 4 * 32 * 4, 'pad': 128.0}
+
+
+def loop_dir():
+    import os; d = os.environ.get('EXPLAINER_MUSIC_CACHE') or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.cache', 'music_loops'); os.makedirs(d, exist_ok=True); return d
+
+
+def loop_len(style):
+    c = _CYCLE[style]; return int(round(c * max(1, int(np.ceil(60 / c))) * SR))
+
+
+def _synth_stem(args):
+    style, I, T = args; Ln = loop_len(style); span = Ln / SR + LOOP_TAIL; total = LOOP_PRE + span
+    if style == 'pad':
+        import tempfile, shutil, os; from . import audio
+        d = tempfile.mkdtemp(prefix='padloop_')
+        try:
+            json.dump(dict(meta=dict(fadein=.05, fadeout=.05, ambience=0), scenes=[dict(intensity=I, mood='tense' if T else None)]), open(f'{d}/story.json', 'w'))
+            os.makedirs(f'{d}/build'); json.dump(dict(sched={'S0': dict(s=0, e=0), 'E0': dict(s=total, e=total)}, total=total, scenes=1), open(f'{d}/build/data.json', 'w'))
+            audio.music(d, f'{d}/o.wav', style='pad', ambience=0, const_inten=I)
+            with wave.open(f'{d}/o.wav', 'rb') as w: x = np.frombuffer(w.readframes(w.getnframes()), '<i2').reshape(-1, 2).T.astype(np.float32) / 32768
+        finally: shutil.rmtree(d, ignore_errors=True)
+    else:
+        cv = dict(total=total + 2, keys=[(0, I), (total + 2, I)], mk=[(0, T), (total + 2, T)], bounds=[(0, I, T)], meta=dict(fadein=.05, fadeout=.05))
+        x = render_style(style, cv, ambience_level=0)
+    a0 = int(LOOP_PRE * SR); x = x[:, a0:a0 + Ln + int(LOOP_TAIL * SR)]
+    xf = int(LOOP_XF * SR); w_ = np.sin(np.linspace(0, np.pi / 2, xf, dtype=np.float32)); out = x[:, :Ln].copy()
+    out[:, :xf] = x[:, :xf] * w_ + x[:, Ln:Ln + xf] * w_[::-1]                  # equal-power fold of the tail onto the head: the loop wraps without a seam
+    return out
+
+
+def ensure_loops(styles, log=print):
+    """Synthesise (once, in parallel) the missing loop stems of the given styles; returns {style: {stem: (path, peak)}} and the per-style rms (medium stem)."""
+    import os, concurrent.futures as cf
+    d = loop_dir(); todo = []; info = {}
+    for st in styles:
+        for I, T in LOOP_STEMS:
+            p = f'{d}/{st}_{I}_{T}_v{MUSIC_VERSION}_{MUSIC_LOOP_VERSION}.npy'
+            if not (os.path.exists(p) and os.path.exists(p + '.json')): todo.append((st, I, T, p))
+            info.setdefault(st, {})[(I, T)] = p
+    if todo:
+        log(f'  music loops: synthesising {len(todo)} stem(s) once (shared cache {d})')
+        done = 0
+        with cf.ProcessPoolExecutor(max_workers=max(1, min(3, (os.cpu_count() or 2) - 1))) as ex:
+            futs = {ex.submit(_synth_stem, (st, I, T)): (st, I, T, p) for st, I, T, p in todo}
+            for f in cf.as_completed(futs):
+                st, I, T, p = futs[f]; x = f.result(); pk = float(np.abs(x).max()) or 1.0
+                mm = np.lib.format.open_memmap(p, mode='w+', dtype=np.int16, shape=x.shape); mm[:] = (x / pk * 32767).astype(np.int16); mm.flush(); del mm
+                json.dump(dict(peak=pk), open(p + '.json', 'w')); done += 1; log(f'    loop {st} I={I} T={T}  ({done}/{len(todo)})')
+    out = {}
+    for st in styles:
+        stems = {}
+        for k, p in info[st].items():
+            mm = np.load(p, mmap_mode='r'); stems[k] = dict(mm=mm, peak=json.load(open(p + '.json'))['peak'])
+        ref = stems[(.6, 0)]; rms = float(np.sqrt((np.asarray(ref['mm'][:, ::7], np.float32) ** 2).mean())) * ref['peak'] / 32767 or 1.0
+        for s_ in stems.values(): s_['k'] = s_['peak'] / 32767 / rms
+        out[st] = stems
+    return out
+
+
+def loop_block(stems, st, i0, i1, I, T):
+    """Audio (2, i1-i0) of one style for samples i0..i1 with intensity I and tension T arrays (per sample): stems cross-faded, loops wrapped."""
+    Ln = loop_len(st); idx = (np.arange(i0, i1) % Ln); w0 = np.clip((.6 - I) / .4, 0, 1); w2 = np.clip((I - .6) / .4, 0, 1); w1 = np.clip(1 - w0 - w2, 0, 1)
+    def g(k): s_ = stems[k]; return np.asarray(s_['mm'][:, idx], np.float32) * s_['k']
+    calm = g((.2, 0)) * w0 + g((.6, 0)) * w1 + g((1.0, 0)) * w2
+    if float(T.max()) > 1e-3: calm = calm * (1 - T) + g((.6, 1)) * T
+    return calm
+
+
 def render_mix(root, D=None, out=None, log=print):
     """meta.music_style = 'mix': every scene has `music` = style or {style: weight}; layers crossfade over 4 s at scene boundaries.
     Memory-lean: each layer is rendered once, parked on disk as int16 and the final mix is streamed in 20 s blocks."""
@@ -591,18 +668,8 @@ def render_mix(root, D=None, out=None, log=print):
             return dict(peak=json.load(open(path + '.json'))['peak'], rms=stats(mm, pts), path=path)
         except Exception: return None
 
-    L = {}
-    for sname in sorted(styles, key=lambda k: (k != 'pad', k)):      # the legacy pad is the hungriest: do it first
-        key = _layer_key(sname, cv, n); pts = gain_pts(sname); hit = cached(sname, pts, key)
-        if hit: log(f'  music layer: {sname} (cached)'); L[sname] = dict(hit, pts=pts); continue
-        log(f'  music layer: {sname}'); gc.collect()
-        if sname == 'pad':
-            tmp = f'{tmpd}/pad.wav'; audio.music(root, tmp, style='pad', ambience=0); gc.collect()
-            with wave.open(tmp, 'rb') as w: x = np.frombuffer(w.readframes(w.getnframes()), '<i2').reshape(-1, 2).T.astype(np.float32) / 32768
-            os.remove(tmp); x = x[:, :n] if x.shape[1] >= n else np.pad(x, ((0, 0), (0, n - x.shape[1])))
-        else:
-            x = render_style(sname, cv, ambience_level=0)[:, :n]
-        L[sname] = park(sname, x, pts, key); L[sname]['pts'] = pts; del x; gc.collect()
+    loops = ensure_loops(styles, log); L = {sname: dict(pts=gain_pts(sname)) for sname in styles}
+    log('  music: ' + ', '.join(styles) + ' (shared loops, mixed by the film curves)')
     lvl = float(meta.get('ambience', 1.0)); amb = None
     if lvl > 0:
         key = _layer_key('amb', cv, n); amb = cached('amb', None, key)
@@ -610,14 +677,16 @@ def render_mix(root, D=None, out=None, log=print):
         else:
             nn, t = make_t(cv['total']); a = ambience(cv, nn, t, np.random.default_rng(9), 1.0)[:, :n]; del t; amb = park('amb', a, None, key); del a; gc.collect()
     fi = max(.05, float(meta.get('fadein', 4))); fo = float(meta.get('fadeout', 4)); tot = D['total']
-    mms = {k: np.load((L[k] if k in L else amb)['path'], mmap_mode='r') for k in list(L) + (['amb'] if amb else [])}
+    mms = {'amb': np.load(amb['path'], mmap_mode='r')} if amb else {}
     B = SR * 20
 
     def block(i0, i1):
         tb = np.arange(i0, i1, dtype=np.float32) / SR; acc = np.zeros((2, i1 - i0), np.float32)
+        Iv = interp(tb, cv['keys']); Tv = interp(tb, cv['mk'])
         for k, meta_ in L.items():
             g = np.interp(tb, [p[0] for p in meta_['pts']], [p[1] for p in meta_['pts']]).astype(np.float32)
-            acc += mms[k][:, i0:i1].astype(np.float32) * (meta_['peak'] / 32767 * .11 / max(meta_['rms'], 1e-6)) * g[None]
+            if float(g.max()) < 1e-4: continue
+            acc += loop_block(loops[k], k, i0, i1, Iv, Tv) * (.11 * g)[None]
         if amb: acc += mms['amb'][:, i0:i1].astype(np.float32) * (amb['peak'] / 32767 * .012 * lvl / max(amb['rms'], 1e-6))
         return acc * (np.clip(tb / fi, 0, 1) * np.clip((tot - tb) / fo, 0, 1))[None]
     mx = max(float(np.abs(block(i, min(n, i + B))).max()) for i in range(0, n, B)) or 1.0

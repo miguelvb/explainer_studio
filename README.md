@@ -61,6 +61,8 @@ Variantes de `all`:
 | `--burn` | incrusta subtítulos en el vídeo |
 | `--force-render` | rehace también las escenas sin cambios |
 
+**Música (`music_style: mix`)**: cada estilo se sintetiza una sola vez en bucles sin costuras (calma / media / intensa / tensa) guardados en `.cache/music_loops/` (compartido entre películas, no se sube a git; también `EXPLAINER_MUSIC_CACHE`). La mezcla de una película solo une esos bucles según sus curvas de intensidad y tensión: cambiar la voz o los cortes no obliga a sintetizar nada. La primera vez tarda ~2 min en generar los bucles; después, segundos. Si cambia el sonido de un estilo, sube `MUSIC_VERSION` o `MUSIC_LOOP_VERSION` en `studio/sound.py`.
+
 Otros comandos: `new · ingest · prompt · catalog · script · music · render · mux · verify · mark`.
 
 ### Qué hay entre `video_range.mp4` y `final`

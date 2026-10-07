@@ -98,7 +98,7 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
     log(f'timings -> {tf}  narration {sum(T.values()):.0f}s')
 
 
-def music(root, out=None, style=None, ambience=None):
+def music(root, out=None, style=None, ambience=None, const_inten=None):
     """Music bed. meta.music_style: pad (default) | pulse | cinema | bells | data. Shaped by each scene's `intensity` (0-1) and `mood: tense`."""
     _m = json.load(open(f'{root}/story.json'))['meta']; _style = style or _m.get('music_style', 'pad')
     if ambience is not None: _m = dict(_m, ambience=ambience)
@@ -116,6 +116,7 @@ def music(root, out=None, style=None, ambience=None):
     ints = [x if x is not None else arc[i] for i, x in enumerate(ints)]
     sr = 44100; n = int(total * sr); t = np.arange(n, dtype=np.float32) / sr; rng = np.random.default_rng(7)
     keys = [(0, ints[0] * .8)] + [(S[f'S{i}']['s'] + 2, ints[i]) for i in range(N)] + [(total, 0)]
+    if const_inten is not None: keys = [(0, const_inten), (total, const_inten)]      # loop stems: constant intensity
     inten = np.interp(t, [k[0] for k in keys], [k[1] for k in keys]).astype(np.float32)
     hz = lambda m: 440.0 * 2 ** ((m - 69) / 12)
     chords = [[38, 45, 53, 57, 60], [34, 46, 53, 58, 62], [43, 50, 53, 58, 62], [33, 45, 52, 57, 61]]; L = 32.0
