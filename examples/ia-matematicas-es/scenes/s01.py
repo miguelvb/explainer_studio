@@ -51,7 +51,7 @@ n += [W.counter('cA', 70, 245, 1, '1b#Resolvieron', cap='problemas resueltos', w
       ch('c9', 170, 220, 110, '9 de 353', '1c#mayo+0.2', color='teal', fs=13, until='1d')]
 # 1d — OpenAI claims, three mathematicians approve
 n += [N('ck', 'txt', 30, 30, 330, 32, '1d#veinte', color='teal', fs=24, type=9, text='20 mayo 2026', until='1e'),
-      AN('oa', 60, 150, 'OpenAI', at='1d#OpenAI', color='blue', until='1e')]
+      AN('oa', 60, 78, 'OpenAI', at='1d#OpenAI', color='blue', until='1e')]
 for j, nm in enumerate(['Alon', 'Wood', 'Bloom']):
     y = 80 + 110 * j
     n += [N(f'p{j}', 'person', 340, y, 36, 62, f'1d#{nm}', color='amber', cap=nm, capfs=13, until='1e'),
