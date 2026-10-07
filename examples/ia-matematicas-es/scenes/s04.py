@@ -58,11 +58,11 @@ n += [N('ct', 'chip', 140, 468, 130, 26, '4c#casi', color=TEAL, label='casi todo
 lk += [seg('cm', 'c2m', '4c#raíz+0.4', VIO, until='4d#Pero'), link('cl', 'mc', '4c#cualquier', color=TEAL, curve=.3, until='4d#Pero')]
 n.append(N('mn', 'sandbox', SX - 13, Yv(2) - 13, 26, 26, '4c#mínimo', color=RED, label='', open=True, until='4d#Pero'))
 
-# --- 4d: pi's exponent climbs above 7 and stays an open question
+# --- 4d: all that was known: the exponent of pi is at most ~7.1, so it could be anything between 2 and 7.1
 n += [N('mp2', 'chip', SX - 64, Yv(2) - 13, 44, 26, '4d#Pero', color=AMB, label='π', fs=14,
-        move=[dict(at='4d#nadie', x=SX - 64, y=Yv(7.6) - 13, dur=1.6), dict(at='4e#exactamente', x=SX - 64, y=Yv(2) - 13, dur=0.5)]),
-      N('qm', 'question', SX - 130, Yv(7.6) - 16, 32, 32, '4d#nadie+1.6', color=GRY, until='4e#modelo'),
-      N('bt', 'chip', 470, Yv(7.0) - 13, 208, 26, '4d#cota', color=RED, label='mejor cota conocida > 7', fs=12, until='4e#modelo')]
+        move=[dict(at='4d#mayor', x=SX - 64, y=Yv(7.1) - 13, dur=1.2), dict(at='4d#cualquier', x=SX - 64, y=Yv(4.6) - 13, dur=1.4), dict(at='4e#exactamente', x=SX - 64, y=Yv(2) - 13, dur=0.5)]),
+      N('qm', 'question', SX - 130, Yv(4.6) - 16, 32, 32, '4d#cualquier+1.0', color=GRY, until='4e#modelo'),
+      N('bt', 'chip', 440, Yv(7.1) - 13, 238, 26, '4d#mayor', color=RED, label='se sabía: ≤ 7,1', fs=12, until='4e#modelo')]
 # --- 4e: it drops to 2 and a green flag lights up next to pi
 n += [N('fl', 'flFly', 640, Yv(2) - 55, 34, 46, '4e#exactamente+0.5', color=GRN), T('pm', 440, 330, 'π = 2', '4e#corriente', color=AMB, fs=40)]
 cues.append(K('S4', '4f', n, lk, fs=1.0))

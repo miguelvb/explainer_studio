@@ -80,8 +80,8 @@
 **4c** Para casi cualquier número, ese exponente es dos. Es el mínimo posible, como si fuera un número «sin trucos». También ocurre con los números algebraicos, como la raíz de dos.
 > Un medidor con una marca «2» en el mínimo; una nube de puntos «casi todos» se queda en 2; la raíz de dos aparece con la etiqueta «2».
 
-**4d** Pero nadie había podido demostrar que pi fuera así de normal. La mejor cota conocida estaba por encima de siete.
-> El medidor de π sube hasta pasar de 7 y queda con un signo de interrogación; el rótulo «mejor cota conocida > 7» aparece sobre él.
+**4d** Pero nadie había podido demostrarlo. Lo único que se sabía es que el exponente de pi no podía ser mayor que siete coma uno: podía valer cualquier cosa entre dos y siete coma uno.
+> El medidor de π sube hasta el 7,1 con el rótulo «se sabía: ≤ 7,1», y después queda flotando en mitad del rango con un signo de interrogación (valor desconocido entre 2 y 7,1).
 
 **4e** (pausa 1.2) El modelo de OpenAI afirma haber demostrado que el exponente de pi es exactamente dos. Es decir, que pi se comporta como un número corriente a la hora de aproximarlo.
 > El medidor baja de golpe y se clava en 2; una bandera verde se enciende junto al símbolo π.
