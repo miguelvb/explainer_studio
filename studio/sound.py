@@ -343,7 +343,7 @@ KIND_SFX = {   # world node kind -> (sfx, gain)
     'acard': ('spawn', .55), 'agent': ('spawn', .45), 'koA': ('error', .8), 'cross': ('error', .8), 'okA': ('chime', .55), 'check': ('chime', .55),
     'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('idea', .55), 'bulb': ('idea', .55), 'key': ('key', .45), 'sigLock': ('lock', .6),
     'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('spawn', .4),
-    'orb': ('spark', .4), 'chip': ('tick', .4), 'quote': ('msg', .6), 'sheet': ('create', .55), 'flagTrophy': ('flag', .5),
+    'orb': ('spark', .4), 'chip': ('tick', .4), 'doc': ('tick', .4), 'exam': ('create', .4), 'folder': ('create', .45), 'console': ('tick', .4), 'hfbox': ('create', .4), 'hfbase': ('create', .4), 'server': ('create', .4), 'question': ('ask', .5), 'judge': ('thud', .4), 'bar': ('slide', .4), 'lupa': ('zip', .4), 'pencil': ('tick', .4), 'stop': ('error', .5), 'globe': ('spark', .4), 'onion': ('pop', .4), 'flagEnv': ('flag', .4), 'pause': ('thud', .35), 'quote': ('msg', .6), 'sheet': ('create', .55), 'flagTrophy': ('flag', .5),
 }
 
 
@@ -394,6 +394,10 @@ def sfx_events(root, D):
                 except Exception: pass
             if k == 'num' and nd.get('dur'):
                 ev.append((ta, f"count:{min(6.0, float(nd['dur'])):.1f}", .45, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+            if k == 'article' and nd.get('read'):
+                try:
+                    rd = nd['read']; dd = min(20.0, float(rd.get('dur', 6))); ev.append((T(rd['at']), f'scroll:{dd:.1f}:9.0:12.0', .4, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+                except Exception: pass
             if k == 'msgfeed':
                 try:
                     te = T(nd['until']) if nd.get('until') is not None else ce; dd = min(14.0, te - ta); r0 = float(nd.get('r0', 6)); r1 = float(nd.get('r1', 12))
