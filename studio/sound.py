@@ -340,7 +340,7 @@ def _mix_at(parts):
 
 
 KIND_SFX = {   # world node kind -> (sfx, gain)
-    'acard': ('spawn', .55), 'agent': ('spawn', .45), 'koA': ('error', .8), 'cross': ('error', .8), 'okA': ('chime', .55), 'check': ('chime', .55),
+    'acard': ('spawn', .55), 'agent': ('spawn', .45), 'koA': ('error', 1.0), 'cross': ('error', 1.0), 'okA': ('chime', .55), 'check': ('chime', .55),
     'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('idea', .55), 'bulb': ('idea', .55), 'key': ('key', .45), 'sigLock': ('lock', .6),
     'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('spawn', .4),
     'orb': ('spark', .4), 'chip': ('tick', .4), 'doc': ('tick', .4), 'exam': ('create', .4), 'folder': ('create', .45), 'console': ('tick', .4), 'hfbox': ('create', .4), 'hfbase': ('create', .4), 'server': ('create', .4), 'question': ('ask', .5), 'judge': ('thud', .4), 'bar': ('slide', .4), 'lupa': ('zip', .4), 'pencil': ('tick', .4), 'stop': ('error', .5), 'globe': ('spark', .4), 'onion': ('pop', .4), 'flagEnv': ('flag', .4), 'pause': ('thud', .35), 'quote': ('msg', .6), 'sheet': ('create', .55), 'flagTrophy': ('flag', .5),
@@ -417,6 +417,7 @@ def sfx_events(root, D):
                 try: ev.append((T(nd['litAt']), 'idea', .5, .5))
                 except Exception: pass
             if k in KIND_SFX and not nd.get('nosfx') and (nd.get('alpha', 1) or 1) > .2 and ta > cs - .01:
+                if k in ('koA', 'cross'): ev.append((ta + .05, 'thud', .55, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
                 s_, g = KIND_SFX[k]; ev.append((ta + .05, s_, g, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
     try: stj = json.load(open(f'{root}/story.json'))
     except Exception: stj = {'scenes': []}
