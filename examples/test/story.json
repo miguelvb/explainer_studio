@@ -16555,15 +16555,7 @@
         "b": "fi",
         "at": "9b#dudó",
         "color": "blue",
-        "curve": 0.3,
-        "until": "9b#actuó"
-       },
-       {
-        "a": "ot",
-        "b": "fi",
-        "at": "9b#actuó",
-        "color": "blue",
-        "curve": 0.3,
+        "orth": "h",
         "solid": true
        },
        {

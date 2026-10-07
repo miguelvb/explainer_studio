@@ -109,8 +109,7 @@ n=[N('fi','doc',430,60,70,90,0.1,color='teal'),
 for j in range(3): n.append(N(f'pc{j}','doc',560+j*34,330,22,28,f'9b#miró+{0.25*j:.2f}',color=GRY,until='9b#cuenta'))
 n.append(T('pct',545,370,'casos parecidos','9b#miró+0.3',color=GRY,fs=12,until='9b#cuenta'))
 lk=[OR('ow','fi',0.5,TEAL,'h',until='9b#desapareció'),
-    link('ot','fi','9b#dudó',color='blue',curve=.3,until='9b#actuó'),
-    link('ot','fi','9b#actuó',color='blue',curve=.3,solid=True),
+    OR('ot','fi','9b#dudó','blue','h',solid=True),
     OR('ow2','fi','9b#volvió',TEAL,'h')]
 c9.append(K('9b','9c',n,lk,fs=1.0))
 # 9c — a risky plan with a deadline nobody answers
