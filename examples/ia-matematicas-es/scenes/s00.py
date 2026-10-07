@@ -30,13 +30,12 @@ cues.append(dict(a='seal', at='S0', until='0b', ext=0, p=dict(text='Las matemát
 # 0b — GPT-5 and ten flags that turn red; the note "ya estaba publicado"
 n = [N('ck0', 'txt', 30, 30, 300, 32, '0b#octubre', color='teal', fs=24, type=9, text='octubre 2025'),
      AN('gp', 245, 250, 'GPT-5', at=0.3, color='blue', w=130, h=150),
-     W.sheet('nt', 560, 230, 240, 110, ['ya estaba', 'publicado'], at='0b#solo', fs=22, color='amber')]
+     W.sheet('nt', 420, 270, 240, 110, ['ya estaba', 'publicado'], at='0b#solo', fs=22, color='amber')]
 for j in range(10):
     x = 212 + 44 * (j % 5); y = 80 + 46 * (j // 5)
     n.append(N(f'g{j}', 'flag', x, y, 28, 36, f'0b#diez+{0.16 * j:.2f}', color='teal', until=f'0b#falso+{0.3 * j:.2f}'))
     n.append(N(f'r{j}', 'flag', x, y, 28, 36, f'0b#falso+{0.3 * j:.2f}', color='red', state='poisoned'))
-lk = [link('gp', 'nt', '0b#encontrado', color='amber', comm=True)]
-cues.append(K('0b', '0c', n, lk, fs=1.0))
+cues.append(K('0b', '0c', n, [], fs=1.0))   # the note is just a circumstance next to the agent, not information passed: no link
 
 # 0c + 0d — the date, the folder opens, the documents pile into a tower, the counter climbs; then the small verifier looks at the tower
 FX, FY = 120, 330

@@ -86,8 +86,8 @@
        {
         "id": "nt",
         "kind": "sheet",
-        "x": 560,
-        "y": 230,
+        "x": 420,
+        "y": 270,
         "w": 240,
         "h": 110,
         "at": "0b#solo",
@@ -319,15 +319,7 @@
         "state": "poisoned"
        }
       ],
-      "links": [
-       {
-        "a": "gp",
-        "b": "nt",
-        "at": "0b#encontrado",
-        "color": "amber",
-        "curve": 0.3
-       }
-      ],
+      "links": [],
       "fs": 1.0
      },
      "bg": true,
