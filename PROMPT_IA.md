@@ -21,6 +21,7 @@ Mapa del código:
 |---|---|
 | `explainer.py` | CLI: `validate · build · preview · voices · all · music · render · mux …` |
 | `studio/player/assets.js`, `style.css` | assets, motor de enlaces, fondo, cámara |
+| `studio/storykit.py` | helpers genéricos de escena, cargador (`gen`), lint y `newfilm` |
 | `studio/worldkit.py` | constructores del asset `world` (`agent_named`, `link`, `counter`, `msg_feed`, `judge`, `console`, `folder_view`, `sheet`, `article`, `seal`…) y `classify_links` |
 | `studio/spec.py` | resolución de anclas y horario (gemelo Python del resolvedor JS) |
 | `studio/render.py` | render por escenas, caché, sondas de aviso |
@@ -35,13 +36,15 @@ Mapa del código:
 - **`hf-rob-es`** (resumen en español del vídeo de Rob Wiblin, 80,000 Hours, ~10 min) — **en espera** hasta que el usuario diga adelante. Cuando toque: primero guion y storyboard en texto, luego PNG, luego render.
 - Otros proyectos de `examples/` (`hf-swarm-es`, `hf-incident*`, `mars-orbiter`, `cinematic-demo`, `opts`) son anteriores; no los des por abiertos sin preguntar.
 
-### Cómo se genera `story.json` de la película activa (importante)
+### Cómo se genera `story.json` (importante)
 
-**No edites `story.json` a mano:** lo escribe `gen_story.py`.
+**No edites `story.json` a mano:** lo escribe `studio/storykit.py` (`python explainer.py gen -p <película>`; `validate`/`build`/`all` lo regeneran solos).
 
-- `gen_story.py` carga `base-story.json` (escenas 0–7 y metadatos), construye el resto y escribe `story.json`. Ejecuta `gen_8_17.py` (escenas 8–20) dentro de su mismo espacio de nombres.
-- El texto narrado de las escenas 8–20 está en `script-8-17.md`; la numeración de escenas y frases (`9c`, `17e`…) sale de ahí.
-- Tras cualquier cambio: `python examples/hf-swarm-vivido-es/gen_story.py && python explainer.py validate -p examples/hf-swarm-vivido-es` (debe dar **0 errores**; hay ~26 avisos conocidos).
+- La carpeta de la película tiene `film.py` (META y PRONUNCIATION), `narration.md` (la narración: **fuente de verdad**; `script.md` lo genera `build` solo para leer) y `scenes/sNN.py` (un script por escena).
+- Un script de escena define `cues` y, opcionalmente, `MUSIC`, `MOOD`, `INTENSITY`, `SFX` y `PROFILE` (`'house'` por defecto; `'raw'` en las escenas 0–7, aprobadas antes de las reglas de la casa). Corre en un espacio de nombres compartido con los helpers de `storykit` y `worldkit`.
+- La numeración de escenas y frases (`9c`, `17e`…) sale de `narration.md`: una línea `**9c** texto` por frase; `(pausa 2.4)` tras el id añade silencio.
+- Película nueva: `python explainer.py newfilm -p examples/<nombre> --title "…"`.
+- Tras cualquier cambio: `python explainer.py validate -p examples/hf-swarm-vivido-es` (debe dar **0 errores**; hay ~26 avisos conocidos). Si has refactorizado, comprueba que `story.json` no cambia (`git diff --stat`).
 - Si cambias el texto de una frase, avisa al usuario de que debe **regenerar la narración de esa escena**; los tiempos de las demás se recalculan solos.
 - `build/` y `audio/` están en `.gitignore`: viven solo en la máquina de cada uno.
 
@@ -82,9 +85,9 @@ Todo sintetizado, sin descargas. Se configura en `meta` de la película: `music_
 
 ## 6. Recetas de trabajo
 
-- *"No se oye X"*: localiza el nodo (`grep` en `gen_story.py`/`gen_8_17.py`), mira qué eventos genera `sound.sfx_events(root, D)` en esa franja y sube ganancia/duración o añade el evento.
+- *"No se oye X"*: localiza el nodo (`grep` en `scenes/`), mira qué eventos genera `sound.sfx_events(root, D)` en esa franja y sube ganancia/duración o añade el evento.
 - *"Este enlace…"*: localiza la escena por el texto o el minuto (sumando `S{n}` en `build/data.json['sched']`), cambia el enlace en el generador, vuelve a generar, vista previa, valida.
-- *"Quita esta frase"*: edita `script-8-17.md` (o `base-story.json` para escenas 0–7), regenera y avisa de rehacer la narración de esa escena.
+- *"Quita esta frase"*: edita `narration.md`, regenera y avisa de rehacer la narración de esa escena.
 - Convierte "minuto:segundo" del vídeo del usuario en escena con `D['sched']['S{n}']['s']`.
 - Los 21 avisos de "link crosses another node" son avisos de la sonda de render (un enlace roza algo), no errores; arréglalos solo si el usuario señala una escena.
 

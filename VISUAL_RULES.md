@@ -22,4 +22,4 @@
 
 ## Assets guardados (studio/worldkit.py)
 
-`agent_named` (agente con su nombre) · `agent` (agente sin nombre, en su cajita) · `agent_group` (conjunto: contenedor abierto por arriba con filas que se desvanecen; admite un hueco en la pared) · `hugging_face` (estructura + agujeros) · `counter` (número blanco que cuenta, con texto debajo) · `clock` (reloj UTC tipo máquina de escribir, que puede avanzar) · `link` (enlace con bolita). La escena 0 de `examples/hf-swarm-vivido-es/gen_story.py` ya los usa.
+`agent_named` (agente con su nombre) · `agent` (agente sin nombre, en su cajita) · `agent_group` (conjunto: contenedor abierto por arriba con filas que se desvanecen; admite un hueco en la pared) · `hugging_face` (estructura + agujeros) · `counter` (número blanco que cuenta, con texto debajo) · `clock` (reloj UTC tipo máquina de escribir, que puede avanzar) · `link` (enlace con bolita). La escena 0 de `examples/hf-swarm-vivido-es/scenes/s00.py` ya los usa.

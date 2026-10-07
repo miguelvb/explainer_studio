@@ -4,18 +4,24 @@
   python explainer.py ingest report.pdf  -p projects/mycase --minutes 10      # LLM drafts story.json (needs an API key)
   python explainer.py ingest script.txt  -p projects/mycase --mode script     # you already have the narration
   python explainer.py prompt --mode doc > prompt.md                           # the prompt, to use in any chat
+  python explainer.py gen      -p examples/film                               # film.py + narration.md + scenes/*.py -> story.json (the other commands do it first)
   python explainer.py validate -p projects/mycase                             # static + real-browser checks
   python explainer.py preview  -p projects/mycase --scene 3                   # contact sheet
   python explainer.py all      -p projects/mycase                             # build, tts, rebuild, music, render, mux
 """
 import argparse, json, os, sys, shutil
-from studio import env, spec, llm, prompt, catalog, render, audio, mark as markmod
+from studio import env, spec, llm, prompt, catalog, render, audio, storykit, mark as markmod
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def proj(a): return a.project or '.'
-def story(a): return spec.load(os.path.join(proj(a), 'story.json'))
+_GEN = set()
+def story(a):
+    root = proj(a)
+    if os.path.exists(os.path.join(root, 'film.py')) and root not in _GEN:     # films built with storykit: story.json is always regenerated first
+        _GEN.add(root); storykit.generate(root, log=lambda *x: None)
+    return spec.load(os.path.join(root, 'story.json'))
 def timings(a):
     p = os.path.join(proj(a), 'audio', 'timings.json')
     return json.load(open(p)) if os.path.exists(p) else None
@@ -84,6 +90,8 @@ def main():
     p.add_argument('--title'); p.add_argument('--audience'); p.add_argument('--notes'); p.add_argument('--lang', default='en'); p.add_argument('--repair', type=int, default=3)
     p = sp.add_parser('prompt'); p.set_defaults(f=cmd_prompt); p.add_argument('--mode', default='doc', choices=['doc', 'script']); p.add_argument('--no-example', action='store_true'); p.add_argument('--with-user', action='store_true'); p.add_argument('--minutes', type=float, default=10)
     p = P('validate', cmd_validate); p.add_argument('--blanks', action='store_true')
+    p = P('newfilm', lambda a: (storykit.new_film(proj(a), a.title), print('created', proj(a), '- edit narration.md and scenes/, then: gen · validate · preview · all'))); p.add_argument('--title', default='Nueva película')
+    P('gen', lambda a: (storykit.generate(proj(a)), print('wrote', os.path.join(proj(a), 'story.json'))))
     p = P('build', lambda a: do_build(a)); p.add_argument('--no-pad', action='store_true'); p.add_argument('--estimate', action='store_true')
     P('script', lambda a: (do_build(a), print('wrote', os.path.join(proj(a), 'script.md'))))
     p = P('preview', lambda a: print(render.preview(proj(a), a.scene, a.step) or 'ok')); p.add_argument('--scene', type=int); p.add_argument('--step', type=float, default=6)
