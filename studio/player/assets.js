@@ -795,7 +795,7 @@ const BG=(()=>{let el=null,cfg=null,parts=[],blobs=[],gl=null,vig=null,rnd,custo
   sand4:sandV({id:4,n:28,y0:260,dy:22,a0:10,a1:16,sl:-.5,slv:.06,col:'#74e3d3',w:1.1,sp:160,spc:'#dffff8',op:.11,sp_t:.05,a2:7,glow:'#2aa89a',gx:200,gy:100}),
   grid2:gridV({id:2,kind:'floor',hy:300,col:'#3FD8C2',op:.22,hz:1}),
   grid3:gridV({id:3,kind:'flat',col:'#7C97FF'}),
-  grid4:gridV({id:4,kind:'tunnel',hy:270,col:'#A58BFF',op:.16,hz:1})
+  grid4:gridV({id:4,kind:'tunnel',hy:270,col:'#A58BFF',op:.16,hz:0})
  })})();
 
 /* ---------- driver ---------- */
