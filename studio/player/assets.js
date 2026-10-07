@@ -636,11 +636,17 @@ A.world=(h,p,C)=>{
   if(l.orth)return{rel:1,P:[A,A,B,B],A,B};
   const dx=B[0]-A[0],dy=B[1]-A[1],len=Math.hypot(dx,dy)||1,ux=dx/len,uy=dy/len,nx=-uy,ny=ux,base=Math.max(14,len*(l.curve??.22)*.9)*(i%2?-1:1),inA=n=>A[0]>n.x&&A[0]<n.x+(n.w||0)&&A[1]>n.y&&A[1]<n.y+(n.h||0),inB=n=>B[0]>n.x&&B[0]<n.x+(n.w||0)&&B[1]>n.y&&B[1]<n.y+(n.h||0);
   const i0=N.indexOf(a),i1=N.indexOf(b),T0=n=>C.T(n.at||0),T1=n=>n.until!=null?C.T(n.until):1e9,ls=Math.max(C.T(l.at||0),T0(a),T0(b)),le=l.until!=null?C.T(l.until):1e9,obs=N.filter((n,j)=>j!==i0&&j!==i1&&!NOOBS.includes(n.kind)&&!inA(n)&&!inB(n)&&(n.w||0)>0&&T0(n)<le&&T1(n)>ls&&(n.alpha??1)>.2).map(n=>({x:n.x,y:n.y,w:n.w||90,h:n.h||60,id:n.id,j:N.indexOf(n)}));
-  const zig=(a,b,polyHit,plen)=>{const [ax,ay]=ctr(a),[bx,by]=ctr(b),ha=(a.h||60)/2,hb=(b.h||60)/2,wa=(a.w||90)/2,wb=(b.w||90)/2,C=[];
-   for(let ym=16;ym<=524;ym+=8){if(Math.abs(ym-ay)<=ha+2||Math.abs(ym-by)<=hb+2)continue;C.push([[ax,ym<ay?ay-ha:ay+ha],[ax,ym],[bx,ym],[bx,ym<by?by-hb:by+hb]])}
+  const zig=(a,b,polyHit,plen)=>{const [ax,ay]=ctr(a),[bx,by]=ctr(b),ha=(a.h||60)/2,hb=(b.h||60)/2,wa=(a.w||90)/2,wb=(b.w||90)/2,sx=bx>=ax?1:-1,sy=by>=ay?1:-1,d=16,
+   hsep=Math.abs(bx-ax)-wa-wb,vsep=Math.abs(by-ay)-ha-hb,pick=C=>{let best=null,bl=1e9;for(const P of C){if(polyHit(P))continue;const L=plen(P);if(L<bl){bl=L;best=P}}return best},
+   SA=[ax+sx*wa,ay],SB=[bx-sx*wb,by],TA=[ax,ay+sy*ha],TB=[bx,by-sy*hb],H3=[],H5=[],V3=[],V5=[];
+   if(hsep>8){for(let xm=Math.min(SA[0],SB[0])+8;xm<=Math.max(SA[0],SB[0])-8;xm+=6)H3.push([SA,[xm,ay],[xm,by],SB]);
+    for(let ym=12;ym<=528;ym+=6){if(Math.abs(ym-ay)<4&&Math.abs(ym-by)<4)continue;H5.push([SA,[SA[0]+sx*d,ay],[SA[0]+sx*d,ym],[SB[0]-sx*d,ym],[SB[0]-sx*d,by],SB])}}
+   if(vsep>8){for(let ym=Math.min(TA[1],TB[1])+8;ym<=Math.max(TA[1],TB[1])-8;ym+=6)V3.push([TA,[ax,ym],[bx,ym],TB]);
+    for(let xm=12;xm<=948;xm+=6){V5.push([TA,[ax,TA[1]+sy*d],[xm,TA[1]+sy*d],[xm,TB[1]-sy*d],[bx,TB[1]-sy*d],TB])}}
+   const fam=hsep>=vsep?[H3,H5,V3,V5]:[V3,V5,H3,H5];for(const F of fam){const r=pick(F);if(r)return r}
+   const C=[];for(let ym=16;ym<=524;ym+=8){if(Math.abs(ym-ay)<=ha+2||Math.abs(ym-by)<=hb+2)continue;C.push([[ax,ym<ay?ay-ha:ay+ha],[ax,ym],[bx,ym],[bx,ym<by?by-hb:by+hb]])}
    for(let xm=16;xm<=944;xm+=8){if(Math.abs(xm-ax)<=wa+2||Math.abs(xm-bx)<=wb+2)continue;C.push([[xm<ax?ax-wa:ax+wa,ay],[xm,ay],[xm,by],[xm<bx?bx-wb:bx+wb,by]])}
-   let best=null,bl=1e9;for(const P of C){if(polyHit(P))continue;const L=plen(P);if(L<bl){bl=L;best=P}}
-return best};
+   return pick(C)};
   const segHit=(p,q)=>{const L=Math.hypot(q[0]-p[0],q[1]-p[1]),m=Math.max(2,Math.ceil(L/6));for(let k=0;k<=m;k++){const x=p[0]+(q[0]-p[0])*k/m,y=p[1]+(q[1]-p[1])*k/m;for(const o of obs)if(x>o.x-5&&x<o.x+o.w+5&&y>o.y-5&&y<o.y+o.h+5)return 1}return 0},polyHit=P=>{let c=0;for(let k=1;k<P.length;k++)c+=segHit(P[k-1],P[k]);return c},plen=P=>{let L=0;for(let k=1;k<P.length;k++)L+=Math.hypot(P[k][0]-P[k-1][0],P[k][1]-P[k-1][1]);return L};
   if(l.rel){
    const R={rel:1,P:[A,A,B,B],A,B},D=orthPts({orth:(()=>{const ca=ctr(a),cb=ctr(b);return Math.abs(cb[1]-ca[1])-((a.h||60)+(b.h||60))/2>12?'v':'h'})(),mid:l.mid},a,b);R.poly=D;if(!polyHit(D))return R;
