@@ -235,6 +235,13 @@ def sfx_sound(kind, rng):
             x = lp((car * (.55 + .45 * mod)).astype(np.float32), 3200) * np.minimum(1, t / .006) * np.exp(-np.maximum(0, t - d * .7) * 40)
             return x.astype(np.float32)
         return _mix_at([(0, rb(420, .09)), (.11, rb(560, .09)), (.22, rb(760, .16))]) * .6
+    if kind == 'cursor':      # the typing cursor appears: tiny soft double blip
+        return _mix_at([(0, (np.sin(2 * np.pi * 520 * tt(.06)) * np.exp(-tt(.06) * 55) * np.minimum(1, tt(.06) / .005)).astype(np.float32)), (.07, (np.sin(2 * np.pi * 780 * tt(.07)) * np.exp(-tt(.07) * 50) * np.minimum(1, tt(.07) / .005)).astype(np.float32) * .8)]) * .45
+    if kind.startswith('keystroke'):   # 'keystroke:<variant>' - soft muffled keyboard key (no click or hiss); variant 9 = space bar
+        v = int(kind.split(':')[1]) if ':' in kind else 0; r = np.random.default_rng(100 + v); t = tt(.06)
+        f = (95 if v == 9 else r.uniform(150, 230)); body = np.sin(2 * np.pi * f * t) * np.exp(-t * 70)
+        tick = lp(r.standard_normal(len(t)).astype(np.float32), 1600) * np.exp(-t * 150) * .45
+        return ((body + tick) * np.minimum(1, t / .004) * (1.1 if v == 9 else r.uniform(.7, 1.0))).astype(np.float32) * .8
     if kind == 'buzz':        # the judge inspects one thing: single short robotic buzz
         t = tt(.14); car = np.sign(np.sin(2 * np.pi * (460 + 120 * t / .14) * t)); mod = np.sin(2 * np.pi * 61 * t)
         return (lp((car * (.55 + .45 * mod)).astype(np.float32), 3000) * np.minimum(1, t / .006) * np.exp(-np.maximum(0, t - .08) * 45)).astype(np.float32) * .6
@@ -403,6 +410,21 @@ def sfx_events(root, D):
                 except Exception: pass
             if k == 'num' and nd.get('dur'):
                 ev.append((ta, f"count:{min(6.0, float(nd['dur'])):.1f}", .45, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+            if (k == 'txt' and nd.get('type') and nd.get('text') and not nd.get('silent')) or k == 'console':
+                try:
+                    te = T(nd['until']) + .45 if nd.get('until') is not None else ce; pn = (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960; kk = 0
+                    ev.append((ta - .12, 'cursor', .4, pn))
+                    if k == 'txt':
+                        for i_, ch in enumerate(nd['text']):
+                            tk_ = ta + (i_ + 1) / float(nd['type'])
+                            if tk_ < te and ch != ' ': ev.append((tk_, f'keystroke:{(i_ * 7 + 3) % 4}', .3, pn))
+                    else:
+                        kc, ac = float(nd.get('k', 6)), float(nd.get('a', 6)); code = nd.get('code', '')
+                        for i_, ch in enumerate(code, 1):
+                            dt = i_ / kc if ac == 0 else (-kc + (kc * kc + 4 * ac * i_) ** .5) / (2 * ac)
+                            if ta + dt < te and ch not in ' \n': ev.append((ta + dt, f'keystroke:{(i_ * 7 + 3) % 4}', .3, pn))
+                            elif ta + dt >= te: break
+                except Exception: pass
             if k == 'article' and nd.get('read'):
                 try:
                     rd = nd['read']; dd = min(20.0, float(rd.get('dur', 6))); ev.append((T(rd['at']), f'scroll:{dd:.1f}:9.0:12.0', .4, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
@@ -437,7 +459,7 @@ def sfx_events(root, D):
     ev.sort()
     out = []; last = {}
     for t_, s_, g, p in ev:        # thin out dense bursts so the film does not rattle
-        gap = {'validate': .8, 'msg': .8, 'tick': .08, 'slide': .15, 'connect': .5, 'spawn': .25, 'create': .3, 'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
+        gap = {'keystroke': .0, 'validate': .8, 'msg': .8, 'tick': .08, 'slide': .15, 'connect': .5, 'spawn': .25, 'create': .3, 'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5, 'buzz': .12, 'scroll': .12}.get(s_.split(':')[0], .12)
         if t_ - last.get(s_, -9) < gap: continue
         last[s_] = t_; out.append((t_, s_, g, min(.95, max(.05, p))))
     return out
@@ -483,7 +505,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'buzz', 'validate', 'msg', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'cursor', 'keystroke:0', 'buzz', 'validate', 'msg', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
