@@ -285,7 +285,7 @@ def sfx_sound(kind, rng):
         trem = .72 + .28 * np.sin(2 * np.pi * (9 + 26 * u) * t)                      # chugging that speeds up with the revs
         rum = lp(rng.standard_normal(len(t)).astype(np.float32), 260) * 1.6
         env = np.minimum(1, t / .35) * (.55 + .45 * u) * np.exp(-np.maximum(0, t - (d - .5)) * 6)
-        return ((lp(saw, 450) * (1 - u) + lp(saw, 2200) * u) * .55 + rum * .35) * trem * env * .7
+        return np.tanh(((lp(saw, 450) * (1 - u) + lp(saw, 2200) * u) * .55 + rum * .35) * trem * env * 1.5).astype(np.float32)
     if kind == 'pop':
         t = tt(.12); return (np.sin(2 * np.pi * (380 + 260 * np.exp(-t * 40)) * t) * np.exp(-t * 32)).astype(np.float32) * .5
     if kind == 'zip':
@@ -441,8 +441,8 @@ def sfx_events(root, D):
                     except Exception: pass
             if nd.get('shake') and k in ('agent', 'acard'):
                 try:
-                    sh = nd['shake']; dd = min(7.0, float(sh.get('dur', 1.2)))
-                    if dd >= 1.0: ev.append((T(sh['at']), f'engine:{dd:.1f}', .45, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+                    sh = nd['shake']; dd = min(15.0, float(sh.get('dur', 1.2)))
+                    if dd >= 1.0: ev.append((T(sh['at']), f'engine:{dd:.1f}', 1.0, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
                 except Exception: pass
             if k == 'bulb' and nd.get('litAt') is not None:
                 try: ev.append((T(nd['litAt']), 'idea', .5, .5))
