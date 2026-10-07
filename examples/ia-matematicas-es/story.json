@@ -24367,7 +24367,7 @@
    "beats": [
     {
      "text": "Arkinos, Explainer Studio.",
-     "pause": 3.0
+     "pause": 13.4
     }
    ],
    "cues": [
@@ -24383,8 +24383,8 @@
       "ty": 330,
       "at": 1.2,
       "black": {
-       "at": "8a#Explainer+2.5",
-       "dur": 4
+       "at": "8a#Explainer+9",
+       "dur": 6
       }
      },
      "bg": true,
@@ -24396,7 +24396,7 @@
     {
      "a": "world",
      "at": "8a#Explainer",
-     "until": "8a#Explainer+3.5",
+     "until": "8a#Explainer+10",
      "p": {
       "fs": 1.0,
       "links": [],

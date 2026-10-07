@@ -160,5 +160,5 @@
 
 ## 8 · Créditos
 
-**8a** (pausa 3) Arkinos, Explainer Studio.
+**8a** (pausa 13.4) Arkinos, Explainer Studio.
 > Sello de Arkinos con el texto «Fuentes: openai.com/index/sharing-ai-progress-in-mathematics · github.com/openai/math · Quanta Magazine · Nature».
