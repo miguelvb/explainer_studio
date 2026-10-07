@@ -777,6 +777,27 @@ const BG=(()=>{let el=null,cfg=null,parts=[],blobs=[],gl=null,vig=null,rnd,custo
    if(st==='stars')parts.forEach(p=>{const a=t*.004*(.3+p.z),dx=p.x-480,dy=p.y-270,x=480+dx*Math.cos(a)-dy*Math.sin(a),y=270+dx*Math.sin(a)+dy*Math.cos(a);p.e.setAttribute('cx',x.toFixed(1));p.e.setAttribute('cy',y.toFixed(1));p.e.setAttribute('opacity',((.2+.55*p.z)*(.55+.45*Math.sin(t*p.sp+p.ph))*(.7+.4*I)).toFixed(3))});
    if(st==='grid'){let g='';const hy=250,sc=(t*(10+30*I))%1,col=`rgb(${mixc(C.bl,C.rd,T).join(',')})`;gl.setAttribute('stroke',col);for(let i=-14;i<=14;i++){g+=`<line x1="${480+i*32}" y1="${hy}" x2="${480+i*190}" y2="540" stroke-opacity="${(.16*(1-Math.abs(i)/16)).toFixed(3)}"/>`}for(let j=0;j<12;j++){const u=((j+sc)/12),y=hy+(540-hy)*u*u;g+=`<line x1="0" y1="${y.toFixed(1)}" x2="960" y2="${y.toFixed(1)}" stroke-opacity="${(.03+.2*u*u).toFixed(3)}"/>`}gl.innerHTML=g;const h=el.querySelector('.hz');h.setAttribute('opacity',(.16*(.5+I+T*.4)).toFixed(3));el.querySelectorAll('.gsH').forEach(q=>q.setAttribute('stop-color',col))}}}})();
 
+/* ---------- background variants of sand and grid (meta.background: sand2 sand3 sand4 grid2 grid3 grid4) ---------- */
+(()=>{
+ const sandV=o=>({init(rnd){this.ls=[];let s=o.glow?`<defs><radialGradient id="sg${o.id}"><stop offset="0" stop-color="${o.glow}" stop-opacity=".30"/><stop offset="1" stop-color="${o.glow}" stop-opacity="0"/></radialGradient></defs><ellipse cx="${o.gx}" cy="${o.gy}" rx="560" ry="230" fill="url(#sg${o.id})"/>`:'';
+   for(let i=0;i<o.n;i++){this.ls.push({y:o.y0+i*o.dy,a:o.a0+rnd()*o.a1,k:.005+rnd()*.006,ph:rnd()*6.28,sl:o.sl+(rnd()-.5)*o.slv});s+=`<path class="sl" fill="none" stroke="${o.col}" stroke-width="${o.w}" opacity="0"/>`}
+   this.sp=[];for(let i=0;i<o.sp;i++){this.sp.push([rnd()*960,rnd()*540]);s+=`<circle class="ss" r="${(.4+rnd()*.8).toFixed(2)}" fill="${o.spc}" opacity="${(.1+rnd()*.4).toFixed(2)}"/>`}return s},
+  bind(el){const L=[...el.querySelectorAll('.sl')],P=[...el.querySelectorAll('.ss')],me=this;P.forEach((e,i)=>{e.setAttribute('cx',me.sp[i][0].toFixed(1));e.setAttribute('cy',me.sp[i][1].toFixed(1))});
+   return(t,I,T)=>{L.forEach((e,i)=>{const q=me.ls[i];let d='';for(let x=0;x<=960;x+=20){const y=q.y+x*q.sl+q.a*Math.sin(x*q.k*2+q.ph+t*o.sp_t)+o.a2*Math.sin(x*.02+q.ph*2-t*o.sp_t*.6);d+=(x?'L':'M')+x+' '+y.toFixed(1)}e.setAttribute('d',d);e.setAttribute('opacity',((o.op+.1*I)*(1-.5*Math.abs(Math.sin(i*.7)))).toFixed(3));e.setAttribute('stroke',T>.3?'#d9a0a0':o.col)})}}});
+ const gridV=o=>({init(){return `<defs><linearGradient id="gh${o.id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${o.col}" stop-opacity="0"/><stop offset=".5" stop-color="${o.col}" stop-opacity=".9"/><stop offset="1" stop-color="${o.col}" stop-opacity="0"/></linearGradient></defs>${o.hz?`<rect class="hz2" x="0" y="${o.hy-40}" width="960" height="80" fill="url(#gh${o.id})" opacity="0"/>`:''}<g class="g2" stroke="${o.col}" fill="none" stroke-width="1"></g>`},
+  bind(el){const g=el.querySelector('.g2'),h=el.querySelector('.hz2');return(t,I,T)=>{g.setAttribute('stroke',T>.3?'#ff8080':o.col);let q='';
+   if(o.kind==='flat'){const D=48,ox=(t*2.5)%D,oy=(t*1.2)%D;for(let x=-D;x<=960+D;x+=D){const m=Math.round((x-ox)/D)%5===0;q+=`<line x1="${x-ox+0}" y1="0" x2="${x-ox}" y2="540" stroke-opacity="${m?.2:.07}"/>`}for(let y=-D;y<=540+D;y+=D){const m=Math.round((y-oy)/D)%5===0;q+=`<line x1="0" y1="${y-oy}" x2="960" y2="${y-oy}" stroke-opacity="${m?.2:.07}"/>`}}
+   else{const sc=(t*(10+30*I)*.04)%1,sides=o.kind==='tunnel'?[1,-1]:[1];for(const sd of sides){const hy=o.hy;for(let i=-14;i<=14;i++)q+=`<line x1="${480+i*32}" y1="${hy}" x2="${480+i*190}" y2="${sd>0?540:0}" stroke-opacity="${(o.op*(1-Math.abs(i)/16)).toFixed(3)}"/>`;for(let j=0;j<12;j++){const u=(j+sc)/12,y=hy+sd*((sd>0?540:0)-hy)*sd*u*u;q+=`<line x1="0" y1="${y.toFixed(1)}" x2="960" y2="${y.toFixed(1)}" stroke-opacity="${(.03+o.op*1.2*u*u).toFixed(3)}"/>`}}}
+   g.innerHTML=q;if(h)h.setAttribute('opacity',(.2*(.5+I)).toFixed(3))}}});
+ Object.assign(BGALT,{
+  sand2:sandV({id:2,n:18,y0:30,dy:32,a0:16,a1:14,sl:.06,slv:.04,col:'#d9bf94',w:1.2,sp:120,spc:'#ffe9c2',op:.13,sp_t:.035,a2:10,glow:'#c98a3a',gx:480,gy:560}),
+  sand3:sandV({id:3,n:44,y0:-10,dy:13,a0:5,a1:8,sl:.14,slv:.02,col:'#86b4ff',w:.9,sp:200,spc:'#e6f0ff',op:.1,sp_t:.09,a2:4}),
+  sand4:sandV({id:4,n:28,y0:260,dy:22,a0:10,a1:16,sl:-.5,slv:.06,col:'#74e3d3',w:1.1,sp:160,spc:'#dffff8',op:.11,sp_t:.05,a2:7,glow:'#2aa89a',gx:200,gy:100}),
+  grid2:gridV({id:2,kind:'floor',hy:300,col:'#3FD8C2',op:.22,hz:1}),
+  grid3:gridV({id:3,kind:'flat',col:'#7C97FF'}),
+  grid4:gridV({id:4,kind:'tunnel',hy:270,col:'#A58BFF',op:.16,hz:1})
+ })})();
+
 /* ---------- driver ---------- */
 window.CUES=[];
 window.setup=(sched,cues)=>{
