@@ -222,6 +222,13 @@ def ambience(cv, n, t, rng, level=1.0):
 # ------------------------------------------------------------------ sfx
 def sfx_sound(kind, rng):
     """Short synthesised effect (mono float32) for a named kind."""
+    if kind.startswith('alarm'):       # 'alarm:<seconds>' - soft, non-dramatic repeating two-note alert (a flag blinking)
+        d = float(kind.split(':')[1]) if ':' in kind else 3.0; out = np.zeros(int(d * SR), np.float32); per = 1.15; k = 0
+        while k * per + .5 < d:
+            t = tt(.32); b = (np.sin(2 * np.pi * 740 * t) * .8 + np.sin(2 * np.pi * 1480 * t) * .12) * np.minimum(1, t / .015) * np.exp(-t * 9)
+            t2 = tt(.4); b2 = (np.sin(2 * np.pi * 587 * t2) * .8 + np.sin(2 * np.pi * 1174 * t2) * .1) * np.minimum(1, t2 / .015) * np.exp(-t2 * 8)
+            a = int(k * per * SR); g = 1 - .45 * (k * per / d); out[a:a + len(t)] += (b * g).astype(np.float32); a2 = a + int(.17 * SR); out[a2:a2 + len(t2)] += (b2 * g).astype(np.float32)[:len(out) - a2]; k += 1
+        return out * .5
     if kind.startswith('engine'):      # 'engine:<seconds>' - a machine revving up while an agent shakes
         d = float(kind.split(':')[1]) if ':' in kind else 3.0; t = tt(d); u = t / d
         f = 48 + 120 * u ** 1.6 + 3 * np.sin(2 * np.pi * 7 * t); ph = 2 * np.pi * np.cumsum(f) / SR
@@ -320,6 +327,11 @@ def sfx_events(root, D):
                     tu = T(nd['until'])
                     if tu < ce - 1.5: ev.append((tu + .1, 'poweroff', .3, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
                 except Exception: pass
+            if k == 'flFly' and nd.get('blink') and nd.get('bat') is not None:
+                try:
+                    tb = T(nd['bat']); te = T(nd['until']) if nd.get('until') is not None else ce; dd = min(6.0, te - tb)
+                    if dd >= 1.2: ev.append((tb, f'alarm:{dd:.1f}', .5, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+                except Exception: pass
             if nd.get('shake') and k in ('agent', 'acard'):
                 try:
                     sh = nd['shake']; dd = min(7.0, float(sh.get('dur', 1.2)))
@@ -385,7 +397,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'engine:3', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'engine:3', 'alarm:3', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
