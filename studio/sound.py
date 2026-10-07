@@ -450,6 +450,10 @@ def sfx_events(root, D):
                     te = T(nd['until']) if nd.get('until') is not None else ce; dd = min(14.0, te - ta); r0 = float(nd.get('r0', 6)); r1 = float(nd.get('r1', 12))
                     if dd >= 1.5: ev.append((ta, f'scroll:{dd:.1f}:{min(r0, 14):.1f}:{min(max(r1, r0), 22):.1f}', .45, .5))
                 except Exception: pass
+            if k == 'folderview' and nd.get('scroll'):          # a list scrolling inside the window: soft ticks of the rows passing
+                for kf in nd['scroll']:
+                    try: ev.append((T(kf['at']), f"scroll:{min(8.0, float(kf.get('dur', 2))):.1f}:14.0:26.0", .4, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+                    except Exception: pass
             if k == 'folderview' and (nd.get('alpha', 1) or 1) > .2:
                 ev.append((ta, 'whoosh', .75, .4))
                 for m in nd.get('move', []) or []:

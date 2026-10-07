@@ -7,4 +7,5 @@ META = dict(
     background='poly', fadein=0.3,
 )
 PRONUNCIATION = {}
-EL_PRONUNCIATION = {}   # {'OpenAI': 'Óupen Ei Ái'}; copy it into META['el_pronunciation'] when needed
+EL_PRONUNCIATION = {'GPT-5.2': 'GPT cinco punto dos', 'GPT-5': 'GPT cinco'}
+META['el_pronunciation'] = EL_PRONUNCIATION

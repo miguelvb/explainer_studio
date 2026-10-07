@@ -543,7 +543,9 @@ const ICON={
  folderview:(n,c,w,h,cx,cy)=>{const its=n.items||[],rh=n.rh||26,y0=n.y+48,fs=n.fs||12;
   let g=`<rect x="${n.x}" y="${n.y}" width="${w}" height="${h}" rx="12" fill="#10151C" stroke="${c}" stroke-width="2"/><path d="M${n.x} ${n.y+34}H${n.x+w}" stroke="${c}" stroke-opacity=".5"/><circle cx="${n.x+16}" cy="${n.y+17}" r="4" fill="#FF6E6E"/><circle cx="${n.x+31}" cy="${n.y+17}" r="4" fill="#F6B94C"/><circle cx="${n.x+46}" cy="${n.y+17}" r="4" fill="#3FD8C2"/><text x="${n.x+66}" y="${n.y+22}" fill="#E7EBF1" font-size="${fs+1}" font-family="ui-monospace,Menlo,monospace">${esc(n.label||'')}</text>`;
   const row=(o,j,col)=>{const y=y0+j*rh,ix=n.x+18;return (o.dir?`<path d="M${ix} ${y-9}h7l2 2.5h9v12h-18z" fill="none" stroke="${col}" stroke-width="1.6" stroke-linejoin="round"/>`:`<path d="M${ix+2} ${y-9}h10l4 4v11h-14z" fill="none" stroke="${col}" stroke-width="1.5" stroke-linejoin="round"/>`)+`<text x="${ix+30}" y="${y+4}" fill="${col}" font-size="${fs}" font-family="ui-monospace,Menlo,monospace">${esc(o.name)}</text>`};
+  const sc=n.scroll?1:0;if(sc)g+=`<clipPath id="fvc${n.id}"><rect x="${n.x+2}" y="${n.y+36}" width="${w-4}" height="${h-40}"/></clipPath><g clip-path="url(#fvc${n.id})"><g class="fvin">`;
   its.forEach((o,j)=>{const col=hex(o.color||'#8C96A4');g+=o.c2?`<g class="it" style="opacity:0"><g class="ia">${row(o,j,col)}</g><g class="ib" style="opacity:0">${row(o,j,hex(o.c2))}</g></g>`:`<g class="it" style="opacity:0">${row(o,j,col)}</g>`});
+  if(sc)g+='</g></g>';
   return g},
  acard:(n,c,w,h,cx,cy)=>`<rect x="${n.x}" y="${n.y}" width="${w}" height="${h}" rx="${Math.min(w,h)*.14}" fill="#171D26" stroke="${c}" stroke-width="2.2"/>${MARK(cx,n.y+h*.38,w*.5,c)}<text x="${cx}" y="${n.y+h-9-(n.ly||0)}" fill="${n.lc?hex(n.lc):c}" font-size="${n.fs||11}" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">${esc(n.label||'')}</text>`,
  quote:(n,c,w,h,cx,cy)=>`<rect x="${n.x}" y="${n.y}" width="${w}" height="${h}" rx="12" fill="#171D26" stroke="${c}" stroke-width="1.6"/>${(n.lines||[]).map((t,j)=>`<text x="${n.x+18}" y="${n.y+30+j*(n.fs||18)*1.45}" fill="#E7EBF1" font-size="${n.fs||18}" font-style="italic">${esc(t)}</text>`).join('')}`,
@@ -608,7 +610,7 @@ const ICON={
 /* ---------- overflow guard: every <text> inside a node is forced to stay inside its container (first <rect> ≈ node box) or inside the frame ---------- */
 window.__fit=window.__fit||[];window.__lk=window.__lk||[];
 const fitText=(q,box,dyn,id)=>{
- if(!q.isConnected)return;if(q.hasAttribute('textLength')){q.removeAttribute('textLength')}
+ if(!q.isConnected)return;if(q.closest&&q.closest('.fvin'))return;if(q.hasAttribute('textLength')){q.removeAttribute('textLength')}
  if(!q.textContent)return;let b;try{b=q.getBBox()}catch(e){return}if(!b.width)return;
  const an=q.getAttribute('text-anchor')||'start',pad=8,L=box[0],R=box[0]+box[2],x=an==='middle'?b.x+b.width/2:an==='end'?b.x+b.width:b.x;
  const inside=x>=L-1&&x<=R+1;const BL=inside?L:4,BR=inside?R:956,pd=inside?pad:0;
@@ -710,7 +712,8 @@ A.world=(h,p,C)=>{
    if(N[i].kind==='msgfeed'){const o=N[i],ml=[...e.querySelectorAll('.ml')],dt=Math.max(0,t-ta[i]),r0=o.r0||2,r1=o.r1||r0,rp=o.ramp||4,pos=dt<rp?r0*dt+(r1-r0)*dt*dt/(2*rp):r0*rp+(r1-r0)*rp/2+r1*(dt-rp),top=Math.floor(pos+(o.off||0)),cols=o.cols||50;ml.forEach((q,j)=>{const idx=top-(ml.length-1-j);if(idx<0){q.textContent='';return}const L=msgLine(idx,o);q.textContent=L.s.slice(0,cols);q.setAttribute('fill',L.c)})}
    if(N[i].kind==='bar'){const q=e.querySelector('.bf');if(q)q.setAttribute('width',Math.max(0,(N[i].fill??1)*((N[i].w||90)-4)*ease(pr(t,ta[i]+.2,1.2))))}
    if(N[i].kind==='bulb'){const q=e.querySelector('.bl');if(q)q.style.opacity=ease(pr(t,N[i].litAt!=null?C.T(N[i].litAt):ta[i]+.4,.35))}
-   if(N[i].kind==='folderview'){const its=N[i].items||[];e.querySelectorAll('.it').forEach((q,j)=>{const o=its[j];q.style.opacity=ease(pr(t,C.T(o.at||0),.5));if(o.c2&&o.altAt!=null&&t>=C.T(o.altAt)){const ph=.5+.5*Math.cos((t-C.T(o.altAt))*(o.bf||6));q.querySelector('.ia').style.opacity=ph;q.querySelector('.ib').style.opacity=1-ph}})}
+   if(N[i].kind==='folderview'){const its=N[i].items||[];e.querySelectorAll('.it').forEach((q,j)=>{const o=its[j];q.style.opacity=N[i].scroll?1:ease(pr(t,C.T(o.at||0),.5));if(o.c2&&o.altAt!=null&&t>=C.T(o.altAt)){const done=o.altUntil!=null&&t>=C.T(o.altUntil);const ph=done?0:.5+.5*Math.cos((t-C.T(o.altAt))*(o.bf||6));q.querySelector('.ia').style.opacity=ph;q.querySelector('.ib').style.opacity=1-ph}});
+    if(N[i].scroll){const rh=N[i].rh||26;let off=N[i].off0||0;for(const k of N[i].scroll){const a=ease(pr(t,C.T(k.at),k.dur||2));off=off+((k.to)-off)*a;if(t<C.T(k.at)+(k.dur||2))break}const inn=e.querySelector('.fvin');if(inn)inn.setAttribute('transform',`translate(0 ${(-off*rh).toFixed(2)})`)}}
    if(N[i].kind==='crowd'){const cds=e.querySelectorAll('.cd'),gr=(N[i].grow||[{at:N[i].at||0,n:N[i].n||40}]);let cnt=0;for(const q of gr){cnt=lerp(cnt,q.n,ease(pr(t,C.T(q.at),q.dur||1.2)))}cds.forEach((d,j)=>d.style.opacity=clamp(cnt-j))}
    if(N[i].kind==='num'){const q=e.querySelector('.nm'),a=ease(pr(t,C.T(N[i].at||0),N[i].dur||2));q.textContent=(N[i].pre||'')+fmt(Math.round(lerp(N[i].from||0,N[i].n||0,a)))+(N[i].suf||'')}e.style.filter=on&&act?'drop-shadow(0 0 7px '+hex(N[i].color||'blue')+')':'none';if(N[i].glowAt!=null){const gg=ease(pr(t,C.T(N[i].glowAt),N[i].glowDur||8))*(.8+.2*Math.sin(t*7));e.style.filter=`drop-shadow(0 0 ${2+14*gg}px #FF6E6E) drop-shadow(0 0 ${12*gg}px #FF6E6E)`}});
   lk.forEach((e,i)=>{const on=!act||act.ids.includes(Lk[i].a)&&act.ids.includes(Lk[i].b);e.style.opacity=ease(pr(t,la[i],.5))*(on?1:.25)*(1-ease(pr(t,lu[i],.5)))*(Lk[i].alpha??1)});
