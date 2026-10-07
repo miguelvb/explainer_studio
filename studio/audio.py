@@ -120,47 +120,60 @@ def music(root, out=None, style=None, ambience=None):
     hz = lambda m: 440.0 * 2 ** ((m - 69) / 12)
     chords = [[38, 45, 53, 57, 60], [34, 46, 53, 58, 62], [43, 50, 53, 58, 62], [33, 45, 52, 57, 61]]; L = 32.0
     pad = np.zeros(n, np.float32); padR = np.zeros(n, np.float32)
-    for ci, ch in enumerate(chords):
-        k = np.arange(n) // int(L * sr); slot = (k % 4 == ci).astype(np.float32); w = int(10 * sr)
-        cs = np.cumsum(np.concatenate([[0], slot])); env = (cs[w:] - cs[:-w]) / w
-        env = np.concatenate([np.full(w // 2, env[0]), env, np.full(n - len(env) - w // 2, env[-1])])[:n].astype(np.float32)
-        for note in ch:
-            f = hz(note)
-            for det, pan in ((-.07, 0), (.07, 1), (0, 2)):
-                ph = rng.random() * 6.283; lfo = .65 + .35 * np.sin(2 * np.pi * (.03 + .01 * rng.random()) * t + rng.random() * 6.283)
-                osc = np.sin(2 * np.pi * f * (1 + det * .01) * t + ph) + .35 * np.sin(2 * np.pi * 2 * f * (1 + det * .01) * t + ph * 1.3) + .12 * np.sin(2 * np.pi * 3 * f * t + ph)
-                g = env * lfo * (.5 if note < 50 else .34) * (.45 + .55 * inten)
-                if pan == 0: pad += osc * g
-                elif pan == 1: padR += osc * g
-                else: pad += osc * g * .6; padR += osc * g * .6
+    # oscillator parameters are drawn up-front (same rng order as always), then the pad is synthesised in 60 s blocks: flat memory for hour-long films
+    prm = [[(note, det, pan, rng.random() * 6.283, .03 + .01 * rng.random(), rng.random() * 6.283) for note in ch for det, pan in ((-.07, 0), (.07, 1), (0, 2))] for ch in chords]
+    Ls = int(L * sr); w = int(10 * sr); nc = n - w + 1; BL = sr * 60
+    for b0 in range(0, n, BL):
+        b1 = min(n, b0 + BL); ts = np.arange(b0, b1) / sr; ins = inten[b0:b1]
+        j = np.clip(np.arange(b0, b1) - w // 2, 0, nc - 1); j0 = int(j[0]); j1 = int(j[-1]) + w
+        gi = np.arange(j0, j1) // Ls % 4
+        for ci in range(4):
+            cs = np.concatenate([[0], np.cumsum((gi == ci).astype(np.float32))]); es = ((cs[j - j0 + w] - cs[j - j0]) / w).astype(np.float32)
+            if es.max() <= 1e-6: continue
+            for note, det, pan, ph, lf, lp_ in prm[ci]:
+                f = hz(note); lfo = .65 + .35 * np.sin(2 * np.pi * lf * ts + lp_)
+                osc = np.sin(2 * np.pi * f * (1 + det * .01) * ts + ph) + .35 * np.sin(2 * np.pi * 2 * f * (1 + det * .01) * ts + ph * 1.3) + .12 * np.sin(2 * np.pi * 3 * f * ts + ph)
+                g = es * lfo * (.5 if note < 50 else .34) * (.45 + .55 * ins)
+                o = (osc * g).astype(np.float32)
+                if pan == 0: pad[b0:b1] += o
+                elif pan == 1: padR[b0:b1] += o
+                else: pad[b0:b1] += o * .6; padR[b0:b1] += o * .6
     ping = np.zeros(n, np.float32); pingR = np.zeros(n, np.float32); tt = 4.0
     while tt < total - 4:
         f = hz([74, 77, 79, 81, 84, 86][rng.integers(6)]); i0 = int(tt * sr); L2 = int(3.2 * sr); seg = t[:L2]
         bell = (np.sin(2 * np.pi * f * seg) + .4 * np.sin(2 * np.pi * f * 2.76 * seg)) * np.exp(-seg * 1.5); amp = .05 * (.3 + .7 * inten[min(n - 1, i0)]); e = min(n, i0 + L2)
         (ping if rng.random() < .5 else pingR)[i0:e] += bell[:e - i0] * amp
         tt += rng.uniform(3.5, 9.0) * (1.3 - .8 * inten[min(n - 1, i0)])
-    bpm = 50 + 22 * inten; frac = np.cumsum(bpm / 60 / sr) % 1.0
-    pulse = (np.sin(2 * np.pi * 52 * t) * np.exp(-frac * 9) * np.clip((inten - .42) / .4, 0, 1) * np.clip(t / 30, 0, 1) * .32).astype(np.float32)
-    # mood: scenes marked "mood": "tense" get a darker, suspenseful layer (low tritone drone, heartbeat, close high cluster) fading in over 3 s
+    # pulse / tense layer / fades are computed per 60 s block (float64 time) so long films stay within memory
     mood = [1.0 if sc.get('mood') == 'tense' else 0.0 for sc in st['scenes']]
     mk = [(0, mood[0])] + [p for i in range(1, N) for p in ((S[f'S{i}']['s'], mood[i - 1]), (S[f'S{i}']['s'] + 3, mood[i]))] + [(total, mood[-1])]
-    ten = np.interp(t, [k[0] for k in mk], [k[1] for k in mk]).astype(np.float32)
-    if ten.max() > 0:
-        trem = .75 + .25 * np.sin(2 * np.pi * .13 * t)
-        drone = sum(np.sin(2 * np.pi * hz(m) * t + ph) * a for m, ph, a in ((38, 0, .5), (44, 1.3, .36), (39, 2.1, .22), (50, .7, .16))) * trem * ten * .26
-        beat = (t * 56 / 60) % 1.0
-        thump = (np.sin(2 * np.pi * 46 * t) * (np.exp(-beat * 16) + .55 * np.exp(-np.clip(beat - .3, 0, 9) * 18) * (beat > .3))) * ten * .34
-        hi = (np.sin(2 * np.pi * hz(74) * t) + np.sin(2 * np.pi * hz(75) * t + 1)) * (.5 + .5 * np.sin(2 * np.pi * .07 * t)) * ten * .018
-        pad = pad * (1 - .45 * ten); padR = padR * (1 - .45 * ten); ping = ping * (1 - .85 * ten); pingR = pingR * (1 - .85 * ten)
-        pulse = pulse * (1 - ten) + thump.astype(np.float32); pad = pad + drone.astype(np.float32) + hi.astype(np.float32); padR = padR + drone.astype(np.float32) * .92 + hi.astype(np.float32)
-    Lc = pad + ping + pulse; Rc = padR + pingR + pulse; fi = max(.05, float(json.load(open(f'{root}/story.json'))['meta'].get('fadein', 4))); fade = np.clip(t / fi, 0, 1) * np.clip((D['total'] - t) / fo, 0, 1); Lc *= fade; Rc *= fade
+    mkt = [k[0] for k in mk]; mkv = [k[1] for k in mk]; anyten = max(mkv) > 0
+    fi = max(.05, float(json.load(open(f'{root}/story.json'))['meta'].get('fadein', 4))); ph0 = 0.0
+    for b0 in range(0, n, BL):
+        b1 = min(n, b0 + BL); tb = np.arange(b0, b1) / sr; ib = inten[b0:b1].astype(np.float64)
+        fr = ph0 + np.cumsum((50 + 22 * ib) / 60 / sr); ph0 = float(fr[-1]); fr = fr % 1.0
+        pulse = np.sin(2 * np.pi * 52 * tb) * np.exp(-fr * 9) * np.clip((ib - .42) / .4, 0, 1) * np.clip(tb / 30, 0, 1) * .32
+        P = pad[b0:b1].astype(np.float64); PR = padR[b0:b1].astype(np.float64); G = ping[b0:b1].astype(np.float64); GR = pingR[b0:b1].astype(np.float64)
+        if anyten:
+            ten = np.interp(tb, mkt, mkv); trem = .75 + .25 * np.sin(2 * np.pi * .13 * tb)
+            drone = sum(np.sin(2 * np.pi * hz(m_) * tb + ph) * a_ for m_, ph, a_ in ((38, 0, .5), (44, 1.3, .36), (39, 2.1, .22), (50, .7, .16))) * trem * ten * .26
+            beat = (tb * 56 / 60) % 1.0
+            thump = (np.sin(2 * np.pi * 46 * tb) * (np.exp(-beat * 16) + .55 * np.exp(-np.clip(beat - .3, 0, 9) * 18) * (beat > .3))) * ten * .34
+            hi = (np.sin(2 * np.pi * hz(74) * tb) + np.sin(2 * np.pi * hz(75) * tb + 1)) * (.5 + .5 * np.sin(2 * np.pi * .07 * tb)) * ten * .018
+            P = P * (1 - .45 * ten) + drone + hi; PR = PR * (1 - .45 * ten) + drone * .92 + hi; G = G * (1 - .85 * ten); GR = GR * (1 - .85 * ten); pulse = pulse * (1 - ten) + thump
+        fade = np.clip(tb / fi, 0, 1) * np.clip((D['total'] - tb) / fo, 0, 1)
+        pad[b0:b1] = ((P + G + pulse) * fade).astype(np.float32); padR[b0:b1] = ((PR + GR + pulse) * fade).astype(np.float32)
+    Lc, Rc = pad, padR; del ping, pingR
     if float(_m.get('ambience', 1.0)) > 0:
         from . import sound
         _a = sound.ambience(sound.curves(root, D), n, t, np.random.default_rng(8), float(_m.get('ambience', 1.0))) * float(max(abs(Lc).max(), abs(Rc).max())) * 6; Lc = Lc + _a[0]; Rc = Rc + _a[1]
-    m = max(abs(Lc).max(), abs(Rc).max()); st2 = np.stack([Lc / m * .7, Rc / m * .7], 1); out = out or f'{root}/build/music.wav'
+    m = float(max(abs(Lc).max(), abs(Rc).max())); out = out or f'{root}/build/music.wav'
     with wave.open(out, 'wb') as w:
-        w.setnchannels(2); w.setsampwidth(2); w.setframerate(sr); w.writeframes((np.clip(st2, -1, 1) * 32767).astype('<i2').tobytes())
+        w.setnchannels(2); w.setsampwidth(2); w.setframerate(sr)
+        for b0 in range(0, n, BL):
+            x = np.stack([Lc[b0:b0 + BL], Rc[b0:b0 + BL]], 1) / m * .7; w.writeframes((np.clip(x, -1, 1) * 32767).astype('<i2').tobytes())
     return out
+
 
 
 def typing_events(root, D, t0, tot):

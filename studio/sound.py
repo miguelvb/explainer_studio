@@ -535,6 +535,16 @@ def _norm_mix(m, default):
     return {k: float(v) for k, v in m.items()}
 
 
+MUSIC_VERSION = 2      # bump when the synthesis of a music layer changes (sfx edits do NOT invalidate the layer cache)
+
+
+def _layer_key(sname, cv, n):
+    import hashlib
+    m = {k: v for k, v in cv['meta'].items() if k.startswith('music') and k != 'music_db' or k == 'fadeout'}
+    h = hashlib.sha1(json.dumps([MUSIC_VERSION, sname, n, cv['total'], cv['keys'], cv['mk'], cv['bounds'], m], default=str, sort_keys=True).encode()).hexdigest()[:16]
+    return h
+
+
 def render_mix(root, D=None, out=None, log=print):
     """meta.music_style = 'mix': every scene has `music` = style or {style: weight}; layers crossfade over 4 s at scene boundaries.
     Memory-lean: each layer is rendered once, parked on disk as int16 and the final mix is streamed in 20 s blocks."""
@@ -543,7 +553,7 @@ def render_mix(root, D=None, out=None, log=print):
     D = D or json.load(open(f'{root}/build/data.json')); st = json.load(open(f'{root}/story.json')); S = D['sched']; meta = st['meta']
     cv = curves(root, D); n = int(cv['total'] * SR); N = len(st['scenes']); default = meta.get('music_default', {'cinema': 1.0})
     mixes = [_norm_mix(sc.get('music'), default) for sc in st['scenes']]; styles = sorted({k for m in mixes for k in m})
-    out = out or f'{root}/build/music.wav'; tmpd = tempfile.mkdtemp(prefix='mix_')
+    out = out or f'{root}/build/music.wav'; tmpd = tempfile.mkdtemp(prefix='mix_'); cdir = f'{root}/build/cache/music'; os.makedirs(cdir, exist_ok=True)
 
     def gain_pts(sname):
         pts = [(0, mixes[0].get(sname, 0))]
@@ -551,20 +561,35 @@ def render_mix(root, D=None, out=None, log=print):
             tb = S[f'S{i}']['s']; pts += [(tb - 2.0, mixes[i - 1].get(sname, 0)), (tb + 2.0, mixes[i].get(sname, 0))]
         pts.append((cv['total'], mixes[-1].get(sname, 0))); return pts
 
-    def park(name, x, pts=None):
-        peak = float(np.abs(x).max()) or 1.0
+    def stats(x, pts):
         if pts is not None:
             tg = np.arange(0, x.shape[1], SR, dtype=np.float32) / SR; g = np.interp(tg, [p[0] for p in pts], [p[1] for p in pts]); act = np.repeat(g > .05, SR)[:x.shape[1]]
-            rms = float(np.sqrt((x[:, act] ** 2).mean())) if act.any() else 1.0
-        else:
-            rms = float(np.sqrt((x ** 2).mean())) or 1.0
-        mm = np.lib.format.open_memmap(f'{tmpd}/{name}.npy', mode='w+', dtype=np.int16, shape=x.shape)
+            return float(np.sqrt((x[:, act].astype(np.float32) ** 2).mean())) if act.any() else 1.0
+        return float(np.sqrt((x.astype(np.float32) ** 2).mean())) or 1.0
+
+    def park(name, x, pts=None, key=None):
+        """Render result -> int16 file kept in the cache (key) so later runs skip the synthesis."""
+        peak = float(np.abs(x).max()) or 1.0; rms = stats(x, pts)
+        path = f'{cdir}/{name}_{key}.npy' if key else f'{tmpd}/{name}.npy'
+        mm = np.lib.format.open_memmap(path, mode='w+', dtype=np.int16, shape=x.shape)
         for i in range(0, x.shape[1], SR * 30): mm[:, i:i + SR * 30] = (x[:, i:i + SR * 30] / peak * 32767).astype(np.int16)
         mm.flush(); del mm
-        return dict(peak=peak, rms=rms)
+        if key: json.dump(dict(peak=peak), open(path + '.json', 'w'))
+        return dict(peak=peak, rms=rms, path=path)
+
+    def cached(name, pts, key):
+        path = f'{cdir}/{name}_{key}.npy'
+        if not (os.path.exists(path) and os.path.exists(path + '.json')): return None
+        try:
+            mm = np.load(path, mmap_mode='r')
+            if mm.shape[1] != n: return None
+            return dict(peak=json.load(open(path + '.json'))['peak'], rms=stats(mm, pts), path=path)
+        except Exception: return None
 
     L = {}
     for sname in sorted(styles, key=lambda k: (k != 'pad', k)):      # the legacy pad is the hungriest: do it first
+        key = _layer_key(sname, cv, n); pts = gain_pts(sname); hit = cached(sname, pts, key)
+        if hit: log(f'  music layer: {sname} (cached)'); L[sname] = dict(hit, pts=pts); continue
         log(f'  music layer: {sname}'); gc.collect()
         if sname == 'pad':
             tmp = f'{tmpd}/pad.wav'; audio.music(root, tmp, style='pad', ambience=0); gc.collect()
@@ -572,12 +597,15 @@ def render_mix(root, D=None, out=None, log=print):
             os.remove(tmp); x = x[:, :n] if x.shape[1] >= n else np.pad(x, ((0, 0), (0, n - x.shape[1])))
         else:
             x = render_style(sname, cv, ambience_level=0)[:, :n]
-        L[sname] = park(sname, x, gain_pts(sname)); L[sname]['pts'] = gain_pts(sname); del x; gc.collect()
+        L[sname] = park(sname, x, pts, key); L[sname]['pts'] = pts; del x; gc.collect()
     lvl = float(meta.get('ambience', 1.0)); amb = None
     if lvl > 0:
-        nn, t = make_t(cv['total']); a = ambience(cv, nn, t, np.random.default_rng(9), 1.0)[:, :n]; del t; amb = park('amb', a); del a; gc.collect()
+        key = _layer_key('amb', cv, n); amb = cached('amb', None, key)
+        if amb: log('  music layer: ambience (cached)')
+        else:
+            nn, t = make_t(cv['total']); a = ambience(cv, nn, t, np.random.default_rng(9), 1.0)[:, :n]; del t; amb = park('amb', a, None, key); del a; gc.collect()
     fi = max(.05, float(meta.get('fadein', 4))); fo = float(meta.get('fadeout', 4)); tot = D['total']
-    mms = {k: np.load(f'{tmpd}/{k}.npy', mmap_mode='r') for k in list(L) + (['amb'] if amb else [])}
+    mms = {k: np.load((L[k] if k in L else amb)['path'], mmap_mode='r') for k in list(L) + (['amb'] if amb else [])}
     B = SR * 20
 
     def block(i0, i1):
