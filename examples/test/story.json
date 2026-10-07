@@ -20,7 +20,7 @@
   "duck_ratio": 2.5,
   "duck_threshold": 0.04,
   "ambience": 1.0,
-  "background": "grid",
+  "background": "poly",
   "model": "gpt-4o-mini-tts",
   "provider": "elevenlabs",
   "el_voice": "cristina",
