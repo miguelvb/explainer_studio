@@ -11,7 +11,8 @@ ITEMS[-1] = dict(name='#734')
 TLY = 488                                           # timeline bar
 TX = dict(dic=80, ene=215, may=360, ago=520, sep=670, oct=830)
 FLX = WX + WW + 8
-n = [W.folder_view('erd', WX, WY, ITEMS, label='erdosproblems.com', w=WW, h=48 + 14 * RH + 8, rh=RH, fs=12, at='1a#web'),
+n = [N('url', 'txt', 40, 230, 560, 40, '1a#erdosproblems', color='teal', fs=27, type=20, text='https://www.erdosproblems.com', until='1b'),
+     W.folder_view('erd', WX, WY, ITEMS, label='erdosproblems.com', w=WW, h=48 + 14 * RH + 8, rh=RH, fs=12, at='1a#web'),
      N('pe', 'person', 560, 110, 36, 62, '1a#Erdős', color='amber', cap='Erdős', capfs=13),
      N('tl', 'bar', 60, TLY, 840, 6, '1b#diciembre', color='muted', fill=1),
      ch('t_dic', TX['dic'], 514, 100, 'diciembre 2025', '1b#diciembre', color='muted'),

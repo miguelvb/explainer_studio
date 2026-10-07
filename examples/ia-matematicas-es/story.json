@@ -1967,6 +1967,20 @@
      "p": {
       "nodes": [
        {
+        "id": "url",
+        "kind": "txt",
+        "x": 40,
+        "y": 230,
+        "w": 560,
+        "h": 40,
+        "at": "1a#erdosproblems",
+        "color": "teal",
+        "fs": 27,
+        "type": 20,
+        "text": "https://www.erdosproblems.com",
+        "until": "1b"
+       },
+       {
         "id": "erd",
         "kind": "folderview",
         "x": 640,
