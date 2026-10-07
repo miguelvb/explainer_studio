@@ -222,6 +222,14 @@ def ambience(cv, n, t, rng, level=1.0):
 # ------------------------------------------------------------------ sfx
 def sfx_sound(kind, rng):
     """Short synthesised effect (mono float32) for a named kind."""
+    if kind == 'tick':        # list item / small element appears
+        t = tt(.09); return (np.sin(2 * np.pi * 1250 * t) * np.exp(-t * 55) * .6 + bp(rng.standard_normal(len(t)).astype(np.float32), 2500, 6000) * np.exp(-t * 90) * .3).astype(np.float32) * .8
+    if kind == 'slide':       # something moves: short airy glide
+        d = .38; t = tt(d); x = bp(rng.standard_normal(len(t)).astype(np.float32), 500, 2600) * np.sin(np.pi * t / d) ** 2
+        return (x * .55 + np.sin(2 * np.pi * np.cumsum(260 + 340 * t / d) / SR) * np.sin(np.pi * t / d) ** 2 * .12).astype(np.float32)
+    if kind == 'connect':     # a link is established: rising zip ending in a soft click
+        d = .28; t = tt(d); z = np.sin(2 * np.pi * np.cumsum(500 + 1500 * (t / d) ** 2) / SR) * np.sin(np.pi * np.minimum(t / d, 1) * .5) ** 2 * np.exp(-np.maximum(0, t - .2) * 40) * .35
+        return _mix_at([(0, z.astype(np.float32)), (d - .02, bell(float(hz(91)), .35, .8, 6.0))]) * .8
     if kind == 'ask':         # question: two notes going up and left hanging
         return _mix_at([(0, bell(float(hz(76)), .5, 1.0, 5.0)), (.13, bell(float(hz(83)), .8, 1.0, 4.0))]) * .5
     if kind == 'answer':      # answer: two notes coming down and resolving
@@ -322,7 +330,7 @@ KIND_SFX = {   # world node kind -> (sfx, gain)
     'acard': ('spawn', .55), 'agent': ('spawn', .45), 'koA': ('error', .8), 'cross': ('error', .8), 'okA': ('chime', .55), 'check': ('chime', .55),
     'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('idea', .55), 'bulb': ('idea', .55), 'key': ('key', .45), 'sigLock': ('lock', .6),
     'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('pop', .35),
-    'orb': ('spark', .4), 'flagTrophy': ('flag', .5),
+    'orb': ('spark', .4), 'chip': ('tick', .4), 'sheet': ('create', .55), 'flagTrophy': ('flag', .5),
 }
 
 
@@ -337,6 +345,10 @@ def sfx_events(root, D):
         if c.get('a') == 'seal': ev.append((cs + .2, 'rise', .45, .5)); continue
         if c.get('a') != 'world': continue
         T = lambda v: (cs + float(v)) if isinstance(v, (int, float)) else resolve(v, S)
+        for lk in c.get('p', {}).get('links', []) or []:
+            if lk.get('at') is not None and not lk.get('rel'):
+                try: ev.append((T(lk['at']), 'connect', .3, .5))
+                except Exception: pass
         for nd in c.get('p', {}).get('nodes', []):
             k = nd.get('kind'); ta = T(nd.get('at', 0))
             if nd.get('flick'): ev.append((T(nd['flick']['at']), 'power', .5, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960)); continue
@@ -353,6 +365,13 @@ def sfx_events(root, D):
             for it in nd.get('items', []) or []:
                 if it.get('dir') and it.get('at') is not None:
                     try: ev.append((T(it['at']), 'create', .55, .55))
+                    except Exception: pass
+            for m in nd.get('move', []) or []:
+                try: ev.append((T(m['at']), 'slide', .4, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+                except Exception: pass
+            for it in nd.get('items', []) or []:
+                if not it.get('dir') and it.get('at') is not None:
+                    try: ev.append((T(it['at']), 'tick', .35, .55))
                     except Exception: pass
             if k == 'chip' and nd.get('label') in ('zzASK', 'zzANSWER', 'zzINFO'):
                 ev.append((ta + .05, nd['label'][2:].lower(), .6, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
@@ -385,7 +404,7 @@ def sfx_events(root, D):
     ev.sort()
     out = []; last = {}
     for t_, s_, g, p in ev:        # thin out dense bursts so the film does not rattle
-        gap = {'spawn': .4, 'create': .3, 'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
+        gap = {'tick': .08, 'slide': .15, 'connect': .5, 'spawn': .4, 'create': .3, 'pop': .35, 'swell': 3, 'whoosh': 1, 'poweroff': .6, 'idea': .5}.get(s_, .12)
         if t_ - last.get(s_, -9) < gap: continue
         last[s_] = t_; out.append((t_, s_, g, min(.95, max(.05, p))))
     return out
@@ -431,7 +450,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'tick', 'slide', 'connect', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
