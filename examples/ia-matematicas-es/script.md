@@ -77,24 +77,45 @@
 **4b** La pregunta es cuán buenas pueden ser esas aproximaciones. Se mide con un número que se llama exponente de irracionalidad. Cuanto más grande, mejor se deja aproximar el número por fracciones.
 > En la recta numérica, una banda alrededor de π se estrecha mientras se prueban fracciones con denominador cada vez mayor; un medidor etiquetado «exponente» sube y baja.
 
-**4c** Para casi cualquier número, ese exponente es dos. Es el mínimo posible, como si fuera un número «sin trucos». También ocurre con los números algebraicos, como la raíz de dos.
+**4c** (pausa 0.6) Y si eres una persona con mucha curiosidad matemática, te voy a explicar qué es ese exponente. Es más sencillo de lo que parece.
+> Un rótulo «para curiosos» y una letra μ grande con un signo de interrogación: el exponente, todavía sin explicar.
+
+**4d** Una fracción tiene arriba un numerador y abajo un denominador. Con denominador siete, las fracciones caen como marcas de una regla, una cada séptimo. Pi cae entre dos marcas, y la más cercana, veintidós séptimos, falla por poco más de un milésimo.
+> Aparece «p sobre q» con sus dos partes señaladas; debajo, una regla de 3,0 a 3,3 con marcas cada 1/7; el punto de π cae junto a la marca 22/7, con un pequeño tramo de error.
+
+**4e** Si usamos una regla más fina, con denominador ciento trece, las marcas están mucho más juntas, y trescientos cincuenta y cinco ciento trece falla por menos de una millonésima.
+> Una segunda regla con 34 marcas muy juntas; el punto 355/113 casi se superpone al de π; rótulo «error < 0,000001».
+
+**4f** Para medir cuán buena es una aproximación hay que compararla con el denominador. Siempre se pueden encontrar fracciones que fallan menos que uno partido por el denominador al cuadrado. Esa es la línea del dos: el suelo que alcanza cualquier número irracional.
+> Las reglas desaparecen y aparece una gráfica: eje horizontal, tamaño del denominador (escala logarítmica); eje vertical, precisión. Los puntos de las fracciones de π (22/7, 355/113…) aparecen y se traza la línea «2», con todos los puntos sobre ella o por encima.
+
+**4g** Pero ¿y si hay fracciones que lo hacen mejor, que fallan menos que uno partido por el denominador al cubo, o a la cuarta? El exponente es la potencia más alta que consiguen infinitas fracciones a la vez. Una sola fracción afortunada no cuenta: tienen que ser infinitas.
+> Se trazan las líneas «3» y «4». El punto 355/113 queda por encima de la «3» y se rodea con un círculo: «una sola, no cuenta». Después una hilera de puntos por encima de la «3» que sigue y sigue hacia la derecha, con el símbolo ∞.
+
+**4h** Para pi, las fracciones que se conocen se quedan pegadas a la línea del dos. Lo difícil es demostrar que, más arriba, no hay infinitas.
+> Un halo ámbar rodea los puntos pegados a la línea «2»; en la zona de arriba aparece un signo de interrogación «¿infinitas?».
+
+**4i** Un exponente de dos significa que pi no tiene trucos: se aproxima como cualquier otro número. Y con esto ya puedes seguir la historia.
+> La línea «2» se ilumina y aparece el rótulo «2 = sin trucos».
+
+**4j** Para casi cualquier número, ese exponente es dos. Es el mínimo posible, como si fuera un número «sin trucos». También ocurre con los números algebraicos, como la raíz de dos.
 > Un medidor con una marca «2» en el mínimo; una nube de puntos «casi todos» se queda en 2; la raíz de dos aparece con la etiqueta «2».
 
-**4d** Pero nadie había podido demostrarlo. Lo único que se sabía es que el exponente de pi no podía ser mayor que siete coma uno: podía valer cualquier cosa entre dos y siete coma uno.
+**4k** Pero nadie había podido demostrarlo. Lo único que se sabía es que el exponente de pi no podía ser mayor que siete coma uno: podía valer cualquier cosa entre dos y siete coma uno.
 > El medidor de π sube hasta el 7,1 con el rótulo «se sabía: ≤ 7,1», y después queda flotando en mitad del rango con un signo de interrogación (valor desconocido entre 2 y 7,1).
 
-**4e** (pausa 1.2) El modelo de OpenAI afirma haber demostrado que el exponente de pi es exactamente dos. Es decir, que pi se comporta como un número corriente a la hora de aproximarlo.
+**4l** (pausa 1.2) El modelo de OpenAI afirma haber demostrado que el exponente de pi es exactamente dos. Es decir, que pi se comporta como un número corriente a la hora de aproximarlo.
 > El medidor baja de golpe y se clava en 2; una bandera verde se enciende junto al símbolo π.
 
-**4f** De regalo, esa cota demuestra que converge una suma infinita que lleva años sin resolverse: la serie de Flint Hills, uno partido por n al cubo por el seno de n al cuadrado.
-> Aparece una suma con muchos términos que se van sumando y un contador que se estabiliza; sobre ella, el rótulo «Flint Hills».
+**4m** De regalo, esa cota demuestra que converge una suma infinita que lleva años sin resolverse: la serie de Flint Hills. La suma es uno partido por n al cubo por el seno de n al cuadrado, para n igual a uno, dos, tres, y así sin parar. Que converja quiere decir que, sumando y sumando, el total deja de crecer y se acerca a un valor fijo.
+> Se escribe la fórmula Σ 1/(n³·sen²n) término a término. Debajo, una gráfica (n en escala logarítmica) donde la suma acumulada sube a escalones hasta 4,8, da un salto enorme en n = 355 (el seno casi se anula), sube a 29,4 y después se aplana en una línea de ≈ 30,3: converge.
 
-**4g** Además, el resumen de razonamiento que publican muestra al modelo probando una vía tras otra, y descartándolas. No es una chispa: es una búsqueda larga, con muchos callejones sin salida.
+**4n** Además, el resumen de razonamiento que publican muestra al modelo probando una vía tras otra, y descartándolas. No es una chispa: es una búsqueda larga, con muchos callejones sin salida.
 > Una consola muestra líneas de intentos que van apareciendo y tachándose; un agente tachando caminos de un laberinto hasta llegar a una bandera.
 
 ## 5 · Lean
 
-**5a** Un resultado así no puede aceptarse de palabra. Por eso importa Lean.
+**5a** (pausa 1.6) Un resultado así no puede aceptarse de palabra. Por eso importa Lean.
 > Fondo oscuro; aparece una caja con el rótulo «Lean» y un agente verificador al lado, que sostiene una bandera.
 
 **5b** Lean es un lenguaje de programación y, a la vez, un verificador de demostraciones. Escribes la prueba con un formato muy estricto, y el ordenador comprueba cada paso. Si compila, la demostración es correcta.

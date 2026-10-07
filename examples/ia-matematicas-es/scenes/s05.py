@@ -12,8 +12,8 @@ def seg(a, b, at, color=BLU, **k):
 # ------------------------------------------------------------------ 5a · Lean and the verifier agent holding a flag
 n = [AN('ver', 150, 170, 'VERIFICADOR', at=0.4, color=TEAL, lc=TEAL, blink=.2, bf=4),
      N('vf', 'flFly', 320, 190, 40, 56, '5a#palabra', color=GRN),
-     N('ln', 'server', 540, 225, 170, 66, '5a#Lean', color=VIO, label='Lean', sub='', big=True, blink=.1, bf=4)]
-lk = [link('ver', 'ln', '5a#Lean+0.6', color=TEAL, curve=.3, bi=True)]
+     N('ln', 'server', 540, 225, 170, 66, '5a#aceptarse', color=VIO, label='Lean', sub='', big=True, blink=.1, bf=4)]
+lk = [link('ver', 'ln', '5a#Por+0.3', color=TEAL, curve=.3, bi=True)]
 cues.append(K('S5', '5b', n, lk, fs=1.0))
 
 # ------------------------------------------------------------------ 5b · a console writes the proof, a ribbon of steps gets ticked, "compila"

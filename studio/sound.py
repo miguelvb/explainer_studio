@@ -66,9 +66,11 @@ def adsr(d, a=.01, dec=.2, s=.0, r=.05):
 
 
 def bell(f, d=2.5, bright=1.0, dec=1.4):
-    t = tt(d); idx = 2.2 * bright * np.exp(-t * 3.0)
-    x = np.sin(2 * np.pi * f * t + idx * np.sin(2 * np.pi * f * 3.5 * t)) * np.exp(-t * dec) + .25 * np.sin(2 * np.pi * f * 2.0 * t) * np.exp(-t * dec * 1.8)
-    return (x * np.clip(t / .004, 0, 1)).astype(np.float32)
+    """Soft, rounded bell: gentle FM index, no bright overtone, low-passed, quieter. (Was a bright glassy bell: too prominent.)"""
+    t = tt(d); idx = 0.9 * bright * np.exp(-t * 4.0)
+    x = np.sin(2 * np.pi * f * t + idx * np.sin(2 * np.pi * f * 2.0 * t)) * np.exp(-t * dec * 1.5) + .12 * np.sin(2 * np.pi * f * 2.0 * t) * np.exp(-t * dec * 2.5)
+    x = lp((x * np.clip(t / .012, 0, 1)).astype(np.float32), 2400)
+    return (x * .55).astype(np.float32)
 
 
 def put(buf, t0, x, g=1.0, pan=.5):
@@ -538,7 +540,7 @@ def _norm_mix(m, default):
     return {k: float(v) for k, v in m.items()}
 
 
-MUSIC_VERSION = 2      # bump when the synthesis of a music layer changes (sfx edits do NOT invalidate the layer cache)
+MUSIC_VERSION = 3      # bump when the synthesis of a music layer changes (sfx edits do NOT invalidate the layer cache)
 
 
 def _layer_key(sname, cv, n):

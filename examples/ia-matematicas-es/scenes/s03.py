@@ -75,7 +75,7 @@ n = [N('fr', 'sandbox', BX - 46, YB, 92, YA - YB, '3d#Durante+0.4', color=RED, o
      N('why', 'question', BX - 18, 232, 36, 36, '3d#nadie', color=GRY, until='3e#refutó')]
 lk = []
 # 3e: the new mark appears and the strip below it is filled
-n += [N('fl2', 'sandbox', BX - 46, YC, 92, YA - YC, '3e#configuraciones', color=GRN, label='', fill=1),
+n += [N('fl2', 'sandbox', BX - 46, YC, 92, YA - YC, '3e#configuraciones', color=GRN, label='', fill=1, rx=0),
       N('m3', 'chip', BX + 66, YC - 13, 150, 26, '3e#delta', color=GRN, label='n^(1,014)', fs=14),
       N('fg', 'flFly', BX + 230, YC - 46, 30, 42, '3e#delta+0.6', color=GRN),
       N('sw', 'person', 700, 170, 46, 62, '3e#Sawin', color=BLU, cap='Sawin', capc='muted', capfs=12),

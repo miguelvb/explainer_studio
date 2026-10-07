@@ -7,5 +7,5 @@ META = dict(
     background='poly', fadein=0.3,
 )
 PRONUNCIATION = {}
-EL_PRONUNCIATION = {'GPT-5.2': 'GPT cinco punto dos', 'GPT-5': 'GPT cinco'}
+EL_PRONUNCIATION = {'GPT-5.2': 'GPT cinco punto dos', 'GPT-5': 'GPT cinco', 'Lean': 'liin'}
 META['el_pronunciation'] = EL_PRONUNCIATION
