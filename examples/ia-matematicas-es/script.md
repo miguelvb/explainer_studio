@@ -43,7 +43,7 @@
 **2c** (pausa 1.6) Cubren casi todo: teoría de números, geometría, análisis, informática teórica, combinatoria, física matemática, topología…
 > Los paquetes se reparten en columnas rotuladas con áreas de las matemáticas; las columnas de informática y combinatoria son las más altas.
 
-**2d** Entre los títulos hay nombres enormes: una región sin ceros para la función zeta de Riemann, el décimo problema de Hilbert sobre los racionales, la fórmula de Birch y Swinnerton-Dyer en varios casos. Son afirmaciones de OpenAI, y no todas tienen aún prueba comprobada.
+**2d** Entre los títulos aparecen problemas famosísimos de las matemáticas: una región sin ceros para la función zeta de Riemann, el décimo problema de Hilbert sobre los racionales, la fórmula de Birch y Swinnerton-Dyer en varios casos. Son afirmaciones de OpenAI, y no todas tienen aún prueba comprobada.
 > Una hoja con la lista de títulos famosos, cada uno con una bandera: unas verdes con sello Lean, otras grises con interrogante.
 
 ## 3 · El problema de las distancias unitarias

@@ -50,7 +50,7 @@ rc2 = lambda j: FVY + 48 + j * RH2
 items = [dict(name='Región sin ceros de la función zeta', at='2d#región'), dict(name='Décimo problema de Hilbert (racionales)', at='2d#Hilbert'),
          dict(name='Fórmula de Birch y Swinnerton-Dyer', at='2d#Birch')]
 n = [AN('oa', 50, 120, 'OpenAI', at='2d#afirmaciones', color='blue'),
-     W.folder_view('tt', FVX, FVY, items, label='openai/math', w=420, h=48 + 3 * RH2 - 8, rh=RH2, fs=13, at='2d#nombres')]
+     W.folder_view('tt', FVX, FVY, items, label='openai/math', w=420, h=48 + 3 * RH2 - 8, rh=RH2, fs=13, at='2d#famosísimos')]
 for j in range(3):
     ok = j == 0
     n.append(N(f'fg{j}', 'flag', 735, rc2(j) - 15, 26, 30, '2d#afirmaciones+%.1f' % (0.4 * j + 0.3), color='teal' if ok else 'muted', dashed=not ok))

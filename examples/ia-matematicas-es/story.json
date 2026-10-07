@@ -6534,7 +6534,7 @@
      "text": "Cubren casi todo: teoría de números, geometría, análisis, informática teórica, combinatoria, física matemática, topología…",
      "pause": 1.6
     },
-    "Entre los títulos hay nombres enormes: una región sin ceros para la función zeta de Riemann, el décimo problema de Hilbert sobre los racionales, la fórmula de Birch y Swinnerton-Dyer en varios casos. Son afirmaciones de OpenAI, y no todas tienen aún prueba comprobada."
+    "Entre los títulos aparecen problemas famosísimos de las matemáticas: una región sin ceros para la función zeta de Riemann, el décimo problema de Hilbert sobre los racionales, la fórmula de Birch y Swinnerton-Dyer en varios casos. Son afirmaciones de OpenAI, y no todas tienen aún prueba comprobada."
    ],
    "cues": [
     {
@@ -9481,7 +9481,7 @@
         "y": 80,
         "w": 420,
         "h": 178,
-        "at": "2d#nombres",
+        "at": "2d#famosísimos",
         "color": "amber",
         "label": "openai/math",
         "items": [
