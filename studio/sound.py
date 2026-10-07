@@ -229,10 +229,12 @@ def sfx_sound(kind, rng):
             out[a:a + n_] += (np.sin(2 * np.pi * f * t) * np.exp(-t * 70) * (.35 + .25 * u)).astype(np.float32); tk += 1 / (9 + 22 * u)
         ch = bell(float(hz(88)), 1.0, .8, 3.0); a = int(d * SR); out[a:a + len(ch)] += ch[:len(out) - a] * .5
         return out
-    if kind == 'msg':         # a message from an agent arrives: warm notification bell, two soft strokes
-        return _mix_at([(0, bell(float(hz(79)), 1.6, 1.0, 2.6)), (.16, bell(float(hz(86)), 2.0, .9, 2.2))]) * .4
-    if kind == 'validate':    # flags merge into one / validated: bright confirming two-step with a sparkle tail
-        return _mix_at([(0, bell(float(hz(84)), .6, 1.0, 4.0)), (.11, bell(float(hz(91)), 1.4, 1.0, 3.0)), (.11, bell(float(hz(96)), 1.2, .5, 4.0)), (.2, bp(rng.standard_normal(int(.3 * SR)).astype(np.float32), 4000, 8000) * np.exp(-tt(.3) * 12) * .2)]) * .32
+    if kind == 'msg':         # a message from an agent arrives: short robotic buzz-chirp (ring-modulated, stepped pitch)
+        def rb(f, d):
+            t = tt(d); car = np.sign(np.sin(2 * np.pi * f * t)); mod = np.sin(2 * np.pi * (f * .5 + 37) * t)
+            x = lp((car * (.55 + .45 * mod)).astype(np.float32), 3200) * np.minimum(1, t / .006) * np.exp(-np.maximum(0, t - d * .7) * 40)
+            return x.astype(np.float32)
+        return _mix_at([(0, rb(420, .09)), (.11, rb(560, .09)), (.22, rb(760, .16))]) * .6
     if kind == 'tick':        # list item / small element appears
         t = tt(.09); return (np.sin(2 * np.pi * 1250 * t) * np.exp(-t * 55) * .6 + bp(rng.standard_normal(len(t)).astype(np.float32), 2500, 6000) * np.exp(-t * 90) * .3).astype(np.float32) * .8
     if kind == 'slide':       # something moves: short airy glide
