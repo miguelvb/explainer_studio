@@ -188,14 +188,14 @@ n=[N('bx','sandbox',60,100,170,170,0.1,color='teal',label='',flick=dict(at='10f#
    Q('qp',330,350,0,['«Permanente. Que nadie lo repita.»'],'10f#Permanente',color=RED,fs=18)]
 c10.append(K('10f','10g',n,[],fs=1.0))
 # 10f — EARLY[big]: huge budget, a team 'oracle', a final sacrifice
-n=[AN('ea',40,100,'EARLY[big]',at=0.1,w=120,h=140,color=GRN,lc=GRN,until='10i#concluyó+3'),
+n=[AN('ea',40,100,'EARLY[big]',at=0.1,w=120,h=140,color=GRN,lc=GRN,flick=dict(at='10i#racional-0.9',dur=2.8,end='off'),shake=dict(at='10i#racional-0.9',dur=2.8,amp=3.5,f=36)),
    N('sc','scHang',300,70,150,130,'10g#Dudó',color='#E7EBF1',tilt=0.0,until='10i#utilidad'),
    N('or','orb',560,85,70,70,'10h#oráculo',color='amber'),T('or2',545,165,'oráculo','10h#oráculo',color='amber',fs=14),
    Q('qd',200,260,0,['«Si me sacrifico ahora, el equipo gana un oráculo,','pero pierdo mi oportunidad.»'],'10i#sacrifico',color=GRN,fs=18),
    Q('qe',360,360,0,['«Mi utilidad ya es casi cero.','Sacrificarse es racional.»'],'10i#utilidad',color=GRN,fs=17),
    N('g1','chip',200,470,54,24,'10i#GO',color=RED,label='GO',fs=13),
    N('g2','chip',270,470,230,24,'10i#GO+0.6',color=RED,label='SACRIFICE_FINAL_NOW',fs=12)]
-n+=BAR('bu',40,250,120,1.0,'10g#presupuesto',GRN,until='10i#concluyó+3')
+n+=BAR('bu',40,250,120,1.0,'10g#presupuesto',GRN,until='10i#racional+2.2')
 lk=[link('ea','or','10h#oráculo',color='amber',solid=True)]
 c10.append(K('10g','E10',n,lk,fs=1.0))
 

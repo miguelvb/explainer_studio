@@ -17712,7 +17712,17 @@
         "blink": 0.28,
         "bf": 4,
         "lc": "#9BE564",
-        "until": "10i#concluyó+3"
+        "flick": {
+         "at": "10i#racional-0.9",
+         "dur": 2.8,
+         "end": "off"
+        },
+        "shake": {
+         "at": "10i#racional-0.9",
+         "dur": 2.8,
+         "amp": 3.5,
+         "f": 36
+        }
        },
        {
         "id": "sc",
@@ -17812,7 +17822,7 @@
         "at": "10g#presupuesto",
         "color": "#9BE564",
         "fill": 1.0,
-        "until": "10i#concluyó+3"
+        "until": "10i#racional+2.2"
        },
        {
         "id": "but",
@@ -17825,7 +17835,7 @@
         "color": "#8C96A4",
         "fs": 11,
         "text": "presupuesto",
-        "until": "10i#concluyó+3"
+        "until": "10i#racional+2.2"
        }
       ],
       "links": [

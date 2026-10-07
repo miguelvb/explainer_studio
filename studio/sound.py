@@ -388,7 +388,10 @@ def sfx_events(root, D):
         for nd in c.get('p', {}).get('nodes', []):
             k = nd.get('kind'); ta = T(nd.get('at', 0))
             if nd.get('flick'):
-                fk = nd['flick']; ev.append((T(fk['at']), f"blackout:{min(8.0, float(fk.get('dur', 2.5))):.1f}:{fk.get('end', 'off')}", 1.0, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960)); continue
+                fk = nd['flick']; ev.append((T(fk['at']), f"blackout:{min(8.0, float(fk.get('dur', 2.5))):.1f}:{fk.get('end', 'off')}", 1.0, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+                if fk.get('end', 'off') == 'off' and float(fk.get('dur', 2.5)) >= 2.5:       # dramatic: a low boom as the light dies
+                    ev.append((T(fk['at']) + min(8.0, float(fk.get('dur', 2.5))), 'impact', .9, .5)); ev.append((T(fk['at']), 'sting', .5, .5))
+                continue
             if nd.get('until') is not None and k in ('agent', 'acard') and (nd.get('alpha', 1) or 1) > .2:
                 try:
                     tu = T(nd['until'])
