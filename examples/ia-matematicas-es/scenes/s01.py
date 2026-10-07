@@ -61,6 +61,9 @@ n += [N('as', 'agent', TX['ago'] - 16, TLY - 38, 32, 32, '1e#Astra', color='viol
       N('oa2', 'agent', TX['sep'] - 16, TLY - 38, 32, 32, '1e#septiembre', color='blue', tag='OpenAI', tagc='blue'),
       N('oam', 'agent', TX['may'] + 74, TLY - 38, 32, 32, '1d#OpenAI', color='blue', tag='OpenAI', tagc='blue'),
       W.counter('cC', 70, 300, 100, '1e#cien', cap='problemas abiertos resueltos', w=200, dur=2.0, fs=54, suf='+', until='1f#setecientos-0.3', **{'from': 14})]
+# 1e — Navier-Stokes: one of the most wanted problems, a million dollars; OpenAI renounces the prize
+n += [W.sheet('ns', 90, 100, 300, 100, ['Navier–Stokes', '1.000.000 $ de premio'], at='1e#Navier', fs=19, color='amber', until='1f'),
+      ch('rn', 130, 222, 220, 'OpenAI renuncia al premio', '1e#reclamará', color='amber', fs=13, until='1f')]
 # 1f — the same line, the agent grows, counter 10 -> 100 -> 722
 n += [N('big', 'agent', TX['oct'] - 30, TLY - 62, 60, 60, '1f#En', color='teal', tag='OpenAI', tagc='teal'),
       W.counter('cE', 70, 300, 722, '1f#setecientos', cap='manuscritos', w=200, dur=2.5, fs=54, until='E1', **{'from': 10})]

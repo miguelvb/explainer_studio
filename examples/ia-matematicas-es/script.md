@@ -26,8 +26,8 @@
 **1d** El veinte de mayo llegó el salto cualitativo: OpenAI anunció que su modelo había refutado una conjetura de Erdős de 1946. Matemáticos como Noga Alon, Melanie Wood y Thomas Bloom revisaron el resultado y lo avalaron.
 > Fecha 20 mayo 2026 en el reloj. Un agente «OpenAI» emite un mensaje hacia tres personas con etiquetas «Alon», «Wood», «Bloom», y cada una responde con un sello de aprobado.
 
-**1e** En agosto, un modelo llamado Astra anunció diez avances más. Y en septiembre, OpenAI afirmó que ya eran más de cien los problemas abiertos resueltos, e incluyó una variante del problema de Navier-Stokes sobre cómo se mueven los fluidos, con prueba en Lean. Ese resultado todavía se está revisando.
-> La línea de tiempo continúa: «agosto 2026», «septiembre 2026». El contador sube a 100+. Una bandera de la lista queda amarilla con el rótulo «en revisión».
+**1e** En agosto, un modelo llamado Astra anunció diez avances más. Y en septiembre, OpenAI afirmó que ya eran más de cien los problemas abiertos resueltos, e incluyó una variante del problema de Navier-Stokes, sobre cómo se mueven los fluidos: uno de los más buscados de las matemáticas, con un millón de dólares de premio. OpenAI dice que no reclamará ese premio, y el resultado todavía se está revisando.
+> La línea de tiempo continúa: «agosto 2026», «septiembre 2026». El contador sube a 100+. Aparece una ficha «Navier–Stokes · 1.000.000 $ de premio»; después, una nota «OpenAI renuncia al premio». Una bandera de la lista queda amarilla con el rótulo «en revisión».
 
 **1f** (pausa 1.6) Y el seis de octubre, setecientos veintidós manuscritos. En doce meses se pasó de no resolver nada, a resolver cientos.
 > Zoom a toda la línea de tiempo; el contador salta de 10 a 100 y a 722, y el agente crece en tamaño.

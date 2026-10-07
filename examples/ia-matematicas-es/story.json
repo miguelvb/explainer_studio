@@ -1957,7 +1957,7 @@
     "Entre diciembre de 2025 y enero de 2026, algunos aficionados empezaron a probar GPT-5.2 con esos problemas. Resolvieron el número 728, y lo comprobaron con un programa de verificación formal.",
     "En enero, un equipo de Google DeepMind resolvió cuatro más y rescató nueve soluciones olvidadas, entre unas setecientas conjeturas. En mayo, otro equipo resolvió nueve de trescientas cincuenta y tres, a unos cientos de dólares por problema.",
     "El veinte de mayo llegó el salto cualitativo: OpenAI anunció que su modelo había refutado una conjetura de Erdős de 1946. Matemáticos como Noga Alon, Melanie Wood y Thomas Bloom revisaron el resultado y lo avalaron.",
-    "En agosto, un modelo llamado Astra anunció diez avances más. Y en septiembre, OpenAI afirmó que ya eran más de cien los problemas abiertos resueltos, e incluyó una variante del problema de Navier-Stokes sobre cómo se mueven los fluidos, con prueba en Lean. Ese resultado todavía se está revisando.",
+    "En agosto, un modelo llamado Astra anunció diez avances más. Y en septiembre, OpenAI afirmó que ya eran más de cien los problemas abiertos resueltos, e incluyó una variante del problema de Navier-Stokes, sobre cómo se mueven los fluidos: uno de los más buscados de las matemáticas, con un millón de dólares de premio. OpenAI dice que no reclamará ese premio, y el resultado todavía se está revisando.",
     {
      "text": "Y el seis de octubre, setecientos veintidós manuscritos. En doce meses se pasó de no resolver nada, a resolver cientos.",
      "pause": 1.6
@@ -6400,6 +6400,35 @@
         "suf": "+",
         "until": "1f#setecientos-0.3",
         "from": 14
+       },
+       {
+        "id": "ns",
+        "kind": "sheet",
+        "x": 90,
+        "y": 100,
+        "w": 300,
+        "h": 100,
+        "at": "1e#Navier",
+        "color": "amber",
+        "lines": [
+         "Navier–Stokes",
+         "1.000.000 $ de premio"
+        ],
+        "fs": 19,
+        "until": "1f"
+       },
+       {
+        "id": "rn",
+        "kind": "chip",
+        "x": 20,
+        "y": 209,
+        "w": 220,
+        "h": 26,
+        "at": "1e#reclamará",
+        "label": "OpenAI renuncia al premio",
+        "color": "amber",
+        "fs": 12,
+        "until": "1f"
        },
        {
         "id": "big",
