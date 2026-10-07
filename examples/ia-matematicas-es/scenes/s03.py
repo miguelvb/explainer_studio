@@ -14,7 +14,7 @@ def seg(a, b, at, color=BLU, **k):
 # ------------------------------------------------------------------ 3a · the plane, a pair at distance one
 PTS = [(300, 150), (410, 120), (520, 175), (640, 130), (730, 200), (350, 260), (470, 230), (620, 240),
        (700, 345), (400, 395), (540, 420), (650, 410), (270, 355), (760, 120)]
-n = [N('pl', 'sandbox', 240, 80, 560, 380, '3a#planteó', color=TEAL, label='', open=True),
+n = [N('pl', 'sandbox', 240, 80, 560, 380, '3a#planteó', color=TEAL, label='', open=True, bg='#0A0F17'),
      N('er', 'person', 80, 150, 60, 80, '3a#Erdős', color=AMB, cap='Erdős', capc='amber', capfs=12),
      T('y46', 66, 300, '1946', '3a#1946', color=AMB, fs=24, type=8, until='3b')]
 for i, (x, y) in enumerate(PTS):

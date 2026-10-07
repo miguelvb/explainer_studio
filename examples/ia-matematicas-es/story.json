@@ -9612,7 +9612,8 @@
         "at": "3a#planteó",
         "color": "#3FD8C2",
         "label": "",
-        "open": true
+        "open": true,
+        "bg": "#0A0F17"
        },
        {
         "id": "er",
