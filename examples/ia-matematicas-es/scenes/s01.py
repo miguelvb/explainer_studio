@@ -15,14 +15,14 @@ TX = dict(dic=80, ene=215, may=360, ago=520, sep=670, oct=830)
 FLX = WX + WW + 8
 n = [N('url', 'txt', 40, 230, 560, 40, '1a#erdosproblems', color='teal', fs=27, type=20, text='https://www.erdosproblems.com', until='1b'),
      W.folder_view('erd', WX, WY, ITEMS, label='erdosproblems.com', w=WW, h=48 + 14 * RH + 8, rh=RH, fs=11, at='1a#web', scroll=[dict(at='1a#mil', to=MAXN - 14, dur=3.6), dict(at='1b#número', to=720, dur=2.2)]),
-     N('pe', 'person', 560, 110, 36, 62, '1a#Erdős', color='amber', cap='Erdős', capfs=13),
+     N('pe', 'person', 560, 110, 36, 62, '1a#Erdős', color='amber', cap='Erdős', capfs=13, until='1b#aficionados'),
      N('tl', 'bar', 60, TLY, 840, 6, '1b#diciembre', color='muted', fill=1, rx=0),
      ch('t_dic', TX['dic'], TLY + 46, 100, 'diciembre 2025', '1b#diciembre', color='muted'),
      # 1b — hobbyists + GPT-5.2 work on the list, #728 turns green and gets a seal
      N('hb', 'person', 60, 150, 36, 62, '1b#aficionados', color='blue', cap='aficionados', capfs=12, until='1c'),
      AN('g52', 190, 120, 'GPT-5.2', at='1b#GPT', color='blue', until='1c'),
-     ic('sl', 'sigSeal', 585, rc(7), 30, '1b#comprobaron', color='teal'),
-     ch('slc', 585, rc(7) + 28, 70, 'verificado', '1b#comprobaron+0.2', color='teal', fs=11)]
+     ic('sl', 'sigSeal', 585, rc(7), 30, '1b#comprobaron', color='teal', until='1c'),
+     ch('slc', 585, rc(7) + 28, 70, 'verificado', '1b#comprobaron+0.2', color='teal', fs=11, until='1c')]
 # grey placeholder flags next to every row, lit green as they are solved
 for j in range(14):
     n.append(N(f'fg{j}', 'flag', FLX, rc(j) - 12, 20, 24, '1b#número+%.2f' % (2.2 + 0.05 * j), color='muted', dashed=True, until={7: '1b#comprobaron', 13: '1e#Navier'}.get(j, {0: '1c#enero', 1: '1c#enero+0.3', 2: '1c#enero+0.6', 3: '1c#enero+0.9'}.get(j, '1c#mayo+%.2f' % (0.3 * (j - 4)) if j < 8 else '1c#mayo+%.2f' % (0.3 * (j - 5))))))

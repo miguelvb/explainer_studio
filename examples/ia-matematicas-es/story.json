@@ -5615,7 +5615,8 @@
         "at": "1a#Erdős",
         "color": "amber",
         "cap": "Erdős",
-        "capfs": 13
+        "capfs": 13,
+        "until": "1b#aficionados"
        },
        {
         "id": "tl",
@@ -5677,7 +5678,8 @@
         "w": 30,
         "h": 30,
         "at": "1b#comprobaron",
-        "color": "teal"
+        "color": "teal",
+        "until": "1c"
        },
        {
         "id": "slc",
@@ -5689,7 +5691,8 @@
         "at": "1b#comprobaron+0.2",
         "label": "verificado",
         "color": "teal",
-        "fs": 11
+        "fs": 11,
+        "until": "1c"
        },
        {
         "id": "fg0",
