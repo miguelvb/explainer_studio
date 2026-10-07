@@ -227,8 +227,11 @@ def sfx_sound(kind, rng):
         while tk < d:
             u = tk / d; f = 900 + 1500 * u; a = int(tk * SR); t = tt(.05); n_ = len(t)
             out[a:a + n_] += (np.sin(2 * np.pi * f * t) * np.exp(-t * 70) * (.35 + .25 * u)).astype(np.float32); tk += 1 / (9 + 22 * u)
-        ch = bell(float(hz(88)), 1.0, .8, 3.0); a = int(d * SR); out[a:a + len(ch)] += ch[:len(out) - a] * .5
         return out
+    if kind == 'bleep':       # a named agent appears: soft robotic blip (two short stepped square-ish tones, low-passed)
+        def bl(f, d):
+            t = tt(d); x = np.sin(2 * np.pi * f * t) + .3 * np.sign(np.sin(2 * np.pi * f * t)); return (lp(x.astype(np.float32), 2200) * np.minimum(1, t / .008) * np.exp(-np.maximum(0, t - d * .5) * 30)).astype(np.float32)
+        return _mix_at([(0, bl(330, .07)), (.085, bl(495, .09))]) * .5
     if kind == 'msg':         # a message from an agent arrives: short robotic buzz-chirp (ring-modulated, stepped pitch)
         def rb(f, d):
             t = tt(d); car = np.sign(np.sin(2 * np.pi * f * t)); mod = np.sin(2 * np.pi * (f * .5 + 37) * t)
@@ -252,7 +255,7 @@ def sfx_sound(kind, rng):
         return (x * .55 + np.sin(2 * np.pi * np.cumsum(260 + 340 * t / d) / SR) * np.sin(np.pi * t / d) ** 2 * .12).astype(np.float32)
     if kind == 'connect':     # a link is established: rising zip ending in a soft click
         d = .28; t = tt(d); z = np.sin(2 * np.pi * np.cumsum(500 + 1500 * (t / d) ** 2) / SR) * np.sin(np.pi * np.minimum(t / d, 1) * .5) ** 2 * np.exp(-np.maximum(0, t - .2) * 40) * .35
-        return _mix_at([(0, z.astype(np.float32)), (d - .02, bell(float(hz(91)), .35, .8, 6.0))]) * .8
+        return z.astype(np.float32) * 1.2
     if kind == 'ask':         # question: two notes going up and left hanging
         return _mix_at([(0, bell(float(hz(76)), .5, 1.0, 5.0)), (.13, bell(float(hz(83)), .8, 1.0, 4.0))]) * .5
     if kind == 'answer':      # answer: two notes coming down and resolving
@@ -362,11 +365,11 @@ def _mix_at(parts):
     return out
 
 
-KIND_SFX = {   # world node kind -> (sfx, gain)
-    'acard': ('spawn', .55), 'agent': ('spawn', .45), 'koA': ('error', 1.0), 'cross': ('error', 1.0), 'okA': ('chime', .55), 'check': ('chime', .55),
-    'flFly': ('flag', .5), 'flag': ('flag', .5), 'ideaSpark': ('idea', .55), 'bulb': ('idea', .55), 'key': ('key', .45), 'sigLock': ('lock', .6),
-    'hole': ('hole', .5), 'bell': ('bell', .45), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5), 'person': ('spawn', .4),
-    'orb': ('spark', .4), 'chip': ('tick', .4), 'doc': ('tick', .4), 'exam': ('create', .4), 'folder': ('create', .45), 'console': ('tick', .4), 'hfbox': ('create', .4), 'hfbase': ('create', .4), 'server': ('create', .4), 'question': ('ask', .5), 'judge': ('thud', .4), 'bar': ('slide', .4), 'lupa': ('zip', .4), 'pencil': ('tick', .4), 'stop': ('error', .5), 'globe': ('spark', .4), 'onion': ('pop', .4), 'flagEnv': ('flag', .4), 'pause': ('thud', .35), 'quote': ('msg', .6), 'sheet': ('create', .55), 'flagTrophy': ('flag', .5),
+KIND_SFX = {   # world node kind -> (sfx, gain). Appearances (items, files, flags, icons, small agents) are deliberately silent:
+    # only a named agent card gets a soft robotic bleep; the rest are functional sounds (errors, locks, holes, messages...)
+    'acard': ('bleep', .4), 'koA': ('error', 1.0), 'cross': ('error', 1.0),
+    'sigLock': ('lock', .6), 'hole': ('hole', .5), 'crowd': ('swell', .5), 'msgfeed': ('burst', .4), 'scHang': ('thud', .5),
+    'judge': ('thud', .4), 'bar': ('slide', .4), 'lupa': ('zip', .4), 'stop': ('error', .5), 'pause': ('thud', .35), 'quote': ('msg', .6),
 }
 
 
@@ -403,17 +406,13 @@ def sfx_events(root, D):
                     if dd >= 1.2: ev.append((tb, f'alarm:{dd:.1f}', .5, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
                 except Exception: pass
             for it in nd.get('items', []) or []:
-                if it.get('dir') and it.get('at') is not None:
-                    try: ev.append((T(it['at']), 'create', .55, .55))
-                    except Exception: pass
+                pass
             for m in nd.get('move', []) or []:
                 try: ev.append((T(m['at']), 'slide', .4, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
                 except Exception: pass
             for it in nd.get('items', []) or []:
-                if not it.get('dir') and it.get('at') is not None:
-                    try: ev.append((T(it['at']), 'tick', .35, .55))
-                    except Exception: pass
-            if k == 'chip' and nd.get('label') in ('zzASK', 'zzANSWER', 'zzINFO'):
+                pass
+            if False and k == 'chip' and nd.get('label') in ('zzASK', 'zzANSWER', 'zzINFO'):
                 ev.append((ta + .05, nd['label'][2:].lower(), .6, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
             if nd.get('litAt') is not None and k in ('chip', 'flFly'):
                 try:
@@ -461,7 +460,7 @@ def sfx_events(root, D):
                     sh = nd['shake']; dd = min(15.0, float(sh.get('dur', 1.2)))
                     if dd >= 1.0: ev.append((T(sh['at']), f'engine:{dd:.1f}', 1.0, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
                 except Exception: pass
-            if k == 'bulb' and nd.get('litAt') is not None:
+            if False and k == 'bulb' and nd.get('litAt') is not None:
                 try: ev.append((T(nd['litAt']), 'idea', .5, .5))
                 except Exception: pass
             if k in KIND_SFX and not nd.get('nosfx') and (nd.get('alpha', 1) or 1) > .2 and ta > cs - .01:
