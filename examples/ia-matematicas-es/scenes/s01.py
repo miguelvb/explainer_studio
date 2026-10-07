@@ -16,7 +16,7 @@ FLX = WX + WW + 8
 n = [N('url', 'txt', 40, 230, 560, 40, '1a#erdosproblems', color='teal', fs=27, type=20, text='https://www.erdosproblems.com', until='1b'),
      W.folder_view('erd', WX, WY, ITEMS, label='erdosproblems.com', w=WW, h=48 + 14 * RH + 8, rh=RH, fs=11, at='1a#web', scroll=[dict(at='1a#mil', to=MAXN - 14, dur=3.6), dict(at='1b#número', to=720, dur=2.2)]),
      N('pe', 'person', 560, 110, 36, 62, '1a#Erdős', color='amber', cap='Erdős', capfs=13),
-     N('tl', 'bar', 60, TLY, 840, 6, '1b#diciembre', color='muted', fill=1),
+     N('tl', 'bar', 60, TLY, 840, 6, '1b#diciembre', color='muted', fill=1, rx=0),
      ch('t_dic', TX['dic'], TLY + 46, 100, 'diciembre 2025', '1b#diciembre', color='muted'),
      # 1b — hobbyists + GPT-5.2 work on the list, #728 turns green and gets a seal
      N('hb', 'person', 60, 150, 36, 62, '1b#aficionados', color='blue', cap='aficionados', capfs=12, until='1c'),
@@ -35,7 +35,7 @@ n.append(N('fl13b', 'flag', FLX, rc(13) - 12, 20, 24, '1e#Navier', color='amber'
 n.append(ch('rev', 580, rc(13), 100, 'en revisión', '1e#revisando', color='amber', fs=11))
 # timeline marks
 for k_, x_ in TX.items():
-    n.append(N('tk_' + k_, 'bar', x_ - 3, TLY - 13, 6, 32, {'dic': '1b#diciembre', 'ene': '1c#enero', 'may': '1c#mayo', 'ago': '1e#agosto', 'sep': '1e#septiembre', 'oct': '1f#octubre'}[k_], color='muted', fill=1))
+    n.append(N('tk_' + k_, 'bar', x_ - 3, TLY - 13, 6, 32, {'dic': '1b#diciembre', 'ene': '1c#enero', 'may': '1c#mayo', 'ago': '1e#agosto', 'sep': '1e#septiembre', 'oct': '1f#octubre'}[k_], color='muted', fill=1, rx=0))
 n += [ch('t_ene', TX['ene'], TLY + 46, 100, 'enero 2026', '1c#enero', color='muted'),
       ch('t_may', TX['may'], TLY + 46, 100, 'mayo 2026', '1c#mayo', color='muted'),
       ch('t_ago', TX['ago'], TLY + 46, 100, 'agosto 2026', '1e#agosto', color='muted'),

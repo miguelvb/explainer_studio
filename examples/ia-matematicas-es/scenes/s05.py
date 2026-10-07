@@ -59,7 +59,7 @@ BX, BY, BW = 220, 330, 520; W1 = round(BW * 235 / 372); W2 = BW - W1
 n = [W.counter('c1', 230, 140, 235, at='5d#doscientas', cap='con Lean', w=200, h=70, fs=64, dur=3.5),
      T('sl', 440, 160, '/', '5d#trescientas', color=GRY, fs=60),
      W.counter('c2', 500, 140, 372, at='5d#trescientas', cap='familias', w=200, h=70, fs=64, dur=3.0),
-     N('b1', 'bar', BX, BY, W1, 24, '5d#casi', color=GRN, fill=1), N('b2', 'bar', BX + W1, BY, W2, 24, '5d#casi+0.8', color=GRY, fill=1),
+     N('b1', 'bar', BX, BY, W1, 24, '5d#casi', color=GRN, fill=1, rx=0), N('b2', 'bar', BX + W1, BY, W2, 24, '5d#casi+0.8', color=GRY, fill=1, rx=0),
      T('tl', BX + W1 / 2 - 40, BY + 36, 'comprobadas', '5d#casi+1.2', color=GRN, fs=13), T('tg', BX + W1 + W2 / 2 - 40, BY + 36, 'sin Lean', '5d#casi+1.6', color=GRY, fs=13)]
 cues.append(K('5d', '5e', n, [], fs=1.0))
 

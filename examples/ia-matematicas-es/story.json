@@ -5626,7 +5626,8 @@
         "h": 6,
         "at": "1b#diciembre",
         "color": "muted",
-        "fill": 1
+        "fill": 1,
+        "rx": 0
        },
        {
         "id": "t_dic",
@@ -6030,7 +6031,8 @@
         "h": 32,
         "at": "1b#diciembre",
         "color": "muted",
-        "fill": 1
+        "fill": 1,
+        "rx": 0
        },
        {
         "id": "tk_ene",
@@ -6041,7 +6043,8 @@
         "h": 32,
         "at": "1c#enero",
         "color": "muted",
-        "fill": 1
+        "fill": 1,
+        "rx": 0
        },
        {
         "id": "tk_may",
@@ -6052,7 +6055,8 @@
         "h": 32,
         "at": "1c#mayo",
         "color": "muted",
-        "fill": 1
+        "fill": 1,
+        "rx": 0
        },
        {
         "id": "tk_ago",
@@ -6063,7 +6067,8 @@
         "h": 32,
         "at": "1e#agosto",
         "color": "muted",
-        "fill": 1
+        "fill": 1,
+        "rx": 0
        },
        {
         "id": "tk_sep",
@@ -6074,7 +6079,8 @@
         "h": 32,
         "at": "1e#septiembre",
         "color": "muted",
-        "fill": 1
+        "fill": 1,
+        "rx": 0
        },
        {
         "id": "tk_oct",
@@ -6085,7 +6091,8 @@
         "h": 32,
         "at": "1f#octubre",
         "color": "muted",
-        "fill": 1
+        "fill": 1,
+        "rx": 0
        },
        {
         "id": "t_ene",
@@ -22158,7 +22165,8 @@
         "h": 24,
         "at": "5d#casi",
         "color": "#9BE564",
-        "fill": 1
+        "fill": 1,
+        "rx": 0
        },
        {
         "id": "b2",
@@ -22169,7 +22177,8 @@
         "h": 24,
         "at": "5d#casi+0.8",
         "color": "#8C96A4",
-        "fill": 1
+        "fill": 1,
+        "rx": 0
        },
        {
         "id": "tl",
