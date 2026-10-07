@@ -798,6 +798,31 @@ const BG=(()=>{let el=null,cfg=null,parts=[],blobs=[],gl=null,vig=null,rnd,custo
   grid4:gridV({id:4,kind:'tunnel',hy:270,col:'#A58BFF',op:.16,hz:0})
  })})();
 
+/* ---------- dark watercolour-paper backgrounds (meta.background: wc_noche wc_tierra wc_musgo wc_vino wc_ceniza) ---------- */
+(()=>{
+ const rgb=h=>[1,3,5].map(i=>(parseInt(h.slice(i,i+2),16)/255).toFixed(3)).join(' ');
+ const paperV=o=>({init(){const w1=rgb(o.w1),w2=rgb(o.w2),id=o.id;
+  return `<defs>
+<filter id="pw${id}" x="0" y="0" width="1" height="1"><feTurbulence type="fractalNoise" baseFrequency=".003 .005" numOctaves="5" seed="${o.seed}"/><feColorMatrix values="0 0 0 0 ${w1.split(' ')[0]}  0 0 0 0 ${w1.split(' ')[1]}  0 0 0 0 ${w1.split(' ')[2]}  2.6 0 0 0 -0.95"/></filter>
+<filter id="pv${id}" x="0" y="0" width="1" height="1"><feTurbulence type="fractalNoise" baseFrequency=".011 .016" numOctaves="3" seed="${o.seed+11}"/><feColorMatrix values="0 0 0 0 ${w2.split(' ')[0]}  0 0 0 0 ${w2.split(' ')[1]}  0 0 0 0 ${w2.split(' ')[2]}  2.4 0 0 0 -0.95"/></filter>
+<filter id="pg${id}" x="0" y="0" width="1" height="1"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="4" seed="${o.seed+3}" result="n"/><feDiffuseLighting in="n" surfaceScale="1.6" diffuseConstant="1" lighting-color="#ffffff"><feDistantLight azimuth="50" elevation="58"/></feDiffuseLighting></filter>
+<filter id="pf${id}" x="0" y="0" width="1" height="1"><feTurbulence type="fractalNoise" baseFrequency=".03 .5" numOctaves="2" seed="${o.seed+7}"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  3 0 0 0 -1.7"/></filter>
+<radialGradient id="pe${id}" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></radialGradient></defs>
+<rect width="960" height="540" fill="${o.base}"/>
+<g class="pwa"><rect x="-120" y="-80" width="1200" height="700" filter="url(#pw${id})" opacity="${o.o1}"/></g>
+<g class="pwb"><rect x="-120" y="-80" width="1200" height="700" filter="url(#pv${id})" opacity="${o.o2}"/></g>
+<rect width="960" height="540" filter="url(#pf${id})" opacity=".05"/>
+<rect width="960" height="540" filter="url(#pg${id})" opacity="${o.gr}" style="mix-blend-mode:overlay"/>
+<rect width="960" height="540" fill="url(#pe${id})"/>`},
+  bind(el){const a=el.querySelector('.pwa'),b=el.querySelector('.pwb');return(t,I,T)=>{a.setAttribute('transform',`translate(${(Math.sin(t*.02)*40).toFixed(1)} ${(Math.cos(t*.017)*22).toFixed(1)})`);b.setAttribute('transform',`translate(${(Math.cos(t*.025)*30).toFixed(1)} ${(Math.sin(t*.02)*18).toFixed(1)})`)}}});
+ Object.assign(BGALT,{
+  wc_noche:paperV({id:'n',seed:4,base:'#0b1220',w1:'#1c3a6e',w2:'#2a2f5e',o1:.42,o2:.28,gr:.16}),
+  wc_tierra:paperV({id:'t',seed:9,base:'#17110c',w1:'#6b4426',w2:'#3d2a1a',o1:.42,o2:.28,gr:.16}),
+  wc_musgo:paperV({id:'m',seed:15,base:'#0c130e',w1:'#2f5a38',w2:'#4a5a2a',o1:.42,o2:.28,gr:.16}),
+  wc_vino:paperV({id:'v',seed:22,base:'#160a10',w1:'#6a1f3d',w2:'#3a1a4a',o1:.42,o2:.28,gr:.16}),
+  wc_ceniza:paperV({id:'c',seed:31,base:'#121214',w1:'#4a4a52',w2:'#5a5048',o1:.42,o2:.28,gr:.16})
+ })})();
+
 /* ---------- driver ---------- */
 window.CUES=[];
 window.setup=(sched,cues)=>{
