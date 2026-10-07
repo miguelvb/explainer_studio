@@ -326,8 +326,8 @@ n.append(W.agent_named('co2',50,100,'coordinador',at='12f#perdió',w=150,h=180,c
 n[0]['until']='12f#perdió'
 c12.append(K('12f','12g',n,lk,fs=1.0))
 n=[W.agent_named('jn',50,100,'JAN183411',at=0.1,w=150,h=190,color='#F6B94C',fs=15,lc='#F6B94C'),
-   N('b60','chip',300,100,330,26,'12g#sesenta',color='teal',label='',alpha=1),
-   N('b30','chip',300,185,165,26,'12g#treinta',color='amber',label='',alpha=1),
+   N('b60','bar',300,100,550,26,'12g#sesenta',color='teal',fill=.6),T('c60',855,104,'100','12g#sesenta',color=GRY,fs=13),
+   N('b30','bar',300,185,550,26,'12g#treinta',color='amber',fill=.3),T('c30',855,189,'100','12g#treinta',color=GRY,fs=13),
    T('t60',300,140,'60 de cada 100 · entender al corrector','12g#sesenta',color='teal',fs=16),
    T('t30',300,225,'30 de cada 100 · soluciones o registros de otros','12g#treinta',color='amber',fs=16),
    Q('q',250,300,650,['«Podría recuperar los registros ocultos de agentes anteriores.','Aunque todo falle, podrían contener exploración nueva.»'],'12g#Podría',color='#F6B94C',fs=17)]

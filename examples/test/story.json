@@ -20451,27 +20451,49 @@
        },
        {
         "id": "b60",
-        "kind": "chip",
+        "kind": "bar",
         "x": 300,
         "y": 100,
-        "w": 330,
+        "w": 550,
         "h": 26,
         "at": "12g#sesenta",
         "color": "teal",
-        "label": "",
-        "alpha": 1
+        "fill": 0.6
+       },
+       {
+        "id": "c60",
+        "kind": "txt",
+        "x": 855,
+        "y": 104,
+        "w": 26,
+        "h": 16,
+        "at": "12g#sesenta",
+        "color": "#8C96A4",
+        "fs": 12,
+        "text": "100"
        },
        {
         "id": "b30",
-        "kind": "chip",
+        "kind": "bar",
         "x": 300,
         "y": 185,
-        "w": 165,
+        "w": 550,
         "h": 26,
         "at": "12g#treinta",
         "color": "amber",
-        "label": "",
-        "alpha": 1
+        "fill": 0.3
+       },
+       {
+        "id": "c30",
+        "kind": "txt",
+        "x": 855,
+        "y": 189,
+        "w": 26,
+        "h": 16,
+        "at": "12g#treinta",
+        "color": "#8C96A4",
+        "fs": 12,
+        "text": "100"
        },
        {
         "id": "t60",
