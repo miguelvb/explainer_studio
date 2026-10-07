@@ -222,6 +222,19 @@ def ambience(cv, n, t, rng, level=1.0):
 # ------------------------------------------------------------------ sfx
 def sfx_sound(kind, rng):
     """Short synthesised effect (mono float32) for a named kind."""
+    if kind == 'ask':         # question: two notes going up and left hanging
+        return _mix_at([(0, bell(float(hz(76)), .5, 1.0, 5.0)), (.13, bell(float(hz(83)), .8, 1.0, 4.0))]) * .5
+    if kind == 'answer':      # answer: two notes coming down and resolving
+        return _mix_at([(0, bell(float(hz(83)), .5, 1.0, 5.0)), (.13, bell(float(hz(76)), .9, 1.0, 3.5)), (.13, bell(float(hz(88)), .9, .5, 4.0))]) * .3
+    if kind == 'info':        # information shared: one short neutral tick
+        return _mix_at([(0, bell(float(hz(81)), .35, 1.0, 7.0))]) * .6
+    if kind.startswith('scroll'):     # 'scroll:<seconds>:<r0>:<r1>' - soft ticks of a feed scrolling, speeding up
+        _, d, r0, r1 = kind.split(':'); d = float(d); r0 = float(r0); r1 = float(r1); out = np.zeros(int(d * SR) + SR // 4, np.float32); tk = 0.0
+        while tk < d:
+            u = tk / d; a = int(tk * SR); n_ = int(.025 * SR); t = tt(.025)
+            out[a:a + n_] += (bp(rng.standard_normal(n_).astype(np.float32), 1800, 5200) * np.exp(-t * 150) * (.35 + .4 * rng.random()) * (.5 + .5 * u)).astype(np.float32)
+            tk += 1 / (r0 + (r1 - r0) * u + 1e-6) * (.8 + .4 * rng.random())
+        return out * 1.2
     if kind == 'create':      # something new is made: bright rising pluck + a little sparkle
         return _mix_at([(i * .06, bell(float(hz(n_)), .7, .9, 5.0)) for i, n_ in enumerate((79, 84, 91))] + [(.14, bp(rng.standard_normal(int(.25 * SR)).astype(np.float32), 3000, 7000) * np.exp(-tt(.25) * 14) * .25)]) * .35
     if kind == 'spawn':       # an agent appears: soft upward bloop with a halo
@@ -317,7 +330,7 @@ def sfx_events(root, D):
     from .spec import resolve, cue_times
     S = D['sched']; ev = []
     for i in range(len(D['scenes'])) if isinstance(D['scenes'], list) else range(D['scenes']):
-        if f'S{i}' in S and i > 0: ev.append((S[f'S{i}']['s'] - .15, 'whoosh', .35, .5))
+        if f'S{i}' in S and i > 0: ev.append((S[f'S{i}']['s'] - .15, 'whoosh', .5, .5))
     for c in D.get('cues', []):
         try: cs, ce = cue_times(c, S)
         except Exception: continue
@@ -340,6 +353,18 @@ def sfx_events(root, D):
             for it in nd.get('items', []) or []:
                 if it.get('dir') and it.get('at') is not None:
                     try: ev.append((T(it['at']), 'create', .55, .55))
+                    except Exception: pass
+            if k == 'chip' and nd.get('label') in ('zzASK', 'zzANSWER', 'zzINFO'):
+                ev.append((ta + .05, nd['label'][2:].lower(), .6, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
+            if k == 'msgfeed':
+                try:
+                    te = T(nd['until']) if nd.get('until') is not None else ce; dd = min(14.0, te - ta); r0 = float(nd.get('r0', 6)); r1 = float(nd.get('r1', 12))
+                    if dd >= 1.5: ev.append((ta, f'scroll:{dd:.1f}:{min(r0, 14):.1f}:{min(max(r1, r0), 22):.1f}', .45, .5))
+                except Exception: pass
+            if k == 'folderview' and (nd.get('alpha', 1) or 1) > .2:
+                ev.append((ta, 'whoosh', .75, .4))
+                for m in nd.get('move', []) or []:
+                    try: ev.append((T(m['at']), 'whoosh', .7, .5))
                     except Exception: pass
             if nd.get('shake') and k in ('agent', 'acard'):
                 try:
@@ -406,7 +431,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
