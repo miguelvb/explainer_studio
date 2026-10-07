@@ -325,6 +325,19 @@ def sfx_sound(kind, rng):
         d = 4.0; t = tt(d); x = bp(rng.standard_normal(len(t)).astype(np.float32), 400, 4000) * (t / d) ** 2; return x * .7
     if kind == 'idea':
         return _mix_at([(i * .09, bell(float(hz(m)), 1.4, 1.0, 3.0)) for i, m in enumerate((79, 83, 86, 91))] + [(.3, bp(rng.standard_normal(int(.5 * SR)).astype(np.float32), 5000, 9000) * np.exp(-tt(.5) * 6) * .25)])
+    if kind.startswith('blackout'):    # 'blackout:<seconds>:<off|dim>' - an agent flickers as it dies: stuttering electrical hum falling in pitch, crackle, final drop
+        parts = kind.split(':'); d = max(1.2, float(parts[1])); off = len(parts) < 3 or parts[2] != 'dim'; n_ = int((d + 1.0) * SR); t = np.arange(n_, dtype=np.float32) / SR; u = np.clip(t / d, 0, 1)
+        f = 380 * np.exp(-u * 2.6) + 38; ph = 2 * np.pi * np.cumsum(f) / SR
+        tone = (np.sin(ph) + .5 * np.sin(2 * ph) + .3 * np.sin(3 * ph)).astype(np.float32)
+        r = np.random.default_rng(11); gate = np.zeros(n_, np.float32); tg = 0.0
+        while tg < d:                                   # irregular on/off flicker, more and more broken
+            on = r.uniform(.05, .22) * (1 - .6 * tg / d); off_ = r.uniform(.03, .16) * (.5 + tg / d); a = int(tg * SR); gate[a:a + int(on * SR)] = 1; tg += on + off_
+        gate = lp(gate, 160); env = np.minimum(1, t / .02) * np.where(t < d, 1 - .55 * u, 0) * 1.0
+        crack = bp(r.standard_normal(n_).astype(np.float32), 1500, 6000) * (gate > .5) * np.exp(-((t * 37) % 1) * 9) * .5
+        x = (lp(tone, 900) * .5 * gate * env + crack * env * .8)
+        if off:                                          # final power-down: sweep to silence + low thud
+            a = int(d * SR); tl = tt(.9); x[a:a + len(tl)] += (np.sin(2 * np.pi * np.cumsum(120 * np.exp(-tl * 5) + 28) / SR) * np.exp(-tl * 5) * .9).astype(np.float32)[:n_ - a]
+        return np.tanh(x * 1.6).astype(np.float32)
     if kind == 'poweroff':
         d = 1.8; t = tt(d); f = 330 * np.exp(-t * 2.6) + 24; ph = 2 * np.pi * np.cumsum(f) / SR
         fl = (np.sin(t * (22 + 30 * t / d)) > -.2 + t / d * 1.1).astype(np.float32) * .85 + .15
@@ -374,7 +387,8 @@ def sfx_events(root, D):
                 except Exception: pass
         for nd in c.get('p', {}).get('nodes', []):
             k = nd.get('kind'); ta = T(nd.get('at', 0))
-            if nd.get('flick'): ev.append((T(nd['flick']['at']), 'power', .5, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960)); continue
+            if nd.get('flick'):
+                fk = nd['flick']; ev.append((T(fk['at']), f"blackout:{min(8.0, float(fk.get('dur', 2.5))):.1f}:{fk.get('end', 'off')}", 1.0, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960)); continue
             if nd.get('until') is not None and k in ('agent', 'acard') and (nd.get('alpha', 1) or 1) > .2:
                 try:
                     tu = T(nd['until'])
@@ -505,7 +519,7 @@ def demos(outdir, total=48.0):
 
 
 def sfx_sampler(path):
-    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'cursor', 'keystroke:0', 'buzz', 'validate', 'msg', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
+    rng = np.random.default_rng(5); kinds = ['whoosh', 'pop', 'zip', 'chime', 'flag', 'spark', 'key', 'lock', 'deny', 'thud', 'hole', 'burst', 'power', 'error', 'blackout:3:off', 'cursor', 'keystroke:0', 'buzz', 'validate', 'msg', 'tick', 'slide', 'connect', 'count:2', 'ask', 'answer', 'info', 'scroll:2:6:12', 'engine:3', 'alarm:3', 'create', 'spawn', 'bell', 'swell', 'rise']
     buf = np.zeros((2, int((len(kinds) * 2.2 + 3) * SR)), np.float32)
     for i, k in enumerate(kinds): put(buf, 1 + i * 2.2, sfx_sound(k, rng), 1.0, .5)
     return write_wav(path, reverb(buf, 1.6, .22))
