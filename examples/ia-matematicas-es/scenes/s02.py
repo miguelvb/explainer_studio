@@ -11,7 +11,7 @@ n += mt_tower('d', 480, 470, t0='2a#setecientos', dt=0.025, src=(FX + 50, FY + 3
 x0 = 480 - 6 * 22 / 2
 for r in range(14):
     for p in range(3):
-        n.append(N(f'pk{r}_{p}', 'sandbox', x0 + p * 44 - 1, 470 - (r + 1) * 25 + 1, 42, 23, f'2a#trescientas+{0.05 * (r * 3 + p):.2f}', color='teal', label=''))
+        n.append(N(f'pk{r}_{p}', 'sandbox', x0 + p * 44 - 1, 470 - (r + 1) * 25 + 1, 42, 23, f'2a#trescientas+{0.05 * (r * 3 + p):.2f}', color='teal', label='', rx=3))
 n += [W.counter('n722', 640, 230, 722, '2a#setecientos', cap='manuscritos', w=200, dur=2.0, fs=60, until='2a#trescientas-0.2'),
       W.counter('n372', 640, 230, 372, '2a#trescientas', cap='familias', w=200, dur=2.0, fs=60, **{'from': 722})]
 cues.append(K('S2', '2b', n, [], fs=1.0))
@@ -41,7 +41,7 @@ for i, (nm, h, t, *o) in enumerate(AREAS):
     cx = 110 + i * 123
     n.append(ch(f'a{i}', cx, 470, 100, nm, f'{t}+{o0}', color='teal' if nm in ('informática', 'combinatoria') else 'muted', fs=12))
     for k in range(h):
-        n.append(N(f'b{i}_{k}', 'sandbox', cx - 36, 440 - 22 * (k + 1), 72, 17, f'{t}+{o0 + 0.12 * k + 0.2:.2f}', color='teal', label=''))
+        n.append(N(f'b{i}_{k}', 'sandbox', cx - 36, 440 - 22 * (k + 1), 72, 17, f'{t}+{o0 + 0.12 * k + 0.2:.2f}', color='teal', label='', rx=3))
 cues.append(K('2c', '2d', n, [], fs=1.0))
 
 # 2d — famous titles: some flagged green with a Lean seal, others grey with a question mark

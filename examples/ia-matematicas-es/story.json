@@ -8074,7 +8074,8 @@
         "h": 23,
         "at": "2a#trescientas+0.00",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk0_1",
@@ -8085,7 +8086,8 @@
         "h": 23,
         "at": "2a#trescientas+0.05",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk0_2",
@@ -8096,7 +8098,8 @@
         "h": 23,
         "at": "2a#trescientas+0.10",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk1_0",
@@ -8107,7 +8110,8 @@
         "h": 23,
         "at": "2a#trescientas+0.15",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk1_1",
@@ -8118,7 +8122,8 @@
         "h": 23,
         "at": "2a#trescientas+0.20",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk1_2",
@@ -8129,7 +8134,8 @@
         "h": 23,
         "at": "2a#trescientas+0.25",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk2_0",
@@ -8140,7 +8146,8 @@
         "h": 23,
         "at": "2a#trescientas+0.30",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk2_1",
@@ -8151,7 +8158,8 @@
         "h": 23,
         "at": "2a#trescientas+0.35",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk2_2",
@@ -8162,7 +8170,8 @@
         "h": 23,
         "at": "2a#trescientas+0.40",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk3_0",
@@ -8173,7 +8182,8 @@
         "h": 23,
         "at": "2a#trescientas+0.45",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk3_1",
@@ -8184,7 +8194,8 @@
         "h": 23,
         "at": "2a#trescientas+0.50",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk3_2",
@@ -8195,7 +8206,8 @@
         "h": 23,
         "at": "2a#trescientas+0.55",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk4_0",
@@ -8206,7 +8218,8 @@
         "h": 23,
         "at": "2a#trescientas+0.60",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk4_1",
@@ -8217,7 +8230,8 @@
         "h": 23,
         "at": "2a#trescientas+0.65",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk4_2",
@@ -8228,7 +8242,8 @@
         "h": 23,
         "at": "2a#trescientas+0.70",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk5_0",
@@ -8239,7 +8254,8 @@
         "h": 23,
         "at": "2a#trescientas+0.75",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk5_1",
@@ -8250,7 +8266,8 @@
         "h": 23,
         "at": "2a#trescientas+0.80",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk5_2",
@@ -8261,7 +8278,8 @@
         "h": 23,
         "at": "2a#trescientas+0.85",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk6_0",
@@ -8272,7 +8290,8 @@
         "h": 23,
         "at": "2a#trescientas+0.90",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk6_1",
@@ -8283,7 +8302,8 @@
         "h": 23,
         "at": "2a#trescientas+0.95",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk6_2",
@@ -8294,7 +8314,8 @@
         "h": 23,
         "at": "2a#trescientas+1.00",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk7_0",
@@ -8305,7 +8326,8 @@
         "h": 23,
         "at": "2a#trescientas+1.05",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk7_1",
@@ -8316,7 +8338,8 @@
         "h": 23,
         "at": "2a#trescientas+1.10",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk7_2",
@@ -8327,7 +8350,8 @@
         "h": 23,
         "at": "2a#trescientas+1.15",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk8_0",
@@ -8338,7 +8362,8 @@
         "h": 23,
         "at": "2a#trescientas+1.20",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk8_1",
@@ -8349,7 +8374,8 @@
         "h": 23,
         "at": "2a#trescientas+1.25",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk8_2",
@@ -8360,7 +8386,8 @@
         "h": 23,
         "at": "2a#trescientas+1.30",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk9_0",
@@ -8371,7 +8398,8 @@
         "h": 23,
         "at": "2a#trescientas+1.35",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk9_1",
@@ -8382,7 +8410,8 @@
         "h": 23,
         "at": "2a#trescientas+1.40",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk9_2",
@@ -8393,7 +8422,8 @@
         "h": 23,
         "at": "2a#trescientas+1.45",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk10_0",
@@ -8404,7 +8434,8 @@
         "h": 23,
         "at": "2a#trescientas+1.50",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk10_1",
@@ -8415,7 +8446,8 @@
         "h": 23,
         "at": "2a#trescientas+1.55",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk10_2",
@@ -8426,7 +8458,8 @@
         "h": 23,
         "at": "2a#trescientas+1.60",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk11_0",
@@ -8437,7 +8470,8 @@
         "h": 23,
         "at": "2a#trescientas+1.65",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk11_1",
@@ -8448,7 +8482,8 @@
         "h": 23,
         "at": "2a#trescientas+1.70",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk11_2",
@@ -8459,7 +8494,8 @@
         "h": 23,
         "at": "2a#trescientas+1.75",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk12_0",
@@ -8470,7 +8506,8 @@
         "h": 23,
         "at": "2a#trescientas+1.80",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk12_1",
@@ -8481,7 +8518,8 @@
         "h": 23,
         "at": "2a#trescientas+1.85",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk12_2",
@@ -8492,7 +8530,8 @@
         "h": 23,
         "at": "2a#trescientas+1.90",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk13_0",
@@ -8503,7 +8542,8 @@
         "h": 23,
         "at": "2a#trescientas+1.95",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk13_1",
@@ -8514,7 +8554,8 @@
         "h": 23,
         "at": "2a#trescientas+2.00",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "pk13_2",
@@ -8525,7 +8566,8 @@
         "h": 23,
         "at": "2a#trescientas+2.05",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "n722",
@@ -8869,7 +8911,8 @@
         "h": 17,
         "at": "2c#teoría+0.20",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b0_1",
@@ -8880,7 +8923,8 @@
         "h": 17,
         "at": "2c#teoría+0.32",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b0_2",
@@ -8891,7 +8935,8 @@
         "h": 17,
         "at": "2c#teoría+0.44",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b0_3",
@@ -8902,7 +8947,8 @@
         "h": 17,
         "at": "2c#teoría+0.56",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b0_4",
@@ -8913,7 +8959,8 @@
         "h": 17,
         "at": "2c#teoría+0.68",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b0_5",
@@ -8924,7 +8971,8 @@
         "h": 17,
         "at": "2c#teoría+0.80",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "a1",
@@ -8947,7 +8995,8 @@
         "h": 17,
         "at": "2c#geometría+0.20",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b1_1",
@@ -8958,7 +9007,8 @@
         "h": 17,
         "at": "2c#geometría+0.32",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b1_2",
@@ -8969,7 +9019,8 @@
         "h": 17,
         "at": "2c#geometría+0.44",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b1_3",
@@ -8980,7 +9031,8 @@
         "h": 17,
         "at": "2c#geometría+0.56",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "a2",
@@ -9003,7 +9055,8 @@
         "h": 17,
         "at": "2c#análisis+0.20",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b2_1",
@@ -9014,7 +9067,8 @@
         "h": 17,
         "at": "2c#análisis+0.32",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b2_2",
@@ -9025,7 +9079,8 @@
         "h": 17,
         "at": "2c#análisis+0.44",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b2_3",
@@ -9036,7 +9091,8 @@
         "h": 17,
         "at": "2c#análisis+0.56",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b2_4",
@@ -9047,7 +9103,8 @@
         "h": 17,
         "at": "2c#análisis+0.68",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "a3",
@@ -9070,7 +9127,8 @@
         "h": 17,
         "at": "2c#informática+0.20",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b3_1",
@@ -9081,7 +9139,8 @@
         "h": 17,
         "at": "2c#informática+0.32",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b3_2",
@@ -9092,7 +9151,8 @@
         "h": 17,
         "at": "2c#informática+0.44",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b3_3",
@@ -9103,7 +9163,8 @@
         "h": 17,
         "at": "2c#informática+0.56",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b3_4",
@@ -9114,7 +9175,8 @@
         "h": 17,
         "at": "2c#informática+0.68",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b3_5",
@@ -9125,7 +9187,8 @@
         "h": 17,
         "at": "2c#informática+0.80",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b3_6",
@@ -9136,7 +9199,8 @@
         "h": 17,
         "at": "2c#informática+0.92",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b3_7",
@@ -9147,7 +9211,8 @@
         "h": 17,
         "at": "2c#informática+1.04",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b3_8",
@@ -9158,7 +9223,8 @@
         "h": 17,
         "at": "2c#informática+1.16",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "a4",
@@ -9181,7 +9247,8 @@
         "h": 17,
         "at": "2c#física+0.20",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b4_1",
@@ -9192,7 +9259,8 @@
         "h": 17,
         "at": "2c#física+0.32",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b4_2",
@@ -9203,7 +9271,8 @@
         "h": 17,
         "at": "2c#física+0.44",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "a5",
@@ -9226,7 +9295,8 @@
         "h": 17,
         "at": "2c#topología+0.20",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b5_1",
@@ -9237,7 +9307,8 @@
         "h": 17,
         "at": "2c#topología+0.32",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b5_2",
@@ -9248,7 +9319,8 @@
         "h": 17,
         "at": "2c#topología+0.44",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "a6",
@@ -9271,7 +9343,8 @@
         "h": 17,
         "at": "2c#topología+1.10",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b6_1",
@@ -9282,7 +9355,8 @@
         "h": 17,
         "at": "2c#topología+1.22",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b6_2",
@@ -9293,7 +9367,8 @@
         "h": 17,
         "at": "2c#topología+1.34",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b6_3",
@@ -9304,7 +9379,8 @@
         "h": 17,
         "at": "2c#topología+1.46",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b6_4",
@@ -9315,7 +9391,8 @@
         "h": 17,
         "at": "2c#topología+1.58",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b6_5",
@@ -9326,7 +9403,8 @@
         "h": 17,
         "at": "2c#topología+1.70",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b6_6",
@@ -9337,7 +9415,8 @@
         "h": 17,
         "at": "2c#topología+1.82",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        },
        {
         "id": "b6_7",
@@ -9348,7 +9427,8 @@
         "h": 17,
         "at": "2c#topología+1.94",
         "color": "teal",
-        "label": ""
+        "label": "",
+        "rx": 3
        }
       ],
       "links": [],
