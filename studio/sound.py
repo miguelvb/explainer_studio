@@ -410,7 +410,7 @@ def sfx_events(root, D):
             if k == 'bulb' and nd.get('litAt') is not None:
                 try: ev.append((T(nd['litAt']), 'idea', .5, .5))
                 except Exception: pass
-            if k in KIND_SFX and (nd.get('alpha', 1) or 1) > .2 and ta > cs - .01:
+            if k in KIND_SFX and not nd.get('nosfx') and (nd.get('alpha', 1) or 1) > .2 and ta > cs - .01:
                 s_, g = KIND_SFX[k]; ev.append((ta + .05, s_, g, (nd.get('x', 480) + (nd.get('w', 0) or 0) / 2) / 960))
     try: stj = json.load(open(f'{root}/story.json'))
     except Exception: stj = {'scenes': []}
