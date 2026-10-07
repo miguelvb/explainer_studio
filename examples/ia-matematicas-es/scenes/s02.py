@@ -34,7 +34,7 @@ cues.append(K('2b', '2c', n, lk, fs=1.0))
 
 # 2c — packages spread into columns by area of mathematics
 AREAS = [('números', 6, '2c#teoría'), ('geometría', 4, '2c#geometría'), ('análisis', 5, '2c#análisis'), ('informática', 9, '2c#informática'),
-         ('física mat.', 3, '2c#física'), ('topología', 3, '2c#topología'), ('combinatoria', 8, '2c#topología', 0.9)]
+         ('combinatoria', 8, '2c#combinatoria'), ('física mat.', 3, '2c#física'), ('topología', 3, '2c#topología')]
 n = []
 for i, (nm, h, t, *o) in enumerate(AREAS):
     o0 = o[0] if o else 0

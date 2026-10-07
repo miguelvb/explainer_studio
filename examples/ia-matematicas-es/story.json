@@ -6519,7 +6519,10 @@
    "beats": [
     "OpenAI lo ha dejado todo en un repositorio público de GitHub: setecientos veintidós manuscritos, agrupados en trescientas setenta y dos familias de resultados.",
     "Según la propia empresa, el modelo recibió unos cuatro mil problemas. Cada resultado costó, de media, unas tres horas de «pensamiento» de ChatGPT Pro. De ahí salieron los resultados que se consideraron suficientemente importantes.",
-    "Cubren casi todo: teoría de números, geometría, análisis, informática teórica, física matemática, topología…",
+    {
+     "text": "Cubren casi todo: teoría de números, geometría, análisis, informática teórica, combinatoria, física matemática, topología…",
+     "pause": 1.6
+    },
     "Entre los títulos hay nombres enormes: una región sin ceros para la función zeta de Riemann, el décimo problema de Hilbert sobre los racionales, la fórmula de Birch y Swinnerton-Dyer en varios casos. Son afirmaciones de OpenAI, y no todas tienen aún prueba comprobada."
    ],
    "cues": [
@@ -9229,13 +9232,13 @@
        {
         "id": "a4",
         "kind": "chip",
-        "x": 552,
+        "x": 549,
         "y": 457,
-        "w": 100,
+        "w": 106,
         "h": 26,
-        "at": "2c#física+0",
-        "label": "física mat.",
-        "color": "muted",
+        "at": "2c#combinatoria+0",
+        "label": "combinatoria",
+        "color": "teal",
         "fs": 12
        },
        {
@@ -9245,7 +9248,7 @@
         "y": 418,
         "w": 72,
         "h": 17,
-        "at": "2c#física+0.20",
+        "at": "2c#combinatoria+0.20",
         "color": "teal",
         "label": "",
         "rx": 3
@@ -9257,7 +9260,7 @@
         "y": 396,
         "w": 72,
         "h": 17,
-        "at": "2c#física+0.32",
+        "at": "2c#combinatoria+0.32",
         "color": "teal",
         "label": "",
         "rx": 3
@@ -9269,7 +9272,67 @@
         "y": 374,
         "w": 72,
         "h": 17,
-        "at": "2c#física+0.44",
+        "at": "2c#combinatoria+0.44",
+        "color": "teal",
+        "label": "",
+        "rx": 3
+       },
+       {
+        "id": "b4_3",
+        "kind": "sandbox",
+        "x": 566,
+        "y": 352,
+        "w": 72,
+        "h": 17,
+        "at": "2c#combinatoria+0.56",
+        "color": "teal",
+        "label": "",
+        "rx": 3
+       },
+       {
+        "id": "b4_4",
+        "kind": "sandbox",
+        "x": 566,
+        "y": 330,
+        "w": 72,
+        "h": 17,
+        "at": "2c#combinatoria+0.68",
+        "color": "teal",
+        "label": "",
+        "rx": 3
+       },
+       {
+        "id": "b4_5",
+        "kind": "sandbox",
+        "x": 566,
+        "y": 308,
+        "w": 72,
+        "h": 17,
+        "at": "2c#combinatoria+0.80",
+        "color": "teal",
+        "label": "",
+        "rx": 3
+       },
+       {
+        "id": "b4_6",
+        "kind": "sandbox",
+        "x": 566,
+        "y": 286,
+        "w": 72,
+        "h": 17,
+        "at": "2c#combinatoria+0.92",
+        "color": "teal",
+        "label": "",
+        "rx": 3
+       },
+       {
+        "id": "b4_7",
+        "kind": "sandbox",
+        "x": 566,
+        "y": 264,
+        "w": 72,
+        "h": 17,
+        "at": "2c#combinatoria+1.04",
         "color": "teal",
         "label": "",
         "rx": 3
@@ -9281,8 +9344,8 @@
         "y": 457,
         "w": 100,
         "h": 26,
-        "at": "2c#topología+0",
-        "label": "topología",
+        "at": "2c#física+0",
+        "label": "física mat.",
         "color": "muted",
         "fs": 12
        },
@@ -9293,7 +9356,7 @@
         "y": 418,
         "w": 72,
         "h": 17,
-        "at": "2c#topología+0.20",
+        "at": "2c#física+0.20",
         "color": "teal",
         "label": "",
         "rx": 3
@@ -9305,7 +9368,7 @@
         "y": 396,
         "w": 72,
         "h": 17,
-        "at": "2c#topología+0.32",
+        "at": "2c#física+0.32",
         "color": "teal",
         "label": "",
         "rx": 3
@@ -9317,7 +9380,7 @@
         "y": 374,
         "w": 72,
         "h": 17,
-        "at": "2c#topología+0.44",
+        "at": "2c#física+0.44",
         "color": "teal",
         "label": "",
         "rx": 3
@@ -9325,13 +9388,13 @@
        {
         "id": "a6",
         "kind": "chip",
-        "x": 795,
+        "x": 798,
         "y": 457,
-        "w": 106,
+        "w": 100,
         "h": 26,
-        "at": "2c#topología+0.9",
-        "label": "combinatoria",
-        "color": "teal",
+        "at": "2c#topología+0",
+        "label": "topología",
+        "color": "muted",
         "fs": 12
        },
        {
@@ -9341,7 +9404,7 @@
         "y": 418,
         "w": 72,
         "h": 17,
-        "at": "2c#topología+1.10",
+        "at": "2c#topología+0.20",
         "color": "teal",
         "label": "",
         "rx": 3
@@ -9353,7 +9416,7 @@
         "y": 396,
         "w": 72,
         "h": 17,
-        "at": "2c#topología+1.22",
+        "at": "2c#topología+0.32",
         "color": "teal",
         "label": "",
         "rx": 3
@@ -9365,67 +9428,7 @@
         "y": 374,
         "w": 72,
         "h": 17,
-        "at": "2c#topología+1.34",
-        "color": "teal",
-        "label": "",
-        "rx": 3
-       },
-       {
-        "id": "b6_3",
-        "kind": "sandbox",
-        "x": 812,
-        "y": 352,
-        "w": 72,
-        "h": 17,
-        "at": "2c#topología+1.46",
-        "color": "teal",
-        "label": "",
-        "rx": 3
-       },
-       {
-        "id": "b6_4",
-        "kind": "sandbox",
-        "x": 812,
-        "y": 330,
-        "w": 72,
-        "h": 17,
-        "at": "2c#topología+1.58",
-        "color": "teal",
-        "label": "",
-        "rx": 3
-       },
-       {
-        "id": "b6_5",
-        "kind": "sandbox",
-        "x": 812,
-        "y": 308,
-        "w": 72,
-        "h": 17,
-        "at": "2c#topología+1.70",
-        "color": "teal",
-        "label": "",
-        "rx": 3
-       },
-       {
-        "id": "b6_6",
-        "kind": "sandbox",
-        "x": 812,
-        "y": 286,
-        "w": 72,
-        "h": 17,
-        "at": "2c#topología+1.82",
-        "color": "teal",
-        "label": "",
-        "rx": 3
-       },
-       {
-        "id": "b6_7",
-        "kind": "sandbox",
-        "x": 812,
-        "y": 264,
-        "w": 72,
-        "h": 17,
-        "at": "2c#topología+1.94",
+        "at": "2c#topología+0.44",
         "color": "teal",
         "label": "",
         "rx": 3

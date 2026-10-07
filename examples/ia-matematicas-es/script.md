@@ -40,7 +40,7 @@
 **2b** Según la propia empresa, el modelo recibió unos cuatro mil problemas. Cada resultado costó, de media, unas tres horas de «pensamiento» de ChatGPT Pro. De ahí salieron los resultados que se consideraron suficientemente importantes.
 > Un embudo: arriba 4.000 puntos pequeños; el embudo los reduce y de abajo caen los paquetes. Un reloj en una esquina marca «3 h» por resultado.
 
-**2c** Cubren casi todo: teoría de números, geometría, análisis, informática teórica, física matemática, topología…
+**2c** (pausa 1.6) Cubren casi todo: teoría de números, geometría, análisis, informática teórica, combinatoria, física matemática, topología…
 > Los paquetes se reparten en columnas rotuladas con áreas de las matemáticas; las columnas de informática y combinatoria son las más altas.
 
 **2d** Entre los títulos hay nombres enormes: una región sin ceros para la función zeta de Riemann, el décimo problema de Hilbert sobre los racionales, la fórmula de Birch y Swinnerton-Dyer en varios casos. Son afirmaciones de OpenAI, y no todas tienen aún prueba comprobada.
