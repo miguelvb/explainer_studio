@@ -8,6 +8,8 @@ fuente ──ingest (LLM)──► story.json ──validate──► build/ (ho
            tts (voz) ─────────┴─ tiempos reales ─► build ─► render ─► video_silent.mp4 ─► mux (+música, ducking) ─► final.mp4
 ```
 
+> **Si eres una IA que retoma el proyecto, empieza por `PROMPT_IA.md`.**
+
 Firma: *Arkinos · Explainer Studio*.
 
 ---
