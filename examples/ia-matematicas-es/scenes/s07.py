@@ -1,16 +1,21 @@
 # Scene 7 · Cierre
 MUSIC = {'pad': 1, 'bells': 0.4}
 INTENSITY = 0.3
-# 7a: a year on the timeline; the agent grows from repeating others' solutions to refuting Erdős and proposing pi proofs
-XS = [130, 480, 830]
-n = [ch(f't{i}', x, 380, 100, l, 0.3 + 0.1 * i, color='muted') for i, (x, l) in enumerate(zip(XS, ['oct 2025', 'may 2026', 'oct 2026']))]
-n += [N('ag0', 'agent', 117, 297, 26, 26, 0.5, color='blue', until='7a#proponer+0.6',
-        move=[dict(at='7a#refutar', x=467, y=297, dur=1.4), dict(at='7a#proponer', x=817, y=297, dur=1.6)]),
+# 7a: the same timeline as scene 1 (dic 2025 -> oct 2026); the agent grows from repeating others' solutions to refuting Erdős and proposing pi proofs
+TLY = 420
+TX = dict(dic=80, ene=215, may=360, ago=520, sep=670, oct=830)
+TL = dict(dic='diciembre 2025', ene='enero 2026', may='mayo 2026', ago='agosto 2026', sep='septiembre 2026', oct='octubre 2026')
+n = [N('tl', 'bar', 60, TLY, 840, 6, 0.3, color='muted', fill=1, rx=0)]
+for i, (k_, x_) in enumerate(TX.items()):
+    n += [N('tk_' + k_, 'bar', x_ - 3, TLY - 13, 6, 32, 0.35 + 0.05 * i, color='muted', fill=1, rx=0),
+          ch('t_' + k_, x_, TLY + 46, 120 if k_ == 'sep' else 100, TL[k_], 0.35 + 0.05 * i, color='teal' if k_ == 'oct' else 'muted')]
+n += [N('ag0', 'agent', TX['dic'] - 16, TLY - 52, 32, 32, 0.6, color='blue', until='7a#proponer+0.6',
+        move=[dict(at='7a#refutar', x=TX['may'] - 16, y=TLY - 52, dur=1.4), dict(at='7a#proponer', x=TX['oct'] - 16, y=TLY - 52, dur=1.6)]),
       N('n10', 'num', 70, 130, 140, 50, '7a#repetir', n=10, color=RED, fs=46, dur=1.2, cap='falsos', capc='muted', capfs=13),
       N('fe', 'flFly', 460, 200, 34, 52, '7a#refutar+0.6', color=TEAL),
-      N('ag1', 'agent', 790, 270, 80, 80, '7a#proponer+0.6', color='blue'),
+      N('ag1', 'agent', TX['oct'] - 30, TLY - 80, 60, 60, '7a#proponer+0.6', color='blue'),
       N('n722', 'num', 650, 110, 250, 60, '7a#proponer+0.8', n=722, color=TEAL, fs=52, dur=2.4, cap='manuscritos', capc='muted', capfs=14)]
-lk = [link('t0', 't1', '7a#año', color=GRY, orth='h'), link('t1', 't2', '7a#refutar', color=GRY, orth='h')]
+lk = []
 cues = [K('S7', '7b', n, lk, fs=1.0)]
 # 7b: the tower again, the Lean (green) and unchecked (grey) bars, the small verifier still working
 n = []; k = 0
