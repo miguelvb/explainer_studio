@@ -20,7 +20,7 @@ cues.append(K('10a', '10c', n, [], fs=1.0, cam=cm))
 
 # 10c — a hand carries a shield to an empty chip, while a dog and a person are left outside
 n = chip('ec', 640, 280, '10c', s=60, box_s=110)
-n += [P('ng', 'ghost', 810, 280, 44, '10c#vacías', color='muted', alpha=.8, cap='sin experiencia', capfs=11),
+n += [N('ng', 'svg', 615, 255, 50, 50, '10c#vacías', color='muted', paths=[dict(d='M50 20a30 30 0 1 0 .1 0Z', sw=2)], alpha=.5),
       P('sd', 'shield', 330, 200, 120, '10c#cuidado', color='teal', move=[dict(at='10c#máquinas+0.4', x=580, y=220, dur=1.8)]),
       P('hd', 'hand', 280, 300, 70, '10c#cuidado', color='muted', move=[dict(at='10c#máquinas+0.4', x=545, y=300, dur=1.8)], until='10d'),
       P('dg', 'dog', 200, 440, 80, '10c#quien', color='blue'), person('pp', 300, 460, '10c#quien', color='blue', s=50),
