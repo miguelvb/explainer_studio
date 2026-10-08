@@ -65,7 +65,7 @@ Variantes de `all`:
 
 Otros comandos: `new · ingest · prompt · catalog · script · music · render · mux · verify · mark · record`.
 
-**Tu propia voz (`record`).** `python explainer.py record -p <película> toma1.m4a toma2.m4a` limpia el ruido, añade un poco de reverb (`--reverb`, 0 = nada), normaliza el volumen (`--lufs`, −18 por defecto) y trocea las tomas en un MP3 por beat, igual que `tts`. Con `faster-whisper` instalado reconoce solo qué beats has leído; sin él, di qué escenas son (`--from 0 --to 2`) y corta por las pausas. Los beats grabados quedan en `audio/recorded.json` y `tts`/`all` no los tocan; `record --clear` vuelve a la voz sintética. Dónde ha cortado cada beat: `audio/rec/report.txt`.
+**Tu propia voz (`record`).** `python explainer.py record -p <película> toma1.m4a toma2.m4a` (las tomas pueden estar en `<película>/recordings/`, que no se sube a git; `-p` también acepta esa carpeta) limpia el ruido, añade un poco de reverb (`--reverb`, 0 = nada), normaliza el volumen (`--lufs`, −18 por defecto) y trocea las tomas en un MP3 por beat, igual que `tts`. Con `faster-whisper` instalado reconoce solo qué beats has leído; sin él, di qué escenas son (`--from 0 --to 2`) y corta por las pausas. Los beats grabados quedan en `audio/recorded.json` y `tts`/`all` no los tocan; `record --clear` vuelve a la voz sintética. Dónde ha cortado cada beat: `audio/rec/report.txt`.
 
 ### Qué hay entre `video_range.mp4` y `final`
 

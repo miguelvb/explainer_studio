@@ -110,8 +110,15 @@ def main():
     p = P('voices', lambda a: audio.voices(proj(a), story(a), text=a.text, el_model=a.model, el_voices=a.el.split(',') if a.el else None, openai_voices=a.oa.split(',') if a.oa else None)); p.add_argument('--text'); p.add_argument('--model', help='ElevenLabs model id, e.g. eleven_v4'); p.add_argument('--el', help='comma list of ElevenLabs voices'); p.add_argument('--oa', help='comma list of OpenAI voices')
     p = P('tts', lambda a: audio.tts(proj(a), story(a), voice=a.voice, only=set(a.only.split(',')) if a.only else None, force=a.force)); p.add_argument('--voice'); p.add_argument('--only'); p.add_argument('--force', action='store_true')
     def crec(a):
+        # -p may point at the film or at its recordings/ folder; takes are looked up as given, then in that folder
+        d = os.path.abspath(proj(a)); rec = d
+        if not os.path.exists(os.path.join(d, 'film.py')) and os.path.exists(os.path.join(os.path.dirname(d), 'film.py')): a.project = os.path.dirname(d)
+        else: rec = os.path.join(d, 'recordings')
         if a.clear: return recmod.clear(proj(a))
         if not a.files: raise SystemExit('faltan las grabaciones')
+        a.files = [f if os.path.exists(f) else os.path.join(rec, f) for f in a.files]
+        for f in a.files:
+            if not os.path.exists(f): raise SystemExit(f'no encuentro la grabación {f}')
         do_build(a, use_timings=False)
         sc = [a.scene] if a.scene is not None else (list(range(a.first, a.last + 1)) if a.first is not None and a.last is not None else None)
         recmod.record(proj(a), a.files, scenes=sc, model=a.model, reverb=a.reverb, lufs=a.lufs, lang=story(a)['meta'].get('lang', 'es'))

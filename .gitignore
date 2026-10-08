@@ -9,3 +9,4 @@ projects/
 *.wav
 *.mp3
 .cache/
+**/recordings/
