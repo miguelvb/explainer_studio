@@ -4,3 +4,4 @@ Pillow
 scikit-image     # only for `mark` (logo -> vector)
 openai           # only for `tts`
 pypdf            # PDF fallback when pdftotext (poppler) is missing
+faster-whisper   # only for `record` (finds the beats in your own recordings)

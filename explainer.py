@@ -8,9 +8,10 @@
   python explainer.py validate -p projects/mycase                             # static + real-browser checks
   python explainer.py preview  -p projects/mycase --scene 3                   # contact sheet
   python explainer.py all      -p projects/mycase                             # build, tts, rebuild, music, render, mux
+  python explainer.py record   -p projects/mycase take1.m4a take2.m4a         # your own voice: clean, reverb, normalise, one file per beat
 """
 import argparse, json, os, sys, shutil
-from studio import env, spec, llm, prompt, catalog, render, audio, storykit, mark as markmod
+from studio import env, spec, llm, prompt, catalog, render, audio, storykit, record as recmod, mark as markmod
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -108,6 +109,14 @@ def main():
     p = P('preview', lambda a: print(render.preview(proj(a), a.scene, a.step) or 'ok')); p.add_argument('--scene', type=int); p.add_argument('--step', type=float, default=6)
     p = P('voices', lambda a: audio.voices(proj(a), story(a), text=a.text, el_model=a.model, el_voices=a.el.split(',') if a.el else None, openai_voices=a.oa.split(',') if a.oa else None)); p.add_argument('--text'); p.add_argument('--model', help='ElevenLabs model id, e.g. eleven_v4'); p.add_argument('--el', help='comma list of ElevenLabs voices'); p.add_argument('--oa', help='comma list of OpenAI voices')
     p = P('tts', lambda a: audio.tts(proj(a), story(a), voice=a.voice, only=set(a.only.split(',')) if a.only else None, force=a.force)); p.add_argument('--voice'); p.add_argument('--only'); p.add_argument('--force', action='store_true')
+    def crec(a):
+        if a.clear: return recmod.clear(proj(a))
+        if not a.files: raise SystemExit('faltan las grabaciones')
+        do_build(a, use_timings=False)
+        sc = [a.scene] if a.scene is not None else (list(range(a.first, a.last + 1)) if a.first is not None and a.last is not None else None)
+        recmod.record(proj(a), a.files, scenes=sc, model=a.model, reverb=a.reverb, lufs=a.lufs, lang=story(a)['meta'].get('lang', 'es'))
+    p = P('record', crec); p.add_argument('files', nargs='*', help='one or more recordings, in reading order'); p.add_argument('--scene', type=int); p.add_argument('--from', dest='first', type=int); p.add_argument('--to', dest='last', type=int)
+    p.add_argument('--model', default='small', help='faster-whisper model'); p.add_argument('--reverb', type=float, default=0.07, help='0 = none'); p.add_argument('--lufs', type=float, default=-18); p.add_argument('--clear', action='store_true')
     P('music', lambda a: print(audio.music(proj(a))))
     p = P('render', lambda a: render.render(proj(a), a.w, 30, a.scene, a.workers, a.limit, draft=a.draft)); p.add_argument('--w', type=int, default=1280); p.add_argument('--scene', type=int); p.add_argument('--workers', type=int, default=max(2, (os.cpu_count() or 4) - 2)); p.add_argument('--limit', type=float, default=0); p.add_argument('--draft', action='store_true')
     p = P('mux', lambda a: audio.mux(proj(a), music_only=a.music_only, burn=a.burn)); p.add_argument('--music-only', action='store_true'); p.add_argument('--burn', action='store_true')

@@ -82,10 +82,12 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
     beats = json.load(open(f'{root}/build/beats.json')); os.makedirs(f'{root}/audio/beats', exist_ok=True)
     tf = f'{root}/audio/timings.json'; T = json.load(open(tf)) if os.path.exists(tf) else {}
     hf = f'{root}/audio/hashes.json'; Hh = json.load(open(hf)) if os.path.exists(hf) else {}   # text+voice fingerprint per beat: edited beats or a new voice re-speak themselves
+    rf = f'{root}/audio/recorded.json'; R = json.load(open(rf)) if os.path.exists(rf) else {}   # beats cut from your own recordings (`record`)
+    if R: log(f'{len(R)} beats vienen de una grabación y no se generan (record --clear para volver a la voz sintética)')
     import hashlib
     for b in beats:
         i = b['id']
-        if only and i not in only: continue
+        if (only and i not in only) or i in R: continue
         p = f'{root}/audio/beats/{i}.mp3'
         hh = hashlib.sha1('|'.join([say(b['text']), model, voice, str(speed), instr]).encode()).hexdigest()[:12]
         if os.path.exists(p) and not force and i in T and Hh.get(i) == hh: continue
