@@ -17,7 +17,6 @@ for x in n[3:6]: x['until'] = '7d'
 n += chip('cc', 500, 430, '7c#chip', s=56, box_s=96)
 for j in range(4):
     n.append(P(f'cd{j}', 'dot', 470 + 20 * j, 470, 8, '7c#imitar', color='red', blink=.5, bf=6))
-n.append(N('ng', 'svg', 560, 400, 60, 60, '7c#nada', color='muted', paths=[dict(d='M50 20a30 30 0 1 0 .1 0Z', sw=2)], cap='sin brillo', capfs=11))
 # 7d — the container shuts with a padlock
 n.append(ic('lk', 'sigLock', 452, 384, 30, '7d#silicio', color='amber'))
 # 7e — a parrot next to the chip, repeating balls

@@ -18,8 +18,7 @@ n = [person('bp', HX, HY, '5b', color='blue', s=100),
      # 5c — blindsight: the signal climbs the layers, but the inner glow does not come on
      T('vc', 40, 36, 'visión ciega', '5c#ciega', color=TEAL, fs=20)]
 tw, TY = tower('v', 820, 470, '5c#procesó', floors=4, w=150, fh=34, gap=14, dots=False)
-n += tw + [P('sg', 'dot', 811, TY[0] - 9, 18, '5c#procesó+0.8', color='amber', move=[dict(at=f'5c#procesó+{1.6 + 0.8 * k_:.1f}', x=811, y=round(TY[k_] - 9), dur=0.8) for k_ in range(1, 4)]),
-           N('off', 'svg', 790, 60, 60, 60, '5c#experiencia', color='muted', paths=[dict(d='M50 20a30 30 0 1 0 .1 0Z', sw=2)], dashed=True, cap='sin brillo', capfs=11)]
+n += tw + [P('sg', 'dot', 811, TY[0] - 9, 18, '5c#procesó+0.8', color='amber', move=[dict(at=f'5c#procesó+{1.6 + 0.8 * k_:.1f}', x=811, y=round(TY[k_] - 9), dur=0.8) for k_ in range(1, 4)])]
 cues.append(K('5b', '5d', n, [], fs=1.0))
 
 # 5d — so abstraction alone is not enough: a puzzle-shaped hole in the building
