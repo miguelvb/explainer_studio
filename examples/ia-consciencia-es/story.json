@@ -1782,6 +1782,8 @@
         "h": 44,
         "at": "2e#nadie",
         "color": "muted",
+        "cap": "sin experiencia",
+        "capfs": 11,
         "paths": [
          {
           "d": "M12 50a38 38 0 1 0 76 0a38 38 0 1 0 -76 0Z",
@@ -10142,11 +10144,13 @@
         "id": "gh",
         "kind": "svg",
         "x": 798,
-        "y": 228,
+        "y": 203,
         "w": 44,
         "h": 44,
         "at": "5c#experiencia",
         "color": "muted",
+        "cap": "sin experiencia",
+        "capfs": 11,
         "paths": [
          {
           "d": "M12 50a38 38 0 1 0 76 0a38 38 0 1 0 -76 0Z",
@@ -15027,12 +15031,14 @@
        {
         "id": "ng",
         "kind": "svg",
-        "x": 568,
+        "x": 618,
         "y": 408,
         "w": 44,
         "h": 44,
         "at": "7c#nada",
         "color": "muted",
+        "cap": "sin experiencia",
+        "capfs": 11,
         "paths": [
          {
           "d": "M12 50a38 38 0 1 0 76 0a38 38 0 1 0 -76 0Z",
@@ -27437,13 +27443,15 @@
        {
         "id": "ng",
         "kind": "svg",
-        "x": 718,
+        "x": 788,
         "y": 258,
         "w": 44,
         "h": 44,
         "at": "10c#vacías",
         "color": "muted",
         "alpha": 0.8,
+        "cap": "sin experiencia",
+        "capfs": 11,
         "paths": [
          {
           "d": "M12 50a38 38 0 1 0 76 0a38 38 0 1 0 -76 0Z",

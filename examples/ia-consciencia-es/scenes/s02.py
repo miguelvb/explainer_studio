@@ -21,7 +21,7 @@ n = [person('hu', 300, 300, '2d#Eso', color='blue', s=90), glow('gh', 300, 270, 
      # 2e — a calculator multiplies at full speed; inside it, darkness
      P('ca', 'calc', 660, 270, 150, '2e#calculadora', color='muted'),
      W.counter('cn', 660, 150, 98765432, '2e#multiplica', w=240, fs=30, dur=2.6),
-     P('gc', 'ghost', 770, 270, 44, '2e#nadie', color='muted')]
+     P('gc', 'ghost', 770, 270, 44, '2e#nadie', color='muted', cap='sin experiencia', capfs=11)]
 n[-2]['x'] = 540
 cues.append(K('2d', '2f', n, [], fs=1.0))
 

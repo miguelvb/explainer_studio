@@ -14,7 +14,7 @@ HX, HY = 560, 330
 n = [person('bp', HX, HY, '5b', color='blue', s=100),
      N('ey', 'bar', HX - 24, HY - 62, 48, 8, '5b#dañada', color='muted', fill=1, rx=2),
      P('ob', 'stone', 230, 300, 34, '5b#objeto', color='amber'),
-     P('gh', 'ghost', 820, 250, 44, '5c#experiencia', color='muted'),
+     P('gh', 'ghost', 820, 225, 44, '5c#experiencia', color='muted', cap='sin experiencia', capfs=11),
      N('arm', 'bar', 260, HY - 4, HX - 300, 6, '5b#señalar', color='blue', fill=1, rx=3),
      # 5c — blindsight: the signal climbs the layers, but the inner glow does not come on
      T('vc', 40, 36, 'visión ciega', '5c#ciega', color=TEAL, fs=20)]
