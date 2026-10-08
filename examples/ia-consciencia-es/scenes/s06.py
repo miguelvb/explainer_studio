@@ -4,13 +4,17 @@ INTENSITY = 0.55
 cues = []
 
 
-def clue(id, k, at):
-    return T(id, 40, 36, str(k), at, color=TEAL, fs=26)
+# the five clue titles appear one by one at the top left and stay until the end of the scene
+TITLES = [('6a#Primera', 'Mapas del mundo'), ('6c', 'Estados como emociones'), ('6g', 'Mirar hacia dentro'),
+          ('6i', 'Relatos en primera persona'), ('6l', 'Coincidencias con el cerebro')]
+tn = [N(f'ti{k}', 'txt', 40, 8 + 22 * k, 380, 22, at, color=TEAL, fs=18, type=26, text=f'{k + 1} · {t}') for k, (at, t) in enumerate(TITLES)]
+tc = K('6a', 'E6', tn, [], fs=1.0); tc['bg'] = False; tc['fade'] = [0.3, 0.5]
+cues.append(tc)
 
 
 # 6a–6b — clue 1: models build maps of the world. Othello moves go in; an 8x8 board appears inside
 CX, CY = 600, 280
-n = [clue('n1', 1, '6a#Primera')] + chip('cp', CX, CY, '6a', s=70, box_s=230) + [N('lp', 'lupa', CX + 60, CY - 160, 80, 80, '6a#mapas', color='amber', until='6b')]
+n = chip('cp', CX, CY, '6a', s=70, box_s=230) + [N('lp', 'lupa', CX + 60, CY - 160, 80, 80, '6a#mapas', color='amber', until='6b')]
 n[-2]['until'] = '6b#dibujando'
 for i in range(8):
     n.append(P(f'mv{i}', 'stone', 80 + i * 30, CY - 10, 20, f'6b#jugadas+{0.15 * i:.2f}', color=['#E7EBF1', '#5A6474'][i % 2],
@@ -23,7 +27,7 @@ for j, (r, c) in enumerate(cells):
 cues.append(K('6a', '6c', n, [], fs=1.0))
 
 # 6c–6d — clue 2: emotion-like states. Coloured directions inside Claude; turning a knob makes one grow
-n = [clue('n2', 2, '6c')] + chip('ce', 420, 280, '6c', s=70, box_s=230)
+n = chip('ce', 420, 280, '6c', s=70, box_s=230)
 n[-1]['until'] = '6d#direcciones'
 DIRS = [('teal', 70), ('amber', 50), ('blue', 90), ('red', 40)]
 for j, (c, w) in enumerate(DIRS):
@@ -53,7 +57,7 @@ lk = [link('cy_box', 'rd', '6f#texto', color='teal', speed=.25, comm=True)]
 cues.append(K('6f', '6g', n, lk, fs=1.0))
 
 # 6g–6h — clue 3: looking inside. A syringe injects a coloured ball; the model answers with a ball of the same colour
-n = [clue('n3', 3, '6g')] + chip('ci', 480, 280, '6g', s=70) + [person('us', 820, 280, '6g', color='muted', s=46),
+n = chip('ci', 480, 280, '6g', s=70) + [person('us', 820, 280, '6g', color='muted', s=46),
      P('sy', 'syringe', 220, 200, 90, '6h#inyectan', color='muted'),
      P('vb', 'dot', 250, 225, 20, '6h#concepto', color=VIO, move=[dict(at='6h#concepto+1.4', x=470, y=270, dur=1.4)], until='6h#concepto+1.5')]
 lk = [link('ci_box', 'us', '6h#nombra', color=VIO, comm=True)]
@@ -61,7 +65,7 @@ cues.append(K('6g', '6i', n, lk, fs=1.0))
 
 # 6i — clue 4: Cameron Berg asks several models to focus on their own attention; each, with a little mirror, sends a ball
 CH = [(330, 200), (480, 200), (630, 200), (780, 200)]
-n = [clue('n4', 4, '6i'), person('bg', 120, 330, '6i#Berg', color='amber', s=60, cap='Berg', capfs=13)]
+n = [person('bg', 120, 330, '6i#Berg', color='amber', s=60, cap='Berg', capfs=13)]
 lk = []
 for j, (x, y) in enumerate(CH):
     t = f'6i#modelos+{0.3 * j:.1f}'
@@ -82,7 +86,7 @@ cues.append(K('6i', '6l', n, lk, fs=1.0))
 
 # 6l–6n — clue 5: coincidences with the brain. A small agent in a maze: soft shape for reward, sharp for punishment;
 #          then a mouse in a similar maze shows the same sharp shape; both overlap
-n = [clue('n5', 5, '6l'),
+n = [
      N('mz1', 'sandbox', 60, 120, 380, 300, '6m', color='muted', label='', rx=4),
      N('w1', 'bar', 160, 120, 6, 190, '6m', color='muted', fill=1, rx=0), N('w2', 'bar', 290, 230, 6, 190, '6m', color='muted', fill=1, rx=0),
      P('sta', 'star', 380, 170, 40, '6m#castigo-1.5', color='amber'),

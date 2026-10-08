@@ -20,7 +20,7 @@
    "Claude": "Clod",
    "Chalmers": "Chálmers",
    "Berkeley": "Bérkli",
-   "Othello": "Ozélo",
+   "Othello": "Otelo",
    "Hofstadter": "Jófstater",
    "Severance": "Séverans",
    "Locke": "Lok",
@@ -12157,21 +12157,90 @@
     {
      "a": "world",
      "at": "6a",
-     "until": "6c",
+     "until": "E6",
      "p": {
       "nodes": [
        {
-        "id": "n1",
+        "id": "ti0",
         "kind": "txt",
         "x": 40,
-        "y": 36,
-        "w": 18,
-        "h": 27,
+        "y": 8,
+        "w": 380,
+        "h": 22,
         "at": "6a#Primera",
         "color": "#3FD8C2",
-        "fs": 23,
-        "text": "1"
+        "fs": 18,
+        "type": 26,
+        "text": "1 · Mapas del mundo"
        },
+       {
+        "id": "ti1",
+        "kind": "txt",
+        "x": 40,
+        "y": 30,
+        "w": 380,
+        "h": 22,
+        "at": "6c",
+        "color": "#3FD8C2",
+        "fs": 18,
+        "type": 26,
+        "text": "2 · Estados como emociones"
+       },
+       {
+        "id": "ti2",
+        "kind": "txt",
+        "x": 40,
+        "y": 52,
+        "w": 380,
+        "h": 22,
+        "at": "6g",
+        "color": "#3FD8C2",
+        "fs": 18,
+        "type": 26,
+        "text": "3 · Mirar hacia dentro"
+       },
+       {
+        "id": "ti3",
+        "kind": "txt",
+        "x": 40,
+        "y": 74,
+        "w": 380,
+        "h": 22,
+        "at": "6i",
+        "color": "#3FD8C2",
+        "fs": 18,
+        "type": 26,
+        "text": "4 · Relatos en primera persona"
+       },
+       {
+        "id": "ti4",
+        "kind": "txt",
+        "x": 40,
+        "y": 96,
+        "w": 380,
+        "h": 22,
+        "at": "6l",
+        "color": "#3FD8C2",
+        "fs": 18,
+        "type": 26,
+        "text": "5 · Coincidencias con el cerebro"
+       }
+      ],
+      "links": [],
+      "fs": 1.0
+     },
+     "bg": false,
+     "fade": [
+      0.3,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "6a",
+     "until": "6c",
+     "p": {
+      "nodes": [
        {
         "id": "cp_box",
         "kind": "sandbox",
@@ -12840,18 +12909,6 @@
      "p": {
       "nodes": [
        {
-        "id": "n2",
-        "kind": "txt",
-        "x": 40,
-        "y": 36,
-        "w": 18,
-        "h": 27,
-        "at": "6c",
-        "color": "#3FD8C2",
-        "fs": 23,
-        "text": "2"
-       },
-       {
         "id": "ce_box",
         "kind": "sandbox",
         "x": 305,
@@ -13375,18 +13432,6 @@
      "p": {
       "nodes": [
        {
-        "id": "n3",
-        "kind": "txt",
-        "x": 40,
-        "y": 36,
-        "w": 18,
-        "h": 27,
-        "at": "6g",
-        "color": "#3FD8C2",
-        "fs": 23,
-        "text": "3"
-       },
-       {
         "id": "ci_box",
         "kind": "sandbox",
         "x": 420,
@@ -13502,18 +13547,6 @@
      "until": "6l",
      "p": {
       "nodes": [
-       {
-        "id": "n4",
-        "kind": "txt",
-        "x": 40,
-        "y": 36,
-        "w": 18,
-        "h": 27,
-        "at": "6i",
-        "color": "#3FD8C2",
-        "fs": 23,
-        "text": "4"
-       },
        {
         "id": "bg",
         "kind": "person",
@@ -14174,18 +14207,6 @@
      "until": "6o",
      "p": {
       "nodes": [
-       {
-        "id": "n5",
-        "kind": "txt",
-        "x": 40,
-        "y": 36,
-        "w": 18,
-        "h": 27,
-        "at": "6l",
-        "color": "#3FD8C2",
-        "fs": 23,
-        "text": "5"
-       },
        {
         "id": "mz1",
         "kind": "sandbox",

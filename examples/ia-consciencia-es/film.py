@@ -9,6 +9,6 @@ META = dict(
 PRONUNCIATION = {}
 # English names said in English (untested: try them with `voices` before the full TTS run)
 EL_PRONUNCIATION = {'Anthropic': 'Anzrópic', 'Claude': 'Clod', 'Chalmers': 'Chálmers', 'Berkeley': 'Bérkli',
-                    'Othello': 'Ozélo', 'Hofstadter': 'Jófstater', 'Severance': 'Séverans', 'Locke': 'Lok',
+                    'Othello': 'Otelo', 'Hofstadter': 'Jófstater', 'Severance': 'Séverans', 'Locke': 'Lok',
                     'Jankis': 'Yánkis', 'Seth': 'Sez', 'embedding': 'embéding'}
 META['el_pronunciation'] = EL_PRONUNCIATION
