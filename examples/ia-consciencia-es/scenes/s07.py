@@ -14,6 +14,7 @@ n = [N('sc0', 'scale', 370, 200, 220, 160, 0.05, color='amber', tilt=-1, until='
      P('lg', 'lungs', 640, 230, 90, '7b#mantiene', color='blue', blink=.3, bf=2)]
 # 7c — the chip copies the beat with points that light up, but inside there is no glow
 for x in n[3:6]: x['until'] = '7d'
+n.append(P('ng', 'ghost', 590, 430, 44, '7c#nada', color='muted'))
 n += chip('cc', 500, 430, '7c#chip', s=56, box_s=96)
 for j in range(4):
     n.append(P(f'cd{j}', 'dot', 470 + 20 * j, 470, 8, '7c#imitar', color='red', blink=.5, bf=6))
