@@ -149,7 +149,7 @@ def gx(n_): return PXo + math.log10(n_) * 170
 def gy(S_): return PYo - S_ * 10
 n = []; lk = []
 n += [T('f1', 50, 40, 'Σ', '4m#Flint', color=AMB, fs=54), T('f2', 105, 52, '1 /', '4m#uno', color='#E7EBF1', fs=34),
-      T('f3', 175, 52, 'n³', '4m#cubo', color='#E7EBF1', fs=34), T('f4', 235, 52, '· sen²(n)', '4m#seno', color='#E7EBF1', fs=34),
+      T('f3', 175, 52, 'n³', '4m#cubo', color='#E7EBF1', fs=34), T('f4', 235, 52, '· sin²(n)', '4m#seno', color='#E7EBF1', fs=34),
       T('f5', 520, 92, 'n = 1, 2, 3 …', '4m#igual', color=GRY, fs=20),
       N('fh', 'chip', 640, 40, 150, 26, '4m#Flint', color=AMB, label='Flint Hills', fs=13)]
 # axes
@@ -170,7 +170,7 @@ for j, k_ in enumerate(NS2):
     t = tj if j == 0 else f'4m#converja+{0.5 * (j - 1):.2f}'
     n.append(dot(f'pp{k_}', gx(k_), gy(PS(k_)), t, color=AMB if j else RED, s=8 if j else 12))
     lk.append(seg(prev, f'pp{k_}', t, AMB if j else RED)); prev = f'pp{k_}'
-n += [N('j1', 'chip', gx(355) - 190, gy(18) - 13, 120, 26, tj, color=RED, label='n = 355', fs=13), T('j2', gx(355) - 190, gy(18) + 18, 'sen(355) ≈ 0 → término enorme', '4m#parar+0.9', color=GRY, fs=12),
+n += [N('j1', 'chip', gx(355) - 190, gy(18) - 13, 120, 26, tj, color=RED, label='n = 355', fs=13), T('j2', gx(355) - 190, gy(18) + 18, 'sin(355) ≈ 0 → término enorme', '4m#parar+0.9', color=GRY, fs=12),
       T('v2', gx(355) + 12, gy(PS(355)) - 30, '29,4', tj, color=AMB, fs=18, until='4m#converja'),
       dot('lm0', PXo, gy(30.31), '4m#fijo', color=TEAL, s=5), dot('lm1', PXo + 640, gy(30.31), '4m#fijo', color=TEAL, s=5),
       T('v3', PXo + 560, gy(30.31) - 30, '≈ 30,3', '4m#fijo', color=TEAL, fs=22)]

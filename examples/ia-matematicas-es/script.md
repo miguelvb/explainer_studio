@@ -108,7 +108,7 @@
 > El medidor baja de golpe y se clava en 2; una bandera verde se enciende junto al símbolo π.
 
 **4m** De regalo, esa cota demuestra que converge una suma infinita que lleva años sin resolverse: la serie de Flint Hills. La suma es uno partido por n al cubo por el seno de n al cuadrado, para n igual a uno, dos, tres, y así sin parar. Que converja quiere decir que, sumando y sumando, el total deja de crecer y se acerca a un valor fijo.
-> Se escribe la fórmula Σ 1/(n³·sen²n) término a término. Debajo, una gráfica (n en escala logarítmica) donde la suma acumulada sube a escalones hasta 4,8, da un salto enorme en n = 355 (el seno casi se anula), sube a 29,4 y después se aplana en una línea de ≈ 30,3: converge.
+> Se escribe la fórmula Σ 1/(n³·sin²n) término a término. Debajo, una gráfica (n en escala logarítmica) donde la suma acumulada sube a escalones hasta 4,8, da un salto enorme en n = 355 (el seno casi se anula), sube a 29,4 y después se aplana en una línea de ≈ 30,3: converge.
 
 **4n** Además, el resumen de razonamiento que publican muestra al modelo probando una vía tras otra, y descartándolas. No es una chispa: es una búsqueda larga, con muchos callejones sin salida.
 > Una consola muestra líneas de intentos que van apareciendo y tachándose; un agente tachando caminos de un laberinto hasta llegar a una bandera.

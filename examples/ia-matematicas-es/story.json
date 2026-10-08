@@ -20805,7 +20805,7 @@
         "at": "4m#seno",
         "color": "#E7EBF1",
         "fs": 31,
-        "text": "· sen²(n)"
+        "text": "· sin²(n)"
        },
        {
         "id": "f5",
@@ -21154,7 +21154,7 @@
         "at": "4m#parar+0.9",
         "color": "#8C96A4",
         "fs": 11,
-        "text": "sen(355) ≈ 0 → término enorme"
+        "text": "sin(355) ≈ 0 → término enorme"
        },
        {
         "id": "v2",
