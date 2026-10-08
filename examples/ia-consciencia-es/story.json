@@ -3827,15 +3827,27 @@
      "p": {
       "nodes": [
        {
-        "id": "bl",
-        "kind": "bulb",
-        "x": 425,
-        "y": 195,
+        "id": "id",
+        "kind": "ideaSpark",
+        "x": 415,
+        "y": 215,
         "w": 110,
         "h": 110,
         "at": "4a#hipótesis",
-        "color": "amber",
-        "litAt": "4a#intuición"
+        "color": "#F6B94C",
+        "blink": 0.65,
+        "bf": 7,
+        "bat": "4a#hipótesis+0.4"
+       },
+       {
+        "id": "qh",
+        "kind": "question",
+        "x": 535,
+        "y": 170,
+        "w": 46,
+        "h": 46,
+        "at": "4a#hipótesis+0.6",
+        "color": "amber"
        }
       ],
       "links": [],

@@ -22,9 +22,10 @@ def tower(prefix, cx, base, at, floors=5, w=300, fh=46, gap=18, step=0.25, color
     return out, ys
 
 
-# 4a — a working hypothesis: Arkinos' small seal in the corner, a light bulb switches on
+# 4a — a working hypothesis: Arkinos' small seal in the corner; the idea star (house icon for an idea) with a question mark
 cues.append(dict(a='seal', at='4a', until='4b', p=dict(text='', small=True, at=0.2), bg=False))
-n = [W.bulb('bl', 480, 250, '4a#hipótesis', lit='4a#intuición', s=110)]
+n = [ic('id', 'ideaSpark', 470, 270, 110, '4a#hipótesis', color=AMB, blink=.65, bf=7, bat='4a#hipótesis+0.4'),
+     N('qh', 'question', 535, 170, 46, 46, '4a#hipótesis+0.6', color='amber')]
 cues.append(K('4a', '4b', n, [], fs=1.0))
 
 # 4b — every word becomes a point in a space of thousands of dimensions: a slowly drifting constellation
