@@ -25,7 +25,7 @@ cues.append(K('5b', '5d', n, [], fs=1.0))
 # 5d — so abstraction alone is not enough: a puzzle-shaped hole in the building
 TX, TB = 300, 480
 tw, TY = tower('t', TX, TB, 0.05)
-HOLE = (TX + 95, TY[4] - 28)
+HOLE = (TX, TY[4] - 70)   # the missing piece sits centred, above the top floor
 n = list(tw) + [P('hole', 'hole', HOLE[0], HOLE[1], 52, '5d#falta', color='muted')]
 # 5e — three candidate ingredients parade: broadcast to everything, loops, self-representation
 PZ = [(600, 180), (720, 180), (840, 180)]
@@ -43,7 +43,7 @@ n += [person('hf', 820, 470, '5g#Hofstadter', color='muted', s=40, cap='Hofstadt
         move=[dict(at=f'5g#capas+{0.6 * k_:.1f}', x=TX - 9, y=round(TY[k_] - 9), dur=0.6) for k_ in range(1, 5)] +
              [dict(at=f'5g#capas+{3.0 + 0.6 * k_:.1f}', x=TX - 9, y=round(TY[4 - k_] - 9), dur=0.6) for k_ in range(1, 5)]),
       P('lp', 'loop', TX - 120, TY[4] - 70, 64, '5g#sí_mismas', color='amber'),
-      P('mini', 'server', TX, TY[4] - 64, 38, '5g#mapa', color='blue', paths=[dict(d='M20 20h60v12h-60ZM20 44h60v12h-60ZM20 68h60v12h-60Z', sw=3)])]
+      P('mini', 'server', TX + 120, TY[4] - 70, 38, '5g#mapa', color='blue', paths=[dict(d='M20 20h60v12h-60ZM20 44h60v12h-60ZM20 68h60v12h-60Z', sw=3)])]
 # 5h — the mirror piece fits in the hole; for the first time, the glow lights inside the building
 for k_ in ('pz2', 'pi2'):
     d = [x for x in n if x['id'] == k_][0]
