@@ -1,6 +1,6 @@
 ## 0 · Gancho
 
-**0a** (pausa 2.4) Las matemáticas se aceleran: setecientos veintidós teoremas de una IA.
+**0a** (pausa 2.4) Las matemáticas se aceleran: setecientos veintidós teoremas de una inteligencia artificial.
 > Pantalla de título sobre fondo oscuro con el sello de Arkinos; el título se escribe a máquina y suena una campanilla.
 
 **0b** En octubre de 2025, un directivo de OpenAI anunció que su modelo había resuelto diez problemas matemáticos abiertos. Era falso: solo había encontrado soluciones que ya estaban publicadas.
@@ -141,7 +141,7 @@
 **6b** Thomas Bloom, que mantiene la web de los problemas de Erdős, avisó de otro riesgo: que haya demostraciones que ningún humano ha leído, ni va a leer.
 > Una persona rodeada de una pila de documentos enorme; una cita aparece sobre ella: «ningún humano lo ha leído».
 
-**6c** Noga Alon dijo que dejó de perseguir problemas de Erdős: si la IA los resuelve, ya no tiene sentido. Y veinticinco medallistas Fields firmaron una carta criticando el ritmo al que los laboratorios publican estos resultados.
+**6c** Noga Alon dijo que dejó de perseguir problemas de Erdős: si la inteligencia artificial los resuelve, ya no tiene sentido. Y veinticinco medallistas Fields firmaron una carta criticando el ritmo al que los laboratorios publican estos resultados.
 > Dos citas sobre dos personas; una fila de veinticinco figuras pequeñas con una carta que sale de ellas hacia el agente «OpenAI».
 
 **6d** Para ordenar el debate, OpenAI ha creado un grupo asesor en el Instituto de Estudios Avanzados de Princeton. Su poder es limitado: asesora sobre la importancia y la divulgación, pero no sobre el ritmo del trabajo.
@@ -149,7 +149,7 @@
 
 ## 7 · Cierre
 
-**7a** Entonces, ¿qué sabemos? Que en un año la IA ha pasado de repetir soluciones ajenas a refutar una conjetura de Erdős y a proponer demostraciones sobre pi.
+**7a** Entonces, ¿qué sabemos? Que en un año la inteligencia artificial ha pasado de repetir soluciones ajenas a refutar una conjetura de Erdős y a proponer demostraciones sobre pi.
 > La línea de tiempo completa de 2025 a 2026 con el agente creciendo y los contadores clave: 10 falsos, 722 manuscritos.
 
 **7b** Lo que no sabemos es cuántos de esos setecientos veintidós resultados resistirán la revisión, y si las matemáticas pueden revisar tan rápido como ahora se produce.
