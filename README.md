@@ -101,7 +101,7 @@ Escenas → `beats` (frases de voz, ids automáticos `3a`, `3b`…) y `cues` (qu
 
 ## 4. El asset `world` y `worldkit.py`
 
-La mayoría de escenas nuevas usan `world`: un diagrama persistente de 960×540 cuyos **nodos** aparecen y desaparecen con anclas, con **enlaces** entre ellos y una **cámara** (`cam`) que vuela entre nodos. `studio/worldkit.py` tiene los constructores: `agent_named`, `agent`, `agent_group`, `hugging_face`, `counter`, `clock`, `link`, `msg_feed`, `sheet`, `article`, `judge`, `console`, `folder_view`, `bulb`…
+La mayoría de escenas nuevas usan `world`: un diagrama persistente de 960×540 cuyos **nodos** aparecen y desaparecen con anclas, con **enlaces** entre ellos y una **cámara** (`cam`) que vuela entre nodos. `studio/worldkit.py` tiene los constructores: `agent_named`, `agent`, `agent_group`, `hugging_face`, `counter`, `clock`, `link`, `msg_feed`, `sheet`, `article`, `judge`, `console`, `folder_view`, `bulb`… y `pic` (dibujos de línea del catálogo `PICS`: chip, cerebro, murciélago, perro, puzle, espejo, servidor, paraguas…; nodo `svg`).
 
 Reglas del motor (valen para todas las escenas):
 

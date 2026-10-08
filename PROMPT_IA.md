@@ -44,6 +44,7 @@ Mapa del código:
 
 - **`examples/hf-swarm-vivido-es`** — *"El primer ataque de un enjambre de agentes"*, versión "como vivido": 21 escenas (0–20), la última con créditos. **Es la buena y la que se sigue puliendo.** Viene del antiguo proyecto `test`.
 - **Rama `antiguo-video`** — el antiguo `hf-swarm-vivido-es` descartado. No tocar.
+- **`ia-consciencia-es`** — *«¿Hay alguien ahí dentro?»* (consciencia e inteligencia artificial, ~10 min): 12 escenas construidas desde el guion con storyboard de Arkinos; previews revisadas, **sin voz ni render**. Usa dibujos de línea nuevos (`W.pic`, nodo `svg`, catálogo en `worldkit.PICS`). Pronunciaciones de nombres en inglés sin probar.
 - **`hf-rob-es`** (resumen en español del vídeo de Rob Wiblin, 80,000 Hours, ~10 min) — **en espera** hasta que el usuario diga adelante. Cuando toque: primero guion y storyboard en texto, luego PNG, luego render.
 - Otros proyectos de `examples/` (`hf-swarm-es`, `hf-incident*`, `mars-orbiter`, `cinematic-demo`, `opts`) son anteriores; no los des por abiertos sin preguntar.
 
