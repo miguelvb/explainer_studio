@@ -123,7 +123,7 @@ Marca A-constelación con doble anillo y envolvente de puntos, más créditos. P
 
 Resumen de `VISUAL_RULES.md` (léelo antes de diseñar una escena):
 
-1. **La película es una novela gráfica de lo que ocurre**, no pantallas de texto que repiten la voz.
+1. **La película es una novela gráfica de lo que ocurre**, no pantallas de texto que se limitan a repetir la voz (a veces se puede repetir una frase clave, una cita o un dato como apoyo).
 2. Agente = icono de OpenAI. Los mensajes se ven como **enlaces con bolitas** que viajan.
 3. El texto son **etiquetas pequeñas**; solo los números clave pueden ser grandes.
 4. **Espacio para respirar**, agentes pequeños, estética oscura/transparente.

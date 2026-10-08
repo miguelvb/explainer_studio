@@ -1,8 +1,9 @@
 # Regla visual nº 1 (la más importante)
 
-**Las películas son una novela gráfica de lo que ocurre, nunca pantallas de texto que repiten lo que dice la voz.**
+**Las películas son una novela gráfica de lo que ocurre, no pantallas de texto que se limitan a repetir lo que dice la voz.**
 
-- Para eso ya están los subtítulos. Una pantalla con la frase que se oye no significa nada: valdría igual para hablar de la geología de Marte.
+- Lo principal es la imagen de lo que pasa. Una pantalla que solo copia la frase que se oye no aporta nada: para eso ya están los subtítulos.
+- **A veces sí se puede repetir** en pantalla texto de la voz: una frase clave, una cita o un dato que refuerce la idea. Siempre como apoyo de la escena, no en lugar de ella.
 - Si la voz habla de un agente, **se ve un agente**. Si un agente manda un mensaje, **se ve a ese agente mandándolo** (el mensaje viajando hacia donde llega), no el texto del mensaje en una pantalla nueva.
 - Las letras solo son etiquetas pequeñas (un nombre, una fecha, un identificador largo en letra pequeña). Los números clave sí pueden ser grandes.
 - Los contenedores que agrupan varias cosas pueden ser grandes; el texto, no.

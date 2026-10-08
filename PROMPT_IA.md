@@ -16,7 +16,7 @@
 El usuario **no edita archivos `.py`**. Su único documento es `script.md`; tú traduces ese documento en escenas.
 
 1. **Entrada:** el usuario te pasa una idea, un informe, una transcripción… y te explica qué quiere (duración, tono, idioma, voz).
-2. **Tú escribes `script.md`:** la narración por escenas y frases (`## N · Título`, `**3a** frase`) y, **debajo de cada frase, una o dos líneas `> …` con la escena visual simple** ("aparece un agente y se ve que dice …", "el mensaje viaja hasta la caja de Hugging Face"). Respeta la regla visual nº 1: se muestra lo que ocurre, no texto repetido. Se crea el esqueleto con `python explainer.py newfilm -p examples/<nombre> --title "…"`.
+2. **Tú escribes `script.md`:** la narración por escenas y frases (`## N · Título`, `**3a** frase`) y, **debajo de cada frase, una o dos líneas `> …` con la escena visual simple** ("aparece un agente y se ve que dice …", "el mensaje viaja hasta la caja de Hugging Face"). Respeta la regla visual nº 1: se muestra lo que ocurre; el texto de la voz solo se repite a veces, como apoyo. Se crea el esqueleto con `python explainer.py newfilm -p examples/<nombre> --title "…"`.
 3. **El usuario corrige `script.md`** (texto y escenas visuales) y te lo devuelve; itera hasta aprobarlo.
 4. **Tú construyes** `scenes/sNN.py` siguiendo las líneas `>` ya aprobadas, `film.py` (voz, música, fondo, pronunciaciones) y los avisos de pronunciación de los términos en inglés; `gen` produce `story.json`.
 5. **Tú compruebas:** `validate` (0 errores) y vista previa en PNG de cada escena; arreglas lo que salga mal y se las enseñas al usuario antes del render.
@@ -70,7 +70,7 @@ render.preview(Path('examples/hf-swarm-vivido-es'), times=[...segundos...], w=64
 
 ## 4. Reglas visuales (no negociables)
 
-1. **Novela gráfica de lo que ocurre, nunca pantallas de texto que repiten la voz.** Si se habla de un agente, se ve un agente; si manda un mensaje, se ve viajar el mensaje. Las letras son solo etiquetas pequeñas; los números clave pueden ser grandes.
+1. **Novela gráfica de lo que ocurre, no pantallas de texto que se limitan a repetir la voz.** A veces se puede repetir en pantalla una frase clave, una cita o un dato de la voz, como apoyo de la escena. Si se habla de un agente, se ve un agente; si manda un mensaje, se ve viajar el mensaje. Las letras son solo etiquetas pequeñas; los números clave pueden ser grandes.
 2. Un "agente" es el **icono de OpenAI**, no una persona. Personajes simples; las acciones deben verse.
 3. **Composición con aire:** contenedores pequeños, agentes pequeños, mucho espacio vacío. "Cuántos" = contenedor abierto por arriba con filas que se desvanecen.
 4. **Fechas siempre con el mes escrito** ("08 julio 2026").
