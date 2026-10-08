@@ -74,8 +74,19 @@ def cmd_all(a):
     if sc is not None:
         import re as _re; only = {b['id'] for b in json.load(open(f'{proj(a)}/build/beats.json')) if _re.fullmatch(r'(\d+)[a-z]', b['id']) and int(b['id'][:-1]) in sc}
     if not a.skip_tts: audio.tts(proj(a), story(a), voice=a.voice, only=only)
-    do_build(a); render.render(proj(a), a.w, 30, scenes=sc, workers=a.workers, limit=a.limit, draft=a.draft, force=a.force_render)
-    audio.music(proj(a)); audio.mux(proj(a), burn=a.burn, music_only=a.skip_tts, scenes=sc)
+    do_build(a)
+    import time as _t
+    from studio import sound as snd
+    D_ = json.load(open(f'{proj(a)}/build/data.json'))
+    try: ms, nmiss = snd.estimate_music(proj(a), D_)
+    except Exception: ms, nmiss = 0.0, 0
+    S_ = D_['sched']; sel_ = (S_[f'E{sc[-1]}']['s'] - S_[f'S{sc[0]}']['s']) if sc else D_['total']
+    mux_s = 3 + 0.35 * sel_ / 60
+    render.EXTRA['s'] = ms + mux_s
+    print(f'  estimación de pasos posteriores al render: música ~{int(ms)} s' + (f' (incluye sintetizar {nmiss} bucles nuevos, solo esta vez)' if nmiss else '') + f' · mux ~{int(mux_s)} s')
+    render.render(proj(a), a.w, 30, scenes=sc, workers=a.workers, limit=a.limit, draft=a.draft, force=a.force_render)
+    t0 = _t.time(); print('  música…'); audio.music(proj(a)); print(f'  música lista en {int(_t.time() - t0)} s (estimado ~{int(ms)} s)')
+    t0 = _t.time(); print('  mux…'); audio.mux(proj(a), burn=a.burn, music_only=a.skip_tts, scenes=sc); print(f'  mux listo en {int(_t.time() - t0)} s (estimado ~{int(mux_s)} s)')
 
 
 def main():

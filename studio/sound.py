@@ -570,6 +570,10 @@ def loop_len(style):
 
 
 def _synth_stem(args):
+    import time as _t; _t0 = _t.time(); return _synth_stem_x(args), _t.time() - _t0
+
+
+def _synth_stem_x(args):
     style, I, T = args; Ln = loop_len(style); span = Ln / SR + LOOP_TAIL; total = LOOP_PRE + span
     if style == 'pad':
         import tempfile, shutil, os; from . import audio
@@ -604,9 +608,9 @@ def ensure_loops(styles, log=print):
         with cf.ProcessPoolExecutor(max_workers=max(1, min(3, (os.cpu_count() or 2) - 1))) as ex:
             futs = {ex.submit(_synth_stem, (st, I, T)): (st, I, T, p) for st, I, T, p in todo}
             for f in cf.as_completed(futs):
-                st, I, T, p = futs[f]; x = f.result(); pk = float(np.abs(x).max()) or 1.0
+                st, I, T, p = futs[f]; (x, secs) = f.result(); pk = float(np.abs(x).max()) or 1.0
                 mm = np.lib.format.open_memmap(p, mode='w+', dtype=np.int16, shape=x.shape); mm[:] = (x / pk * 32767).astype(np.int16); mm.flush(); del mm
-                json.dump(dict(peak=pk), open(p + '.json', 'w')); done += 1; log(f'    loop {st} I={I} T={T}  ({done}/{len(todo)})')
+                json.dump(dict(peak=pk, secs=round(secs, 1)), open(p + '.json', 'w')); done += 1; log(f'    loop {st} I={I} T={T}  ({done}/{len(todo)})')
     out = {}
     for st in styles:
         stems = {}
@@ -625,6 +629,25 @@ def loop_block(stems, st, i0, i1, I, T):
     calm = g((.2, 0)) * w0 + g((.6, 0)) * w1 + g((1.0, 0)) * w2
     if float(T.max()) > 1e-3: calm = calm * (1 - T) + g((.6, 1)) * T
     return calm
+
+
+_STEM_S = {'pad': 45.0, 'cinema': 20.0, 'bells': 12.0, 'data': 20.0, 'pulse': 15.0}      # default CPU-seconds per stem when nothing has been measured yet
+
+
+def estimate_music(root, D=None):
+    """Seconds the music step will take for this film: loops not yet in the shared cache (parallel synthesis) + the mix (~2.6 s per film-minute)."""
+    import os
+    D = D or json.load(open(f'{root}/build/data.json')); st = json.load(open(f'{root}/story.json')); meta = st['meta']
+    if meta.get('music_style') != 'mix': return 0.04 * D['total'] + 5, 0
+    default = meta.get('music_default', {'cinema': 1.0}); styles = sorted({k for sc in st['scenes'] for k in _norm_mix(sc.get('music'), default)})
+    d = loop_dir(); cpu = 0.0; nmiss = 0
+    for s_ in styles:
+        for I, T in LOOP_STEMS:
+            p = f'{d}/{s_}_{I}_{T}_v{MUSIC_VERSION}_{MUSIC_LOOP_VERSION}.npy'
+            if not (os.path.exists(p) and os.path.exists(p + '.json')): cpu += _STEM_S.get(s_, 20.0); nmiss += 1
+    par = max(1, min(3, (os.cpu_count() or 2) - 1))
+    return cpu / par + 2.6 * D['total'] / 60 + 6, nmiss
+
 
 
 def render_mix(root, D=None, out=None, log=print):

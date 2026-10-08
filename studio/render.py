@@ -68,7 +68,7 @@ def render(root, w=1280, fps=30, scene=None, workers=2, limit=0, scenes=None, dr
         if not force and now - PR['last'] < (2 if sys.stdout.isatty() else 20): return
         PR['last'] = now; el = now - PR['t']; d, T = PR['done'], max(1, PR['total']); rate = d / el if el > 1 else 0
         eta = (T - d) / rate if rate else 0
-        msg = f"  progreso {100 * d / T:5.1f}%  escenas {PR['sdone']}/{PR['scenes']}  frames {d}/{T}  transcurrido {_fmt(el)}  falta ~{_fmt(eta) if rate else '?'}  total est. ~{_fmt(el + eta) if rate else '?'}  {rate:.1f} fps  en curso: {','.join(str(a) for a in sorted(PR['active']))}"
+        msg = f"  progreso {100 * d / T:5.1f}%  escenas {PR['sdone']}/{PR['scenes']}  frames {d}/{T}  transcurrido {_fmt(el)}  falta ~{_fmt(eta) if rate else '?'}  total est. ~{_fmt(el + eta + EXTRA['s']) if rate else '?'} (con música+mux ~{_fmt(EXTRA['s'])})  {rate:.1f} fps  en curso: {','.join(str(a) for a in sorted(PR['active']))}"
         if sys.stdout.isatty(): sys.stdout.write('\r' + msg[:shutil.get_terminal_size((160, 20)).columns - 1].ljust(shutil.get_terminal_size((160, 20)).columns - 1)); sys.stdout.flush()
         else: log(msg)
 
@@ -145,6 +145,9 @@ def preview(root, scene=None, step=6.0, w=640, times=None, log=print):
     except ImportError:
         log(f'{len(times)} frames in {b}/preview/ (install Pillow for a contact sheet)')
     return errs
+
+
+EXTRA = {'s': 0.0}      # seconds of work after the frames (music + mux), added to the estimates; set by explainer.py all
 
 
 PROBE = """(a)=>{const out=[];const [sched,cues,total]=a;
