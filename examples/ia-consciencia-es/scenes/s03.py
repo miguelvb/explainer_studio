@@ -30,21 +30,23 @@ cues.append(K('3c', '3e', n, [], fs=1.0, cam=cm))
 # 3e — an avalanche of books and pages goes into the chip; among them a little sci-fi robot whose eyes light up
 CX, CY = 640, 290
 n = chip('ce', CX, CY, 0.05, s=70)
+for x in n:   # 3h — the chip goes to the centre of the picture
+    x['move'] = [dict(at='3h+1.4', x=480 - x['w'] // 2, y=270 - x['h'] // 2, dur=1.2)]
 for i in range(14):
     nm = ['book', 'page', 'page', 'book'][i % 4]
     y0 = 90 + (i * 53) % 360; t = f'3e#entrenamos+{0.35 * i:.2f}'
     n.append(P(f'bk{i}', nm, 80, y0, 44, t, color='muted', move=[dict(at=f'3e#entrenamos+{0.35 * i + 1.6:.2f}', x=CX - 22, y=CY - 22, dur=1.6)],
                until=f'3e#entrenamos+{0.35 * i + 1.7:.2f}'))
-n += [P('rb', 'robot', 300, 400, 70, '3e#robots', color='teal', litAt='3e#despiertan'),
+n += [P('rb', 'robot', 300, 400, 70, '3e#robots', color='teal', litAt='3e#despiertan', until='3h'),
       # 3f — a big hand (the company) puts a lid on the chip's container
       P('hd', 'hand', CX, 40, 90, '3f', color='muted', move=[dict(at='3f#entrenarlas', x=CX - 45, y=110, dur=1.4)], until='3g'),
-      N('ld', 'svg', CX - 70, 150, 140, 40, '3f', color='muted', paths=W.PICS['lid'], move=[dict(at='3f#entrenarlas', x=CX - 70, y=CY - 80 - 20, dur=1.4)])]
+      N('ld', 'svg', CX - 70, 150, 140, 40, '3f', color='muted', paths=W.PICS['lid'], move=[dict(at='3f#entrenarlas', x=CX - 70, y=CY - 80 - 20, dur=1.4)], until='3h')]
 # 3g — a green ball and a red ball leave the chip; both fade before arriving
 n += [P('yes', 'dot', CX + 80, CY - 20, 24, '3g#sí', color='teal', move=[dict(at='3g#sí+2.0', x=CX + 220, y=CY - 50, dur=2.0)], until='3g#sí+1.6'),
       P('no', 'dot', CX + 80, CY + 20, 24, '3g#no', color='red', move=[dict(at='3g#no+2.0', x=CX + 220, y=CY + 50, dur=2.0)], until='3g#no+1.6'),
-      person('obs', 900, CY, '3g', color='muted', s=40),
+      person('obs', 900, CY, '3g', color='muted', s=40, until='3h'),
       # 3h — a magnifier over the chip
-      N('lp', 'lupa', CX - 10, CY - 120, 90, 90, '3h#investigar', color='amber')]
+      N('lp', 'lupa', 470, 150, 90, 90, '3h#investigar', color='amber')]
 # 3i — the camera pulls away into an empty dark space
-cm = [dict(at='3e', x=50, y=50, z=1), dict(at='3i#idea', x=50, y=50, z=1), dict(at='>3i+0.8', to='ce', z=.35, dur=3.0)]
+cm = [dict(at='3e', x=50, y=50, z=1), dict(at='3i#idea', x=50, y=50, z=1), dict(at='>3i+0.8', x=50, y=50, z=.35, dur=3.0)]
 cues.append(K('3e', 'E3', n, [], fs=1.0, cam=cm))

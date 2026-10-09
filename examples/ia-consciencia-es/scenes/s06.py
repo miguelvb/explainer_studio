@@ -6,7 +6,7 @@ cues = []
 
 # the five clue titles appear one by one at the top left and stay until the end of the scene
 TITLES = [('6a#Primera', 'Mapas del mundo'), ('6c', 'Estados como emociones'), ('6g', 'Mirar hacia dentro'),
-          ('6i', 'Relatos en primera persona'), ('6l', 'Coincidencias con el cerebro')]
+          ('6i', 'Relatos en primera persona'), ('6l', 'Coincidencias con el cerebro'), ('6o', 'Un espacio de trabajo')]
 tn = [N(f'ti{k}', 'txt', 40, 8 + 22 * k, 380, 22, at, color=TEAL, fs=18, type=26, text=f'{k + 1} · {t}') for k, (at, t) in enumerate(TITLES)]
 tc = K('6a', 'E6', tn, [], fs=1.0); tc['bg'] = False; tc['fade'] = [0.3, 0.5]
 cues.append(tc)
@@ -44,8 +44,8 @@ n = chip('cx', CX, CY, 0.05, s=60, box=False, move=[dict(at='6e#trampa', x=CX - 
 n += [P('fn', 'fence', 520, 300, 110, 0.05, color='muted')]
 for j in range(6):
     t = f'6e#fallo+{0.55 * j:.2f}'
-    n += [ic(f'ko{j}', 'koA', 120 + 40 * j, 120, 26, t, color='red'),
-          N(f'm{j}', 'bar', 160, 420 - 26 * j, 34, 18, t, color='red', fill=1, rx=1)]
+    n += [ic(f'ko{j}', 'koA', 120 + 40 * j, 120, 26, t, color='red', nosfx=True),   # the failures make no sound
+          N(f'm{j}', 'bar', 160, 420 - 26 * j, 34, 18, t, color='red', fill=1, rx=1, nosfx=True)]
 n += [T('mt', 136, 446, 'desesperación', '6e#desesperación', color=GRY, fs=12)]
 cues.append(K('6e', '6f', n, [], fs=1.0))
 
@@ -98,22 +98,49 @@ n = [
      P('ms', 'mouse', 575, 380, 50, '6n#ratón', color='amber'),
      P('stb', 'star', 840, 170, 40, '6n#ratón', color='amber'), P('bm3', 'bump', 690, 400, 40, '6n#ratón', color='red'), P('bm4', 'bump', 820, 400, 40, '6n#ratón', color='red'),
      P('sp2', 'sharp', 790, 470, 44, '6n#patrón', color='red', move=[dict(at='6n#encontró+1.4', x=308, y=448, dur=1.4)])]
+n = [d for x in n for d in (x if isinstance(x, list) else [x])]
+for x in n:   # clear of the list of titles
+    x['y'] += 24
+    for m in x.get('move', []): m['y'] += 24
 cues.append(K('6l', '6o', n, [], fs=1.0))
 
-# 6o — none of this proves feeling: the five clues as small icons in a row
-n = [P('i1', 'board8', 200, 240, 60, '6o', color='teal'), P('i2', 'knob2', 340, 240, 60, '6o+0.2', color='red'),
-     P('i3', 'syringe', 480, 240, 60, '6o+0.4', color='muted'), P('i4', 'mirror', 620, 240, 60, '6o+0.6', color='teal'),
-     P('i5', 'sharp', 760, 240, 60, '6o+0.8', color='red')]
-for j in range(5): n.append(T(f'il{j}', 196 + 140 * j, 290, str(j + 1), '6o+%.1f' % (0.2 * j), color=GRY, fs=14))
-# 6p — like the fish: weak pieces of evidence that, together, weigh a lot. A scale tips little by little
+# 6o–6r — clue 6: the workspace (J-space). A small central box with word-dots, linked to many points of the chip
+CX, CY = 480, 300
+n = [N('jc_box', 'sandbox', 330, 150, 300, 300, '6o', color='teal', label=''), W.pic('jc', 'chip', 342, 162, 40, 40, '6o', color='blue'),
+     N('jb', 'sandbox', CX - 55, CY - 35, 110, 70, '6p#J-space', color='amber', label='', rx=6),
+     T('jl', CX - 30, CY + 42, 'J-space', '6p#J-space', color=AMB, fs=13)]
+for i, (dx, dy) in enumerate([(-30, -12), (-8, 8), (14, -14), (30, 6), (-18, 18), (8, -2)]):
+    n.append(P(f'jw{i}', 'dot', CX + dx - 4, CY + dy - 4, 8, f'6p#palabras+{0.2 * i:.1f}', color='amber'))
+lk = []
+for i in range(8):
+    a = i * math.pi / 4 + .39; px, py = CX + 118 * math.cos(a), CY + 100 * math.sin(a)
+    n.append(P(f'jp{i}', 'dot', px - 7, py - 7, 14, f'6p#compartido+{0.12 * i:.2f}', color='blue'))
+    lk.append(link('jb', f'jp{i}', f'6p#compartido+{0.12 * i + 0.3:.2f}', color='amber', bi=True, speed=.4, comm=True, until='6q#apaga'))
+# 6q — the space is switched off (flicker); the chip keeps talking, but a three-step chain breaks at the third step
+for x in n:
+    if x['id'] in ('jb', 'jl') or x['id'].startswith('jw'): x['flick'] = dict(at='6q#apaga', dur=1.6, end='off')
+n += [person('jr', 800, 300, '6q#fluidez', color='muted', s=46),
+      ch('s1', 380, 500, 60, 'paso 1', '6q#razonar', color='teal'), ch('s2', 480, 500, 60, 'paso 2', '6q#razonar+0.4', color='teal'), ch('s3', 580, 500, 60, 'paso 3', '6q#razonar+0.8', color='teal'),
+      ic('x3', 'koA', 580, 470, 22, '6q#pasos', color='red', nosfx=True)]
+lk += [link('jc_box', 'jr', '6q#fluidez', color='teal', speed=.3, comm=True), OR('s1', 's2', '6q#razonar+0.6', 'teal'), OR('s2', 's3', '6q#razonar+1.0', 'teal', until='6q#pasos')]
+# 6r — what one of the theories asks for: the piece of the puzzle with arrows to every side
+n += puz('jz', 780, 150, 100, 'arrows', '6r#espacio', color='blue')
+cues.append(K('6o', '6s', n, lk, fs=1.0))
+
+# 6s — none of this proves feeling: the six clues as small icons in a row
+n = [P('i1', 'board8', 120, 240, 60, '6s', color='teal'), P('i2', 'knob2', 260, 240, 60, '6s+0.2', color='red'),
+     P('i3', 'syringe', 400, 240, 60, '6s+0.4', color='muted'), P('i4', 'mirror', 540, 240, 60, '6s+0.6', color='teal'),
+     P('i5', 'sharp', 680, 240, 60, '6s+0.8', color='red'), P('i6', 'arrows', 820, 240, 60, '6s+1.0', color='blue')]
+for j in range(6): n.append(T(f'il{j}', 150 + 140 * j, 290, str(j + 1), '6s+%.1f' % (0.2 * j), color=GRY, fs=14))
+# 6t — like the fish: weak pieces of evidence that, together, weigh a lot. A scale tips little by little
 SC = (620, 380)
-n2 = [P('fs', 'fish', 260, 400, 110, '6p#peces', color='blue')]
+n2 = [P('fs', 'fish', 260, 400, 110, '6t#peces', color='blue')]
 for j, tl in enumerate([0, -.2, -.45, -.7, -1]):
-    t = f'6p#débiles+{0.9 * j:.1f}'
-    u = f'6p#débiles+{0.9 * (j + 1):.1f}' if j < 4 else None
-    n2.append(N(f'sc{j}', 'scale', SC[0] - 110, SC[1] - 80, 220, 160, t if j else '6p#peces', color='amber', tilt=tl, until=u))
+    t = f'6t#débiles+{0.9 * j:.1f}'
+    u = f'6t#débiles+{0.9 * (j + 1):.1f}' if j < 4 else None
+    n2.append(N(f'sc{j}', 'scale', SC[0] - 110, SC[1] - 80, 220, 160, t if j else '6t#peces', color='amber', tilt=tl, until=u))
 for j in range(5):
-    n2.append(P(f'pc{j}', 'stone', SC[0] - 92 + 7 * (j - 2), 260, 12, f'6p#débiles{0.9 * j - 0.5:+.1f}', color='teal',
-                move=[dict(at=f'6p#débiles+{0.9 * j:.1f}', x=SC[0] - 98 + 7 * (j - 2), y=SC[1] + 2 + 2 * j, dur=0.5)]))
-for x in n: x.setdefault('until', '6p')
-cues.append(K('6o', 'E6', n + n2, [], fs=1.0))
+    n2.append(P(f'pc{j}', 'stone', SC[0] - 92 + 7 * (j - 2), 260, 12, f'6t#débiles{0.9 * j - 0.5:+.1f}', color='teal',
+                move=[dict(at=f'6t#débiles+{0.9 * j:.1f}', x=SC[0] - 98 + 7 * (j - 2), y=SC[1] + 2 + 2 * j, dur=0.5)]))
+for x in n: x.setdefault('until', '6t')
+cues.append(K('6s', 'E6', n + n2, [], fs=1.0))

@@ -130,7 +130,7 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **4a** Lo que sigue es una hipótesis de trabajo: no es un hecho demostrado, es una intuición, y la vamos a poner a prueba.
 > Sello pequeño de Arkinos en una esquina. Una bombilla esquemática se enciende.
 
-**4b** Dentro de un modelo de lenguaje, cada palabra se convierte en un punto dentro de un espacio de miles de dimensiones.
+**4b** Se sabe que, dentro de un modelo de lenguaje, cada palabra se convierte en un punto dentro de un espacio de miles de dimensiones.
 > Nube de puntos que flota y gira despacio, como una constelación.
 
 **4c** Las palabras parecidas quedan cerca unas de otras.
@@ -229,10 +229,22 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **6n** Después buscó el mismo patrón en cerebros de ratón, y lo encontró.
 > Un ratón en un laberinto parecido. Dentro de su cerebro aparece la misma forma afilada. Las dos formas se superponen y coinciden.
 
-**6o** Ninguna de estas pistas demuestra que sientan.
-> Las cinco pistas como iconos pequeños en fila.
+**6o** Sexta pista: un espacio de trabajo.
+> Rótulo pequeño «6».
 
-**6p** Pero recuerdan cómo la ciencia llegó a aceptar que los peces sienten dolor: con pruebas débiles por separado que, juntas, pesaban mucho.
+**6p** Anthropic ha encontrado dentro de Claude lo que llama el J-space: unas pocas decenas de conceptos, en forma de palabras, que el modelo usa como espacio compartido para razonar, sin escribirlos.
+> Dentro del chip, un pequeño recuadro central «J-space» con unos puntos-palabra; de él salen enlaces hacia muchos puntos del chip, que reciben y devuelven bolitas.
+
+**6q** Si se apaga ese espacio, Claude sigue hablando con fluidez, pero deja de razonar en varios pasos.
+> El recuadro central se apaga con parpadeo. Las bolitas de mensaje siguen saliendo al exterior; una cadena de tres pasos se corta en el tercero, con una cruz.
+
+**6r** Es justo lo que pide una de las teorías: un espacio donde la información se comparte con todo el sistema.
+> La pieza de puzle de las flechas hacia todos lados encaja junto al recuadro central.
+
+**6s** Ninguna de estas pistas demuestra que sientan.
+> Las seis pistas como iconos pequeños en fila.
+
+**6t** Pero recuerdan cómo la ciencia llegó a aceptar que los peces sienten dolor: con pruebas débiles por separado que, juntas, pesaban mucho.
 > Un pez. Sobre una balanza van cayendo piezas pequeñas; la balanza se inclina poco a poco.
 
 ## 7 · El otro lado
@@ -326,7 +338,7 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **9c** Berg midió cuántos de los rasgos que piden las teorías de la consciencia tienen distintos sistemas.
 > Una regla horizontal vacía.
 
-**9d** Los modelos de lenguaje salen entre un 20 y un 40 %; las abejas, cerca del 50; los humanos, alrededor del 90.
+**9d** Los modelos de lenguaje salen entre un 20 y un 40 %; las abejas, cerca del 50; los pulpos y los cuervos, entre el 60 y el 80; los humanos, alrededor del 90.
 > Sobre la regla aparecen en orden: el chip (20–40), una abeja (≈50), un pulpo y un cuervo (60–80), una persona (≈90).
 
 **9e** Y la investigadora Noa Weiss, con mucha incertidumbre, cree más probable que no que alguna inteligencia artificial de hoy ya sea consciente.

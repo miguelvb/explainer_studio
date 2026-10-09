@@ -31,6 +31,39 @@ def person(id, cx, cy, at, color='blue', s=40, **k):
     return N(id, 'person', cx - s * .45, cy - s * .8, s * .9, s * 1.6, at, color=color, **k)
 
 
+def puz(id, cx, cy, size, icon, at, color='blue', kind='puzzle', until=None, move=None, **k):
+    """Puzzle piece (or its dark `hole`) of `size` px with its drawing inside the body of the piece, clear of the notch and the knobs.
+    move = [dict(at, cx, cy, dur)] moves both parts together. Returns [piece, content] (ids `id` and `id`+'i')."""
+    isz = size * .40
+    out = []
+    for nid, nm, x, y, w in ((id, kind, cx - size / 2, cy - size / 2, size), (id + 'i', icon, cx + .07 * size - isz / 2, cy + .11 * size - isz / 2, isz)):
+        d = W.pic(nid, nm, x, y, w, w, at, color=color, until=until, **k)
+        if move:
+            off = (0, 0) if nid == id else (cx + .07 * size - isz / 2 - (cx - size / 2), cy + .11 * size - isz / 2 - (cy - size / 2))
+            d['move'] = [dict(at=m['at'], x=round(m['cx'] - size / 2 + off[0]), y=round(m['cy'] - size / 2 + off[1]), dur=m.get('dur', 1.2)) for m in move]
+        out.append(d)
+    return out
+
+
+def arrow(id, x1, y1, x2, y2, at, color='blue', sw=2.6, head=11, until=None, **k):
+    """Straight line from (x1, y1) to (x2, y2) with an arrow head at the end (a free line drawing)."""
+    cx, cy = (x1 + x2) / 2, (y1 + y2) / 2; S = max(abs(x2 - x1), abs(y2 - y1)) + 40; kk = S / 100
+    L = lambda x, y: (round((x - cx) / kk + 50, 2), round((y - cy) / kk + 50, 2))
+    a = math.atan2(y2 - y1, x2 - x1); (p1, p2) = L(x1, y1), L(x2, y2)
+    h1 = L(x2 - head * math.cos(a - .45), y2 - head * math.sin(a - .45)); h2 = L(x2 - head * math.cos(a + .45), y2 - head * math.sin(a + .45))
+    d = f'M{p1[0]} {p1[1]}L{p2[0]} {p2[1]}M{h1[0]} {h1[1]}L{p2[0]} {p2[1]}L{h2[0]} {h2[1]}'
+    return N(id, 'svg', cx - S / 2, cy - S / 2, S, S, at, color=color, paths=[dict(d=d, sw=sw)], until=until, **k)
+
+
+def noexp(prefix, cx, y, at, until=None, color=GRY):
+    """The caption «sin experiencia / interna» in two lines, centred on cx."""
+    out = []
+    for j, t in enumerate(('sin experiencia', 'interna')):
+        fs = 11; w = len(t) * fs * CW
+        out.append(N(f'{prefix}{j}', 'txt', cx - w / 2, y + 14 * j, w + 4, fs + 4, at, color=color, fs=fs, text=t, until=until))
+    return out
+
+
 def wrap(text, cols):
     lines, cur = [], ''
     for w in text.split(' '):

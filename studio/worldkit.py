@@ -224,6 +224,7 @@ PICS = {
     'knob2': [dict(d=_circ(50, 50, 30), f='#171D26'), dict(d='M50 50H76', sw=4), dict(d='M14 76l-4 4M86 76l4 4M50 8v-4M20 26l-3-3M80 26l3-3', sw=2, so=.6)],
     'soft': [dict(d='M50 18q30 0 30 32t-30 32q-30 0-30-32t30-32Z', f=1, fo=.25)],
     'sharp': [dict(d='M50 8l10 26l28-8l-16 24l18 22l-28-2l-12 26l-12-26l-28 2l18-22l-16-24l28 8Z', f=1, fo=.25)],
+    'smile': [dict(d='M36 40h0.5M64 40h0.5', sw=7), dict(d='M30 56q20 22 40 0', sw=5)],
     'face': [dict(d=_circ(50, 50, 36), f='#171D26'), dict(d='M38 42h0.5M62 42h0.5', sw=4), dict(d='M34 58q16 16 32 0', sw=2.6)],
     'notes': [dict(d='M16 30h52v58h-52Z', f='#171D26'), dict(d='M24 22h52v58', sw=1.8, so=.8), dict(d='M32 14h52v58', sw=1.6, so=.6), dict(d='M24 46h36M24 58h36M24 70h24', sw=1.6, so=.7)],
 }

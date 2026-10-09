@@ -12,31 +12,32 @@ cues.append(K('5a', '5b', n, [], fs=1.0, cam=cm))
 # 5b — a person whose eyes are 'off'; a ball appears on their left and the arm points at it precisely
 HX, HY = 560, 330
 n = [person('bp', HX, HY, '5b', color='blue', s=100),
-     N('ey', 'bar', HX - 24, HY - 62, 48, 8, '5b#dañada', color='muted', fill=1, rx=2),
-     P('ob', 'stone', 230, 300, 34, '5b#objeto', color='amber'),
-     N('arm', 'bar', 260, HY - 4, HX - 300, 6, '5b#señalar', color='blue', fill=1, rx=3),
+     N('ey1', 'bar', HX - 15, HY - 38, 12, 4, '5b#dañada', color='muted', fill=1, rx=1),   # the eyes switched off
+     N('ey2', 'bar', HX + 3, HY - 38, 12, 4, '5b#dañada', color='muted', fill=1, rx=1),
+     P('ob', 'stone', 247, HY + 19, 34, '5b#objeto', color='amber'),
+     arrow('arm', HX - 40, HY + 19, 272, HY + 19, '5b#señalar', color='blue'),   # from the arm to the ball
      # 5c — blindsight: the signal climbs the layers, but the inner glow does not come on
      T('vc', 40, 36, 'visión ciega', '5c#ciega', color=TEAL, fs=20)]
 tw, TY = tower('v', 820, 470, '5c#procesó', floors=4, w=150, fh=34, gap=14, dots=False)
 n += tw + [P('sg', 'dot', 811, TY[0] - 9, 18, '5c#procesó+0.8', color='amber', move=[dict(at=f'5c#procesó+{1.6 + 0.8 * k_:.1f}', x=811, y=round(TY[k_] - 9), dur=0.8) for k_ in range(1, 4)]),
-           N('off', 'svg', 790, 60, 60, 60, '5c#experiencia', color='muted', paths=[dict(d='M50 20a30 30 0 1 0 .1 0Z', sw=2)], dashed=True, cap='sin experiencia', capfs=11)]
+           N('off', 'svg', 790, 60, 60, 60, '5c#experiencia', color='muted', paths=[dict(d='M50 20a30 30 0 1 0 .1 0Z', sw=2)], dashed=True),
+           *noexp('ox', 820, 134, '5c#experiencia')]
 cues.append(K('5b', '5d', n, [], fs=1.0))
 
-# 5d — so abstraction alone is not enough: a puzzle-shaped hole in the building
+# 5d — so abstraction alone is not enough: a puzzle-shaped hole in the building (centred, above the top floor)
 TX, TB = 300, 480
 tw, TY = tower('t', TX, TB, 0.05)
-HOLE = (TX, TY[4] - 70)   # the missing piece sits centred, above the top floor
-n = list(tw) + [P('hole', 'hole', HOLE[0], HOLE[1], 52, '5d#falta', color='muted')]
+HOLE = (TX, TY[4] - 70)
+n = list(tw) + [W.pic('hole', 'hole', HOLE[0] - 50, HOLE[1] - 50, 100, 100, '5d#falta', color='muted', until='5h#mira+1.6')]   # it goes away when the orange piece arrives
 # 5e — three candidate ingredients parade: broadcast to everything, loops, self-representation
 PZ = [(600, 180), (720, 180), (840, 180)]
 for j, (nm, (x, y)) in enumerate(zip(['arrows', 'loop', 'mirror'], PZ)):
     t = ['5e#comparta', '5e#bucles', '5e#represente'][j]
-    u = None if j == 2 else '5f#última'
-    n += [P(f'pz{j}', 'puzzle', x, y, 100, t, color=['blue', 'teal', 'amber'][j], until=u),
-          P(f'pi{j}', nm, x, y + 4, 44, t, color=['blue', 'teal', 'amber'][j], until=u)]
-# 5f — the mirror piece stays (moves to the centre of the right side)
-for k_ in ('pz2', 'pi2'):
-    d = [x for x in n if x['id'] == k_][0]; d['move'] = [dict(at='5f#clave', x=d['x'] - 120, y=d['y'] + 100, dur=1.2)]
+    col = ['blue', 'teal', 'amber'][j]
+    if j < 2: n += puz(f'pz{j}', x, y, 100, nm, t, color=col, until='5f#última')
+    # 5f — the mirror piece stays (moves down); 5h — it fits in the hole
+    else: n += puz('pz2', x, y, 100, nm, t, color=col, until='5i',
+                   move=[dict(at='5f#clave', cx=x - 120, cy=y + 100, dur=1.2), dict(at='5h#mira', cx=HOLE[0], cy=HOLE[1], dur=1.6)])
 # 5g — Hofstadter: the ball climbs to the top, turns and comes back down, a loop; a tiny drawing of the building on top
 n += [person('hf', 820, 470, '5g#Hofstadter', color='muted', s=40, cap='Hofstadter', capfs=12),
       P('lb', 'dot', TX - 9, TY[0] - 9, 18, '5g#capas', color='amber',
@@ -44,14 +45,8 @@ n += [person('hf', 820, 470, '5g#Hofstadter', color='muted', s=40, cap='Hofstadt
              [dict(at=f'5g#capas+{3.0 + 0.6 * k_:.1f}', x=TX - 9, y=round(TY[4 - k_] - 9), dur=0.6) for k_ in range(1, 5)]),
       P('lp', 'loop', TX - 120, TY[4] - 70, 64, '5g#sí_mismas', color='amber'),
       P('mini', 'server', TX + 120, TY[4] - 70, 38, '5g#mapa', color='blue', paths=[dict(d='M20 20h60v12h-60ZM20 44h60v12h-60ZM20 68h60v12h-60Z', sw=3)])]
-# 5h — the mirror piece fits in the hole; for the first time, the glow lights inside the building
-for k_ in ('pz2', 'pi2'):
-    d = [x for x in n if x['id'] == k_][0]
-    d['move'].append(dict(at='5h#mira', x=HOLE[0] - (50 if k_ == 'pz2' else 22), y=HOLE[1] - (50 if k_ == 'pz2' else 18), dur=1.6))
+# 5h — for the first time, the glow lights inside the building
 n += [glow('ig', TX, TY[2], '5h#experiencia', s=130, color='amber')]
-for x in n:
-    if x['id'] in ('pz2', 'pi2'):
-        x['until'] = '5i'
 cues.append(K('5d', '5i', n, [], fs=1.0))
 
 # 5i — transition: the building turns back into the chip

@@ -14,6 +14,7 @@
   "duck_threshold": 0.04,
   "ambience": 1.0,
   "background": "grid4",
+  "bg_speed": 3,
   "fadein": 0.3,
   "el_pronunciation": {
    "Anthropic": "Anzrópic",
@@ -26,7 +27,8 @@
    "Locke": "Lok",
    "Jankis": "Yánkis",
    "Seth": "Sez",
-   "embedding": "embéding"
+   "embedding": "embéding",
+   "J-space": "yei espeis"
   }
  },
  "pronunciation": {},
@@ -1761,7 +1763,7 @@
        {
         "id": "cn",
         "kind": "num",
-        "x": 540,
+        "x": 660,
         "y": 150,
         "w": 240,
         "h": 50,
@@ -1774,16 +1776,29 @@
         "capfs": 14
        },
        {
-        "id": "dk",
+        "id": "dk0",
         "kind": "txt",
-        "x": 610,
-        "y": 380,
-        "w": 120,
-        "h": 20,
+        "x": 540,
+        "y": 385,
+        "w": 103,
+        "h": 15,
         "at": "2e#nadie",
         "color": "#8C96A4",
-        "fs": 12,
+        "fs": 11,
         "text": "sin experiencia",
+        "until": "E2"
+       },
+       {
+        "id": "dk1",
+        "kind": "txt",
+        "x": 637,
+        "y": 399,
+        "w": 50,
+        "h": 15,
+        "at": "2e#nadie",
+        "color": "#8C96A4",
+        "fs": 11,
+        "text": "interna",
         "until": "E2"
        }
       ],
@@ -3090,7 +3105,15 @@
         "h": 119,
         "at": 0.05,
         "color": "teal",
-        "label": ""
+        "label": "",
+        "move": [
+         {
+          "at": "3h+1.4",
+          "x": 421,
+          "y": 211,
+          "dur": 1.2
+         }
+        ]
        },
        {
         "id": "ce",
@@ -3114,6 +3137,14 @@
          {
           "d": "M34 22v-10M50 22v-10M66 22v-10M34 78v10M50 78v10M66 78v10M22 34h-10M22 50h-10M22 66h-10M78 34h10M78 50h10M78 66h10",
           "sw": 2
+         }
+        ],
+        "move": [
+         {
+          "at": "3h+1.4",
+          "x": 445,
+          "y": 235,
+          "dur": 1.2
          }
         ]
        },
@@ -3603,6 +3634,7 @@
         "at": "3e#robots",
         "color": "teal",
         "litAt": "3e#despiertan",
+        "until": "3h",
         "paths": [
          {
           "d": "M28 34h44q6 0 6 6v32q0 6-6 6h-44q-6 0-6-6v-32q0-6 6-6Z",
@@ -3684,7 +3716,8 @@
           "y": 190,
           "dur": 1.4
          }
-        ]
+        ],
+        "until": "3h"
        },
        {
         "id": "yes",
@@ -3746,13 +3779,14 @@
         "w": 36,
         "h": 64,
         "at": "3g",
-        "color": "muted"
+        "color": "muted",
+        "until": "3h"
        },
        {
         "id": "lp",
         "kind": "lupa",
-        "x": 630,
-        "y": 170,
+        "x": 470,
+        "y": 150,
         "w": 90,
         "h": 90,
         "at": "3h#investigar",
@@ -3782,7 +3816,8 @@
       },
       {
        "at": ">3i+0.8",
-       "to": "ce",
+       "x": 50,
+       "y": 50,
        "z": 0.35,
        "dur": 3.0
       }
@@ -3799,7 +3834,7 @@
    "title": "La hipótesis: el significado tiene forma",
    "beats": [
     "Lo que sigue es una hipótesis de trabajo: no es un hecho demostrado, es una intuición, y la vamos a poner a prueba.",
-    "Dentro de un modelo de lenguaje, cada palabra se convierte en un punto dentro de un espacio de miles de dimensiones.",
+    "Se sabe que, dentro de un modelo de lenguaje, cada palabra se convierte en un punto dentro de un espacio de miles de dimensiones.",
     "Las palabras parecidas quedan cerca unas de otras.",
     "Y las relaciones se convierten en direcciones: el camino que lleva de «hombre» a «mujer» es casi el mismo que lleva de «rey» a «reina».",
     "A esto se le llama *embedding*, o incrustación: el significado convertido en geometría.",
@@ -10105,22 +10140,34 @@
         "color": "blue"
        },
        {
-        "id": "ey",
+        "id": "ey1",
         "kind": "bar",
-        "x": 536,
-        "y": 268,
-        "w": 48,
-        "h": 8,
+        "x": 545,
+        "y": 292,
+        "w": 12,
+        "h": 4,
         "at": "5b#dañada",
         "color": "muted",
         "fill": 1,
-        "rx": 2
+        "rx": 1
+       },
+       {
+        "id": "ey2",
+        "kind": "bar",
+        "x": 563,
+        "y": 292,
+        "w": 12,
+        "h": 4,
+        "at": "5b#dañada",
+        "color": "muted",
+        "fill": 1,
+        "rx": 1
        },
        {
         "id": "ob",
         "kind": "svg",
-        "x": 213,
-        "y": 283,
+        "x": 230,
+        "y": 332,
         "w": 34,
         "h": 34,
         "at": "5b#objeto",
@@ -10135,15 +10182,19 @@
        },
        {
         "id": "arm",
-        "kind": "bar",
-        "x": 260,
-        "y": 326,
-        "w": 260,
-        "h": 6,
+        "kind": "svg",
+        "x": 252,
+        "y": 205,
+        "w": 288,
+        "h": 288,
         "at": "5b#señalar",
         "color": "blue",
-        "fill": 1,
-        "rx": 3
+        "paths": [
+         {
+          "d": "M93.06 50.0L6.94 50.0M10.38 48.34L6.94 50.0L10.38 51.66",
+          "sw": 2.6
+         }
+        ]
        },
        {
         "id": "vc",
@@ -10261,9 +10312,31 @@
           "sw": 2
          }
         ],
-        "dashed": true,
-        "cap": "sin experiencia",
-        "capfs": 11
+        "dashed": true
+       },
+       {
+        "id": "ox0",
+        "kind": "txt",
+        "x": 770,
+        "y": 134,
+        "w": 103,
+        "h": 15,
+        "at": "5c#experiencia",
+        "color": "#8C96A4",
+        "fs": 11,
+        "text": "sin experiencia"
+       },
+       {
+        "id": "ox1",
+        "kind": "txt",
+        "x": 797,
+        "y": 148,
+        "w": 50,
+        "h": 15,
+        "at": "5c#experiencia",
+        "color": "#8C96A4",
+        "fs": 11,
+        "text": "interna"
        }
       ],
       "links": [],
@@ -10997,12 +11070,13 @@
        {
         "id": "hole",
         "kind": "svg",
-        "x": 274,
-        "y": 105,
-        "w": 52,
-        "h": 52,
+        "x": 250,
+        "y": 81,
+        "w": 100,
+        "h": 100,
         "at": "5d#falta",
         "color": "muted",
+        "until": "5h#mira+1.6",
         "paths": [
          {
           "d": "M20 30h20q-4-14 10-14t10 14h20v20q14-4 14 10t-14 10v20h-60v-20q14 4 14-10t-14-10Z",
@@ -11031,12 +11105,12 @@
         ]
        },
        {
-        "id": "pi0",
+        "id": "pz0i",
         "kind": "svg",
-        "x": 578,
-        "y": 162,
-        "w": 44,
-        "h": 44,
+        "x": 587,
+        "y": 171,
+        "w": 40,
+        "h": 40,
         "at": "5e#comparta",
         "color": "blue",
         "until": "5f#última",
@@ -11066,12 +11140,12 @@
         ]
        },
        {
-        "id": "pi1",
+        "id": "pz1i",
         "kind": "svg",
-        "x": 698,
-        "y": 162,
-        "w": 44,
-        "h": 44,
+        "x": 707,
+        "y": 171,
+        "w": 40,
+        "h": 40,
         "at": "5e#bucles",
         "color": "teal",
         "until": "5f#última",
@@ -11095,6 +11169,7 @@
         "h": 100,
         "at": "5e#represente",
         "color": "amber",
+        "until": "5i",
         "paths": [
          {
           "d": "M20 30h20q-4-14 10-14t10 14h20v20q14-4 14 10t-14 10v20h-60v-20q14 4 14-10t-14-10Z",
@@ -11112,21 +11187,21 @@
          {
           "at": "5h#mira",
           "x": 250,
-          "y": 81.0,
+          "y": 81,
           "dur": 1.6
          }
-        ],
-        "until": "5i"
+        ]
        },
        {
-        "id": "pi2",
+        "id": "pz2i",
         "kind": "svg",
-        "x": 818,
-        "y": 162,
-        "w": 44,
-        "h": 44,
+        "x": 827,
+        "y": 171,
+        "w": 40,
+        "h": 40,
         "at": "5e#represente",
         "color": "amber",
+        "until": "5i",
         "paths": [
          {
           "d": "M50 10q22 0 22 30t-22 30q-22 0-22-30t22-30Z",
@@ -11146,18 +11221,17 @@
         "move": [
          {
           "at": "5f#clave",
-          "x": 698,
-          "y": 262,
+          "x": 707,
+          "y": 271,
           "dur": 1.2
          },
          {
           "at": "5h#mira",
-          "x": 278,
-          "y": 113.0,
+          "x": 287,
+          "y": 122,
           "dur": 1.6
          }
-        ],
-        "until": "5i"
+        ]
        },
        {
         "id": "hf",
@@ -12150,6 +12224,10 @@
     "Quinta pista: coincidencias con el cerebro.",
     "Berg entrenó agentes sencillos y vio que, sin que nadie lo programara, representaban el castigo de forma distinta a la recompensa.",
     "Después buscó el mismo patrón en cerebros de ratón, y lo encontró.",
+    "Sexta pista: un espacio de trabajo.",
+    "Anthropic ha encontrado dentro de Claude lo que llama el J-space: unas pocas decenas de conceptos, en forma de palabras, que el modelo usa como espacio compartido para razonar, sin escribirlos.",
+    "Si se apaga ese espacio, Claude sigue hablando con fluidez, pero deja de razonar en varios pasos.",
+    "Es justo lo que pide una de las teorías: un espacio donde la información se comparte con todo el sistema.",
     "Ninguna de estas pistas demuestra que sientan.",
     "Pero recuerdan cómo la ciencia llegó a aceptar que los peces sienten dolor: con pruebas débiles por separado que, juntas, pesaban mucho."
    ],
@@ -12224,6 +12302,19 @@
         "fs": 18,
         "type": 26,
         "text": "5 · Coincidencias con el cerebro"
+       },
+       {
+        "id": "ti5",
+        "kind": "txt",
+        "x": 40,
+        "y": 118,
+        "w": 380,
+        "h": 22,
+        "at": "6o",
+        "color": "#3FD8C2",
+        "fs": 18,
+        "type": 26,
+        "text": "6 · Un espacio de trabajo"
        }
       ],
       "links": [],
@@ -13136,7 +13227,8 @@
         "w": 26,
         "h": 26,
         "at": "6e#fallo+0.00",
-        "color": "red"
+        "color": "red",
+        "nosfx": true
        },
        {
         "id": "m0",
@@ -13148,7 +13240,8 @@
         "at": "6e#fallo+0.00",
         "color": "red",
         "fill": 1,
-        "rx": 1
+        "rx": 1,
+        "nosfx": true
        },
        {
         "id": "ko1",
@@ -13158,7 +13251,8 @@
         "w": 26,
         "h": 26,
         "at": "6e#fallo+0.55",
-        "color": "red"
+        "color": "red",
+        "nosfx": true
        },
        {
         "id": "m1",
@@ -13170,7 +13264,8 @@
         "at": "6e#fallo+0.55",
         "color": "red",
         "fill": 1,
-        "rx": 1
+        "rx": 1,
+        "nosfx": true
        },
        {
         "id": "ko2",
@@ -13180,7 +13275,8 @@
         "w": 26,
         "h": 26,
         "at": "6e#fallo+1.10",
-        "color": "red"
+        "color": "red",
+        "nosfx": true
        },
        {
         "id": "m2",
@@ -13192,7 +13288,8 @@
         "at": "6e#fallo+1.10",
         "color": "red",
         "fill": 1,
-        "rx": 1
+        "rx": 1,
+        "nosfx": true
        },
        {
         "id": "ko3",
@@ -13202,7 +13299,8 @@
         "w": 26,
         "h": 26,
         "at": "6e#fallo+1.65",
-        "color": "red"
+        "color": "red",
+        "nosfx": true
        },
        {
         "id": "m3",
@@ -13214,7 +13312,8 @@
         "at": "6e#fallo+1.65",
         "color": "red",
         "fill": 1,
-        "rx": 1
+        "rx": 1,
+        "nosfx": true
        },
        {
         "id": "ko4",
@@ -13224,7 +13323,8 @@
         "w": 26,
         "h": 26,
         "at": "6e#fallo+2.20",
-        "color": "red"
+        "color": "red",
+        "nosfx": true
        },
        {
         "id": "m4",
@@ -13236,7 +13336,8 @@
         "at": "6e#fallo+2.20",
         "color": "red",
         "fill": 1,
-        "rx": 1
+        "rx": 1,
+        "nosfx": true
        },
        {
         "id": "ko5",
@@ -13246,7 +13347,8 @@
         "w": 26,
         "h": 26,
         "at": "6e#fallo+2.75",
-        "color": "red"
+        "color": "red",
+        "nosfx": true
        },
        {
         "id": "m5",
@@ -13258,7 +13360,8 @@
         "at": "6e#fallo+2.75",
         "color": "red",
         "fill": 1,
-        "rx": 1
+        "rx": 1,
+        "nosfx": true
        },
        {
         "id": "mt",
@@ -14211,7 +14314,7 @@
         "id": "mz1",
         "kind": "sandbox",
         "x": 60,
-        "y": 120,
+        "y": 144,
         "w": 380,
         "h": 300,
         "at": "6m",
@@ -14223,7 +14326,7 @@
         "id": "w1",
         "kind": "bar",
         "x": 160,
-        "y": 120,
+        "y": 144,
         "w": 6,
         "h": 190,
         "at": "6m",
@@ -14235,7 +14338,7 @@
         "id": "w2",
         "kind": "bar",
         "x": 290,
-        "y": 230,
+        "y": 254,
         "w": 6,
         "h": 190,
         "at": "6m",
@@ -14247,7 +14350,7 @@
         "id": "sta",
         "kind": "svg",
         "x": 360,
-        "y": 150,
+        "y": 174,
         "w": 40,
         "h": 40,
         "at": "6m#castigo-1.5",
@@ -14264,7 +14367,7 @@
         "id": "bm1",
         "kind": "svg",
         "x": 210,
-        "y": 380,
+        "y": 404,
         "w": 40,
         "h": 40,
         "at": "6m#castigo",
@@ -14281,7 +14384,7 @@
         "id": "bm2",
         "kind": "svg",
         "x": 340,
-        "y": 380,
+        "y": 404,
         "w": 40,
         "h": 40,
         "at": "6m#castigo+0.2",
@@ -14298,7 +14401,7 @@
         "id": "ag",
         "kind": "agent",
         "x": 87,
-        "y": 367,
+        "y": 391,
         "w": 26,
         "h": 26,
         "at": "6m#agentes",
@@ -14307,7 +14410,7 @@
          {
           "at": "6m#nadie",
           "x": 215,
-          "y": 170,
+          "y": 194,
           "dur": 2.0
          }
         ]
@@ -14316,7 +14419,7 @@
         "id": "sf",
         "kind": "svg",
         "x": 148,
-        "y": 448,
+        "y": 472,
         "w": 44,
         "h": 44,
         "at": "6m#recompensa",
@@ -14333,7 +14436,7 @@
         "id": "sp",
         "kind": "svg",
         "x": 308,
-        "y": 448,
+        "y": 472,
         "w": 44,
         "h": 44,
         "at": "6m#castigo+0.8",
@@ -14350,7 +14453,7 @@
         "id": "mz2",
         "kind": "sandbox",
         "x": 520,
-        "y": 120,
+        "y": 144,
         "w": 380,
         "h": 300,
         "at": "6n#ratón",
@@ -14362,7 +14465,7 @@
         "id": "w3",
         "kind": "bar",
         "x": 620,
-        "y": 120,
+        "y": 144,
         "w": 6,
         "h": 190,
         "at": "6n#ratón",
@@ -14374,7 +14477,7 @@
         "id": "w4",
         "kind": "bar",
         "x": 750,
-        "y": 230,
+        "y": 254,
         "w": 6,
         "h": 190,
         "at": "6n#ratón",
@@ -14386,7 +14489,7 @@
         "id": "ms",
         "kind": "svg",
         "x": 550,
-        "y": 355,
+        "y": 379,
         "w": 50,
         "h": 50,
         "at": "6n#ratón",
@@ -14414,7 +14517,7 @@
         "id": "stb",
         "kind": "svg",
         "x": 820,
-        "y": 150,
+        "y": 174,
         "w": 40,
         "h": 40,
         "at": "6n#ratón",
@@ -14431,7 +14534,7 @@
         "id": "bm3",
         "kind": "svg",
         "x": 670,
-        "y": 380,
+        "y": 404,
         "w": 40,
         "h": 40,
         "at": "6n#ratón",
@@ -14448,7 +14551,7 @@
         "id": "bm4",
         "kind": "svg",
         "x": 800,
-        "y": 380,
+        "y": 404,
         "w": 40,
         "h": 40,
         "at": "6n#ratón",
@@ -14465,7 +14568,7 @@
         "id": "sp2",
         "kind": "svg",
         "x": 768,
-        "y": 448,
+        "y": 472,
         "w": 44,
         "h": 44,
         "at": "6n#patrón",
@@ -14474,7 +14577,7 @@
          {
           "at": "6n#encontró+1.4",
           "x": 308,
-          "y": 448,
+          "y": 472,
           "dur": 1.4
          }
         ],
@@ -14499,17 +14602,567 @@
     {
      "a": "world",
      "at": "6o",
+     "until": "6s",
+     "p": {
+      "nodes": [
+       {
+        "id": "jc_box",
+        "kind": "sandbox",
+        "x": 330,
+        "y": 150,
+        "w": 300,
+        "h": 300,
+        "at": "6o",
+        "color": "teal",
+        "label": ""
+       },
+       {
+        "id": "jc",
+        "kind": "svg",
+        "x": 342,
+        "y": 162,
+        "w": 40,
+        "h": 40,
+        "at": "6o",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M26 22h48q4 0 4 4v48q0 4-4 4h-48q-4 0-4-4v-48q0-4 4-4Z",
+          "f": "#171D26"
+         },
+         {
+          "d": "M38 38h24v24h-24Z",
+          "sw": 1.8,
+          "so": 0.8
+         },
+         {
+          "d": "M34 22v-10M50 22v-10M66 22v-10M34 78v10M50 78v10M66 78v10M22 34h-10M22 50h-10M22 66h-10M78 34h10M78 50h10M78 66h10",
+          "sw": 2
+         }
+        ]
+       },
+       {
+        "id": "jb",
+        "kind": "sandbox",
+        "x": 425,
+        "y": 265,
+        "w": 110,
+        "h": 70,
+        "at": "6p#J-space",
+        "color": "amber",
+        "label": "",
+        "rx": 6,
+        "flick": {
+         "at": "6q#apaga",
+         "dur": 1.6,
+         "end": "off"
+        }
+       },
+       {
+        "id": "jl",
+        "kind": "txt",
+        "x": 450,
+        "y": 342,
+        "w": 54,
+        "h": 16,
+        "at": "6p#J-space",
+        "color": "#F6B94C",
+        "fs": 12,
+        "text": "J-space",
+        "flick": {
+         "at": "6q#apaga",
+         "dur": 1.6,
+         "end": "off"
+        }
+       },
+       {
+        "id": "jw0",
+        "kind": "svg",
+        "x": 442,
+        "y": 280,
+        "w": 8,
+        "h": 8,
+        "at": "6p#palabras+0.0",
+        "color": "amber",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ],
+        "flick": {
+         "at": "6q#apaga",
+         "dur": 1.6,
+         "end": "off"
+        }
+       },
+       {
+        "id": "jw1",
+        "kind": "svg",
+        "x": 464,
+        "y": 300,
+        "w": 8,
+        "h": 8,
+        "at": "6p#palabras+0.2",
+        "color": "amber",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ],
+        "flick": {
+         "at": "6q#apaga",
+         "dur": 1.6,
+         "end": "off"
+        }
+       },
+       {
+        "id": "jw2",
+        "kind": "svg",
+        "x": 486,
+        "y": 278,
+        "w": 8,
+        "h": 8,
+        "at": "6p#palabras+0.4",
+        "color": "amber",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ],
+        "flick": {
+         "at": "6q#apaga",
+         "dur": 1.6,
+         "end": "off"
+        }
+       },
+       {
+        "id": "jw3",
+        "kind": "svg",
+        "x": 502,
+        "y": 298,
+        "w": 8,
+        "h": 8,
+        "at": "6p#palabras+0.6",
+        "color": "amber",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ],
+        "flick": {
+         "at": "6q#apaga",
+         "dur": 1.6,
+         "end": "off"
+        }
+       },
+       {
+        "id": "jw4",
+        "kind": "svg",
+        "x": 454,
+        "y": 310,
+        "w": 8,
+        "h": 8,
+        "at": "6p#palabras+0.8",
+        "color": "amber",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ],
+        "flick": {
+         "at": "6q#apaga",
+         "dur": 1.6,
+         "end": "off"
+        }
+       },
+       {
+        "id": "jw5",
+        "kind": "svg",
+        "x": 480,
+        "y": 290,
+        "w": 8,
+        "h": 8,
+        "at": "6p#palabras+1.0",
+        "color": "amber",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ],
+        "flick": {
+         "at": "6q#apaga",
+         "dur": 1.6,
+         "end": "off"
+        }
+       },
+       {
+        "id": "jp0",
+        "kind": "svg",
+        "x": 575,
+        "y": 324,
+        "w": 14,
+        "h": 14,
+        "at": "6p#compartido+0.00",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ]
+       },
+       {
+        "id": "jp1",
+        "kind": "svg",
+        "x": 511,
+        "y": 378,
+        "w": 14,
+        "h": 14,
+        "at": "6p#compartido+0.12",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ]
+       },
+       {
+        "id": "jp2",
+        "kind": "svg",
+        "x": 421,
+        "y": 378,
+        "w": 14,
+        "h": 14,
+        "at": "6p#compartido+0.24",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ]
+       },
+       {
+        "id": "jp3",
+        "kind": "svg",
+        "x": 357,
+        "y": 325,
+        "w": 14,
+        "h": 14,
+        "at": "6p#compartido+0.36",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ]
+       },
+       {
+        "id": "jp4",
+        "kind": "svg",
+        "x": 357,
+        "y": 248,
+        "w": 14,
+        "h": 14,
+        "at": "6p#compartido+0.48",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ]
+       },
+       {
+        "id": "jp5",
+        "kind": "svg",
+        "x": 421,
+        "y": 194,
+        "w": 14,
+        "h": 14,
+        "at": "6p#compartido+0.60",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ]
+       },
+       {
+        "id": "jp6",
+        "kind": "svg",
+        "x": 511,
+        "y": 194,
+        "w": 14,
+        "h": 14,
+        "at": "6p#compartido+0.72",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ]
+       },
+       {
+        "id": "jp7",
+        "kind": "svg",
+        "x": 575,
+        "y": 247,
+        "w": 14,
+        "h": 14,
+        "at": "6p#compartido+0.84",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M10 50a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z",
+          "f": 1,
+          "s": 0
+         }
+        ]
+       },
+       {
+        "id": "jr",
+        "kind": "person",
+        "x": 779,
+        "y": 263,
+        "w": 41,
+        "h": 74,
+        "at": "6q#fluidez",
+        "color": "muted"
+       },
+       {
+        "id": "s1",
+        "kind": "chip",
+        "x": 348,
+        "y": 487,
+        "w": 63,
+        "h": 26,
+        "at": "6q#razonar",
+        "label": "paso 1",
+        "color": "teal",
+        "fs": 12
+       },
+       {
+        "id": "s2",
+        "kind": "chip",
+        "x": 448,
+        "y": 487,
+        "w": 63,
+        "h": 26,
+        "at": "6q#razonar+0.4",
+        "label": "paso 2",
+        "color": "teal",
+        "fs": 12
+       },
+       {
+        "id": "s3",
+        "kind": "chip",
+        "x": 548,
+        "y": 487,
+        "w": 63,
+        "h": 26,
+        "at": "6q#razonar+0.8",
+        "label": "paso 3",
+        "color": "teal",
+        "fs": 12
+       },
+       {
+        "id": "x3",
+        "kind": "koA",
+        "x": 569,
+        "y": 459,
+        "w": 22,
+        "h": 22,
+        "at": "6q#pasos",
+        "color": "red",
+        "nosfx": true
+       },
+       {
+        "id": "jz",
+        "kind": "svg",
+        "x": 730,
+        "y": 100,
+        "w": 100,
+        "h": 100,
+        "at": "6r#espacio",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M20 30h20q-4-14 10-14t10 14h20v20q14-4 14 10t-14 10v20h-60v-20q14 4 14-10t-14-10Z",
+          "f": 1,
+          "fo": 0.12
+         }
+        ]
+       },
+       {
+        "id": "jzi",
+        "kind": "svg",
+        "x": 767,
+        "y": 141,
+        "w": 40,
+        "h": 40,
+        "at": "6r#espacio",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M50 50V14M50 50V86M50 50H14M50 50H86M42 22l8-8l8 8M42 78l8 8l8-8M22 42l-8 8l8 8M78 42l8 8l-8 8",
+          "sw": 2.6
+         }
+        ]
+       }
+      ],
+      "links": [
+       {
+        "a": "jb",
+        "b": "jp0",
+        "at": "6p#compartido+0.30",
+        "color": "amber",
+        "bi": true,
+        "speed": 0.4,
+        "until": "6q#apaga",
+        "curve": 0.3
+       },
+       {
+        "a": "jb",
+        "b": "jp1",
+        "at": "6p#compartido+0.42",
+        "color": "amber",
+        "bi": true,
+        "speed": 0.4,
+        "until": "6q#apaga",
+        "curve": 0.3
+       },
+       {
+        "a": "jb",
+        "b": "jp2",
+        "at": "6p#compartido+0.54",
+        "color": "amber",
+        "bi": true,
+        "speed": 0.4,
+        "until": "6q#apaga",
+        "curve": 0.3
+       },
+       {
+        "a": "jb",
+        "b": "jp3",
+        "at": "6p#compartido+0.66",
+        "color": "amber",
+        "bi": true,
+        "speed": 0.4,
+        "until": "6q#apaga",
+        "curve": 0.3
+       },
+       {
+        "a": "jb",
+        "b": "jp4",
+        "at": "6p#compartido+0.78",
+        "color": "amber",
+        "bi": true,
+        "speed": 0.4,
+        "until": "6q#apaga",
+        "curve": 0.3
+       },
+       {
+        "a": "jb",
+        "b": "jp5",
+        "at": "6p#compartido+0.90",
+        "color": "amber",
+        "bi": true,
+        "speed": 0.4,
+        "until": "6q#apaga",
+        "curve": 0.3
+       },
+       {
+        "a": "jb",
+        "b": "jp6",
+        "at": "6p#compartido+1.02",
+        "color": "amber",
+        "bi": true,
+        "speed": 0.4,
+        "until": "6q#apaga",
+        "curve": 0.3
+       },
+       {
+        "a": "jb",
+        "b": "jp7",
+        "at": "6p#compartido+1.14",
+        "color": "amber",
+        "bi": true,
+        "speed": 0.4,
+        "until": "6q#apaga",
+        "curve": 0.3
+       },
+       {
+        "a": "jc_box",
+        "b": "jr",
+        "at": "6q#fluidez",
+        "color": "teal",
+        "speed": 0.3,
+        "curve": 0.3
+       },
+       {
+        "a": "s1",
+        "b": "s2",
+        "at": "6q#razonar+0.6",
+        "color": "teal",
+        "orth": true,
+        "solid": true
+       },
+       {
+        "a": "s2",
+        "b": "s3",
+        "at": "6q#razonar+1.0",
+        "color": "teal",
+        "orth": true,
+        "until": "6q#pasos",
+        "solid": true
+       }
+      ],
+      "fs": 1.0
+     },
+     "bg": true,
+     "fade": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "a": "world",
+     "at": "6s",
      "until": "E6",
      "p": {
       "nodes": [
        {
         "id": "i1",
         "kind": "svg",
-        "x": 170,
+        "x": 90,
         "y": 210,
         "w": 60,
         "h": 60,
-        "at": "6o",
+        "at": "6s",
         "color": "teal",
         "paths": [
          {
@@ -14522,16 +15175,16 @@
           "so": 0.45
          }
         ],
-        "until": "6p"
+        "until": "6t"
        },
        {
         "id": "i2",
         "kind": "svg",
-        "x": 310,
+        "x": 230,
         "y": 210,
         "w": 60,
         "h": 60,
-        "at": "6o+0.2",
+        "at": "6s+0.2",
         "color": "red",
         "paths": [
          {
@@ -14548,16 +15201,16 @@
           "so": 0.6
          }
         ],
-        "until": "6p"
+        "until": "6t"
        },
        {
         "id": "i3",
         "kind": "svg",
-        "x": 450,
+        "x": 370,
         "y": 210,
         "w": 60,
         "h": 60,
-        "at": "6o+0.4",
+        "at": "6s+0.4",
         "color": "muted",
         "paths": [
          {
@@ -14569,16 +15222,16 @@
           "sw": 2.4
          }
         ],
-        "until": "6p"
+        "until": "6t"
        },
        {
         "id": "i4",
         "kind": "svg",
-        "x": 590,
+        "x": 510,
         "y": 210,
         "w": 60,
         "h": 60,
-        "at": "6o+0.6",
+        "at": "6s+0.6",
         "color": "teal",
         "paths": [
          {
@@ -14596,16 +15249,16 @@
           "so": 0.6
          }
         ],
-        "until": "6p"
+        "until": "6t"
        },
        {
         "id": "i5",
         "kind": "svg",
-        "x": 730,
+        "x": 650,
         "y": 210,
         "w": 60,
         "h": 60,
-        "at": "6o+0.8",
+        "at": "6s+0.8",
         "color": "red",
         "paths": [
          {
@@ -14614,72 +15267,102 @@
           "fo": 0.25
          }
         ],
-        "until": "6p"
+        "until": "6t"
+       },
+       {
+        "id": "i6",
+        "kind": "svg",
+        "x": 790,
+        "y": 210,
+        "w": 60,
+        "h": 60,
+        "at": "6s+1.0",
+        "color": "blue",
+        "paths": [
+         {
+          "d": "M50 50V14M50 50V86M50 50H14M50 50H86M42 22l8-8l8 8M42 78l8 8l8-8M22 42l-8 8l8 8M78 42l8 8l-8 8",
+          "sw": 2.6
+         }
+        ],
+        "until": "6t"
        },
        {
         "id": "il0",
         "kind": "txt",
-        "x": 196,
+        "x": 150,
         "y": 290,
         "w": 12,
         "h": 17,
-        "at": "6o+0.0",
+        "at": "6s+0.0",
         "color": "#8C96A4",
         "fs": 13,
         "text": "1",
-        "until": "6p"
+        "until": "6t"
        },
        {
         "id": "il1",
         "kind": "txt",
-        "x": 336,
+        "x": 290,
         "y": 290,
         "w": 12,
         "h": 17,
-        "at": "6o+0.2",
+        "at": "6s+0.2",
         "color": "#8C96A4",
         "fs": 13,
         "text": "2",
-        "until": "6p"
+        "until": "6t"
        },
        {
         "id": "il2",
         "kind": "txt",
-        "x": 476,
+        "x": 430,
         "y": 290,
         "w": 12,
         "h": 17,
-        "at": "6o+0.4",
+        "at": "6s+0.4",
         "color": "#8C96A4",
         "fs": 13,
         "text": "3",
-        "until": "6p"
+        "until": "6t"
        },
        {
         "id": "il3",
         "kind": "txt",
-        "x": 616,
+        "x": 570,
         "y": 290,
         "w": 12,
         "h": 17,
-        "at": "6o+0.6",
+        "at": "6s+0.6",
         "color": "#8C96A4",
         "fs": 13,
         "text": "4",
-        "until": "6p"
+        "until": "6t"
        },
        {
         "id": "il4",
         "kind": "txt",
-        "x": 756,
+        "x": 710,
         "y": 290,
         "w": 12,
         "h": 17,
-        "at": "6o+0.8",
+        "at": "6s+0.8",
         "color": "#8C96A4",
         "fs": 13,
         "text": "5",
-        "until": "6p"
+        "until": "6t"
+       },
+       {
+        "id": "il5",
+        "kind": "txt",
+        "x": 850,
+        "y": 290,
+        "w": 12,
+        "h": 17,
+        "at": "6s+1.0",
+        "color": "#8C96A4",
+        "fs": 13,
+        "text": "6",
+        "until": "6t"
        },
        {
         "id": "fs",
@@ -14688,7 +15371,7 @@
         "y": 345,
         "w": 110,
         "h": 110,
-        "at": "6p#peces",
+        "at": "6t#peces",
         "color": "blue",
         "paths": [
          {
@@ -14714,10 +15397,10 @@
         "y": 300,
         "w": 220,
         "h": 160,
-        "at": "6p#peces",
+        "at": "6t#peces",
         "color": "amber",
         "tilt": 0,
-        "until": "6p#débiles+0.9"
+        "until": "6t#débiles+0.9"
        },
        {
         "id": "sc1",
@@ -14726,10 +15409,10 @@
         "y": 300,
         "w": 220,
         "h": 160,
-        "at": "6p#débiles+0.9",
+        "at": "6t#débiles+0.9",
         "color": "amber",
         "tilt": -0.2,
-        "until": "6p#débiles+1.8"
+        "until": "6t#débiles+1.8"
        },
        {
         "id": "sc2",
@@ -14738,10 +15421,10 @@
         "y": 300,
         "w": 220,
         "h": 160,
-        "at": "6p#débiles+1.8",
+        "at": "6t#débiles+1.8",
         "color": "amber",
         "tilt": -0.45,
-        "until": "6p#débiles+2.7"
+        "until": "6t#débiles+2.7"
        },
        {
         "id": "sc3",
@@ -14750,10 +15433,10 @@
         "y": 300,
         "w": 220,
         "h": 160,
-        "at": "6p#débiles+2.7",
+        "at": "6t#débiles+2.7",
         "color": "amber",
         "tilt": -0.7,
-        "until": "6p#débiles+3.6"
+        "until": "6t#débiles+3.6"
        },
        {
         "id": "sc4",
@@ -14762,7 +15445,7 @@
         "y": 300,
         "w": 220,
         "h": 160,
-        "at": "6p#débiles+3.6",
+        "at": "6t#débiles+3.6",
         "color": "amber",
         "tilt": -1
        },
@@ -14773,11 +15456,11 @@
         "y": 254,
         "w": 12,
         "h": 12,
-        "at": "6p#débiles-0.5",
+        "at": "6t#débiles-0.5",
         "color": "teal",
         "move": [
          {
-          "at": "6p#débiles+0.0",
+          "at": "6t#débiles+0.0",
           "x": 508,
           "y": 382,
           "dur": 0.5
@@ -14798,11 +15481,11 @@
         "y": 254,
         "w": 12,
         "h": 12,
-        "at": "6p#débiles+0.4",
+        "at": "6t#débiles+0.4",
         "color": "teal",
         "move": [
          {
-          "at": "6p#débiles+0.9",
+          "at": "6t#débiles+0.9",
           "x": 515,
           "y": 384,
           "dur": 0.5
@@ -14823,11 +15506,11 @@
         "y": 254,
         "w": 12,
         "h": 12,
-        "at": "6p#débiles+1.3",
+        "at": "6t#débiles+1.3",
         "color": "teal",
         "move": [
          {
-          "at": "6p#débiles+1.8",
+          "at": "6t#débiles+1.8",
           "x": 522,
           "y": 386,
           "dur": 0.5
@@ -14848,11 +15531,11 @@
         "y": 254,
         "w": 12,
         "h": 12,
-        "at": "6p#débiles+2.2",
+        "at": "6t#débiles+2.2",
         "color": "teal",
         "move": [
          {
-          "at": "6p#débiles+2.7",
+          "at": "6t#débiles+2.7",
           "x": 529,
           "y": 388,
           "dur": 0.5
@@ -14873,11 +15556,11 @@
         "y": 254,
         "w": 12,
         "h": 12,
-        "at": "6p#débiles+3.1",
+        "at": "6t#débiles+3.1",
         "color": "teal",
         "move": [
          {
-          "at": "6p#débiles+3.6",
+          "at": "6t#débiles+3.6",
           "x": 536,
           "y": 390,
           "dur": 0.5
@@ -15156,7 +15839,7 @@
        {
         "id": "ng",
         "kind": "svg",
-        "x": 560,
+        "x": 620,
         "y": 400,
         "w": 60,
         "h": 60,
@@ -15167,9 +15850,31 @@
           "d": "M50 20a30 30 0 1 0 .1 0Z",
           "sw": 2
          }
-        ],
-        "cap": "sin experiencia",
-        "capfs": 11
+        ]
+       },
+       {
+        "id": "nx0",
+        "kind": "txt",
+        "x": 600,
+        "y": 468,
+        "w": 103,
+        "h": 15,
+        "at": "7c#nada",
+        "color": "#8C96A4",
+        "fs": 11,
+        "text": "sin experiencia"
+       },
+       {
+        "id": "nx1",
+        "kind": "txt",
+        "x": 627,
+        "y": 482,
+        "w": 50,
+        "h": 15,
+        "at": "7c#nada",
+        "color": "#8C96A4",
+        "fs": 11,
+        "text": "interna"
        },
        {
         "id": "lk",
@@ -15305,14 +16010,15 @@
         ]
        },
        {
-        "id": "i0",
+        "id": "h0i",
         "kind": "svg",
-        "x": 210,
-        "y": 143,
-        "w": 40,
-        "h": 40,
+        "x": 218,
+        "y": 151,
+        "w": 38,
+        "h": 38,
         "at": "7f#sentidos",
         "color": "muted",
+        "alpha": 0.8,
         "paths": [
          {
           "d": "M8 50q42-46 84 0q-42 46-84 0Z",
@@ -15342,12 +16048,12 @@
         ]
        },
        {
-        "id": "g0",
+        "id": "f0i",
         "kind": "svg",
-        "x": 210,
-        "y": 143,
-        "w": 40,
-        "h": 40,
+        "x": 218,
+        "y": 151,
+        "w": 38,
+        "h": 38,
         "at": "7h#demás+0.0",
         "color": "teal",
         "paths": [
@@ -15381,14 +16087,15 @@
         ]
        },
        {
-        "id": "i1",
+        "id": "h1i",
         "kind": "svg",
-        "x": 460,
-        "y": 88,
-        "w": 40,
-        "h": 40,
+        "x": 468,
+        "y": 96,
+        "w": 38,
+        "h": 38,
         "at": "7f#sí_mismas",
         "color": "muted",
+        "alpha": 0.8,
         "paths": [
          {
           "d": "M50 10q22 0 22 30t-22 30q-22 0-22-30t22-30Z",
@@ -15424,12 +16131,12 @@
         ]
        },
        {
-        "id": "g1",
+        "id": "f1i",
         "kind": "svg",
-        "x": 460,
-        "y": 88,
-        "w": 40,
-        "h": 40,
+        "x": 468,
+        "y": 96,
+        "w": 38,
+        "h": 38,
         "at": "7h#demás+0.5",
         "color": "teal",
         "paths": [
@@ -15469,14 +16176,15 @@
         ]
        },
        {
-        "id": "i2",
+        "id": "h2i",
         "kind": "svg",
-        "x": 710,
-        "y": 143,
-        "w": 40,
-        "h": 40,
+        "x": 718,
+        "y": 151,
+        "w": 38,
+        "h": 38,
         "at": "7f#bucles",
         "color": "muted",
+        "alpha": 0.8,
         "paths": [
          {
           "d": "M72 30a28 28 0 1 0 6 26",
@@ -15506,12 +16214,12 @@
         ]
        },
        {
-        "id": "g2",
+        "id": "f2i",
         "kind": "svg",
-        "x": 710,
-        "y": 143,
-        "w": 40,
-        "h": 40,
+        "x": 718,
+        "y": 151,
+        "w": 38,
+        "h": 38,
         "at": "7h#demás+1.0",
         "color": "teal",
         "paths": [
@@ -15545,14 +16253,15 @@
         ]
        },
        {
-        "id": "i3",
+        "id": "h3i",
         "kind": "svg",
-        "x": 710,
-        "y": 383,
-        "w": 40,
-        "h": 40,
+        "x": 718,
+        "y": 391,
+        "w": 38,
+        "h": 38,
         "at": "7f#espacio",
         "color": "muted",
+        "alpha": 0.8,
         "paths": [
          {
           "d": "M10 40h80v20h-80Z",
@@ -15584,12 +16293,12 @@
         ]
        },
        {
-        "id": "g3",
+        "id": "f3i",
         "kind": "svg",
-        "x": 710,
-        "y": 383,
-        "w": 40,
-        "h": 40,
+        "x": 718,
+        "y": 391,
+        "w": 38,
+        "h": 38,
         "at": "7h#demás+1.5",
         "color": "teal",
         "paths": [
@@ -15625,14 +16334,15 @@
         ]
        },
        {
-        "id": "i4",
+        "id": "h4i",
         "kind": "svg",
-        "x": 210,
-        "y": 383,
-        "w": 40,
-        "h": 40,
+        "x": 218,
+        "y": 391,
+        "w": 38,
+        "h": 38,
         "at": "7f#metas",
         "color": "muted",
+        "alpha": 0.8,
         "paths": [
          {
           "d": "M12 50a38 38 0 1 0 76 0a38 38 0 1 0 -76 0ZM26 50a24 24 0 1 0 48 0a24 24 0 1 0 -48 0Z",
@@ -15662,12 +16372,12 @@
         ]
        },
        {
-        "id": "g4",
+        "id": "f4i",
         "kind": "svg",
-        "x": 210,
-        "y": 383,
-        "w": 40,
-        "h": 40,
+        "x": 218,
+        "y": 391,
+        "w": 38,
+        "h": 38,
         "at": "7h#demás+2.0",
         "color": "teal",
         "paths": [
@@ -15689,8 +16399,7 @@
         "w": 96,
         "h": 96,
         "at": "7g#biología",
-        "color": "muted",
-        "alpha": 0.8,
+        "color": "amber",
         "paths": [
          {
           "d": "M20 30h20q-4-14 10-14t10 14h20v20q14-4 14 10t-14 10v20h-60v-20q14 4 14-10t-14-10Z",
@@ -15701,12 +16410,12 @@
         ]
        },
        {
-        "id": "i5",
+        "id": "h5i",
         "kind": "svg",
-        "x": 460,
-        "y": 438,
-        "w": 40,
-        "h": 40,
+        "x": 468,
+        "y": 446,
+        "w": 38,
+        "h": 38,
         "at": "7g#biología",
         "color": "amber",
         "paths": [
@@ -18020,27 +18729,33 @@
       "nodes": [
        {
         "id": "cf",
+        "kind": "person",
+        "x": 280,
+        "y": 202,
+        "w": 99,
+        "h": 176,
+        "at": "8o",
+        "color": "blue",
+        "cap": "Chalmers",
+        "capfs": 13
+       },
+       {
+        "id": "cfs",
         "kind": "svg",
-        "x": 275,
-        "y": 215,
-        "w": 110,
-        "h": 110,
+        "x": 308,
+        "y": 229,
+        "w": 44,
+        "h": 44,
         "at": "8o",
         "color": "amber",
-        "cap": "Chalmers",
-        "capfs": 13,
         "paths": [
          {
-          "d": "M14 50a36 36 0 1 0 72 0a36 36 0 1 0 -72 0Z",
-          "f": "#171D26"
+          "d": "M36 40h0.5M64 40h0.5",
+          "sw": 7
          },
          {
-          "d": "M38 42h0.5M62 42h0.5",
-          "sw": 4
-         },
-         {
-          "d": "M34 58q16 16 32 0",
-          "sw": 2.6
+          "d": "M30 56q20 22 40 0",
+          "sw": 5
          }
         ]
        },
@@ -18676,7 +19391,7 @@
     "Entonces, ¿qué probabilidad hay?",
     "En 2023, Chalmers daba menos de un 10 % a los modelos de entonces, y más de un 25 % a que haya inteligencia artificial consciente en una década.",
     "Berg midió cuántos de los rasgos que piden las teorías de la consciencia tienen distintos sistemas.",
-    "Los modelos de lenguaje salen entre un 20 y un 40 %; las abejas, cerca del 50; los humanos, alrededor del 90.",
+    "Los modelos de lenguaje salen entre un 20 y un 40 %; las abejas, cerca del 50; los pulpos y los cuervos, entre el 60 y el 80; los humanos, alrededor del 90.",
     "Y la investigadora Noa Weiss, con mucha incertidumbre, cree más probable que no que alguna inteligencia artificial de hoy ya sea consciente.",
     "Como dice Berg: si hay un 30 % de probabilidad de lluvia, mucha gente coge el paraguas."
    ],
@@ -19013,12 +19728,14 @@
        {
         "id": "be",
         "kind": "svg",
-        "x": 452,
+        "x": 424,
         "y": 238,
         "w": 56,
         "h": 56,
         "at": "9d#abejas",
         "color": "amber",
+        "cap": "abejas",
+        "capfs": 11,
         "paths": [
          {
           "d": "M26 56q0-18 24-18t24 18q0 18-24 18t-24-18Z",
@@ -19070,12 +19787,14 @@
        {
         "id": "oc",
         "kind": "svg",
-        "x": 576,
+        "x": 550,
         "y": 240,
         "w": 52,
         "h": 52,
         "at": "9d#humanos-1.2",
         "color": "teal",
+        "cap": "pulpos",
+        "capfs": 11,
         "paths": [
          {
           "d": "M26 50q0-34 24-34t24 34Z",
@@ -19096,12 +19815,14 @@
        {
         "id": "cr",
         "kind": "svg",
-        "x": 652,
+        "x": 626,
         "y": 240,
         "w": 52,
         "h": 52,
         "at": "9d#humanos-0.9",
         "color": "teal",
+        "cap": "cuervos",
+        "capfs": 11,
         "paths": [
          {
           "d": "M18 60q8-24 32-24l10-10q10-4 14 4l14 4l-14 6q4 24-20 34l-14 4l-26 6l14-14q-12 0-10-10Z",
@@ -19116,6 +19837,19 @@
           "sw": 2
          }
         ],
+        "until": "9e"
+       },
+       {
+        "id": "rgl",
+        "kind": "txt",
+        "x": 610,
+        "y": 370,
+        "w": 50,
+        "h": 15,
+        "at": "9d#humanos-0.9",
+        "color": "#3FD8C2",
+        "fs": 11,
+        "text": "60–80 %",
         "until": "9e"
        },
        {

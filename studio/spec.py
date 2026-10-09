@@ -206,7 +206,7 @@ def write_build(st, root, timings=None, pad=True, **kw):
     bg = None
     if st['meta'].get('background', 'none') not in ('none', None, ''):
         from .sound import curve_data
-        k_, m_, _ = curve_data(st, sched, total); bg = dict(style=st['meta']['background'], keys=[[round(a, 2), round(float(b_), 3)] for a, b_ in k_], mk=[[round(a, 2), round(float(b_), 3)] for a, b_ in m_], grain=bool(st['meta'].get('grain', False)))
+        k_, m_, _ = curve_data(st, sched, total); bg = dict(style=st['meta']['background'], keys=[[round(a, 2), round(float(b_), 3)] for a, b_ in k_], mk=[[round(a, 2), round(float(b_), 3)] for a, b_ in m_], grain=bool(st['meta'].get('grain', False)), speed=float(st['meta'].get('bg_speed', 1)))
     json.dump({'sched': sched, 'cues': cues, 'total': total, 'fps': 30, 'scenes': len(st['scenes']), 'bg': bg}, open(f'{b}/data.json', 'w'), ensure_ascii=False)
     json.dump([{'id': i, 'text': sched[i]['txt'], 'start': sched[i]['s']} for i in order], open(f'{b}/beats.json', 'w'), ensure_ascii=False, indent=1)
     _srt(sched, order, f'{b}/captions.srt')

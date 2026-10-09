@@ -91,7 +91,8 @@ n += [W.pic('c0', 'chip', SXc - 26, SYc - 26, 52, 52, '8l', color='teal', until=
 cues.append(K('8l', '8o', n, [], fs=1.0))
 
 # 8o — Chalmers, proud for a moment… then a big counter: 4 days
-n = [P('cf', 'face', 330, 270, 110, '8o', color='amber', cap='Chalmers', capfs=13),
+n = [person('cf', 330, 290, '8o', color='blue', s=110, cap='Chalmers', capfs=13),
+     W.pic('cfs', 'smile', 308, 229, 44, 44, '8o', color='amber'),
      W.counter('d4', 520, 230, 4, '8o#recordó', cap='días', w=200, fs=90, dur=0.8)]
 cues.append(K('8o', '8p', n, [], fs=1.0))
 

@@ -89,10 +89,11 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
         i = b['id']
         if (only and i not in only) or i in R: continue
         p = f'{root}/audio/beats/{i}.mp3'
-        hh = hashlib.sha1('|'.join([say(b['text']), model, voice, str(speed), instr]).encode()).hexdigest()[:12]
+        vb = (m.get('el_voice_by_beat') or {}).get(i, voice) if el else voice          # e.g. a character with their own voice
+        hh = hashlib.sha1('|'.join([say(b['text']), model, vb, str(speed), instr]).encode()).hexdigest()[:12]
         if os.path.exists(p) and not force and i in T and Hh.get(i) == hh: continue
         log(f'tts {i}')
-        if el: _el_say(say(b['text']), voice, p, model=model, speed=min(1.2, max(.7, speed)), stability=float(m.get('el_stability', .5)), style=float(m.get('el_style', 0)))
+        if el: _el_say(say(b['text']), vb, p, model=model, speed=min(1.2, max(.7, speed)), stability=float(m.get('el_stability', .5)), style=float(m.get('el_style', 0)))
         else:
             with client.audio.speech.with_streaming_response.create(model=model, voice=voice, input=say(b['text']), instructions=instr, speed=speed, response_format='mp3') as r:
                 r.stream_to_file(p)

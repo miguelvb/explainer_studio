@@ -20,9 +20,10 @@ for v in range(0, 101, 10):
 # 9d — on the ruler, in order: the chip (20–40), a bee (≈ 50), an octopus and a crow (60–80), a person (≈ 90)
 n += [N('rg1', 'bar', X(20), RY - 3, X(40) - X(20), 10, '9d#modelos', color='blue', fill=1, rx=0),
       W.pic('ci', 'chip', X(30) - 26, RY - 90, 52, 52, '9d#modelos', color='blue', cap='20–40 %', capfs=12),
-      P('be', 'bee', X(50), RY - 64, 56, '9d#abejas', color='amber'), T('bel', X(50) - 18, RY + 40, '≈ 50', '9d#abejas', color=AMB, fs=12),
+      P('be', 'bee', X(50) - 28, RY - 64, 56, '9d#abejas', color='amber', cap='abejas', capfs=11), T('bel', X(50) - 18, RY + 40, '≈ 50', '9d#abejas', color=AMB, fs=12),
       N('rg2', 'bar', X(60), RY - 3, X(80) - X(60), 10, '9d#humanos-1.2', color='teal', fill=1, rx=0),
-      P('oc', 'octopus', X(66), RY - 64, 52, '9d#humanos-1.2', color='teal'), P('cr', 'crow', X(76), RY - 64, 52, '9d#humanos-0.9', color='teal'),
+      P('oc', 'octopus', X(66) - 26, RY - 64, 52, '9d#humanos-1.2', color='teal', cap='pulpos', capfs=11), P('cr', 'crow', X(76) - 26, RY - 64, 52, '9d#humanos-0.9', color='teal', cap='cuervos', capfs=11),
+      T('rgl', X(70) - 22, RY + 40, '60–80 %', '9d#humanos-0.9', color=TEAL, fs=12),
       person('hm', X(90), RY - 40, '9d#humanos', color='blue', s=44), T('hml', X(90) - 18, RY + 40, '≈ 90', '9d#humanos', color=BLU, fs=12)]
 for x in n:
     if x['id'] in ('rl',) or x['id'].startswith(('tk', 'tl', 'rg', 'ci', 'be', 'oc', 'cr', 'hm')): x['until'] = '9e'
