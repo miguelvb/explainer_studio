@@ -44,6 +44,21 @@
    "8l": "jacobo",
    "8m": "jacobo",
    "8n": "jacobo"
+  },
+  "voice_fx_by_beat": {
+   "1h": "robot",
+   "1i": "robot",
+   "1j": "robot",
+   "1k": "robot",
+   "1l": "robot",
+   "1m": "robot",
+   "1n": "robot",
+   "1o": "robot",
+   "1p": "robot",
+   "1q": "robot",
+   "8l": "robot",
+   "8m": "robot",
+   "8n": "robot"
   }
  },
  "pronunciation": {},

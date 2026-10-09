@@ -18,3 +18,4 @@ META['el_pronunciation'] = EL_PRONUNCIATION
 SAMMY_VOICE = 'jacobo'
 SAMMY_BEATS = [f'1{c}' for c in 'hijklmnopq'] + ['8l', '8m', '8n']
 if SAMMY_VOICE: META['el_voice_by_beat'] = {b: SAMMY_VOICE for b in SAMMY_BEATS}
+META['voice_fx_by_beat'] = {b: 'robot' for b in SAMMY_BEATS}   # slightly robotic filter (studio/audio.py VOICE_FX)

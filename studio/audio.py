@@ -18,6 +18,17 @@ EL_CANDIDATES = {'jacobo': 'syjZiIvIUSwKREBfMpKZ', 'carlos': '4FMxnogu8ehUVsRIxx
                  # female
                  'cristina': '2VUqK4PEdMj16L6xTN4J', 'maria': 'GszuzIPs4fVZTjP0EXrv', 'sofia': 'pK5bIn1o1zvVRcDhFUSb',
                  'ligia': 'szJ1F5SgxGkjGanyygoW', 'lourdes': 'SbxCN6LQhBInYaeKjhhW', 'melanie': 'bN1bDXgDIGX5lw0rtY2B'}
+# Post-filters for a character's voice (meta.voice_fx_by_beat = {beat: name}); {d} = beat duration in seconds
+VOICE_FX = {'robot': "sine=f=55:sample_rate=44100:duration={d}[m];[0:a]aresample=44100,asplit=2[d][v];[v][m]amultiply,volume=9dB[r];"
+                     "[d][r]amix=inputs=2:weights=0.8 0.7:normalize=0,aecho=0.8:0.84:6|11:0.45|0.32,acrusher=bits=10:mix=0.25,"
+                     "highpass=f=180,lowpass=f=7200,volume=4dB,alimiter=limit=0.95"}   # ring mod at 55 Hz mixed with the dry voice: Sammy
+
+
+def _fx(p, name):
+    d = _dur(p); tmp = p[:-4] + '.fx.mp3'
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', p, '-filter_complex', VOICE_FX[name].format(d=d), '-t', f'{d:.3f}', tmp], check=True); os.replace(tmp, p)
+
+
 OA_CANDIDATES = ['cedar', 'onyx', 'ash', 'echo', 'verse', 'fable', 'marin', 'coral', 'nova', 'shimmer', 'sage']
 
 
@@ -90,13 +101,15 @@ def tts(root, st, model=None, voice=None, speed=None, only=None, force=False, lo
         if (only and i not in only) or i in R: continue
         p = f'{root}/audio/beats/{i}.mp3'
         vb = (m.get('el_voice_by_beat') or {}).get(i, voice) if el else voice          # e.g. a character with their own voice
-        hh = hashlib.sha1('|'.join([say(b['text']), model, vb, str(speed), instr]).encode()).hexdigest()[:12]
+        fx = (m.get('voice_fx_by_beat') or {}).get(i)
+        hh = hashlib.sha1('|'.join([say(b['text']), model, vb, str(speed), instr] + ([fx] if fx else [])).encode()).hexdigest()[:12]
         if os.path.exists(p) and not force and i in T and Hh.get(i) == hh: continue
         log(f'tts {i}')
         if el: _el_say(say(b['text']), vb, p, model=model, speed=min(1.2, max(.7, speed)), stability=float(m.get('el_stability', .5)), style=float(m.get('el_style', 0)))
         else:
             with client.audio.speech.with_streaming_response.create(model=model, voice=voice, input=say(b['text']), instructions=instr, speed=speed, response_format='mp3') as r:
                 r.stream_to_file(p)
+        if fx: _fx(p, fx)
         T[i] = round(_dur(p) + .12, 3); json.dump(T, open(tf, 'w'), indent=1); Hh[i] = hh; json.dump(Hh, open(hf, 'w'), indent=1)
     log(f'timings -> {tf}  narration {sum(T.values()):.0f}s')
 
