@@ -24,13 +24,13 @@ n += [N('ng', 'svg', 615, 255, 50, 50, '10c#vacías', color='muted', paths=[dict
       P('sd', 'shield', 330, 200, 120, '10c#cuidado', color='teal', move=[dict(at='10c#máquinas+0.4', x=580, y=220, dur=1.8)]),
       P('hd', 'hand', 280, 300, 70, '10c#cuidado', color='muted', move=[dict(at='10c#máquinas+0.4', x=545, y=300, dur=1.8)], until='10d'),
       P('dg', 'dog', 200, 440, 80, '10c#quien', color='blue'), person('pp', 300, 460, '10c#quien', color='blue', s=50),
-      glow('dgg', 214, 432, '10c#sufre', s=22, color='blue'), glow('ppg', 300, 412, '10c#sufre', s=22, color='blue')]
+      glow('dgg', 214, 432, '10c#sufre', s=22, color='blue'), glow('ppg', 300, 442, '10c#sufre', s=22, color='blue')]
 cues.append(K('10c', '10d', n, [], fs=1.0))
 
 # 10d — an industrial farm with rows of hens; gears fit around it and lock
 n = [P('fc', 'factory', 480, 250, 260, '10d#granjas', color='muted')]
 for j in range(8):
-    n.append(P(f'hn{j}', 'hen', 380 + 28 * (j % 4) + (14 if j >= 4 else 0), 300 + 26 * (j // 4), 26, f'10d#granjas+{0.15 * j:.2f}', color='amber'))
+    n.append(P(f'hn{j}', 'hen', 440 + 28 * (j % 4) + (14 if j >= 4 else 0), 282 + 26 * (j // 4), 26, f'10d#granjas+{0.15 * j:.2f}', color='amber'))
 for j, (x, y) in enumerate([(250, 160), (710, 160), (250, 380), (710, 380)]):
     n.append(P(f'gr{j}', 'gear', x + (-80 if x < 480 else 80), y, 90, f'10d#economía+{0.3 * j:.1f}', color='red',
                move=[dict(at=f'10d#construye+{0.3 * j:.1f}', x=round(x - 45), y=round(y - 45), dur=1.2)], shake=dict(at='10d#deshacerlo', dur=1.0, amp=3, f=30)))

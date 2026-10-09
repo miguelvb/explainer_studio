@@ -30,7 +30,7 @@ n = chip('cp', 640, 380, '2f', s=60) + [person('rx', 880, 380, '2f', color='mute
 lk = [link('cp_box', 'rx', '2f#hablar', color='teal', speed=1.1, comm=True), link('cp_box', 'rx', '2f#trampa', color='teal', speed=.8, comm=True)]
 # 2g — two people: one sends a ball and both glow. Cut: the chip sends the same ball, its glow is a question
 n += [person('a1', 150, 200, '2g', color='blue', s=56), person('a2', 400, 200, '2g', color='blue', s=56),
-      glow('g1', 150, 185, '2g#sentía', s=34), glow('g2', 400, 185, '2g#sentía+0.5', s=34),
+      glow('g1', 150, 180, '2g#sentía', s=34), glow('g2', 400, 180, '2g#sentía+0.5', s=34),
       N('qq', 'question', 620, 360, 40, 40, '2g#regla', color='amber')]
 lk += [link('a1', 'a2', '2g#contaba', color='amber', comm=True)]
 cues.append(K('2f', '2h', n, lk, fs=1.0))
