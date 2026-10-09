@@ -176,7 +176,7 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **8c** Hoy, más de un siglo después, las cefeidas siguen siendo el primer peldaño de la escalera con la que medimos el universo. El telescopio espacial James Webb las sigue observando para medir lo rápido que se expande.
 > Una escalera de peldaños que sube hacia galaxias lejanas; el primer peldaño, rotulado «cefeidas · Leavitt», se ilumina. Un pequeño telescopio espacial mira hacia una cefeida que pulsa.
 
-**8d** Hoy tiene un asteroide con su nombre, y también un cráter en la cara oculta de la Luna, dedicado además a las personas sordas que han hecho grandes aportaciones a la ciencia. Su historia ha llegado al teatro, con la obra «Silent Sky», y a los libros, como «El universo de cristal», de Dava Sobel.
+**8d** Tiene un asteroide con su nombre, y también un cráter en la cara oculta de la Luna, dedicado además a las personas sordas que han hecho grandes aportaciones a la ciencia. Su historia ha llegado al teatro, con la obra «Silent Sky», y a los libros, como «El universo de cristal», de Dava Sobel.
 > La Luna gira y muestra su cara oculta, con un cráter marcado «Leavitt»; un asteroide «5383 Leavitt» pasa. Después, un pequeño escenario con un foco y un libro que se abre.
 
 **8e** Pero su mejor homenaje es más sencillo: cada vez que alguien dice a qué distancia está una galaxia, está usando la regla de Henrietta Leavitt.
