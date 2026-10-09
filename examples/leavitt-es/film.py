@@ -1,0 +1,10 @@
+# Film definition: `meta` of story.json and the pronunciation table.
+# Narration lives in script.md and the scenes in scenes/sNN.py (see studio/storykit.py).
+META = dict(
+    title='La mujer que midió el universo', lang='es',
+    provider='elevenlabs', el_voice='cristina', el_model='eleven_v4', el_speed=0.95, el_stability=0.5,
+    music_style='mix', music_db=-8, sfx_db=-12, duck_ratio=2.5, duck_threshold=0.04, ambience=1.0,
+    background='poly', fadein=0.3,
+)
+PRONUNCIATION = {}
+EL_PRONUNCIATION = {}   # {'OpenAI': 'Óupen Ei Ái'}; copy it into META['el_pronunciation'] when needed
