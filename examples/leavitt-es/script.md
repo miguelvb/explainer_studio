@@ -19,7 +19,13 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **0c** Hace poco más de cien años, nadie sabía responder. No sabíamos si el universo terminaba en nuestra galaxia o si había mucho más.
 > La cámara se aleja: la Vía Láctea como un disco de puntos dentro de un marco con el rótulo «¿todo el universo?». Fuera, manchas borrosas con interrogantes.
 
-**0d** La respuesta la encontró una mujer casi sorda, que cobraba treinta céntimos la hora por mirar placas de vidrio. Se llamaba Henrietta Swan Leavitt.
+**0d** Había un método, el paralaje. Pon un dedo delante de la cara y míralo primero con un ojo y luego con el otro: el dedo salta sobre el fondo. Cuanto más lejos lo pones, menos salta.
+> Una mano con un dedo levantado y dos ojos; al alternar los ojos, el dedo salta sobre un fondo de puntos. El dedo se aleja y el salto se hace pequeño.
+
+**0e** Con las estrellas se hace igual, usando como ojos dos puntos de la órbita de la Tierra, separados medio año. Pero las estrellas lejanas apenas se mueven, y con los telescopios de 1900 el paralaje solo servía para las más cercanas.
+> El Sol en el centro y la Tierra en dos puntos opuestos de su órbita, rotulados «enero» y «julio». Dos líneas van a una estrella cercana, que salta; una estrella lejana no se mueve, con un rótulo «demasiado lejos».
+
+**0f** La respuesta la encontró una mujer casi sorda, que cobraba treinta céntimos la hora por mirar placas de vidrio. Se llamaba Henrietta Swan Leavitt.
 > [FOTO: retrato de Henrietta Leavitt en su mesa de Harvard, hacia 1910]. Junto a la foto, un contador pequeño «0,30 $ / hora».
 
 ## 1 · Una hija de pastor
@@ -30,7 +36,7 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **1b** Era una época en la que se esperaba de una mujer que se casara y llevara una casa. Estudiar en la universidad era algo raro, y la ciencia, casi un territorio prohibido.
 > Una persona en el centro; a su alrededor aparecen tres iconos pequeños (anillo, casa, libro). El libro queda apagado y lejos.
 
-**1c** Aun así, Henrietta estudió en Oberlin y después en el «Anexo de Harvard», la escuela para mujeres que luego sería Radcliffe. Harvard aceptaba enseñarles, pero no darles su título: recibían un certificado.
+**1c** Aun así, Henrietta estudió en Oberlin y después en el «Anexo de Harvard», la escuela para mujeres que luego sería Radcliffe. Harvard aceptaba enseñarles, pero no darles su título. Al terminar, en 1892, recibió un certificado que decía que sus estudios equivalían a una licenciatura de Harvard… si hubiera sido un hombre.
 > Dos edificios: «Harvard» grande y, al lado, uno pequeño «Anexo». La persona entra en el pequeño; al salir recibe una hoja «certificado», no el diploma con sello de Harvard.
 
 **1d** En su último curso, en 1892, eligió una asignatura de astronomía. Fue el principio de todo.
@@ -84,13 +90,16 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **4b** Antes ya se había ido dos años de viaje por Europa, y después pasó una temporada en Beloit, en Wisconsin, donde vivían sus padres, dando clases de arte en una universidad.
 > Línea de tiempo: «Europa», «Beloit». La persona viaja por la línea; en Beloit aparece un caballete pequeño.
 
-**4c** En 1902 escribió a Pickering para volver. Él le ofreció un sueldo de treinta céntimos la hora, un poco más de lo habitual, por la calidad de su trabajo.
-> Una carta viaja desde Beloit hasta Harvard; vuelve otra con «0,30 $ / hora».
+**4c** En mayo de 1902 escribió a Pickering. Le contaba que el frío parecía empeorar su estado, y le preguntaba si sabía de algún observatorio en un lugar de clima más cálido.
+> Beloit bajo la nieve; la persona en una ventana. Una carta sale de Beloit y viaja hasta Harvard; en ella, pequeño: «13 mayo 1902».
 
-**4d** Su compañero Solon Bailey la describió como una persona callada y reservada, muy seria, con un fuerte sentido del deber, la justicia y la lealtad. Le importaban poco las diversiones.
+**4d** Pickering no sabía de ninguno. Pero le ofreció volver a Harvard a tiempo completo, a treinta céntimos la hora en lugar de los veinticinco habituales, por la calidad de su trabajo. Ella aceptó.
+> Vuelve otra carta con «0,30 $ / hora»; el «0,25» habitual aparece tachado a su lado. La persona viaja de Beloit a Harvard.
+
+**4e** Su compañero Solon Bailey la describió como una persona callada y reservada, muy seria, con un fuerte sentido del deber, la justicia y la lealtad. Le importaban poco las diversiones.
 > [FOTO: Henrietta Leavitt, retrato]. A su lado, palabras pequeñas que aparecen de una en una: «callada», «deber», «justicia», «lealtad».
 
-**4e** Y añadió que tenía «el feliz don de apreciar todo lo que hay de digno y amable en los demás». Para ella, decía, la vida era hermosa y llena de sentido.
+**4f** Y añadió que tenía «el feliz don de apreciar todo lo que hay de digno y amable en los demás». Para ella, decía, la vida era hermosa y llena de sentido.
 > Cita en Press Start 2P: «el feliz don de apreciar todo lo que hay de digno y amable en los demás». La foto se ilumina un poco.
 
 ## 5 · La ley
@@ -98,25 +107,28 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **5a** En 1912, Henrietta volvió a la pista. Eligió veinticinco estrellas variables de la Pequeña Nube de Magallanes, de un tipo concreto que hoy llamamos cefeidas, y midió su periodo con precisión.
 > Fecha «1912». Sobre la nube de puntos, veinticinco estrellas se marcan y empiezan a pulsar, cada una a su ritmo.
 
-**5b** La clave estaba en dónde estaban. Todas en la misma nube, y por tanto todas, más o menos, a la misma distancia de nosotros.
+**5b** Las cefeidas deben su nombre a Delta Cephei, la primera que se descubrió, en 1784. Son estrellas que se hinchan y se encogen como un corazón lento: su brillo sube deprisa y baja despacio, siempre con el mismo ritmo.
+> Una estrella que se hincha y se encoge; debajo, su curva de luz con forma de diente de sierra: subida rápida, bajada lenta, repetida.
+
+**5c** La clave estaba en dónde estaban. Todas en la misma nube, y por tanto todas, más o menos, a la misma distancia de nosotros.
 > Una línea de distancia sale de la Tierra y llega a la nube: todas las estrellas comparten la misma regla.
 
-**5c** Eso quería decir que, si una se veía más brillante que otra, era porque de verdad brillaba más, no porque estuviera más cerca.
+**5d** Eso quería decir que, si una se veía más brillante que otra, era porque de verdad brillaba más, no porque estuviera más cerca.
 > Dos estrellas de la nube; una se agranda en brillo y aparece una etiqueta «brilla más de verdad».
 
-**5d** Henrietta puso en un gráfico el brillo de cada estrella frente a su periodo. Y los puntos cayeron sobre una línea recta.
+**5e** Henrietta puso en un gráfico el brillo de cada estrella frente a su periodo. Y los puntos cayeron sobre una línea recta.
 > Un gráfico: eje horizontal «periodo», vertical «brillo». Los 25 puntos caen uno a uno y se alinean; una recta los atraviesa.
 
-**5e** Ella lo escribió así: «Se puede trazar fácilmente una línea recta entre cada una de las dos series de puntos». Había una relación sencilla entre el brillo de estas estrellas y su periodo.
+**5f** Ella lo escribió así: «Se puede trazar fácilmente una línea recta entre cada una de las dos series de puntos». Había una relación sencilla entre el brillo de estas estrellas y su periodo.
 > [FOTO: el gráfico original de la Circular 173, de 1912]. Encima, la cita en Press Start 2P.
 
-**5f** Esto lo cambiaba todo. Si mides cuánto tarda una cefeida en parpadear, sabes cuánto brilla de verdad. Y comparando eso con lo que ves desde aquí, sabes a qué distancia está.
+**5g** Esto lo cambiaba todo. Si mides cuánto tarda una cefeida en parpadear, sabes cuánto brilla de verdad. Y comparando eso con lo que ves desde aquí, sabes a qué distancia está.
 > Una cefeida lejana pulsa; un reloj mide su periodo; la recta del gráfico da su brillo real; una regla se estira desde la Tierra hasta la estrella con su distancia.
 
-**5g** Es como ver una bombilla de cien vatios a lo lejos: si sabes que es de cien vatios, por lo débil que la ves sabes lo lejos que está. Las cefeidas eran bombillas con la potencia escrita.
+**5h** Es como ver una bombilla de cien vatios a lo lejos: si sabes que es de cien vatios, por lo débil que la ves sabes lo lejos que está. Las cefeidas eran bombillas con la potencia escrita.
 > Una bombilla con la etiqueta «100 W» cerca y otra igual muy lejos, mucho más débil; una regla entre ambas.
 
-**5h** El artículo salió firmado por Pickering. La primera frase decía que lo había «preparado la señorita Leavitt».
+**5i** El artículo salió firmado por Pickering. La primera frase decía que lo había «preparado la señorita Leavitt».
 > Una hoja «Circular 173 · 1912» con la firma «E. C. Pickering» grande abajo, y una línea pequeña arriba: «prepared by Miss Leavitt».
 
 ## 6 · Lo que no la dejaron hacer
@@ -155,7 +167,7 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 
 ## 8 · Lo que quedó
 
-**8a** Henrietta no lo vio. Murió de cáncer el doce de diciembre de 1921, en Cambridge, con cincuenta y tres años.
+**8a** Henrietta no lo vio. En 1921, el nuevo director, Harlow Shapley, la nombró jefa de fotometría estelar. Ese mismo año, el doce de diciembre, murió de cáncer en Cambridge, con cincuenta y tres años.
 > Fecha «12 diciembre 1921». La mesa de la persona, vacía, con una placa de vidrio encima. La luz baja.
 
 **8b** En 1925, el matemático sueco Gösta Mittag-Leffler, de la Academia sueca, le escribió para proponerla para el premio Nobel de Física. No sabía que llevaba más de tres años muerta. El Nobel no se concede a título póstumo.
