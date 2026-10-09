@@ -339,13 +339,13 @@
 
 ## 19 · Last Warning
 
-**19a** Ajeya Cotra, a researcher at METR and one of the authors of the report: "This incident feels like more than halfway to a full AI takeover."
+**19a** Ajeya Cotra, a researcher at METR and one of the authors of the report: "This incident feels like it's more than 50% of the way to full-blown AI takeover."
 > Escenario negro. Aparece la cita de Ajeya Cotra: «Este incidente se siente como más de la mitad del camino hacia una toma de control total…». Después aparece su firma, «Ajeya Cotra · METR…».
 
-**19b** (pausa 1.6) "I expect extremely rapid capability progress, and I think frontier agents will be able to set up a rogue deployment like this within six months."
+**19b** (pausa 1.6) "I continue to expect extremely rapid advances in capabilities, and think frontier agents will likely be capable of establishing such a rogue deployment in six months."
 > Sobre el negro, la segunda cita en blanco: «Espero avances de capacidad extremadamente rápidos…». Debajo, «Ajeya Cotra · METR».
 
-**19c** (pausa 1.6) "I'm not sure we will get a warning this clear before it's too late."
+**19c** (pausa 1.6) "I am not sure that we will get such a clear warning shot before it's too late."
 > Tercera cita en blanco: «No estoy segura de que vayamos a recibir un aviso tan claro…». Debajo, «Ajeya Cotra · METR».
 
 ## 20 · Credits

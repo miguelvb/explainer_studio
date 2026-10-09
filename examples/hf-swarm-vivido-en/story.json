@@ -25490,13 +25490,13 @@
   {
    "title": "Last Warning",
    "beats": [
-    "Ajeya Cotra, a researcher at METR and one of the authors of the report: \"This incident feels like more than halfway to a full AI takeover.\"",
+    "Ajeya Cotra, a researcher at METR and one of the authors of the report: \"This incident feels like it's more than 50% of the way to full-blown AI takeover.\"",
     {
-     "text": "\"I expect extremely rapid capability progress, and I think frontier agents will be able to set up a rogue deployment like this within six months.\"",
+     "text": "\"I continue to expect extremely rapid advances in capabilities, and think frontier agents will likely be capable of establishing such a rogue deployment in six months.\"",
      "pause": 1.6
     },
     {
-     "text": "\"I'm not sure we will get a warning this clear before it's too late.\"",
+     "text": "\"I am not sure that we will get such a clear warning shot before it's too late.\"",
      "pause": 1.6
     }
    ],
@@ -25517,8 +25517,8 @@
         "at": "19a#This",
         "color": "#E7EBF1",
         "lines": [
-         "“This incident feels like more than halfway",
-         "to a full AI takeover.”"
+         "“This incident feels like it’s more than 50% of the way",
+         "to full-blown AI takeover.”"
         ],
         "fs": 30
        },
@@ -25562,9 +25562,9 @@
         "at": 0.3,
         "color": "#E7EBF1",
         "lines": [
-         "“I expect extremely rapid capability progress,",
-         "and I think frontier agents will be able to set up",
-         "a rogue deployment like this within six months.”"
+         "“I continue to expect extremely rapid advances in capabilities,",
+         "and think frontier agents will likely be capable of",
+         "establishing such a rogue deployment in six months.”"
         ],
         "fs": 30
        },
@@ -25608,7 +25608,7 @@
         "at": 0.3,
         "color": "#E7EBF1",
         "lines": [
-         "“I’m not sure we will get a warning this clear",
+         "“I am not sure that we will get such a clear warning shot",
          "before it’s too late.”"
         ],
         "fs": 30
