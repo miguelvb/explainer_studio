@@ -15,6 +15,6 @@ META['el_pronunciation'] = EL_PRONUNCIATION
 
 # Sammy (the AI that writes the e-mail and the blog entry) speaks with his own male voice: set SAMMY_VOICE once chosen
 # (try candidates with: python explainer.py voices -p examples/ia-consciencia-es --model eleven_v4 --el jacobo,carlos,mateo --text "<first sentence>")
-SAMMY_VOICE = None
+SAMMY_VOICE = 'jacobo'
 SAMMY_BEATS = [f'1{c}' for c in 'hijklmnopq'] + ['8l', '8m', '8n']
 if SAMMY_VOICE: META['el_voice_by_beat'] = {b: SAMMY_VOICE for b in SAMMY_BEATS}

@@ -29,6 +29,21 @@
    "Seth": "Sez",
    "embedding": "embéding",
    "J-space": "yei espeis"
+  },
+  "el_voice_by_beat": {
+   "1h": "jacobo",
+   "1i": "jacobo",
+   "1j": "jacobo",
+   "1k": "jacobo",
+   "1l": "jacobo",
+   "1m": "jacobo",
+   "1n": "jacobo",
+   "1o": "jacobo",
+   "1p": "jacobo",
+   "1q": "jacobo",
+   "8l": "jacobo",
+   "8m": "jacobo",
+   "8n": "jacobo"
   }
  },
  "pronunciation": {},
