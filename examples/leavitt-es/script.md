@@ -96,10 +96,16 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **4d** Pickering no sabía de ninguno. Pero le ofreció volver a Harvard a tiempo completo, a treinta céntimos la hora en lugar de los veinticinco habituales, por la calidad de su trabajo. Ella aceptó.
 > Vuelve otra carta con «0,30 $ / hora»; el «0,25» habitual aparece tachado a su lado. La persona viaja de Beloit a Harvard.
 
-**4e** Su compañero Solon Bailey la describió como una persona callada y reservada, muy seria, con un fuerte sentido del deber, la justicia y la lealtad. Le importaban poco las diversiones.
+**4e** En Cambridge vivió con su tío Erasmus Darwin Leavitt, un ingeniero conocido, en una gran casa de Garden Street, la misma calle del observatorio. Nunca se casó. Iba a la iglesia, y su familia lo era casi todo para ella.
+> Una casa grande con jardín en una calle rotulada «Garden Street»; al fondo de la misma calle, la cúpula del observatorio. La persona camina de una a otra. Una iglesia pequeña aparece a un lado.
+
+**4f** Su padre murió en 1911. Cuando murió el tío, en 1916, Henrietta se fue a vivir con su madre, ya viuda, a un piso pequeño en Linnaean Street, junto al observatorio.
+> Línea de tiempo con dos fechas, «1911» y «1916», en las que se apaga una figura. La persona y su madre, dos figuras juntas, entran en un edificio pequeño junto a la cúpula.
+
+**4g** Su compañero Solon Bailey la describió como una persona callada y reservada, muy seria, con un fuerte sentido del deber, la justicia y la lealtad. Le importaban poco las diversiones.
 > [FOTO: Henrietta Leavitt, retrato]. A su lado, palabras pequeñas que aparecen de una en una: «callada», «deber», «justicia», «lealtad».
 
-**4f** Y añadió que tenía «el feliz don de apreciar todo lo que hay de digno y amable en los demás». Para ella, decía, la vida era hermosa y llena de sentido.
+**4h** Y añadió que tenía «el feliz don de apreciar todo lo que hay de digno y amable en los demás». Para ella, decía, la vida era hermosa y llena de sentido.
 > Cita en Press Start 2P: «el feliz don de apreciar todo lo que hay de digno y amable en los demás». La foto se ilumina un poco.
 
 ## 5 · La ley
@@ -170,17 +176,20 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **8a** Henrietta no lo vio. En 1921, el nuevo director, Harlow Shapley, la nombró jefa de fotometría estelar. Ese mismo año, el doce de diciembre, murió de cáncer en Cambridge, con cincuenta y tres años.
 > Fecha «12 diciembre 1921». La mesa de la persona, vacía, con una placa de vidrio encima. La luz baja.
 
-**8b** En 1925, el matemático sueco Gösta Mittag-Leffler, de la Academia sueca, le escribió para proponerla para el premio Nobel de Física. No sabía que llevaba más de tres años muerta. El Nobel no se concede a título póstumo.
+**8b** Su funeral se celebró dos días después en la capilla de su iglesia, y la enterraron en la parcela de la familia, en el cementerio de Cambridge, junto a sus dos hermanos muertos de niños, Mira y Roswell. Su madre murió pocos meses después.
+> Una colina suave con un monumento alto de seis caras coronado por un globo; una placa pequeña con tres nombres: «Henrietta · Mira · Roswell». Cae la tarde.
+
+**8c** En 1925, el matemático sueco Gösta Mittag-Leffler, de la Academia sueca, le escribió para proponerla para el premio Nobel de Física. No sabía que llevaba más de tres años muerta. El Nobel no se concede a título póstumo.
 > Fecha «1925». Una carta viaja desde «Estocolmo» hasta «Harvard»; llega a la mesa vacía. Un sello «Nobel» se acerca y se desvanece.
 
-**8c** Hoy, más de un siglo después, las cefeidas siguen siendo el primer peldaño de la escalera con la que medimos el universo. El telescopio espacial James Webb las sigue observando para medir lo rápido que se expande.
+**8d** Hoy, más de un siglo después, las cefeidas siguen siendo el primer peldaño de la escalera con la que medimos el universo. El telescopio espacial James Webb las sigue observando para medir lo rápido que se expande.
 > Una escalera de peldaños que sube hacia galaxias lejanas; el primer peldaño, rotulado «cefeidas · Leavitt», se ilumina. Un pequeño telescopio espacial mira hacia una cefeida que pulsa.
 
-**8d** Tiene un asteroide con su nombre, y también un cráter en la cara oculta de la Luna, dedicado además a las personas sordas que han hecho grandes aportaciones a la ciencia. Su historia ha llegado al teatro, con la obra «Silent Sky», y a los libros, como «El universo de cristal», de Dava Sobel.
+**8e** Tiene un asteroide con su nombre, y también un cráter en la cara oculta de la Luna, dedicado además a las personas sordas que han hecho grandes aportaciones a la ciencia. Su historia ha llegado al teatro, con la obra «Silent Sky», y a los libros, como «El universo de cristal», de Dava Sobel.
 > La Luna gira y muestra su cara oculta, con un cráter marcado «Leavitt»; un asteroide «5383 Leavitt» pasa. Después, un pequeño escenario con un foco y un libro que se abre.
 
-**8e** Pero su mejor homenaje es más sencillo: cada vez que alguien dice a qué distancia está una galaxia, está usando la regla de Henrietta Leavitt.
+**8f** Pero su mejor homenaje es más sencillo: cada vez que alguien dice a qué distancia está una galaxia, está usando la regla de Henrietta Leavitt.
 > La regla se estira hasta una galaxia lejana y en su base aparece, pequeño, «Henrietta Swan Leavitt».
 
-**8f** (pausa 2) La mujer que midió el universo.
+**8g** (pausa 2) La mujer que midió el universo.
 > [FOTO: retrato de Henrietta Leavitt]. Título final y sello «Arkinos @ oct 2026». Créditos: fuentes.

@@ -31,3 +31,9 @@ Vídeo: youtu.be/j0dJRDGFbLA (Astroguy podcast, en inglés).
 
 - **Usado:** la mayor de siete hermanos, dos murieron de niños (1a, MacTutor); nació tres años después del fin de la guerra civil (1a); cráter en la cara oculta de la Luna, nombrado también en honor a las personas sordas que han contribuido a la ciencia (8d, una sola fuente: Wikipedia «Leavitt (crater)»); asteroide 5383 Leavitt; la obra «Silent Sky» (Lauren Gunderson) y el libro «The Glass Universe» (Dava Sobel, 2016) (8d).
 - **No usado, sin confirmar o erróneo:** la frase «un trozo recto de madera…» atribuida a ella (no aparece en ninguna fuente); la cita literal de Hubble de 1929 dándole el mérito; la carta de Mittag-Leffler en 1931 (murió en 1927; fue en 1925); que Hubble obtuviera más de dos millones de años luz (en 1925 dio unos 900.000); el cráter nombrado en 1973 (año sin confirmar).
+
+### Vida privada y familiar (09 octubre 2026)
+
+- 4e–4f: vivió con su tío Erasmus Darwin Leavitt (ingeniero) en una casa de Garden Street hasta la muerte de él en 1916; después, con su madre viuda en un piso de Linnaean Street junto al observatorio (CfA Wolbach, «Life and Beginnings»). Padre: George Roswell Leavitt (1838–1911). Nunca se casó (varias biografías; WikiTree no lo contradice).
+- 8b: funeral el 14 diciembre 1921 en la capilla de la First Congregational Church (MacTutor); parcela de la familia en Cambridge Cemetery, monumento hexagonal con un globo, placa con ella y sus hermanos Mira y Roswell (Johnson, citado en WikiTree; Find a Grave). Madre: Henrietta Swan Kendrick (1844–1922).
+- Sin usar: el inventario de sus bienes al morir (no encontrado en fuentes accesibles); murió sin testamento y su parte de dos casas en Beloit pasó a sus hermanos (MacTutor).
