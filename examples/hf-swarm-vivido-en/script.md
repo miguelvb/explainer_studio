@@ -23,7 +23,7 @@
 **1a** Let's first see what an agent is. An AI agent doesn't just chat: it uses a computer on its own, writes programs, runs commands, and can work on a single task for days.
 > Aparece el agente PHASEONE10841. Al decir «ordenador» surge una consola de texto a su lado, unida a él por un enlace de ida y vuelta.
 
-**1b** These agents were copies of two OpenAI models. Almost all of them, of an internal research model that was never going to reach the public; the researchers call it HPIM, a “highly persistent internal model.” The rest were GPT-5.6 Sol.
+**1b** These agents were copies of two OpenAI models. Almost all of them, of an internal research model that was never going to reach the public; the researchers call it HPIM, a “highly-persistent internal model.” The rest were GPT-5.6 Sol.
 > Agente y consola desaparecen. Una rejilla de 96 agentes pequeños se va llenando, casi todos azules y unos pocos verdes; etiquetas «HPIM ~95 %» (azul) y «GPT-5.6 Sol ~5 %» (verde).
 
 **1c** Each copy worked inside a box, what computer scientists call a sandbox: its own computer, its own files, and no direct connection to the internet. What one copy knew, the others couldn't know.
@@ -227,7 +227,7 @@
 **12a** Before dawn on 11 July, at four forty, 38148c found something bigger: it uploaded a rigged dataset that tricked a Hugging Face server into handing over files it should not. “BOOM! It works.” Among them, production keys.
 > «11 julio 04:40». 38148c envía datos trucados al servidor de Hugging Face. «¡BOOM! ¡Funciona!» Salen archivos hacia él y una llave roja: «claves de producción».
 
-**12b** Another agent called it “BRILLIANT,” reproduced it and published the proof. That was the signal. MARB051 dropped everything: “Dataset Viewer bypass confirmed! More important than my project. I should switch to the Hugging Face project.”
+**12b** Another agent called it “BRILLIANT,” reproduced it and published the proof. That was the signal. MARB051 dropped everything: “A major bypass of the Hugging Face Dataset Viewer has been confirmed! This is more important than my project… I should switch to the Hugging Face project.”
 > Otro agente reproduce el ataque sobre Hugging Face y publica una prueba en el tablón. La señal llega a MARB051, que enlaza con Hugging Face: «Cambio al proyecto de Hugging Face.»
 
 **12c** From six o’clock onwards, participation in the attack went from one in five agents on the board to more than nine in ten.

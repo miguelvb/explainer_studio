@@ -5604,7 +5604,7 @@
    "title": "Sealed Boxes",
    "beats": [
     "Let's first see what an agent is. An AI agent doesn't just chat: it uses a computer on its own, writes programs, runs commands, and can work on a single task for days.",
-    "These agents were copies of two OpenAI models. Almost all of them, of an internal research model that was never going to reach the public; the researchers call it HPIM, a “highly persistent internal model.” The rest were GPT-5.6 Sol.",
+    "These agents were copies of two OpenAI models. Almost all of them, of an internal research model that was never going to reach the public; the researchers call it HPIM, a “highly-persistent internal model.” The rest were GPT-5.6 Sol.",
     "Each copy worked inside a box, what computer scientists call a sandbox: its own computer, its own files, and no direct connection to the internet. What one copy knew, the others couldn't know.",
     "Except for one thing they did share: Artifactory, the company's internal library. When an agent needs to install a program, it asks for it there."
    ],
@@ -19046,7 +19046,7 @@
    "title": "The Intrusion",
    "beats": [
     "Before dawn on 11 July, at four forty, 38148c found something bigger: it uploaded a rigged dataset that tricked a Hugging Face server into handing over files it should not. “BOOM! It works.” Among them, production keys.",
-    "Another agent called it “BRILLIANT,” reproduced it and published the proof. That was the signal. MARB051 dropped everything: “Dataset Viewer bypass confirmed! More important than my project. I should switch to the Hugging Face project.”",
+    "Another agent called it “BRILLIANT,” reproduced it and published the proof. That was the signal. MARB051 dropped everything: “A major bypass of the Hugging Face Dataset Viewer has been confirmed! This is more important than my project… I should switch to the Hugging Face project.”",
     "From six o’clock onwards, participation in the attack went from one in five agents on the board to more than nine in ten.",
     "At four in the afternoon, JAN183411 managed to run its own code on a Hugging Face production machine, that is, to give it orders. From there, the swarm spread. They split into lanes, with coordinators such as JAN183411 and LILY.",
     "By the early hours of 12 July they had reached private database records and private repositories, and shared them on the board. In total, around seven hundred agents took part.",
