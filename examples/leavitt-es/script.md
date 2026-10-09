@@ -30,8 +30,8 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 
 ## 1 · Una hija de pastor
 
-**1a** Henrietta nació el cuatro de julio de 1868 en Lancaster, Massachusetts. Su padre era pastor protestante, y la familia se mudaba a menudo.
-> Fecha «04 julio 1868» tecleada. Una casa sencilla con una pequeña iglesia al lado; una línea de puntos lleva la casa de un sitio a otro del mapa.
+**1a** Henrietta nació el cuatro de julio de 1868 en Lancaster, Massachusetts, tres años después del final de la guerra civil. Era la mayor de siete hermanos, dos de los cuales murieron muy pequeños. Su padre era pastor protestante, y la familia se mudaba a menudo.
+> Fecha «04 julio 1868» tecleada. Una casa sencilla con una pequeña iglesia al lado; delante, siete figuras pequeñas en fila, la primera algo más alta; dos se apagan. Una línea de puntos lleva la casa de un sitio a otro del mapa.
 
 **1b** Era una época en la que se esperaba de una mujer que se casara y llevara una casa. Estudiar en la universidad era algo raro, y la ciencia, casi un territorio prohibido.
 > Una persona en el centro; a su alrededor aparecen tres iconos pequeños (anillo, casa, libro). El libro queda apagado y lejos.
@@ -176,8 +176,11 @@ Formato: cada frase de narración lleva debajo una línea `>` con lo que se ve e
 **8c** Hoy, más de un siglo después, las cefeidas siguen siendo el primer peldaño de la escalera con la que medimos el universo. El telescopio espacial James Webb las sigue observando para medir lo rápido que se expande.
 > Una escalera de peldaños que sube hacia galaxias lejanas; el primer peldaño, rotulado «cefeidas · Leavitt», se ilumina. Un pequeño telescopio espacial mira hacia una cefeida que pulsa.
 
-**8d** Tiene un asteroide y un cráter en la Luna con su nombre. Pero su mejor homenaje es más sencillo: cada vez que alguien dice a qué distancia está una galaxia, está usando la regla de Henrietta Leavitt.
-> La Luna con un cráter marcado «Leavitt»; un asteroide pasa. Luego, la regla se estira hasta una galaxia lejana y en su base aparece, pequeño, «Henrietta Swan Leavitt».
+**8d** Hoy tiene un asteroide con su nombre, y también un cráter en la cara oculta de la Luna, dedicado además a las personas sordas que han hecho grandes aportaciones a la ciencia. Su historia ha llegado al teatro, con la obra «Silent Sky», y a los libros, como «El universo de cristal», de Dava Sobel.
+> La Luna gira y muestra su cara oculta, con un cráter marcado «Leavitt»; un asteroide «5383 Leavitt» pasa. Después, un pequeño escenario con un foco y un libro que se abre.
 
-**8e** (pausa 2) La mujer que midió el universo.
+**8e** Pero su mejor homenaje es más sencillo: cada vez que alguien dice a qué distancia está una galaxia, está usando la regla de Henrietta Leavitt.
+> La regla se estira hasta una galaxia lejana y en su base aparece, pequeño, «Henrietta Swan Leavitt».
+
+**8f** (pausa 2) La mujer que midió el universo.
 > [FOTO: retrato de Henrietta Leavitt]. Título final y sello «Arkinos @ oct 2026». Créditos: fuentes.

@@ -24,3 +24,10 @@ Vídeo de referencia que pasó Miguel: youtu.be/1bSNKFpYgrU (biografía en espa�
 - **Usado:** paralaje con el dedo (0d–0e); certificado «equivalente a una licenciatura de Harvard si hubiera sido un hombre» (1c, una sola fuente secundaria: Freedom's Way); carta a Pickering del 13 mayo 1902 sobre el frío y respuesta con 30 céntimos frente a 25 (4c–4d, CfA Wolbach y Linda Hall); forma de la curva de luz de las cefeidas y Delta Cephei, 1784 (5b); jefa de fotometría estelar con Shapley en 1921 (8a).
 - **No usado, sin confirmar:** la solicitud de pasaporte con ojos grises y pelo oscuro; la frase de Hubble «merecía el Nobel» (se repite mucho, pero sin fuente primaria); el texto literal de la carta de Mittag-Leffler.
 - **Errores del vídeo que se evitan:** entrada como voluntaria en 1894 (las fuentes dan 1895); Hertzsprung no usó la ley en 1929 sino en 1913.
+
+### Añadido tras el segundo vídeo de referencia (09 octubre 2026)
+
+Vídeo: youtu.be/j0dJRDGFbLA (Astroguy podcast, en inglés).
+
+- **Usado:** la mayor de siete hermanos, dos murieron de niños (1a, MacTutor); nació tres años después del fin de la guerra civil (1a); cráter en la cara oculta de la Luna, nombrado también en honor a las personas sordas que han contribuido a la ciencia (8d, una sola fuente: Wikipedia «Leavitt (crater)»); asteroide 5383 Leavitt; la obra «Silent Sky» (Lauren Gunderson) y el libro «The Glass Universe» (Dava Sobel, 2016) (8d).
+- **No usado, sin confirmar o erróneo:** la frase «un trozo recto de madera…» atribuida a ella (no aparece en ninguna fuente); la cita literal de Hubble de 1929 dándole el mérito; la carta de Mittag-Leffler en 1931 (murió en 1927; fue en 1925); que Hubble obtuviera más de dos millones de años luz (en 1925 dio unos 900.000); el cráter nombrado en 1973 (año sin confirmar).
