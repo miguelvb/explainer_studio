@@ -235,3 +235,9 @@ def pic(id, name, x, y, w, h=None, at=0.05, color='blue', **k):
     h = w if h is None else h
     k.setdefault('paths', PICS[name])
     return _n(id, 'svg', x, y, w, h, at, color=color, **k)
+
+
+def photo(id, x, y, w, h, name, at=0.05, src=None, color='muted', **k):
+    """Archive photograph in a thin frame (node kind `photo`). src = 'fotos/<file>' (copied from the film's fotos/ folder
+    at build time); without src, a dashed placeholder labelled `name` is drawn so the scene can be built before the photo exists."""
+    return _n(id, 'photo', x, y, w, h, at, color=color, src=src, label=name, **k)

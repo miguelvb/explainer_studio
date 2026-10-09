@@ -215,6 +215,7 @@ def write_build(st, root, timings=None, pad=True, **kw):
     pdir = f'{b}/player'; os.makedirs(pdir, exist_ok=True)
     for f in ('assets.js', 'style.css'): shutil.copy(f'{PKG}/player/{f}', f'{pdir}/{f}')
     shutil.copytree(f'{PKG}/player/fonts', f'{pdir}/fonts', dirs_exist_ok=True)
+    if os.path.isdir(os.path.join(root, 'fotos')): shutil.copytree(os.path.join(root, 'fotos'), f'{pdir}/fotos', dirs_exist_ok=True)   # archive photos (node kind `photo`)
     mark = st['meta'].get('mark')
     mp = os.path.join(root, mark) if mark and os.path.exists(os.path.join(root, mark)) else f'{PKG}/default_mark.txt'
     head, d = open(mp).read().split('\n', 1); W, H = head.split()
