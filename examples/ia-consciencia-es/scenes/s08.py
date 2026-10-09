@@ -92,7 +92,7 @@ cues.append(K('8l', '8o', n, [], fs=1.0))
 
 # 8o — Chalmers, proud for a moment… then a big counter: 4 days
 n = [person('cf', 330, 290, '8o', color='blue', s=110, cap='Chalmers', capfs=13),
-     W.pic('cfs', 'smile', 308, 229, 44, 44, '8o', color='amber'),
+     W.pic('cfs', 'smile', 308, 226, 44, 44, '8o', color='blue'),
      W.counter('d4', 520, 230, 4, '8o#recordó', cap='días', w=200, fs=90, dur=0.8)]
 cues.append(K('8o', '8p', n, [], fs=1.0))
 
